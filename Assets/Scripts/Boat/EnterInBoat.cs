@@ -24,7 +24,6 @@ public class EnterInBoat : MonoBehaviour
             }
             else
             {
-                player.isGrounded = false;
                 // Update rigidbody constraints to apply gravity
                 other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
                 player.self.SetParent(null);

@@ -33,9 +33,6 @@ public class PlayerController : MonoBehaviour
 
     private bool _isOnBoat = true;
     public bool isOnBoat { get { return _isOnBoat; } set { _isOnBoat = value; } }
-
-    private bool _isGrounded = false;
-    public bool isGrounded { set { _isGrounded = value; } }
     #endregion
 
     // Start is called before the first frame update
@@ -75,6 +72,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DashTimer()
     {
+        Debug.Log("saucisse");
         yield return new WaitForSeconds(playerPreset.dashTime);
         selfRigidBody.velocity = Vector3.zero;
     }
@@ -138,7 +136,7 @@ public class PlayerController : MonoBehaviour
 
         // Apply movements
         Vector3 move = new Vector3(playerMovementInput.x, 0.0f, playerMovementInput.y);
-        self.Translate(move * Time.deltaTime * currentSpeed, Space.World);
+        selfRigidBody.velocity = move * Time.fixedDeltaTime * currentSpeed;
 
         // Set the rotation of the player according to his movements
         if (move != Vector3.zero)
@@ -147,33 +145,19 @@ public class PlayerController : MonoBehaviour
 
     private void UpdatePlayerOnBoat()
     {
-        if (_isOnBoat && !_isGrounded)
+        // Raycast the ground if player is on the boat
+        Vector3 rayPos = self.position;
+        rayPos.y -= self.lossyScale.y;
+        if (!Physics.Raycast(rayPos, -Vector3.up, 0.05f))
         {
-            // Raycast the ground if player is on the boat
-            Vector3 rayPos = self.position;
-            rayPos.y -= self.lossyScale.y;
-            RaycastHit hit;
-            if (Physics.Raycast(rayPos, -Vector3.up, out hit, 0.05f))
-            {
-                if (hit.collider.CompareTag("Boat"))
-                {
-                    // Set the zone as parent of the player to move with it
-                    self.SetParent(hit.transform);
-
-                    self.position = new Vector3(self.position.x, self.position.y - 0.05f, self.position.z);
-
-                    // Update the constraints of the rigid body to avoid gravity
-                    selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation |
-                        RigidbodyConstraints.FreezePositionY;
-
-                    isGrounded = true;
-                }
-            }
+            Vector3 newVelocity = selfRigidBody.velocity;
+            newVelocity.y = -playerPreset.gravity;
+            selfRigidBody.velocity = newVelocity;
         }
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         PlayerMovement();
         UpdatePlayerOnBoat();
