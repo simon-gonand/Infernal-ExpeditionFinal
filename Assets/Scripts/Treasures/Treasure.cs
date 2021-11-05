@@ -24,25 +24,25 @@ public class Treasure : MonoBehaviour, IInteractable
         player.isCarrying = true;
         player.transportedTreasure = this;
 
+        // Update speed malus
+        ApplySpeedMalus();
+
+        // If the player is alone to carry it just snap the treasure as child of the player
         if (playerInteractingWith.Count == 1)
         {
             // Snap treasure to the player
             self.position = player.carryingSnapPoint.position;
             self.forward = player.transform.forward;
             self.SetParent(player.self);
-            speedMalus = category.speedMalus;
             return true;
         }
+        // If there is more than one player to carry it, treasures to the players' joint
         else if (playerInteractingWith.Count > 1 && playerInteractingWith.Count <= category.maxPlayerCarrying)
         {
             self.SetParent(null);
             selfRigidbody.isKinematic = false;
 
-            if (playerInteractingWith.Count == category.maxPlayerCarrying)
-                speedMalus = 0;
-            else
-                speedMalus = category.speedMalus / playerInteractingWith.Count;
-
+            // Snap to joints
             for (int i = 0; i < playerInteractingWith.Count; ++i)
             {
                 if (!associateJoints.ContainsKey(playerInteractingWith[i])){
@@ -54,6 +54,7 @@ public class Treasure : MonoBehaviour, IInteractable
             return true;
         }
 
+        // If the player cannot carry the treasure due to the number of players already carrying it
         player.isCarrying = false;
         player.transportedTreasure = null;
         return false;
@@ -89,12 +90,17 @@ public class Treasure : MonoBehaviour, IInteractable
         // Update player values
         player.isCarrying = false;
         player.transportedTreasure = null;
+
+        // Player does not interact with the treasure anymore
         playerInteractingWith.Remove(player);
+
+        // Remove player joints
         if (playerInteractingWith.Count >= 1)
         {
             Destroy(associateJoints[player]);
             associateJoints.Remove(player);
         }
+        // If the player is alone to carry the treasure, remove joints and set the player as parent of the treasure
         if (playerInteractingWith.Count == 1)
         {
             Destroy(associateJoints[playerInteractingWith[0]]);
@@ -104,6 +110,10 @@ public class Treasure : MonoBehaviour, IInteractable
             self.forward = playerInteractingWith[0].self.forward;
             selfRigidbody.isKinematic = true;
         }
+
+        // Update speed malus
+        ApplySpeedMalus();
+
         if (playerInteractingWith.Count < 1)
         {
             // Remove parent
@@ -115,6 +125,14 @@ public class Treasure : MonoBehaviour, IInteractable
         }
     }
 
+    private void ApplySpeedMalus()
+    {
+        // Deal with speed according to the number of player carrying the treasure
+        if (playerInteractingWith.Count == category.maxPlayerCarrying)
+            speedMalus = 0;
+        else
+            speedMalus = category.speedMalus / playerInteractingWith.Count;
+    }
     private void FixedUpdate()
     {
         // Check if the treasure is touching the ground
