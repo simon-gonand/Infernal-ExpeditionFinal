@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 7705394190541965516}
   - component: {fileID: 1344421421682408606}
   - component: {fileID: 2615319730487116424}
-  - component: {fileID: -1413773507541069049}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: TreasurePrefab
   m_TagString: Treasures
   m_Icon: {fileID: 0}
@@ -128,20 +127,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 3329265842200371522}
   selfRigidbody: {fileID: 1344421421682408606}
-  fixedJoint: {fileID: -1413773507541069049}
   category: {fileID: 0}
---- !u!138 &-1413773507541069049
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171829190545810028}
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1

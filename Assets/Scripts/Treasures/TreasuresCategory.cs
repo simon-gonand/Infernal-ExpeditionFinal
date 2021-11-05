@@ -7,4 +7,5 @@ public class TreasuresCategory : ScriptableObject
 {
     public float launchForce;
     public float speedMalus;
+    public int maxPlayerCarrying;
 }

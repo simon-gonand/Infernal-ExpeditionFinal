@@ -9,7 +9,5 @@ public interface IInteractable
     public void UninteractWith(PlayerController player);
 
     // When the player pressed the action button when he's on the interactable
-    public void OnAction();
-    // When the player is moving when he's on the interactable
-    public void OnMove(Vector2 movements);
+    public void OnAction(PlayerController player);
 }

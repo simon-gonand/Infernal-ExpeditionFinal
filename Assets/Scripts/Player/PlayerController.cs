@@ -21,14 +21,15 @@ public class PlayerController : MonoBehaviour
     private IInteractable interactingWith;
     private float nextDash;
 
-    #region boolean
+    private Treasure _transportedTreasure;
+    public Treasure transportedTreasure { set { _transportedTreasure = value; } }
+
+    #region booleans
     private bool _isInteracting = false;
     public bool isInteracting { get { return _isInteracting; } set { _isInteracting = value; } }
 
     private bool _isCarrying = false;
     public bool isCarrying { get { return _isCarrying; } set { _isCarrying = value; } }
-    private TreasuresCategory _treasureCarried;
-    public TreasuresCategory treasureCarried { set { _treasureCarried = value; } }
 
     private bool _isOnBoat = true;
     public bool isOnBoat { get { return _isOnBoat; } set { _isOnBoat = value; } }
@@ -46,20 +47,17 @@ public class PlayerController : MonoBehaviour
     // When the player moves
     public void OnMove(InputAction.CallbackContext context)
     {
-        // If the player is interacting with something he can't move
-        if (_isInteracting && interactingWith != null)
-            interactingWith.OnMove(context.ReadValue<Vector2>());
-            
-        else
-            playerMovementInput = context.ReadValue<Vector2>();
+        playerMovementInput = context.ReadValue<Vector2>();
     }
 
     // When the player pressed the action button
     public void OnAction(InputAction.CallbackContext context)
     {
         // If the player is interacting with something he can't attack
-        if ((_isInteracting || _isCarrying) && context.performed)
-            interactingWith.OnAction();
+        if ((_isInteracting || _isCarrying) && context.started)
+            interactingWith.OnAction(this);
+        if (context.canceled)
+            Debug.Log("canceled");
         // else attack on action pressed
     }
 
@@ -93,15 +91,28 @@ public class PlayerController : MonoBehaviour
 
             // If the raycast is encountering an interactable
             RaycastHit hit;
-            int layerMask = 1 << LayerMask.NameToLayer("Interactable");
-            if (Physics.Raycast(startRayPos, self.forward, out hit, playerPreset.interactionDistance, layerMask))
-            {
-                // Stop player's movements
-                playerMovementInput = Vector2.zero;
+            int layerMask = 1 << LayerMask.NameToLayer("Interactable"); 
+            List<bool> raycasts = new List<bool>();
 
-                // Set with which interactable the player is interacting with
-                interactingWith = hit.collider.gameObject.GetComponent<IInteractable>();
-                interactingWith.InteractWith(this);
+            // Set three different Raycasts (one at the bottom, one at the center and one at the top)
+            raycasts.Add(Physics.Raycast(startRayPos, self.forward, out hit, playerPreset.interactionDistance, layerMask));
+            startRayPos.y += self.lossyScale.y;
+            raycasts.Add(Physics.Raycast(startRayPos, self.forward, out hit, playerPreset.interactionDistance, layerMask));
+            raycasts.Add(Physics.Raycast(self.position, self.forward, out hit, playerPreset.interactionDistance, layerMask));
+
+            for (int i = 0; i < raycasts.Count; ++i)
+            {
+                if (raycasts[i])
+                {
+                    // Stop player's movements
+                    playerMovementInput = Vector2.zero;
+
+                    // Set with which interactable the player is interacting with
+                    interactingWith = hit.collider.gameObject.GetComponent<IInteractable>();
+                    interactingWith.InteractWith(this);
+
+                    break;
+                }
             }
         }
         // Else put the treasure down or uninteract with the interactable
@@ -123,8 +134,8 @@ public class PlayerController : MonoBehaviour
     {
         float currentSpeed = playerPreset.playerSpeed;
         // Apply speed malus if the player is carrying an heavy treasure
-        if (_isCarrying && _treasureCarried != null)
-            currentSpeed -= _treasureCarried.speedMalus;
+        if (_isCarrying)
+            currentSpeed -= _transportedTreasure.speedMalus;
 
         // Apply movements
         Vector3 move = new Vector3(playerMovementInput.x, 0.0f, playerMovementInput.y);
