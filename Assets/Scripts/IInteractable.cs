@@ -4,7 +4,7 @@ using UnityEngine;
 public interface IInteractable
 {
     // When the player is interacting with the interactable
-    public void InteractWith(PlayerController player);
+    public bool InteractWith(PlayerController player);
     // When the player is not interacting with the interactable anymore
     public void UninteractWith(PlayerController player);
 

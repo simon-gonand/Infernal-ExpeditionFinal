@@ -17,7 +17,7 @@ public class Treasure : MonoBehaviour, IInteractable
     private bool isGrounded = false;
 
     // When player is interacting with the treasure
-    public void InteractWith(PlayerController player)
+    public bool InteractWith(PlayerController player)
     {
         // Update player values
         playerInteractingWith.Add(player);
@@ -31,6 +31,7 @@ public class Treasure : MonoBehaviour, IInteractable
             self.forward = player.transform.forward;
             self.SetParent(player.self);
             speedMalus = category.speedMalus;
+            return true;
         }
         else if (playerInteractingWith.Count > 1 && playerInteractingWith.Count <= category.maxPlayerCarrying)
         {
@@ -50,7 +51,12 @@ public class Treasure : MonoBehaviour, IInteractable
                     associateJoints.Add(playerInteractingWith[i], joint);
                 }
             }
+            return true;
         }
+
+        player.isCarrying = false;
+        player.transportedTreasure = null;
+        return false;
     }
 
     // When the player pressed the action button when he's on the treasure

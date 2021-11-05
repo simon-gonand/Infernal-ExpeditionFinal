@@ -90,27 +90,26 @@ public class PlayerController : MonoBehaviour
             startRayPos.y -= self.lossyScale.y / 2;
 
             // If the raycast is encountering an interactable
-            RaycastHit hit;
             int layerMask = 1 << LayerMask.NameToLayer("Interactable"); 
-            List<bool> raycasts = new List<bool>();
+            List<Vector3> raycastsStartPos = new List<Vector3>();
 
             // Set three different Raycasts (one at the bottom, one at the center and one at the top)
-            raycasts.Add(Physics.Raycast(startRayPos, self.forward, out hit, playerPreset.interactionDistance, layerMask));
+            raycastsStartPos.Add(startRayPos);
             startRayPos.y += self.lossyScale.y;
-            raycasts.Add(Physics.Raycast(startRayPos, self.forward, out hit, playerPreset.interactionDistance, layerMask));
-            raycasts.Add(Physics.Raycast(self.position, self.forward, out hit, playerPreset.interactionDistance, layerMask));
+            raycastsStartPos.Add(startRayPos);
+            raycastsStartPos.Add(self.position);
 
-            for (int i = 0; i < raycasts.Count; ++i)
+            for (int i = 0; i < raycastsStartPos.Count; ++i)
             {
-                if (raycasts[i])
+                RaycastHit hit;
+                if (Physics.Raycast(raycastsStartPos[i], self.forward, out hit, playerPreset.interactionDistance, layerMask))
                 {
                     // Stop player's movements
                     playerMovementInput = Vector2.zero;
-
                     // Set with which interactable the player is interacting with
                     interactingWith = hit.collider.gameObject.GetComponent<IInteractable>();
-                    interactingWith.InteractWith(this);
-
+                    if (!interactingWith.InteractWith(this))
+                        interactingWith = null;
                     break;
                 }
             }
