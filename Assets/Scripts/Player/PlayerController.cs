@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform boatTransform;
 
+    public Animator anim;
 
     private Vector2 playerMovementInput = Vector2.zero;
 
@@ -165,7 +166,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMovement();
+        if (playerMovementInput.x != 0.0f || playerMovementInput.y != 0.0f)
+        {
+            PlayerMovement();
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+        }
+
         UpdatePlayerOnBoat();
     }
 }
