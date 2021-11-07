@@ -83,18 +83,25 @@ public class Treasure : MonoBehaviour, IInteractable
     // Launch the treasure
     public void OnAction(PlayerController player)
     {
-        // Remove the parent
-        self.SetParent(null);
+        if (playerInteractingWith.Count == 1)
+        {
+            // Remove the parent
+            self.SetParent(null);
 
-        // Enable rigidbody
-        selfRigidbody.isKinematic = false;
-        selfRigidbody.AddForce((player.self.forward + player.self.up) * category.launchForce, ForceMode.Impulse);
+            // Enable rigidbody
+            selfRigidbody.isKinematic = false;
+            selfRigidbody.AddForce((player.self.forward + player.self.up) * category.launchForce, ForceMode.Impulse);
 
-        // Update player values
-        player.isCarrying = false;
-        player.transportedTreasure = null;
-        playerInteractingWith = null;
-        isGrounded = false;
+            // Update lists values
+            playerInteractingWith.Remove(player);
+            associateColliders[player].GetComponent<BoxCollider>().enabled = true;
+            associateColliders.Remove(player);
+
+            // Update player values
+            player.isCarrying = false;
+            player.transportedTreasure = null;
+            isGrounded = false;
+        }
     }
 
     // When the player is not interacting with the treasure anymore

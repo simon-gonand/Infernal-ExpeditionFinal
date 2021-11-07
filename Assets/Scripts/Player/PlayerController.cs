@@ -53,7 +53,9 @@ public class PlayerController : MonoBehaviour
     {
         // If the player is interacting with something he can't attack
         if ((_isInteracting || _isCarrying) && context.started)
+        {
             interactingWith.OnAction(this);
+        }
         if (context.canceled)
             Debug.Log("canceled");
         // else attack on action pressed

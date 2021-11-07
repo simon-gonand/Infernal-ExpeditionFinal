@@ -163,9 +163,9 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""5ed3ea05-2873-48db-a40b-275f98f73301"",
                     ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""PlayerAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
