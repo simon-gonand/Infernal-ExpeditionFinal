@@ -17,15 +17,14 @@ public class EnterInBoat : MonoBehaviour
         if (other.CompareTag("Player") && !isPlayerClimbingInBoat) {
             player = other.GetComponent<PlayerController>();
 
-            // Let the player going out the boat
             if (!player.isOnBoat)
             {
                 player.self.position = playerOnBoatEntryPoint.position;
+                player.self.SetParent(BoatManager.instance.self);
             }
+            // Let the player getting out the boat
             else
             {
-                // Update rigidbody constraints to apply gravity
-                other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
                 player.self.SetParent(null);
             }
 

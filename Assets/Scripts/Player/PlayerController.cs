@@ -25,12 +25,15 @@ public class PlayerController : MonoBehaviour
     public Treasure transportedTreasure { set { _transportedTreasure = value; } }
 
     #region booleans
+    // Is the player interacting with something
     private bool _isInteracting = false;
     public bool isInteracting { get { return _isInteracting; } set { _isInteracting = value; } }
 
+    // Is the player carrying a treasure
     private bool _isCarrying = false;
     public bool isCarrying { get { return _isCarrying; } set { _isCarrying = value; } }
 
+    // Is the player on the boat
     private bool _isOnBoat = true;
     public bool isOnBoat { get { return _isOnBoat; } set { _isOnBoat = value; } }
     #endregion
@@ -72,7 +75,6 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DashTimer()
     {
-        Debug.Log("saucisse");
         yield return new WaitForSeconds(playerPreset.dashTime);
         selfRigidBody.velocity = Vector3.zero;
     }

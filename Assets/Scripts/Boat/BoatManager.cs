@@ -6,12 +6,14 @@ public class BoatManager : MonoBehaviour
 {
     public Transform self;
 
+    // BoatManager is a singleton class
     public static BoatManager instance;
 
     private void Awake()
     {
         instance = this;
     }
+
     // Start is called before the first frame update
     void Start()
     {
