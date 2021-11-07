@@ -12,12 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private PlayerPresets playerPreset;
 
-    public Transform boatTransform;
-
 
     private Vector2 playerMovementInput = Vector2.zero;
 
     private IInteractable interactingWith;
+
     private float nextDash;
 
     private Treasure _transportedTreasure;

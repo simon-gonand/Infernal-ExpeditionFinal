@@ -88,7 +88,7 @@ public class Treasure : MonoBehaviour, IInteractable
 
         // Enable rigidbody
         selfRigidbody.isKinematic = false;
-        selfRigidbody.AddForce((self.forward + self.up) * category.launchForce, ForceMode.Impulse);
+        selfRigidbody.AddForce((player.self.forward + player.self.up) * category.launchForce, ForceMode.Impulse);
 
         // Update player values
         player.isCarrying = false;
