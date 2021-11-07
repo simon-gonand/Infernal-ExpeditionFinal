@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     public Transform self;
     public Rigidbody selfRigidBody;
-    public Transform carryingSnapPoint;
     public FixedJoint fixedJoint;
     [SerializeField]
     private PlayerPresets playerPreset;
@@ -104,13 +103,16 @@ public class PlayerController : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(raycastsStartPos[i], self.forward, out hit, playerPreset.interactionDistance, layerMask))
                 {
-                    // Stop player's movements
-                    playerMovementInput = Vector2.zero;
-                    // Set with which interactable the player is interacting with
-                    interactingWith = hit.collider.gameObject.GetComponent<IInteractable>();
-                    if (!interactingWith.InteractWith(this))
-                        interactingWith = null;
-                    break;
+                    if (hit.collider.isTrigger && hit.collider.enabled)
+                    {
+                        // Stop player's movements
+                        playerMovementInput = Vector2.zero;
+                        // Set with which interactable the player is interacting with
+                        interactingWith = hit.collider.gameObject.GetComponentInParent<IInteractable>();
+                        if (!interactingWith.InteractWith(this, hit.collider.gameObject))
+                            interactingWith = null;
+                        break;
+                    }
                 }
             }
         }
@@ -145,7 +147,7 @@ public class PlayerController : MonoBehaviour
             self.forward = move;
     }
 
-    private void UpdatePlayerOnBoat()
+    private void ApplyGravity()
     {
         // Raycast the ground if player is on the boat
         Vector3 rayPos = self.position;
@@ -162,6 +164,6 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         PlayerMovement();
-        UpdatePlayerOnBoat();
+        ApplyGravity();
     }
 }

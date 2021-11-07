@@ -14,10 +14,29 @@ public class Treasure : MonoBehaviour, IInteractable
     
     private List<PlayerController> playerInteractingWith = new List<PlayerController>();
     private Dictionary<PlayerController, FixedJoint> associateJoints = new Dictionary<PlayerController, FixedJoint>();
+    private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
     private bool isGrounded = false;
 
+    // Disable collider on the side where the player is interacting with the treasure
+    private void DealWithCollider(PlayerController player, GameObject interactingWith)
+    {
+        interactingWith.GetComponent<BoxCollider>().enabled = false;
+
+        // Snap the player to the center of the side of the treasure
+        interactingWith.GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
+        associateColliders.Add(player, interactingWith);
+    }
+
+    private void UpTreasure(PlayerController player)
+    {
+        // Snap treasure to the player
+        Vector3 upTreasure = self.position;
+        upTreasure.y = player.self.position.y + self.lossyScale.y / 2;
+        self.position = upTreasure;
+    }
+
     // When player is interacting with the treasure
-    public bool InteractWith(PlayerController player)
+    public bool InteractWith(PlayerController player, GameObject interactingWith)
     {
         // Update player values
         playerInteractingWith.Add(player);
@@ -30,9 +49,8 @@ public class Treasure : MonoBehaviour, IInteractable
         // If the player is alone to carry it just snap the treasure as child of the player
         if (playerInteractingWith.Count == 1)
         {
-            // Snap treasure to the player
-            self.position = player.carryingSnapPoint.position;
-            self.forward = player.transform.forward;
+            DealWithCollider(player, interactingWith);
+            UpTreasure(player);
             self.SetParent(player.self);
             return true;
         }
@@ -41,6 +59,7 @@ public class Treasure : MonoBehaviour, IInteractable
         {
             self.SetParent(null);
             selfRigidbody.isKinematic = false;
+            DealWithCollider(player, interactingWith);
 
             // Snap to joints
             for (int i = 0; i < playerInteractingWith.Count; ++i)
@@ -78,12 +97,6 @@ public class Treasure : MonoBehaviour, IInteractable
         isGrounded = false;
     }
 
-    // When the player is moving when he's on the treasure
-    // Nothing on move
-    public void OnMove(Vector2 movements)
-    {
-    }
-
     // When the player is not interacting with the treasure anymore
     public void UninteractWith(PlayerController player)
     {
@@ -93,6 +106,9 @@ public class Treasure : MonoBehaviour, IInteractable
 
         // Player does not interact with the treasure anymore
         playerInteractingWith.Remove(player);
+
+        associateColliders[player].GetComponent<BoxCollider>().enabled = true;
+        associateColliders.Remove(player);
 
         // Remove player joints
         if (playerInteractingWith.Count >= 1)
@@ -106,8 +122,7 @@ public class Treasure : MonoBehaviour, IInteractable
             Destroy(associateJoints[playerInteractingWith[0]]);
             associateJoints.Remove(playerInteractingWith[0]);
             self.SetParent(playerInteractingWith[0].self);
-            self.position = playerInteractingWith[0].carryingSnapPoint.position;
-            self.forward = playerInteractingWith[0].self.forward;
+            UpTreasure(playerInteractingWith[0]);
             selfRigidbody.isKinematic = true;
         }
 
