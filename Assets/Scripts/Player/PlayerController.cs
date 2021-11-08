@@ -38,11 +38,6 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded { set { _isGrounded = value; } }
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
     #region InputsManagement
     // When the player moves
     public void OnMove(InputAction.CallbackContext context)
@@ -119,6 +114,12 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    void Update()
+    {
+        InfoAnim();
+        UpdatePlayerOnBoat();
+    }
+
     // Update movements of the player
     private void PlayerMovement()
     {
@@ -163,19 +164,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void InfoAnim()
     {
         if (playerMovementInput.x != 0.0f || playerMovementInput.y != 0.0f)
         {
             PlayerMovement();
-            anim.SetBool("isRunning", true);
+            anim.SetBool("isMoving", true);
         }
         else
         {
-            anim.SetBool("isRunning", false);
+            anim.SetBool("isMoving", false);
         }
 
-        UpdatePlayerOnBoat();
+        if (Mathf.Abs(playerMovementInput.x) > Mathf.Abs(playerMovementInput.y))
+        {
+            anim.SetFloat("playerSpeed", Mathf.Abs(playerMovementInput.x));
+        }
+        else
+        {
+            anim.SetFloat("playerSpeed", Mathf.Abs(playerMovementInput.y));
+        }
     }
 }
