@@ -19,6 +19,9 @@ public class Treasure : MonoBehaviour, IInteractable
     private bool isLoadingLaunch = false;
     private float launchForce = 0.0f;
 
+    private bool _isInDeepWater = false;
+    public bool isInDeepWater { set { _isInDeepWater = value; } }
+
     // Disable collider on the side where the player is interacting with the treasure
     private void DealWithCollider(PlayerController player, GameObject interactingWith)
     {
@@ -187,6 +190,14 @@ public class Treasure : MonoBehaviour, IInteractable
 
     private void FixedUpdate()
     {
+        // Destroy object if is completely in water
+        if (_isInDeepWater)
+        {
+            float topTreasureY = self.position.y + self.lossyScale.y / 2;
+            if (topTreasureY < NotDeepWater.instance.self.position.y)
+                Destroy(gameObject);
+        }
+
         // Check if the treasure is touching the ground
         if (!isGrounded)
         {
@@ -196,6 +207,7 @@ public class Treasure : MonoBehaviour, IInteractable
             RaycastHit hit;
             if (Physics.Raycast(raycastStartPos, -Vector3.up, out hit, 0.05f))
             {
+                // Set boat as parent if it's touching the ground of it
                 if (hit.collider.CompareTag("Boat"))
                 {
                     self.SetParent(hit.collider.transform);

@@ -27,5 +27,9 @@ public class DeepWater : MonoBehaviour
             player.selfRigidBody.useGravity = false;
             player.selfRigidBody.velocity = Vector3.zero;
         }
+        else if (other.CompareTag("Treasure"))
+        {
+            other.GetComponent<Treasure>().isInDeepWater = true;
+        }
     }
 }
