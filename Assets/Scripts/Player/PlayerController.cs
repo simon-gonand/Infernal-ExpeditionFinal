@@ -153,7 +153,10 @@ public class PlayerController : MonoBehaviour
     // Update movements of the player
     private void PlayerMovement()
     {
-        float currentSpeed = playerPreset.playerSpeed;
+        float currentSpeed = playerPreset.playerGroundSpeed;
+        if (_isSwimming)
+            currentSpeed = playerPreset.playerSwimSpeed;
+            
         // Apply speed malus if the player is carrying an heavy treasure
         if (_isCarrying)
             currentSpeed -= _transportedTreasure.speedMalus;
