@@ -98,7 +98,7 @@ public class Treasure : MonoBehaviour, IInteractable
         float offsetTime = 0.1f;
         // Calculate how many the launch force will increase every 0.1 seconds
         float offsetLaunch = category.maxLaunchForce * offsetTime / category.fullChargeTime;
-        while (isLoadingLaunch)
+        while (isLoadingLaunch && launchForce != category.maxLaunchForce)
         {
             launchForce += offsetLaunch;
             if (launchForce > category.maxLaunchForce)
