@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private PlayerPresets playerPreset;
 
+    public Transform playerGraphics;
+
 
     private Vector2 playerMovementInput = Vector2.zero;
 
@@ -34,6 +36,9 @@ public class PlayerController : MonoBehaviour
     // Is the player on the boat
     private bool _isOnBoat = true;
     public bool isOnBoat { get { return _isOnBoat; } set { _isOnBoat = value; } }
+
+    private bool _isSwimming = false;
+    public bool isSwimming { set { _isSwimming = value; } }
     #endregion
 
     // Start is called before the first frame update
@@ -151,8 +156,18 @@ public class PlayerController : MonoBehaviour
         Vector3 calculatePlayerInput = playerMovementInput * currentSpeed * Time.deltaTime;
         Vector3 move = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
-        //move.y = DetectSmallObstacles(move);
         selfRigidBody.velocity = move;
+
+        // If velocity on Y is equal to 0.0 then it means that the player is swimming
+        // if not then it means he must deal with gravity
+        if (selfRigidBody.velocity.y > 1.0f && _isSwimming)
+        {
+            selfRigidBody.useGravity = true;
+            Vector3 resetRotation = playerGraphics.eulerAngles;
+            resetRotation.x = 0.0f;
+            playerGraphics.eulerAngles = resetRotation;
+            _isSwimming = false;
+        }
 
         // Set the rotation of the player according to his movements
         if (move.x != 0 || move.z != 0)

@@ -22,18 +22,18 @@ public class PlayerManager : MonoBehaviour
         switch (playerInput.playerIndex)
         {
             case 0:
-                playerInput.gameObject.GetComponent<MeshRenderer>().material = player1Material;
+                playerInput.gameObject.GetComponentInChildren<MeshRenderer>().material = player1Material;
                 break;
             case 1:
-                playerInput.gameObject.GetComponent<MeshRenderer>().material = player2Material;
+                playerInput.gameObject.GetComponentInChildren<MeshRenderer>().material = player2Material;
                 playerSpawnOffset = 0.5f;
                 break;
             case 2:
-                playerInput.gameObject.GetComponent<MeshRenderer>().material = player3Material;
+                playerInput.gameObject.GetComponentInChildren<MeshRenderer>().material = player3Material;
                 playerSpawnOffset = -0.5f;
                 break;
             case 3:
-                playerInput.gameObject.GetComponent<MeshRenderer>().material = player4Material;
+                playerInput.gameObject.GetComponentInChildren<MeshRenderer>().material = player4Material;
                 playerSpawnOffset = 1.0f;
                 break;
             default:
