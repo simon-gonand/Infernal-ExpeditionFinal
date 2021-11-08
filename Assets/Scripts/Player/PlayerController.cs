@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
 
     private bool _isSwimming = false;
     public bool isSwimming { set { _isSwimming = value; } }
+
+    private bool _isInWater = false;
+    public bool isInWater { set { _isInWater = value; } }
     #endregion
 
     // Start is called before the first frame update
@@ -154,8 +157,10 @@ public class PlayerController : MonoBehaviour
     private void PlayerMovement()
     {
         float currentSpeed = playerPreset.playerGroundSpeed;
-        if (_isSwimming)
+        if (_isSwimming && _isInWater)
             currentSpeed = playerPreset.playerSwimSpeed;
+        else if (_isInWater)
+            currentSpeed = playerPreset.playerInNotDeepWaterSpeed;
             
         // Apply speed malus if the player is carrying an heavy treasure
         if (_isCarrying)
