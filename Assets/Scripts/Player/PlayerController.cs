@@ -148,24 +148,17 @@ public class PlayerController : MonoBehaviour
             currentSpeed -= _transportedTreasure.speedMalus;
 
         // Apply movements
-        Vector3 move = new Vector3(playerMovementInput.x, 0.0f, playerMovementInput.y);
-        selfRigidBody.velocity = move * Time.fixedDeltaTime * currentSpeed;
+        Vector3 calculatePlayerInput = playerMovementInput * currentSpeed * Time.deltaTime;
+        Vector3 move = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
+            calculatePlayerInput.y);
+        //move.y = DetectSmallObstacles(move);
+        selfRigidBody.velocity = move;
 
         // Set the rotation of the player according to his movements
         if (move != Vector3.zero)
-            self.forward = move;
-    }
-
-    private void ApplyGravity()
-    {
-        // Raycast the ground if player is on the boat
-        Vector3 rayPos = self.position;
-        rayPos.y -= self.lossyScale.y;
-        if (!Physics.Raycast(rayPos, -Vector3.up, 0.05f))
         {
-            Vector3 newVelocity = selfRigidBody.velocity;
-            newVelocity.y = -playerPreset.gravity;
-            selfRigidBody.velocity = newVelocity;
+            move.y = 0.0f;
+            self.forward = move;
         }
     }
 
@@ -173,6 +166,5 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         PlayerMovement();
-        ApplyGravity();
     }
 }
