@@ -16,6 +16,8 @@ public class Treasure : MonoBehaviour, IInteractable
     private Dictionary<PlayerController, FixedJoint> associateJoints = new Dictionary<PlayerController, FixedJoint>();
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
     private bool isGrounded = false;
+    private bool isLoadingLaunch = false;
+    private float launchForce = 0.0f;
 
     // Disable collider on the side where the player is interacting with the treasure
     private void DealWithCollider(PlayerController player, GameObject interactingWith)
@@ -85,12 +87,39 @@ public class Treasure : MonoBehaviour, IInteractable
     {
         if (playerInteractingWith.Count == 1)
         {
+            isLoadingLaunch = true;
+            StartCoroutine(LoadingLaunchForce());
+        }
+    }
+
+    IEnumerator LoadingLaunchForce()
+    {
+        // Increase every 0.1 seconds
+        float offsetTime = 0.1f;
+        // Calculate how many the launch force will increase every 0.1 seconds
+        float offsetLaunch = category.maxLaunchForce * offsetTime / category.fullChargeTime;
+        while (isLoadingLaunch)
+        {
+            launchForce += offsetLaunch;
+            if (launchForce > category.maxLaunchForce)
+                launchForce = category.maxLaunchForce;
+            Debug.Log(launchForce);
+            yield return new WaitForSeconds(offsetTime);
+        }
+    }
+
+    public void LaunchObject(PlayerController player)
+    {
+        if (isLoadingLaunch)
+        {
+            isLoadingLaunch = false;
             // Remove the parent
             self.SetParent(null);
 
             // Enable rigidbody
             selfRigidbody.isKinematic = false;
-            selfRigidbody.AddForce((player.self.forward + player.self.up) * category.launchForce, ForceMode.Impulse);
+            selfRigidbody.AddForce((player.self.forward + player.self.up) * launchForce, ForceMode.Impulse);
+            launchForce = 0.0f;
 
             // Update lists values
             playerInteractingWith.Remove(player);
@@ -155,6 +184,7 @@ public class Treasure : MonoBehaviour, IInteractable
         else
             speedMalus = category.speedMalus / playerInteractingWith.Count;
     }
+
     private void FixedUpdate()
     {
         // Check if the treasure is touching the ground

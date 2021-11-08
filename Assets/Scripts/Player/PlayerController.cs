@@ -52,12 +52,20 @@ public class PlayerController : MonoBehaviour
     public void OnAction(InputAction.CallbackContext context)
     {
         // If the player is interacting with something he can't attack
-        if ((_isInteracting || _isCarrying) && context.started)
+        if ((_isInteracting || _isCarrying))
         {
-            interactingWith.OnAction(this);
+            if (context.started)
+            {
+                interactingWith.OnAction(this);
+            }
+            else if (context.canceled)
+            {
+                if (_transportedTreasure != null)
+                {
+                    _transportedTreasure.LaunchObject(this);
+                }
+            }
         }
-        if (context.canceled)
-            Debug.Log("canceled");
         // else attack on action pressed
     }
 
