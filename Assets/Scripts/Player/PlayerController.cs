@@ -56,28 +56,31 @@ public class PlayerController : MonoBehaviour
     // When the player pressed the action button
     public void OnAction(InputAction.CallbackContext context)
     {
-        // If the player is interacting with something he can't attack
-        if ((_isInteracting || _isCarrying))
+        if (!_isSwimming)
         {
-            if (context.started)
+            // If the player is interacting with something he can't attack
+            if ((_isInteracting || _isCarrying))
             {
-                interactingWith.OnAction(this);
-            }
-            else if (context.canceled)
-            {
-                if (_transportedTreasure != null)
+                if (context.started)
                 {
-                    _transportedTreasure.LaunchObject(this);
+                    interactingWith.OnAction(this);
+                }
+                else if (context.canceled)
+                {
+                    if (_transportedTreasure != null)
+                    {
+                        _transportedTreasure.LaunchObject(this);
+                    }
                 }
             }
+            // else attack on action pressed
         }
-        // else attack on action pressed
     }
 
     // When the player pressed the dash button
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && Time.time > nextDash && !_isInteracting)
+        if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming)
         {
             selfRigidBody.AddForce(self.forward * playerPreset.dashSpeed, ForceMode.Impulse);
             
@@ -95,46 +98,49 @@ public class PlayerController : MonoBehaviour
     // When the player pressed the interaction button
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        // If the player is not interacting with anything or carrying a treasure
-        if (!_isInteracting && !_isCarrying && context.performed)
+        if (!_isSwimming)
         {
-            // Define from where the raycast will start
-            Vector3 startRayPos = self.position;
-            startRayPos.y -= self.lossyScale.y / 2;
-
-            // If the raycast is encountering an interactable
-            int layerMask = 1 << LayerMask.NameToLayer("Interactable"); 
-            List<Vector3> raycastsStartPos = new List<Vector3>();
-
-            // Set three different Raycasts (one at the bottom, one at the center and one at the top)
-            raycastsStartPos.Add(startRayPos);
-            startRayPos.y += self.lossyScale.y;
-            raycastsStartPos.Add(startRayPos);
-            raycastsStartPos.Add(self.position);
-
-            for (int i = 0; i < raycastsStartPos.Count; ++i)
+            // If the player is not interacting with anything or carrying a treasure
+            if (!_isInteracting && !_isCarrying && context.performed)
             {
-                RaycastHit hit;
-                if (Physics.Raycast(raycastsStartPos[i], self.forward, out hit, playerPreset.interactionDistance, layerMask))
+                // Define from where the raycast will start
+                Vector3 startRayPos = self.position;
+                startRayPos.y -= self.lossyScale.y / 2;
+
+                // If the raycast is encountering an interactable
+                int layerMask = 1 << LayerMask.NameToLayer("Interactable");
+                List<Vector3> raycastsStartPos = new List<Vector3>();
+
+                // Set three different Raycasts (one at the bottom, one at the center and one at the top)
+                raycastsStartPos.Add(startRayPos);
+                startRayPos.y += self.lossyScale.y;
+                raycastsStartPos.Add(startRayPos);
+                raycastsStartPos.Add(self.position);
+
+                for (int i = 0; i < raycastsStartPos.Count; ++i)
                 {
-                    if (hit.collider.isTrigger && hit.collider.enabled)
+                    RaycastHit hit;
+                    if (Physics.Raycast(raycastsStartPos[i], self.forward, out hit, playerPreset.interactionDistance, layerMask))
                     {
-                        // Stop player's movements
-                        playerMovementInput = Vector2.zero;
-                        // Set with which interactable the player is interacting with
-                        interactingWith = hit.collider.gameObject.GetComponentInParent<IInteractable>();
-                        if (!interactingWith.InteractWith(this, hit.collider.gameObject))
-                            interactingWith = null;
-                        break;
+                        if (hit.collider.isTrigger && hit.collider.enabled)
+                        {
+                            // Stop player's movements
+                            playerMovementInput = Vector2.zero;
+                            // Set with which interactable the player is interacting with
+                            interactingWith = hit.collider.gameObject.GetComponentInParent<IInteractable>();
+                            if (!interactingWith.InteractWith(this, hit.collider.gameObject))
+                                interactingWith = null;
+                            break;
+                        }
                     }
                 }
             }
-        }
-        // Else put the treasure down or uninteract with the interactable
-        else if ((_isInteracting || _isCarrying) && context.performed)
-        {
-            interactingWith.UninteractWith(this);
-            interactingWith = null;
+            // Else put the treasure down or uninteract with the interactable
+            else if ((_isInteracting || _isCarrying) && context.performed)
+            {
+                interactingWith.UninteractWith(this);
+                interactingWith = null;
+            }
         }
     }
 
