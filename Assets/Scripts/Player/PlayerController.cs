@@ -73,8 +73,10 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DashTimer()
     {
+        anim.SetBool("isDashing", true);
         yield return new WaitForSeconds(playerPreset.dashTime);
         selfRigidBody.velocity = Vector3.zero;
+        anim.SetBool("isDashing", false);
     }
 
     // When the player pressed the interaction button
