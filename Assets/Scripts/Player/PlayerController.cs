@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
         selfRigidBody.velocity = move;
 
         // Set the rotation of the player according to his movements
-        if (move != Vector3.zero)
+        if (move.x != 0 && move.z != 0)
         {
             move.y = 0.0f;
             self.forward = move;
