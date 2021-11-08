@@ -157,8 +157,10 @@ public class PlayerController : MonoBehaviour
     private void PlayerMovement()
     {
         float currentSpeed = playerPreset.playerGroundSpeed;
+        // If player is swimming reduce speed
         if (_isSwimming && _isInWater)
             currentSpeed = playerPreset.playerSwimSpeed;
+        // If player is in not deep water reduce speed
         else if (_isInWater)
             currentSpeed = playerPreset.playerInNotDeepWaterSpeed;
             

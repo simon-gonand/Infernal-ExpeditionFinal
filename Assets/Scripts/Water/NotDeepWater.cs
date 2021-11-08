@@ -29,15 +29,4 @@ public class NotDeepWater : MonoBehaviour
             other.GetComponent<PlayerController>().isInWater = false;
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
