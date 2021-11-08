@@ -94,7 +94,7 @@ Transform:
   m_GameObject: {fileID: 3207150420227362543}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.4, y: 1.103, z: -4.24}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8839412632781938542}
   m_Father: {fileID: 0}
@@ -177,10 +177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 3207150420227362538}
   selfRigidBody: {fileID: -5551333406371535273}
-  carryingSnapPoint: {fileID: 0}
   fixedJoint: {fileID: 0}
   playerPreset: {fileID: 11400000, guid: 6e8ed946df7976d4e939d4c409344454, type: 2}
-  boatTransform: {fileID: 0}
 --- !u!114 &3207150420227362549
 MonoBehaviour:
   m_ObjectHideFlags: 0
