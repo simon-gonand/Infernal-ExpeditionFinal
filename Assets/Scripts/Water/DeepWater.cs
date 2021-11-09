@@ -27,7 +27,7 @@ public class DeepWater : MonoBehaviour
                 player.transportedTreasure.UninteractWith(player);
             }
         }
-        else if (other.CompareTag("Treasuresgf"))
+        else if (other.CompareTag("Treasures"))
         {
             other.GetComponent<Treasure>().isInDeepWater = true;
         }

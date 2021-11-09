@@ -212,9 +212,12 @@ public class Treasure : MonoBehaviour, IInteractable
                 {
                     self.SetParent(hit.collider.transform);
                 }
-                // Disable rigidbody
-                selfRigidbody.isKinematic = true;
-                isGrounded = true;
+                if (!hit.collider.isTrigger)
+                {
+                    // Disable rigidbody
+                    selfRigidbody.isKinematic = true;
+                    isGrounded = true;
+                }
             }
             
         }
