@@ -167,14 +167,16 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
+        // Play attack animation
         Collider[] hit = Physics.OverlapSphere(attackPoint.position, playerPreset.attackRange);
         foreach(Collider hitted in hit)
         {
             // For sound design
-            if (hitted.CompareTag("Ennemy"))
+            if (hitted.CompareTag("Enemy"))
             {
-                Debug.Log("Ennemy has been attacked");
-                // Play ennemy attacked sound
+                Debug.Log("Enemy has been attacked");
+                // Damage enemy
+                // Play enemy attacked sound
             }
             if (hitted.CompareTag("Player"))
             {
