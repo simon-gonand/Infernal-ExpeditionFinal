@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private float nextAttack;
 
     private Treasure _transportedTreasure;
-    public Treasure transportedTreasure { set { _transportedTreasure = value; } }
+    public Treasure transportedTreasure { get { return _transportedTreasure; } set { _transportedTreasure = value; } }
 
     #region booleans
     // Is the player interacting with something
@@ -39,11 +39,9 @@ public class PlayerController : MonoBehaviour
     public bool isCarrying { get { return _isCarrying; } set { _isCarrying = value; } }
 
     // Is the player on the boat
-    [SerializeField]
     private bool _isOnBoat = true;
     public bool isOnBoat { get { return _isOnBoat; } set { _isOnBoat = value; } }
 
-    [SerializeField]
     private bool _isClimbingOnBoat = false;
     public bool isClimbingOnBoat { set { _isClimbingOnBoat = value; } }
 

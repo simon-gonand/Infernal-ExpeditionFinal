@@ -21,6 +21,11 @@ public class DeepWater : MonoBehaviour
             // Remove gravity to avoid to fall inside the water
             player.selfRigidBody.useGravity = false;
             player.selfRigidBody.velocity = Vector3.zero;
+
+            if (player.isCarrying)
+            {
+                player.transportedTreasure.UninteractWith(player);
+            }
         }
         else if (other.CompareTag("Treasure"))
         {
