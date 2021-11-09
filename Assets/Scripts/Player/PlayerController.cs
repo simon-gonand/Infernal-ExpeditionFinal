@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private IInteractable interactingWith;
 
     private float nextDash;
+    private float nextAttack;
 
     private Treasure _transportedTreasure;
     public Treasure transportedTreasure { set { _transportedTreasure = value; } }
@@ -76,7 +77,14 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-            // else attack on action pressed
+            else
+            {
+                if (context.performed && Time.time > nextAttack)
+                {
+                    Attack();
+                    nextAttack = Time.time + playerPreset.attackCooldown;
+                }
+            }
         }
     }
 
@@ -153,6 +161,16 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    private void Attack()
+    {
+        LayerMask attackableLayer = 1 << LayerMask.NameToLayer("Attackable");
+        Collider[] hit = Physics.OverlapSphere(self.position, playerPreset.attackRange, attackableLayer);
+        foreach(Collider enemy in hit)
+        {
+            Debug.Log(enemy.name);
+        }
+    }
+
     // Update movements of the player
     private void PlayerMovement()
     {
@@ -176,7 +194,7 @@ public class PlayerController : MonoBehaviour
 
         // If velocity on Y is equal to 0.0 then it means that the player is swimming
         // if not then it means he must deal with gravity
-        if (selfRigidBody.velocity.y > 1.0f && _isSwimming)
+        if (selfRigidBody.velocity.y > 0.5f && _isSwimming)
         {
             selfRigidBody.useGravity = true;
             Vector3 resetRotation = playerGraphics.eulerAngles;
@@ -184,6 +202,15 @@ public class PlayerController : MonoBehaviour
             playerGraphics.eulerAngles = resetRotation;
             _isSwimming = false;
         }
+        else if (_isSwimming)
+        {
+            move.y = 0.0f;
+            selfRigidBody.velocity = move;
+            Vector3 upPlayer = self.position;
+            upPlayer.y = NotDeepWater.instance.self.position.y;
+            self.position = upPlayer;
+        }
+            
 
         // Set the rotation of the player according to his movements
         if (move.x != 0 || move.z != 0)
