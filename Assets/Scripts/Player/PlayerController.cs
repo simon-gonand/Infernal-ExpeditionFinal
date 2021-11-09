@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform attackPoint;
 
+    public Animator anim;
 
     private Vector2 playerMovementInput = Vector2.zero;
 
@@ -51,11 +52,6 @@ public class PlayerController : MonoBehaviour
     private bool _isInWater = false;
     public bool isInWater { set { _isInWater = value; } }
     #endregion
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     #region InputsManagement
     // When the player moves
@@ -109,8 +105,10 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DashTimer()
     {
+        anim.SetBool("isDashing", true);
         yield return new WaitForSeconds(playerPreset.dashTime);
         selfRigidBody.velocity = Vector3.zero;
+        anim.SetBool("isDashing", false);
     }
 
     // When the player pressed the interaction button
