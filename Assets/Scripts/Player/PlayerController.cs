@@ -169,6 +169,8 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         // Play attack animation
+        anim.SetTrigger("attack");
+
         Collider[] hit = Physics.OverlapSphere(attackPoint.position, playerPreset.attackRange);
         foreach(Collider hitted in hit)
         {
