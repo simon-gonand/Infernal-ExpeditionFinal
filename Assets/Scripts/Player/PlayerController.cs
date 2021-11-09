@@ -210,7 +210,14 @@ public class PlayerController : MonoBehaviour
         Vector3 move = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
 
-        // Apply velocity
+        if (isCarrying && transportedTreasure.playerInteractingWith.Count > 1)
+        {
+            // Apply velocity
+            Vector3 applyForces = transportedTreasure.selfRigidbody.velocity;
+            applyForces.y = 0.0f;
+            move += applyForces;
+        }
+
         selfRigidBody.velocity = move;
 
         // If the player is climbing on the boat then add velocity on y-axis

@@ -6,14 +6,14 @@ public class Treasure : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private Transform self;
-    [SerializeField]
-    private Rigidbody selfRigidbody;
+    public Rigidbody selfRigidbody;
     public TreasuresCategory category;
     [System.NonSerialized]
     public float speedMalus = 0.0f;
-    
-    private List<PlayerController> playerInteractingWith = new List<PlayerController>();
-    private Dictionary<PlayerController, FixedJoint> associateJoints = new Dictionary<PlayerController, FixedJoint>();
+
+    private List<PlayerController> _playerInteractingWith = new List<PlayerController>();
+    public List<PlayerController> playerInteractingWith { get { return _playerInteractingWith; } }
+    //private Dictionary<PlayerController, FixedJoint> associateJoints = new Dictionary<PlayerController, FixedJoint>();
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
     private bool isGrounded = false;
     private bool isLoadingLaunch = false;
@@ -44,7 +44,7 @@ public class Treasure : MonoBehaviour, IInteractable
     public bool InteractWith(PlayerController player, GameObject interactingWith)
     {
         // Update player values
-        playerInteractingWith.Add(player);
+        _playerInteractingWith.Add(player);
         player.isCarrying = true;
         player.transportedTreasure = this;
 
@@ -52,28 +52,26 @@ public class Treasure : MonoBehaviour, IInteractable
         ApplySpeedMalus();
 
         // If the player is alone to carry it just snap the treasure as child of the player
-        if (playerInteractingWith.Count == 1)
+        if (_playerInteractingWith.Count == 1)
         {
             DealWithCollider(player, interactingWith);
             UpTreasure(player);
             self.SetParent(player.self);
             return true;
         }
-        // If there is more than one player to carry it, treasures to the players' joint
-        else if (playerInteractingWith.Count > 1 && playerInteractingWith.Count <= category.maxPlayerCarrying)
+        // If there is more than one player to carry it, snap treasures to the players' joint
+        else if (_playerInteractingWith.Count > 1 && _playerInteractingWith.Count <= category.maxPlayerCarrying)
         {
             self.SetParent(null);
             selfRigidbody.isKinematic = false;
             DealWithCollider(player, interactingWith);
 
+            selfRigidbody.velocity = Vector3.zero;
+
             // Snap to joints
-            for (int i = 0; i < playerInteractingWith.Count; ++i)
+            for (int i = 0; i < _playerInteractingWith.Count; ++i)
             {
-                if (!associateJoints.ContainsKey(playerInteractingWith[i])){
-                    FixedJoint joint = playerInteractingWith[i].gameObject.AddComponent<FixedJoint>();
-                    joint.connectedBody = selfRigidbody;
-                    associateJoints.Add(playerInteractingWith[i], joint);
-                }
+                _playerInteractingWith[i].selfRigidBody.velocity = Vector3.zero;
             }
             return true;
         }
@@ -88,7 +86,7 @@ public class Treasure : MonoBehaviour, IInteractable
     // Launch the treasure
     public void OnAction(PlayerController player)
     {
-        if (playerInteractingWith.Count == 1)
+        if (_playerInteractingWith.Count == 1)
         {
             isLoadingLaunch = true;
             StartCoroutine(LoadingLaunchForce());
@@ -125,7 +123,7 @@ public class Treasure : MonoBehaviour, IInteractable
             launchForce = 0.0f;
 
             // Update lists values
-            playerInteractingWith.Remove(player);
+            _playerInteractingWith.Remove(player);
             associateColliders[player].GetComponent<BoxCollider>().enabled = true;
             associateColliders.Remove(player);
 
@@ -144,31 +142,24 @@ public class Treasure : MonoBehaviour, IInteractable
         player.transportedTreasure = null;
 
         // Player does not interact with the treasure anymore
-        playerInteractingWith.Remove(player);
+        _playerInteractingWith.Remove(player);
 
         associateColliders[player].GetComponent<BoxCollider>().enabled = true;
         associateColliders.Remove(player);
 
-        // Remove player joints
-        if (playerInteractingWith.Count >= 1)
-        {
-            Destroy(associateJoints[player]);
-            associateJoints.Remove(player);
-        }
+        
         // If the player is alone to carry the treasure, remove joints and set the player as parent of the treasure
-        if (playerInteractingWith.Count == 1)
+        if (_playerInteractingWith.Count == 1)
         {
-            Destroy(associateJoints[playerInteractingWith[0]]);
-            associateJoints.Remove(playerInteractingWith[0]);
-            self.SetParent(playerInteractingWith[0].self);
-            UpTreasure(playerInteractingWith[0]);
+            self.SetParent(_playerInteractingWith[0].self);
+            UpTreasure(_playerInteractingWith[0]);
             selfRigidbody.isKinematic = true;
         }
 
         // Update speed malus
-        ApplySpeedMalus();
+        //ApplySpeedMalus();
 
-        if (playerInteractingWith.Count < 1)
+        if (_playerInteractingWith.Count < 1)
         {
             // Remove parent
             self.SetParent(null);
@@ -182,14 +173,31 @@ public class Treasure : MonoBehaviour, IInteractable
     private void ApplySpeedMalus()
     {
         // Deal with speed according to the number of player carrying the treasure
-        if (playerInteractingWith.Count == category.maxPlayerCarrying)
+        /*if (_playerInteractingWith.Count == category.maxPlayerCarrying)
             speedMalus = 0;
         else
-            speedMalus = category.speedMalus / playerInteractingWith.Count;
+            speedMalus = category.speedMalus / _playerInteractingWith.Count;*/
+        speedMalus = category.speedMalus;
+    }
+
+    private void TreasureMovement()
+    {
+        if (_playerInteractingWith.Count > 1)
+        {
+            selfRigidbody.velocity = Vector3.zero;
+            foreach(PlayerController player in _playerInteractingWith)
+            {
+                Vector3 applyForces = player.selfRigidBody.velocity;
+                applyForces.y = 0.0f;
+                selfRigidbody.velocity += applyForces;
+            }
+        }
     }
 
     private void FixedUpdate()
     {
+        TreasureMovement();
+
         // Destroy object if is completely in water
         if (_isInDeepWater)
         {
