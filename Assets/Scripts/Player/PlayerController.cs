@@ -183,7 +183,9 @@ public class PlayerController : MonoBehaviour
             }
             if (hitted.CompareTag("Player"))
             {
-                Debug.Log("Player has been attacked");
+                PlayerController attacked = hitted.GetComponent<PlayerController>();
+                if (attacked != this)
+                    Debug.Log("Player has been attacked");
             }
             // etc...
         }
