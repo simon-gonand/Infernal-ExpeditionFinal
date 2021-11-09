@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{C380CE9D-12A7-4239-813A-1007A9FA761F}" SchemaVersion="103">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{C380CE9D-12A7-4239-813A-1007A9FA761F}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{C380CE9D-12A7-4239-813A-1007A9FA761F}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Main" ID="{3514EA85-BAB9-45C8-A243-FC1448633B57}">
+					<ObjectInclusionList>
+						<ObjectRef Name="P_Death" ID="{28480997-C486-404E-9F21-F9C6CF545AAD}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="B_Ladders" ID="{7B4BFD0B-EEE8-406C-9D2F-3A86BA4B17AB}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="W_TreasursIdle" ID="{DDCBDD01-31DA-408F-9CC4-6D5DB68AF353}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="B_ChestCollect" ID="{8A949A82-31F4-4174-89A1-8A98EAAF71A5}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="P_Respawn" ID="{B8367E5C-81DF-41E7-BEF8-51716DFA8984}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="B_Moving" ID="{6C541620-49F8-420A-AB26-53DDDE6AEDEC}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="P_Damages" ID="{D771C463-A0E1-4222-A09D-73E5A6B15724}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="P_Stunt" ID="{F3DE8B14-C967-42D4-AA78-37BA031673BC}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="E_Pks_Carry" ID="{772F4B22-2F55-42D7-BDC5-1A4EF6DE3B78}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="P_GroundImpact" ID="{5981572F-32EA-42E3-905A-92EB54A56D01}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="E_Trl_Death" ID="{F7C254A0-5F5C-43CD-9A84-E3FB92099550}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="E_Trl_Shot" ID="{B167BDA0-DC72-4482-99CA-13FF166CCCE0}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="E_Pks_Death" ID="{609533A2-EF16-45A3-83D0-E2F3EDB92561}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="E_Clsq_Aggro" ID="{C2F4B434-ED9D-45A9-9465-0A3D2AE51D98}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="P_Drop" ID="{F39E8149-DBAF-45E0-B342-46701217C740}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="W_ChestDrop" ID="{386ADD4D-4A6B-4627-A5A0-6731D6891A74}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="P_Throw" ID="{2CB5EDE2-503D-4672-8E9C-F4A48B3E3126}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="P_SwordImpact" ID="{F9909DB4-B69B-4675-87AC-878DCB5A4821}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="E_Clsq_Death" ID="{DE703633-8F1F-4897-B7F6-692178349B54}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="E_Pks_Steps" ID="{BBB10A36-8D94-489F-980B-836E03D6DB4F}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="B_Rotation" ID="{6728D8F2-5E4E-49E3-A8AE-4CCA1C583B28}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="P_Carry" ID="{C54592FA-3E4A-4A3A-8150-AEF2CECBE448}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="P_Steps" ID="{2AD082CD-0FBC-4ACC-8F78-05613CE57EE1}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="P_Dash" ID="{CFF6DD99-F808-4B52-93E7-43362255F42E}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="P_Attack" ID="{1A335906-41AD-4B6A-86BC-E96E08537BA6}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="E_Clsq_Attack" ID="{E78D7109-46CB-4B9A-BED4-264E57EFE960}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="P_Swim" ID="{B1B2823D-B207-4BB8-9E5C-F26BEDE85B54}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="E_Trl_Reload" ID="{6B619C78-4E94-4D06-907E-EA4B26B272CD}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="B_Damages" ID="{9EAD575C-7A53-4D5D-B5BC-68022245B8ED}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="E_Trl_Rotation" ID="{086F2351-BCE8-4E14-9D49-35B788126FA3}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="P_OutOfBond" ID="{8724340B-298F-4E9C-94A8-0A3C244FB65B}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="E_Clsq_Steps" ID="{D3814D35-DC97-4F12-9FE6-DA81F02F2CE5}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>
