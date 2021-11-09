@@ -253,5 +253,27 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         PlayerMovement();
+        InfoAnim();
+    }
+
+    void InfoAnim()
+    {
+        if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
+        {
+            anim.SetBool("isMoving", true);
+
+            if (Mathf.Abs(playerMovementInput.x) > Mathf.Abs(playerMovementInput.y))
+            {
+                anim.SetFloat("playerSpeed", Mathf.Abs(playerMovementInput.x));
+            }
+            else
+            {
+                anim.SetFloat("playerSpeed", Mathf.Abs(playerMovementInput.y));
+            }
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
+        }
     }
 }
