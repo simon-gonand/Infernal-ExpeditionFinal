@@ -13,11 +13,6 @@ public class DeepWater : MonoBehaviour
 
             player.isSwimming = true;
 
-            // Set the player at the top of the water
-            Vector3 upPlayer = player.self.position;
-            upPlayer.y = NotDeepWater.instance.self.position.y;
-            player.self.position = upPlayer;
-
             // Rotate player as he his swimming
             Vector3 swimRotation = player.playerGraphics.eulerAngles;
             swimRotation.x = 75.0f;

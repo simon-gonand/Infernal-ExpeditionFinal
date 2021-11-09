@@ -6,13 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Self References")]
     public Transform self;
     public Rigidbody selfRigidBody;
     public FixedJoint fixedJoint;
     [SerializeField]
     private PlayerPresets playerPreset;
 
+    [Header("Children References")]
     public Transform playerGraphics;
+    [SerializeField]
+    private Transform attackPoint;
 
 
     private Vector2 playerMovementInput = Vector2.zero;
@@ -163,11 +167,20 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        LayerMask attackableLayer = 1 << LayerMask.NameToLayer("Attackable");
-        Collider[] hit = Physics.OverlapSphere(self.position, playerPreset.attackRange, attackableLayer);
-        foreach(Collider enemy in hit)
+        Collider[] hit = Physics.OverlapSphere(attackPoint.position, playerPreset.attackRange);
+        foreach(Collider hitted in hit)
         {
-            Debug.Log(enemy.name);
+            // For sound design
+            if (hitted.CompareTag("Ennemy"))
+            {
+                Debug.Log("Ennemy has been attacked");
+                // Play ennemy attacked sound
+            }
+            if (hitted.CompareTag("Player"))
+            {
+                Debug.Log("Player has been attacked");
+            }
+            // etc...
         }
     }
 
@@ -204,8 +217,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (_isSwimming)
         {
+            // There is no gravity so the player should not move on the y-axis
             move.y = 0.0f;
             selfRigidBody.velocity = move;
+            // The player must stay at the top of the water
             Vector3 upPlayer = self.position;
             upPlayer.y = NotDeepWater.instance.self.position.y;
             self.position = upPlayer;
