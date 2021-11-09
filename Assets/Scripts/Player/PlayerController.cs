@@ -176,8 +176,9 @@ public class PlayerController : MonoBehaviour
             if (hitted.CompareTag("Enemy"))
             {
                 Debug.Log("Enemy has been attacked");
-                // Damage enemy
                 // Play enemy attacked sound
+                // Damage enemy
+                Destroy(hitted.gameObject);
             }
             if (hitted.CompareTag("Player"))
             {
