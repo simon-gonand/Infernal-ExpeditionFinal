@@ -39,8 +39,13 @@ public class PlayerController : MonoBehaviour
     public bool isCarrying { get { return _isCarrying; } set { _isCarrying = value; } }
 
     // Is the player on the boat
+    [SerializeField]
     private bool _isOnBoat = true;
     public bool isOnBoat { get { return _isOnBoat; } set { _isOnBoat = value; } }
+
+    [SerializeField]
+    private bool _isClimbingOnBoat = false;
+    public bool isClimbingOnBoat { set { _isClimbingOnBoat = value; } }
 
     private bool _isSwimming = false;
     public bool isSwimming { set { _isSwimming = value; } }
@@ -205,7 +210,16 @@ public class PlayerController : MonoBehaviour
         Vector3 calculatePlayerInput = playerMovementInput * currentSpeed * Time.deltaTime;
         Vector3 move = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
+
+        // Apply velocity
         selfRigidBody.velocity = move;
+
+        // If the player is climbing on the boat then add velocity on y-axis
+        if (_isClimbingOnBoat)
+        {
+            move.y = playerPreset.climbingOnBoatSpeed;
+            selfRigidBody.velocity = move;
+        }
 
         // If velocity on Y is equal to 0.0 then it means that the player is swimming
         // if not then it means he must deal with gravity

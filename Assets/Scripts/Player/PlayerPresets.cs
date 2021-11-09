@@ -10,6 +10,7 @@ public class PlayerPresets : ScriptableObject
     public float playerGroundSpeed;
     public float playerSwimSpeed;
     public float playerInNotDeepWaterSpeed;
+    public float climbingOnBoatSpeed;
 
     [Header("Dash")]
     public float dashSpeed;
