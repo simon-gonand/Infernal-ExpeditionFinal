@@ -261,6 +261,8 @@ public class PlayerController : MonoBehaviour
     {
         PlayerMovement();
         InfoAnim();
+
+        Debug.Log(isCarrying);
     }
 
     void InfoAnim()

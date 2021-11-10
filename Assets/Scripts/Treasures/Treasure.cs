@@ -46,6 +46,9 @@ public class Treasure : MonoBehaviour, IInteractable
         // Update player values
         playerInteractingWith.Add(player);
         player.isCarrying = true;
+
+        player.anim.SetBool("isCarrying", true);
+
         player.transportedTreasure = this;
 
         // Update speed malus
@@ -80,6 +83,9 @@ public class Treasure : MonoBehaviour, IInteractable
 
         // If the player cannot carry the treasure due to the number of players already carrying it
         player.isCarrying = false;
+
+        player.anim.SetBool("isCarrying", false);
+
         player.transportedTreasure = null;
         return false;
     }
@@ -131,6 +137,9 @@ public class Treasure : MonoBehaviour, IInteractable
 
             // Update player values
             player.isCarrying = false;
+
+            player.anim.SetBool("isCarrying", false);
+
             player.transportedTreasure = null;
             isGrounded = false;
         }
@@ -141,6 +150,9 @@ public class Treasure : MonoBehaviour, IInteractable
     {
         // Update player values
         player.isCarrying = false;
+
+        player.anim.SetBool("isCarrying", false);
+
         player.transportedTreasure = null;
 
         // Player does not interact with the treasure anymore
