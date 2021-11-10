@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     public Treasure transportedTreasure { get { return _transportedTreasure; } set { _transportedTreasure = value; } }
 
     private Vector3 _movement;
-    public Vector3 movement { get { return _movement; } }
+    public Vector3 movement { get { return _movement; } set { _movement = value; } }
 
     #region booleans
     // Is the player interacting with something
@@ -46,14 +46,13 @@ public class PlayerController : MonoBehaviour
     private bool _isOnBoat = true;
     public bool isOnBoat { get { return _isOnBoat; } set { _isOnBoat = value; } }
 
-    private bool _isClimbingOnBoat = false;
-    public bool isClimbingOnBoat { set { _isClimbingOnBoat = value; } }
-
     private bool _isSwimming = false;
     public bool isSwimming { set { _isSwimming = value; } }
 
     private bool _isInWater = false;
     public bool isInWater { set { _isInWater = value; } }
+
+    private bool isStun = false;
     #endregion
 
     #region InputsManagement
@@ -85,7 +84,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if (context.performed && Time.time > nextAttack)
+                if (context.performed && Time.time > nextAttack && !isStun)
                 {
                     Attack();
                     nextAttack = Time.time + playerPreset.attackCooldown;
@@ -158,7 +157,6 @@ public class PlayerController : MonoBehaviour
             else if ((_isInteracting || _isCarrying) && context.performed)
             {
                 interactingWith.UninteractWith(this);
-                interactingWith = null;
             }
         }
     }
@@ -180,17 +178,35 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Enemy has been attacked");
                 // Play enemy attacked sound
-                // Damage enemy
+                // Damage enemy (enemy die animation)
                 Destroy(hitted.gameObject);
             }
             if (hitted.CompareTag("Player"))
             {
                 PlayerController attacked = hitted.GetComponent<PlayerController>();
-                if (attacked != this)
-                    Debug.Log("Player has been attacked");
+                if (attacked != this && !attacked.isStun)
+                {
+                    StartCoroutine(attacked.StunWait());
+                    attacked.movement = Vector3.zero;
+                }
             }
             // etc...
         }
+    }
+
+    public IEnumerator StunWait()
+    {
+        isStun = true;
+        // Update stun bool in animation for animation ?
+        if (isCarrying)
+        {
+            _transportedTreasure.UninteractWith(this);
+        }
+        Debug.Log("Player is stun");
+        yield return new WaitForSeconds(playerPreset.stunTime);
+        Debug.Log("Player is not stun anymore");
+        isStun = false;
+        // Update stun bool in animation for animation ?
     }
 
     // Update movements of the player
@@ -257,28 +273,32 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        PlayerMovement();
+        if (!isStun)
+            PlayerMovement();
         InfoAnim();
     }
 
     void InfoAnim()
     {
-        if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
+        if (!isStun)
         {
-            anim.SetBool("isMoving", true);
-
-            if (Mathf.Abs(playerMovementInput.x) > Mathf.Abs(playerMovementInput.y))
+            if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
             {
-                anim.SetFloat("playerSpeed", Mathf.Abs(playerMovementInput.x));
+                anim.SetBool("isMoving", true);
+
+                if (Mathf.Abs(playerMovementInput.x) > Mathf.Abs(playerMovementInput.y))
+                {
+                    anim.SetFloat("playerSpeed", Mathf.Abs(playerMovementInput.x));
+                }
+                else
+                {
+                    anim.SetFloat("playerSpeed", Mathf.Abs(playerMovementInput.y));
+                }
             }
             else
             {
-                anim.SetFloat("playerSpeed", Mathf.Abs(playerMovementInput.y));
+                anim.SetBool("isMoving", false);
             }
-        }
-        else
-        {
-            anim.SetBool("isMoving", false);
         }
     }
 }
