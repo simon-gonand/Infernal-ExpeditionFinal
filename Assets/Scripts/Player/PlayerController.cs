@@ -213,12 +213,16 @@ public class PlayerController : MonoBehaviour
         _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
 
-        if (isCarrying && transportedTreasure.playerInteractingWith.Count > 1)
+        if (isCarrying && _transportedTreasure.playerInteractingWith.Count > 1)
         {
-            // Apply velocity
-            Vector3 applyForces = transportedTreasure.selfRigidbody.velocity;
-            applyForces.y = selfRigidBody.velocity.y;
-            selfRigidBody.velocity = applyForces;
+            if ((_transportedTreasure.selfRigidbody.velocity.x < 0.1f || _transportedTreasure.selfRigidbody.velocity.x > 0.1f) ||
+                (_transportedTreasure.selfRigidbody.velocity.z < 0.1f || _transportedTreasure.selfRigidbody.velocity.z > 0.1f))
+            {
+                // Apply velocity
+                Vector3 applyForces = _transportedTreasure.selfRigidbody.velocity;
+                applyForces.y = selfRigidBody.velocity.y;
+                selfRigidBody.velocity = applyForces;
+            }
         }
         else
             selfRigidBody.velocity = _movement;       
@@ -228,6 +232,12 @@ public class PlayerController : MonoBehaviour
         {
             _movement.y = playerPreset.climbingOnBoatSpeed;
             selfRigidBody.velocity = _movement;
+
+            if (isCarrying && _transportedTreasure.playerInteractingWith.Count > 1)
+            {
+                _transportedTreasure.selfRigidbody.velocity = Vector3.up * 
+                    (selfRigidBody.velocity.y / _transportedTreasure.playerInteractingWith.Count);
+            }
         }
 
         // If velocity on Y is equal to 0.0 then it means that the player is swimming
