@@ -13,7 +13,6 @@ public class Treasure : MonoBehaviour, IInteractable
 
     private List<PlayerController> _playerInteractingWith = new List<PlayerController>();
     public List<PlayerController> playerInteractingWith { get { return _playerInteractingWith; } }
-    //private Dictionary<PlayerController, FixedJoint> associateJoints = new Dictionary<PlayerController, FixedJoint>();
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
     private bool isGrounded = false;
     private bool isLoadingLaunch = false;
@@ -40,6 +39,17 @@ public class Treasure : MonoBehaviour, IInteractable
         self.position = upTreasure;
     }
 
+    public void UpdatePlayerMovement(PlayerController player)
+    {
+        if (associateColliders[player] != null)
+        {
+            Vector3 newPlayerPos = associateColliders[player].transform.position;
+            newPlayerPos.y = player.self.position.y;
+            player.self.position = newPlayerPos;
+        }
+    }
+
+    #region interaction
     // When player is interacting with the treasure
     public bool InteractWith(PlayerController player, GameObject interactingWith)
     {
@@ -169,6 +179,8 @@ public class Treasure : MonoBehaviour, IInteractable
             isGrounded = false;
         }
     }
+
+    #endregion
 
     private void ApplySpeedMalus()
     {

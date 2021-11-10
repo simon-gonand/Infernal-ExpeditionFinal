@@ -218,10 +218,7 @@ public class PlayerController : MonoBehaviour
             if ((_transportedTreasure.selfRigidbody.velocity.x < 0.1f || _transportedTreasure.selfRigidbody.velocity.x > 0.1f) ||
                 (_transportedTreasure.selfRigidbody.velocity.z < 0.1f || _transportedTreasure.selfRigidbody.velocity.z > 0.1f))
             {
-                // Apply velocity
-                Vector3 applyForces = _transportedTreasure.selfRigidbody.velocity;
-                applyForces.y = selfRigidBody.velocity.y;
-                selfRigidBody.velocity = applyForces;
+                _transportedTreasure.UpdatePlayerMovement(this);
             }
         }
         else
