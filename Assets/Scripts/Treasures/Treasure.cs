@@ -7,6 +7,8 @@ public class Treasure : MonoBehaviour, IInteractable
     [SerializeField]
     private Transform self;
     public Rigidbody selfRigidbody;
+    [SerializeField]
+    private Collider selfCollider;
     public TreasuresCategory category;
     [System.NonSerialized]
     public float speedMalus = 0.0f;
@@ -20,6 +22,30 @@ public class Treasure : MonoBehaviour, IInteractable
 
     private bool _isInDeepWater = false;
     public bool isInDeepWater { set { _isInDeepWater = value; } }
+
+    public void UpdatePlayerMovement(PlayerController player, Transform playerGraphics)
+    {
+        if (associateColliders[player] != null)
+        {
+            Vector3 newPlayerPos = associateColliders[player].transform.position;
+            newPlayerPos.y = player.self.position.y;
+            player.self.position = newPlayerPos;
+            playerGraphics.forward = associateColliders[player].transform.forward;
+        }
+    }
+
+    public void GetOnBoat(Transform entryPosition)
+    {
+        Vector3 treasureOnBoat = entryPosition.position;
+        treasureOnBoat.y += self.lossyScale.y / 2;
+        self.position = treasureOnBoat;
+        self.SetParent(BoatManager.instance.self);
+        foreach(PlayerController player in playerInteractingWith)
+        {
+            player.isOnBoat = true;
+            player.self.SetParent(BoatManager.instance.self);
+        }
+    }
 
     // Disable collider on the side where the player is interacting with the treasure
     private void DealWithCollider(PlayerController player, GameObject interactingWith)
@@ -39,16 +65,6 @@ public class Treasure : MonoBehaviour, IInteractable
         self.position = upTreasure;
     }
 
-    public void UpdatePlayerMovement(PlayerController player)
-    {
-        if (associateColliders[player] != null)
-        {
-            Vector3 newPlayerPos = associateColliders[player].transform.position;
-            newPlayerPos.y = player.self.position.y;
-            player.self.position = newPlayerPos;
-        }
-    }
-
     #region interaction
     // When player is interacting with the treasure
     public bool InteractWith(PlayerController player, GameObject interactingWith)
@@ -58,12 +74,15 @@ public class Treasure : MonoBehaviour, IInteractable
         player.isCarrying = true;
         player.transportedTreasure = this;
 
+        selfRigidbody.useGravity = false;
+
         // Update speed malus
         ApplySpeedMalus();
 
         // If the player is alone to carry it just snap the treasure as child of the player
         if (_playerInteractingWith.Count == 1)
         {
+            Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, true);
             DealWithCollider(player, interactingWith);
             UpTreasure(player);
             self.SetParent(player.self);
@@ -171,10 +190,13 @@ public class Treasure : MonoBehaviour, IInteractable
 
         if (_playerInteractingWith.Count < 1)
         {
+            Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
+
             // Remove parent
             self.SetParent(null);
 
             // Enable rigidbody
+            selfRigidbody.useGravity = true;
             selfRigidbody.isKinematic = false;
             isGrounded = false;
         }
@@ -184,12 +206,12 @@ public class Treasure : MonoBehaviour, IInteractable
 
     private void ApplySpeedMalus()
     {
-        // Deal with speed according to the number of player carrying the treasure
+        /*// Deal with speed according to the number of player carrying the treasure
         if (_playerInteractingWith.Count == category.maxPlayerCarrying)
             speedMalus = 0;
         else
-            speedMalus = category.speedMalus / _playerInteractingWith.Count;
-        //speedMalus = category.speedMalus;
+            speedMalus = category.speedMalus / _playerInteractingWith.Count;*/
+        speedMalus = category.speedMalus;
     }
 
     private void TreasureMovement()

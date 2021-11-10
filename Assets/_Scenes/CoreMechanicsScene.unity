@@ -1282,7 +1282,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3108
+  m_Name: pb_Mesh-3138
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1854,7 +1854,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21234
+  m_Name: pb_Mesh21270
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3291,7 +3291,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3156
+  m_Name: pb_Mesh-3186
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4125,7 +4125,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3132
+  m_Name: pb_Mesh-3162
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4354,6 +4354,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8950006791251953786, guid: 3cdc3cae7a3c65f4eba3a5162ba582fc, type: 3}
   m_PrefabInstance: {fileID: 760867133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &718809019 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 7705394190541965516, guid: 52452b749eb1c8c4ca9e4e37a1f022a9, type: 3}
+  m_PrefabInstance: {fileID: 1542897206}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &729905573 stripped
 Transform:
@@ -5991,6 +5996,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1382085703}
+    - target: {fileID: 704666741126842628, guid: c8e909e23e583c44890dd052a563af6d, type: 3}
+      propertyPath: selfCollider
+      value: 
+      objectReference: {fileID: 1255351201}
     - target: {fileID: 856269726719110106, guid: c8e909e23e583c44890dd052a563af6d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -6180,6 +6189,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937b755714008be4e9aa6f98fc92cf44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1255351201 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 332886954977132047, guid: c8e909e23e583c44890dd052a563af6d, type: 3}
+  m_PrefabInstance: {fileID: 1229137251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1259730848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6422384262100249536, guid: 7ea64287d9d0ae04abf11238abd7535a, type: 3}
@@ -6649,7 +6663,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3120
+  m_Name: pb_Mesh-3150
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7445,6 +7459,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 76773af0a35dd0c489de87142b2c81fc, type: 2}
     - target: {fileID: 2615319730487116424, guid: 52452b749eb1c8c4ca9e4e37a1f022a9, type: 3}
+      propertyPath: selfCollider
+      value: 
+      objectReference: {fileID: 718809019}
+    - target: {fileID: 2615319730487116424, guid: 52452b749eb1c8c4ca9e4e37a1f022a9, type: 3}
       propertyPath: fixedJoints.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -8116,7 +8134,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3144
+  m_Name: pb_Mesh-3174
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8349,7 +8367,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3168
+  m_Name: pb_Mesh-3198
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

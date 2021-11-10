@@ -642,6 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 332886954977132276}
+  selfCollider: {fileID: 0}
 --- !u!1 &878157910629381694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2260,7 +2261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8620466145326143288, guid: ac508ac35e6636b4095ddaa08a2fa3b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.089
+      value: 1.987
       objectReference: {fileID: 0}
     - target: {fileID: 8620466145326143288, guid: ac508ac35e6636b4095ddaa08a2fa3b4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2320,13 +2321,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftEntryPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 7085803585244096351, guid: ac508ac35e6636b4095ddaa08a2fa3b4, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8620466145326143288, guid: ac508ac35e6636b4095ddaa08a2fa3b4, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8620466145326143288, guid: ac508ac35e6636b4095ddaa08a2fa3b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.089
+      value: -1.987
       objectReference: {fileID: 0}
     - target: {fileID: 8620466145326143288, guid: ac508ac35e6636b4095ddaa08a2fa3b4, type: 3}
       propertyPath: m_LocalPosition.y

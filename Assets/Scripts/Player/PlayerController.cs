@@ -218,24 +218,11 @@ public class PlayerController : MonoBehaviour
             if ((_transportedTreasure.selfRigidbody.velocity.x < 0.1f || _transportedTreasure.selfRigidbody.velocity.x > 0.1f) ||
                 (_transportedTreasure.selfRigidbody.velocity.z < 0.1f || _transportedTreasure.selfRigidbody.velocity.z > 0.1f))
             {
-                _transportedTreasure.UpdatePlayerMovement(this);
+                _transportedTreasure.UpdatePlayerMovement(this, playerGraphics);
             }
         }
         else
             selfRigidBody.velocity = _movement;       
-
-        // If the player is climbing on the boat then add velocity on y-axis
-        if (_isClimbingOnBoat)
-        {
-            _movement.y = playerPreset.climbingOnBoatSpeed;
-            selfRigidBody.velocity = _movement;
-
-            if (isCarrying && _transportedTreasure.playerInteractingWith.Count > 1)
-            {
-                _transportedTreasure.selfRigidbody.velocity = Vector3.up * 
-                    (selfRigidBody.velocity.y / _transportedTreasure.playerInteractingWith.Count);
-            }
-        }
 
         // If velocity on Y is equal to 0.0 then it means that the player is swimming
         // if not then it means he must deal with gravity

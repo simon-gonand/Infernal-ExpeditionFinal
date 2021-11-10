@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoatManager : MonoBehaviour
 {
     public Transform self;
+    public Collider selfCollider;
 
     // BoatManager is a singleton class
     public static BoatManager instance;
