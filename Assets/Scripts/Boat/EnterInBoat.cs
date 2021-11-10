@@ -17,10 +17,12 @@ public class EnterInBoat : MonoBehaviour
             player = other.GetComponent<PlayerController>();
             if (!player.isOnBoat)
             {
+                // Player is carrying a treasure with someone
                 if (player.isCarrying && player.transportedTreasure.playerInteractingWith.Count > 1)
                 {
                     player.transportedTreasure.GetOnBoat(playerOnBoatEntryPoint);
                 }
+                // Player carries a treasure solo or does not carry anything
                 else
                 {
                     player.self.position = playerOnBoatEntryPoint.position;
@@ -31,9 +33,22 @@ public class EnterInBoat : MonoBehaviour
             // Let the player getting out the boat
             else
             {
-                player.self.SetParent(null);
-                player.isOnBoat = false;
+                // Player is carrying a treasure with someone
+                if (player.isCarrying && player.transportedTreasure.playerInteractingWith.Count > 1)
+                    player.transportedTreasure.GetOffBoat();
+                // Player carries a treasure solo or does not carry anything
+                else
+                {
+                    player.self.SetParent(null);
+                    player.isOnBoat = false;
+                }
             }
+        }
+        if (other.CompareTag("Treasures"))
+        {
+            Treasure treasure = other.GetComponent<Treasure>();
+            if (treasure.playerInteractingWith.Count > 1)
+                treasure.GetOnBoat(playerOnBoatEntryPoint);
         }
     }
 }

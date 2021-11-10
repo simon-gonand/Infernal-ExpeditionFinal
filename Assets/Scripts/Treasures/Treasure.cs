@@ -34,6 +34,7 @@ public class Treasure : MonoBehaviour, IInteractable
         }
     }
 
+    // Get the treasure and all the players that are carrying it on boat
     public void GetOnBoat(Transform entryPosition)
     {
         Vector3 treasureOnBoat = entryPosition.position;
@@ -42,8 +43,19 @@ public class Treasure : MonoBehaviour, IInteractable
         self.SetParent(BoatManager.instance.self);
         foreach(PlayerController player in playerInteractingWith)
         {
-            player.isOnBoat = true;
+            player.isOnBoat = false;
             player.self.SetParent(BoatManager.instance.self);
+        }
+    }
+
+    // Remove boat parent from treasure and all players that are carrying it
+    public void GetOffBoat()
+    {
+        self.SetParent(null);
+        foreach (PlayerController player in playerInteractingWith)
+        {
+            player.isOnBoat = true;
+            player.self.SetParent(null);
         }
     }
 
