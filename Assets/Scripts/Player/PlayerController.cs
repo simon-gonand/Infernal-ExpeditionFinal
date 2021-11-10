@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     private Treasure _transportedTreasure;
     public Treasure transportedTreasure { get { return _transportedTreasure; } set { _transportedTreasure = value; } }
 
+    private Vector3 _movement;
+    public Vector3 movement { get { return _movement; } }
+
     #region booleans
     // Is the player interacting with something
     private bool _isInteracting = false;
@@ -207,24 +210,24 @@ public class PlayerController : MonoBehaviour
 
         // Apply movements
         Vector3 calculatePlayerInput = playerMovementInput * currentSpeed * Time.deltaTime;
-        Vector3 move = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
+        _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
 
         if (isCarrying && transportedTreasure.playerInteractingWith.Count > 1)
         {
             // Apply velocity
             Vector3 applyForces = transportedTreasure.selfRigidbody.velocity;
-            applyForces.y = 0.0f;
-            move += applyForces;
+            applyForces.y = selfRigidBody.velocity.y;
+            selfRigidBody.velocity = applyForces;
         }
-
-        selfRigidBody.velocity = move;
+        else
+            selfRigidBody.velocity = _movement;       
 
         // If the player is climbing on the boat then add velocity on y-axis
         if (_isClimbingOnBoat)
         {
-            move.y = playerPreset.climbingOnBoatSpeed;
-            selfRigidBody.velocity = move;
+            _movement.y = playerPreset.climbingOnBoatSpeed;
+            selfRigidBody.velocity = _movement;
         }
 
         // If velocity on Y is equal to 0.0 then it means that the player is swimming
@@ -240,8 +243,8 @@ public class PlayerController : MonoBehaviour
         else if (_isSwimming)
         {
             // There is no gravity so the player should not move on the y-axis
-            move.y = 0.0f;
-            selfRigidBody.velocity = move;
+            _movement.y = 0.0f;
+            selfRigidBody.velocity = _movement;
             // The player must stay at the top of the water
             Vector3 upPlayer = self.position;
             upPlayer.y = NotDeepWater.instance.self.position.y;
@@ -250,10 +253,10 @@ public class PlayerController : MonoBehaviour
             
 
         // Set the rotation of the player according to his movements
-        if (move.x != 0 || move.z != 0)
+        if (_movement.x != 0 || _movement.z != 0)
         {
-            move.y = 0.0f;
-            self.forward = move;
+            _movement.y = 0.0f;
+            self.forward = _movement;
         }
     }
 
