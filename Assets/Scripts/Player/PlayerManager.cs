@@ -15,6 +15,17 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private Material player4Material;
 
+    private List<PlayerController> _players = new List<PlayerController>();
+    public List<PlayerController> players { get { return _players; } }
+
+    // Player Manager is a Singleton
+    public static PlayerManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Update material of player when one is joining to avoid them to have the same color
     public void OnPlayerJoined(PlayerInput playerInput)
     {
@@ -48,5 +59,6 @@ public class PlayerManager : MonoBehaviour
         Transform playerTransform = playerInput.gameObject.transform;
         playerTransform.position = playerSpawnPosition;
         playerTransform.SetParent(BoatManager.instance.self);
+        _players.Add(playerInput.gameObject.GetComponent<PlayerController>());
     }
 }
