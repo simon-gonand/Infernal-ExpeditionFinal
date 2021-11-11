@@ -160,6 +160,8 @@ public class Treasure : MonoBehaviour, IInteractable
 
             // Enable rigidbody
             selfRigidbody.isKinematic = false;
+            selfRigidbody.useGravity = true;
+            Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
             selfRigidbody.AddForce((player.self.forward + player.self.up) * launchForce, ForceMode.Impulse);
             launchForce = 0.0f;
 
@@ -195,6 +197,7 @@ public class Treasure : MonoBehaviour, IInteractable
             self.SetParent(_playerInteractingWith[0].self);
             UpTreasure(_playerInteractingWith[0]);
             selfRigidbody.isKinematic = true;
+            launchForce = 0.0f;
         }
 
         // Update speed malus
