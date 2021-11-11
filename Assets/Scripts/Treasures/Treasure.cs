@@ -23,6 +23,12 @@ public class Treasure : MonoBehaviour, IInteractable
     private bool _isInDeepWater = false;
     public bool isInDeepWater { set { _isInDeepWater = value; } }
 
+    public void UpdatePlayerRotation(PlayerController player, Transform playerGraphics)
+    {
+        if (associateColliders[player] != null)
+            playerGraphics.forward = associateColliders[player].transform.forward;
+    }
+
     public void UpdatePlayerMovement(PlayerController player, Transform playerGraphics)
     {
         if (associateColliders[player] != null)
@@ -30,7 +36,6 @@ public class Treasure : MonoBehaviour, IInteractable
             Vector3 newPlayerPos = associateColliders[player].transform.position;
             newPlayerPos.y = player.self.position.y;
             player.self.position = newPlayerPos;
-            playerGraphics.forward = associateColliders[player].transform.forward;
         }
     }
 
