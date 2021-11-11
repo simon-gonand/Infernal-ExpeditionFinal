@@ -18,7 +18,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform attackPoint;
 
+
+    [Header ("Anim info")]
     public Animator anim;
+    public GameObject sword;
 
     private Vector2 playerMovementInput = Vector2.zero;
 
@@ -199,7 +202,9 @@ public class PlayerController : MonoBehaviour
         if (_isSwimming && _isInWater)
         {
             currentSpeed = playerPreset.playerSwimSpeed;
+
             anim.SetBool("isSwiming", true);
+            sword.SetActive(false);
         }
         // If player is in not deep water reduce speed
         else if (_isInWater)
@@ -235,6 +240,7 @@ public class PlayerController : MonoBehaviour
             _isSwimming = false;
 
             anim.SetBool("isSwiming", false);
+            sword.SetActive(true);
         }
         else if (_isSwimming)
         {

@@ -49,6 +49,7 @@ public class Treasure : MonoBehaviour, IInteractable
 
         player.anim.SetBool("isCarrying", true);
         player.anim.SetTrigger("startCarrying");
+        player.sword.SetActive(false);
 
         player.transportedTreasure = this;
 
@@ -86,6 +87,7 @@ public class Treasure : MonoBehaviour, IInteractable
         player.isCarrying = false;
 
         player.anim.SetBool("isCarrying", false);
+        player.sword.SetActive(true);
 
         player.transportedTreasure = null;
         return false;
@@ -140,6 +142,7 @@ public class Treasure : MonoBehaviour, IInteractable
             player.isCarrying = false;
 
             player.anim.SetBool("isCarrying", false);
+            player.sword.SetActive(true);
 
             player.transportedTreasure = null;
             isGrounded = false;
@@ -153,6 +156,7 @@ public class Treasure : MonoBehaviour, IInteractable
         player.isCarrying = false;
 
         player.anim.SetBool("isCarrying", false);
+        player.sword.SetActive(true);
 
         player.transportedTreasure = null;
 
