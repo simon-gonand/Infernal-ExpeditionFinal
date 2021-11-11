@@ -48,6 +48,7 @@ public class Treasure : MonoBehaviour, IInteractable
         player.isCarrying = true;
 
         player.anim.SetBool("isCarrying", true);
+        player.anim.SetTrigger("startCarrying");
 
         player.transportedTreasure = this;
 
