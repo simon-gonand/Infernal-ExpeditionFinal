@@ -55,7 +55,8 @@ public class PlayerController : MonoBehaviour
     private bool _isInWater = false;
     public bool isInWater { set { _isInWater = value; } }
 
-    private bool isStun = false;
+    private bool _isStun = false;
+    public bool isStun { get { return _isStun; } }
     #endregion
 
     #region InputsManagement
@@ -87,7 +88,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if (context.performed && Time.time > nextAttack && !isStun)
+                if (context.performed && Time.time > nextAttack && !_isStun)
                 {
                     Attack();
                     nextAttack = Time.time + playerPreset.attackCooldown;
@@ -188,19 +189,24 @@ public class PlayerController : MonoBehaviour
             if (hitted.CompareTag("Player"))
             {
                 PlayerController attacked = hitted.GetComponent<PlayerController>();
-                if (attacked != this && !attacked.isStun)
+                if (attacked != this && !attacked._isStun)
                 {
-                    StartCoroutine(attacked.StunWait());
-                    attacked.movement = Vector3.zero;
+                    attacked.StunPlayer();
                 }
             }
             // etc...
         }
     }
 
-    public IEnumerator StunWait()
+    public void StunPlayer()
     {
-        isStun = true;
+        StartCoroutine(StunWait());
+        movement = Vector3.zero;
+    }
+
+    private IEnumerator StunWait()
+    {
+        _isStun = true;
         // Update stun bool in animation for animation ?
         if (isCarrying)
         {
@@ -209,7 +215,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player is stun");
         yield return new WaitForSeconds(playerPreset.stunTime);
         Debug.Log("Player is not stun anymore");
-        isStun = false;
+        _isStun = false;
         // Update stun bool in animation ?
     }
 
@@ -287,14 +293,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isStun)
+        if (!_isStun)
             PlayerMovement();
         InfoAnim();
     }
 
     void InfoAnim()
     {
-        if (!isStun)
+        if (!_isStun)
         {
             if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
             {

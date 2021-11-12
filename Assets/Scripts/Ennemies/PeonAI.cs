@@ -11,12 +11,15 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     private NavMeshAgent selfNavMesh;
     [SerializeField]
     private PeonPresets peonPreset;
+    [SerializeField]
+    private Transform attackPoint;
 
     [System.NonSerialized]
     public List<PlayerController> playersSeen = new List<PlayerController>();
     private PlayerController currentFollowedPlayer = null;
     private PlayerController nextFollowedPlayer;
     private float distanceWithCurrentPlayer = 0.0f;
+    private float nextAttack = 0.0f;
 
     public void ResetCurrentFollowedPlayer()
     {
@@ -109,37 +112,76 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         }
     }
 
+    private void UpdateDestination()
+    {
+        if (nextFollowedPlayer != null)
+        {
+            selfNavMesh.isStopped = false;
+            // Set destination to the player
+            selfNavMesh.SetDestination(nextFollowedPlayer.self.position);
+            // He's attacking the player if he's not already doing it
+            if (!nextFollowedPlayer.isAttackedBy.Contains(this))
+                nextFollowedPlayer.isAttackedBy.Add(this);
+
+            // Update current Player
+            currentFollowedPlayer = nextFollowedPlayer;
+        }
+        // If he didn't find a player to attack
+        else
+        {
+            // Stop him + remove destination
+            selfNavMesh.isStopped = true;
+            selfNavMesh.ResetPath();
+
+            // He is not attacking the current player anymore
+            if (currentFollowedPlayer != null && currentFollowedPlayer.isAttackedBy.Contains(this))
+                currentFollowedPlayer.isAttackedBy.Remove(this);
+            currentFollowedPlayer = null;
+        }
+    }
+
+    private void CheckAttack()
+    {
+        // Check if there a player to attack;       
+        Collider[] range = Physics.OverlapSphere(attackPoint.position, peonPreset.attackRange);
+        foreach (Collider inRange in range)
+        {
+            if (inRange.CompareTag("Player"))
+            {
+                PlayerController player = inRange.GetComponent<PlayerController>();
+                // Play attack animation (first part where enemy prepare to hit)
+                if (!player.isStun)
+                {
+                    StartCoroutine(Attack(player));
+                    nextAttack = Time.time + nextAttack;
+                }
+            }
+        }
+    }
+
+    private IEnumerator Attack(PlayerController player)
+    {
+        yield return new WaitForSeconds(peonPreset.launchAttackCooldown);
+        Collider[] hit = Physics.OverlapSphere(attackPoint.position, peonPreset.attackRange);
+        foreach(Collider hitted in hit)
+        {
+            if (hitted.GetComponent<PlayerController>() == player)
+            {
+                player.StunPlayer();
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (playersSeen.Count > 0)
         {
             FindEnemyDestination();
-            // If he found a player to attack
-            if (nextFollowedPlayer != null)
-            {
-                selfNavMesh.isStopped = false;
-                // Set destination to the player
-                selfNavMesh.SetDestination(nextFollowedPlayer.self.position);
-                // He's attacking the player if he's not already doing it
-                if (!nextFollowedPlayer.isAttackedBy.Contains(this))
-                    nextFollowedPlayer.isAttackedBy.Add(this);
-
-                // Update current Player
-                currentFollowedPlayer = nextFollowedPlayer;
-            }
-            // If he didn't find a player to attack
-            else
-            {
-                // Stop him + remove destination
-                selfNavMesh.isStopped = true;
-                selfNavMesh.ResetPath();
-
-                // He is not attacking the current player anymore
-                if (currentFollowedPlayer != null && currentFollowedPlayer.isAttackedBy.Contains(this))
-                    currentFollowedPlayer.isAttackedBy.Remove(this);
-                currentFollowedPlayer = null;
-            }
+            // If he found a player to follow
+            UpdateDestination();
+            if (Time.time > nextAttack)
+                CheckAttack();
         }
     }
 }
