@@ -88,7 +88,6 @@ public class PeonAI : MonoBehaviour
             }
             else
             {
-                Debug.Log("saucisse");
                 selfNavMesh.isStopped = true;
                 selfNavMesh.ResetPath();
             }
