@@ -10,7 +10,10 @@ public class AwakeZone : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-            peonParent.playersSeen.Add(other.GetComponent<PlayerController>());
+        {
+            PlayerController player = other.GetComponent<PlayerController>();
+            peonParent.playersSeen.Add(player);
+        }
     }
 
     private void OnTriggerExit(Collider other)

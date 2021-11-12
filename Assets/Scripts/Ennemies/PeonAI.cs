@@ -28,12 +28,24 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         Destroy(this.gameObject);
     }
 
-    private void UpdateList(int index)
+    private void RemovePlayerOnBoat(List<PlayerController> players)
+    {
+        for(int i = 0; i < players.Count; ++i)
+        {
+            if (players[i].isOnBoat)
+            {
+                players.Remove(players[i]);
+                --i;
+            }
+        }
+    }
+
+    private void UpdateList()
     {
         playerTests.Remove(playerTests[0]);
         if (playerTests.Count > 0)
         {
-            nextFollowedPlayer = playersSeen[index];
+            nextFollowedPlayer = playerTests[0];
             distanceWithCurrentPlayer = Vector3.Distance(nextFollowedPlayer.self.position, self.position);
         }
         else
@@ -43,34 +55,33 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     private void FindEnemyDestination()
     {
         playerTests = new List<PlayerController>(playersSeen);
-        Debug.Log(playersSeen[0].isAttackedBy.Count);
+        RemovePlayerOnBoat(playerTests);
+        if (playerTests.Count == 0)
+        {
+            nextFollowedPlayer = null;
+            return;
+        }
         // Set the first player as the nearest (in case if the player is alone on the map)
-        nextFollowedPlayer = playersSeen[0];
+        nextFollowedPlayer = playerTests[0];
         distanceWithCurrentPlayer = Vector3.Distance(nextFollowedPlayer.self.position, self.position);
         for (int i = 0; i < playersSeen.Count && playerTests.Count != 0; ++i)
         {
-            // if player is on boat
-            if (playerTests[0].isOnBoat)
-            {
-                UpdateList(i);
-                continue;
-            }
             // if player already is attacked by to many enemies
-            if (playersSeen[i].isAttackedBy.Count >= peonPreset.howManyCanAttackAPlayer)
+            if (playerTests[0].isAttackedBy.Count >= peonPreset.howManyCanAttackAPlayer)
             {
                 // Check if the enemy already attack player
-                if (playersSeen[i] != currentFollowedPlayer)
+                if (playerTests[0] != currentFollowedPlayer)
                 {
-                    UpdateList(i);
+                    UpdateList();
                     continue;
                 }
             }
-            // Check if he is the nearest players
+            /*// Check if he is the nearest players
             if (!isTheNearestPlayer(playerTests))
             {
-                UpdateList(i);
+                UpdateList();
                 continue;
-            }
+            }*/
         }
     }
 
