@@ -27,6 +27,11 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         Destroy(this.gameObject);
     }
 
+    private void Start()
+    {
+        selfNavMesh.speed = peonPreset.speed;
+    }
+
     private void RemoveNonAttackablePlayer(List<PlayerController> players)
     {
         for(int i = 0; i < players.Count; ++i)
@@ -51,6 +56,12 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         }
     }
 
+    private void UpdateNextFollowedPlayer(PlayerController player)
+    {
+        nextFollowedPlayer = player;
+        distanceWithCurrentPlayer = Vector3.Distance(player.self.position, self.position);
+    }
+
     private void isNearestThan(PlayerController comparedPlayer)
     {
 
@@ -58,8 +69,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         float comparedDistance = Vector3.Distance(comparedPlayer.self.position, self.position);
         if (comparedDistance < distanceWithCurrentPlayer)
         {
-            nextFollowedPlayer = comparedPlayer;
-            distanceWithCurrentPlayer = comparedDistance;
+            UpdateNextFollowedPlayer(comparedPlayer);
         }
     }
 
@@ -78,8 +88,12 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         distanceWithCurrentPlayer = Vector3.Distance(nextFollowedPlayer.self.position, self.position);
         for (int i = 0; i < playerTests.Count; ++i)
         {
-            // Check if he is the nearest players
-            isNearestThan(playerTests[i]);
+            if (playerTests[i].isCarrying && !nextFollowedPlayer.isCarrying)
+                UpdateNextFollowedPlayer(playerTests[i]);
+            else if (!playerTests[i].isCarrying && nextFollowedPlayer.isCarrying) continue;
+            else
+                // Check if he is the nearest players
+                isNearestThan(playerTests[i]);
         }
     }
 
