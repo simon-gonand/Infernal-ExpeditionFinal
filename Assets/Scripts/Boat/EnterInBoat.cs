@@ -25,9 +25,11 @@ public class EnterInBoat : MonoBehaviour
                 // Player carries a treasure solo or does not carry anything
                 else
                 {
+                    player.isOnBoat = true;
+                    player.selfRigidBody.velocity += Vector3.up;
+                    player.UpdateSwimming();
                     player.self.position = playerOnBoatEntryPoint.position;
                     player.self.SetParent(BoatManager.instance.self);
-                    player.isOnBoat = true;
                 }
             }
             // Let the player getting out the boat

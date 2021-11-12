@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     public bool isOnBoat { get { return _isOnBoat; } set { _isOnBoat = value; } }
 
     private bool _isSwimming = false;
-    public bool isSwimming { set { _isSwimming = value; } }
+    public bool isSwimming { set { _isSwimming = value; } get { return _isSwimming; } }
 
     private bool _isInWater = false;
     public bool isInWater { set { _isInWater = value; } }
@@ -210,7 +210,29 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(playerPreset.stunTime);
         Debug.Log("Player is not stun anymore");
         isStun = false;
-        // Update stun bool in animation for animation ?
+        // Update stun bool in animation ?
+    }
+
+    public void UpdateSwimming()
+    {
+        if (selfRigidBody.velocity.y > 0.5f && _isSwimming)
+        {
+            selfRigidBody.useGravity = true;
+            Vector3 resetRotation = playerGraphics.eulerAngles;
+            resetRotation.x = 0.0f;
+            playerGraphics.eulerAngles = resetRotation;
+            _isSwimming = false;
+        }
+        else if (_isSwimming)
+        {
+            // There is no gravity so the player should not move on the y-axis
+            _movement.y = 0.0f;
+            selfRigidBody.velocity = _movement;
+            // The player must stay at the top of the water
+            Vector3 upPlayer = self.position;
+            upPlayer.y = NotDeepWater.instance.self.position.y;
+            self.position = upPlayer;
+        }
     }
 
     // Update movements of the player
@@ -251,24 +273,7 @@ public class PlayerController : MonoBehaviour
 
         // If velocity on Y is equal to 0.0 then it means that the player is swimming
         // if not then it means he must deal with gravity
-        if (selfRigidBody.velocity.y > 0.5f && _isSwimming)
-        {
-            selfRigidBody.useGravity = true;
-            Vector3 resetRotation = playerGraphics.eulerAngles;
-            resetRotation.x = 0.0f;
-            playerGraphics.eulerAngles = resetRotation;
-            _isSwimming = false;
-        }
-        else if (_isSwimming)
-        {
-            // There is no gravity so the player should not move on the y-axis
-            _movement.y = 0.0f;
-            selfRigidBody.velocity = _movement;
-            // The player must stay at the top of the water
-            Vector3 upPlayer = self.position;
-            upPlayer.y = NotDeepWater.instance.self.position.y;
-            self.position = upPlayer;
-        }
+        UpdateSwimming();
             
 
         // Set the rotation of the player according to his movements

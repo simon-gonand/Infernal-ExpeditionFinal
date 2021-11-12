@@ -18,6 +18,11 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     private PlayerController nextFollowedPlayer;
     private float distanceWithCurrentPlayer = 0.0f;
 
+    public void ResetCurrentFollowedPlayer()
+    {
+        currentFollowedPlayer = null;
+    }
+
     public void Die(PlayerController player)
     {
         // Play die animation
@@ -37,6 +42,13 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         for(int i = 0; i < players.Count; ++i)
         {
             if (players[i].isOnBoat)
+            {
+                players.Remove(players[i]);
+                --i;
+                continue;
+            }
+
+            if (players[i].isSwimming)
             {
                 players.Remove(players[i]);
                 --i;
@@ -76,7 +88,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     private void FindEnemyDestination()
     {
         List<PlayerController> playerTests = new List<PlayerController>(playersSeen);
-        // Remove players with that are on boat and which has too many enemies already attacking him
+        // Remove players with that are on boat or swimming and which has too many enemies already attacking him
         RemoveNonAttackablePlayer(playerTests);
         if (playerTests.Count == 0)
         {
