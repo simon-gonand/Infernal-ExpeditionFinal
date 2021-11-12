@@ -18,12 +18,9 @@ public class PlayerManager : MonoBehaviour
     private List<PlayerController> _players = new List<PlayerController>();
     public List<PlayerController> players { get { return _players; } }
 
-    // Player Manager is a Singleton
-    public static PlayerManager instance;
-
     private void Awake()
     {
-        instance = this;
+        DontDestroyOnLoad(this);
     }
 
     // Update material of player when one is joining to avoid them to have the same color
