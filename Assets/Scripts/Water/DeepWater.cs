@@ -22,12 +22,20 @@ public class DeepWater : MonoBehaviour
             player.selfRigidBody.useGravity = false;
             player.selfRigidBody.velocity = Vector3.zero;
 
+            // Drop treasure
             if (player.isCarrying)
             {
                 player.transportedTreasure.UninteractWith(player);
             }
+
+            // Enemies stop attacking him
+            while (player.isAttackedBy.Count > 0)
+            {
+                player.isAttackedBy[0].ResetCurrentFollowedPlayer();
+                player.isAttackedBy.Remove(player.isAttackedBy[0]);              
+            }
         }
-        else if (other.CompareTag("Treasuresgf"))
+        else if (other.CompareTag("Treasures"))
         {
             other.GetComponent<Treasure>().isInDeepWater = true;
         }

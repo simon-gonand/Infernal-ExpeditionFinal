@@ -20,4 +20,5 @@ public class PlayerPresets : ScriptableObject
     [Header("Attack")]
     public float attackRange;
     public float attackCooldown;
+    public float stunTime;
 }

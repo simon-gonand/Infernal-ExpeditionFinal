@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour
     private Treasure _transportedTreasure;
     public Treasure transportedTreasure { get { return _transportedTreasure; } set { _transportedTreasure = value; } }
 
+    private Vector3 _movement;
+    public Vector3 movement { get { return _movement; } set { _movement = value; } }
+
+    [System.NonSerialized]
+    public List<EnemiesAI> isAttackedBy = new List<EnemiesAI>();
+
     #region booleans
     // Is the player interacting with something
     private bool _isInteracting = false;
@@ -43,14 +49,14 @@ public class PlayerController : MonoBehaviour
     private bool _isOnBoat = true;
     public bool isOnBoat { get { return _isOnBoat; } set { _isOnBoat = value; } }
 
-    private bool _isClimbingOnBoat = false;
-    public bool isClimbingOnBoat { set { _isClimbingOnBoat = value; } }
-
     private bool _isSwimming = false;
-    public bool isSwimming { set { _isSwimming = value; } }
+    public bool isSwimming { set { _isSwimming = value; } get { return _isSwimming; } }
 
     private bool _isInWater = false;
     public bool isInWater { set { _isInWater = value; } }
+
+    private bool _isStun = false;
+    public bool isStun { get { return _isStun; } }
     #endregion
 
     #region InputsManagement
@@ -82,7 +88,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if (context.performed && Time.time > nextAttack)
+                if (context.performed && Time.time > nextAttack && !_isStun)
                 {
                     Attack();
                     nextAttack = Time.time + playerPreset.attackCooldown;
@@ -155,7 +161,6 @@ public class PlayerController : MonoBehaviour
             else if ((_isInteracting || _isCarrying) && context.performed)
             {
                 interactingWith.UninteractWith(this);
-                interactingWith = null;
             }
         }
     }
@@ -176,16 +181,63 @@ public class PlayerController : MonoBehaviour
             if (hitted.CompareTag("Enemy"))
             {
                 Debug.Log("Enemy has been attacked");
-                // Damage enemy
                 // Play enemy attacked sound
+                EnemiesAI enemy = hitted.GetComponent<EnemiesAI>();
+                enemy.Die(this);
+                return;
             }
             if (hitted.CompareTag("Player"))
             {
                 PlayerController attacked = hitted.GetComponent<PlayerController>();
-                if (attacked != this)
-                    Debug.Log("Player has been attacked");
+                if (attacked != this && !attacked._isStun)
+                {
+                    attacked.StunPlayer();
+                }
             }
             // etc...
+        }
+    }
+
+    public void StunPlayer()
+    {
+        StartCoroutine(StunWait());
+        movement = Vector3.zero;
+    }
+
+    private IEnumerator StunWait()
+    {
+        _isStun = true;
+        // Update stun bool in animation for animation ?
+        if (isCarrying)
+        {
+            _transportedTreasure.UninteractWith(this);
+        }
+        Debug.Log("Player is stun");
+        yield return new WaitForSeconds(playerPreset.stunTime);
+        Debug.Log("Player is not stun anymore");
+        _isStun = false;
+        // Update stun bool in animation ?
+    }
+
+    public void UpdateSwimming()
+    {
+        if (selfRigidBody.velocity.y > 0.5f && _isSwimming)
+        {
+            selfRigidBody.useGravity = true;
+            Vector3 resetRotation = playerGraphics.eulerAngles;
+            resetRotation.x = 0.0f;
+            playerGraphics.eulerAngles = resetRotation;
+            _isSwimming = false;
+        }
+        else if (_isSwimming)
+        {
+            // There is no gravity so the player should not move on the y-axis
+            _movement.y = 0.0f;
+            selfRigidBody.velocity = _movement;
+            // The player must stay at the top of the water
+            Vector3 upPlayer = self.position;
+            upPlayer.y = NotDeepWater.instance.self.position.y;
+            self.position = upPlayer;
         }
     }
 
@@ -206,74 +258,67 @@ public class PlayerController : MonoBehaviour
 
         // Apply movements
         Vector3 calculatePlayerInput = playerMovementInput * currentSpeed * Time.deltaTime;
-        Vector3 move = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
+        _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
 
-        // Apply velocity
-        selfRigidBody.velocity = move;
-
-        // If the player is climbing on the boat then add velocity on y-axis
-        if (_isClimbingOnBoat)
+        if (_isCarrying && _transportedTreasure.playerInteractingWith.Count > 1)
         {
-            move.y = playerPreset.climbingOnBoatSpeed;
-            selfRigidBody.velocity = move;
+            if ((_transportedTreasure.selfRigidbody.velocity.x < 0.1f || _transportedTreasure.selfRigidbody.velocity.x > 0.1f) ||
+                (_transportedTreasure.selfRigidbody.velocity.z < 0.1f || _transportedTreasure.selfRigidbody.velocity.z > 0.1f))
+            {
+                _transportedTreasure.UpdatePlayerMovement(this, playerGraphics);
+                _transportedTreasure.UpdatePlayerRotation(this, playerGraphics);
+            }
+        }
+        else
+        {
+            if (_isCarrying)
+                _transportedTreasure.UpdatePlayerRotation(this, playerGraphics);
+            selfRigidBody.velocity = _movement;
         }
 
         // If velocity on Y is equal to 0.0 then it means that the player is swimming
         // if not then it means he must deal with gravity
-        if (selfRigidBody.velocity.y > 0.5f && _isSwimming)
-        {
-            selfRigidBody.useGravity = true;
-            Vector3 resetRotation = playerGraphics.eulerAngles;
-            resetRotation.x = 0.0f;
-            playerGraphics.eulerAngles = resetRotation;
-            _isSwimming = false;
-        }
-        else if (_isSwimming)
-        {
-            // There is no gravity so the player should not move on the y-axis
-            move.y = 0.0f;
-            selfRigidBody.velocity = move;
-            // The player must stay at the top of the water
-            Vector3 upPlayer = self.position;
-            upPlayer.y = NotDeepWater.instance.self.position.y;
-            self.position = upPlayer;
-        }
+        UpdateSwimming();
             
 
         // Set the rotation of the player according to his movements
-        if (move.x != 0 || move.z != 0)
+        if (_movement.x != 0 || _movement.z != 0)
         {
-            move.y = 0.0f;
-            self.forward = move;
+            _movement.y = 0.0f;
+            self.forward = _movement;
         }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        PlayerMovement();
+        if (!_isStun)
+            PlayerMovement();
         InfoAnim();
     }
 
     void InfoAnim()
     {
-        if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
+        if (!_isStun)
         {
-            anim.SetBool("isMoving", true);
-
-            if (Mathf.Abs(playerMovementInput.x) > Mathf.Abs(playerMovementInput.y))
+            if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
             {
-                anim.SetFloat("playerSpeed", Mathf.Abs(playerMovementInput.x));
+                anim.SetBool("isMoving", true);
+
+                if (Mathf.Abs(playerMovementInput.x) > Mathf.Abs(playerMovementInput.y))
+                {
+                    anim.SetFloat("playerSpeed", Mathf.Abs(playerMovementInput.x));
+                }
+                else
+                {
+                    anim.SetFloat("playerSpeed", Mathf.Abs(playerMovementInput.y));
+                }
             }
             else
             {
-                anim.SetFloat("playerSpeed", Mathf.Abs(playerMovementInput.y));
+                anim.SetBool("isMoving", false);
             }
-        }
-        else
-        {
-            anim.SetBool("isMoving", false);
         }
     }
 }

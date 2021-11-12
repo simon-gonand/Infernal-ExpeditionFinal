@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fa6840ff60cb764193013a329e74738, type: 3}
-  m_Name: MediumTreasure
+  m_Script: {fileID: 11500000, guid: 4f50add50c3f68d4d8f10cea63aa6e08, type: 3}
+  m_Name: PeonPresets
   m_EditorClassIdentifier: 
-  maxLaunchForce: 4
-  fullChargeTime: 1
-  speedMalus: 100
-  maxPlayerCarrying: 2
+  speed: 4
+  howManyCanAttackAPlayer: 1
+  attackRange: 0.5
+  launchAttackCooldown: 0.2
+  attackCooldown: 2
