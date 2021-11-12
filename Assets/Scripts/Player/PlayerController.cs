@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 _movement;
     public Vector3 movement { get { return _movement; } set { _movement = value; } }
 
+    [System.NonSerialized]
+    public List<EnemiesAI> isAttackedBy = new List<EnemiesAI>();
+
     #region booleans
     // Is the player interacting with something
     private bool _isInteracting = false;
@@ -178,8 +181,9 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Enemy has been attacked");
                 // Play enemy attacked sound
-                // Damage enemy (enemy die animation)
-                Destroy(hitted.gameObject);
+                EnemiesAI enemy = hitted.GetComponent<EnemiesAI>();
+                enemy.Die(this);
+                return;
             }
             if (hitted.CompareTag("Player"))
             {

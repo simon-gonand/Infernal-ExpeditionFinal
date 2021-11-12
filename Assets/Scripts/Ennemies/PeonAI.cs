@@ -3,76 +3,88 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PeonAI : MonoBehaviour
+public class PeonAI : MonoBehaviour, EnemiesAI
 {
     [SerializeField]
     private Transform self;
     [SerializeField]
     private NavMeshAgent selfNavMesh;
     [SerializeField]
-    private PlayerManager playerManager;
+    private PeonPresets peonPreset;
 
-    private List<PlayerController> playersSeen = new List<PlayerController>();
-    private Transform currentFollowedPlayer;
+    [System.NonSerialized]
+    public List<PlayerController> playersSeen = new List<PlayerController>();
+    private List<PlayerController> playerTests = new List<PlayerController>();
+    private PlayerController currentFollowedPlayer = null;
+    private PlayerController nextFollowedPlayer;
     private float distanceWithCurrentPlayer = 0.0f;
 
-    private void OnTriggerEnter(Collider other)
+    public void Die(PlayerController player)
     {
-        if (other.CompareTag("Player"))
-            playersSeen.Add(other.GetComponent<PlayerController>());
+        // Play die animation
+        // Play die sound ?
+        if (player.isAttackedBy.Contains(this))
+            player.isAttackedBy.Remove(this);
+        Destroy(this.gameObject);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void UpdateList(int index)
     {
-        if (other.CompareTag("Player"))
-            playersSeen.Remove(other.GetComponent<PlayerController>());
-    }
-
-    private void UpdateList(int index, List<PlayerController> players)
-    {
-        players.Remove(playersSeen[index]);
-        if (players.Count > 0)
+        playerTests.Remove(playerTests[0]);
+        if (playerTests.Count > 0)
         {
-            currentFollowedPlayer = players[index].self;
-            distanceWithCurrentPlayer = Vector3.Distance(currentFollowedPlayer.position, self.position);
+            nextFollowedPlayer = playersSeen[index];
+            distanceWithCurrentPlayer = Vector3.Distance(nextFollowedPlayer.self.position, self.position);
         }
         else
-            currentFollowedPlayer = null;
+            nextFollowedPlayer = null;
     }
 
     private void FindEnemyDestination()
     {
-        List<PlayerController> players = new List<PlayerController>(playersSeen);
+        playerTests = new List<PlayerController>(playersSeen);
+        Debug.Log(playersSeen[0].isAttackedBy.Count);
         // Set the first player as the nearest (in case if the player is alone on the map)
-        currentFollowedPlayer = playersSeen[0].self;
-        float distance = Vector3.Distance(currentFollowedPlayer.position, self.position);
-        int i = 0;
-        while (i < players.Count)
+        nextFollowedPlayer = playersSeen[0];
+        distanceWithCurrentPlayer = Vector3.Distance(nextFollowedPlayer.self.position, self.position);
+        for (int i = 0; i < playersSeen.Count && playerTests.Count != 0; ++i)
         {
-            if (players[i].isOnBoat)
+            // if player is on boat
+            if (playerTests[0].isOnBoat)
             {
-                UpdateList(i, players);
+                UpdateList(i);
                 continue;
             }
-            ++i;
+            // if player already is attacked by to many enemies
+            if (playersSeen[i].isAttackedBy.Count >= peonPreset.howManyCanAttackAPlayer)
+            {
+                // Check if the enemy already attack player
+                if (playersSeen[i] != currentFollowedPlayer)
+                {
+                    UpdateList(i);
+                    continue;
+                }
+            }
+            // Check if he is the nearest players
+            if (!isTheNearestPlayer(playerTests))
+            {
+                UpdateList(i);
+                continue;
+            }
         }
     }
 
-    private Transform isTheNearestPlayer(List<PlayerController> comparedPlayers, Transform player, float distance)
+    private bool isTheNearestPlayer(List<PlayerController> comparedPlayers)
     {
         
         for (int i = 1; i < comparedPlayers.Count; ++i)
         {
             // Check if this player is nearest from the previous one
             float comparedDistance = Vector3.Distance(comparedPlayers[i].self.position, self.position);
-            if (comparedDistance < distance)
-            {
-                // Update values
-                distance = comparedDistance;
-                player = comparedPlayers[i].self;
-            }
+            if (comparedDistance < distanceWithCurrentPlayer)
+                return false;
         }
-        return player;
+        return true;
     }
 
     // Update is called once per frame
@@ -81,15 +93,21 @@ public class PeonAI : MonoBehaviour
         if (playersSeen.Count > 0)
         {
             FindEnemyDestination();
-            if (currentFollowedPlayer != null)
+            if (nextFollowedPlayer != null)
             {
                 selfNavMesh.isStopped = false;
-                selfNavMesh.SetDestination(currentFollowedPlayer.position);
+                selfNavMesh.SetDestination(nextFollowedPlayer.self.position);
+                if (!nextFollowedPlayer.isAttackedBy.Contains(this))
+                    nextFollowedPlayer.isAttackedBy.Add(this);
+                currentFollowedPlayer = nextFollowedPlayer;
             }
             else
             {
                 selfNavMesh.isStopped = true;
                 selfNavMesh.ResetPath();
+                currentFollowedPlayer = null;
+                if (currentFollowedPlayer != null && currentFollowedPlayer.isAttackedBy.Contains(this))
+                    currentFollowedPlayer.isAttackedBy.Remove(this);
             }
         }
     }
