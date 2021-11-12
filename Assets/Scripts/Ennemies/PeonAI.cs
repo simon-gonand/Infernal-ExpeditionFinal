@@ -12,31 +12,86 @@ public class PeonAI : MonoBehaviour
     [SerializeField]
     private PlayerManager playerManager;
 
-    // Start is called before the first frame update
-    void Start()
+    private List<PlayerController> playersSeen = new List<PlayerController>();
+    private Transform currentFollowedPlayer;
+    private float distanceWithCurrentPlayer = 0.0f;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            playersSeen.Add(other.GetComponent<PlayerController>());
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            playersSeen.Remove(other.GetComponent<PlayerController>());
+    }
+
+    private void UpdateList(int index, List<PlayerController> players)
+    {
+        players.Remove(playersSeen[index]);
+        if (players.Count > 0)
+        {
+            currentFollowedPlayer = players[index].self;
+            distanceWithCurrentPlayer = Vector3.Distance(currentFollowedPlayer.position, self.position);
+        }
+        else
+            currentFollowedPlayer = null;
+    }
+
+    private void FindEnemyDestination()
+    {
+        List<PlayerController> players = new List<PlayerController>(playersSeen);
+        // Set the first player as the nearest (in case if the player is alone on the map)
+        currentFollowedPlayer = playersSeen[0].self;
+        float distance = Vector3.Distance(currentFollowedPlayer.position, self.position);
+        int i = 0;
+        while (i < players.Count)
+        {
+            if (players[i].isOnBoat)
+            {
+                UpdateList(i, players);
+                continue;
+            }
+            ++i;
+        }
+    }
+
+    private Transform isTheNearestPlayer(List<PlayerController> comparedPlayers, Transform player, float distance)
     {
         
+        for (int i = 1; i < comparedPlayers.Count; ++i)
+        {
+            // Check if this player is nearest from the previous one
+            float comparedDistance = Vector3.Distance(comparedPlayers[i].self.position, self.position);
+            if (comparedDistance < distance)
+            {
+                // Update values
+                distance = comparedDistance;
+                player = comparedPlayers[i].self;
+            }
+        }
+        return player;
     }
 
     // Update is called once per frame
     void Update()
     {
-        List<PlayerController> players = playerManager.players;
-        Debug.Log(players.Count);
-        if (players.Count > 0)
+        if (playersSeen.Count > 0)
         {
-            Transform nearestPlayer = players[0].self;
-            float nearestDistance = Vector3.Distance(nearestPlayer.position, self.position);
-            for (int i = 1; i < players.Count; ++i)
+            FindEnemyDestination();
+            if (currentFollowedPlayer != null)
             {
-                float distance = Vector3.Distance(players[i].self.position, self.position);
-                if (distance < nearestDistance)
-                {
-                    nearestDistance = distance;
-                    nearestPlayer = players[i].self;
-                }
+                selfNavMesh.isStopped = false;
+                selfNavMesh.SetDestination(currentFollowedPlayer.position);
             }
-            selfNavMesh.SetDestination(nearestPlayer.position);
+            else
+            {
+                Debug.Log("saucisse");
+                selfNavMesh.isStopped = true;
+                selfNavMesh.ResetPath();
+            }
         }
     }
 }
