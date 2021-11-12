@@ -51,19 +51,22 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         }
     }
 
-    private bool isNearestThan(PlayerController comparedPlayer)
+    private void isNearestThan(PlayerController comparedPlayer)
     {
 
         // Check if this player is nearest from the previous one
         float comparedDistance = Vector3.Distance(comparedPlayer.self.position, self.position);
         if (comparedDistance < distanceWithCurrentPlayer)
-            return false;
-        return true;
+        {
+            nextFollowedPlayer = comparedPlayer;
+            distanceWithCurrentPlayer = comparedDistance;
+        }
     }
 
     private void FindEnemyDestination()
     {
         List<PlayerController> playerTests = new List<PlayerController>(playersSeen);
+        // Remove players with that are on boat and which has too many enemies already attacking him
         RemoveNonAttackablePlayer(playerTests);
         if (playerTests.Count == 0)
         {
@@ -76,7 +79,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         for (int i = 0; i < playerTests.Count; ++i)
         {
             // Check if he is the nearest players
-            if (isNearestThan(playerTests[i])) continue;
+            isNearestThan(playerTests[i]);
         }
     }
 
@@ -86,21 +89,30 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         if (playersSeen.Count > 0)
         {
             FindEnemyDestination();
+            // If he found a player to attack
             if (nextFollowedPlayer != null)
             {
                 selfNavMesh.isStopped = false;
+                // Set destination to the player
                 selfNavMesh.SetDestination(nextFollowedPlayer.self.position);
+                // He's attacking the player if he's not already doing it
                 if (!nextFollowedPlayer.isAttackedBy.Contains(this))
                     nextFollowedPlayer.isAttackedBy.Add(this);
+
+                // Update current Player
                 currentFollowedPlayer = nextFollowedPlayer;
             }
+            // If he didn't find a player to attack
             else
             {
+                // Stop him + remove destination
                 selfNavMesh.isStopped = true;
                 selfNavMesh.ResetPath();
-                currentFollowedPlayer = null;
+
+                // He is not attacking the current player anymore
                 if (currentFollowedPlayer != null && currentFollowedPlayer.isAttackedBy.Contains(this))
                     currentFollowedPlayer.isAttackedBy.Remove(this);
+                currentFollowedPlayer = null;
             }
         }
     }
