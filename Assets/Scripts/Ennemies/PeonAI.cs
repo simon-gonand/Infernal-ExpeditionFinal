@@ -14,7 +14,6 @@ public class PeonAI : MonoBehaviour, EnemiesAI
 
     [System.NonSerialized]
     public List<PlayerController> playersSeen = new List<PlayerController>();
-    private List<PlayerController> playerTests = new List<PlayerController>();
     private PlayerController currentFollowedPlayer = null;
     private PlayerController nextFollowedPlayer;
     private float distanceWithCurrentPlayer = 0.0f;
@@ -28,7 +27,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         Destroy(this.gameObject);
     }
 
-    private void RemovePlayerOnBoat(List<PlayerController> players)
+    private void RemoveNonAttackablePlayer(List<PlayerController> players)
     {
         for(int i = 0; i < players.Count; ++i)
         {
@@ -36,26 +35,36 @@ public class PeonAI : MonoBehaviour, EnemiesAI
             {
                 players.Remove(players[i]);
                 --i;
+                continue;
+            }
+
+            if (players[i].isAttackedBy.Count >= peonPreset.howManyCanAttackAPlayer)
+            {
+                // Check if the enemy already attack player
+                if (players[i] != currentFollowedPlayer)
+                {
+                    players.Remove(players[i]);
+                    --i;
+                    continue;
+                }
             }
         }
     }
 
-    private void UpdateList()
+    private bool isNearestThan(PlayerController comparedPlayer)
     {
-        playerTests.Remove(playerTests[0]);
-        if (playerTests.Count > 0)
-        {
-            nextFollowedPlayer = playerTests[0];
-            distanceWithCurrentPlayer = Vector3.Distance(nextFollowedPlayer.self.position, self.position);
-        }
-        else
-            nextFollowedPlayer = null;
+
+        // Check if this player is nearest from the previous one
+        float comparedDistance = Vector3.Distance(comparedPlayer.self.position, self.position);
+        if (comparedDistance < distanceWithCurrentPlayer)
+            return false;
+        return true;
     }
 
     private void FindEnemyDestination()
     {
-        playerTests = new List<PlayerController>(playersSeen);
-        RemovePlayerOnBoat(playerTests);
+        List<PlayerController> playerTests = new List<PlayerController>(playersSeen);
+        RemoveNonAttackablePlayer(playerTests);
         if (playerTests.Count == 0)
         {
             nextFollowedPlayer = null;
@@ -64,38 +73,11 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         // Set the first player as the nearest (in case if the player is alone on the map)
         nextFollowedPlayer = playerTests[0];
         distanceWithCurrentPlayer = Vector3.Distance(nextFollowedPlayer.self.position, self.position);
-        for (int i = 0; i < playersSeen.Count && playerTests.Count != 0; ++i)
+        for (int i = 0; i < playerTests.Count; ++i)
         {
-            // if player already is attacked by to many enemies
-            if (playerTests[0].isAttackedBy.Count >= peonPreset.howManyCanAttackAPlayer)
-            {
-                // Check if the enemy already attack player
-                if (playerTests[0] != currentFollowedPlayer)
-                {
-                    UpdateList();
-                    continue;
-                }
-            }
-            /*// Check if he is the nearest players
-            if (!isTheNearestPlayer(playerTests))
-            {
-                UpdateList();
-                continue;
-            }*/
+            // Check if he is the nearest players
+            if (isNearestThan(playerTests[i])) continue;
         }
-    }
-
-    private bool isTheNearestPlayer(List<PlayerController> comparedPlayers)
-    {
-        
-        for (int i = 1; i < comparedPlayers.Count; ++i)
-        {
-            // Check if this player is nearest from the previous one
-            float comparedDistance = Vector3.Distance(comparedPlayers[i].self.position, self.position);
-            if (comparedDistance < distanceWithCurrentPlayer)
-                return false;
-        }
-        return true;
     }
 
     // Update is called once per frame
