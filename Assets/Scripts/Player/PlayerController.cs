@@ -18,7 +18,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform attackPoint;
 
+
+    [Header ("Anim info")]
     public Animator anim;
+    public GameObject sword;
 
     private Vector2 playerMovementInput = Vector2.zero;
 
@@ -174,6 +177,8 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         // Play attack animation
+        anim.SetTrigger("attack");
+
         Collider[] hit = Physics.OverlapSphere(attackPoint.position, playerPreset.attackRange);
         foreach(Collider hitted in hit)
         {
@@ -224,13 +229,19 @@ public class PlayerController : MonoBehaviour
         if (selfRigidBody.velocity.y > 0.5f && _isSwimming)
         {
             selfRigidBody.useGravity = true;
+
             Vector3 resetRotation = playerGraphics.eulerAngles;
             resetRotation.x = 0.0f;
             playerGraphics.eulerAngles = resetRotation;
+
             _isSwimming = false;
+
+            anim.SetBool("isSwiming", false);
+            sword.SetActive(true);
         }
         else if (_isSwimming)
         {
+            
             // There is no gravity so the player should not move on the y-axis
             _movement.y = 0.0f;
             selfRigidBody.velocity = _movement;
@@ -238,6 +249,7 @@ public class PlayerController : MonoBehaviour
             Vector3 upPlayer = self.position;
             upPlayer.y = NotDeepWater.instance.self.position.y;
             self.position = upPlayer;
+            
         }
     }
 
@@ -247,7 +259,12 @@ public class PlayerController : MonoBehaviour
         float currentSpeed = playerPreset.playerGroundSpeed;
         // If player is swimming reduce speed
         if (_isSwimming && _isInWater)
+        {
             currentSpeed = playerPreset.playerSwimSpeed;
+
+            anim.SetBool("isSwiming", true);
+            sword.SetActive(false);
+        }
         // If player is in not deep water reduce speed
         else if (_isInWater)
             currentSpeed = playerPreset.playerInNotDeepWaterSpeed;
