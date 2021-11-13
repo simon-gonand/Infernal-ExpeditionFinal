@@ -13,11 +13,6 @@ public class DeepWater : MonoBehaviour
 
             player.isSwimming = true;
 
-            // Rotate player as he his swimming
-            Vector3 swimRotation = player.playerGraphics.eulerAngles;
-            swimRotation.x = 75.0f;
-            player.playerGraphics.eulerAngles = swimRotation;
-
             // Remove gravity to avoid to fall inside the water
             player.selfRigidBody.useGravity = false;
             player.selfRigidBody.velocity = Vector3.zero;
