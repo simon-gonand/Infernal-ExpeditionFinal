@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [Header ("Anim info")]
     public Animator anim;
     public GameObject sword;
+    public GameObject stunFx;
 
     private Vector2 playerMovementInput = Vector2.zero;
 
@@ -212,6 +213,11 @@ public class PlayerController : MonoBehaviour
     private IEnumerator StunWait()
     {
         _isStun = true;
+
+        anim.SetBool("isStun", true);
+        anim.SetTrigger("startStun");
+        stunFx.SetActive(true);
+
         // Update stun bool in animation for animation ?
         if (isCarrying)
         {
@@ -220,7 +226,10 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player is stun");
         yield return new WaitForSeconds(playerPreset.stunTime);
         Debug.Log("Player is not stun anymore");
+
         _isStun = false;
+        anim.SetBool("isStun", false);
+        stunFx.SetActive(false);
         // Update stun bool in animation ?
     }
 
