@@ -9,7 +9,17 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ChildrenList>
-						<Event Name="P_Steps" ID="{2AD082CD-0FBC-4ACC-8F78-05613CE57EE1}"/>
+						<Event Name="P_Steps" ID="{2AD082CD-0FBC-4ACC-8F78-05613CE57EE1}">
+							<ChildrenList>
+								<Action Name="" ID="{AA099269-E27E-4490-8822-A9E65C61BAE8}" ShortID="510511603">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Footsteps" ID="{75DCA35D-EBD8-4C0F-BC27-7F1436DE8E51}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="P_Swim" ID="{B1B2823D-B207-4BB8-9E5C-F26BEDE85B54}"/>
 						<Event Name="P_Dash" ID="{CFF6DD99-F808-4B52-93E7-43362255F42E}"/>
 						<Event Name="P_Attack" ID="{1A335906-41AD-4B6A-86BC-E96E08537BA6}"/>
