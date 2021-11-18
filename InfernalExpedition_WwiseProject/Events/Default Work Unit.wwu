@@ -22,7 +22,17 @@
 						</Event>
 						<Event Name="P_Swim" ID="{B1B2823D-B207-4BB8-9E5C-F26BEDE85B54}"/>
 						<Event Name="P_Dash" ID="{CFF6DD99-F808-4B52-93E7-43362255F42E}"/>
-						<Event Name="P_Attack" ID="{1A335906-41AD-4B6A-86BC-E96E08537BA6}"/>
+						<Event Name="P_Attack" ID="{1A335906-41AD-4B6A-86BC-E96E08537BA6}">
+							<ChildrenList>
+								<Action Name="" ID="{91838AF9-51E3-4C4E-8377-0E8D8004413B}" ShortID="959946812">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Sword_Attack" ID="{C264C892-4F52-4D67-BDE5-ACB67DB953CC}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="P_SwordImpact" ID="{F9909DB4-B69B-4675-87AC-878DCB5A4821}"/>
 						<Event Name="P_Damages" ID="{D771C463-A0E1-4222-A09D-73E5A6B15724}"/>
 						<Event Name="P_Stunt" ID="{F3DE8B14-C967-42D4-AA78-37BA031673BC}"/>
