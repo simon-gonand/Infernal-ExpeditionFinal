@@ -45,6 +45,13 @@
 					</PropertyList>
 					<ChildrenList>
 						<SwitchContainer Name="Player_Footsteps" ID="{75DCA35D-EBD8-4C0F-BC27-7F1436DE8E51}" ShortID="268201679">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -75,6 +82,11 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>12</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -85,7 +97,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Footsteps_Grass_1" ID="{CD5FE8D0-CBCD-4F21-A46C-DC5744DCB6E4}" ShortID="370494528">
+										<Sound Name="Footsteps_Grass_1" ID="{FBBEEA8B-E7F1-48D1-A571-4B2D139F89E1}" ShortID="276453373">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -95,12 +107,11 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Footsteps_Grass_1" ID="{92A0F3AC-9477-44B0-801D-67B6CEF5E7B9}">
+												<AudioFileSource Name="Footsteps_Grass_1" ID="{C1C2BF3B-25BD-4535-B113-13CF85FF4D7E}">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="0.00416404011461318"/>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.0968139326647564"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0216266163793104"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="0.00936909025787966"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0198041487068965"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Footsteps_Grass_1.wav</AudioFile>
@@ -111,10 +122,10 @@
 											</ChildrenList>
 											<ObjectLists/>
 											<ActiveSourceList>
-												<ActiveSource Name="Footsteps_Grass_1" ID="{92A0F3AC-9477-44B0-801D-67B6CEF5E7B9}" Platform="Linked"/>
+												<ActiveSource Name="Footsteps_Grass_1" ID="{C1C2BF3B-25BD-4535-B113-13CF85FF4D7E}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Footsteps_Grass_2" ID="{03A57916-0C7F-469B-8869-E2AA785D1C4F}" ShortID="1051594424">
+										<Sound Name="Footsteps_Grass_2" ID="{C681B695-1CA9-4A43-9F56-36D0BA57E9E7}" ShortID="775519211">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -124,11 +135,11 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Footsteps_Grass_2" ID="{53EC1B52-6C66-42D5-B808-E749EC5B2230}">
+												<AudioFileSource Name="Footsteps_Grass_2" ID="{31F761A9-AF6D-4614-B3F4-35DB846C2258}">
 													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.108840377268386"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.032286099137931"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="0.0115528892072588"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0381878591954023"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Footsteps_Grass_2.wav</AudioFile>
@@ -139,10 +150,10 @@
 											</ChildrenList>
 											<ObjectLists/>
 											<ActiveSourceList>
-												<ActiveSource Name="Footsteps_Grass_2" ID="{53EC1B52-6C66-42D5-B808-E749EC5B2230}" Platform="Linked"/>
+												<ActiveSource Name="Footsteps_Grass_2" ID="{31F761A9-AF6D-4614-B3F4-35DB846C2258}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Footsteps_Grass_3" ID="{1FF31EFC-6B57-43B2-8C2D-E8F662546386}" ShortID="697547825">
+										<Sound Name="Footsteps_Grass_3" ID="{5004C592-9A45-4E28-B272-6851B66FAFA1}" ShortID="1134555">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -152,12 +163,11 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Footsteps_Grass_3" ID="{9A8B0691-C4B6-42F9-8F07-A265215991B5}">
+												<AudioFileSource Name="Footsteps_Grass_3" ID="{6C11388F-7B6C-4879-86F7-F93FF1498ADB}">
 													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="0.0132963228271251"/>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.125542024832856"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0205149365421456"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="0.00680276981852913"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0016661877394636"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Footsteps_Grass_3.wav</AudioFile>
@@ -168,17 +178,10 @@
 											</ChildrenList>
 											<ObjectLists/>
 											<ActiveSourceList>
-												<ActiveSource Name="Footsteps_Grass_3" ID="{9A8B0691-C4B6-42F9-8F07-A265215991B5}" Platform="Linked"/>
+												<ActiveSource Name="Footsteps_Grass_3" ID="{6C11388F-7B6C-4879-86F7-F93FF1498ADB}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Footsteps_Grass_4" ID="{52151A9D-145A-4A5E-AA37-87F797D2B5DC}" ShortID="107976062">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>4</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
+										<Sound Name="Footsteps_Grass_4" ID="{70370A2F-CA32-4D23-817F-6ECD674D5C93}" ShortID="129813123">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -188,11 +191,11 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Footsteps_Grass_4" ID="{0FB0AC58-39F5-4299-8C7E-0B824D19F9E1}">
+												<AudioFileSource Name="Footsteps_Grass_4" ID="{9374DD1B-0882-469C-B768-24BE35A80F61}">
 													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.144807485673352"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0351313158524904"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="0.00689559455587393"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.00624865301724138"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Footsteps_Grass_4.wav</AudioFile>
@@ -203,17 +206,10 @@
 											</ChildrenList>
 											<ObjectLists/>
 											<ActiveSourceList>
-												<ActiveSource Name="Footsteps_Grass_4" ID="{0FB0AC58-39F5-4299-8C7E-0B824D19F9E1}" Platform="Linked"/>
+												<ActiveSource Name="Footsteps_Grass_4" ID="{9374DD1B-0882-469C-B768-24BE35A80F61}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Footsteps_Grass_5" ID="{1B20ED9F-B5DC-4194-A6CE-7510AC1061B1}" ShortID="943187415">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>5</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
+										<Sound Name="Footsteps_Grass_5" ID="{B93852EE-93FD-4F12-BD38-679DF551E02B}" ShortID="252320595">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -223,10 +219,11 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Footsteps_Grass_5" ID="{EBBE8B78-2738-4628-997D-0FA5CFD19B8F}">
+												<AudioFileSource Name="Footsteps_Grass_5" ID="{69499DA1-525B-4C88-9F2D-43953A770EFA}">
 													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.033952423591213"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0274920977011494"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.00926816930076628"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Footsteps_Grass_5.wav</AudioFile>
@@ -237,7 +234,7 @@
 											</ChildrenList>
 											<ObjectLists/>
 											<ActiveSourceList>
-												<ActiveSource Name="Footsteps_Grass_5" ID="{EBBE8B78-2738-4628-997D-0FA5CFD19B8F}" Platform="Linked"/>
+												<ActiveSource Name="Footsteps_Grass_5" ID="{69499DA1-525B-4C88-9F2D-43953A770EFA}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
@@ -371,6 +368,9 @@
 								<RandomSequenceContainer Name="Stone_Footsteps" ID="{F1FE2403-4A46-4387-8E46-CBCAA8D1C313}" ShortID="829049042">
 									<PropertyList>
 										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>1200</Value>
+											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{19BA8841-3740-4BD0-9DE6-795E6085141C}">
@@ -518,6 +518,9 @@
 								<RandomSequenceContainer Name="Wood_Footsteps" ID="{70BA880A-0880-4403-91EB-C47CB3B8EDB3}" ShortID="650588569">
 									<PropertyList>
 										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>1000</Value>
+											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{101032D3-EBA6-4C67-B360-51A4038A1CBC}">
@@ -686,9 +689,6 @@
 								<RandomSequenceContainer Name="Water_Footsteps" ID="{5DE6DF89-F986-446B-9152-856CA07020D4}" ShortID="629526008">
 									<PropertyList>
 										<Property Name="Pitch" Type="int32">
-											<ValueList>
-												<Value>200</Value>
-											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{6EB4E4FE-AB77-4E7D-8014-9FFE3D218E97}">
@@ -802,6 +802,9 @@
 								<RandomSequenceContainer Name="Sea_Footsteps" ID="{AFA7055A-A682-4716-A6BA-35B0D6CEE523}" ShortID="469083729">
 									<PropertyList>
 										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>600</Value>
+											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{6BACBBA8-429A-47B1-AFFB-2E15FC0745D7}">
@@ -1033,7 +1036,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="SwordSlash_1" ID="{DA2C1B2D-17D7-4718-A1C7-81BA433C12A1}" ShortID="543811747">
+								<Sound Name="SwordSlash_1" ID="{4B81D8B6-AC34-4C9B-9C00-86254F300CE6}" ShortID="646197590">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -1043,7 +1046,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="SwordSlash_1" ID="{E60F7DE6-B55B-447C-BB20-405E4DDD5079}">
+										<AudioFileSource Name="SwordSlash_1" ID="{4D4332A8-C2DE-4E4C-9647-678DE3C8B33D}">
 											<Language>SFX</Language>
 											<AudioFile>SwordSlash_1.wav</AudioFile>
 											<MediaIDList>
@@ -1053,10 +1056,10 @@
 									</ChildrenList>
 									<ObjectLists/>
 									<ActiveSourceList>
-										<ActiveSource Name="SwordSlash_1" ID="{E60F7DE6-B55B-447C-BB20-405E4DDD5079}" Platform="Linked"/>
+										<ActiveSource Name="SwordSlash_1" ID="{4D4332A8-C2DE-4E4C-9647-678DE3C8B33D}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="SwordSlash_2" ID="{F7F02D9D-F192-4784-8F41-4C4049B882EB}" ShortID="602752872">
+								<Sound Name="SwordSlash_2" ID="{64E1A092-40EA-479F-9D1A-073AD05B2C24}" ShortID="774730009">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -1066,7 +1069,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="SwordSlash_2" ID="{6E4B79BC-6D48-4FE8-8C0A-642BA06D85AD}">
+										<AudioFileSource Name="SwordSlash_2" ID="{1B4F4D46-FB24-475D-921B-D28126304C6C}">
 											<Language>SFX</Language>
 											<AudioFile>SwordSlash_2.wav</AudioFile>
 											<MediaIDList>
@@ -1076,10 +1079,10 @@
 									</ChildrenList>
 									<ObjectLists/>
 									<ActiveSourceList>
-										<ActiveSource Name="SwordSlash_2" ID="{6E4B79BC-6D48-4FE8-8C0A-642BA06D85AD}" Platform="Linked"/>
+										<ActiveSource Name="SwordSlash_2" ID="{1B4F4D46-FB24-475D-921B-D28126304C6C}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="SwordSlash_3" ID="{5EFC195B-FDC6-4637-8281-4710A2654F4D}" ShortID="397901850">
+								<Sound Name="SwordSlash_3" ID="{2FE9C572-88E4-4EA8-A097-1EC6B7BFC455}" ShortID="436785315">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -1089,7 +1092,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="SwordSlash_3" ID="{E53DD121-081D-4373-B744-892B6E33EF09}">
+										<AudioFileSource Name="SwordSlash_3" ID="{49750A14-5269-4DEC-AD76-15797F27BA94}">
 											<Language>SFX</Language>
 											<AudioFile>SwordSlash_3.wav</AudioFile>
 											<MediaIDList>
@@ -1099,35 +1102,58 @@
 									</ChildrenList>
 									<ObjectLists/>
 									<ActiveSourceList>
-										<ActiveSource Name="SwordSlash_3" ID="{E53DD121-081D-4373-B744-892B6E33EF09}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="SwordSlash_4" ID="{BD9EE210-D9F3-4948-A3F5-195531A9F1BA}" ShortID="668480340">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="SwordSlash_4" ID="{F714D283-DC6B-462E-BF80-2F49B5320BD0}">
-											<Language>SFX</Language>
-											<AudioFile>SwordSlash_4.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="1042569493"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ObjectLists/>
-									<ActiveSourceList>
-										<ActiveSource Name="SwordSlash_4" ID="{F714D283-DC6B-462E-BF80-2F49B5320BD0}" Platform="Linked"/>
+										<ActiveSource Name="SwordSlash_3" ID="{49750A14-5269-4DEC-AD76-15797F27BA94}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
 							<ObjectLists/>
 						</RandomSequenceContainer>
+						<Sound Name="Player_Carry" ID="{3B947E8F-A139-4E31-8124-A7CBED8B2D23}" ShortID="555834391">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-400</Value>
+									</ValueList>
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{17BD593A-768B-4F57-9BAF-3DB86293DF39}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="250"/>
+													<Property Name="Min" Type="Real64" Value="-250"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Player_Carry" ID="{B1AB0715-8321-419B-B53E-A3C2039C0C01}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.023955938697318"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.0515445402298851"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Player_Carry.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="251700846"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Player_Carry" ID="{B1AB0715-8321-419B-B53E-A3C2039C0C01}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

@@ -11,12 +11,12 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="140182633">
+		<SoundBank Id="393239870" Language="SFX" Hash="2881674070">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
 			<IncludedEvents>
-				<Event Id="491820422" Name="P_Attack" ObjectPath="\Events\Default Work Unit\Players\P_Attack" DurationType="OneShot" DurationMin="0.191374" DurationMax="0.280919">
+				<Event Id="491820422" Name="P_Attack" ObjectPath="\Events\Default Work Unit\Players\P_Attack" DurationType="OneShot" DurationMin="0.111844" DurationMax="0.284734">
 					<IncludedMemoryFiles>
 						<File Id="116536701" Language="SFX">
 							<ShortName>SwordSlash_2.wav</ShortName>
@@ -30,13 +30,17 @@
 							<ShortName>SwordSlash_3.wav</ShortName>
 							<Path>SFX\SwordSlash_3_10C4C929.wem</Path>
 						</File>
-						<File Id="1042569493" Language="SFX">
-							<ShortName>SwordSlash_4.wav</ShortName>
-							<Path>SFX\SwordSlash_4_10C4C929.wem</Path>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="72805415" Name="P_Carry" ObjectPath="\Events\Default Work Unit\Players\P_Carry" DurationType="OneShot" DurationMin="0.030086" DurationMax="0.040159">
+					<IncludedMemoryFiles>
+						<File Id="251700846" Language="SFX">
+							<ShortName>Player_Carry.wav</ShortName>
+							<Path>SFX\Player_Carry_8975DEAF.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3280416103" Name="P_Steps" ObjectPath="\Events\Default Work Unit\Players\P_Steps" DurationType="OneShot" DurationMin="0.097460" DurationMax="1.340781">
+				<Event Id="3280416103" Name="P_Steps" ObjectPath="\Events\Default Work Unit\Players\P_Steps" DurationType="OneShot" DurationMin="0.050171" DurationMax="0.948075">
 					<IncludedMemoryFiles>
 						<File Id="169199" Language="SFX">
 							<ShortName>Footsteps_Sea_1.wav</ShortName>
@@ -56,7 +60,7 @@
 						</File>
 						<File Id="184082747" Language="SFX">
 							<ShortName>Footsteps_Grass_3.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_3_DA8D8E3D.wem</Path>
+							<Path>SFX\Footsteps_Grass_3_50E4DE65.wem</Path>
 						</File>
 						<File Id="211454236" Language="SFX">
 							<ShortName>Footsteps_Wood_2.wav</ShortName>
@@ -68,7 +72,7 @@
 						</File>
 						<File Id="447688110" Language="SFX">
 							<ShortName>Footsteps_Grass_1.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_1_BF6A0223.wem</Path>
+							<Path>SFX\Footsteps_Grass_1_FD331B0E.wem</Path>
 						</File>
 						<File Id="455967247" Language="SFX">
 							<ShortName>Footsteps_Sea_2.wav</ShortName>
@@ -88,7 +92,7 @@
 						</File>
 						<File Id="582227307" Language="SFX">
 							<ShortName>Footsteps_Grass_4.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_4_A42469EB.wem</Path>
+							<Path>SFX\Footsteps_Grass_4_DBF1C2A6.wem</Path>
 						</File>
 						<File Id="582572203" Language="SFX">
 							<ShortName>Footsteps_Stone_4.wav</ShortName>
@@ -104,7 +108,7 @@
 						</File>
 						<File Id="685704333" Language="SFX">
 							<ShortName>Footsteps_Grass_5.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_5_BB936D4E.wem</Path>
+							<Path>SFX\Footsteps_Grass_5_16BB5DAF.wem</Path>
 						</File>
 						<File Id="769848089" Language="SFX">
 							<ShortName>Footsteps_Sand_2.wav</ShortName>
@@ -116,7 +120,7 @@
 						</File>
 						<File Id="921998026" Language="SFX">
 							<ShortName>Footsteps_Grass_2.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_2_C27F4726.wem</Path>
+							<Path>SFX\Footsteps_Grass_2_B2BDFEC2.wem</Path>
 						</File>
 						<File Id="930304750" Language="SFX">
 							<ShortName>Footsteps_Sand_3.wav</ShortName>
