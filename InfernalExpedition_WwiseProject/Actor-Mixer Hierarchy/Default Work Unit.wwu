@@ -241,6 +241,24 @@
 									<ObjectLists/>
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="Sand_Footsteps" ID="{FAFC07E2-8C79-4504-8974-3263613B317C}" ShortID="283520166">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>1000</Value>
+											</ValueList>
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{DB5D373C-2B5A-4D4F-9B7E-9A8703BFA5B1}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="600"/>
+															<Property Name="Min" Type="Real64" Value="-600"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -694,8 +712,8 @@
 													<Modifier Name="" ID="{6EB4E4FE-AB77-4E7D-8014-9FFE3D218E97}">
 														<PropertyList>
 															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="400"/>
-															<Property Name="Min" Type="Real64" Value="-400"/>
+															<Property Name="Max" Type="Real64" Value="800"/>
+															<Property Name="Min" Type="Real64" Value="-800"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
@@ -711,7 +729,14 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Footsteps_Water_1" ID="{C3564057-B40F-4061-B1B9-FCF83498B7EE}" ShortID="482037121">
+										<Sound Name="Footsteps_Water_1" ID="{1031C727-BD76-4008-B646-29AB855323FE}" ShortID="913087581">
+											<PropertyList>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>20</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -721,12 +746,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Footsteps_Water_1" ID="{CE3F96A7-CE1B-4BAD-A395-9D1A8765E7B8}">
-													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="0.112075573065903"/>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.128521445200573"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-													</PropertyList>
+												<AudioFileSource Name="Footsteps_Water_1" ID="{8269C9F8-776E-4236-8253-A78D4ED96A93}">
 													<Language>SFX</Language>
 													<AudioFile>Footsteps_Water_1.wav</AudioFile>
 													<MediaIDList>
@@ -736,10 +756,10 @@
 											</ChildrenList>
 											<ObjectLists/>
 											<ActiveSourceList>
-												<ActiveSource Name="Footsteps_Water_1" ID="{CE3F96A7-CE1B-4BAD-A395-9D1A8765E7B8}" Platform="Linked"/>
+												<ActiveSource Name="Footsteps_Water_1" ID="{8269C9F8-776E-4236-8253-A78D4ED96A93}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Footsteps_Water_2" ID="{DBA1DB9B-345D-479B-B93F-F46FADF155C3}" ShortID="335715644">
+										<Sound Name="Footsteps_Water_2" ID="{FC2DFD14-FC27-4D9C-9586-F9A44BB1417C}" ShortID="832203345">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -749,12 +769,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Footsteps_Water_2" ID="{BDCB0032-E08D-47B9-9F9D-7920AE2D8DF1}">
-													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="0.0426597719675262"/>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.0876254775549188"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-													</PropertyList>
+												<AudioFileSource Name="Footsteps_Water_2" ID="{FD69BC50-AED6-441F-882D-207575F56F5A}">
 													<Language>SFX</Language>
 													<AudioFile>Footsteps_Water_2.wav</AudioFile>
 													<MediaIDList>
@@ -764,10 +779,17 @@
 											</ChildrenList>
 											<ObjectLists/>
 											<ActiveSourceList>
-												<ActiveSource Name="Footsteps_Water_2" ID="{BDCB0032-E08D-47B9-9F9D-7920AE2D8DF1}" Platform="Linked"/>
+												<ActiveSource Name="Footsteps_Water_2" ID="{FD69BC50-AED6-441F-882D-207575F56F5A}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Footsteps_Water_3" ID="{EA99C775-9DD5-4135-81AC-EED71A33D817}" ShortID="175687696">
+										<Sound Name="Footsteps_Water_3" ID="{18EB3428-090A-4F76-A209-772482F81530}" ShortID="99417102">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>880</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -777,13 +799,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Footsteps_Water_3" ID="{558D7CA2-C533-43C1-BDFC-6191C441D712}">
-													<PropertyList>
-														<Property Name="FadeInDuration" Type="Real64" Value="0.0318482121537727"/>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.2271142997851"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.303863270057307"/>
-													</PropertyList>
+												<AudioFileSource Name="Footsteps_Water_3" ID="{C8B1A2FD-0CFE-40A9-9D99-8CDA4086F400}">
 													<Language>SFX</Language>
 													<AudioFile>Footsteps_Water_3.wav</AudioFile>
 													<MediaIDList>
@@ -793,7 +809,7 @@
 											</ChildrenList>
 											<ObjectLists/>
 											<ActiveSourceList>
-												<ActiveSource Name="Footsteps_Water_3" ID="{558D7CA2-C533-43C1-BDFC-6191C441D712}" Platform="Linked"/>
+												<ActiveSource Name="Footsteps_Water_3" ID="{C8B1A2FD-0CFE-40A9-9D99-8CDA4086F400}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
@@ -1154,6 +1170,143 @@
 								<ActiveSource Name="Player_Carry" ID="{B1AB0715-8321-419B-B53E-A3C2039C0C01}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<SwitchContainer Name="Player_FallImpact" ID="{653CB05F-C382-4D2B-A8F4-564DBA84AA20}" ShortID="236134746">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="DefaultSwitchOrState">
+									<ObjectRef Name="Sea" ID="{6CA64AE8-43F4-45B2-84C3-E863CC6A80A8}" WorkUnitID="{C622AC45-4AD9-4B70-B944-D240967DDE98}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="Ground_Type" ID="{9F5DF1C2-B671-4D8E-8E85-D4F9280FAAF2}" WorkUnitID="{C622AC45-4AD9-4B70-B944-D240967DDE98}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Player_SoftFallImpact" ID="{DC20603F-31F8-4F3C-A947-60C12290F53E}" ShortID="921871490">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-15</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Player_FallImpact" ID="{1AF38398-2B21-46AB-98F7-BFBDCFB4D77F}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.112969947318008"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.112969947318008"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Player_FallImpact.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="977442422"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Player_FallImpact" ID="{1AF38398-2B21-46AB-98F7-BFBDCFB4D77F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Player_HardFallImpact" ID="{F2F29BB7-B036-43A9-BEEA-2CF47449501F}" ShortID="280230526">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-8</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Player_HardFallImpact" ID="{EF8C0181-E51F-42CA-A7CE-5808776E3F6D}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0402180465756705"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0032986410440613"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Player_HardFallImpact.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="777445666"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Player_HardFallImpact" ID="{EF8C0181-E51F-42CA-A7CE-5808776E3F6D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+							<GroupingInfo>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="Player_SoftFallImpact" ID="{DC20603F-31F8-4F3C-A947-60C12290F53E}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="Player_HardFallImpact" ID="{F2F29BB7-B036-43A9-BEEA-2CF47449501F}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Wood" ID="{A88B9C25-6274-4829-89BE-C2657DDE0792}"/>
+										<ItemList>
+											<ItemRef Name="Player_HardFallImpact" ID="{F2F29BB7-B036-43A9-BEEA-2CF47449501F}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Water" ID="{DB5ACB67-45A9-4F99-9E86-8838C021826F}"/>
+										<ItemList>
+											<ItemRef Name="Player_SoftFallImpact" ID="{DC20603F-31F8-4F3C-A947-60C12290F53E}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Grass" ID="{4AB8966C-302E-4E6A-996E-8212A8C2B951}"/>
+										<ItemList>
+											<ItemRef Name="Player_SoftFallImpact" ID="{DC20603F-31F8-4F3C-A947-60C12290F53E}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Stone" ID="{9F131577-2182-471B-8C9D-AD6B234FE58F}"/>
+										<ItemList>
+											<ItemRef Name="Player_HardFallImpact" ID="{F2F29BB7-B036-43A9-BEEA-2CF47449501F}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Sand" ID="{DA5EB6CE-8504-438D-8854-B84B3928213C}"/>
+										<ItemList>
+											<ItemRef Name="Player_SoftFallImpact" ID="{DC20603F-31F8-4F3C-A947-60C12290F53E}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Sea" ID="{6CA64AE8-43F4-45B2-84C3-E863CC6A80A8}"/>
+										<ItemList>
+											<ItemRef Name="Player_SoftFallImpact" ID="{DC20603F-31F8-4F3C-A947-60C12290F53E}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

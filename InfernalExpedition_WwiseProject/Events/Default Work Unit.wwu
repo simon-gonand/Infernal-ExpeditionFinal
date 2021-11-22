@@ -39,10 +39,36 @@
 						<Event Name="P_OutOfBond" ID="{8724340B-298F-4E9C-94A8-0A3C244FB65B}"/>
 						<Event Name="P_Death" ID="{28480997-C486-404E-9F21-F9C6CF545AAD}"/>
 						<Event Name="P_Respawn" ID="{B8367E5C-81DF-41E7-BEF8-51716DFA8984}"/>
-						<Event Name="P_Carry" ID="{C54592FA-3E4A-4A3A-8150-AEF2CECBE448}"/>
-						<Event Name="P_Drop" ID="{F39E8149-DBAF-45E0-B342-46701217C740}"/>
+						<Event Name="P_Carry" ID="{C54592FA-3E4A-4A3A-8150-AEF2CECBE448}">
+							<ChildrenList>
+								<Action Name="" ID="{76EE57DF-6176-47ED-9905-20FDD60B46E1}" ShortID="136981543">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Carry" ID="{3B947E8F-A139-4E31-8124-A7CBED8B2D23}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="P_Throw" ID="{2CB5EDE2-503D-4672-8E9C-F4A48B3E3126}"/>
-						<Event Name="P_GroundImpact" ID="{5981572F-32EA-42E3-905A-92EB54A56D01}"/>
+						<Event Name="P_GroundImpact" ID="{5981572F-32EA-42E3-905A-92EB54A56D01}">
+							<ChildrenList>
+								<Action Name="" ID="{33A5BACF-42F8-42C4-A5B7-15B0EA838473}" ShortID="357158862">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Footsteps" ID="{75DCA35D-EBD8-4C0F-BC27-7F1436DE8E51}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{B9434CEA-9D80-48D8-9A0E-8713B8A16F78}" ShortID="896087967">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_FallImpact" ID="{653CB05F-C382-4D2B-A8F4-564DBA84AA20}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Enemy" ID="{F2A14DC9-4A98-4467-969A-66A2325F51CD}" ShortID="62160447">

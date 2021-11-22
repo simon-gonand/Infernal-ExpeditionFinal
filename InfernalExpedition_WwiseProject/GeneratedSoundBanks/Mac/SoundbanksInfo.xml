@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="2881674070">
+		<SoundBank Id="393239870" Language="SFX" Hash="3683558969">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -40,7 +40,176 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3280416103" Name="P_Steps" ObjectPath="\Events\Default Work Unit\Players\P_Steps" DurationType="OneShot" DurationMin="0.050171" DurationMax="0.948075">
+				<Event Id="819302809" Name="P_GroundImpact" ObjectPath="\Events\Default Work Unit\Players\P_GroundImpact" DurationType="OneShot" DurationMin="0.085003" DurationMax="1.507198">
+					<IncludedMemoryFiles>
+						<File Id="169199" Language="SFX">
+							<ShortName>Footsteps_Sea_1.wav</ShortName>
+							<Path>SFX\Footsteps_Sea_1_0089FE84.wem</Path>
+						</File>
+						<File Id="102166623" Language="SFX">
+							<ShortName>Footsteps_Sea_4.wav</ShortName>
+							<Path>SFX\Footsteps_Sea_4_5FE2D3F1.wem</Path>
+						</File>
+						<File Id="114459288" Language="SFX">
+							<ShortName>Footsteps_Wood_3.wav</ShortName>
+							<Path>SFX\Footsteps_Wood_3_56747B60.wem</Path>
+						</File>
+						<File Id="162305526" Language="SFX">
+							<ShortName>Footsteps_Wood_1.wav</ShortName>
+							<Path>SFX\Footsteps_Wood_1_99FCEFDC.wem</Path>
+						</File>
+						<File Id="184082747" Language="SFX">
+							<ShortName>Footsteps_Grass_3.wav</ShortName>
+							<Path>SFX\Footsteps_Grass_3_50E4DE65.wem</Path>
+						</File>
+						<File Id="211454236" Language="SFX">
+							<ShortName>Footsteps_Wood_2.wav</ShortName>
+							<Path>SFX\Footsteps_Wood_2_62D000BA.wem</Path>
+						</File>
+						<File Id="382330933" Language="SFX">
+							<ShortName>Footsteps_Wood_4.wav</ShortName>
+							<Path>SFX\Footsteps_Wood_4_1A3BDF85.wem</Path>
+						</File>
+						<File Id="447688110" Language="SFX">
+							<ShortName>Footsteps_Grass_1.wav</ShortName>
+							<Path>SFX\Footsteps_Grass_1_FD331B0E.wem</Path>
+						</File>
+						<File Id="455967247" Language="SFX">
+							<ShortName>Footsteps_Sea_2.wav</ShortName>
+							<Path>SFX\Footsteps_Sea_2_97327C67.wem</Path>
+						</File>
+						<File Id="506895314" Language="SFX">
+							<ShortName>Footsteps_Sand_1.wav</ShortName>
+							<Path>SFX\Footsteps_Sand_1_F5BB8DE1.wem</Path>
+						</File>
+						<File Id="529235339" Language="SFX">
+							<ShortName>Footsteps_Stone_3.wav</ShortName>
+							<Path>SFX\Footsteps_Stone_3_00CE49DB.wem</Path>
+						</File>
+						<File Id="547652259" Language="SFX">
+							<ShortName>Footsteps_Sea_3.wav</ShortName>
+							<Path>SFX\Footsteps_Sea_3_970976F7.wem</Path>
+						</File>
+						<File Id="582227307" Language="SFX">
+							<ShortName>Footsteps_Grass_4.wav</ShortName>
+							<Path>SFX\Footsteps_Grass_4_DBF1C2A6.wem</Path>
+						</File>
+						<File Id="582572203" Language="SFX">
+							<ShortName>Footsteps_Stone_4.wav</ShortName>
+							<Path>SFX\Footsteps_Stone_4_4A32D10D.wem</Path>
+						</File>
+						<File Id="592552609" Language="SFX">
+							<ShortName>Footsteps_Stone_2.wav</ShortName>
+							<Path>SFX\Footsteps_Stone_2_702ACB39.wem</Path>
+						</File>
+						<File Id="648056530" Language="SFX">
+							<ShortName>Footsteps_Sand_4.wav</ShortName>
+							<Path>SFX\Footsteps_Sand_4_F366946E.wem</Path>
+						</File>
+						<File Id="685704333" Language="SFX">
+							<ShortName>Footsteps_Grass_5.wav</ShortName>
+							<Path>SFX\Footsteps_Grass_5_16BB5DAF.wem</Path>
+						</File>
+						<File Id="769848089" Language="SFX">
+							<ShortName>Footsteps_Sand_2.wav</ShortName>
+							<Path>SFX\Footsteps_Sand_2_1903957C.wem</Path>
+						</File>
+						<File Id="777445666" Language="SFX">
+							<ShortName>Player_HardFallImpact.wav</ShortName>
+							<Path>SFX\Player_HardFallImpact_20C2F946.wem</Path>
+						</File>
+						<File Id="817045992" Language="SFX">
+							<ShortName>Footsteps_Wood_5.wav</ShortName>
+							<Path>SFX\Footsteps_Wood_5_33DC8D56.wem</Path>
+						</File>
+						<File Id="921998026" Language="SFX">
+							<ShortName>Footsteps_Grass_2.wav</ShortName>
+							<Path>SFX\Footsteps_Grass_2_B2BDFEC2.wem</Path>
+						</File>
+						<File Id="930304750" Language="SFX">
+							<ShortName>Footsteps_Sand_3.wav</ShortName>
+							<Path>SFX\Footsteps_Sand_3_8B16D7E4.wem</Path>
+						</File>
+						<File Id="964994802" Language="SFX">
+							<ShortName>Footsteps_Water_1.wav</ShortName>
+							<Path>SFX\Footsteps_Water_1_10C4C929.wem</Path>
+						</File>
+						<File Id="965775571" Language="SFX">
+							<ShortName>Footsteps_Water_2.wav</ShortName>
+							<Path>SFX\Footsteps_Water_2_10C4C929.wem</Path>
+						</File>
+						<File Id="977442422" Language="SFX">
+							<ShortName>Player_FallImpact.wav</ShortName>
+							<Path>SFX\Player_FallImpact_2AE07FC7.wem</Path>
+						</File>
+						<File Id="1007454082" Language="SFX">
+							<ShortName>Footsteps_Water_3.wav</ShortName>
+							<Path>SFX\Footsteps_Water_3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<DefaultSwitchValue>{6CA64AE8-43F4-45B2-84C3-E863CC6A80A8}</DefaultSwitchValue>
+					<SwitchContainers>
+						<SwitchContainer SwitchValue="{4AB8966C-302E-4E6A-996E-8212A8C2B951}">
+							<Media>
+								<File Id="184082747"/>
+								<File Id="447688110"/>
+								<File Id="582227307"/>
+								<File Id="685704333"/>
+								<File Id="921998026"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{DA5EB6CE-8504-438D-8854-B84B3928213C}">
+							<Media>
+								<File Id="506895314"/>
+								<File Id="648056530"/>
+								<File Id="769848089"/>
+								<File Id="930304750"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{9F131577-2182-471B-8C9D-AD6B234FE58F}">
+							<Media>
+								<File Id="529235339"/>
+								<File Id="582572203"/>
+								<File Id="592552609"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{A88B9C25-6274-4829-89BE-C2657DDE0792}">
+							<Media>
+								<File Id="114459288"/>
+								<File Id="162305526"/>
+								<File Id="211454236"/>
+								<File Id="382330933"/>
+								<File Id="817045992"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{DB5ACB67-45A9-4F99-9E86-8838C021826F}">
+							<Media>
+								<File Id="964994802"/>
+								<File Id="965775571"/>
+								<File Id="1007454082"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{6CA64AE8-43F4-45B2-84C3-E863CC6A80A8}">
+							<Media>
+								<File Id="169199"/>
+								<File Id="102166623"/>
+								<File Id="455967247"/>
+								<File Id="547652259"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{DB5ACB67-45A9-4F99-9E86-8838C021826F}">
+							<Media>
+								<File Id="977442422"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{A88B9C25-6274-4829-89BE-C2657DDE0792}">
+							<Media>
+								<File Id="777445666"/>
+							</Media>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="3280416103" Name="P_Steps" ObjectPath="\Events\Default Work Unit\Players\P_Steps" DurationType="OneShot" DurationMin="0.050171" DurationMax="1.507198">
 					<IncludedMemoryFiles>
 						<File Id="169199" Language="SFX">
 							<ShortName>Footsteps_Sea_1.wav</ShortName>
@@ -128,68 +297,17 @@
 						</File>
 						<File Id="964994802" Language="SFX">
 							<ShortName>Footsteps_Water_1.wav</ShortName>
-							<Path>SFX\Footsteps_Water_1_EAA81855.wem</Path>
+							<Path>SFX\Footsteps_Water_1_10C4C929.wem</Path>
 						</File>
 						<File Id="965775571" Language="SFX">
 							<ShortName>Footsteps_Water_2.wav</ShortName>
-							<Path>SFX\Footsteps_Water_2_314369AB.wem</Path>
+							<Path>SFX\Footsteps_Water_2_10C4C929.wem</Path>
 						</File>
 						<File Id="1007454082" Language="SFX">
 							<ShortName>Footsteps_Water_3.wav</ShortName>
-							<Path>SFX\Footsteps_Water_3_961EC523.wem</Path>
+							<Path>SFX\Footsteps_Water_3_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
-					<DefaultSwitchValue>{DA5EB6CE-8504-438D-8854-B84B3928213C}</DefaultSwitchValue>
-					<SwitchContainers>
-						<SwitchContainer SwitchValue="{4AB8966C-302E-4E6A-996E-8212A8C2B951}">
-							<Media>
-								<File Id="184082747"/>
-								<File Id="447688110"/>
-								<File Id="582227307"/>
-								<File Id="685704333"/>
-								<File Id="921998026"/>
-							</Media>
-						</SwitchContainer>
-						<SwitchContainer SwitchValue="{DA5EB6CE-8504-438D-8854-B84B3928213C}">
-							<Media>
-								<File Id="506895314"/>
-								<File Id="648056530"/>
-								<File Id="769848089"/>
-								<File Id="930304750"/>
-							</Media>
-						</SwitchContainer>
-						<SwitchContainer SwitchValue="{9F131577-2182-471B-8C9D-AD6B234FE58F}">
-							<Media>
-								<File Id="529235339"/>
-								<File Id="582572203"/>
-								<File Id="592552609"/>
-							</Media>
-						</SwitchContainer>
-						<SwitchContainer SwitchValue="{A88B9C25-6274-4829-89BE-C2657DDE0792}">
-							<Media>
-								<File Id="114459288"/>
-								<File Id="162305526"/>
-								<File Id="211454236"/>
-								<File Id="382330933"/>
-								<File Id="817045992"/>
-							</Media>
-						</SwitchContainer>
-						<SwitchContainer SwitchValue="{DB5ACB67-45A9-4F99-9E86-8838C021826F}">
-							<Media>
-								<File Id="964994802"/>
-								<File Id="965775571"/>
-								<File Id="1007454082"/>
-							</Media>
-						</SwitchContainer>
-						<SwitchContainer SwitchValue="{6CA64AE8-43F4-45B2-84C3-E863CC6A80A8}">
-							<Media>
-								<File Id="169199"/>
-								<File Id="102166623"/>
-								<File Id="455967247"/>
-								<File Id="547652259"/>
-							</Media>
-						</SwitchContainer>
-					</SwitchContainers>
 				</Event>
 			</IncludedEvents>
 			<StateGroups>
