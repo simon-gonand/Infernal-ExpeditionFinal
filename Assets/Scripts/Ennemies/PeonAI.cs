@@ -14,6 +14,11 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     [SerializeField]
     private Transform attackPoint;
 
+    [Header("Animation Info")]
+    public Animator selfAnimator;
+    public GameObject sword;
+    private bool lockDeathAnim;
+
     [System.NonSerialized]
     public List<PlayerController> playersSeen = new List<PlayerController>();
     private PlayerController currentFollowedPlayer = null;
@@ -28,11 +33,14 @@ public class PeonAI : MonoBehaviour, EnemiesAI
 
     public void Die(PlayerController player)
     {
-        // Play die animation
         // Play die sound ?
         if (player.isAttackedBy.Contains(this))
             player.isAttackedBy.Remove(this);
-        Destroy(this.gameObject);
+
+        if (!lockDeathAnim)
+        {
+            StartCoroutine(waitBeforeDestroy());
+        }
     }
 
     private void Start()
@@ -116,6 +124,8 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     {
         if (nextFollowedPlayer != null)
         {
+            selfAnimator.SetBool("isMoving", true);
+
             selfNavMesh.isStopped = false;
             // Set destination to the player
             selfNavMesh.SetDestination(nextFollowedPlayer.self.position);
@@ -129,6 +139,8 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         // If he didn't find a player to attack
         else
         {
+            selfAnimator.SetBool("isMoving", false);
+
             // Stop him + remove destination
             selfNavMesh.isStopped = true;
             selfNavMesh.ResetPath();
@@ -161,7 +173,10 @@ public class PeonAI : MonoBehaviour, EnemiesAI
 
     private IEnumerator Attack(PlayerController player)
     {
+        selfAnimator.SetTrigger("attack");
+
         yield return new WaitForSeconds(peonPreset.launchAttackCooldown);
+
         Collider[] hit = Physics.OverlapSphere(attackPoint.position, peonPreset.attackRange);
         foreach(Collider hitted in hit)
         {
@@ -172,10 +187,18 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         }
     }
 
+    private IEnumerator waitBeforeDestroy()
+    {
+        lockDeathAnim = true;
+        selfAnimator.SetTrigger("die");
+        yield return new WaitForSeconds(3f);
+        Destroy(this.gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (playersSeen.Count > 0)
+        if (playersSeen.Count > 0 && !lockDeathAnim)
         {
             FindEnemyDestination();
             // If he found a player to follow
