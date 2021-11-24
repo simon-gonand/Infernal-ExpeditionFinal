@@ -282,7 +282,7 @@ public class PathEditor : Editor
     private void CalculateLink(Link link)
     {
         NavMeshPath linkPath = new NavMeshPath();
-        if (NavMesh.CalculatePath(link.start.transform.position, link.end.transform.position, NavMesh.AllAreas, linkPath))
+        if (NavMesh.CalculatePath(link.start.transform.position, link.end.transform.position, 1 << NavMesh.GetAreaFromName("Navigable"), linkPath))
         {
             if (link.pathPoints.Count > 0)
                 link.pathPoints.Clear();
