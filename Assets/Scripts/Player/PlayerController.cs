@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     [Header("Self References")]
     public Transform self;
     public Rigidbody selfRigidBody;
-    public FixedJoint fixedJoint;
     [SerializeField]
     private PlayerPresets playerPreset;
 

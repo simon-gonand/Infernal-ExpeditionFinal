@@ -130,12 +130,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 4223509153915057737}
   selfRigidBody: {fileID: 2660306658829606644}
-  fixedJoint: {fileID: 0}
   playerPreset: {fileID: 11400000, guid: 6e8ed946df7976d4e939d4c409344454, type: 2}
   playerGraphics: {fileID: 6422961954565724638}
   attackPoint: {fileID: 7237748085361382517}
   anim: {fileID: 6369893880993116260}
-  sword: {fileID: 1184319731462197454}
+  sword: {fileID: 3071259018702469682}
   stunFx: {fileID: 2739789684704048623}
 --- !u!114 &4223509153915057750
 MonoBehaviour:
@@ -536,8 +535,8 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 95983461456139580, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
   m_PrefabInstance: {fileID: 6427596332761916760}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1184319731462197454 stripped
+--- !u!1 &3071259018702469682 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 5286351069434803606, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8335077698377949034, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
   m_PrefabInstance: {fileID: 6427596332761916760}
   m_PrefabAsset: {fileID: 0}
