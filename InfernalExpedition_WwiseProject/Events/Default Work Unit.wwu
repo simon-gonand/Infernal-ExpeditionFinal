@@ -9,20 +9,66 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ChildrenList>
-						<Event Name="P_Steps" ID="{2AD082CD-0FBC-4ACC-8F78-05613CE57EE1}"/>
+						<Event Name="P_Steps" ID="{2AD082CD-0FBC-4ACC-8F78-05613CE57EE1}">
+							<ChildrenList>
+								<Action Name="" ID="{AA099269-E27E-4490-8822-A9E65C61BAE8}" ShortID="510511603">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Footsteps" ID="{75DCA35D-EBD8-4C0F-BC27-7F1436DE8E51}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="P_Swim" ID="{B1B2823D-B207-4BB8-9E5C-F26BEDE85B54}"/>
 						<Event Name="P_Dash" ID="{CFF6DD99-F808-4B52-93E7-43362255F42E}"/>
-						<Event Name="P_Attack" ID="{1A335906-41AD-4B6A-86BC-E96E08537BA6}"/>
+						<Event Name="P_Attack" ID="{1A335906-41AD-4B6A-86BC-E96E08537BA6}">
+							<ChildrenList>
+								<Action Name="" ID="{91838AF9-51E3-4C4E-8377-0E8D8004413B}" ShortID="959946812">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Sword_Attack" ID="{C264C892-4F52-4D67-BDE5-ACB67DB953CC}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="P_SwordImpact" ID="{F9909DB4-B69B-4675-87AC-878DCB5A4821}"/>
 						<Event Name="P_Damages" ID="{D771C463-A0E1-4222-A09D-73E5A6B15724}"/>
 						<Event Name="P_Stunt" ID="{F3DE8B14-C967-42D4-AA78-37BA031673BC}"/>
 						<Event Name="P_OutOfBond" ID="{8724340B-298F-4E9C-94A8-0A3C244FB65B}"/>
 						<Event Name="P_Death" ID="{28480997-C486-404E-9F21-F9C6CF545AAD}"/>
 						<Event Name="P_Respawn" ID="{B8367E5C-81DF-41E7-BEF8-51716DFA8984}"/>
-						<Event Name="P_Carry" ID="{C54592FA-3E4A-4A3A-8150-AEF2CECBE448}"/>
-						<Event Name="P_Drop" ID="{F39E8149-DBAF-45E0-B342-46701217C740}"/>
+						<Event Name="P_Carry" ID="{C54592FA-3E4A-4A3A-8150-AEF2CECBE448}">
+							<ChildrenList>
+								<Action Name="" ID="{76EE57DF-6176-47ED-9905-20FDD60B46E1}" ShortID="136981543">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Carry" ID="{3B947E8F-A139-4E31-8124-A7CBED8B2D23}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="P_Throw" ID="{2CB5EDE2-503D-4672-8E9C-F4A48B3E3126}"/>
-						<Event Name="P_GroundImpact" ID="{5981572F-32EA-42E3-905A-92EB54A56D01}"/>
+						<Event Name="P_GroundImpact" ID="{5981572F-32EA-42E3-905A-92EB54A56D01}">
+							<ChildrenList>
+								<Action Name="" ID="{33A5BACF-42F8-42C4-A5B7-15B0EA838473}" ShortID="357158862">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Footsteps" ID="{75DCA35D-EBD8-4C0F-BC27-7F1436DE8E51}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{B9434CEA-9D80-48D8-9A0E-8713B8A16F78}" ShortID="896087967">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_FallImpact" ID="{653CB05F-C382-4D2B-A8F4-564DBA84AA20}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Enemy" ID="{F2A14DC9-4A98-4467-969A-66A2325F51CD}" ShortID="62160447">
@@ -73,17 +119,16 @@
 						<Event Name="W_ChestDrop" ID="{386ADD4D-4A6B-4627-A5A0-6731D6891A74}"/>
 					</ChildrenList>
 				</Folder>
-				<Folder Name="Jingles" ID="{78377B4A-AA1C-4DAE-8BBC-1192F06194DF}" ShortID="164147398">
-					<PropertyList>
-						<Property Name="Color" Type="int16" Value="21"/>
-						<Property Name="OverrideColor" Type="bool" Value="True"/>
-					</PropertyList>
-				</Folder>
 				<Folder Name="Ambients" ID="{8951F274-C2B5-429D-AF17-5DD13276A75E}" ShortID="1033771644">
 					<PropertyList>
 						<Property Name="Color" Type="int16" Value="16"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
+					<ChildrenList>
+						<Event Name="Forest_Ambient" ID="{3438B74B-267F-46A6-BBA9-A39C33023080}"/>
+						<Event Name="Beach_Ambient" ID="{5689551D-75AC-4347-9616-1D60758E0A88}"/>
+						<Event Name="Sea_Ambient" ID="{7EAD759C-7A29-4BF7-924C-E40ADFF5CD5C}"/>
+					</ChildrenList>
 				</Folder>
 			</ChildrenList>
 		</WorkUnit>

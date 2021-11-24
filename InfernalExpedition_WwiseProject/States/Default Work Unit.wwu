@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{C622AC45-4AD9-4B70-B944-D240967DDE98}" SchemaVersion="103">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{C622AC45-4AD9-4B70-B944-D240967DDE98}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{C622AC45-4AD9-4B70-B944-D240967DDE98}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="Ground_Type" ID="{9F5DF1C2-B671-4D8E-8E85-D4F9280FAAF2}">
+					<ChildrenList>
+						<State Name="None" ID="{0E1BC8D7-5D98-4D72-B8FC-48FA7BACDDC3}"/>
+						<State Name="Sand" ID="{DA5EB6CE-8504-438D-8854-B84B3928213C}"/>
+						<State Name="Grass" ID="{4AB8966C-302E-4E6A-996E-8212A8C2B951}"/>
+						<State Name="Stone" ID="{9F131577-2182-471B-8C9D-AD6B234FE58F}"/>
+						<State Name="Water" ID="{DB5ACB67-45A9-4F99-9E86-8838C021826F}"/>
+						<State Name="Wood" ID="{A88B9C25-6274-4829-89BE-C2657DDE0792}"/>
+						<State Name="Sea" ID="{6CA64AE8-43F4-45B2-84C3-E863CC6A80A8}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>

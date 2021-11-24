@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{A5E240D4-3A5D-4AA3-A772-9C54EF7B8E74}" SchemaVersion="103">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{A5E240D4-3A5D-4AA3-A772-9C54EF7B8E74}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{A5E240D4-3A5D-4AA3-A772-9C54EF7B8E74}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="Global" ID="{8CC0A723-3691-42D8-AD65-A550F7E76193}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Run_Theme" ID="{9F1ADFAC-E258-43AE-BE23-3A1E28F62293}" WorkUnitID="{C29C7A8B-34F9-471B-876F-857EC1BCBFCE}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="P_Steps" ID="{2AD082CD-0FBC-4ACC-8F78-05613CE57EE1}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="Sea" ID="{6CA64AE8-43F4-45B2-84C3-E863CC6A80A8}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+				<SoundcasterSession Name="Player" ID="{C1E4D348-E1ED-4932-B168-A982B008BAEF}">
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="None" ID="{0E1BC8D7-5D98-4D72-B8FC-48FA7BACDDC3}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+				<SoundcasterSession Name="Music" ID="{56AE2FA2-8D9A-4762-AE6C-F954DCAD5FAE}">
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="None" ID="{0E1BC8D7-5D98-4D72-B8FC-48FA7BACDDC3}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>
