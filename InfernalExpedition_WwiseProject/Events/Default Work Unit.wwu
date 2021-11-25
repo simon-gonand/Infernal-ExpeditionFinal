@@ -21,7 +21,17 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="P_Swim" ID="{B1B2823D-B207-4BB8-9E5C-F26BEDE85B54}"/>
-						<Event Name="P_Dash" ID="{CFF6DD99-F808-4B52-93E7-43362255F42E}"/>
+						<Event Name="P_Dash" ID="{CFF6DD99-F808-4B52-93E7-43362255F42E}">
+							<ChildrenList>
+								<Action Name="" ID="{88385B71-AA41-4061-ADA6-6E8051A68331}" ShortID="49795000">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Dash" ID="{ECF20E5E-3B5E-4DC8-8675-68D97E510522}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="P_Attack" ID="{1A335906-41AD-4B6A-86BC-E96E08537BA6}">
 							<ChildrenList>
 								<Action Name="" ID="{91838AF9-51E3-4C4E-8377-0E8D8004413B}" ShortID="959946812">
@@ -35,7 +45,27 @@
 						</Event>
 						<Event Name="P_SwordImpact" ID="{F9909DB4-B69B-4675-87AC-878DCB5A4821}"/>
 						<Event Name="P_Damages" ID="{D771C463-A0E1-4222-A09D-73E5A6B15724}"/>
-						<Event Name="P_Stunt" ID="{F3DE8B14-C967-42D4-AA78-37BA031673BC}"/>
+						<Event Name="P_Stunt" ID="{F3DE8B14-C967-42D4-AA78-37BA031673BC}">
+							<ChildrenList>
+								<Action Name="" ID="{C5F75393-1BB3-4E16-8DE0-254FD607E5CA}" ShortID="80504306">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Stunt" ID="{50D4D310-7EB2-4490-B309-B79FAA39496B}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{B2005F73-0D95-4DEE-9FAD-C3B7344C3D63}" ShortID="821948834">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Stunt" ID="{50D4D310-7EB2-4490-B309-B79FAA39496B}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="P_OutOfBond" ID="{8724340B-298F-4E9C-94A8-0A3C244FB65B}"/>
 						<Event Name="P_Death" ID="{28480997-C486-404E-9F21-F9C6CF545AAD}"/>
 						<Event Name="P_Respawn" ID="{B8367E5C-81DF-41E7-BEF8-51716DFA8984}"/>

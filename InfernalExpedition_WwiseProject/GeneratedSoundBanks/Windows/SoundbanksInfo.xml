@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="3683558969">
+		<SoundBank Id="393239870" Language="SFX" Hash="1700933592">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -36,7 +36,23 @@
 					<IncludedMemoryFiles>
 						<File Id="251700846" Language="SFX">
 							<ShortName>Player_Carry.wav</ShortName>
-							<Path>SFX\Player_Carry_8975DEAF.wem</Path>
+							<Path>SFX\Player_Carry_0DE424E0.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3919743498" Name="P_Dash" ObjectPath="\Events\Default Work Unit\Players\P_Dash" DurationType="OneShot" DurationMin="0.477874" DurationMax="0.668169">
+					<IncludedMemoryFiles>
+						<File Id="46587669" Language="SFX">
+							<ShortName>PlayerDash_3.wav</ShortName>
+							<Path>SFX\PlayerDash_3_10C4C929.wem</Path>
+						</File>
+						<File Id="87450858" Language="SFX">
+							<ShortName>PlayerDash_1.wav</ShortName>
+							<Path>SFX\PlayerDash_1_10C4C929.wem</Path>
+						</File>
+						<File Id="152162454" Language="SFX">
+							<ShortName>PlayerDash_2.wav</ShortName>
+							<Path>SFX\PlayerDash_2_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -60,7 +76,7 @@
 						</File>
 						<File Id="184082747" Language="SFX">
 							<ShortName>Footsteps_Grass_3.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_3_50E4DE65.wem</Path>
+							<Path>SFX\Footsteps_Grass_3_58D9F6D7.wem</Path>
 						</File>
 						<File Id="211454236" Language="SFX">
 							<ShortName>Footsteps_Wood_2.wav</ShortName>
@@ -72,7 +88,7 @@
 						</File>
 						<File Id="447688110" Language="SFX">
 							<ShortName>Footsteps_Grass_1.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_1_FD331B0E.wem</Path>
+							<Path>SFX\Footsteps_Grass_1_D9B2837B.wem</Path>
 						</File>
 						<File Id="455967247" Language="SFX">
 							<ShortName>Footsteps_Sea_2.wav</ShortName>
@@ -92,7 +108,7 @@
 						</File>
 						<File Id="582227307" Language="SFX">
 							<ShortName>Footsteps_Grass_4.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_4_DBF1C2A6.wem</Path>
+							<Path>SFX\Footsteps_Grass_4_F1979B73.wem</Path>
 						</File>
 						<File Id="582572203" Language="SFX">
 							<ShortName>Footsteps_Stone_4.wav</ShortName>
@@ -108,7 +124,7 @@
 						</File>
 						<File Id="685704333" Language="SFX">
 							<ShortName>Footsteps_Grass_5.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_5_16BB5DAF.wem</Path>
+							<Path>SFX\Footsteps_Grass_5_A2E4F32A.wem</Path>
 						</File>
 						<File Id="769848089" Language="SFX">
 							<ShortName>Footsteps_Sand_2.wav</ShortName>
@@ -116,7 +132,7 @@
 						</File>
 						<File Id="777445666" Language="SFX">
 							<ShortName>Player_HardFallImpact.wav</ShortName>
-							<Path>SFX\Player_HardFallImpact_20C2F946.wem</Path>
+							<Path>SFX\Player_HardFallImpact_006CA702.wem</Path>
 						</File>
 						<File Id="817045992" Language="SFX">
 							<ShortName>Footsteps_Wood_5.wav</ShortName>
@@ -124,7 +140,7 @@
 						</File>
 						<File Id="921998026" Language="SFX">
 							<ShortName>Footsteps_Grass_2.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_2_B2BDFEC2.wem</Path>
+							<Path>SFX\Footsteps_Grass_2_9AB8FF2A.wem</Path>
 						</File>
 						<File Id="930304750" Language="SFX">
 							<ShortName>Footsteps_Sand_3.wav</ShortName>
@@ -140,7 +156,7 @@
 						</File>
 						<File Id="977442422" Language="SFX">
 							<ShortName>Player_FallImpact.wav</ShortName>
-							<Path>SFX\Player_FallImpact_2AE07FC7.wem</Path>
+							<Path>SFX\Player_FallImpact_576287D3.wem</Path>
 						</File>
 						<File Id="1007454082" Language="SFX">
 							<ShortName>Footsteps_Water_3.wav</ShortName>
@@ -229,7 +245,7 @@
 						</File>
 						<File Id="184082747" Language="SFX">
 							<ShortName>Footsteps_Grass_3.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_3_50E4DE65.wem</Path>
+							<Path>SFX\Footsteps_Grass_3_58D9F6D7.wem</Path>
 						</File>
 						<File Id="211454236" Language="SFX">
 							<ShortName>Footsteps_Wood_2.wav</ShortName>
@@ -241,7 +257,7 @@
 						</File>
 						<File Id="447688110" Language="SFX">
 							<ShortName>Footsteps_Grass_1.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_1_FD331B0E.wem</Path>
+							<Path>SFX\Footsteps_Grass_1_D9B2837B.wem</Path>
 						</File>
 						<File Id="455967247" Language="SFX">
 							<ShortName>Footsteps_Sea_2.wav</ShortName>
@@ -261,7 +277,7 @@
 						</File>
 						<File Id="582227307" Language="SFX">
 							<ShortName>Footsteps_Grass_4.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_4_DBF1C2A6.wem</Path>
+							<Path>SFX\Footsteps_Grass_4_F1979B73.wem</Path>
 						</File>
 						<File Id="582572203" Language="SFX">
 							<ShortName>Footsteps_Stone_4.wav</ShortName>
@@ -277,7 +293,7 @@
 						</File>
 						<File Id="685704333" Language="SFX">
 							<ShortName>Footsteps_Grass_5.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_5_16BB5DAF.wem</Path>
+							<Path>SFX\Footsteps_Grass_5_A2E4F32A.wem</Path>
 						</File>
 						<File Id="769848089" Language="SFX">
 							<ShortName>Footsteps_Sand_2.wav</ShortName>
@@ -289,7 +305,7 @@
 						</File>
 						<File Id="921998026" Language="SFX">
 							<ShortName>Footsteps_Grass_2.wav</ShortName>
-							<Path>SFX\Footsteps_Grass_2_B2BDFEC2.wem</Path>
+							<Path>SFX\Footsteps_Grass_2_9AB8FF2A.wem</Path>
 						</File>
 						<File Id="930304750" Language="SFX">
 							<ShortName>Footsteps_Sand_3.wav</ShortName>
@@ -306,6 +322,14 @@
 						<File Id="1007454082" Language="SFX">
 							<ShortName>Footsteps_Water_3.wav</ShortName>
 							<Path>SFX\Footsteps_Water_3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3383744642" Name="P_Stunt" ObjectPath="\Events\Default Work Unit\Players\P_Stunt" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="991773503" Language="SFX">
+							<ShortName>Player_Stunt.wav</ShortName>
+							<Path>SFX\Player_Stunt_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
