@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class PlayerManager : MonoBehaviour
 
     private List<PlayerController> _players = new List<PlayerController>();
     public List<PlayerController> players { get { return _players; } }
+
+    public CinemachineTargetGroup targetGroup;
+    private int count;
 
     private void Awake()
     {
@@ -57,5 +61,9 @@ public class PlayerManager : MonoBehaviour
         playerTransform.position = playerSpawnPosition;
         playerTransform.SetParent(BoatManager.instance.self);
         _players.Add(playerInput.gameObject.GetComponent<PlayerController>());
+
+
+        targetGroup.m_Targets[count+1].target = playerInput.gameObject.transform;
+        count++;
     }
 }
