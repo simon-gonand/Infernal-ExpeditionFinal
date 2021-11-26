@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 _movement;
     public Vector3 movement { get { return _movement; } set { _movement = value; } }
 
+    private Vector3 collisionDirection;
+
     [System.NonSerialized]
     public List<EnemiesAI> isAttackedBy = new List<EnemiesAI>();
 
@@ -60,6 +62,39 @@ public class PlayerController : MonoBehaviour
 
     private bool _isStun = false;
     public bool isStun { get { return _isStun; } }
+    #endregion
+
+    #region Collision
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+        if (_isCarrying && collision.collider.GetComponent<IInteractable>() != interactingWith)
+        {
+            collisionDirection = collision.GetContact(0).normal;
+            if (collision.collider.GetType() == typeof(TerrainCollider)) {
+                if (!Physics.Raycast(self.position, collisionDirection, 0.1f))
+                    return;
+            }
+            Treasure treasure = interactingWith as Treasure;
+            treasure.isColliding = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (_isCarrying && collision.collider.GetComponent<IInteractable>() != interactingWith)
+        {
+            if (collision.collider.GetType() == typeof(TerrainCollider))
+            {
+                if (!Physics.Raycast(self.position, collisionDirection, 0.1f))
+                    return;
+            }
+            Treasure treasure = interactingWith as Treasure;
+            treasure.isColliding = false;
+        }
+    }
+
     #endregion
 
     #region InputsManagement
@@ -286,12 +321,12 @@ public class PlayerController : MonoBehaviour
         _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
 
-        if (_isCarrying && _transportedTreasure.playerInteractingWith.Count > 1)
+        if (_isCarrying)
         {
             if ((_transportedTreasure.selfRigidbody.velocity.x < 0.1f || _transportedTreasure.selfRigidbody.velocity.x > 0.1f) ||
                 (_transportedTreasure.selfRigidbody.velocity.z < 0.1f || _transportedTreasure.selfRigidbody.velocity.z > 0.1f))
             {
-                _transportedTreasure.UpdatePlayerMovement(this, playerGraphics);
+                _transportedTreasure.UpdatePlayerMovement(this);
                 _transportedTreasure.UpdatePlayerRotation(this, playerGraphics);
             }
         }
@@ -302,10 +337,13 @@ public class PlayerController : MonoBehaviour
             selfRigidBody.velocity = _movement;
         }
 
+        // Player can't go up
+        if (selfRigidBody.velocity.y > 0)
+            selfRigidBody.velocity = new Vector3(selfRigidBody.velocity.x, 0.0f, selfRigidBody.velocity.z);
+
         // If velocity on Y is equal to 0.0 then it means that the player is swimming
         // if not then it means he must deal with gravity
         UpdateSwimming();
-            
 
         // Set the rotation of the player according to his movements
         if (_movement.x != 0 || _movement.z != 0)
