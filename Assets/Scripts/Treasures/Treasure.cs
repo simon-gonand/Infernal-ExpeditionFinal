@@ -69,10 +69,16 @@ public class Treasure : MonoBehaviour, IInteractable
         lastPosition = self.position;
     }
 
-    public void UpdatePlayerRotation(PlayerController player, Transform playerGraphics)
+    public void UpdatePlayerRotation(PlayerController player, Transform playerTransform)
     {
-        if (associateColliders[player] != null)
-            playerGraphics.forward = associateColliders[player].transform.forward;
+        if (_playerInteractingWith.Count == 1)
+        {
+            Vector3 playerOffset = self.position - playerTransform.position;
+            self.position = playerTransform.position + playerTransform.forward * playerOffset.magnitude;
+        }
+        else
+            if (associateColliders[player] != null)
+                playerTransform.forward = associateColliders[player].transform.forward;
     }
 
     public void UpdatePlayerMovement(PlayerController player)
@@ -224,8 +230,6 @@ public class Treasure : MonoBehaviour, IInteractable
         if (isLoadingLaunch)
         {
             isLoadingLaunch = false;
-            // Remove the parent
-            self.SetParent(null);
 
             // Enable rigidbody
             selfRigidbody.isKinematic = false;
@@ -267,9 +271,12 @@ public class Treasure : MonoBehaviour, IInteractable
         associateColliders[player].GetComponent<BoxCollider>().enabled = true;
         associateColliders.Remove(player);
 
+        player.playerGraphics.forward = player.self.forward;
+
         // Update speed malus
         //ApplySpeedMalus();
-
+        if (_playerInteractingWith.Count == 1)
+            _playerInteractingWith[0].playerGraphics.forward = self.forward;
         if (_playerInteractingWith.Count < 1)
         {
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);

@@ -140,6 +140,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming)
         {
+            anim.SetBool("isDashing", true);
             selfRigidBody.AddForce(self.forward * playerPreset.dashSpeed, ForceMode.Impulse);
             
             nextDash = Time.time + playerPreset.dashCooldown;
@@ -149,7 +150,6 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DashTimer()
     {
-        anim.SetBool("isDashing", true);
         yield return new WaitForSeconds(playerPreset.dashTime);
         selfRigidBody.velocity = Vector3.zero;
         anim.SetBool("isDashing", false);
@@ -321,7 +321,7 @@ public class PlayerController : MonoBehaviour
         _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
 
-        if (_isCarrying)
+        if (_isCarrying && transportedTreasure.playerInteractingWith.Count > 1)
         {
             if ((_transportedTreasure.selfRigidbody.velocity.x < 0.1f || _transportedTreasure.selfRigidbody.velocity.x > 0.1f) ||
                 (_transportedTreasure.selfRigidbody.velocity.z < 0.1f || _transportedTreasure.selfRigidbody.velocity.z > 0.1f))
@@ -333,7 +333,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             if (_isCarrying)
-                _transportedTreasure.UpdatePlayerRotation(this, playerGraphics);
+                _transportedTreasure.UpdatePlayerRotation(this, self);
             selfRigidBody.velocity = _movement;
         }
 
