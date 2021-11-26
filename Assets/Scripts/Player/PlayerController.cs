@@ -321,20 +321,20 @@ public class PlayerController : MonoBehaviour
         _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
 
-        if (_isCarrying && transportedTreasure.playerInteractingWith.Count > 1)
+        selfRigidBody.velocity = _movement;
+        if (_isCarrying)
         {
-            if ((_transportedTreasure.selfRigidbody.velocity.x < 0.1f || _transportedTreasure.selfRigidbody.velocity.x > 0.1f) ||
-                (_transportedTreasure.selfRigidbody.velocity.z < 0.1f || _transportedTreasure.selfRigidbody.velocity.z > 0.1f))
+            _transportedTreasure.UpdatePlayerMovement(this);
+            if (transportedTreasure.playerInteractingWith.Count > 1)
             {
-                _transportedTreasure.UpdatePlayerMovement(this);
-                _transportedTreasure.UpdatePlayerRotation(this, playerGraphics);
+                if ((_transportedTreasure.selfRigidbody.velocity.x < 0.1f || _transportedTreasure.selfRigidbody.velocity.x > 0.1f) ||
+                    (_transportedTreasure.selfRigidbody.velocity.z < 0.1f || _transportedTreasure.selfRigidbody.velocity.z > 0.1f))
+                {
+                    _transportedTreasure.UpdatePlayerRotation(this, playerGraphics);
+                }
             }
-        }
-        else
-        {
-            if (_isCarrying)
+            else
                 _transportedTreasure.UpdatePlayerRotation(this, self);
-            selfRigidBody.velocity = _movement;
         }
 
         // Player can't go up

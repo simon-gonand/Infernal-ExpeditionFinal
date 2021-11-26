@@ -73,8 +73,11 @@ public class Treasure : MonoBehaviour, IInteractable
     {
         if (_playerInteractingWith.Count == 1)
         {
-            Vector3 playerOffset = self.position - playerTransform.position;
-            self.position = playerTransform.position + playerTransform.forward * playerOffset.magnitude;
+            if (!_isColliding)
+            {
+                Vector3 playerOffset = self.position - playerTransform.position;
+                self.position = playerTransform.position + playerTransform.forward * playerOffset.magnitude;
+            }
         }
         else
             if (associateColliders[player] != null)
@@ -83,6 +86,12 @@ public class Treasure : MonoBehaviour, IInteractable
 
     public void UpdatePlayerMovement(PlayerController player)
     {
+        if (_playerInteractingWith.Count == 1)
+        {
+            if (_isColliding)
+                player.selfRigidBody.velocity = Vector3.zero;
+            return;
+        }
         if (associateColliders[player] != null)
         {
             Vector3 newPlayerPos = associateColliders[player].transform.position;
@@ -353,9 +362,11 @@ public class Treasure : MonoBehaviour, IInteractable
             }
             else
             {
+
                 foreach (PlayerController player in _playerInteractingWith)
                 {
-                    associateColliders[player].GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
+                    if (_playerInteractingWith.Count > 1)
+                        associateColliders[player].GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
                 }
                 self.position = lastPosition;
             }
