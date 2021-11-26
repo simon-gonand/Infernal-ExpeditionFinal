@@ -12,7 +12,6 @@ public class HoldManager : MonoBehaviour
             // Play feedback
 
             ScoreManager.instance.AddPoint(1);
-            ScoreManager.instance.FullScoreUpdate();
 
             Destroy(other.gameObject);
         }

@@ -32,10 +32,9 @@ public class ScoreManager : MonoBehaviour
     public Image actualStarFiller;
     public Image nextStartFiller;
 
-    [Space]
-    public bool gotBronzeStar;
-    public bool gotSilverStar;
-    public bool gotGoldStar;
+    [HideInInspector]public bool gotBronzeStar;
+    [HideInInspector] public bool gotSilverStar;
+    [HideInInspector] public bool gotGoldStar;
 
     private int scoreNeedForNextStar;
     private int scoreOfGainStar;
@@ -44,6 +43,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
+        #region Set instance
         if (instance == null)
         {
             instance = this;
@@ -52,6 +52,7 @@ public class ScoreManager : MonoBehaviour
         {
             Debug.LogWarning("Multiple ScoreManager in the scene");
         }
+        #endregion
     }
 
     private void Start()
@@ -62,19 +63,26 @@ public class ScoreManager : MonoBehaviour
     public void AddPoint(int point)
     {
         actualScore += point;
+
+        UiScoreUpdate();
     }
+    public void UiScoreUpdate()
+    {
+        ScoreTextUpdate();
+        SliderUpdate();
+        StarsUpdate();
+    }
+
 
     private void ScoreTextUpdate()
     {
         scoreText.text = actualScore.ToString();
     }
-
     private void SliderUpdate()
     {
         scoreSlider.value = actualScore;
     }
-
-    private void StarUpdate()
+    private void StarsUpdate()
     {
         if (actualScore - scoreOfGainStar >= scoreNeedForNextStar)
         {
@@ -98,19 +106,15 @@ public class ScoreManager : MonoBehaviour
                 actualStarFiller.color = silverColor;
                 nextStartFiller.color = goldColor;
             }
-            else if ()
+            else if (!gotGoldStar)
             {
+                gotGoldStar = true;
 
+                actualStarFiller.color = goldColor;
+                nextStartFiller.color = goldColor;
             }
         }
     }
-
-    public void FullScoreUpdate()
-    {
-        ScoreUpdate();
-        SliderUpdate();
-    }
-
 
 
     private void InititScore()
@@ -124,6 +128,9 @@ public class ScoreManager : MonoBehaviour
         scoreSlider.value = actualScore;
 
         nextStartFiller.color = bronzeColor;
+        actualStarFiller.color = emptyColor;
+
+        scoreNeedForNextStar = scoreNeedForBronze;
     }
 
 }
