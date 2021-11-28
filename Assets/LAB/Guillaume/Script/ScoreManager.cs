@@ -36,8 +36,8 @@ public class ScoreManager : MonoBehaviour
     [HideInInspector] public bool gotSilverStar;
     [HideInInspector] public bool gotGoldStar;
 
-    private int scoreNeedForNextStar;
-    private int scoreOfGainStar;
+    [SerializeField]private int scoreNeedForNextStar;
+    [SerializeField]private int scoreOfGainStar;
 
     #endregion
 
@@ -69,8 +69,8 @@ public class ScoreManager : MonoBehaviour
     public void UiScoreUpdate()
     {
         ScoreTextUpdate();
-        SliderUpdate();
         StarsUpdate();
+        SliderUpdate();
     }
 
 
@@ -81,30 +81,51 @@ public class ScoreManager : MonoBehaviour
     private void SliderUpdate()
     {
         scoreSlider.value = actualScore;
+
+        /*
+        if (gotBronzeStar && !gotSilverStar)
+        {
+            scoreSlider.maxValue = scoreNeedForSilver;
+            fillSlider.color = silverColor;
+        }
+        else if (gotSilverStar && !gotGoldStar && !gotBronzeStar)
+        {
+            scoreSlider.maxValue = scoreNeedForGold;
+            fillSlider.color = goldColor;
+        }
+        */
     }
     private void StarsUpdate()
     {
-        if (actualScore - scoreOfGainStar >= scoreNeedForNextStar)
+        if (actualScore >= scoreNeedForNextStar)
         {
-            scoreOfGainStar += scoreNeedForNextStar;
+            //scoreOfGainStar += scoreNeedForNextStar;
 
             if (!gotBronzeStar)
             {
                 gotBronzeStar = true;
-                scoreOfGainStar += scoreNeedForBronze;
+                scoreOfGainStar = scoreNeedForBronze;
                 scoreNeedForNextStar = scoreNeedForSilver;
 
                 actualStarFiller.color = bronzeColor;
                 nextStartFiller.color = silverColor;
+
+
+                scoreSlider.maxValue = scoreNeedForSilver;
+                fillSlider.color = silverColor;
             }
             else if (!gotSilverStar)
             {
                 gotSilverStar = true;
-                scoreOfGainStar += scoreNeedForSilver;
+                scoreOfGainStar = scoreNeedForSilver;
                 scoreNeedForNextStar = scoreNeedForGold;
 
                 actualStarFiller.color = silverColor;
                 nextStartFiller.color = goldColor;
+
+
+                scoreSlider.maxValue = scoreNeedForGold;
+                fillSlider.color = goldColor;
             }
             else if (!gotGoldStar)
             {
