@@ -27,6 +27,8 @@ public class Treasure : MonoBehaviour, IInteractable
     private float launchForce = 0.0f;
     private Vector3 lastPosition;
     private Vector3 collisionDirection;
+    private Rigidbody collidingWith;
+    private bool isMovingWhenColliding;
 
     private bool _isInDeepWater = false;
     public bool isInDeepWater { set { _isInDeepWater = value; } }
@@ -48,6 +50,21 @@ public class Treasure : MonoBehaviour, IInteractable
         }
         collisionDirection = collision.GetContact(0).normal;
         _isColliding = true;
+        collidingWith = collision.collider.GetComponent<Rigidbody>();
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collidingWith != null && collidingWith.velocity != Vector3.zero && isMovingWhenColliding)
+        {
+            collisionDirection = -collisionDirection;
+            isMovingWhenColliding = false;
+        }
+        else if (!isMovingWhenColliding)
+        {
+            collisionDirection = -collisionDirection;
+            isMovingWhenColliding = true;
+        }
     }
 
     private void OnCollisionExit(Collision collision)

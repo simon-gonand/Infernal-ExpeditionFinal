@@ -67,14 +67,14 @@ public class PlayerController : MonoBehaviour
     private bool _isStun = false;
     public bool isStun { get { return _isStun; } }
 
-    private bool dashOnNextFrame = false;
+    private bool isDashing = false;
     #endregion
 
     #region Collision
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (dashOnNextFrame)
+        if (isDashing)
         {
             StopDash();
         }
@@ -153,9 +153,9 @@ public class PlayerController : MonoBehaviour
     // When the player pressed the dash button
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming && !dashOnNextFrame)
+        if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming && !isDashing)
         {
-            dashOnNextFrame = true;
+            isDashing = true;
             Vector3 currentVelocity = selfRigidBody.velocity;
             currentVelocity += self.forward * playerPreset.dashSpeed * Time.deltaTime * 0.1f;
             originalDashPos = self.position;
@@ -384,17 +384,16 @@ public class PlayerController : MonoBehaviour
         selfRigidBody.velocity = Vector3.zero;
         anim.SetBool("isDashing", false);
         nextDash = Time.time + playerPreset.dashCooldown;
-        dashOnNextFrame = false;
+        isDashing = false;
         dashTimer = 0.0f;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.DrawRay(self.position, self.forward * self.localScale.z * 1.0f);
         if (!_isStun)
         {
-            if (dashOnNextFrame)
+            if (isDashing)
             {
                 Dash();
                 CheckIfDashCollide();
