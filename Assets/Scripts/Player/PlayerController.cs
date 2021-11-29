@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
     private IInteractable interactingWith;
 
     private float nextDash;
+    private float dashTimer;
+    private Vector3 originalDashPos;
+    private Vector3 targetDashPos;
+
     private float nextAttack;
 
     private Treasure _transportedTreasure;
@@ -35,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 _movement;
     public Vector3 movement { get { return _movement; } set { _movement = value; } }
+
+    private Vector3 collisionDirection;
 
     [System.NonSerialized]
     public List<EnemiesAI> isAttackedBy = new List<EnemiesAI>();
@@ -60,6 +66,50 @@ public class PlayerController : MonoBehaviour
 
     private bool _isStun = false;
     public bool isStun { get { return _isStun; } }
+
+    private bool isDashing = false;
+    #endregion
+
+    #region Collision
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (isDashing)
+        {
+            StopDash();
+        }
+        if (_isCarrying && collision.collider.GetComponent<IInteractable>() != interactingWith)
+        {
+            collisionDirection = collision.GetContact(0).normal;
+            if (collision.collider.GetType() == typeof(TerrainCollider)) {
+                if (!Physics.Raycast(self.position, collisionDirection, 0.1f))
+                    return;
+            }
+            Treasure treasure = interactingWith as Treasure;
+            treasure.isColliding = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (_isCarrying && collision.collider.GetComponent<IInteractable>() != interactingWith)
+        {
+            if (collision.collider.GetType() == typeof(TerrainCollider))
+            {
+                if (!Physics.Raycast(self.position, collisionDirection, 0.1f))
+                    return;
+            }
+            Treasure treasure = interactingWith as Treasure;
+            treasure.isColliding = false;
+        }
+    }
+
+    private void CheckIfDashCollide()
+    {
+        if (Physics.Raycast(self.position, self.forward * self.localScale.z, 1.0f))
+            StopDash();
+    }
+
     #endregion
 
     #region InputsManagement
@@ -103,21 +153,14 @@ public class PlayerController : MonoBehaviour
     // When the player pressed the dash button
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming)
+        if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming && !isDashing)
         {
-            selfRigidBody.AddForce(self.forward * playerPreset.dashSpeed, ForceMode.Impulse);
-            
-            nextDash = Time.time + playerPreset.dashCooldown;
-            StartCoroutine(DashTimer());
+            isDashing = true;
+            Vector3 currentVelocity = selfRigidBody.velocity;
+            currentVelocity += self.forward * playerPreset.dashSpeed * Time.deltaTime * 0.1f;
+            originalDashPos = self.position;
+            targetDashPos = self.position + currentVelocity;
         }
-    }
-
-    IEnumerator DashTimer()
-    {
-        anim.SetBool("isDashing", true);
-        yield return new WaitForSeconds(playerPreset.dashTime);
-        selfRigidBody.velocity = Vector3.zero;
-        anim.SetBool("isDashing", false);
     }
 
     // When the player pressed the interaction button
@@ -155,6 +198,8 @@ public class PlayerController : MonoBehaviour
                             interactingWith = hit.collider.gameObject.GetComponentInParent<IInteractable>();
                             if (!interactingWith.InteractWith(this, hit.collider.gameObject))
                                 interactingWith = null;
+                            else
+                                selfRigidBody.mass = 1000;
                             break;
                         }
                     }
@@ -164,6 +209,7 @@ public class PlayerController : MonoBehaviour
             else if ((_isInteracting || _isCarrying) && context.performed)
             {
                 interactingWith.UninteractWith(this);
+                selfRigidBody.mass = 1;
             }
         }
     }
@@ -285,27 +331,29 @@ public class PlayerController : MonoBehaviour
         Vector3 calculatePlayerInput = playerMovementInput * currentSpeed * Time.deltaTime;
         _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
-
-        if (_isCarrying && _transportedTreasure.playerInteractingWith.Count > 1)
+        selfRigidBody.velocity = _movement;
+        if (_isCarrying)
         {
-            if ((_transportedTreasure.selfRigidbody.velocity.x < 0.1f || _transportedTreasure.selfRigidbody.velocity.x > 0.1f) ||
-                (_transportedTreasure.selfRigidbody.velocity.z < 0.1f || _transportedTreasure.selfRigidbody.velocity.z > 0.1f))
+            _transportedTreasure.UpdatePlayerMovement(this);
+            if (transportedTreasure.playerInteractingWith.Count > 1)
             {
-                _transportedTreasure.UpdatePlayerMovement(this, playerGraphics);
-                _transportedTreasure.UpdatePlayerRotation(this, playerGraphics);
+                if ((_transportedTreasure.selfRigidbody.velocity.x < 0.1f || _transportedTreasure.selfRigidbody.velocity.x > 0.1f) ||
+                    (_transportedTreasure.selfRigidbody.velocity.z < 0.1f || _transportedTreasure.selfRigidbody.velocity.z > 0.1f))
+                {
+                    _transportedTreasure.UpdatePlayerRotation(this, playerGraphics);
+                }
             }
+            else
+                _transportedTreasure.UpdatePlayerRotation(this, self);
         }
-        else
-        {
-            if (_isCarrying)
-                _transportedTreasure.UpdatePlayerRotation(this, playerGraphics);
-            selfRigidBody.velocity = _movement;
-        }
+
+        // Player can't go up
+        if (selfRigidBody.velocity.y > 0)
+            selfRigidBody.velocity = new Vector3(selfRigidBody.velocity.x, 0.0f, selfRigidBody.velocity.z);
 
         // If velocity on Y is equal to 0.0 then it means that the player is swimming
         // if not then it means he must deal with gravity
         UpdateSwimming();
-            
 
         // Set the rotation of the player according to his movements
         if (_movement.x != 0 || _movement.z != 0)
@@ -315,16 +363,52 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Dash()
+    {
+        anim.SetBool("isDashing", true);
+        //selfRigidBody.velocity += self.forward * playerPreset.dashSpeed;
+
+        float normalizedTimer = dashTimer / playerPreset.dashTime;
+        
+        Vector3 newPos = Vector3.Lerp(originalDashPos, targetDashPos, normalizedTimer);
+        self.position = newPos;
+
+        dashTimer += Time.deltaTime;
+
+        if (dashTimer > playerPreset.dashTime)
+        {
+            StopDash();
+        }
+    }
+
+    private void StopDash()
+    {
+        selfRigidBody.velocity = Vector3.zero;
+        anim.SetBool("isDashing", false);
+        nextDash = Time.time + playerPreset.dashCooldown;
+        isDashing = false;
+        dashTimer = 0.0f;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
         if (!_isStun)
-            PlayerMovement();
+        {
+            if (isDashing)
+            {
+                Dash();
+                CheckIfDashCollide();
+            }
+            else
+                PlayerMovement(); 
+        }
         InfoAnim();
     }
 
     void InfoAnim()
     {
+        
         if (!_isStun)
         {
             if (playerMovementInput.x != 0 || playerMovementInput.y != 0)

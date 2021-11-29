@@ -15,22 +15,125 @@ public class Treasure : MonoBehaviour, IInteractable
 
     private List<PlayerController> _playerInteractingWith = new List<PlayerController>();
     public List<PlayerController> playerInteractingWith { get { return _playerInteractingWith; } }
+
+    private List<PlayerController> playerColliding = new List<PlayerController>();
+
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
     private bool isGrounded = false;
     private bool isLoadingLaunch = false;
+    private bool _isColliding = false;
+    public bool isColliding { set { _isColliding = value; } }
+
     private float launchForce = 0.0f;
+    private Vector3 lastPosition;
+    private Vector3 positionOffsetWithPlayer;
+    private Quaternion rotationOffsetWithPlayer;
+    private Quaternion lastPlayerRotation;
+    private Vector3 collisionDirection;
+    private Rigidbody collidingWith;
+    private bool isMovingWhenColliding;
+    private bool playerDidRotate = false;
 
     private bool _isInDeepWater = false;
     public bool isInDeepWater { set { _isInDeepWater = value; } }
 
-    public void UpdatePlayerRotation(PlayerController player, Transform playerGraphics)
+    #region CollisionCallbacks
+    private void OnCollisionEnter(Collision collision)
     {
-        if (associateColliders[player] != null)
-            playerGraphics.forward = associateColliders[player].transform.forward;
+        if (collision.collider.CompareTag("Player"))
+        {
+            foreach (PlayerController player in _playerInteractingWith)
+            {
+                if (collision.collider == player.GetComponent<CapsuleCollider>())
+                {
+                    _isColliding = false;
+                    return;
+                }
+            }
+            playerColliding.Add(collision.collider.GetComponent<PlayerController>());
+        }
+        collisionDirection = collision.GetContact(0).normal;
+        _isColliding = true;
+        collidingWith = collision.collider.GetComponent<Rigidbody>();
     }
 
-    public void UpdatePlayerMovement(PlayerController player, Transform playerGraphics)
+    private void OnCollisionStay(Collision collision)
     {
+        if (collidingWith != null && collidingWith.velocity != Vector3.zero && isMovingWhenColliding)
+        {
+            collisionDirection = -collisionDirection;
+            isMovingWhenColliding = false;
+        }
+        else if (!isMovingWhenColliding)
+        {
+            collisionDirection = -collisionDirection;
+            isMovingWhenColliding = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            foreach (PlayerController player in _playerInteractingWith)
+            {
+                if (collision.collider == player.GetComponent<CapsuleCollider>())
+                    playerColliding.Remove(player);
+            }
+        }
+        _isColliding = false;
+    }
+    #endregion
+
+    private void Start()
+    {
+        lastPosition = self.position;
+    }
+
+    private Vector3 RotatePointAroundPlayer(Vector3 point, Vector3 pivot, Quaternion rotation)
+    {
+        //Get a direction from the pivot to the point
+        Vector3 dir = point - pivot;
+        //Rotate vector around pivot
+        dir = rotation * dir;
+        //Calc the rotated vector
+        point = dir + pivot;
+        //Return calculated vector
+        return point;
+    }
+
+    public void UpdatePlayerRotation(PlayerController player, Transform playerTransform)
+    {
+        if (_playerInteractingWith.Count == 1)
+        {
+            if (!_isColliding)
+            {
+                Vector3 targetPos = playerTransform.position - positionOffsetWithPlayer;
+                Quaternion targetRotation = playerTransform.rotation * rotationOffsetWithPlayer;
+                self.position = RotatePointAroundPlayer(targetPos, playerTransform.position, targetRotation);
+                self.localRotation = targetRotation;
+                if (lastPlayerRotation != playerTransform.rotation)
+                {
+                    playerDidRotate = true;
+                    lastPlayerRotation = playerTransform.rotation;
+                }
+                else
+                    playerDidRotate = false;
+            }
+        }
+        else
+            if (associateColliders[player] != null)
+                playerTransform.forward = associateColliders[player].transform.forward;
+    }
+
+    public void UpdatePlayerMovement(PlayerController player)
+    {
+        if (_playerInteractingWith.Count == 1)
+        {
+            if (_isColliding)
+                player.selfRigidBody.velocity = Vector3.zero;
+            return;
+        }
         if (associateColliders[player] != null)
         {
             Vector3 newPlayerPos = associateColliders[player].transform.position;
@@ -96,6 +199,19 @@ public class Treasure : MonoBehaviour, IInteractable
 
         player.transportedTreasure = this;
 
+        if (playerColliding.Count > 0)
+        {
+            foreach (PlayerController p in playerColliding)
+            {
+                if (p == player)
+                {
+                    playerColliding.Remove(p);
+                    _isColliding = false;
+                    break;
+                }
+            }
+        }
+
         selfRigidbody.useGravity = false;
 
         // Update speed malus
@@ -104,22 +220,21 @@ public class Treasure : MonoBehaviour, IInteractable
         // If the player is alone to carry it just snap the treasure as child of the player
         if (_playerInteractingWith.Count == 1)
         {
+            Debug.Log("saucisse");
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, true);
-            DealWithCollider(player, interactingWith);
             UpTreasure(player);
-            self.SetParent(player.self);
-            return true;
+            positionOffsetWithPlayer = _playerInteractingWith[0].self.position - self.position;
+            rotationOffsetWithPlayer = Quaternion.Inverse(_playerInteractingWith[0].self.localRotation * self.localRotation);
+            selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         }
         // If there is more than one player to carry it, snap treasures to the players' joint
-        else if (_playerInteractingWith.Count > 1 && _playerInteractingWith.Count <= category.maxPlayerCarrying)
+        if (_playerInteractingWith.Count <= category.maxPlayerCarrying)
         {
-            self.SetParent(null);
-            selfRigidbody.isKinematic = false;
             DealWithCollider(player, interactingWith);
 
             selfRigidbody.velocity = Vector3.zero;
 
-            // Snap to joints
+            // Do not apply the velocity on the first frame
             for (int i = 0; i < _playerInteractingWith.Count; ++i)
             {
                 _playerInteractingWith[i].selfRigidBody.velocity = Vector3.zero;
@@ -169,8 +284,6 @@ public class Treasure : MonoBehaviour, IInteractable
         if (isLoadingLaunch)
         {
             isLoadingLaunch = false;
-            // Remove the parent
-            self.SetParent(null);
 
             // Enable rigidbody
             selfRigidbody.isKinematic = false;
@@ -212,29 +325,22 @@ public class Treasure : MonoBehaviour, IInteractable
         associateColliders[player].GetComponent<BoxCollider>().enabled = true;
         associateColliders.Remove(player);
 
-        
-        // If the player is alone to carry the treasure, remove joints and set the player as parent of the treasure
-        if (_playerInteractingWith.Count == 1)
-        {
-            self.SetParent(_playerInteractingWith[0].self);
-            UpTreasure(_playerInteractingWith[0]);
-            selfRigidbody.isKinematic = true;
-            launchForce = 0.0f;
-        }
+        player.playerGraphics.forward = player.self.forward;
 
         // Update speed malus
         //ApplySpeedMalus();
-
+        if (_playerInteractingWith.Count == 1)
+        {
+            positionOffsetWithPlayer = _playerInteractingWith[0].self.position - self.position;
+            rotationOffsetWithPlayer = Quaternion.Inverse(_playerInteractingWith[0].self.localRotation * self.localRotation);
+        }
         if (_playerInteractingWith.Count < 1)
         {
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
 
-            // Remove parent
-            self.SetParent(null);
-
             // Enable rigidbody
             selfRigidbody.useGravity = true;
-            selfRigidbody.isKinematic = false;
+            selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
             isGrounded = false;
         }
     }
@@ -253,7 +359,7 @@ public class Treasure : MonoBehaviour, IInteractable
 
     private void TreasureMovement()
     {
-        if (_playerInteractingWith.Count > 1)
+        if (_playerInteractingWith.Count > 0)
         {
             selfRigidbody.velocity = Vector3.zero;
             foreach(PlayerController player in _playerInteractingWith)
@@ -276,8 +382,6 @@ public class Treasure : MonoBehaviour, IInteractable
             if (topTreasureY < NotDeepWater.instance.self.position.y)
                 Destroy(gameObject);
         }
-
-        // Check if the treasure is touching the ground
         if (!isGrounded)
         {
             // Set the position of the raycast
@@ -293,12 +397,29 @@ public class Treasure : MonoBehaviour, IInteractable
                 }
                 if (!hit.collider.isTrigger)
                 {
-                    // Disable rigidbody
-                    selfRigidbody.isKinematic = true;
                     isGrounded = true;
                 }
             }
             
         }
+        if (_isColliding)
+        {
+            if (Vector3.Dot(selfRigidbody.velocity, -collisionDirection) < 1 && selfRigidbody.velocity != Vector3.zero)
+            {
+                _isColliding = false;
+            }
+            else
+            {
+
+                foreach (PlayerController player in _playerInteractingWith)
+                {
+                    if (_playerInteractingWith.Count > 1)
+                        associateColliders[player].GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
+                }
+                self.position = lastPosition;
+            }
+        }
+        else
+            lastPosition = self.position;
     }
 }
