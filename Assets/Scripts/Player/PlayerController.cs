@@ -198,6 +198,8 @@ public class PlayerController : MonoBehaviour
                             interactingWith = hit.collider.gameObject.GetComponentInParent<IInteractable>();
                             if (!interactingWith.InteractWith(this, hit.collider.gameObject))
                                 interactingWith = null;
+                            else
+                                selfRigidBody.mass = 1000;
                             break;
                         }
                     }
@@ -207,6 +209,7 @@ public class PlayerController : MonoBehaviour
             else if ((_isInteracting || _isCarrying) && context.performed)
             {
                 interactingWith.UninteractWith(this);
+                selfRigidBody.mass = 1;
             }
         }
     }
