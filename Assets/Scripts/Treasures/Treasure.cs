@@ -26,6 +26,8 @@ public class Treasure : MonoBehaviour, IInteractable
 
     private float launchForce = 0.0f;
     private Vector3 lastPosition;
+    private Vector3 positionOffsetWithPlayer;
+    private Quaternion rotationOffsetWithPlayer;
     private Vector3 collisionDirection;
     private Rigidbody collidingWith;
     private bool isMovingWhenColliding;
@@ -86,14 +88,28 @@ public class Treasure : MonoBehaviour, IInteractable
         lastPosition = self.position;
     }
 
+    private Vector3 RotatePointAroundPlayer(Vector3 point, Vector3 pivot, Quaternion rotation)
+    {
+        //Get a direction from the pivot to the point
+        Vector3 dir = point - pivot;
+        //Rotate vector around pivot
+        dir = rotation * dir;
+        //Calc the rotated vector
+        point = dir + pivot;
+        //Return calculated vector
+        return point;
+    }
+
     public void UpdatePlayerRotation(PlayerController player, Transform playerTransform)
     {
         if (_playerInteractingWith.Count == 1)
         {
             if (!_isColliding)
             {
-                Vector3 playerOffset = self.position - playerTransform.position;
-                self.position = playerTransform.position + playerTransform.forward * playerOffset.magnitude;
+                Vector3 targetPos = player.self.position - positionOffsetWithPlayer;
+                Quaternion targetRotation = player.self.rotation * rotationOffsetWithPlayer;
+                self.position = RotatePointAroundPlayer(targetPos, player.self.position, targetRotation);
+                self.localRotation = targetRotation;
             }
         }
         else
@@ -196,6 +212,8 @@ public class Treasure : MonoBehaviour, IInteractable
         if (_playerInteractingWith.Count == 1)
         {
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, true);
+            positionOffsetWithPlayer = _playerInteractingWith[0].self.position - self.position;
+            rotationOffsetWithPlayer = Quaternion.Inverse(_playerInteractingWith[0].self.localRotation * self.localRotation);
             UpTreasure(player);
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         }
@@ -302,7 +320,10 @@ public class Treasure : MonoBehaviour, IInteractable
         // Update speed malus
         //ApplySpeedMalus();
         if (_playerInteractingWith.Count == 1)
-            _playerInteractingWith[0].playerGraphics.forward = self.forward;
+        {
+            positionOffsetWithPlayer = _playerInteractingWith[0].self.position - self.position;
+            rotationOffsetWithPlayer = Quaternion.Inverse(_playerInteractingWith[0].self.localRotation * self.localRotation);
+        }
         if (_playerInteractingWith.Count < 1)
         {
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
