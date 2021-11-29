@@ -49,32 +49,62 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         selfNavMesh.speed = peonPreset.speed;
     }
 
-    private void RemoveNonAttackablePlayer(List<PlayerController> players)
+    private void RemovePlayerNotOnIsland(List<PlayerController> players)
     {
-        for(int i = 0; i < players.Count; ++i)
+        for (int i = 0; i < players.Count; ++i)
         {
+            Debug.Log("------------------ PLAYER N° = " + i + "---------------------");
+            Debug.Log(players[i].isAttackedBy.Count);
             if (players[i].isOnBoat)
             {
+                players[i].isAttackedBy.Clear();
                 players.Remove(players[i]);
                 --i;
                 continue;
             }
+            Debug.Log(players[i].isAttackedBy.Count);
 
             if (players[i].isSwimming)
             {
+                players[i].isAttackedBy.Clear();
                 players.Remove(players[i]);
                 --i;
                 continue;
             }
+            Debug.Log(players[i].isAttackedBy.Count);
+            Debug.Log("---------------------------------------------------------------");
+        }
+    }
 
-            if (players[i].isAttackedBy.Count >= peonPreset.howManyCanAttackAPlayer)
+    private void RemoveNonAttackablePlayer(List<PlayerController> players)
+    {
+        RemovePlayerNotOnIsland(players);
+        if (players.Count <= 1)
+        {
+            return;
+        }
+        if (players.Count > 1)
+        {
+            for (int i = 0; i < players.Count; ++i)
             {
-                // Check if the enemy already attack player
-                if (players[i] != currentFollowedPlayer)
+                if (players[i].isAttackedBy.Count >= peonPreset.howManyCanAttackAPlayer)
                 {
-                    players.Remove(players[i]);
-                    --i;
-                    continue;
+                    // Check if the enemy already attack player
+                    if (players[i].isAttackedBy.Count > peonPreset.howManyCanAttackAPlayer)
+                    {
+                        foreach (PeonAI ai in players[i].isAttackedBy)
+                        {
+                            ai.currentFollowedPlayer = null;
+                        }
+                        players[i].isAttackedBy.Clear();
+                        continue;
+                    }
+                    if (players[i] != currentFollowedPlayer)
+                    {
+                        players.Remove(players[i]);
+                        --i;
+                        continue;
+                    }
                 }
             }
         }
@@ -150,12 +180,13 @@ public class PeonAI : MonoBehaviour, EnemiesAI
             selfNavMesh.SetDestination(nextFollowedPlayer.self.position);
             // He's attacking the player if he's not already doing it
             if (!nextFollowedPlayer.isAttackedBy.Contains(this))
+            {
                 nextFollowedPlayer.isAttackedBy.Add(this);
-
-            // Update current Player
-            currentFollowedPlayer = nextFollowedPlayer;
+                if (currentFollowedPlayer != null)
+                    currentFollowedPlayer.isAttackedBy.Remove(this);
+            }
         }
-        // If he didn't find a player to attack
+        // If he didn't find a player to attack or player is in range and no need to continue
         else
         {
             selfAnimator.SetBool("isMoving", false);
@@ -163,10 +194,12 @@ public class PeonAI : MonoBehaviour, EnemiesAI
             // Stop him + remove destination
             selfNavMesh.isStopped = true;
             selfNavMesh.ResetPath();
-            
+
             // He is not attacking the current player anymore
             if (currentFollowedPlayer != null && currentFollowedPlayer.isAttackedBy.Contains(this) && nextFollowedPlayer == null)
+            {
                 currentFollowedPlayer.isAttackedBy.Remove(this);
+            }
         }
 
         currentFollowedPlayer = nextFollowedPlayer;
@@ -208,7 +241,6 @@ public class PeonAI : MonoBehaviour, EnemiesAI
                 player.StunPlayer();
         }
         attackCoroutine = null;
-        Debug.Log("Finished");
     }
 
     private IEnumerator waitBeforeDestroy()
