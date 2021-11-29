@@ -28,9 +28,11 @@ public class Treasure : MonoBehaviour, IInteractable
     private Vector3 lastPosition;
     private Vector3 positionOffsetWithPlayer;
     private Quaternion rotationOffsetWithPlayer;
+    private Quaternion lastPlayerRotation;
     private Vector3 collisionDirection;
     private Rigidbody collidingWith;
     private bool isMovingWhenColliding;
+    private bool playerDidRotate = false;
 
     private bool _isInDeepWater = false;
     public bool isInDeepWater { set { _isInDeepWater = value; } }
@@ -106,10 +108,17 @@ public class Treasure : MonoBehaviour, IInteractable
         {
             if (!_isColliding)
             {
-                Vector3 targetPos = player.self.position - positionOffsetWithPlayer;
-                Quaternion targetRotation = player.self.rotation * rotationOffsetWithPlayer;
-                self.position = RotatePointAroundPlayer(targetPos, player.self.position, targetRotation);
+                Vector3 targetPos = playerTransform.position - positionOffsetWithPlayer;
+                Quaternion targetRotation = playerTransform.rotation * rotationOffsetWithPlayer;
+                self.position = RotatePointAroundPlayer(targetPos, playerTransform.position, targetRotation);
                 self.localRotation = targetRotation;
+                if (lastPlayerRotation != playerTransform.rotation)
+                {
+                    playerDidRotate = true;
+                    lastPlayerRotation = playerTransform.rotation;
+                }
+                else
+                    playerDidRotate = false;
             }
         }
         else
@@ -211,10 +220,11 @@ public class Treasure : MonoBehaviour, IInteractable
         // If the player is alone to carry it just snap the treasure as child of the player
         if (_playerInteractingWith.Count == 1)
         {
+            Debug.Log("saucisse");
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, true);
+            UpTreasure(player);
             positionOffsetWithPlayer = _playerInteractingWith[0].self.position - self.position;
             rotationOffsetWithPlayer = Quaternion.Inverse(_playerInteractingWith[0].self.localRotation * self.localRotation);
-            UpTreasure(player);
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         }
         // If there is more than one player to carry it, snap treasures to the players' joint
