@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
     private IInteractable interactingWith;
 
     private float nextDash;
+    private float dashTimer;
+    private Vector3 originalDashPos;
+    private Vector3 targetDashPos;
+
     private float nextAttack;
 
     private Treasure _transportedTreasure;
@@ -62,13 +66,18 @@ public class PlayerController : MonoBehaviour
 
     private bool _isStun = false;
     public bool isStun { get { return _isStun; } }
+
+    private bool dashOnNextFrame = false;
     #endregion
 
     #region Collision
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        if (dashOnNextFrame)
+        {
+            StopDash();
+        }
         if (_isCarrying && collision.collider.GetComponent<IInteractable>() != interactingWith)
         {
             collisionDirection = collision.GetContact(0).normal;
@@ -93,6 +102,12 @@ public class PlayerController : MonoBehaviour
             Treasure treasure = interactingWith as Treasure;
             treasure.isColliding = false;
         }
+    }
+
+    private void CheckIfDashCollide()
+    {
+        if (Physics.Raycast(self.position, self.forward * self.localScale.z, 1.0f))
+            StopDash();
     }
 
     #endregion
@@ -138,21 +153,14 @@ public class PlayerController : MonoBehaviour
     // When the player pressed the dash button
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming)
+        if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming && !dashOnNextFrame)
         {
-            anim.SetBool("isDashing", true);
-            selfRigidBody.AddForce(self.forward * playerPreset.dashSpeed, ForceMode.Impulse);
-            
-            nextDash = Time.time + playerPreset.dashCooldown;
-            StartCoroutine(DashTimer());
+            dashOnNextFrame = true;
+            Vector3 currentVelocity = selfRigidBody.velocity;
+            currentVelocity += self.forward * playerPreset.dashSpeed * Time.deltaTime * 0.1f;
+            originalDashPos = self.position;
+            targetDashPos = self.position + currentVelocity;
         }
-    }
-
-    IEnumerator DashTimer()
-    {
-        yield return new WaitForSeconds(playerPreset.dashTime);
-        selfRigidBody.velocity = Vector3.zero;
-        anim.SetBool("isDashing", false);
     }
 
     // When the player pressed the interaction button
@@ -353,16 +361,53 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Dash()
+    {
+        anim.SetBool("isDashing", true);
+        //selfRigidBody.velocity += self.forward * playerPreset.dashSpeed;
+
+        float normalizedTimer = dashTimer / playerPreset.dashTime;
+        
+        Vector3 newPos = Vector3.Lerp(originalDashPos, targetDashPos, normalizedTimer);
+        self.position = newPos;
+
+        dashTimer += Time.deltaTime;
+
+        if (dashTimer > playerPreset.dashTime)
+        {
+            StopDash();
+        }
+    }
+
+    private void StopDash()
+    {
+        selfRigidBody.velocity = Vector3.zero;
+        anim.SetBool("isDashing", false);
+        nextDash = Time.time + playerPreset.dashCooldown;
+        dashOnNextFrame = false;
+        dashTimer = 0.0f;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.DrawRay(self.position, self.forward * self.localScale.z * 1.0f);
         if (!_isStun)
-            PlayerMovement();
+        {
+            if (dashOnNextFrame)
+            {
+                Dash();
+                CheckIfDashCollide();
+            }
+            else
+                PlayerMovement(); 
+        }
         InfoAnim();
     }
 
     void InfoAnim()
     {
+        
         if (!_isStun)
         {
             if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
