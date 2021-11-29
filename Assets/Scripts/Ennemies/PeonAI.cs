@@ -24,7 +24,8 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     private PlayerController currentFollowedPlayer = null;
     private PlayerController nextFollowedPlayer;
     private float distanceWithCurrentPlayer = 0.0f;
-    private float nextAttack = 0.0f;
+    private bool isFirstAttack = true;
+    private Coroutine attackCoroutine = null;
 
     public void ResetCurrentFollowedPlayer()
     {
@@ -120,9 +121,27 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         }
     }
 
+    private bool IsPlayerInRange(PlayerController nextFollowedPlayer)
+    {
+        Collider[] range = Physics.OverlapSphere(attackPoint.position, peonPreset.attackRange);
+        foreach (Collider inRange in range)
+        {
+            if (inRange.CompareTag("Player"))
+            {
+                PlayerController player = inRange.GetComponent<PlayerController>();
+                if (player == nextFollowedPlayer) return true;
+            }
+        }
+        isFirstAttack = true;
+        return false;
+    }
+
     private void UpdateDestination()
     {
+        bool isPlayerInRange = false;
         if (nextFollowedPlayer != null)
+            isPlayerInRange = IsPlayerInRange(nextFollowedPlayer);
+        if (nextFollowedPlayer != null && !isPlayerInRange)
         {
             selfAnimator.SetBool("isMoving", true);
 
@@ -144,47 +163,52 @@ public class PeonAI : MonoBehaviour, EnemiesAI
             // Stop him + remove destination
             selfNavMesh.isStopped = true;
             selfNavMesh.ResetPath();
-
+            
             // He is not attacking the current player anymore
-            if (currentFollowedPlayer != null && currentFollowedPlayer.isAttackedBy.Contains(this))
+            if (currentFollowedPlayer != null && currentFollowedPlayer.isAttackedBy.Contains(this) && nextFollowedPlayer == null)
                 currentFollowedPlayer.isAttackedBy.Remove(this);
-            currentFollowedPlayer = null;
         }
+
+        currentFollowedPlayer = nextFollowedPlayer;
     }
 
     private void CheckAttack()
     {
         // Check if there a player to attack;       
         Collider[] range = Physics.OverlapSphere(attackPoint.position, peonPreset.attackRange);
+        List<PlayerController> players = new List<PlayerController>();
         foreach (Collider inRange in range)
         {
             if (inRange.CompareTag("Player"))
             {
                 PlayerController player = inRange.GetComponent<PlayerController>();
-                // Play attack animation (first part where enemy prepare to hit)
                 if (!player.isStun)
                 {
-                    StartCoroutine(Attack(player));
-                    nextAttack = Time.time + nextAttack;
+                    players.Add(player);
                 }
             }
         }
+        if (players.Count > 0 && attackCoroutine == null)
+        {
+            attackCoroutine = StartCoroutine(Attack(players));
+        }
     }
 
-    private IEnumerator Attack(PlayerController player)
+    private IEnumerator Attack(List<PlayerController> players)
     {
-        selfAnimator.SetTrigger("attack");
+        if (isFirstAttack) isFirstAttack = false;
+        else yield return new WaitForSeconds(peonPreset.attackCooldown);
 
+        selfAnimator.SetTrigger("attack");
         yield return new WaitForSeconds(peonPreset.launchAttackCooldown);
 
-        Collider[] hit = Physics.OverlapSphere(attackPoint.position, peonPreset.attackRange);
-        foreach(Collider hitted in hit)
+        foreach (PlayerController player in players)
         {
-            if (hitted.GetComponent<PlayerController>() == player)
-            {
+            if (IsPlayerInRange(player) && !player.isStun)
                 player.StunPlayer();
-            }
         }
+        attackCoroutine = null;
+        Debug.Log("Finished");
     }
 
     private IEnumerator waitBeforeDestroy()
@@ -203,8 +227,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
             FindEnemyDestination();
             // If he found a player to follow
             UpdateDestination();
-            if (Time.time > nextAttack)
-                CheckAttack();
+            CheckAttack();
         }
     }
 }
