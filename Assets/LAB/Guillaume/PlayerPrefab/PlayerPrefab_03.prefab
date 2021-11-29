@@ -278,6 +278,7 @@ MonoBehaviour:
   player2Material: {fileID: 2100000, guid: 063d73d1e34bf774eae2f421aa9fe9ab, type: 2}
   player3Material: {fileID: 2100000, guid: 840361a3d1703704b9a4f0f9be3b965b, type: 2}
   player4Material: {fileID: 2100000, guid: 8e76c06808b819245a6cd2316ebbca86, type: 2}
+  targetGroup: {fileID: 0}
 --- !u!23 &127302442358388516
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -523,6 +524,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 137334844286243118, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0003b2b35368919419cc5a40ffd13341, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
 --- !u!4 &6422961954565724638 stripped

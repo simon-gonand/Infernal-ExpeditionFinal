@@ -10,7 +10,9 @@ public class HoldManager : MonoBehaviour
         {
             Debug.Log("Treasure has been registered in the hold");
             // Play feedback
-            // Register in score
+
+            ScoreManager.instance.AddPoint(1);
+
             Destroy(other.gameObject);
         }
     }
