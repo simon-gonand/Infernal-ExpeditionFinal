@@ -26,13 +26,16 @@ public class Treasure : MonoBehaviour, IInteractable
 
     private float launchForce = 0.0f;
     private Vector3 lastPosition;
-    private Vector3 positionOffsetWithPlayer;
-    private Quaternion rotationOffsetWithPlayer;
-    private Quaternion lastPlayerRotation;
+
+    private Vector3 startPlayerPosition;
+    private Quaternion startPlayerRotation;
+    private Matrix4x4 playerMatrix;
+    private Vector3 startSelfPosition;
+    private Quaternion startSelfRotation;
+
     private Vector3 collisionDirection;
     private Rigidbody collidingWith;
     private bool isMovingWhenColliding;
-    private bool playerDidRotate = false;
 
     private bool _isInDeepWater = false;
     public bool isInDeepWater { set { _isInDeepWater = value; } }
@@ -108,17 +111,10 @@ public class Treasure : MonoBehaviour, IInteractable
         {
             if (!_isColliding)
             {
-                Vector3 targetPos = playerTransform.position - positionOffsetWithPlayer;
-                Quaternion targetRotation = playerTransform.rotation * rotationOffsetWithPlayer;
-                self.position = RotatePointAroundPlayer(targetPos, playerTransform.position, targetRotation);
-                self.localRotation = targetRotation;
-                if (lastPlayerRotation != playerTransform.rotation)
-                {
-                    playerDidRotate = true;
-                    lastPlayerRotation = playerTransform.rotation;
-                }
-                else
-                    playerDidRotate = false;
+                playerMatrix = Matrix4x4.TRS(playerTransform.position, playerTransform.rotation, playerTransform.lossyScale);
+
+                self.position = playerMatrix.MultiplyPoint3x4(startSelfPosition);
+                self.rotation = (playerTransform.rotation * Quaternion.Inverse(startPlayerRotation)) * startSelfRotation;
             }
         }
         else
@@ -173,7 +169,7 @@ public class Treasure : MonoBehaviour, IInteractable
         interactingWith.GetComponent<BoxCollider>().enabled = false;
 
         // Snap the player to the center of the side of the treasure
-        interactingWith.GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
+        //interactingWith.GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
         associateColliders.Add(player, interactingWith);
     }
 
@@ -183,6 +179,11 @@ public class Treasure : MonoBehaviour, IInteractable
         Vector3 upTreasure = self.position;
         upTreasure.y = player.self.position.y + self.lossyScale.y / 2;
         self.position = upTreasure;
+    }
+
+    private Vector3 DivideVectors(Vector3 num, Vector3 den)
+    {
+        return new Vector3(num.x / den.x, num.y / den.y, num.z / den.z);
     }
 
     #region interaction
@@ -220,12 +221,18 @@ public class Treasure : MonoBehaviour, IInteractable
         // If the player is alone to carry it just snap the treasure as child of the player
         if (_playerInteractingWith.Count == 1)
         {
-            Debug.Log("saucisse");
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, true);
             UpTreasure(player);
-            positionOffsetWithPlayer = _playerInteractingWith[0].self.position - self.position;
-            rotationOffsetWithPlayer = Quaternion.Inverse(_playerInteractingWith[0].self.localRotation * self.localRotation);
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+            selfRigidbody.useGravity = false;
+
+            startPlayerPosition = player.self.position;
+            startPlayerRotation = player.self.rotation;
+
+            startSelfPosition = self.position;
+            startSelfRotation = self.rotation;
+
+            startSelfPosition = DivideVectors(Quaternion.Inverse(player.self.rotation) * (startSelfPosition - startPlayerPosition), player.self.lossyScale);
         }
         // If there is more than one player to carry it, snap treasures to the players' joint
         if (_playerInteractingWith.Count <= category.maxPlayerCarrying)
@@ -331,8 +338,13 @@ public class Treasure : MonoBehaviour, IInteractable
         //ApplySpeedMalus();
         if (_playerInteractingWith.Count == 1)
         {
-            positionOffsetWithPlayer = _playerInteractingWith[0].self.position - self.position;
-            rotationOffsetWithPlayer = Quaternion.Inverse(_playerInteractingWith[0].self.localRotation * self.localRotation);
+            startPlayerPosition = player.self.position;
+            startPlayerRotation = player.self.rotation;
+
+            startSelfPosition = self.position;
+            startSelfRotation = self.rotation;
+
+            startSelfPosition = DivideVectors(Quaternion.Inverse(player.self.rotation) * (startSelfPosition - startPlayerPosition), player.self.lossyScale);
         }
         if (_playerInteractingWith.Count < 1)
         {
