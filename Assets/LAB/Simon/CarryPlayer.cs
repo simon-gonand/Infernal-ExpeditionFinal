@@ -6,6 +6,9 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 {
     public PlayerController selfScript;
 
+    private bool isLoadingLaunch = false;
+    private float launchForce = 0.0f;
+
     public bool InteractWith(PlayerController carrier, GameObject interactingWith)
     {
         if (selfScript.isCarried || selfScript.isCarrying || selfScript.isInteracting) return false;
@@ -23,7 +26,24 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
     public void OnAction(PlayerController player)
     {
-        Debug.Log("Loading launch");
+        isLoadingLaunch = true;
+        StartCoroutine(LoadingLaunchForce());
+    }
+
+    IEnumerator LoadingLaunchForce()
+    {
+        // Increase every 0.1 seconds
+        float offsetTime = 0.1f;
+        // Calculate how many the launch force will increase every 0.1 seconds
+        float offsetLaunch = selfScript.playerPreset.maxLaunchForce * offsetTime / selfScript.playerPreset.fullChargeTime;
+        while (isLoadingLaunch && launchForce != selfScript.playerPreset.maxLaunchForce)
+        {
+            launchForce += offsetLaunch;
+            if (launchForce > selfScript.playerPreset.maxLaunchForce)
+                launchForce = selfScript.playerPreset.maxLaunchForce;
+            Debug.Log(launchForce);
+            yield return new WaitForSeconds(offsetTime);
+        }
     }
 
     public void UninteractWith(PlayerController player)
@@ -31,6 +51,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
         player.isCarrying = false;
         player.carrying = null;
         selfScript.isCarried = false;
+        selfScript.selfRigidBody.mass = 1;
         selfScript.selfRigidBody.isKinematic = false;
         selfScript.selfRigidBody.AddForce(player.self.forward * 2000.0f);
         selfScript.self.SetParent(null);
@@ -48,6 +69,20 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
     public void Launch(PlayerController player)
     {
-        Debug.Log("Launch");
+        if (isLoadingLaunch)
+        {
+            isLoadingLaunch = false;
+
+            // Enable rigidbody
+            selfScript.selfRigidBody.mass = 1;
+            selfScript.selfRigidBody.isKinematic = false;
+            selfScript.self.SetParent(player.self.parent);
+            selfScript.selfRigidBody.AddForce((player.self.forward + player.self.up) * launchForce, ForceMode.Impulse);
+
+            player.isCarrying = false;
+            player.carrying = null;
+
+            launchForce = 0.0f;
+        }
     }
 }

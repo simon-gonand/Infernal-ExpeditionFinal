@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour
     [Header("Self References")]
     public Transform self;
     public Rigidbody selfRigidBody;
-    [SerializeField]
-    private PlayerPresets playerPreset;
+    public PlayerPresets playerPreset;
 
     [Header("Children References")]
     public Transform playerGraphics;
@@ -141,7 +140,10 @@ public class PlayerController : MonoBehaviour
                 else if (context.canceled)
                 {
                     if (_carrying != null)
+                    {
                         _carrying.Launch(this);
+                        selfRigidBody.mass = 1;
+                    }
                 }
             }
             else

@@ -284,6 +284,7 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.useGravity = true;
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
             selfRigidbody.AddForce((player.self.forward + player.self.up) * launchForce, ForceMode.Impulse);
+            selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             launchForce = 0.0f;
 
             // Update lists values
@@ -293,11 +294,11 @@ public class Treasure : MonoBehaviour, ICarriable
 
             // Update player values
             player.isCarrying = false;
+            player.carrying = null;
 
             player.anim.SetBool("isCarrying", false);
             player.sword.SetActive(true);
 
-            player.carrying = null;
             isGrounded = false;
         }
     }
@@ -396,6 +397,7 @@ public class Treasure : MonoBehaviour, ICarriable
                 }
                 if (!hit.collider.isTrigger)
                 {
+                    selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
                     isGrounded = true;
                 }
             }
