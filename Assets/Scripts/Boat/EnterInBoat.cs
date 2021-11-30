@@ -18,7 +18,7 @@ public class EnterInBoat : MonoBehaviour
             if (!player.isOnBoat)
             {
                 // Player is carrying a treasure with someone
-                if (player.isCarrying && player.transportedTreasure.playerInteractingWith.Count > 1)
+                if (player.isCarrying && player.transportedTreasure != null && player.transportedTreasure.playerInteractingWith.Count > 1)
                 {
                     player.transportedTreasure.GetOnBoat(playerOnBoatEntryPoint);
                 }
@@ -36,7 +36,7 @@ public class EnterInBoat : MonoBehaviour
             else
             {
                 // Player is carrying a treasure with someone
-                if (player.isCarrying && player.transportedTreasure.playerInteractingWith.Count > 1)
+                if (player.isCarrying && player.transportedTreasure != null && player.transportedTreasure.playerInteractingWith.Count > 1)
                     player.transportedTreasure.GetOffBoat();
                 // Player carries a treasure solo or does not carry anything
                 else

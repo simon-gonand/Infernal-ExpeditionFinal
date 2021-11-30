@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Transform playerGraphics;
     [SerializeField]
     private Transform attackPoint;
+    public Transform playerCarryingPoint;
 
 
     [Header ("Anim info")]
@@ -25,7 +26,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 playerMovementInput = Vector2.zero;
 
-    private IInteractable interactingWith;
+    private IInteractable _interactingWith;
+    public IInteractable interactingWith { get { return _interactingWith; } }
 
     private float nextDash;
     private float dashTimer;
@@ -54,6 +56,9 @@ public class PlayerController : MonoBehaviour
     private bool _isCarrying = false;
     public bool isCarrying { get { return _isCarrying; } set { _isCarrying = value; } }
 
+    private bool _isCarried = false;
+    public bool isCarried { get { return _isCarried; } set { _isCarried = value; } }
+
     // Is the player on the boat
     private bool _isOnBoat = true;
     public bool isOnBoat { get { return _isOnBoat; } set { _isOnBoat = value; } }
@@ -78,29 +83,31 @@ public class PlayerController : MonoBehaviour
         {
             StopDash();
         }
-        if (_isCarrying && collision.collider.GetComponent<IInteractable>() != interactingWith)
+        if (_isCarrying && collision.collider.GetComponent<IInteractable>() != _interactingWith)
         {
             collisionDirection = collision.GetContact(0).normal;
             if (collision.collider.GetType() == typeof(TerrainCollider)) {
                 if (!Physics.Raycast(self.position, collisionDirection, 0.1f))
                     return;
             }
-            Treasure treasure = interactingWith as Treasure;
-            treasure.isColliding = true;
+            Treasure treasure = _interactingWith as Treasure;
+            if (treasure != null)
+                treasure.isColliding = true;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (_isCarrying && collision.collider.GetComponent<IInteractable>() != interactingWith)
+        if (_isCarrying && collision.collider.GetComponent<IInteractable>() != _interactingWith)
         {
             if (collision.collider.GetType() == typeof(TerrainCollider))
             {
                 if (!Physics.Raycast(self.position, collisionDirection, 0.1f))
                     return;
             }
-            Treasure treasure = interactingWith as Treasure;
-            treasure.isColliding = false;
+            Treasure treasure = _interactingWith as Treasure;
+            if (treasure != null)
+                treasure.isColliding = false;
         }
     }
 
@@ -122,14 +129,14 @@ public class PlayerController : MonoBehaviour
     // When the player pressed the action button
     public void OnAction(InputAction.CallbackContext context)
     {
-        if (!_isSwimming)
+        if (!_isSwimming && !_isCarried)
         {
             // If the player is interacting with something he can't attack
             if ((_isInteracting || _isCarrying))
             {
                 if (context.started)
                 {
-                    interactingWith.OnAction(this);
+                    _interactingWith.OnAction(this);
                 }
                 else if (context.canceled)
                 {
@@ -153,7 +160,7 @@ public class PlayerController : MonoBehaviour
     // When the player pressed the dash button
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming && !isDashing)
+        if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming && !isDashing && !_isCarried)
         {
             isDashing = true;
             Vector3 currentVelocity = selfRigidBody.velocity;
@@ -166,7 +173,7 @@ public class PlayerController : MonoBehaviour
     // When the player pressed the interaction button
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        if (!_isSwimming)
+        if (!_isSwimming && !_isCarried)
         {
             // If the player is not interacting with anything or carrying a treasure
             if (!_isInteracting && !_isCarrying && context.performed)
@@ -195,9 +202,9 @@ public class PlayerController : MonoBehaviour
                             // Stop player's movements
                             playerMovementInput = Vector2.zero;
                             // Set with which interactable the player is interacting with
-                            interactingWith = hit.collider.gameObject.GetComponentInParent<IInteractable>();
-                            if (!interactingWith.InteractWith(this, hit.collider.gameObject))
-                                interactingWith = null;
+                            _interactingWith = hit.collider.gameObject.GetComponentInParent<IInteractable>();
+                            if (!_interactingWith.InteractWith(this, hit.collider.gameObject))
+                                _interactingWith = null;
                             else
                                 selfRigidBody.mass = 1000;
                             break;
@@ -208,7 +215,7 @@ public class PlayerController : MonoBehaviour
             // Else put the treasure down or uninteract with the interactable
             else if ((_isInteracting || _isCarrying) && context.performed)
             {
-                interactingWith.UninteractWith(this);
+                _interactingWith.UninteractWith(this);
                 selfRigidBody.mass = 1;
             }
         }
@@ -216,7 +223,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnReload(InputAction.CallbackContext context)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(0);
     }
     #endregion
 
@@ -324,7 +331,7 @@ public class PlayerController : MonoBehaviour
             currentSpeed = playerPreset.playerInNotDeepWaterSpeed;
             
         // Apply speed malus if the player is carrying an heavy treasure
-        if (_isCarrying)
+        if (_isCarrying && _transportedTreasure != null)
             currentSpeed -= _transportedTreasure.speedMalus;
 
         // Apply movements
@@ -332,7 +339,7 @@ public class PlayerController : MonoBehaviour
         _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
         selfRigidBody.velocity = _movement;
-        if (_isCarrying)
+        if (_isCarrying && _transportedTreasure != null)
         {
             _transportedTreasure.UpdatePlayerMovement(this);
             if (transportedTreasure.playerInteractingWith.Count > 1)
@@ -393,7 +400,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!_isStun)
+        if (!_isStun && !_isCarried)
         {
             if (isDashing)
             {
@@ -428,6 +435,10 @@ public class PlayerController : MonoBehaviour
             {
                 anim.SetBool("isMoving", false);
             }
+        }
+        else if (_isCarried)
+        {
+            // Play animation is carried
         }
     }
 }

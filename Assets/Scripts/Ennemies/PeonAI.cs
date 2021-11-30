@@ -53,8 +53,6 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     {
         for (int i = 0; i < players.Count; ++i)
         {
-            Debug.Log("------------------ PLAYER N° = " + i + "---------------------");
-            Debug.Log(players[i].isAttackedBy.Count);
             if (players[i].isOnBoat)
             {
                 players[i].isAttackedBy.Clear();
@@ -62,7 +60,6 @@ public class PeonAI : MonoBehaviour, EnemiesAI
                 --i;
                 continue;
             }
-            Debug.Log(players[i].isAttackedBy.Count);
 
             if (players[i].isSwimming)
             {
@@ -71,8 +68,6 @@ public class PeonAI : MonoBehaviour, EnemiesAI
                 --i;
                 continue;
             }
-            Debug.Log(players[i].isAttackedBy.Count);
-            Debug.Log("---------------------------------------------------------------");
         }
     }
 

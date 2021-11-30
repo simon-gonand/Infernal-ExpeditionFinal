@@ -20,7 +20,10 @@ public class DeepWater : MonoBehaviour
             // Drop treasure
             if (player.isCarrying)
             {
-                player.transportedTreasure.UninteractWith(player);
+                if (player.transportedTreasure != null)
+                    player.transportedTreasure.UninteractWith(player);
+                else
+                    player.interactingWith.UninteractWith(player);
             }
 
             // Enemies stop attacking him

@@ -155,7 +155,6 @@ public class Treasure : MonoBehaviour, IInteractable
     // Remove boat parent from treasure and all players that are carrying it
     public void GetOffBoat()
     {
-        self.SetParent(null);
         foreach (PlayerController player in playerInteractingWith)
         {
             player.isOnBoat = true;
