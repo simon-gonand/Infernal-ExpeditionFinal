@@ -11,12 +11,24 @@
 						</Module>
 						<Module>
 							<ObjectRef Name="P_Steps" ID="{2AD082CD-0FBC-4ACC-8F78-05613CE57EE1}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="P_Carry" ID="{C54592FA-3E4A-4A3A-8150-AEF2CECBE448}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
 							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="P_Attack" ID="{1A335906-41AD-4B6A-86BC-E96E08537BA6}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="P_Dash" ID="{CFF6DD99-F808-4B52-93E7-43362255F42E}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="2" Y="1"/>
 						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true"/>
 					<CurrentStateList ShowAll="true">
-						<CurrentStateRef Name="Sea" ID="{6CA64AE8-43F4-45B2-84C3-E863CC6A80A8}"/>
+						<CurrentStateRef Name="Sand" ID="{DA5EB6CE-8504-438D-8854-B84B3928213C}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>
