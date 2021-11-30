@@ -18,9 +18,20 @@ public class EnterInBoat : MonoBehaviour
             if (!player.isOnBoat)
             {
                 // Player is carrying a treasure with someone
-                if (player.isCarrying && player.transportedTreasure != null && player.transportedTreasure.playerInteractingWith.Count > 1)
+                if (player.isCarrying)
                 {
-                    player.transportedTreasure.GetOnBoat(playerOnBoatEntryPoint);
+                    if (player.transportedTreasure != null && player.transportedTreasure.playerInteractingWith.Count > 1)
+                        player.transportedTreasure.GetOnBoat(playerOnBoatEntryPoint);
+                    else
+                    {
+                        if (player.transportedTreasure == null)
+                        {
+                            CarryPlayer carriedPlayer = player.interactingWith as CarryPlayer;
+                            carriedPlayer.GetOnBoat();
+                        }
+                        player.self.SetParent(BoatManager.instance.self);
+                        player.isOnBoat = true;
+                    }
                 }
                 // Player carries a treasure solo or does not carry anything
                 else
@@ -36,8 +47,21 @@ public class EnterInBoat : MonoBehaviour
             else
             {
                 // Player is carrying a treasure with someone
-                if (player.isCarrying && player.transportedTreasure != null && player.transportedTreasure.playerInteractingWith.Count > 1)
-                    player.transportedTreasure.GetOffBoat();
+                if (player.isCarrying)
+                {
+                    if (player.transportedTreasure != null && player.transportedTreasure.playerInteractingWith.Count > 1)
+                        player.transportedTreasure.GetOffBoat();
+                    else
+                    {
+                        player.self.SetParent(null);
+                        player.isOnBoat = false;
+                        if (player.transportedTreasure == null)
+                        {
+                            CarryPlayer carriedPlayer = player.interactingWith as CarryPlayer;
+                            carriedPlayer.GetOffBoat();
+                        }
+                    }
+                }
                 // Player carries a treasure solo or does not carry anything
                 else
                 {

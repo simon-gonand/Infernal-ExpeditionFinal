@@ -30,6 +30,16 @@ public class CarryPlayer : MonoBehaviour, IInteractable
         throw new System.NotImplementedException();
     }
 
+    public void GetOnBoat()
+    {
+        selfScript.isOnBoat = true;
+    }
+
+    public void GetOffBoat()
+    {
+        selfScript.isOnBoat = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
