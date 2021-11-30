@@ -21,4 +21,9 @@ public class PlayerPresets : ScriptableObject
     public float attackRange;
     public float attackCooldown;
     public float stunTime;
+
+    [Header("Carry other player")]
+    public float maxLaunchForce;
+    [Tooltip("In how many time the player can launch the treasure with full force")]
+    public float fullChargeTime;
 }

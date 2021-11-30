@@ -36,8 +36,8 @@ public class PlayerController : MonoBehaviour
 
     private float nextAttack;
 
-    private Treasure _transportedTreasure;
-    public Treasure transportedTreasure { get { return _transportedTreasure; } set { _transportedTreasure = value; } }
+    private ICarriable _carrying;
+    public ICarriable carrying { get { return _carrying; } set { _carrying = value; } }
 
     private Vector3 _movement;
     public Vector3 movement { get { return _movement; } set { _movement = value; } }
@@ -140,10 +140,8 @@ public class PlayerController : MonoBehaviour
                 }
                 else if (context.canceled)
                 {
-                    if (_transportedTreasure != null)
-                    {
-                        _transportedTreasure.LaunchObject(this);
-                    }
+                    if (_carrying != null)
+                        _carrying.Launch(this);
                 }
             }
             else
@@ -273,7 +271,7 @@ public class PlayerController : MonoBehaviour
         // Update stun bool in animation for animation ?
         if (isCarrying)
         {
-            _transportedTreasure.UninteractWith(this);
+            _carrying.UninteractWith(this);
         }
         Debug.Log("Player is stun");
         yield return new WaitForSeconds(playerPreset.stunTime);
@@ -329,29 +327,30 @@ public class PlayerController : MonoBehaviour
         // If player is in not deep water reduce speed
         else if (_isInWater)
             currentSpeed = playerPreset.playerInNotDeepWaterSpeed;
-            
+
         // Apply speed malus if the player is carrying an heavy treasure
-        if (_isCarrying && _transportedTreasure != null)
-            currentSpeed -= _transportedTreasure.speedMalus;
+        Treasure transportedTreasure = _carrying as Treasure;
+        if (_isCarrying && transportedTreasure != null)
+            currentSpeed -= transportedTreasure.speedMalus;
 
         // Apply movements
         Vector3 calculatePlayerInput = playerMovementInput * currentSpeed * Time.deltaTime;
         _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
         selfRigidBody.velocity = _movement;
-        if (_isCarrying && _transportedTreasure != null)
+        if (_isCarrying && transportedTreasure != null)
         {
-            _transportedTreasure.UpdatePlayerMovement(this);
+            transportedTreasure.UpdatePlayerMovement(this);
             if (transportedTreasure.playerInteractingWith.Count > 1)
             {
-                if ((_transportedTreasure.selfRigidbody.velocity.x < 0.1f || _transportedTreasure.selfRigidbody.velocity.x > 0.1f) ||
-                    (_transportedTreasure.selfRigidbody.velocity.z < 0.1f || _transportedTreasure.selfRigidbody.velocity.z > 0.1f))
+                if ((transportedTreasure.selfRigidbody.velocity.x < 0.1f || transportedTreasure.selfRigidbody.velocity.x > 0.1f) ||
+                    (transportedTreasure.selfRigidbody.velocity.z < 0.1f || transportedTreasure.selfRigidbody.velocity.z > 0.1f))
                 {
-                    _transportedTreasure.UpdatePlayerRotation(this, playerGraphics);
+                    transportedTreasure.UpdatePlayerRotation(this, playerGraphics);
                 }
             }
             else
-                _transportedTreasure.UpdatePlayerRotation(this, self);
+                transportedTreasure.UpdatePlayerRotation(this, self);
         }
 
         // Player can't go up

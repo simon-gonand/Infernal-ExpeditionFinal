@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Treasure : MonoBehaviour, IInteractable
+public class Treasure : MonoBehaviour, ICarriable
 {
     [SerializeField]
     private Transform self;
@@ -91,18 +91,6 @@ public class Treasure : MonoBehaviour, IInteractable
     private void Start()
     {
         lastPosition = self.position;
-    }
-
-    private Vector3 RotatePointAroundPlayer(Vector3 point, Vector3 pivot, Quaternion rotation)
-    {
-        //Get a direction from the pivot to the point
-        Vector3 dir = point - pivot;
-        //Rotate vector around pivot
-        dir = rotation * dir;
-        //Calc the rotated vector
-        point = dir + pivot;
-        //Return calculated vector
-        return point;
     }
 
     public void UpdatePlayerRotation(PlayerController player, Transform playerTransform)
@@ -197,7 +185,7 @@ public class Treasure : MonoBehaviour, IInteractable
         player.anim.SetTrigger("startCarrying");
         player.sword.SetActive(false);
 
-        player.transportedTreasure = this;
+        player.carrying = this;
 
         if (playerColliding.Count > 0)
         {
@@ -254,7 +242,7 @@ public class Treasure : MonoBehaviour, IInteractable
         player.anim.SetBool("isCarrying", false);
         player.sword.SetActive(true);
 
-        player.transportedTreasure = null;
+        player.carrying = null;
         return false;
     }
 
@@ -285,7 +273,7 @@ public class Treasure : MonoBehaviour, IInteractable
         }
     }
 
-    public void LaunchObject(PlayerController player)
+    public void Launch(PlayerController player)
     {
         if (isLoadingLaunch)
         {
@@ -309,7 +297,7 @@ public class Treasure : MonoBehaviour, IInteractable
             player.anim.SetBool("isCarrying", false);
             player.sword.SetActive(true);
 
-            player.transportedTreasure = null;
+            player.carrying = null;
             isGrounded = false;
         }
     }
@@ -323,7 +311,7 @@ public class Treasure : MonoBehaviour, IInteractable
         player.anim.SetBool("isCarrying", false);
         player.sword.SetActive(true);
 
-        player.transportedTreasure = null;
+        player.carrying = null;
 
         // Player does not interact with the treasure anymore
         _playerInteractingWith.Remove(player);

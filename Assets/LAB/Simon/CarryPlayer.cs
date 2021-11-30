@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarryPlayer : MonoBehaviour, IInteractable
+public class CarryPlayer : MonoBehaviour, ICarriable
 {
     public PlayerController selfScript;
 
@@ -10,6 +10,7 @@ public class CarryPlayer : MonoBehaviour, IInteractable
     {
         if (selfScript.isCarried || selfScript.isCarrying || selfScript.isInteracting) return false;
         carrier.isCarrying = true;
+        carrier.carrying = this;
         Vector3 snapPosition = carrier.playerCarryingPoint.position;
         snapPosition.y += selfScript.self.lossyScale.y / 2;
         selfScript.self.position = snapPosition;
@@ -22,15 +23,20 @@ public class CarryPlayer : MonoBehaviour, IInteractable
 
     public void OnAction(PlayerController player)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Loading launch");
     }
 
     public void UninteractWith(PlayerController player)
     {
-        throw new System.NotImplementedException();
+        player.isCarrying = false;
+        player.carrying = null;
+        selfScript.isCarried = false;
+        selfScript.selfRigidBody.isKinematic = false;
+        selfScript.selfRigidBody.AddForce(player.self.forward * 2000.0f);
+        selfScript.self.SetParent(null);
     }
 
-    public void GetOnBoat()
+    public void GetOnBoat(Transform entryPosition)
     {
         selfScript.isOnBoat = true;
     }
@@ -40,15 +46,8 @@ public class CarryPlayer : MonoBehaviour, IInteractable
         selfScript.isOnBoat = false;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void Launch(PlayerController player)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Launch");
     }
 }
