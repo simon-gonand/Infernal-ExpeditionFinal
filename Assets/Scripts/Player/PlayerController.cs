@@ -10,13 +10,14 @@ public class PlayerController : MonoBehaviour
     public Transform self;
     public Rigidbody selfRigidBody;
     public PlayerPresets playerPreset;
+    [SerializeField]
+    private Renderer selfRenderer;
 
     [Header("Children References")]
     public Transform playerGraphics;
     [SerializeField]
     private Transform attackPoint;
     public Transform playerCarryingPoint;
-
 
     [Header ("Anim info")]
     public Animator anim;
@@ -406,9 +407,17 @@ public class PlayerController : MonoBehaviour
         dashTimer = 0.0f;
     }
 
+    private void CheckIsOutOfCam()
+    {
+        Vector2 posScreen = Camera.main.WorldToScreenPoint(self.position);
+        if (posScreen.y > Camera.main.pixelHeight)
+            Debug.Log("saucisse");
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
+        CheckIsOutOfCam();
         if (!_isStun && !_isCarried && !_hasBeenLaunched)
         {
             if (isDashing)

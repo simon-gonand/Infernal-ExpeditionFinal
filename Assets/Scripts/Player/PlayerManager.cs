@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class PlayerManager : MonoBehaviour
     private Material player3Material;
     [SerializeField]
     private Material player4Material;
+
+    [Header("External References")]
+    public CinemachineTargetGroup targetGroup;
 
     private List<PlayerController> _players = new List<PlayerController>();
     public List<PlayerController> players { get { return _players; } }
@@ -55,6 +59,7 @@ public class PlayerManager : MonoBehaviour
         playerSpawnPosition.z += playerInput.playerIndex * playerSpawnOffset;
         Transform playerTransform = playerInput.gameObject.transform;
         playerTransform.position = playerSpawnPosition;
+        targetGroup.AddMember(playerTransform, 1, 70);
         playerTransform.SetParent(BoatManager.instance.self);
         _players.Add(playerInput.gameObject.GetComponent<PlayerController>());
     }
