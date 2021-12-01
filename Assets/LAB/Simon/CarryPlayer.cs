@@ -14,13 +14,19 @@ public class CarryPlayer : MonoBehaviour, ICarriable
         if (selfScript.isCarried || selfScript.isCarrying || selfScript.isInteracting) return false;
         carrier.isCarrying = true;
         carrier.carrying = this;
+        selfScript.isCarried = true;
         Vector3 snapPosition = carrier.playerCarryingPoint.position;
         snapPosition.y += selfScript.self.lossyScale.y / 2;
         selfScript.self.position = snapPosition;
         selfScript.selfRigidBody.isKinematic = true;
         selfScript.self.forward = carrier.self.forward;
         selfScript.self.SetParent(carrier.self);
+
+        // Is Carried animation
+        // Is Carrying animation
+
         // Carry player sound
+
         return true;
     }
 
@@ -78,9 +84,15 @@ public class CarryPlayer : MonoBehaviour, ICarriable
             selfScript.selfRigidBody.isKinematic = false;
             selfScript.self.SetParent(player.self.parent);
             selfScript.selfRigidBody.AddForce((player.self.forward + player.self.up) * launchForce, ForceMode.Impulse);
+            selfScript.isCarried = false;
 
             player.isCarrying = false;
             player.carrying = null;
+            selfScript.hasBeenLaunched = true;
+
+            // Update launched anim
+
+            // Play Launch sound
 
             launchForce = 0.0f;
         }

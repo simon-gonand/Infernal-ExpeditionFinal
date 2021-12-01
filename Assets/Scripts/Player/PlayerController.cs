@@ -58,6 +58,9 @@ public class PlayerController : MonoBehaviour
     private bool _isCarried = false;
     public bool isCarried { get { return _isCarried; } set { _isCarried = value; } }
 
+    private bool _hasBeenLaunched = false;
+    public bool hasBeenLaunched { set { _hasBeenLaunched = value; } }
+
     // Is the player on the boat
     private bool _isOnBoat = true;
     public bool isOnBoat { get { return _isOnBoat; } set { _isOnBoat = value; } }
@@ -92,6 +95,11 @@ public class PlayerController : MonoBehaviour
             Treasure treasure = _interactingWith as Treasure;
             if (treasure != null)
                 treasure.isColliding = true;
+        }
+        if (_hasBeenLaunched)
+        {
+            if (collision.collider.gameObject.transform.position.y < self.position.y)
+                _hasBeenLaunched = false;
         }
     }
 
@@ -401,7 +409,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!_isStun && !_isCarried)
+        if (!_isStun && !_isCarried && !_hasBeenLaunched)
         {
             if (isDashing)
             {
@@ -410,14 +418,14 @@ public class PlayerController : MonoBehaviour
             }
             else
                 PlayerMovement(); 
+            InfoAnim();
         }
-        InfoAnim();
     }
 
     void InfoAnim()
     {
         
-        if (!_isStun)
+        if (!_isStun && !_isCarried)
         {
             if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
             {
@@ -436,10 +444,6 @@ public class PlayerController : MonoBehaviour
             {
                 anim.SetBool("isMoving", false);
             }
-        }
-        else if (_isCarried)
-        {
-            // Play animation is carried
         }
     }
 }

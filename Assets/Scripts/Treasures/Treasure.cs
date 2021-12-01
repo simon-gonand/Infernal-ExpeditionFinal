@@ -296,10 +296,14 @@ public class Treasure : MonoBehaviour, ICarriable
             player.isCarrying = false;
             player.carrying = null;
 
+            // Update Anim
             player.anim.SetBool("isCarrying", false);
             player.sword.SetActive(true);
 
+            // Play throw sound
+
             isGrounded = false;
+            Debug.Break();
         }
     }
 
