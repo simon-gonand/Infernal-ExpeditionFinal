@@ -59,7 +59,7 @@ public class PlayerManager : MonoBehaviour
         playerSpawnPosition.z += playerInput.playerIndex * playerSpawnOffset;
         Transform playerTransform = playerInput.gameObject.transform;
         playerTransform.position = playerSpawnPosition;
-        targetGroup.AddMember(playerTransform, 1, 70);
+        targetGroup.AddMember(playerTransform, 1, 20);
         playerTransform.SetParent(BoatManager.instance.self);
         _players.Add(playerInput.gameObject.GetComponent<PlayerController>());
     }
