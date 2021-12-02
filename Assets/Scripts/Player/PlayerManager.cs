@@ -20,6 +20,10 @@ public class PlayerManager : MonoBehaviour
     public CinemachineTargetGroup targetGroup;
     public CameraManager camManager;
 
+    [Header("PlayerStats")]
+    public float deadZoneOffsetX = 10.0f;
+    public float deadZoneOffsetY = 10.0f;
+
     private List<PlayerController> _players = new List<PlayerController>();
     public List<PlayerController> players { get { return _players; } }
 
@@ -74,6 +78,12 @@ public class PlayerManager : MonoBehaviour
             if (posScreen.y > Camera.main.pixelHeight || posScreen.x > Camera.main.pixelWidth || posScreen.y < 0 || posScreen.x < 0)
             {
                 camManager.isUnzooming = true;
+                if (camManager.isUnzoomMax)
+                {
+                    if (posScreen.y < -deadZoneOffsetY || posScreen.x < -deadZoneOffsetX ||
+                        posScreen.x > Camera.main.pixelWidth + deadZoneOffsetX || posScreen.y > Camera.main.pixelHeight + deadZoneOffsetY)
+                        Debug.Log("DIE");
+                }
                 return;
             }
         }

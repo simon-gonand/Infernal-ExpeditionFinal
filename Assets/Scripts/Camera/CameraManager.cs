@@ -27,6 +27,9 @@ public class CameraManager : CinemachineExtension
     private bool _isUnzooming = false;
     public bool isUnzooming { set { _isUnzooming = value; } }
 
+    private bool _isUnzoomMax = false;
+    public bool isUnzoomMax { get { return _isUnzoomMax; } }
+
     protected override void Awake()
     {
         base.Awake();
@@ -34,7 +37,6 @@ public class CameraManager : CinemachineExtension
         lockXRotation = minXRotation;
 
         offsetRotationMovement = offsetPositionMovement * (maxXRotation - minXRotation) / (maxYPosition - minYPosition);
-        Debug.Log(offsetRotationMovement);
     }
 
     protected override void PostPipelineStageCallback(CinemachineVirtualCameraBase vcam, CinemachineCore.Stage stage, ref CameraState state, float deltaTime)
@@ -50,7 +52,6 @@ public class CameraManager : CinemachineExtension
             Quaternion rot = Quaternion.Euler(euleurRot);
             state.RawOrientation = rot;
         }
-
         if (_isUnzooming) UnzoomCamera();
         else ZoomCamera();
     }
@@ -63,9 +64,10 @@ public class CameraManager : CinemachineExtension
             _isUnzooming = false;
             lockYPosition = maxYPosition;
             lockXRotation = maxXRotation;
+            _isUnzoomMax = true;
             return;
         }
-
+        _isUnzoomMax = false;
         lockYPosition += offsetPositionMovement;
         lockXRotation += offsetRotationMovement;
     }
