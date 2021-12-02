@@ -50,10 +50,10 @@ public class PlayerManager : MonoBehaviour
 
         // Update players spawn positions according to which player is spawning
         // Player is spawning on the boat
-        Vector3 playerSpawnPosition = BoatManager.instance.self.position;
-        playerSpawnPosition.y += 3.0f;
-        playerSpawnPosition.z += playerInput.playerIndex * playerSpawnOffset;
         Transform playerTransform = playerInput.gameObject.transform;
+        Vector3 playerSpawnPosition = BoatManager.instance.self.position;
+        playerSpawnPosition.y += playerTransform.lossyScale.y * 10;
+        playerSpawnPosition.z += playerInput.playerIndex * playerSpawnOffset;
         playerTransform.position = playerSpawnPosition;
         playerTransform.SetParent(BoatManager.instance.self);
         _players.Add(playerInput.gameObject.GetComponent<PlayerController>());

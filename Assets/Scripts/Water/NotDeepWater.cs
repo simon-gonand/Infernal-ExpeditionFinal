@@ -18,7 +18,10 @@ public class NotDeepWater : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerController>().isInWater = true;
+            PlayerController player = other.GetComponent<PlayerController>();
+            player.isInWater = true;
+            if (player.hasBeenLaunched)
+                player.hasBeenLaunched = false;
         }
     }
 

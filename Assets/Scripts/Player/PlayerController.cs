@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     public bool isCarried { get { return _isCarried; } set { _isCarried = value; } }
 
     private bool _hasBeenLaunched = false;
-    public bool hasBeenLaunched { set { _hasBeenLaunched = value; } }
+    public bool hasBeenLaunched { get { return _hasBeenLaunched; } set { _hasBeenLaunched = value; } }
 
     // Is the player on the boat
     private bool _isOnBoat = true;
