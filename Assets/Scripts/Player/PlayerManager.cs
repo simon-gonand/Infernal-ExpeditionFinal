@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
 
     [Header("External References")]
     public CinemachineTargetGroup targetGroup;
+    public CameraManager camManager;
 
     private List<PlayerController> _players = new List<PlayerController>();
     public List<PlayerController> players { get { return _players; } }
@@ -62,5 +63,20 @@ public class PlayerManager : MonoBehaviour
         targetGroup.AddMember(playerTransform, 1, 20);
         playerTransform.SetParent(BoatManager.instance.self);
         _players.Add(playerInput.gameObject.GetComponent<PlayerController>());
+    }
+
+    private void Update()
+    {
+        if (_players.Count == 0) return;
+        foreach (PlayerController player in _players)
+        {
+            Vector2 posScreen = Camera.main.WorldToScreenPoint(player.self.position);
+            if (posScreen.y > Camera.main.pixelHeight || posScreen.x > Camera.main.pixelWidth || posScreen.y < 0 || posScreen.x < 0)
+            {
+                camManager.isUnzooming = true;
+                return;
+            }
+        }
+        camManager.isUnzooming = false;
     }
 }
