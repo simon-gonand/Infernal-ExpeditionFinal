@@ -133,21 +133,12 @@ public class Treasure : MonoBehaviour, ICarriable
         treasureOnBoat.y += self.lossyScale.y / 2;
         self.position = treasureOnBoat;
         self.SetParent(BoatManager.instance.self);
-        foreach(PlayerController player in playerInteractingWith)
-        {
-            player.isOnBoat = false;
-            player.self.SetParent(BoatManager.instance.self);
-        }
     }
 
     // Remove boat parent from treasure and all players that are carrying it
     public void GetOffBoat()
     {
-        foreach (PlayerController player in playerInteractingWith)
-        {
-            player.isOnBoat = true;
-            player.self.SetParent(null);
-        }
+        self.SetParent(null);
     }
 
     // Disable collider on the side where the player is interacting with the treasure
