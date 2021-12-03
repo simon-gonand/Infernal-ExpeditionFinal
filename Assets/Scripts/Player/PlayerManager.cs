@@ -82,7 +82,7 @@ public class PlayerManager : MonoBehaviour
                 {
                     if (posScreen.y < -deadZoneOffsetY || posScreen.x < -deadZoneOffsetX ||
                         posScreen.x > Camera.main.pixelWidth + deadZoneOffsetX || posScreen.y > Camera.main.pixelHeight + deadZoneOffsetY)
-                        Debug.Log("DIE");
+                        player.Die();
                 }
                 return;
             }

@@ -34,7 +34,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
 
     public void Die(PlayerController player)
     {
-        // Play die sound ?
+        // Play die sound
         if (player.isAttackedBy.Contains(this))
             player.isAttackedBy.Remove(this);
 
@@ -197,7 +197,11 @@ public class PeonAI : MonoBehaviour, EnemiesAI
             }
         }
 
-        currentFollowedPlayer = nextFollowedPlayer;
+        if (currentFollowedPlayer != nextFollowedPlayer)
+        {
+            // Play classic aggro sound
+            currentFollowedPlayer = nextFollowedPlayer;
+        }
     }
 
     private void CheckAttack()
@@ -227,6 +231,8 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         if (isFirstAttack) isFirstAttack = false;
         else yield return new WaitForSeconds(peonPreset.attackCooldown);
 
+        // Play attack Sound
+
         selfAnimator.SetTrigger("attack");
         yield return new WaitForSeconds(peonPreset.launchAttackCooldown);
 
@@ -255,6 +261,11 @@ public class PeonAI : MonoBehaviour, EnemiesAI
             // If he found a player to follow
             UpdateDestination();
             CheckAttack();
+
+            if (selfNavMesh.destination != null)
+            {
+                // Play Footsteps soud
+            }
         }
     }
 }

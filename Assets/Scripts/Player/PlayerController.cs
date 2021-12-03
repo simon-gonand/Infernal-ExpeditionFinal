@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
     public bool isStun { get { return _isStun; } }
 
     private bool isDashing = false;
+    private bool isDead = false;
     #endregion
 
     #region Collision
@@ -246,16 +247,17 @@ public class PlayerController : MonoBehaviour
             if (hitted.CompareTag("Enemy"))
             {
                 Debug.Log("Enemy has been attacked");
-                // Play enemy attacked sound
+                // Play sword impact sound
                 EnemiesAI enemy = hitted.GetComponent<EnemiesAI>();
                 enemy.Die(this);
                 return;
             }
             if (hitted.CompareTag("Player"))
             {
+                // Play sword impact sound
                 PlayerController attacked = hitted.GetComponent<PlayerController>();
                 if (attacked != this && !attacked._isStun)
-                {
+                {                    
                     attacked.StunPlayer();
                 }
             }
@@ -277,7 +279,8 @@ public class PlayerController : MonoBehaviour
         anim.SetTrigger("startStun");
         stunFx.SetActive(true);
 
-        // Update stun bool in animation for animation ?
+        // Play sound stun
+
         if (isCarrying)
         {
             _carrying.UninteractWith(this);
@@ -289,7 +292,8 @@ public class PlayerController : MonoBehaviour
         _isStun = false;
         anim.SetBool("isStun", false);
         stunFx.SetActive(false);
-        // Update stun bool in animation ?
+
+        // Stop sound stun
     }
 
     public void UpdateSwimming()
@@ -330,12 +334,21 @@ public class PlayerController : MonoBehaviour
         {
             currentSpeed = playerPreset.playerSwimSpeed;
 
+            // Play swim sound
+
             anim.SetBool("isSwiming", true);
             sword.SetActive(false);
         }
         // If player is in not deep water reduce speed
         else if (_isInWater)
+        {
+            // Play walk in water
             currentSpeed = playerPreset.playerInNotDeepWaterSpeed;
+        }
+        else
+        {
+            // Play Footsteps sound
+        }
 
         // Apply speed malus if the player is carrying an heavy treasure
         Treasure transportedTreasure = _carrying as Treasure;
@@ -381,7 +394,8 @@ public class PlayerController : MonoBehaviour
     private void Dash()
     {
         anim.SetBool("isDashing", true);
-        //selfRigidBody.velocity += self.forward * playerPreset.dashSpeed;
+        
+        // Dash sound
 
         float normalizedTimer = dashTimer / playerPreset.dashTime;
         
@@ -405,10 +419,28 @@ public class PlayerController : MonoBehaviour
         dashTimer = 0.0f;
     }
 
+    public void Die()
+    {
+        isDead = true;
+        // Play death out of bounds sound
+        StartCoroutine(Respawn());
+    }
+
+    private IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(playerPreset.respawnCooldown);
+        isDead = false;
+        Vector3 respawnPosition = BoatManager.instance.self.position;
+        respawnPosition.y *= 2;
+        self.position = respawnPosition;
+
+        // Play respawn sound
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!_isStun && !_isCarried && !_hasBeenLaunched)
+        if (!_isStun && !_isCarried && !_hasBeenLaunched && !isDead)
         {
             if (isDashing)
             {
@@ -424,7 +456,7 @@ public class PlayerController : MonoBehaviour
     void InfoAnim()
     {
         
-        if (!_isStun && !_isCarried)
+        if (!_isStun && !_isCarried && !isDead)
         {
             if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
             {

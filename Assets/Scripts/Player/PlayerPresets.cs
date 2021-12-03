@@ -26,4 +26,7 @@ public class PlayerPresets : ScriptableObject
     public float maxLaunchForce;
     [Tooltip("In how many time the player can launch the treasure with full force")]
     public float fullChargeTime;
+
+    [Header("Death")]
+    public float respawnCooldown;
 }
