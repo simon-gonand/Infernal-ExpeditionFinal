@@ -77,5 +77,7 @@ public class FollowPath : MonoBehaviour
         { 
             ++linkIndex;
         }
+        
+        // Play boat movement sound
     }
 }

@@ -6,6 +6,7 @@ public class BoatManager : MonoBehaviour
 {
     public Transform self;
     public Collider selfCollider;
+    public Transform spawnPoint;
 
     // BoatManager is a singleton class
     public static BoatManager instance;

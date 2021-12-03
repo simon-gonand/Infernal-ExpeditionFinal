@@ -5627,6 +5627,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6422384262100249536, guid: 7ea64287d9d0ae04abf11238abd7535a, type: 3}
   m_PrefabInstance: {fileID: 542404224}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &912105519 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2022780881432522819, guid: c8e909e23e583c44890dd052a563af6d, type: 3}
+  m_PrefabInstance: {fileID: 1229137251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &912196491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7138,6 +7143,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 95450756}
     - target: {fileID: 704666741126842628, guid: c8e909e23e583c44890dd052a563af6d, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 912105519}
+    - target: {fileID: 704666741126842628, guid: c8e909e23e583c44890dd052a563af6d, type: 3}
       propertyPath: selfCollider
       value: 
       objectReference: {fileID: 1255351201}
@@ -7153,6 +7162,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 699943376}
+    - target: {fileID: 2022780881432522819, guid: c8e909e23e583c44890dd052a563af6d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3108081168881688271, guid: c8e909e23e583c44890dd052a563af6d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -12424,6 +12437,14 @@ PrefabInstance:
       propertyPath: targetGroup
       value: 
       objectReference: {fileID: 2014284377}
+    - target: {fileID: 7569049507790534512, guid: 7bfb4b45130eb3e469db4a8a01aa3b6e, type: 3}
+      propertyPath: deadZoneOffsetX
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569049507790534512, guid: 7bfb4b45130eb3e469db4a8a01aa3b6e, type: 3}
+      propertyPath: deadZoneOffsetY
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7569049507790534513, guid: 7bfb4b45130eb3e469db4a8a01aa3b6e, type: 3}
       propertyPath: m_Name
       value: PlayerManager

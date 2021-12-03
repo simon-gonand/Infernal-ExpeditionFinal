@@ -429,10 +429,15 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Respawn()
     {
         yield return new WaitForSeconds(playerPreset.respawnCooldown);
-        isDead = false;
-        Vector3 respawnPosition = BoatManager.instance.self.position;
-        respawnPosition.y *= 2;
+        Vector3 respawnPosition = BoatManager.instance.spawnPoint.position;
+        respawnPosition.y += self.lossyScale.y;
+        if (isSwimming)
+        {
+            selfRigidBody.velocity += Vector3.up;
+            UpdateSwimming();
+        }
         self.position = respawnPosition;
+        isDead = false;
 
         // Play respawn sound
     }
