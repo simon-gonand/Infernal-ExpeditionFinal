@@ -220,10 +220,18 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+
+    public AK.Wwise.Event stuntIdleAudio;
+    public AK.Wwise.Event attackAudio;
+    public AK.Wwise.Event dashAudio;
+
+
     private void Attack()
     {
         // Play attack animation
         anim.SetTrigger("attack");
+
+        attackAudio.Post(gameObject);
 
         Collider[] hit = Physics.OverlapSphere(attackPoint.position, playerPreset.attackRange);
         foreach(Collider hitted in hit)
@@ -263,6 +271,8 @@ public class PlayerController : MonoBehaviour
         anim.SetTrigger("startStun");
         stunFx.SetActive(true);
 
+        stuntIdleAudio.Post(gameObject);
+
         // Update stun bool in animation for animation ?
         if (isCarrying)
         {
@@ -275,6 +285,8 @@ public class PlayerController : MonoBehaviour
         _isStun = false;
         anim.SetBool("isStun", false);
         stunFx.SetActive(false);
+
+        stuntIdleAudio.Stop(gameObject);
         // Update stun bool in animation ?
     }
 
@@ -367,6 +379,8 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("isDashing", true);
         //selfRigidBody.velocity += self.forward * playerPreset.dashSpeed;
+
+        dashAudio.Post(gameObject);
 
         float normalizedTimer = dashTimer / playerPreset.dashTime;
         

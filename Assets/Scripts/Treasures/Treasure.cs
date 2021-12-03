@@ -85,6 +85,11 @@ public class Treasure : MonoBehaviour, IInteractable
     }
     #endregion
 
+
+
+    public AK.Wwise.Event carryAudio;
+
+
     private void Start()
     {
         lastPosition = self.position;
@@ -183,6 +188,8 @@ public class Treasure : MonoBehaviour, IInteractable
         Vector3 upTreasure = self.position;
         upTreasure.y = player.self.position.y + self.lossyScale.y / 2;
         self.position = upTreasure;
+
+        carryAudio.Post(gameObject);
     }
 
     #region interaction

@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="1700933592">
+		<SoundBank Id="393239870" Language="SFX" Hash="2875240540">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -40,7 +40,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3919743498" Name="P_Dash" ObjectPath="\Events\Default Work Unit\Players\P_Dash" DurationType="OneShot" DurationMin="0.477874" DurationMax="0.668169">
+				<Event Id="3919743498" Name="P_Dash" ObjectPath="\Events\Default Work Unit\Players\P_Dash" DurationType="OneShot" DurationMin="0.262072" DurationMax="0.366432">
 					<IncludedMemoryFiles>
 						<File Id="46587669" Language="SFX">
 							<ShortName>PlayerDash_3.wav</ShortName>
@@ -353,16 +353,84 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="1730564753" Language="SFX" Hash="3434898113">
+		<SoundBank Id="1730564753" Language="SFX" Hash="3537637714">
 			<ObjectPath>\SoundBanks\Default Work Unit\Musics</ObjectPath>
 			<ShortName>Musics</ShortName>
 			<Path>Musics.bnk</Path>
 			<IncludedEvents>
 				<Event Id="3083031782" Name="Run_Theme" ObjectPath="\Events\Musics\Musics\Run_Theme" DurationType="Infinite">
 					<IncludedMemoryFiles>
-						<File Id="499703967" Language="SFX">
-							<ShortName>Test-Song.wav</ShortName>
-							<Path>SFX\Test-Song_D79FB2B7.wem</Path>
+						<File Id="13670849" Language="SFX">
+							<ShortName>Pillage A\CombatA_Cellos_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Cellos_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="70022786" Language="SFX">
+							<ShortName>Pillage A\CombatA_Basson_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Basson_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="87767042" Language="SFX">
+							<ShortName>CombatB_Flute-2_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\CombatB_Flute-2_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="142469888" Language="SFX">
+							<ShortName>Pillage A\CombatA_Strings-2_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Strings-2_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="169300384" Language="SFX">
+							<ShortName>Pillage A\CombatA_Strings-1_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Strings-1_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="244074245" Language="SFX">
+							<ShortName>CombatB_Marimba-2_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\CombatB_Marimba-2_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="297003049" Language="SFX">
+							<ShortName>Pillage B\CombatB_Basson_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Basson_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="311519212" Language="SFX">
+							<ShortName>CombatB_Dulcimer-3_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\CombatB_Dulcimer-3_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="313398368" Language="SFX">
+							<ShortName>Pillage A\CombatA_Dulcimer_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Dulcimer_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="338165594" Language="SFX">
+							<ShortName>Pillage B\CombatB_Violons_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Violons_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="520914665" Language="SFX">
+							<ShortName>Pillage B\CombatB_Flute_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Flute_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="538941454" Language="SFX">
+							<ShortName>Pillage B\CombatB_Dulcimer_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Dulcimer_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="659660252" Language="SFX">
+							<ShortName>CombatB_Dulcimer-2_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\CombatB_Dulcimer-2_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="662446235" Language="SFX">
+							<ShortName>Pillage B\CombatB_Marimba_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Marimba_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="780506284" Language="SFX">
+							<ShortName>Pillage B\CombatB_Cellos_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Cellos_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="785336816" Language="SFX">
+							<ShortName>Pillage B\CombatB_Beat_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Beat_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="831820229" Language="SFX">
+							<ShortName>Pillage A\CombatA_Beat_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Beat_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="910625862" Language="SFX">
+							<ShortName>Pillage A\CombatA_Violons_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Violons_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

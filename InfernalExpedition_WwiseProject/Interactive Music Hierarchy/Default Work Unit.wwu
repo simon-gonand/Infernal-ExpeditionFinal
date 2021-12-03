@@ -4,6 +4,13 @@
 		<WorkUnit Name="Default Work Unit" ID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}" PersistMode="Standalone">
 			<ChildrenList>
 				<MusicPlaylistContainer Name="Pillage" ID="{30ED4388-E7FD-4FCE-95F8-F0BAA89DB475}" ShortID="1053917875">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>

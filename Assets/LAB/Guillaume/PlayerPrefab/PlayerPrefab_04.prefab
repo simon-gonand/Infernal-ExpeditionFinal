@@ -136,6 +136,18 @@ MonoBehaviour:
   anim: {fileID: 9007219405739566633}
   sword: {fileID: 1277832469005619150}
   stunFx: {fileID: 2739789684704048623}
+  stuntIdleAudio:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3ab1d21e097e6f7489be0c878115fdf7, type: 2}
+  attackAudio:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: bf529bddab64557488fb1f5070fbdcd3, type: 2}
+  dashAudio:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 9324619cc3c3823448c3261cb096b0ed, type: 2}
 --- !u!114 &4223509153915057750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +290,7 @@ MonoBehaviour:
   player2Material: {fileID: 2100000, guid: 063d73d1e34bf774eae2f421aa9fe9ab, type: 2}
   player3Material: {fileID: 2100000, guid: 840361a3d1703704b9a4f0f9be3b965b, type: 2}
   player4Material: {fileID: 2100000, guid: 8e76c06808b819245a6cd2316ebbca86, type: 2}
+  targetGroup: {fileID: 0}
 --- !u!23 &127302442358388516
 MeshRenderer:
   m_ObjectHideFlags: 0
