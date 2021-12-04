@@ -451,8 +451,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!_isStun && !_isCarried && !_hasBeenLaunched && !isDead && !isLaunching)
+        if (!_isStun && !_isCarried && !_hasBeenLaunched && !isDead && (_carrying != null ? !_carrying.isLoadingLaunch : true))
         {
+
             if (isDashing)
             {
                 Dash();
@@ -467,7 +468,7 @@ public class PlayerController : MonoBehaviour
     void InfoAnim()
     {
         
-        if (!_isStun && !_isCarried && !isDead && !_isLaunching)
+        if (!_isStun && !_isCarried && !isDead && (_carrying != null ? !_carrying.isLoadingLaunch : true))
         {
             if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
             {

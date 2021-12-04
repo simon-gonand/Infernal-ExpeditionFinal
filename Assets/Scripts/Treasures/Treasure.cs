@@ -21,7 +21,8 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
     private bool isGrounded = false;
-    private bool isLoadingLaunch = false;
+    private bool _isLoadingLaunch = false;
+    public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
     private bool _isColliding = false;
     public bool isColliding { set { _isColliding = value; } }
 
@@ -249,7 +250,7 @@ public class Treasure : MonoBehaviour, ICarriable
         }
 
         selfRigidbody.velocity = Vector3.zero;
-        isLoadingLaunch = true;
+        _isLoadingLaunch = true;
         StartCoroutine(LoadingLaunchForce());
     }
 
@@ -273,7 +274,7 @@ public class Treasure : MonoBehaviour, ICarriable
     {
         if (isLoadingLaunch)
         {
-            isLoadingLaunch = false;
+            _isLoadingLaunch = false;
 
             Vector3 launchDirection = Vector3.zero;
             while(_playerInteractingWith.Count > 0)
