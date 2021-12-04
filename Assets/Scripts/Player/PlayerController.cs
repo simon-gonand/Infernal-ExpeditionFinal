@@ -393,6 +393,7 @@ public class PlayerController : MonoBehaviour
         {
             _movement.y = 0.0f;
             self.forward = _movement;
+            playerGraphics.forward = self.forward;
         }
     }
 
