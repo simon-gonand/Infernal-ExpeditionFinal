@@ -69,8 +69,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 4223509153915057737}
   selfRigidBody: {fileID: 2660306658829606644}
+  selfCollider: {fileID: 4223509153915057738}
   playerPreset: {fileID: 11400000, guid: 6e8ed946df7976d4e939d4c409344454, type: 2}
-  selfRenderer: {fileID: 127302442358388516}
   playerGraphics: {fileID: 8953784907364789553}
   attackPoint: {fileID: 7237748085361382517}
   playerCarryingPoint: {fileID: 6219935653066116965}
@@ -220,6 +220,9 @@ MonoBehaviour:
   player3Material: {fileID: 2100000, guid: 840361a3d1703704b9a4f0f9be3b965b, type: 2}
   player4Material: {fileID: 2100000, guid: 8e76c06808b819245a6cd2316ebbca86, type: 2}
   targetGroup: {fileID: 0}
+  camManager: {fileID: 0}
+  deadZoneOffsetX: 10
+  deadZoneOffsetY: 10
 --- !u!23 &127302442358388516
 MeshRenderer:
   m_ObjectHideFlags: 0

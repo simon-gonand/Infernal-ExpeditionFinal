@@ -241,11 +241,14 @@ public class Treasure : MonoBehaviour, ICarriable
     // Launch the treasure
     public void OnAction(PlayerController player)
     {
-        if (_playerInteractingWith.Count == 1)
+        foreach (PlayerController p in _playerInteractingWith)
         {
-            isLoadingLaunch = true;
-            StartCoroutine(LoadingLaunchForce());
+            if (!p.isLaunching) return;
         }
+
+        selfRigidbody.velocity = Vector3.zero;
+        isLoadingLaunch = true;
+        StartCoroutine(LoadingLaunchForce());
     }
 
     IEnumerator LoadingLaunchForce()
@@ -270,31 +273,41 @@ public class Treasure : MonoBehaviour, ICarriable
         {
             isLoadingLaunch = false;
 
+            Vector3 launchDirection = Vector3.zero;
+            while(_playerInteractingWith.Count > 0)
+            {
+                PlayerController p = _playerInteractingWith[0];
+                Vector3 playerMovement = new Vector3 (p.playerMovementInput.x, 0.0f, p.playerMovementInput.y);
+                playerMovement.y = 0.0f;
+                launchDirection += playerMovement;
+                // Update lists values
+                _playerInteractingWith.Remove(p);
+                associateColliders[p].GetComponent<BoxCollider>().enabled = true;
+                associateColliders.Remove(p);
+
+                // Update player values
+                p.isCarrying = false;
+                p.carrying = null;
+                p.isLaunching = false;
+
+                // Update Anim
+                p.anim.SetBool("isCarrying", false);
+                p.sword.SetActive(true);
+
+                Physics.IgnoreCollision(selfCollider, p.selfCollider, true);
+            }
+
             // Enable rigidbody
             selfRigidbody.isKinematic = false;
             selfRigidbody.useGravity = true;
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
-            selfRigidbody.AddForce((player.self.forward + player.self.up) * launchForce, ForceMode.Impulse);
+            selfRigidbody.AddForce((launchDirection + Vector3.up) * launchForce, ForceMode.Impulse);
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             launchForce = 0.0f;
-
-            // Update lists values
-            _playerInteractingWith.Remove(player);
-            associateColliders[player].GetComponent<BoxCollider>().enabled = true;
-            associateColliders.Remove(player);
-
-            // Update player values
-            player.isCarrying = false;
-            player.carrying = null;
-
-            // Update Anim
-            player.anim.SetBool("isCarrying", false);
-            player.sword.SetActive(true);
 
             // Play throw sound
 
             isGrounded = false;
-            Debug.Break();
         }
     }
 
@@ -359,6 +372,7 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.velocity = Vector3.zero;
             foreach(PlayerController player in _playerInteractingWith)
             {
+                if (player.isLaunching) continue;
                 Vector3 applyForces = player.movement;
                 applyForces.y = 0.0f;
                 selfRigidbody.velocity += applyForces;
