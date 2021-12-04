@@ -17,6 +17,7 @@ public class Treasure : MonoBehaviour, ICarriable
     public List<PlayerController> playerInteractingWith { get { return _playerInteractingWith; } }
 
     private List<PlayerController> playerColliding = new List<PlayerController>();
+    private List<PlayerController> playerCollisionIgnored = new List<PlayerController>();
 
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
     private bool isGrounded = false;
@@ -244,6 +245,7 @@ public class Treasure : MonoBehaviour, ICarriable
         foreach (PlayerController p in _playerInteractingWith)
         {
             if (!p.isLaunching) return;
+            p.selfRigidBody.velocity = Vector3.zero;
         }
 
         selfRigidbody.velocity = Vector3.zero;
@@ -289,12 +291,14 @@ public class Treasure : MonoBehaviour, ICarriable
                 p.isCarrying = false;
                 p.carrying = null;
                 p.isLaunching = false;
+                p.selfRigidBody.mass = 1;
 
                 // Update Anim
                 p.anim.SetBool("isCarrying", false);
                 p.sword.SetActive(true);
 
                 Physics.IgnoreCollision(selfCollider, p.selfCollider, true);
+                playerCollisionIgnored.Add(p);
             }
 
             // Enable rigidbody
@@ -408,6 +412,11 @@ public class Treasure : MonoBehaviour, ICarriable
                 {
                     selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
                     isGrounded = true;
+                }
+                while(playerCollisionIgnored.Count > 0)
+                {
+                    Physics.IgnoreCollision(selfCollider, playerCollisionIgnored[0].selfCollider, false);
+                    playerCollisionIgnored.RemoveAt(0);
                 }
             }
             
