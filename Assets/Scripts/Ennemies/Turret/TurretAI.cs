@@ -21,7 +21,7 @@ public class TurretAI : MonoBehaviour, EnemiesAI
     private bool _isAwake = false;
     public bool isAwake { set { _isAwake = value; } }
 
-    private bool canFire = true;
+    private bool canFire = false;
 
     public void Die(PlayerController player)
     {
@@ -38,13 +38,13 @@ public class TurretAI : MonoBehaviour, EnemiesAI
 
     private void Fire()
     {
-        StartCoroutine(FireCoroutine());
-
         GameObject ball = Instantiate(cannonBall);
         ball.transform.position = cannonBallSpawnPoint.position;
         ball.GetComponent<Rigidbody>().AddForce(self.forward * firePower, ForceMode.Impulse);
 
         // Play fire sound
+
+        StartCoroutine(FireCoroutine());
     }
 
     IEnumerator FireCoroutine()
@@ -52,6 +52,11 @@ public class TurretAI : MonoBehaviour, EnemiesAI
         canFire = false;
         yield return new WaitForSeconds(fireRate);
         canFire = true;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(FireCoroutine());
     }
 
     // Update is called once per frame
