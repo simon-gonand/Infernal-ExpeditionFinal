@@ -281,7 +281,6 @@ public class Treasure : MonoBehaviour, ICarriable
             {
                 PlayerController p = _playerInteractingWith[0];
                 Vector3 playerMovement = new Vector3 (p.playerMovementInput.x, 0.0f, p.playerMovementInput.y);
-                playerMovement.y = 0.0f;
                 launchDirection += playerMovement;
                 // Update lists values
                 _playerInteractingWith.Remove(p);
@@ -398,11 +397,12 @@ public class Treasure : MonoBehaviour, ICarriable
         }
         if (!isGrounded)
         {
+            selfRigidbody.AddForce((Physics.gravity * 3) * selfRigidbody.mass);
             // Set the position of the raycast
             Vector3 raycastStartPos = self.position;
             raycastStartPos.y -= self.lossyScale.y / 2;
             RaycastHit hit;
-            if (Physics.Raycast(raycastStartPos, -Vector3.up, out hit, 0.05f))
+            if (Physics.Raycast(raycastStartPos, -Vector3.up, out hit, 0.5f))
             {
                 // Set boat as parent if it's touching the ground of it
                 if (hit.collider.CompareTag("Boat"))
