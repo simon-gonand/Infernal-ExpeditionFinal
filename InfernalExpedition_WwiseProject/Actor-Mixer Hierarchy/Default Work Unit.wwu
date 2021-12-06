@@ -1441,7 +1441,6 @@
 						</RandomSequenceContainer>
 						<Sound Name="Player_Stunt" ID="{50D4D310-7EB2-4490-B309-B79FAA39496B}" ShortID="796147354">
 							<PropertyList>
-								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-5</Value>
@@ -1458,6 +1457,12 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="Player_Stunt" ID="{0227E152-8CDA-468A-BEE9-E8DF2A8C8374}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="3.3040377728513"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.380464955661664"/>
+										<Property Name="TrimEnd" Type="Real64" Value="3.68450272851296"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>Player_Stunt.wav</AudioFile>
 									<MediaIDList>
@@ -1468,6 +1473,84 @@
 							<ObjectLists/>
 							<ActiveSourceList>
 								<ActiveSource Name="Player_Stunt" ID="{0227E152-8CDA-468A-BEE9-E8DF2A8C8374}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Player_Damage" ID="{41AC3EBA-DC59-4F96-96E7-B652FA3A89C1}" ShortID="529938161">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{2FE59BBA-A0E3-4173-B074-09764CB16792}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="400"/>
+													<Property Name="Min" Type="Real64" Value="-400"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Player_Damage" ID="{9D84BB94-371C-4F3D-B607-C265164AF636}">
+									<Language>SFX</Language>
+									<AudioFile>Player_Damage.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="528135933"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Player_Damage" ID="{9D84BB94-371C-4F3D-B607-C265164AF636}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Stunt_Bell" ID="{F304D0A3-433A-4CD6-8895-405FA01C21A6}" ShortID="217197864">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Stunt_Bell" ID="{9E23E4CE-D8C7-4324-97D7-9262C7C286FD}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="1.70140625"/>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Stunt_Bell.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="618713017"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Stunt_Bell" ID="{9E23E4CE-D8C7-4324-97D7-9262C7C286FD}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>

@@ -44,7 +44,6 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="P_SwordImpact" ID="{F9909DB4-B69B-4675-87AC-878DCB5A4821}"/>
-						<Event Name="P_Damages" ID="{D771C463-A0E1-4222-A09D-73E5A6B15724}"/>
 						<Event Name="P_Stunt" ID="{F3DE8B14-C967-42D4-AA78-37BA031673BC}">
 							<ChildrenList>
 								<Action Name="" ID="{C5F75393-1BB3-4E16-8DE0-254FD607E5CA}" ShortID="80504306">
@@ -57,10 +56,17 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
+								<Action Name="" ID="{13B24E88-2282-4719-9A56-6A7695640183}" ShortID="63057748">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Damage" ID="{41AC3EBA-DC59-4F96-96E7-B652FA3A89C1}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 								<Action Name="" ID="{B2005F73-0D95-4DEE-9FAD-C3B7344C3D63}" ShortID="821948834">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Player_Stunt" ID="{50D4D310-7EB2-4490-B309-B79FAA39496B}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+											<ObjectRef Name="Stunt_Bell" ID="{F304D0A3-433A-4CD6-8895-405FA01C21A6}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
