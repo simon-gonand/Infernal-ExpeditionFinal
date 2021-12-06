@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 332886954977132276}
   - component: {fileID: 332886954977132047}
   - component: {fileID: 704666741126842628}
+  - component: {fileID: 1255351200}
   m_Layer: 0
   m_Name: BoatPrefab
   m_TagString: Boat
@@ -25,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332886954977132043}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5765, y: 2.5765, z: 2.5765}
   m_Children:
   - {fileID: 7783996566173510690}
   - {fileID: 67852814239876045}
@@ -66,6 +67,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 332886954977132276}
   selfCollider: {fileID: 332886954977132047}
+  spawnPoint: {fileID: 2022780881432522819}
+--- !u!114 &1255351200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332886954977132043}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca309a8328617d441a389485da8b16a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: {fileID: 0}
+  self: {fileID: 332886954977132276}
+  camPosition: {fileID: 0}
 --- !u!1 &3386055615788401896
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7475511954168060901}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.65, z: 0}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 332886954977132276}
