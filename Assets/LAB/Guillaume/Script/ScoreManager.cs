@@ -15,6 +15,9 @@ public class ScoreManager : MonoBehaviour
     [Range(1, 100)] public int scoreNeedForGold;
     [Space]
     public differentStarState actualStar;
+
+    public int nextObjectif;
+
     public enum differentStarState {NoStar, Bronze, Silver, Gold}
 
     private void Awake()
@@ -29,6 +32,11 @@ public class ScoreManager : MonoBehaviour
             Debug.LogWarning("There is multiple ScoreManager in the scene");
         }
         #endregion
+    }
+
+    private void Start()
+    {
+        nextObjectif = scoreNeedForBronze;
     }
 
     public void AddScore(int numberToAdd)

@@ -15,11 +15,13 @@ public class UiScore : MonoBehaviour
     public Color goldColor;
 
     [Header ("Unity setup")]
-    public Image imageActualStar;
-    public Image imageNextStar;
+    public Image imageFillerActualStar;
+    public Image imageFillerNextStar;
     [Space]
     public TextMeshProUGUI textActualScore;
+    [Space]
     public Slider sliderBar;
+    public Image imageSliderFiller;
 
     private void Awake()
     {
@@ -43,6 +45,45 @@ public class UiScore : MonoBehaviour
     public void ScoreUpdate()
     {
         textActualScore.text = ScoreManager.instance.actualScore.ToString();
+
+        ColorUpdate();
+        SliderUpdate();
     }
 
+    private void ColorUpdate()
+    {
+        switch (ScoreManager.instance.actualStar)
+        {
+            case ScoreManager.differentStarState.NoStar:
+
+                imageFillerActualStar.color = noColor;
+                imageFillerNextStar.color = bronzeColor;
+                imageSliderFiller.color = bronzeColor;
+                break;
+
+            case ScoreManager.differentStarState.Bronze:
+
+                imageFillerActualStar.color = bronzeColor;
+                imageFillerNextStar.color = silverColor;
+                imageSliderFiller.color = silverColor;
+                break;
+
+            case ScoreManager.differentStarState.Silver:
+
+                imageFillerActualStar.color = silverColor;
+                imageFillerNextStar.color = goldColor;
+                imageSliderFiller.color = goldColor;
+                break;
+
+            case ScoreManager.differentStarState.Gold:
+
+                imageFillerActualStar.color = goldColor;
+                break;
+        }
+    }
+
+    private void SliderUpdate()
+    {
+        sliderBar.value = ScoreManager.instance.actualScore / ScoreManager.instance.nextObjectif;
+    }
 }
