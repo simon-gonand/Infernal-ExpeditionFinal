@@ -31,7 +31,7 @@ public class TurretAI : MonoBehaviour, EnemiesAI
         Destroy(this.gameObject);
     }
 
-    public void ResetCurrentFollowedPlayer()
+    public void ResetCurrentTarget()
     {
         // No implementation
     }
