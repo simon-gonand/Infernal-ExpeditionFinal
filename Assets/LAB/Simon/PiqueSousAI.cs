@@ -6,8 +6,7 @@ using UnityEngine.AI;
 public class PiqueSousAI : MonoBehaviour, EnemiesAI
 {
     public Transform self;
-    [SerializeField]
-    private SpawnPiqueSous spawner;
+    public SpawnPiqueSous spawner;
     [SerializeField]
     private PiqueSousPreset preset;
     [SerializeField]
@@ -41,7 +40,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
         {
             Treasure treasure = spawner.treasureInZone[i];
 
-            if (treasure.isInDeepWater || treasure.playerInteractingWith.Count > 0) continue;
+            if (treasure.isInDeepWater || treasure.playerInteractingWith.Count > 0 || treasure.isCarriedByPiqueSous) continue;
 
             float treasureDist = Vector3.Distance(self.position, treasure.self.position);
             if (nearestTreasure == null || nearestTreasureDistance > treasureDist)
@@ -56,7 +55,17 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
             ResetCurrentTarget();
             return;
         }
+        targetTreasure = nearestTreasure;
         selfNavMesh.SetDestination(nearestTreasure.self.position);
+    }
+
+    private void CheckCarryChest()
+    {
+        if(Vector3.Distance(self.position, targetTreasure.self.position) < targetTreasure.self.localScale.x)
+        {
+            isCarrying = true;
+            targetTreasure.InteractWithPiqueSous(this);
+        }
     }
 
     private void GoBackHome()
@@ -71,7 +80,11 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
 
     public void Die(PlayerController player)
     {
-        
+        // Die sound
+        if (targetTreasure != null && targetTreasure.isCarriedByPiqueSous)
+            targetTreasure.UnInteractWithPiqueSous(this);
+        // Die animation
+        Destroy(this.gameObject);
     }
 
     // Update is called once per frame
@@ -82,6 +95,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
             if (!isCarrying)
             {
                 UpdateTreasureDestination();
+                CheckCarryChest();
             }
             else
             {
