@@ -11,11 +11,31 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="992611239">
+		<SoundBank Id="393239870" Language="SFX" Hash="4125733145">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
 			<IncludedEvents>
+				<Event Id="903419691" Name="E_Clsq_Attack" ObjectPath="\Events\Default Work Unit\Enemy\E_Clsq_Attack" DurationType="OneShot" DurationMin="0.471936" DurationMax="0.517484">
+					<IncludedMemoryFiles>
+						<File Id="22319495" Language="SFX">
+							<ShortName>Enemy_SlashAttack.wav</ShortName>
+							<Path>SFX\Enemy_SlashAttack_46DACFFA.wem</Path>
+						</File>
+						<File Id="286784303" Language="SFX">
+							<ShortName>Enemy_ShineAttack.wav</ShortName>
+							<Path>SFX\Enemy_ShineAttack_10C4C929.wem</Path>
+						</File>
+						<File Id="292770977" Language="SFX">
+							<ShortName>Enemy_SlashAttack_2.wav</ShortName>
+							<Path>SFX\Enemy_SlashAttack_2_00DE9AEF.wem</Path>
+						</File>
+						<File Id="1063609588" Language="SFX">
+							<ShortName>Enemy_SlashAttack_3.wav</ShortName>
+							<Path>SFX\Enemy_SlashAttack_3_C8681226.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="491820422" Name="P_Attack" ObjectPath="\Events\Default Work Unit\Players\P_Attack" DurationType="OneShot" DurationMin="0.111844" DurationMax="0.284734">
 					<IncludedMemoryFiles>
 						<File Id="116536701" Language="SFX">
@@ -338,18 +358,6 @@
 						<File Id="618713017" Language="SFX">
 							<ShortName>Stunt_Bell.wav</ShortName>
 							<Path>SFX\Stunt_Bell_B013448C.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1504870946" Name="P_Throw" ObjectPath="\Events\Default Work Unit\Players\P_Throw" DurationType="OneShot" DurationMin="0.247933" DurationMax="1.130663">
-					<IncludedMemoryFiles>
-						<File Id="462619250" Language="SFX">
-							<ShortName>Player_Throw_2.wav</ShortName>
-							<Path>SFX\Player_Throw_2_10C4C929.wem</Path>
-						</File>
-						<File Id="685935742" Language="SFX">
-							<ShortName>Player_Throw.wav</ShortName>
-							<Path>SFX\Player_Throw_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
