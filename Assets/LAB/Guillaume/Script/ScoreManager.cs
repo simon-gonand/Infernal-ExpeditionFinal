@@ -16,7 +16,8 @@ public class ScoreManager : MonoBehaviour
     [Space]
     public differentStarState actualStar;
 
-    public int nextObjectif;
+    public int scoreNeedForNextStar;
+    public int scoreOfActualStar;
 
     public enum differentStarState {NoStar, Bronze, Silver, Gold}
 
@@ -32,11 +33,14 @@ public class ScoreManager : MonoBehaviour
             Debug.LogWarning("There is multiple ScoreManager in the scene");
         }
         #endregion
+
+        scoreNeedForNextStar = scoreNeedForBronze;
+        scoreOfActualStar = 0;
     }
 
     private void Start()
     {
-        nextObjectif = scoreNeedForBronze;
+        //nextObjectif = scoreNeedForBronze;
     }
 
     public void AddScore(int numberToAdd)
@@ -49,6 +53,7 @@ public class ScoreManager : MonoBehaviour
         {
             UiScore.instance.ScoreUpdate();
         }
+
     }
 
     public void SubstractScore(int numberToSubstract)
@@ -72,6 +77,10 @@ public class ScoreManager : MonoBehaviour
                 if (actualScore >= scoreNeedForBronze)
                 {
                     actualStar = differentStarState.Bronze;
+
+                    scoreOfActualStar = scoreNeedForBronze;
+
+                    scoreNeedForNextStar = scoreNeedForSilver - scoreNeedForBronze;
                 }
                 break;
 
@@ -79,6 +88,10 @@ public class ScoreManager : MonoBehaviour
                 if (actualScore >= scoreNeedForSilver)
                 {
                     actualStar = differentStarState.Silver;
+
+                    scoreOfActualStar = scoreNeedForSilver;
+
+                    scoreNeedForNextStar = scoreNeedForGold - scoreNeedForSilver;
                 }
                 else if (actualScore < scoreNeedForBronze)
                 {
@@ -90,6 +103,8 @@ public class ScoreManager : MonoBehaviour
                 if (actualScore >= scoreNeedForGold)
                 {
                     actualStar = differentStarState.Gold;
+
+                    //scoreOfActualStar = scoreNeedForGold;
                 }
                 else if (actualScore < scoreNeedForSilver)
                 {

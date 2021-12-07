@@ -23,6 +23,10 @@ public class UiScore : MonoBehaviour
     public Slider sliderBar;
     public Image imageSliderFiller;
 
+    private Coroutine transitionCoroutine;
+    public float oldScore;
+    public float timeForTransition;
+
     private void Awake()
     {
         #region Setup instance
@@ -46,8 +50,9 @@ public class UiScore : MonoBehaviour
     {
         textActualScore.text = ScoreManager.instance.actualScore.ToString();
 
-        ColorUpdate();
         SliderUpdate();
+
+        ColorUpdate();
     }
 
     private void ColorUpdate()
@@ -84,6 +89,28 @@ public class UiScore : MonoBehaviour
 
     private void SliderUpdate()
     {
-        sliderBar.value = ScoreManager.instance.actualScore / ScoreManager.instance.nextObjectif;
+        if (transitionCoroutine == null)
+        {
+            transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, (float)(ScoreManager.instance.actualScore - ScoreManager.instance.scoreOfActualStar) / (float)ScoreManager.instance.scoreNeedForNextStar));
+        }
+        else
+        {
+            StopCoroutine(transitionCoroutine);
+            transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, (float)(ScoreManager.instance.actualScore - ScoreManager.instance.scoreOfActualStar) / (float)ScoreManager.instance.scoreNeedForNextStar));
+        }
+    }
+
+    IEnumerator SliderTransitionValue(float oldValue, float newValue)
+    {
+        float time = 0;
+        float valueForSlider = 0;
+
+        while (time < timeForTransition)
+        {
+            valueForSlider = Mathf.Lerp(oldValue, newValue, time / timeForTransition);
+            sliderBar.value = valueForSlider;
+            time += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
