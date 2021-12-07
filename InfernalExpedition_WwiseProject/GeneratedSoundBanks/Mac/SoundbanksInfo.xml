@@ -11,11 +11,26 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="4125733145">
+		<SoundBank Id="393239870" Language="SFX" Hash="3900037114">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
 			<IncludedEvents>
+				<Event Id="1992604323" Name="B_ChestCollect" ObjectPath="\Events\Default Work Unit\Boat\B_ChestCollect" DurationType="OneShot" DurationMin="0.866188" DurationMax="0.866188">
+					<IncludedMemoryFiles>
+						<File Id="447776085" Language="SFX">
+							<ShortName>Treasure_Collect.wav</ShortName>
+							<Path>SFX\Treasure_Collect_10C4C929.wem</Path>
+						</File>
+						<File Id="857342633" Language="SFX">
+							<ShortName>Chest_GroundImpact.wav</ShortName>
+							<Path>SFX\Chest_GroundImpact_5FC2AF7A.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<ActionTrigger>
+						<ActionTriggerEntry Id="1087296951" Name="Collect_Treasure" ObjectPath="\Triggers\Default Work Unit\Collect_Treasure"/>
+					</ActionTrigger>
+				</Event>
 				<Event Id="903419691" Name="E_Clsq_Attack" ObjectPath="\Events\Default Work Unit\Enemy\E_Clsq_Attack" DurationType="OneShot" DurationMin="0.471936" DurationMax="0.517484">
 					<IncludedMemoryFiles>
 						<File Id="22319495" Language="SFX">
@@ -375,6 +390,9 @@
 					</States>
 				</StateGroup>
 			</StateGroups>
+			<Triggers>
+				<Trigger Id="1087296951" Name="Collect_Treasure" ObjectPath="\Triggers\Default Work Unit\Collect_Treasure"/>
+			</Triggers>
 		</SoundBank>
 		<SoundBank Id="1355168291" Language="SFX" Hash="3680015027">
 			<ObjectPath>Init</ObjectPath>

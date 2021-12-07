@@ -172,7 +172,34 @@
 						<Event Name="B_Moving" ID="{6C541620-49F8-420A-AB26-53DDDE6AEDEC}"/>
 						<Event Name="B_Rotation" ID="{6728D8F2-5E4E-49E3-A8AE-4CCA1C583B28}"/>
 						<Event Name="B_Ladders" ID="{7B4BFD0B-EEE8-406C-9D2F-3A86BA4B17AB}"/>
-						<Event Name="B_ChestCollect" ID="{8A949A82-31F4-4174-89A1-8A98EAAF71A5}"/>
+						<Event Name="B_ChestCollect" ID="{8A949A82-31F4-4174-89A1-8A98EAAF71A5}">
+							<ChildrenList>
+								<Action Name="" ID="{FCD9AD8C-BD17-48E9-983D-CD969ABA8D91}" ShortID="1023648462">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Treasure_Collect" ID="{E6E7263B-69ED-442D-A270-206BD9ADB491}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{A7311DBE-452C-40C1-B8E6-FE4FF6DD9A15}" ShortID="5830492">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Chest_GroundImpact" ID="{B895FEFF-F422-4FDB-9E5F-D04F8A04F486}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{5DEBF3EB-00E8-4CB6-85A5-6C59594B45D1}" ShortID="913007456">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="35"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Collect_Treasure" ID="{DA52EB88-6B3D-4397-BA24-B8C441C80D38}" WorkUnitID="{1B25F427-D36A-4347-B8DC-3552BBE667D3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="B_Damages" ID="{9EAD575C-7A53-4D5D-B5BC-68022245B8ED}"/>
 					</ChildrenList>
 				</Folder>
