@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="1700933592">
+		<SoundBank Id="393239870" Language="SFX" Hash="992611239">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -53,6 +53,10 @@
 						<File Id="152162454" Language="SFX">
 							<ShortName>PlayerDash_2.wav</ShortName>
 							<Path>SFX\PlayerDash_2_10C4C929.wem</Path>
+						</File>
+						<File Id="1055089053" Language="SFX">
+							<ShortName>PlayerDash_Cloth.wav</ShortName>
+							<Path>SFX\PlayerDash_Cloth_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -325,11 +329,27 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3383744642" Name="P_Stunt" ObjectPath="\Events\Default Work Unit\Players\P_Stunt" DurationType="Infinite">
+				<Event Id="3383744642" Name="P_Stunt" ObjectPath="\Events\Default Work Unit\Players\P_Stunt" DurationType="OneShot" DurationMin="1.701406" DurationMax="1.701406">
 					<IncludedMemoryFiles>
-						<File Id="991773503" Language="SFX">
-							<ShortName>Player_Stunt.wav</ShortName>
-							<Path>SFX\Player_Stunt_D79FB2B7.wem</Path>
+						<File Id="528135933" Language="SFX">
+							<ShortName>Player_Damage.wav</ShortName>
+							<Path>SFX\Player_Damage_10C4C929.wem</Path>
+						</File>
+						<File Id="618713017" Language="SFX">
+							<ShortName>Stunt_Bell.wav</ShortName>
+							<Path>SFX\Stunt_Bell_B013448C.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1504870946" Name="P_Throw" ObjectPath="\Events\Default Work Unit\Players\P_Throw" DurationType="OneShot" DurationMin="0.247933" DurationMax="1.130663">
+					<IncludedMemoryFiles>
+						<File Id="462619250" Language="SFX">
+							<ShortName>Player_Throw_2.wav</ShortName>
+							<Path>SFX\Player_Throw_2_10C4C929.wem</Path>
+						</File>
+						<File Id="685935742" Language="SFX">
+							<ShortName>Player_Throw.wav</ShortName>
+							<Path>SFX\Player_Throw_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

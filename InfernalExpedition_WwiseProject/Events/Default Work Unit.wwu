@@ -30,6 +30,13 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
+								<Action Name="" ID="{95BA47C9-EAD4-427E-BA0E-A1897C18123B}" ShortID="445940038">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PlayerDash_Cloth" ID="{D62CD21C-8733-459B-B462-E12A0176552F}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="P_Attack" ID="{1A335906-41AD-4B6A-86BC-E96E08537BA6}">
@@ -86,7 +93,17 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="P_Throw" ID="{2CB5EDE2-503D-4672-8E9C-F4A48B3E3126}"/>
+						<Event Name="P_Throw" ID="{2CB5EDE2-503D-4672-8E9C-F4A48B3E3126}">
+							<ChildrenList>
+								<Action Name="" ID="{FA547A39-9822-4B0A-B4CE-5C655D76B632}" ShortID="517399028">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Throw" ID="{E606E9CD-FCA8-45EA-8B4C-A35F958E9C78}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="P_GroundImpact" ID="{5981572F-32EA-42E3-905A-92EB54A56D01}">
 							<ChildrenList>
 								<Action Name="" ID="{33A5BACF-42F8-42C4-A5B7-15B0EA838473}" ShortID="357158862">
