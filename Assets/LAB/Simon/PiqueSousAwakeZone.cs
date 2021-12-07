@@ -10,12 +10,20 @@ public class PiqueSousAwakeZone : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Boat"))
-            parent.isAwake = true;        
+        {
+            if (parent.seen.Count == 0)
+                parent.isAwake = true;
+            parent.seen.Add(other.transform);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Boat"))
-            parent.isAwake = false;
+        {
+            parent.seen.Remove(other.transform);
+            if (parent.seen.Count == 0)
+                parent.isAwake = false;
+        }
     }
 }

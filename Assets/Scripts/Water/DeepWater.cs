@@ -30,7 +30,7 @@ public class DeepWater : MonoBehaviour
             // Enemies stop attacking him
             while (player.isAttackedBy.Count > 0)
             {
-                player.isAttackedBy[0].ResetCurrentFollowedPlayer();
+                player.isAttackedBy[0].ResetCurrentTarget();
                 player.isAttackedBy.Remove(player.isAttackedBy[0]);              
             }
         }

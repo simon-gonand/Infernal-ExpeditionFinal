@@ -1,13 +1,75 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class PiqueSousAI : MonoBehaviour
+public class PiqueSousAI : MonoBehaviour, EnemiesAI
 {
     public Transform self;
+    [SerializeField]
+    private SpawnPiqueSous spawner;
+    [SerializeField]
+    private PiqueSousPreset preset;
+    [SerializeField]
+    private NavMeshAgent selfNavMesh;
+
+    private Treasure targetTreasure;
+
+    private bool _isAwake;
+    public bool isAwake { set { _isAwake = value; } }
+
+    private bool isCarrying;
     
+
     // Start is called before the first frame update
     void Start()
+    {
+        selfNavMesh.speed = preset.speed;
+    }
+
+    private void UpdateTreasureDestination()
+    {
+        if (spawner.treasureInZone.Count < 1) 
+        {
+            ResetCurrentTarget();
+            return;
+        }
+
+        Treasure nearestTreasure = null;
+        float nearestTreasureDistance = 0.0f;
+        for (int i = 0; i < spawner.treasureInZone.Count; ++i)
+        {
+            Treasure treasure = spawner.treasureInZone[i];
+
+            if (treasure.isInDeepWater || treasure.playerInteractingWith.Count > 0) continue;
+
+            float treasureDist = Vector3.Distance(self.position, treasure.self.position);
+            if (nearestTreasure == null || nearestTreasureDistance > treasureDist)
+            {
+                nearestTreasure = treasure;
+                nearestTreasureDistance = treasureDist;
+            }
+        }
+
+        if (nearestTreasure == null)
+        {
+            ResetCurrentTarget();
+            return;
+        }
+        selfNavMesh.SetDestination(nearestTreasure.self.position);
+    }
+
+    private void GoBackHome()
+    {
+        selfNavMesh.SetDestination(spawner.spawnPoint.position);
+    }
+    public void ResetCurrentTarget()
+    {
+        targetTreasure = null;
+        GoBackHome();
+    }
+
+    public void Die(PlayerController player)
     {
         
     }
@@ -15,9 +77,21 @@ public class PiqueSousAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.activeSelf)
+        if (_isAwake)
         {
-            self.Translate(Vector3.forward * Time.deltaTime);
+            if (!isCarrying)
+            {
+                UpdateTreasureDestination();
+            }
+            else
+            {
+                GoBackHome();
+            }
+        }
+        else
+        {
+            GoBackHome();
         }
     }
+
 }

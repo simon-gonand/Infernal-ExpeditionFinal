@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Treasure : MonoBehaviour, ICarriable
 {
-    [SerializeField]
-    private Transform self;
+    public Transform self;
     public Rigidbody selfRigidbody;
     [SerializeField]
     private Collider selfCollider;
@@ -38,7 +37,7 @@ public class Treasure : MonoBehaviour, ICarriable
     private bool isMovingWhenColliding;
 
     private bool _isInDeepWater = false;
-    public bool isInDeepWater { set { _isInDeepWater = value; } }
+    public bool isInDeepWater { set { _isInDeepWater = value; } get { return _isInDeepWater; } }
 
     #region CollisionCallbacks
     private void OnCollisionEnter(Collision collision)
