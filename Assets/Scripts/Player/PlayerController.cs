@@ -303,7 +303,7 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateSwimming()
     {
-        if (selfRigidBody.velocity.y > 0.5f && _isSwimming)
+        if (selfRigidBody.velocity.y > 0.4f)
         {
             selfRigidBody.useGravity = true;
 
@@ -316,7 +316,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isSwiming", false);
             sword.SetActive(true);
         }
-        else if (_isSwimming)
+        else
         {
             
             // There is no gravity so the player should not move on the y-axis
@@ -380,13 +380,15 @@ public class PlayerController : MonoBehaviour
                 transportedTreasure.UpdatePlayerRotation(this, self);
         }
 
-        // Player can't go up
-        if (selfRigidBody.velocity.y > 0)
-            selfRigidBody.velocity = new Vector3(selfRigidBody.velocity.x, 0.0f, selfRigidBody.velocity.z);
-
         // If velocity on Y is equal to 0.0 then it means that the player is swimming
         // if not then it means he must deal with gravity
-        UpdateSwimming();
+        if (_isSwimming)
+            UpdateSwimming();
+        
+        // Player can't go up
+        else if (selfRigidBody.velocity.y > 0)
+            selfRigidBody.velocity = new Vector3(selfRigidBody.velocity.x, 0.0f, selfRigidBody.velocity.z);
+
 
         // Set the rotation of the player according to his movements
         if (_movement.x != 0 || _movement.z != 0)
