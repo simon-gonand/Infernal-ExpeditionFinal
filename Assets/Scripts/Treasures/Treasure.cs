@@ -294,7 +294,7 @@ public class Treasure : MonoBehaviour, ICarriable
             // Play throw sound
 
             isGrounded = false;
-            Debug.Break();
+           // Debug.Break();
         }
     }
 

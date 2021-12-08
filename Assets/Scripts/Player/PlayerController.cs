@@ -94,7 +94,9 @@ public class PlayerController : MonoBehaviour
             }
             Treasure treasure = _interactingWith as Treasure;
             if (treasure != null)
+            {
                 treasure.isColliding = true;
+            }
         }
         if (_hasBeenLaunched)
         {
@@ -454,8 +456,9 @@ public class PlayerController : MonoBehaviour
             }
             else
                 PlayerMovement(); 
-            InfoAnim();
         }
+
+        InfoAnim();
     }
 
     void InfoAnim()
