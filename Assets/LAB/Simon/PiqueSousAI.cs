@@ -19,6 +19,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
     public bool isAwake { set { _isAwake = value; } }
 
     private bool isCarrying;
+    private bool canStole = true;
     
 
     // Start is called before the first frame update
@@ -72,7 +73,25 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
     private void GoBackHome()
     {
         selfNavMesh.SetDestination(spawner.spawnPoint.position);
+        if (targetTreasure != null && targetTreasure.isCarriedByPiqueSous && Vector3.Distance(self.position, spawner.spawnPoint.position) < 0.3f)
+        {
+            Debug.Log("Treasure has been stolen");
+            Destroy(targetTreasure.gameObject);
+            targetTreasure = null;
+            isCarrying = false;
+            StartCoroutine(Cooldown());
+
+            // Play sound, effect ...
+        }
     }
+
+    private IEnumerator Cooldown()
+    {
+        canStole = false;
+        yield return new WaitForSeconds(preset.cooldown);
+        canStole = true;
+    }
+
     public void ResetCurrentTarget()
     {
         targetTreasure = null;
@@ -101,6 +120,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
             else
             {
                 GoBackHome();
+                Debug.Log(selfNavMesh.speed);
             }
         }
         else
