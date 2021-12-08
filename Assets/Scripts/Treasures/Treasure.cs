@@ -230,7 +230,7 @@ public class Treasure : MonoBehaviour, ICarriable
                 _playerInteractingWith[i].selfRigidBody.velocity = Vector3.zero;
             }
 
-            _isLoadingLaunch = false;
+            StopLaunching(); _isLoadingLaunch = false;
             return true;
         }
 
@@ -320,9 +320,20 @@ public class Treasure : MonoBehaviour, ICarriable
         }
     }
 
+    private void StopLaunching()
+    {
+        _isLoadingLaunch = false;
+        foreach(PlayerController player in _playerInteractingWith)
+        {
+            player.isLaunching = false;
+        }
+    }
+
     // When the player is not interacting with the treasure anymore
     public void UninteractWith(PlayerController player)
     {
+        StopLaunching();
+
         // Update player values
         player.isCarrying = false;
 
