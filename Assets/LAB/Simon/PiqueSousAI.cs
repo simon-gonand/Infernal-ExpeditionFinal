@@ -110,7 +110,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
     // Update is called once per frame
     void Update()
     {
-        if (_isAwake)
+        if (_isAwake && canStole)
         {
             if (!isCarrying)
             {
