@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="3900037114">
+		<SoundBank Id="393239870" Language="SFX" Hash="3868246502">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -24,18 +24,62 @@
 						</File>
 						<File Id="857342633" Language="SFX">
 							<ShortName>Chest_GroundImpact.wav</ShortName>
-							<Path>SFX\Chest_GroundImpact_5FC2AF7A.wem</Path>
+							<Path>SFX\Chest_GroundImpact_41DCC55B.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 					<ActionTrigger>
 						<ActionTriggerEntry Id="1087296951" Name="Collect_Treasure" ObjectPath="\Triggers\Default Work Unit\Collect_Treasure"/>
 					</ActionTrigger>
 				</Event>
+				<Event Id="44932442" Name="B_Damages" ObjectPath="\Events\Default Work Unit\Boat\B_Damages" DurationType="OneShot" DurationMin="1.132871" DurationMax="1.427327">
+					<IncludedMemoryFiles>
+						<File Id="5063474" Language="SFX">
+							<ShortName>Boat_Damages_Wood_2.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_2_10C4C929.wem</Path>
+						</File>
+						<File Id="122159956" Language="SFX">
+							<ShortName>Boat_Damages_Wood_7.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_7_10C4C929.wem</Path>
+						</File>
+						<File Id="159829148" Language="SFX">
+							<ShortName>Boat_Damages_Wood_1.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_1_10C4C929.wem</Path>
+						</File>
+						<File Id="210385864" Language="SFX">
+							<ShortName>Boat_Damages_Coins_1.wav</ShortName>
+							<Path>SFX\Boat_Damages_Coins_1_10C4C929.wem</Path>
+						</File>
+						<File Id="319616062" Language="SFX">
+							<ShortName>Boat_Damages_Wood_3.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_3_10C4C929.wem</Path>
+						</File>
+						<File Id="383276493" Language="SFX">
+							<ShortName>Boat_Damages_Wood_6.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_6_10C4C929.wem</Path>
+						</File>
+						<File Id="426565644" Language="SFX">
+							<ShortName>Boat_Damages_Impact.wav</ShortName>
+							<Path>SFX\Boat_Damages_Impact_10C4C929.wem</Path>
+						</File>
+						<File Id="567117469" Language="SFX">
+							<ShortName>Boat_Damages_Coins_2.wav</ShortName>
+							<Path>SFX\Boat_Damages_Coins_2_10C4C929.wem</Path>
+						</File>
+						<File Id="852017389" Language="SFX">
+							<ShortName>Boat_Damages_Wood_4.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_4_10C4C929.wem</Path>
+						</File>
+						<File Id="878337990" Language="SFX">
+							<ShortName>Boat_Damages_Wood_5.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_5_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="903419691" Name="E_Clsq_Attack" ObjectPath="\Events\Default Work Unit\Enemy\E_Clsq_Attack" DurationType="OneShot" DurationMin="0.471936" DurationMax="0.517484">
 					<IncludedMemoryFiles>
 						<File Id="22319495" Language="SFX">
 							<ShortName>Enemy_SlashAttack.wav</ShortName>
-							<Path>SFX\Enemy_SlashAttack_46DACFFA.wem</Path>
+							<Path>SFX\Enemy_SlashAttack_48023BBA.wem</Path>
 						</File>
 						<File Id="286784303" Language="SFX">
 							<ShortName>Enemy_ShineAttack.wav</ShortName>
@@ -43,11 +87,11 @@
 						</File>
 						<File Id="292770977" Language="SFX">
 							<ShortName>Enemy_SlashAttack_2.wav</ShortName>
-							<Path>SFX\Enemy_SlashAttack_2_00DE9AEF.wem</Path>
+							<Path>SFX\Enemy_SlashAttack_2_A51CBA9D.wem</Path>
 						</File>
 						<File Id="1063609588" Language="SFX">
 							<ShortName>Enemy_SlashAttack_3.wav</ShortName>
-							<Path>SFX\Enemy_SlashAttack_3_C8681226.wem</Path>
+							<Path>SFX\Enemy_SlashAttack_3_7C806E9E.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
