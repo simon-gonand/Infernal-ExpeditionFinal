@@ -7,8 +7,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
 {
     public Transform self;
     public SpawnPiqueSous spawner;
-    [SerializeField]
-    private PiqueSousPreset preset;
+    public PiqueSousPreset preset;
     [SerializeField]
     private NavMeshAgent selfNavMesh;
     public Transform treasureAttach;

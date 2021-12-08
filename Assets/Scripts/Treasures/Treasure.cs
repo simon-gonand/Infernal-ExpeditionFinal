@@ -352,6 +352,8 @@ public class Treasure : MonoBehaviour, ICarriable
         Physics.IgnoreCollision(selfCollider, piqueSous.spawner.selfCollider, true);
 
         self.forward = piqueSous.self.forward;
+        self.position = piqueSous.treasureAttach.position + piqueSous.self.forward * (piqueSous.self.localScale.z + piqueSous.preset.attachOffset);
+
         UpTreasure(piqueSous.self);
         self.SetParent(piqueSous.self);
     }

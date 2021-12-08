@@ -7,4 +7,5 @@ public class PiqueSousPreset : ScriptableObject
 {
     public float speed;
     public float cooldown;
+    public float attachOffset;
 }
