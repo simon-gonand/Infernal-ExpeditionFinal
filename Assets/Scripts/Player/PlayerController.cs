@@ -240,6 +240,10 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region Audio
+    public AK.Wwise.Event playerStuntAudio = AudioManager.AMInstance.PlayerStuntSFX;
+    #endregion
+
     private void Attack()
     {
         // Play attack animation
@@ -284,7 +288,8 @@ public class PlayerController : MonoBehaviour
         anim.SetTrigger("startStun");
         stunFx.SetActive(true);
 
-        // Play sound stun
+        //Play Stunt Sound
+        playerStuntAudio.Post(gameObject);
 
         if (isCarrying)
         {

@@ -27,6 +27,11 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     private bool isFirstAttack = true;
     private Coroutine attackCoroutine = null;
 
+
+    #region Audio
+    public AK.Wwise.Event clsqEnemyAttackAudio = AudioManager.AMInstance.clsqEnemyAttackSFX;
+    #endregion
+
     public void ResetCurrentTarget()
     {
         currentFollowedPlayer = null;
@@ -232,6 +237,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         else yield return new WaitForSeconds(peonPreset.attackCooldown);
 
         // Play attack Sound
+        clsqEnemyAttackAudio.Post(gameObject);
 
         selfAnimator.SetTrigger("attack");
         yield return new WaitForSeconds(peonPreset.launchAttackCooldown);
