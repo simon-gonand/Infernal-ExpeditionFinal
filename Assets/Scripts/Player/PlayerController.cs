@@ -155,7 +155,6 @@ public class PlayerController : MonoBehaviour
                     if (_carrying != null)
                     {
                         _carrying.Launch(this);
-                        selfRigidBody.mass = 1;
                     }
                 }
             }

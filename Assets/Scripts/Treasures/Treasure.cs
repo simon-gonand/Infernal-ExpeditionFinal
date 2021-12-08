@@ -229,6 +229,8 @@ public class Treasure : MonoBehaviour, ICarriable
             {
                 _playerInteractingWith[i].selfRigidBody.velocity = Vector3.zero;
             }
+
+            _isLoadingLaunch = false;
             return true;
         }
 
