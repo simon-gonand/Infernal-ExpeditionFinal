@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Treasure : MonoBehaviour, ICarriable
 {
-    [SerializeField]
-    private Transform self;
+    public Transform self;
     public Rigidbody selfRigidbody;
     [SerializeField]
     private Collider selfCollider;
@@ -40,7 +39,10 @@ public class Treasure : MonoBehaviour, ICarriable
     private bool isMovingWhenColliding;
 
     private bool _isInDeepWater = false;
-    public bool isInDeepWater { set { _isInDeepWater = value; } }
+    public bool isInDeepWater { set { _isInDeepWater = value; } get { return _isInDeepWater; } }
+
+    private bool _isCarriedByPiqueSous = false;
+    public bool isCarriedByPiqueSous { get { return _isCarriedByPiqueSous; } }
 
     #region CollisionCallbacks
     private void OnCollisionEnter(Collision collision)
@@ -153,11 +155,11 @@ public class Treasure : MonoBehaviour, ICarriable
         associateColliders.Add(player, interactingWith);
     }
 
-    private void UpTreasure(PlayerController player)
+    public void UpTreasure(Transform interact)
     {
         // Snap treasure to the player
         Vector3 upTreasure = self.position;
-        upTreasure.y = player.self.position.y + self.lossyScale.y / 2;
+        upTreasure.y = interact.position.y + self.lossyScale.y / 2;
         self.position = upTreasure;
     }
 
@@ -170,6 +172,7 @@ public class Treasure : MonoBehaviour, ICarriable
     // When player is interacting with the treasure
     public bool InteractWith(PlayerController player, GameObject interactingWith)
     {
+        if (_isCarriedByPiqueSous) return false;
         // Update player values
         _playerInteractingWith.Add(player);
         player.isCarrying = true;
@@ -202,7 +205,7 @@ public class Treasure : MonoBehaviour, ICarriable
         if (_playerInteractingWith.Count == 1)
         {
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, true);
-            UpTreasure(player);
+            UpTreasure(player.self);
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
             selfRigidbody.useGravity = false;
 
@@ -357,6 +360,30 @@ public class Treasure : MonoBehaviour, ICarriable
         }
     }
 
+    public void InteractWithPiqueSous(PiqueSousAI piqueSous)
+    {
+        _isCarriedByPiqueSous = true;
+
+        selfRigidbody.useGravity = false;
+        selfRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        Physics.IgnoreCollision(selfCollider, piqueSous.spawner.selfCollider, true);
+
+        self.forward = piqueSous.self.forward;
+        self.position = piqueSous.treasureAttach.position + piqueSous.self.forward * (piqueSous.self.localScale.z + piqueSous.preset.attachOffset);
+
+        UpTreasure(piqueSous.self);
+        self.SetParent(piqueSous.self);
+    }
+
+    public void UnInteractWithPiqueSous(PiqueSousAI piqueSous)
+    {
+        _isCarriedByPiqueSous = false;
+        selfRigidbody.useGravity = true;
+        selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+        Physics.IgnoreCollision(selfCollider, piqueSous.spawner.selfCollider, false);
+
+        self.SetParent(null);
+    }
     #endregion
 
     private void ApplySpeedMalus()
@@ -422,7 +449,7 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             
         }
-        if (_isColliding)
+        if (_isColliding && !isCarriedByPiqueSous)
         {
             if (Vector3.Dot(selfRigidbody.velocity, -collisionDirection) < 1 && selfRigidbody.velocity != Vector3.zero)
             {

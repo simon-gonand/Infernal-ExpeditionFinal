@@ -27,7 +27,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     private bool isFirstAttack = true;
     private Coroutine attackCoroutine = null;
 
-    public void ResetCurrentFollowedPlayer()
+    public void ResetCurrentTarget()
     {
         currentFollowedPlayer = null;
     }
