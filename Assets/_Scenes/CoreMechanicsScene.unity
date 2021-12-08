@@ -3011,6 +3011,10 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 115123208}
+    - target: {fileID: 2782628819355395595, guid: 65063cc87e52d134abbc45508f88716e, type: 3}
+      propertyPath: selfCollider
+      value: 
+      objectReference: {fileID: 1297623001}
     - target: {fileID: 3442174465916169332, guid: 65063cc87e52d134abbc45508f88716e, type: 3}
       propertyPath: spawner
       value: 
@@ -5311,7 +5315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873980130}
   m_LocalRotation: {x: 0.4226183, y: 0, z: 0, w: 0.9063078}
-  m_LocalPosition: {x: 38.418186, y: 25, z: -218.79208}
+  m_LocalPosition: {x: 38.418186, y: 25, z: -220.73634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 965740674}
@@ -7524,6 +7528,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd48d2fe82991674dad483fd250ede33, type: 3}
+--- !u!64 &1297623001 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 2213232643084829810, guid: 65063cc87e52d134abbc45508f88716e, type: 3}
+  m_PrefabInstance: {fileID: 439638675}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1304935830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10961,7 +10970,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 90
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -10987,7 +10996,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110627947}
   m_LocalRotation: {x: 0.4226183, y: 0, z: 0, w: 0.9063078}
-  m_LocalPosition: {x: 38.418186, y: 25, z: -218.79208}
+  m_LocalPosition: {x: 38.418186, y: 25, z: -220.73634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

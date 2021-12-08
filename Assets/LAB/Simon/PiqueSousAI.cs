@@ -11,6 +11,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
     private PiqueSousPreset preset;
     [SerializeField]
     private NavMeshAgent selfNavMesh;
+    public Transform treasureAttach;
 
     private Treasure targetTreasure;
 
@@ -61,7 +62,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
 
     private void CheckCarryChest()
     {
-        if(Vector3.Distance(self.position, targetTreasure.self.position) < targetTreasure.self.localScale.x)
+        if(!isCarrying && Vector3.Distance(self.position, targetTreasure.self.position) < targetTreasure.self.localScale.x)
         {
             isCarrying = true;
             targetTreasure.InteractWithPiqueSous(this);
