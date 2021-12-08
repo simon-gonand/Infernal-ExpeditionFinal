@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ai: {fileID: 3442174465916169332}
   spawnPoint: {fileID: 7841411557720572126}
+  selfCollider: {fileID: 0}
 --- !u!1 &6169996921129167261
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,8 +243,8 @@ GameObject:
   m_Name: Tent_03_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2748926901246783568
 Transform:
@@ -319,7 +320,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7792674364923014571, guid: 2f7c1866debdc0d4ab1f23b720b1c9cc, type: 3}
 --- !u!1 &7312175250880614170

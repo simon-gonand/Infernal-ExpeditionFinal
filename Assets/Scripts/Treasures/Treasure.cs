@@ -229,6 +229,8 @@ public class Treasure : MonoBehaviour, ICarriable
             {
                 _playerInteractingWith[i].selfRigidBody.velocity = Vector3.zero;
             }
+
+            StopLaunching(); _isLoadingLaunch = false;
             return true;
         }
 
@@ -284,7 +286,6 @@ public class Treasure : MonoBehaviour, ICarriable
             {
                 PlayerController p = _playerInteractingWith[0];
                 Vector3 playerMovement = new Vector3 (p.playerMovementInput.x, 0.0f, p.playerMovementInput.y);
-                playerMovement.y = 0.0f;
                 launchDirection += playerMovement;
                 // Update lists values
                 _playerInteractingWith.Remove(p);
@@ -309,7 +310,7 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.isKinematic = false;
             selfRigidbody.useGravity = true;
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
-            selfRigidbody.AddForce((launchDirection + Vector3.up) * launchForce, ForceMode.Impulse);
+            selfRigidbody.AddForce((launchDirection.normalized + Vector3.up) * launchForce, ForceMode.Impulse);
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             launchForce = 0.0f;
 
@@ -319,9 +320,20 @@ public class Treasure : MonoBehaviour, ICarriable
         }
     }
 
+    private void StopLaunching()
+    {
+        _isLoadingLaunch = false;
+        foreach(PlayerController player in _playerInteractingWith)
+        {
+            player.isLaunching = false;
+        }
+    }
+
     // When the player is not interacting with the treasure anymore
     public void UninteractWith(PlayerController player)
     {
+        StopLaunching();
+
         // Update player values
         player.isCarrying = false;
 
@@ -364,9 +376,13 @@ public class Treasure : MonoBehaviour, ICarriable
     public void InteractWithPiqueSous(PiqueSousAI piqueSous)
     {
         _isCarriedByPiqueSous = true;
+
         selfRigidbody.useGravity = false;
         selfRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-        Physics.IgnoreCollision(selfCollider, piqueSous.spawner.GetComponent<Collider>(), true);
+        Physics.IgnoreCollision(selfCollider, piqueSous.spawner.selfCollider, true);
+
+        self.forward = piqueSous.self.forward;
+        self.position = piqueSous.treasureAttach.position + piqueSous.self.forward * (piqueSous.self.localScale.z + piqueSous.preset.attachOffset);
 
         UpTreasure(piqueSous.self);
         self.SetParent(piqueSous.self);
@@ -377,7 +393,7 @@ public class Treasure : MonoBehaviour, ICarriable
         _isCarriedByPiqueSous = false;
         selfRigidbody.useGravity = true;
         selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
-        Physics.IgnoreCollision(selfCollider, piqueSous.spawner.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(selfCollider, piqueSous.spawner.selfCollider, false);
 
         self.SetParent(null);
     }
@@ -421,11 +437,12 @@ public class Treasure : MonoBehaviour, ICarriable
         }
         if (!isGrounded)
         {
+            selfRigidbody.AddForce((Physics.gravity * 3) * selfRigidbody.mass);
             // Set the position of the raycast
             Vector3 raycastStartPos = self.position;
             raycastStartPos.y -= self.lossyScale.y / 2;
             RaycastHit hit;
-            if (Physics.Raycast(raycastStartPos, -Vector3.up, out hit, 0.05f))
+            if (Physics.Raycast(raycastStartPos, -Vector3.up, out hit, 0.5f))
             {
                 // Set boat as parent if it's touching the ground of it
                 if (hit.collider.CompareTag("Boat"))
@@ -445,7 +462,7 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             
         }
-        if (_isColliding)
+        if (_isColliding && !isCarriedByPiqueSous)
         {
             if (Vector3.Dot(selfRigidbody.velocity, -collisionDirection) < 1 && selfRigidbody.velocity != Vector3.zero)
             {

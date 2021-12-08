@@ -7,9 +7,10 @@ public class SpawnPiqueSous : MonoBehaviour
     [SerializeField]
     private PiqueSousAI ai;
     public Transform spawnPoint;
+    public Collider selfCollider;
 
-    private List<Transform> _seen;
-    public List<Transform> seen { get { return _seen; } }
+    private List<PlayerController> _seen;
+    public List<PlayerController> seen { get { return _seen; } }
 
     private List<Treasure> _treasureInZone;
     public List<Treasure> treasureInZone { get { return _treasureInZone; } }
@@ -25,7 +26,7 @@ public class SpawnPiqueSous : MonoBehaviour
         ai.self.position = spawn;
         ai.self.forward = spawnPoint.forward;
 
-        _seen = new List<Transform>();
+        _seen = new List<PlayerController>();
         _treasureInZone = new List<Treasure>();
     }
 

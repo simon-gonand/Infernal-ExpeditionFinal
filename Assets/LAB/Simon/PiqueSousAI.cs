@@ -7,10 +7,10 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
 {
     public Transform self;
     public SpawnPiqueSous spawner;
-    [SerializeField]
-    private PiqueSousPreset preset;
+    public PiqueSousPreset preset;
     [SerializeField]
     private NavMeshAgent selfNavMesh;
+    public Transform treasureAttach;
 
     private Treasure targetTreasure;
 
@@ -18,6 +18,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
     public bool isAwake { set { _isAwake = value; } }
 
     private bool isCarrying;
+    private bool canStole = true;
     
 
     // Start is called before the first frame update
@@ -61,7 +62,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
 
     private void CheckCarryChest()
     {
-        if(Vector3.Distance(self.position, targetTreasure.self.position) < targetTreasure.self.localScale.x)
+        if(!isCarrying && Vector3.Distance(self.position, targetTreasure.self.position) < targetTreasure.self.localScale.x)
         {
             isCarrying = true;
             targetTreasure.InteractWithPiqueSous(this);
@@ -71,7 +72,25 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
     private void GoBackHome()
     {
         selfNavMesh.SetDestination(spawner.spawnPoint.position);
+        if (targetTreasure != null && targetTreasure.isCarriedByPiqueSous && Vector3.Distance(self.position, spawner.spawnPoint.position) < 0.3f)
+        {
+            Debug.Log("Treasure has been stolen");
+            Destroy(targetTreasure.gameObject);
+            targetTreasure = null;
+            isCarrying = false;
+            StartCoroutine(Cooldown());
+
+            // Play sound, effect ...
+        }
     }
+
+    private IEnumerator Cooldown()
+    {
+        canStole = false;
+        yield return new WaitForSeconds(preset.cooldown);
+        canStole = true;
+    }
+
     public void ResetCurrentTarget()
     {
         targetTreasure = null;
@@ -90,7 +109,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
     // Update is called once per frame
     void Update()
     {
-        if (_isAwake)
+        if (_isAwake && canStole)
         {
             if (!isCarrying)
             {
@@ -100,6 +119,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
             else
             {
                 GoBackHome();
+                Debug.Log(selfNavMesh.speed);
             }
         }
         else
