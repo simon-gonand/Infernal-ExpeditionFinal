@@ -364,6 +364,15 @@ public class PlayerController : MonoBehaviour
         _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
         selfRigidBody.velocity = _movement;
+        
+        // Set the rotation of the player according to his movements
+        if (_movement.x != 0 || _movement.z != 0)
+        {
+            _movement.y = 0.0f;
+            self.forward = _movement;
+            playerGraphics.forward = self.forward;
+        }
+        
         if (_isCarrying && transportedTreasure != null)
         {
             transportedTreasure.UpdatePlayerMovement(this);
@@ -389,13 +398,6 @@ public class PlayerController : MonoBehaviour
             selfRigidBody.velocity = new Vector3(selfRigidBody.velocity.x, 0.0f, selfRigidBody.velocity.z);
 
 
-        // Set the rotation of the player according to his movements
-        if (_movement.x != 0 || _movement.z != 0)
-        {
-            _movement.y = 0.0f;
-            self.forward = _movement;
-            playerGraphics.forward = self.forward;
-        }
     }
 
     private void Dash()
