@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
     [HideInInspector]public int scoreOfActualStar;
 
     [HideInInspector]public bool isLevelUpStar;
-    public bool isDowngradeStar;
+    [HideInInspector]public bool isDowngradeStar;
 
     #endregion
 

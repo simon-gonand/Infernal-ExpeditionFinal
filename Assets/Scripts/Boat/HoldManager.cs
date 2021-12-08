@@ -8,11 +8,9 @@ public class HoldManager : MonoBehaviour
     {
         if (other.CompareTag("Treasures"))
         {
-            Debug.Log("Treasure has been registered in the hold");
             // Play feedback
 
-            ScoreManager.instance.AddScore(-1);
-
+            ScoreManager.instance.AddScore(1);
             Destroy(other.gameObject);
         }
     }
