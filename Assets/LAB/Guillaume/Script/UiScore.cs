@@ -45,13 +45,6 @@ public class UiScore : MonoBehaviour
         #endregion
     }
 
-    private void Start()
-    {
-        ColorUpdate();
-
-        ScoreUpdate();
-    }
-
     public void ScoreUpdate()
     {
         textActualScore.text = ScoreManager.instance.actualScore.ToString();
@@ -101,16 +94,22 @@ public class UiScore : MonoBehaviour
             {
                 transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, (float)(ScoreManager.instance.actualScore - ScoreManager.instance.scoreOfActualStar) / (float)ScoreManager.instance.scoreNeedForNextStar));
             }
-            else if (ScoreManager.instance.isLevelUpStar == false)
+            else if (ScoreManager.instance.isLevelUpStar == false && ScoreManager.instance.isDowngradeStar == false)
             {
                 StopCoroutine(transitionCoroutine);
                 transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, (float)(ScoreManager.instance.actualScore - ScoreManager.instance.scoreOfActualStar) / (float)ScoreManager.instance.scoreNeedForNextStar));
+            }
+            else if (ScoreManager.instance.isLevelUpStar == true)
+            {
+                lockBarRefresh = true;
+                StopCoroutine(transitionCoroutine);
+                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, 1f));
             }
             else
             {
                 lockBarRefresh = true;
                 StopCoroutine(transitionCoroutine);
-                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, 1f));
+                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, 0f));
             }
         }
     }
@@ -140,6 +139,15 @@ public class UiScore : MonoBehaviour
                 sliderBar.value = 0f;
                 ScoreManager.instance.RefreshUiStarState();
             }
+        }
+        else if (ScoreManager.instance.isDowngradeStar == true)
+        {
+            lockBarRefresh = false;
+            ScoreManager.instance.isDowngradeStar = false;
+            ColorUpdate();
+
+            sliderBar.value = 1f;
+            ScoreManager.instance.RefreshUiStarState();
         }
     }
 }

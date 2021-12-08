@@ -20,6 +20,7 @@ public class ScoreManager : MonoBehaviour
     [HideInInspector]public int scoreOfActualStar;
 
     [HideInInspector]public bool isLevelUpStar;
+    public bool isDowngradeStar;
 
     #endregion
 
@@ -38,6 +39,11 @@ public class ScoreManager : MonoBehaviour
 
         scoreNeedForNextStar = scoreNeedForBronze;
         scoreOfActualStar = 0;
+    }
+
+    void Start()
+    {
+        RefreshUiStarState();
     }
 
     public void AddScore(int numberToAdd)
@@ -84,6 +90,10 @@ public class ScoreManager : MonoBehaviour
                 else if (actualScore < scoreNeedForBronze)
                 {
                     actualStar = differentStarState.NoStar;
+                    scoreOfActualStar = 0;
+                    scoreNeedForNextStar = scoreNeedForBronze;
+
+                    isDowngradeStar = true;
                 }
                 break;
 
@@ -96,13 +106,21 @@ public class ScoreManager : MonoBehaviour
                 else if (actualScore < scoreNeedForSilver)
                 {
                     actualStar = differentStarState.Bronze;
+                    scoreOfActualStar = scoreNeedForBronze;
+                    scoreNeedForNextStar = scoreNeedForSilver - scoreNeedForBronze;
+
+                    isDowngradeStar = true;
                 }
                 break;
 
             case differentStarState.Gold:
-                if (actualScore < scoreNeedForBronze)
+                if (actualScore < scoreNeedForGold)
                 {
                     actualStar = differentStarState.Silver;
+                    scoreOfActualStar = scoreNeedForSilver;
+                    scoreNeedForNextStar = scoreNeedForGold - scoreNeedForSilver;
+
+                    isDowngradeStar = true;
                 }
                 break;
         }
