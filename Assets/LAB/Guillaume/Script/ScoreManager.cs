@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    #region Variable
     public static ScoreManager instance;
-
-    [Header("Actual global score")]
-    public int actualScore;
 
     [Header ("Setup score")]
     [Range(1, 100)] public int scoreNeedForBronze;
     [Range(1, 100)] public int scoreNeedForSilver;
     [Range(1, 100)] public int scoreNeedForGold;
-    [Space]
-    public differentStarState actualStar;
-
-    public int scoreNeedForNextStar;
-    public int scoreOfActualStar;
 
     public enum differentStarState {NoStar, Bronze, Silver, Gold}
+    [HideInInspector]public differentStarState actualStar;
+
+    [HideInInspector]public int actualScore;
+    [HideInInspector]public int scoreNeedForNextStar;
+    [HideInInspector]public int scoreOfActualStar;
+
+    [HideInInspector]public bool isLevelUpStar;
+
+    #endregion
 
     private void Awake()
     {
@@ -38,28 +40,15 @@ public class ScoreManager : MonoBehaviour
         scoreOfActualStar = 0;
     }
 
-    private void Start()
-    {
-        //nextObjectif = scoreNeedForBronze;
-    }
-
     public void AddScore(int numberToAdd)
     {
         actualScore += numberToAdd;
 
-        CheckStar();
-
-        if (UiScore.instance != null)
-        {
-            UiScore.instance.ScoreUpdate();
-        }
-
+        RefreshUiStarState();
     }
 
-    public void SubstractScore(int numberToSubstract)
+    public void RefreshUiStarState()
     {
-        actualScore -= numberToSubstract;
-
         CheckStar();
 
         if (UiScore.instance != null)
@@ -67,7 +56,6 @@ public class ScoreManager : MonoBehaviour
             UiScore.instance.ScoreUpdate();
         }
     }
-
 
     private void CheckStar()
     {
@@ -77,10 +65,10 @@ public class ScoreManager : MonoBehaviour
                 if (actualScore >= scoreNeedForBronze)
                 {
                     actualStar = differentStarState.Bronze;
-
                     scoreOfActualStar = scoreNeedForBronze;
-
                     scoreNeedForNextStar = scoreNeedForSilver - scoreNeedForBronze;
+
+                    isLevelUpStar = true;
                 }
                 break;
 
@@ -88,10 +76,10 @@ public class ScoreManager : MonoBehaviour
                 if (actualScore >= scoreNeedForSilver)
                 {
                     actualStar = differentStarState.Silver;
-
                     scoreOfActualStar = scoreNeedForSilver;
-
                     scoreNeedForNextStar = scoreNeedForGold - scoreNeedForSilver;
+
+                    isLevelUpStar = true;
                 }
                 else if (actualScore < scoreNeedForBronze)
                 {
@@ -103,8 +91,7 @@ public class ScoreManager : MonoBehaviour
                 if (actualScore >= scoreNeedForGold)
                 {
                     actualStar = differentStarState.Gold;
-
-                    //scoreOfActualStar = scoreNeedForGold;
+                    isLevelUpStar = true;
                 }
                 else if (actualScore < scoreNeedForSilver)
                 {

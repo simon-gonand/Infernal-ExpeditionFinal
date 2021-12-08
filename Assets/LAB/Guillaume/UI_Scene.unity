@@ -4359,13 +4359,12 @@ MonoBehaviour:
   bronzeColor: {r: 0.754717, g: 0.424219, b: 0.1459594, a: 1}
   silverColor: {r: 0.6792453, g: 0.66322535, b: 0.66322535, a: 1}
   goldColor: {r: 0.9528302, g: 0.7463888, b: 0.09438412, a: 1}
+  timeForTransition: 1
   imageFillerActualStar: {fileID: 567714818}
   imageFillerNextStar: {fileID: 134068828}
   textActualScore: {fileID: 1623116343}
   sliderBar: {fileID: 968778536}
   imageSliderFiller: {fileID: 1206987528}
-  oldScore: 0
-  timeForTransition: 2
 --- !u!4 &604893884 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7797523323123319037, guid: dd48d2fe82991674dad483fd250ede33, type: 3}
@@ -8359,13 +8358,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ed7db1bd82ac6458957c32eb3b1e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actualScore: 0
   scoreNeedForBronze: 2
-  scoreNeedForSilver: 4
-  scoreNeedForGold: 22
+  scoreNeedForSilver: 5
+  scoreNeedForGold: 9
   actualStar: 0
+  actualScore: 0
   scoreNeedForNextStar: 0
   scoreOfActualStar: 0
+  isLevelUpStar: 0
 --- !u!4 &1259791793
 Transform:
   m_ObjectHideFlags: 0

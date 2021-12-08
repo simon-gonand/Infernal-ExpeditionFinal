@@ -6,6 +6,7 @@ using TMPro;
 
 public class UiScore : MonoBehaviour
 {
+    #region Variable
     public static UiScore instance;
 
     [Header ("Color setup")]
@@ -13,6 +14,9 @@ public class UiScore : MonoBehaviour
     public Color bronzeColor;
     public Color silverColor;
     public Color goldColor;
+
+    [Header ("Speed of slider fill")]
+    public float timeForTransition;
 
     [Header ("Unity setup")]
     public Image imageFillerActualStar;
@@ -24,8 +28,8 @@ public class UiScore : MonoBehaviour
     public Image imageSliderFiller;
 
     private Coroutine transitionCoroutine;
-    public float oldScore;
-    public float timeForTransition;
+    private bool lockBarRefresh;
+    #endregion
 
     private void Awake()
     {
@@ -43,6 +47,8 @@ public class UiScore : MonoBehaviour
 
     private void Start()
     {
+        ColorUpdate();
+
         ScoreUpdate();
     }
 
@@ -51,8 +57,6 @@ public class UiScore : MonoBehaviour
         textActualScore.text = ScoreManager.instance.actualScore.ToString();
 
         SliderUpdate();
-
-        ColorUpdate();
     }
 
     private void ColorUpdate()
@@ -82,21 +86,32 @@ public class UiScore : MonoBehaviour
 
             case ScoreManager.differentStarState.Gold:
 
+                imageFillerNextStar.color = goldColor;
                 imageFillerActualStar.color = goldColor;
+                imageSliderFiller.color = goldColor;
                 break;
         }
     }
 
     private void SliderUpdate()
     {
-        if (transitionCoroutine == null)
+        if (lockBarRefresh == false)
         {
-            transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, (float)(ScoreManager.instance.actualScore - ScoreManager.instance.scoreOfActualStar) / (float)ScoreManager.instance.scoreNeedForNextStar));
-        }
-        else
-        {
-            StopCoroutine(transitionCoroutine);
-            transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, (float)(ScoreManager.instance.actualScore - ScoreManager.instance.scoreOfActualStar) / (float)ScoreManager.instance.scoreNeedForNextStar));
+            if (transitionCoroutine == null)
+            {
+                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, (float)(ScoreManager.instance.actualScore - ScoreManager.instance.scoreOfActualStar) / (float)ScoreManager.instance.scoreNeedForNextStar));
+            }
+            else if (ScoreManager.instance.isLevelUpStar == false)
+            {
+                StopCoroutine(transitionCoroutine);
+                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, (float)(ScoreManager.instance.actualScore - ScoreManager.instance.scoreOfActualStar) / (float)ScoreManager.instance.scoreNeedForNextStar));
+            }
+            else
+            {
+                lockBarRefresh = true;
+                StopCoroutine(transitionCoroutine);
+                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, 1f));
+            }
         }
     }
 
@@ -111,6 +126,20 @@ public class UiScore : MonoBehaviour
             sliderBar.value = valueForSlider;
             time += Time.deltaTime;
             yield return new WaitForEndOfFrame();
+        }
+
+        if (ScoreManager.instance.isLevelUpStar == true)
+        {
+            lockBarRefresh = false;
+            ScoreManager.instance.isLevelUpStar = false;
+
+            ColorUpdate();
+
+            if (ScoreManager.instance.actualStar != ScoreManager.differentStarState.Gold)
+            {
+                sliderBar.value = 0f;
+                ScoreManager.instance.RefreshUiStarState();
+            }
         }
     }
 }
