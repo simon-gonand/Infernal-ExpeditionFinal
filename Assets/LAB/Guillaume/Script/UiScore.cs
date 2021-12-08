@@ -45,6 +45,11 @@ public class UiScore : MonoBehaviour
         #endregion
     }
 
+    private void Start()
+    {
+        ColorUpdate();
+    }
+
     public void ScoreUpdate()
     {
         textActualScore.text = ScoreManager.instance.actualScore.ToString();

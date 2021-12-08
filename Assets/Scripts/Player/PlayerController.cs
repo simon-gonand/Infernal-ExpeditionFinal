@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     public GameObject sword;
     public GameObject stunFx;
 
+    [Header ("Debug")]
+    public bool drawIteractLine;
+
     private Vector2 playerMovementInput = Vector2.zero;
 
     private IInteractable _interactingWith;
@@ -41,6 +44,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 movement { get { return _movement; } set { _movement = value; } }
 
     private Vector3 collisionDirection;
+
+    private GameObject treasureInFront;
 
     [System.NonSerialized]
     public List<EnemiesAI> isAttackedBy = new List<EnemiesAI>();
@@ -444,7 +449,6 @@ public class PlayerController : MonoBehaviour
         // Play respawn sound
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (!_isStun && !_isCarried && !_hasBeenLaunched && !isDead)
@@ -457,8 +461,65 @@ public class PlayerController : MonoBehaviour
             else
                 PlayerMovement(); 
         }
+    }
 
+    void Update()
+    {
         InfoAnim();
+        TreasureDetectionForOutline();
+    }
+
+    private void TreasureDetectionForOutline()
+    {
+        RaycastHit hit;
+
+        // Draw raycast foward the player
+        if (Physics.Raycast(transform.position, transform.forward, out hit, playerPreset.interactionDistance))
+        {
+            // Draw ray for debug
+            if (drawIteractLine == true)
+            {
+                Debug.DrawRay(transform.position, transform.forward * playerPreset.interactionDistance, Color.green);
+            }
+
+            // Check if raycast hit a Treasures
+            if (hit.collider.gameObject.transform.parent.gameObject.tag == "Treasures")
+            {
+                // If it's the same treasure detected, cancel everything
+                if (treasureInFront == hit.collider.gameObject.transform.parent.gameObject)
+                {
+                    return;
+                }
+                else
+                {
+                    // Check if there is an old treasure in front
+                    if (treasureInFront != null)
+                    {
+                        // Unselecte the old treasure
+                        treasureInFront.GetComponent<Treasure>().SelecteTreasure(false);
+                    }
+
+                    // Save and selected the new treasure
+                    treasureInFront = hit.collider.gameObject.transform.parent.gameObject;
+                    treasureInFront.GetComponent<Treasure>().SelecteTreasure(true);
+                }
+            }
+        }
+        // If there is no more treasure detected
+        else if (treasureInFront != null)
+        {
+            // Reset and unselect the old treasure
+            treasureInFront.GetComponent<Treasure>().SelecteTreasure(false);
+            treasureInFront = null;
+        }
+        else
+        {
+            // Draw ray for debug
+            if (drawIteractLine == true)
+            {
+                Debug.DrawRay(transform.position, transform.forward * playerPreset.interactionDistance, Color.red);
+            }
+        }
     }
 
     void InfoAnim()

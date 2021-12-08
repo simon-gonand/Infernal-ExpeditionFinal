@@ -70,13 +70,15 @@ MonoBehaviour:
   self: {fileID: 4223509153915057737}
   selfRigidBody: {fileID: 2660306658829606644}
   playerPreset: {fileID: 11400000, guid: 6e8ed946df7976d4e939d4c409344454, type: 2}
-  selfRenderer: {fileID: 127302442358388516}
   playerGraphics: {fileID: 8953784907364789553}
   attackPoint: {fileID: 7237748085361382517}
   playerCarryingPoint: {fileID: 6219935653066116965}
   anim: {fileID: 9007219405739566633}
   sword: {fileID: 1277832469005619150}
   stunFx: {fileID: 2739789684704048623}
+  treasureLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &4223509153915057750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +222,9 @@ MonoBehaviour:
   player3Material: {fileID: 2100000, guid: 840361a3d1703704b9a4f0f9be3b965b, type: 2}
   player4Material: {fileID: 2100000, guid: 8e76c06808b819245a6cd2316ebbca86, type: 2}
   targetGroup: {fileID: 0}
+  camManager: {fileID: 0}
+  deadZoneOffsetX: 10
+  deadZoneOffsetY: 10
 --- !u!23 &127302442358388516
 MeshRenderer:
   m_ObjectHideFlags: 0
