@@ -23,6 +23,10 @@ public class Treasure : MonoBehaviour, ICarriable
     private bool _isLoadingLaunch = false;
     public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
     private bool _isColliding = false;
+
+    public int numOfSelected;
+    public Outline outlineScript;
+
     public bool isColliding { set { _isColliding = value; } }
 
     private float launchForce = 0.0f;
@@ -95,6 +99,7 @@ public class Treasure : MonoBehaviour, ICarriable
     private void Start()
     {
         lastPosition = self.position;
+        outlineScript.enabled = false;
     }
 
     public void UpdatePlayerRotation(PlayerController player, Transform playerTransform)
@@ -442,6 +447,27 @@ public class Treasure : MonoBehaviour, ICarriable
                 applyForces.y = 0.0f;
                 selfRigidbody.velocity += applyForces;
             }
+        }
+    }
+
+    public void SelecteTreasure(bool select)
+    {
+        if (select == true)
+        {
+            numOfSelected += 1;
+        }
+        else
+        {
+            numOfSelected -= 1;
+        }
+
+        if (numOfSelected < 1)
+        {
+            outlineScript.enabled = false;
+        }
+        else
+        {
+            outlineScript.enabled = true;
         }
     }
 
