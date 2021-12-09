@@ -44,6 +44,7 @@ public class AudioManager : MonoBehaviour
     [Header("Boat")]
 
     public AK.Wwise.Event boatTreasureCollectSFX;
+    public AK.Wwise.Event boatDamagesSFX;
 
 
     void Start()
