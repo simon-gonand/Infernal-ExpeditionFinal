@@ -26,8 +26,6 @@ public class PlayerController : MonoBehaviour
     [Header ("Debug")]
     public bool drawIteractLine;
 
-    private Vector2 playerMovementInput = Vector2.zero;
-
     private IInteractable _interactingWith;
     public IInteractable interactingWith { get { return _interactingWith; } }
 
