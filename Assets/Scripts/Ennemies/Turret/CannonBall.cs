@@ -10,6 +10,7 @@ public class CannonBall : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Play impact sound
+        AudioManager.AMInstance.boatDamagesSFX.Post(gameObject);
 
         if (collision.collider.CompareTag("Boat"))
         {
