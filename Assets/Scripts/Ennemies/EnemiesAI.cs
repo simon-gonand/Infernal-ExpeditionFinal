@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface EnemiesAI
 {
-    public void ResetCurrentFollowedPlayer();
+    public void ResetCurrentTarget();
     public void Die(PlayerController player);
 }

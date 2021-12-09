@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [Header("Self References")]
     public Transform self;
     public Rigidbody selfRigidBody;
+    public Collider selfCollider;
     public PlayerPresets playerPreset;
 
     [Header("Children References")]
@@ -21,8 +22,6 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public GameObject sword;
     public GameObject stunFx;
-
-    private Vector2 playerMovementInput = Vector2.zero;
 
     private IInteractable _interactingWith;
     public IInteractable interactingWith { get { return _interactingWith; } }
@@ -37,8 +36,10 @@ public class PlayerController : MonoBehaviour
     private ICarriable _carrying;
     public ICarriable carrying { get { return _carrying; } set { _carrying = value; } }
 
+    private Vector2 _playerMovementInput = Vector2.zero;
+    public Vector2 playerMovementInput { get { return _playerMovementInput; } }
     private Vector3 _movement;
-    public Vector3 movement { get { return _movement; } set { _movement = value; } }
+    public Vector3 movement { get { return _movement; } }
 
     private Vector3 collisionDirection;
 
@@ -59,6 +60,9 @@ public class PlayerController : MonoBehaviour
 
     private bool _hasBeenLaunched = false;
     public bool hasBeenLaunched { get { return _hasBeenLaunched; } set { _hasBeenLaunched = value; } }
+
+    private bool _isLaunching = false;
+    public bool isLaunching { get { return _isLaunching; } set { _isLaunching = value; } }
 
     // Is the player on the boat
     private bool _isOnBoat = true;
@@ -130,7 +134,7 @@ public class PlayerController : MonoBehaviour
     // When the player moves
     public void OnMove(InputAction.CallbackContext context)
     {
-        playerMovementInput = context.ReadValue<Vector2>();
+        _playerMovementInput = context.ReadValue<Vector2>();
     }
 
     // When the player pressed the action button
@@ -143,6 +147,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (context.started)
                 {
+                    _isLaunching = true;
                     _interactingWith.OnAction(this);
                 }
                 else if (context.canceled)
@@ -150,7 +155,6 @@ public class PlayerController : MonoBehaviour
                     if (_carrying != null)
                     {
                         _carrying.Launch(this);
-                        selfRigidBody.mass = 1;
                     }
                 }
             }
@@ -208,7 +212,7 @@ public class PlayerController : MonoBehaviour
                         if (hit.collider.isTrigger && hit.collider.enabled)
                         {
                             // Stop player's movements
-                            playerMovementInput = Vector2.zero;
+                            _playerMovementInput = Vector2.zero;
                             // Set with which interactable the player is interacting with
                             _interactingWith = hit.collider.gameObject.GetComponentInParent<IInteractable>();
                             if (!_interactingWith.InteractWith(this, hit.collider.gameObject))
@@ -268,7 +272,7 @@ public class PlayerController : MonoBehaviour
     public void StunPlayer()
     {
         StartCoroutine(StunWait());
-        movement = Vector3.zero;
+        _movement = Vector3.zero;
     }
 
     private IEnumerator StunWait()
@@ -360,6 +364,15 @@ public class PlayerController : MonoBehaviour
         _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
         selfRigidBody.velocity = _movement;
+        
+        // Set the rotation of the player according to his movements
+        if (_movement.x != 0 || _movement.z != 0)
+        {
+            _movement.y = 0.0f;
+            self.forward = _movement;
+            playerGraphics.forward = self.forward;
+        }
+        
         if (_isCarrying && transportedTreasure != null)
         {
             transportedTreasure.UpdatePlayerMovement(this);
@@ -385,12 +398,6 @@ public class PlayerController : MonoBehaviour
             selfRigidBody.velocity = new Vector3(selfRigidBody.velocity.x, 0.0f, selfRigidBody.velocity.z);
 
 
-        // Set the rotation of the player according to his movements
-        if (_movement.x != 0 || _movement.z != 0)
-        {
-            _movement.y = 0.0f;
-            self.forward = _movement;
-        }
     }
 
     private void Dash()
@@ -447,8 +454,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!_isStun && !_isCarried && !_hasBeenLaunched && !isDead)
+        if (!_isStun && !_isCarried && !_hasBeenLaunched && !isDead && (_carrying != null ? !_carrying.isLoadingLaunch : true))
         {
+
             if (isDashing)
             {
                 Dash();
@@ -463,7 +471,7 @@ public class PlayerController : MonoBehaviour
     void InfoAnim()
     {
         
-        if (!_isStun && !_isCarried && !isDead)
+        if (!_isStun && !_isCarried && !isDead && (_carrying != null ? !_carrying.isLoadingLaunch : true))
         {
             if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
             {

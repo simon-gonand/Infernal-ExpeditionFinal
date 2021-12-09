@@ -9,7 +9,7 @@ public class GetSnappingPosition : MonoBehaviour
 
     public void SnapPlayerToPosition(PlayerController player)
     {
-        player.self.position = new Vector3(self.position.x, player.self.position.y, self.position.z); ;
+        player.self.position = new Vector3(self.position.x, player.self.position.y, self.position.z); 
         Vector3 snapPlayerPosition = treasureTransform.position;
         if (player.self.position.x < treasureTransform.position.x)
         {

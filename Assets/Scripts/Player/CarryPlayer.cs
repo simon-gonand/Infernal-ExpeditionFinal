@@ -6,7 +6,8 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 {
     public PlayerController selfScript;
 
-    private bool isLoadingLaunch = false;
+    private bool _isLoadingLaunch = false;
+    public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
     private float launchForce = 0.0f;
 
     public bool InteractWith(PlayerController carrier, GameObject interactingWith)
@@ -32,7 +33,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
     public void OnAction(PlayerController player)
     {
-        isLoadingLaunch = true;
+        _isLoadingLaunch = true;
         StartCoroutine(LoadingLaunchForce());
     }
 
@@ -77,7 +78,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
     {
         if (isLoadingLaunch)
         {
-            isLoadingLaunch = false;
+            _isLoadingLaunch = false;
 
             // Enable rigidbody
             selfScript.selfRigidBody.mass = 1;

@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fa6840ff60cb764193013a329e74738, type: 3}
-  m_Name: MediumTreasure
+  m_Script: {fileID: 11500000, guid: 49fccb9241067904d8a1c1e7542e6323, type: 3}
+  m_Name: PiqueSousPresets
   m_EditorClassIdentifier: 
-  maxLaunchForce: 10
-  fullChargeTime: 1
-  speedMalus: 100
-  maxPlayerCarrying: 2
+  speed: 2
+  cooldown: 2
