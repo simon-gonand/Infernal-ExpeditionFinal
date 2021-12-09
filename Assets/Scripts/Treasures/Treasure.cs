@@ -267,6 +267,20 @@ public class Treasure : MonoBehaviour, ICarriable
         float offsetLaunch = category.maxLaunchForce * offsetTime / category.fullChargeTime;
         while (isLoadingLaunch && launchForce != category.maxLaunchForce)
         {
+            bool isPlayerMovementZero = false;
+            foreach (PlayerController player in _playerInteractingWith)
+            {
+                if (player.playerMovementInput == Vector2.zero)
+                {
+                    isPlayerMovementZero = true;
+                    break;
+                }
+            }
+            if (isPlayerMovementZero) 
+            {
+                yield return new WaitForEndOfFrame();
+                continue; 
+            }
             launchForce += offsetLaunch;
             if (launchForce > category.maxLaunchForce)
                 launchForce = category.maxLaunchForce;
@@ -277,6 +291,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
     public void Launch(PlayerController player)
     {
+        StopCoroutine(LoadingLaunchForce());
         if (isLoadingLaunch)
         {
             _isLoadingLaunch = false;
@@ -286,6 +301,11 @@ public class Treasure : MonoBehaviour, ICarriable
             {
                 PlayerController p = _playerInteractingWith[0];
                 Vector3 playerMovement = new Vector3 (p.playerMovementInput.x, 0.0f, p.playerMovementInput.y);
+                if (playerMovement == Vector3.zero)
+                {
+                    StopLaunching();
+                    return;
+                }
                 launchDirection += playerMovement;
                 // Update lists values
                 _playerInteractingWith.Remove(p);
@@ -327,6 +347,7 @@ public class Treasure : MonoBehaviour, ICarriable
         {
             player.isLaunching = false;
         }
+        launchForce = 0.0f;
     }
 
     // When the player is not interacting with the treasure anymore
