@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 5ce880947766eb4cbd5f560f38e08f10
     GuidInternal: 
-    m_lastTime: -8585655695954065187
+    m_lastTime: -8585655694285359027
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 7b7f0c167fc8a14f946930294b69377c
     GuidInternal: 
-    m_lastTime: -8585655695954204817
+    m_lastTime: -8585655694285418870
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 9dce80c3a7123942813a1007a9fa761f
     GuidInternal: 
-    m_lastTime: -8585627431785638796
+    m_lastTime: -8585626379844236432
     List:
     - name: Musics
       guid: 36549465458ece4a996756f69665369a
@@ -108,7 +108,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 06febf392af11e40ad2e9e6e478aa9eb
     GuidInternal: 
-    m_lastTime: -8585627431793970535
+    m_lastTime: -8585626379844475794
     List:
     - name: Ambients
       guid: 74f25189b5c29d42af175dd13276a75e
@@ -145,8 +145,8 @@ MonoBehaviour:
         guid: 829a948af431744189a18a98eaaf71a5
       Path: Events\Default Work Unit\Boat\B_ChestCollect
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.866188
+      minDuration: 0.866188
     - name: B_Damages
       guid: 5c57ad9e537a5d4db5bc68022245b8ed
       id: 44932442
@@ -319,8 +319,8 @@ MonoBehaviour:
         guid: 09718de7cb469a4bbed4264e57efe960
       Path: Events\Default Work Unit\Enemy\E_Clsq_Attack
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.517484
+      minDuration: 0.471936
     - name: E_Clsq_Death
       guid: 333670de1f8f9748b7f6692178349b54
       id: 2473324379
@@ -578,26 +578,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.040159
       minDuration: 0.030086
-    - name: P_Damages
-      guid: 63c471d7e1a02242a09d73e5a6b15724
-      id: 3965941840
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Players
-        ObjectType: 4
-        guid: 718ee505135c2340bbc3a7c784e87c30
-      - ElementName: P_Damages
-        ObjectType: 3
-        guid: 63c471d7e1a02242a09d73e5a6b15724
-      Path: Events\Default Work Unit\Players\P_Damages
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: P_Dash
       guid: 99ddf6cf08f8524b93e743362255f42e
       id: 3919743498
@@ -736,8 +716,8 @@ MonoBehaviour:
         guid: 148bdef367c9d442aa7837ba031673bc
       Path: Events\Default Work Unit\Players\P_Stunt
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.701406
+      minDuration: 1.701406
     - name: P_Swim
       guid: 3d82b2b107b2b84b9e5cf26bede85b54
       id: 3942208158
@@ -903,7 +883,7 @@ MonoBehaviour:
     ParentPath: Events\Musics
     guid: 8b7a9cc2f9341b47876f857ec1bcbfce
     GuidInternal: 
-    m_lastTime: -8585627431793970535
+    m_lastTime: -8585633076087632349
     List:
     - name: Credit_Theme
       guid: b5a5df838c37b849a41524cd44cf21ae
@@ -994,7 +974,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 44e9a2aa08be74469cc4ca937f63ac4a
     GuidInternal: 
-    m_lastTime: -8585655695954244700
+    m_lastTime: -8585655694285398921
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -1008,7 +988,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 45ac22c6d94a704bb944d240967dde98
     GuidInternal: 
-    m_lastTime: -8585627431785628825
+    m_lastTime: -8585633076032359027
     List:
     - name: Ground_Type
       guid: c2f15d9f71b68e4d8e85d4f9280faaf2
@@ -1152,7 +1132,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 23f8d2162ea04c49ba51910d0ab18446
     GuidInternal: 
-    m_lastTime: -8585655695954085129
+    m_lastTime: -8585655694285368999
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -1166,8 +1146,22 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 27f4251b6ad34743b8dc3552bbe667d3
     GuidInternal: 
-    m_lastTime: -8585655695954075164
-    List: []
+    m_lastTime: -8585626379844266357
+    List:
+    - name: Collect_Treasure
+      guid: 88eb52da3d6b9743ba24b8c441c80d38
+      id: 1087296951
+      PathAndIcons:
+      - ElementName: Triggers
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 27f4251b6ad34743b8dc3552bbe667d3
+      - ElementName: Collect_Treasure
+        ObjectType: 14
+        guid: 88eb52da3d6b9743ba24b8c441c80d38
+      Path: Triggers\Default Work Unit\Collect_Treasure
   ExpandedFileSystemItemIds: 
   ExpandedWaapiItemIds: 
   AutoSyncSelection: 0

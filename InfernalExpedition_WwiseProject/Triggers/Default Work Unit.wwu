@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{1B25F427-D36A-4347-B8DC-3552BBE667D3}" SchemaVersion="103">
 	<Triggers>
-		<WorkUnit Name="Default Work Unit" ID="{1B25F427-D36A-4347-B8DC-3552BBE667D3}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{1B25F427-D36A-4347-B8DC-3552BBE667D3}" PersistMode="Standalone">
+			<ChildrenList>
+				<Trigger Name="Collect_Treasure" ID="{DA52EB88-6B3D-4397-BA24-B8C441C80D38}"/>
+			</ChildrenList>
+		</WorkUnit>
 	</Triggers>
 </WwiseDocument>

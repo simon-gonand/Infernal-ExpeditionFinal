@@ -248,6 +248,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+
     private void Attack()
     {
         // Play attack animation
@@ -292,7 +293,8 @@ public class PlayerController : MonoBehaviour
         anim.SetTrigger("startStun");
         stunFx.SetActive(true);
 
-        // Play sound stun
+        //Play Stunt Sound
+        AudioManager.AMInstance.PlayerStuntSFX.Post(gameObject);
 
         if (isCarrying)
         {

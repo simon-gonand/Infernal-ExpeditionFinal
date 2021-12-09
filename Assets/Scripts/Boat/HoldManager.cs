@@ -9,6 +9,8 @@ public class HoldManager : MonoBehaviour
         if (other.CompareTag("Treasures"))
         {
             // Play feedback
+            AudioManager.AMInstance.boatTreasureCollectSFX.Post(gameObject);
+            // Register in score
 
             ScoreManager.instance.AddScore(1);
             Destroy(other.gameObject);

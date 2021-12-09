@@ -26,7 +26,8 @@ public class CarryPlayer : MonoBehaviour, ICarriable
         // Is Carried animation
         // Is Carrying animation
 
-        // Carry player sound
+        //Play Carry Sound
+        AudioManager.AMInstance.playerCarrySFX.Post(gameObject);
 
         return true;
     }

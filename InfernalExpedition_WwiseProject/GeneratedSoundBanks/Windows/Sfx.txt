@@ -2,6 +2,8 @@ Event	ID	Name			Wwise Object Path	Notes
 	72805415	P_Carry			\Default Work Unit\Players\P_Carry	
 	491820422	P_Attack			\Default Work Unit\Players\P_Attack	
 	819302809	P_GroundImpact			\Default Work Unit\Players\P_GroundImpact	
+	903419691	E_Clsq_Attack			\Default Work Unit\Enemy\E_Clsq_Attack	
+	1992604323	B_ChestCollect			\Default Work Unit\Boat\B_ChestCollect	
 	3280416103	P_Steps			\Default Work Unit\Players\P_Steps	
 	3383744642	P_Stunt			\Default Work Unit\Players\P_Stunt	
 	3919743498	P_Dash			\Default Work Unit\Players\P_Dash	
@@ -20,6 +22,7 @@ State	ID	Name	State Group			Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	169199	Footsteps_Sea_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Sea_1_0089FE84.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sea_Footsteps\Footsteps_Sea_1		99684
+	22319495	Enemy_SlashAttack_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Enemy_SlashAttack_46DACFFA.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_SlashAttack\Enemy_SlashAttack_1		40088
 	46587669	PlayerDash_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\PlayerDash_3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Dash\PlayerDash_3		114356
 	87450858	PlayerDash_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\PlayerDash_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Dash\PlayerDash_1		111708
 	102166623	Footsteps_Sea_4	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Sea_4_5FE2D3F1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sea_Footsteps\Footsteps_Sea_4		108374
@@ -31,26 +34,33 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	184082747	Footsteps_Grass_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Grass_3_58D9F6D7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Grass_Footsteps\Footsteps_Grass_3		6862
 	211454236	Footsteps_Wood_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Wood_2_62D000BA.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Wood_Footsteps\Footsteps_Wood_2		14724
 	251700846	Player_Carry	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Player_Carry_0DE424E0.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Carry		5360
+	286784303	Enemy_ShineAttack	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Enemy_ShineAttack_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_ShineAttack		75720
+	292770977	Enemy_SlashAttack_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Enemy_SlashAttack_2_00DE9AEF.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_SlashAttack\Enemy_SlashAttack_2		54320
 	320782930	SwordSlash_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\SwordSlash_3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Sword_Attack\SwordSlash_3		24872
 	382330933	Footsteps_Wood_4	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Wood_4_1A3BDF85.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Wood_Footsteps\Footsteps_Wood_4		25536
 	447688110	Footsteps_Grass_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Grass_1_D9B2837B.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Grass_Footsteps\Footsteps_Grass_1		6280
+	447776085	Treasure_Collect	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Treasure_Collect_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\Treasure_Collect		166372
 	455967247	Footsteps_Sea_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Sea_2_97327C67.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sea_Footsteps\Footsteps_Sea_2		97180
 	506895314	Footsteps_Sand_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_1_F5BB8DE1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sand_Footsteps\Footsteps_Sand_1		28262
+	528135933	Player_Damage	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Player_Damage_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Damage		118380
 	529235339	Footsteps_Stone_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Stone_3_00CE49DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Stone_Footsteps\Footsteps_Stone_3		26530
 	547652259	Footsteps_Sea_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Sea_3_970976F7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sea_Footsteps\Footsteps_Sea_3		114736
 	582227307	Footsteps_Grass_4	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Grass_4_F1979B73.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Grass_Footsteps\Footsteps_Grass_4		8742
 	582572203	Footsteps_Stone_4	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Stone_4_4A32D10D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Stone_Footsteps\Footsteps_Stone_4		29726
 	592552609	Footsteps_Stone_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Stone_2_702ACB39.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Stone_Footsteps\Footsteps_Stone_2		22666
+	618713017	Stunt_Bell	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Stunt_Bell_B013448C.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Stunt_Bell		163398
 	648056530	Footsteps_Sand_4	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_4_F366946E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sand_Footsteps\Footsteps_Sand_4		31514
 	685704333	Footsteps_Grass_5	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Grass_5_A2E4F32A.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Grass_Footsteps\Footsteps_Grass_5		6132
 	769848089	Footsteps_Sand_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_2_1903957C.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sand_Footsteps\Footsteps_Sand_2		28980
 	777445666	Player_HardFallImpact	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Player_HardFallImpact_006CA702.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_FallImpact\Player_HardFallImpact		16384
 	817045992	Footsteps_Wood_5	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Wood_5_33DC8D56.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Wood_Footsteps\Footsteps_Wood_5		18736
+	857342633	Chest_GroundImpact	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Chest_GroundImpact_5FC2AF7A.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Chest_GroundImpact		67908
 	921998026	Footsteps_Grass_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Grass_2_9AB8FF2A.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Grass_Footsteps\Footsteps_Grass_2		7996
 	930304750	Footsteps_Sand_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_3_8B16D7E4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sand_Footsteps\Footsteps_Sand_3		29390
 	964994802	Footsteps_Water_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Water_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Water_Footsteps\Footsteps_Water_1		84208
 	965775571	Footsteps_Water_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Water_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Water_Footsteps\Footsteps_Water_2		112144
 	977442422	Player_SoftFallImpact	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Player_FallImpact_576287D3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_FallImpact\Player_SoftFallImpact		21752
-	991773503	Player_Stunt	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Player_Stunt_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Stunt		1878840
 	1007454082	Footsteps_Water_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Water_3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Water_Footsteps\Footsteps_Water_3		303132
+	1055089053	PlayerDash_Cloth	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\PlayerDash_Cloth_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\PlayerDash_Cloth		92224
+	1063609588	Enemy_SlashAttack_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Enemy_SlashAttack_3_C8681226.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_SlashAttack\Enemy_SlashAttack_3		40556
 

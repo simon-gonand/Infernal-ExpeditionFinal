@@ -1232,7 +1232,21 @@
 							<TransitionInfo/>
 						</MusicTransition>
 					</TransitionList>
-					<ObjectLists/>
+					<ObjectLists>
+						<ObjectList Name="Stingers">
+							<Reference>
+								<Local>
+									<MusicStinger Name="" ID="{B6C1A84B-1667-45E2-B27D-A44B31D27358}">
+										<PropertyList>
+											<Property Name="PlaySegmentAt" Type="int16" Value="3"/>
+										</PropertyList>
+										<TriggerRef Name="Collect_Treasure" ID="{DA52EB88-6B3D-4397-BA24-B8C441C80D38}" WorkUnitID="{1B25F427-D36A-4347-B8DC-3552BBE667D3}"/>
+										<SegmentRef Name="STINGER_TreasurCollect" ID="{768FD054-142F-42DE-BDBB-CC07A5D2E69C}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+									</MusicStinger>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
 					<Playlist>
 						<MusicPlaylistItem Name="" ID="{1FAC20F4-5797-4909-8576-71CE37F4EBA7}" ShortID="441314136">
 							<PropertyList>
@@ -1279,6 +1293,91 @@
 						</MusicPlaylistItem>
 					</Playlist>
 				</MusicPlaylistContainer>
+				<Folder Name="STINGERS" ID="{5F2940B7-1007-4D37-9660-F61E4AC8C3A4}" ShortID="885164065">
+					<ChildrenList>
+						<MusicSegment Name="STINGER_TreasurCollect" ID="{768FD054-142F-42DE-BDBB-CC07A5D2E69C}" ShortID="829430824">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="STINGER_TreasurCollect" ID="{5047D1BF-B0AD-4093-979D-0299B00EA1A5}" ShortID="819736652">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="STINGER_TreasurCollect" ID="{D498D50B-5D60-47F0-B3C7-DB19474A9F70}">
+											<Language>SFX</Language>
+											<AudioFile>STINGER_TreasurCollect.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="163457329"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{17345632-2351-461E-B74F-61AC0CFC2F30}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<ObjectLists>
+										<ObjectList Name="Sequences">
+											<Reference>
+												<Local>
+													<MusicTrackSequence Name="" ID="{693DB7AD-3E30-4EC5-A683-D6750BC084A6}">
+														<ObjectLists>
+															<ObjectList Name="Clips">
+																<Reference>
+																	<Local>
+																		<MusicClip Name="STINGER_TreasurCollect" ID="{AE7D8F4D-F85E-4D99-937E-18EE3C88F732}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="2338.54875283447"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="STINGER_TreasurCollect" ID="{D498D50B-5D60-47F0-B3C7-DB19474A9F70}"/>
+																		</MusicClip>
+																	</Local>
+																</Reference>
+															</ObjectList>
+														</ObjectLists>
+													</MusicTrackSequence>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicTrack>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Cues">
+									<Reference>
+										<Local>
+											<MusicCue Name="Entry Cue" ID="{D56499F1-8FDF-4878-AD0A-A4001D4195D0}"/>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<MusicCue Name="Exit Cue" ID="{3D22267A-70B7-45CE-A95A-F9A7C780B09F}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="1"/>
+													<Property Name="TimeMs" Type="Real64" Value="2338.54875283447"/>
+												</PropertyList>
+											</MusicCue>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</MusicSegment>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</InteractiveMusic>

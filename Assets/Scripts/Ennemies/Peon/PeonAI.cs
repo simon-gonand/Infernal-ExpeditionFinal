@@ -27,6 +27,8 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     private bool isFirstAttack = true;
     private Coroutine attackCoroutine = null;
 
+
+
     public void ResetCurrentTarget()
     {
         currentFollowedPlayer = null;
@@ -232,6 +234,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         else yield return new WaitForSeconds(peonPreset.attackCooldown);
 
         // Play attack Sound
+        AudioManager.AMInstance.clsqEnemyAttackSFX.Post(gameObject);
 
         selfAnimator.SetTrigger("attack");
         yield return new WaitForSeconds(peonPreset.launchAttackCooldown);
