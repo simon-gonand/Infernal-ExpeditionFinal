@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ai: {fileID: 3442174465916169332}
   spawnPoint: {fileID: 7841411557720572126}
-  selfCollider: {fileID: 0}
+  selfCollider: {fileID: 8525486181016241324}
 --- !u!1 &6169996921129167261
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce00ad347eb15f4d9e1ddea010ecb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
+  parent: {fileID: 2782628819355395595}
 --- !u!1 &6375726090342046193
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +243,7 @@ GameObject:
   m_Name: Tent_03_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
+  m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2748926901246783568
@@ -578,3 +578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294e492c9e45b134eba6b9ca735d81d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &8525486181016241324 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 2386164022310163597, guid: 5ddb336a85da1d54cae75ca9184b00eb, type: 3}
+  m_PrefabInstance: {fileID: 6290903108078063649}
+  m_PrefabAsset: {fileID: 0}
