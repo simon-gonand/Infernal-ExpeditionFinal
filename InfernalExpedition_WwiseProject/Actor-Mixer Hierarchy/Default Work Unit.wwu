@@ -1861,6 +1861,126 @@
 								<ActiveSource Name="Enemy_ShineAttack" ID="{9F43B2DD-D494-4131-973B-449C859653E7}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<RandomSequenceContainer Name="Enemy_Shot" ID="{D2A12702-1C65-41D6-BAD6-9BD8C73C9E49}" ShortID="513824590">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{5035327D-E83E-4853-A098-B6B3F52665BD}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="200"/>
+													<Property Name="Min" Type="Real64" Value="-200"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="EnemyTrl_Shot_1" ID="{B6AE494E-2325-4349-92C8-05BEF1793AF2}" ShortID="481620171">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="EnemyTrl_Shot_1" ID="{2206F62B-301C-4350-828B-3953EA28828F}">
+											<Language>SFX</Language>
+											<AudioFile>EnemyTrl_Shot_1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1017834027"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="EnemyTrl_Shot_1" ID="{2206F62B-301C-4350-828B-3953EA28828F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="EnemyTrl_Shot_2" ID="{3E942984-11E5-486A-A063-6ED2A7DFA265}" ShortID="708360917">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="EnemyTrl_Shot_2" ID="{72572787-2E7C-498D-8FC9-1ABA4869FE42}">
+											<Language>SFX</Language>
+											<AudioFile>EnemyTrl_Shot_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="479127667"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="EnemyTrl_Shot_2" ID="{72572787-2E7C-498D-8FC9-1ABA4869FE42}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="EnemyTrl_Shot_3" ID="{DF41EA94-C711-4860-84B2-73AF7D8DECD1}" ShortID="960064263">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="EnemyTrl_Shot_3" ID="{68372E03-1C1D-47A3-9E1A-9B40315A85FE}">
+											<Language>SFX</Language>
+											<AudioFile>EnemyTrl_Shot_3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="277546652"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="EnemyTrl_Shot_3" ID="{68372E03-1C1D-47A3-9E1A-9B40315A85FE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="EnemyTrl_Shot_4" ID="{77B02C35-135F-423E-9778-9FDD69931175}" ShortID="927442644">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="EnemyTrl_Shot_4" ID="{270B7223-F323-4612-98CE-AF38D5E51853}">
+											<Language>SFX</Language>
+											<AudioFile>EnemyTrl_Shot_4.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="918785688"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="EnemyTrl_Shot_4" ID="{270B7223-F323-4612-98CE-AF38D5E51853}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</RandomSequenceContainer>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="World" ID="{188E42D3-1760-4945-9F1B-D06A9D4C57A9}" ShortID="372471023">

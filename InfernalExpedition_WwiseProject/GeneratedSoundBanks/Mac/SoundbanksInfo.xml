@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="12" SoundbankVersion="140">
 	<RootPaths>
-		<ProjectRoot>D:\UnityProject\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>D:\UnityProject\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\</SourceFilesRoot>
-		<SoundBanksRoot>D:\UnityProject\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
+		<ProjectRoot>D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\</SourceFilesRoot>
+		<SoundBanksRoot>D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>D:\UnityProject\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="2993794822">
+		<SoundBank Id="393239870" Language="SFX" Hash="3819241499">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -48,6 +48,26 @@
 						<File Id="1063609588" Language="SFX">
 							<ShortName>Enemy_SlashAttack_3.wav</ShortName>
 							<Path>SFX\Enemy_SlashAttack_3_7C806E9E.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="593966612" Name="E_Trl_Shot" ObjectPath="\Events\Default Work Unit\Enemy\E_Trl_Shot" DurationType="OneShot" DurationMin="0.627248" DurationMax="0.971818">
+					<IncludedMemoryFiles>
+						<File Id="277546652" Language="SFX">
+							<ShortName>EnemyTrl_Shot_3.wav</ShortName>
+							<Path>SFX\EnemyTrl_Shot_3_10C4C929.wem</Path>
+						</File>
+						<File Id="479127667" Language="SFX">
+							<ShortName>EnemyTrl_Shot_2.wav</ShortName>
+							<Path>SFX\EnemyTrl_Shot_2_10C4C929.wem</Path>
+						</File>
+						<File Id="918785688" Language="SFX">
+							<ShortName>EnemyTrl_Shot_4.wav</ShortName>
+							<Path>SFX\EnemyTrl_Shot_4_10C4C929.wem</Path>
+						</File>
+						<File Id="1017834027" Language="SFX">
+							<ShortName>EnemyTrl_Shot_1.wav</ShortName>
+							<Path>SFX\EnemyTrl_Shot_1_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -399,7 +419,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="1730564753" Language="SFX" Hash="2705677680">
+		<SoundBank Id="1730564753" Language="SFX" Hash="3434898113">
 			<ObjectPath>\SoundBanks\Default Work Unit\Musics</ObjectPath>
 			<ShortName>Musics</ShortName>
 			<Path>Musics.bnk</Path>
