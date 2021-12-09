@@ -55,6 +55,7 @@ public class FollowPath : MonoBehaviour
     {
         if (linkIndex >= path.links.Count) return;
         moveAmount = (moveAmount + (Time.deltaTime * path.links[linkIndex].speed)) % 1.0f;
+        if (self.position - path.allPoints[0] == Vector3.zero) moveAmount += 0.1f;
         
         float fullMoveAmount = moveAmount * path.allPoints.Count - 1;
         int indexPoint = Mathf.FloorToInt(fullMoveAmount);
