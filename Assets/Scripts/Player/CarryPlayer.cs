@@ -10,12 +10,6 @@ public class CarryPlayer : MonoBehaviour, ICarriable
     public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
     private float launchForce = 0.0f;
 
-
-
-    #region Audio
-    public AK.Wwise.Event playerCarryAudio = AudioManager.AMInstance.playerCarrySFX;
-    #endregion
-
     public bool InteractWith(PlayerController carrier, GameObject interactingWith)
     {
         if (selfScript.isCarried || selfScript.isCarrying || selfScript.isInteracting) return false;
@@ -33,7 +27,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
         // Is Carrying animation
 
         //Play Carry Sound
-        playerCarryAudio.Post(gameObject);
+        AudioManager.AMInstance.playerCarrySFX.Post(gameObject);
 
         return true;
     }
