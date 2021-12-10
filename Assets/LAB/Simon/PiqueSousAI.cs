@@ -12,6 +12,9 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
     private NavMeshAgent selfNavMesh;
     public Transform treasureAttach;
 
+    [Header("Animation")]
+    public Animator selfAnim;
+
     private Treasure targetTreasure;
 
     private bool _isAwake;
@@ -66,6 +69,8 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
         {
             isCarrying = true;
             targetTreasure.InteractWithPiqueSous(this);
+
+            selfAnim.SetBool("isCarrying", true);
         }
     }
 
@@ -80,6 +85,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
             isCarrying = false;
             StartCoroutine(Cooldown());
 
+            selfAnim.SetBool("isCarrying", false);
             // Play sound, effect ...
         }
     }
@@ -125,6 +131,17 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
         else
         {
             GoBackHome();
+        }
+
+        AnimationInfo();
+    }
+
+
+    void AnimationInfo()
+    {
+        if (selfNavMesh.speed >= 0)
+        {
+            selfAnim.SetBool("isRunning", true);
         }
     }
 
