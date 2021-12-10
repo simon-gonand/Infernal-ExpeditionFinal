@@ -403,8 +403,6 @@ public class PlayerController : MonoBehaviour
         // Player can't go up
         else if (selfRigidBody.velocity.y > 0)
             selfRigidBody.velocity = new Vector3(selfRigidBody.velocity.x, 0.0f, selfRigidBody.velocity.z);
-
-
     }
 
     private void Dash()

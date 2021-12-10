@@ -383,6 +383,8 @@ public class Treasure : MonoBehaviour, ICarriable
         //ApplySpeedMalus();
         if (_playerInteractingWith.Count == 1)
         {
+            player = _playerInteractingWith[0];
+            associateColliders[player].GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
             startPlayerPosition = player.self.position;
             startPlayerRotation = player.self.rotation;
 
