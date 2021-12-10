@@ -5,28 +5,30 @@ using UnityEngine;
 public class GetSnappingPosition : MonoBehaviour
 {
     public Transform self;
-    public Transform treasureTransform;
+    public Treasure treasure;
 
     public void SnapPlayerToPosition(PlayerController player)
     {
         player.self.position = new Vector3(self.position.x, player.self.position.y, self.position.z); 
-        Vector3 snapPlayerPosition = treasureTransform.position;
-        if (player.self.position.x < treasureTransform.position.x)
+        Vector3 snapPlayerPosition = treasure.self.position;
+        if (player.self.position.x < treasure.self.position.x)
         {
             snapPlayerPosition.x += player.self.lossyScale.x / 2;
         }
-        else if (player.self.position.x > treasureTransform.position.x)
+        else if (player.self.position.x > treasure.self.position.x)
         {
             snapPlayerPosition.x -= player.self.lossyScale.x / 2;
         }
-        else if (player.self.position.z < treasureTransform.position.z)
+        else if (player.self.position.z < treasure.self.position.z)
         {
             snapPlayerPosition.z += player.self.lossyScale.z / 2;
         }
-        else if (player.self.position.z > treasureTransform.position.z)
+        else if (player.self.position.z > treasure.self.position.z)
         {
             snapPlayerPosition.z -= player.self.lossyScale.z / 2;
         }
-        treasureTransform.position = snapPlayerPosition;
+
+        if (treasure.playerInteractingWith.Count > 1)
+            treasure.self.position = snapPlayerPosition;
     }
 }

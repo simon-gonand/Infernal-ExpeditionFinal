@@ -134,8 +134,8 @@ MonoBehaviour:
   selfRigidbody: {fileID: 1344421421682408606}
   selfCollider: {fileID: 7705394190541965516}
   category: {fileID: 11400000, guid: 76773af0a35dd0c489de87142b2c81fc, type: 2}
-  numOfSelected: 0
   outlineScript: {fileID: 1367447745}
+  isColliding: 0
 --- !u!114 &1367447745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 1381686555007138895}
-  treasureTransform: {fileID: 3329265842200371522}
+  treasure: {fileID: 2615319730487116424}
 --- !u!1 &6228726007650977376
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 245407069279628098}
-  treasureTransform: {fileID: 3329265842200371522}
+  treasure: {fileID: 2615319730487116424}
 --- !u!1 &8673730470139949380
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 968878615079394338}
-  treasureTransform: {fileID: 3329265842200371522}
+  treasure: {fileID: 2615319730487116424}
 --- !u!1 &8788186114118638757
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,4 +415,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 2202058325800593268}
-  treasureTransform: {fileID: 3329265842200371522}
+  treasure: {fileID: 2615319730487116424}

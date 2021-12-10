@@ -156,7 +156,7 @@ public class Treasure : MonoBehaviour, ICarriable
         interactingWith.GetComponent<BoxCollider>().enabled = false;
 
         // Snap the player to the center of the side of the treasure
-        //interactingWith.GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
+        interactingWith.GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
         associateColliders.Add(player, interactingWith);
     }
 
@@ -238,6 +238,8 @@ public class Treasure : MonoBehaviour, ICarriable
             StopLaunching(); _isLoadingLaunch = false;
             return true;
         }
+
+        _playerInteractingWith.Remove(player);
 
         // If the player cannot carry the treasure due to the number of players already carrying it
         player.isCarrying = false;
@@ -522,6 +524,7 @@ public class Treasure : MonoBehaviour, ICarriable
                 {
                     if (_playerInteractingWith.Count > 1)
                     {
+                        Debug.Log(associateColliders.Count);
                         associateColliders[player].GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
                     }
                 }
