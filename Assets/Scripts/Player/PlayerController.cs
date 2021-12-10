@@ -311,7 +311,7 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateSwimming()
     {
-        if (selfRigidBody.velocity.y > 0.4f)
+        if (selfRigidBody.velocity.y > 0.3f)
         {
             selfRigidBody.useGravity = true;
 

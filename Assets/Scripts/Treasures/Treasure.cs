@@ -24,7 +24,7 @@ public class Treasure : MonoBehaviour, ICarriable
     public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
     private bool _isColliding = false;
 
-    public int numOfSelected;
+    private int numOfSelected;
     public Outline outlineScript;
 
     public bool isColliding { set { _isColliding = value; } }
