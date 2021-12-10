@@ -26,8 +26,6 @@ public class Treasure : MonoBehaviour, ICarriable
     private int numOfSelected;
     public Outline outlineScript;
 
-    //private bool _isColliding = false;
-    public bool isColliding;
 
     private float launchForce = 0.0f;
     private Vector3 lastPosition;
@@ -38,7 +36,10 @@ public class Treasure : MonoBehaviour, ICarriable
     private Vector3 startSelfPosition;
     private Quaternion startSelfRotation;
 
-    private Vector3 collisionDirection;
+    private bool _isColliding = false;
+    public bool isColliding { set { _isColliding = value; } }
+    private Vector3 _collisionDirection;
+    public Vector3 collisionDirection { set { _collisionDirection = value; } }
     private Rigidbody collidingWith;
     private bool isMovingWhenColliding;
 
@@ -57,14 +58,14 @@ public class Treasure : MonoBehaviour, ICarriable
             {
                 if (collision.collider == player.GetComponent<CapsuleCollider>())
                 {
-                    isColliding = false;
+                    _isColliding = false;
                     return;
                 }
             }
             playerColliding.Add(collision.collider.GetComponent<PlayerController>());
         }
-        collisionDirection = collision.GetContact(0).normal;
-        isColliding = true;
+        _collisionDirection = collision.GetContact(0).normal;
+        _isColliding = true;
         collidingWith = collision.collider.GetComponent<Rigidbody>();
     }
 
@@ -72,12 +73,12 @@ public class Treasure : MonoBehaviour, ICarriable
     {
         if (collidingWith != null && collidingWith.velocity != Vector3.zero && isMovingWhenColliding)
         {
-            collisionDirection = -collisionDirection;
+            _collisionDirection = -_collisionDirection;
             isMovingWhenColliding = false;
         }
         else if (!isMovingWhenColliding)
         {
-            collisionDirection = -collisionDirection;
+            _collisionDirection = -_collisionDirection;
             isMovingWhenColliding = true;
         }
     }
@@ -92,7 +93,7 @@ public class Treasure : MonoBehaviour, ICarriable
                     playerColliding.Remove(player);
             }
         }
-        isColliding = false;
+        _isColliding = false;
     }
     #endregion
 
@@ -106,7 +107,7 @@ public class Treasure : MonoBehaviour, ICarriable
     {
         if (_playerInteractingWith.Count == 1)
         {
-            if (!isColliding)
+            if (!_isColliding)
             {
                 playerMatrix = Matrix4x4.TRS(playerTransform.position, playerTransform.rotation, playerTransform.lossyScale);
 
@@ -123,7 +124,7 @@ public class Treasure : MonoBehaviour, ICarriable
     {
         if (_playerInteractingWith.Count == 1)
         {
-            if (isColliding)
+            if (_isColliding)
                 player.selfRigidBody.velocity = Vector3.zero;
             return;
         }
@@ -195,7 +196,7 @@ public class Treasure : MonoBehaviour, ICarriable
                 if (p == player)
                 {
                     playerColliding.Remove(p);
-                    isColliding = false;
+                    _isColliding = false;
                     break;
                 }
             }
@@ -511,11 +512,11 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             
         }
-        if (isColliding && !isCarriedByPiqueSous)
+        if (_isColliding && !isCarriedByPiqueSous)
         {
-            if (Vector3.Dot(selfRigidbody.velocity, -collisionDirection) < 0 && selfRigidbody.velocity != Vector3.zero)
+            if (Vector3.Dot(selfRigidbody.velocity, -_collisionDirection) < 0 && selfRigidbody.velocity != Vector3.zero)
             {
-                isColliding = false;
+                _isColliding = false;
             }
             else
             {
@@ -524,7 +525,6 @@ public class Treasure : MonoBehaviour, ICarriable
                 {
                     if (_playerInteractingWith.Count > 1)
                     {
-                        Debug.Log(associateColliders.Count);
                         associateColliders[player].GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
                     }
                 }

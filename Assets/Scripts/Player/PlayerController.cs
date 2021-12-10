@@ -96,15 +96,16 @@ public class PlayerController : MonoBehaviour
         {
             StopDash();
         }
-        if (_isCarrying && collision.collider.GetComponent<IInteractable>() != _interactingWith)
+        if (_isCarrying && collision.collider.GetComponent<ICarriable>() != _carrying)
         {
             collisionDirection = collision.GetContact(0).normal;
-            if (!Physics.Raycast(self.position, -collisionDirection, 0.1f, mask))
+            if (!Physics.Raycast(self.position, -collisionDirection, 1.0f, mask))
                 return;
-            Treasure treasure = _interactingWith as Treasure;
+            Treasure treasure = _carrying as Treasure;
             if (treasure != null)
             {
                 treasure.isColliding = true;
+                treasure.collisionDirection = collisionDirection;
             }
         }
         if (_hasBeenLaunched)
@@ -118,7 +119,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_isCarrying && collision.collider.GetComponent<IInteractable>() != _interactingWith)
         {
-            if (!Physics.Raycast(self.position, collisionDirection, 0.1f, mask))
+            if (!Physics.Raycast(self.position, -collisionDirection, 0.1f, mask))
                 return;
             Treasure treasure = _interactingWith as Treasure;
             if (treasure != null)
