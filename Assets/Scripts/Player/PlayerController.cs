@@ -94,7 +94,9 @@ public class PlayerController : MonoBehaviour
     {
         if (isDashing)
         {
-            StopDash();
+            collisionDirection = collision.GetContact(0).normal;
+            if (Physics.Raycast(self.position, -collisionDirection, 1.0f, mask))
+                StopDash();
         }
         if (_isCarrying && collision.collider.GetComponent<ICarriable>() != _carrying)
         {

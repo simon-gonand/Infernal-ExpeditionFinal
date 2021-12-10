@@ -371,6 +371,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
         player.carrying = null;
 
+
         // Player does not interact with the treasure anymore
         _playerInteractingWith.Remove(player);
 
