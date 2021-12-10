@@ -130,15 +130,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 4223509153915057737}
   selfRigidBody: {fileID: 2660306658829606644}
-  selfCollider: {fileID: 0}
   playerPreset: {fileID: 11400000, guid: 6e8ed946df7976d4e939d4c409344454, type: 2}
   playerGraphics: {fileID: 6059026155204065640}
   attackPoint: {fileID: 7237748085361382517}
-  playerCarryingPoint: {fileID: 0}
   anim: {fileID: 6147014875284358498}
   sword: {fileID: 4947928339351817844}
   stunFx: {fileID: 2739789684704048623}
-  drawIteractLine: 0
 --- !u!114 &4223509153915057750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,14 +274,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8844efae26fce4ca1fc9977520b258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player2: {fileID: 0}
-  player3: {fileID: 0}
-  player4: {fileID: 0}
-  inputMan: {fileID: 0}
-  targetGroup: {fileID: 0}
-  camManager: {fileID: 0}
-  deadZoneOffsetX: 10
-  deadZoneOffsetY: 10
+  player1Material: {fileID: 2100000, guid: 2e1d371bf3d3b5c46bcda480ca6ad315, type: 2}
+  player2Material: {fileID: 2100000, guid: 063d73d1e34bf774eae2f421aa9fe9ab, type: 2}
+  player3Material: {fileID: 2100000, guid: 840361a3d1703704b9a4f0f9be3b965b, type: 2}
+  player4Material: {fileID: 2100000, guid: 8e76c06808b819245a6cd2316ebbca86, type: 2}
 --- !u!23 &127302442358388516
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -496,7 +489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4256847283187284, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8
+      value: -0.555
       objectReference: {fileID: 0}
     - target: {fileID: 4256847283187284, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
       propertyPath: m_LocalPosition.z
@@ -537,18 +530,6 @@ PrefabInstance:
     - target: {fileID: 2216921801511220546, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5342512391076565267, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
-      propertyPath: outlineColor.b
-      value: 0.14656258
-      objectReference: {fileID: 0}
-    - target: {fileID: 5342512391076565267, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
-      propertyPath: outlineColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5342512391076565267, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
-      propertyPath: outlineColor.r
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
