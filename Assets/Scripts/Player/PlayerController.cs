@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     [Header ("Debug")]
     public bool drawIteractLine;
 
+    public LayerMask mask;
+
     private IInteractable _interactingWith;
     public IInteractable interactingWith { get { return _interactingWith; } }
 
@@ -97,10 +99,8 @@ public class PlayerController : MonoBehaviour
         if (_isCarrying && collision.collider.GetComponent<IInteractable>() != _interactingWith)
         {
             collisionDirection = collision.GetContact(0).normal;
-            if (collision.collider.GetType() == typeof(TerrainCollider)) {
-                if (!Physics.Raycast(self.position, collisionDirection, 0.1f))
-                    return;
-            }
+            if (!Physics.Raycast(self.position, collisionDirection, 0.1f, mask))
+                return;
             Treasure treasure = _interactingWith as Treasure;
             if (treasure != null)
             {
@@ -118,11 +118,8 @@ public class PlayerController : MonoBehaviour
     {
         if (_isCarrying && collision.collider.GetComponent<IInteractable>() != _interactingWith)
         {
-            if (collision.collider.GetType() == typeof(TerrainCollider))
-            {
-                if (!Physics.Raycast(self.position, collisionDirection, 0.1f))
-                    return;
-            }
+            if (!Physics.Raycast(self.position, collisionDirection, 0.1f, mask))
+                return;
             Treasure treasure = _interactingWith as Treasure;
             if (treasure != null)
                 treasure.isColliding = false;
