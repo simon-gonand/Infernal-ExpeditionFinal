@@ -6,15 +6,17 @@ using Cinemachine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [Header("Player Materials")]
+    [Header("Player Prefabs")]
     [SerializeField]
-    private Material player1Material;
+    private GameObject player2;
     [SerializeField]
-    private Material player2Material;
+    private GameObject player3;
     [SerializeField]
-    private Material player3Material;
+    private GameObject player4;
+
+    [Header("Self Reference")]
     [SerializeField]
-    private Material player4Material;
+    private PlayerInputManager self;
 
     [Header("External References")]
     public CinemachineTargetGroup targetGroup;
@@ -39,18 +41,17 @@ public class PlayerManager : MonoBehaviour
         switch (playerInput.playerIndex)
         {
             case 0:
-                playerInput.gameObject.GetComponentInChildren<MeshRenderer>().material = player1Material;
+                self.playerPrefab = player2;
                 break;
             case 1:
-                playerInput.gameObject.GetComponentInChildren<MeshRenderer>().material = player2Material;
+                self.playerPrefab = player3;
                 playerSpawnOffset = 0.5f;
                 break;
             case 2:
-                playerInput.gameObject.GetComponentInChildren<MeshRenderer>().material = player3Material;
+                self.playerPrefab = player4;
                 playerSpawnOffset = -0.5f;
                 break;
             case 3:
-                playerInput.gameObject.GetComponentInChildren<MeshRenderer>().material = player4Material;
                 playerSpawnOffset = 1.0f;
                 break;
             default:

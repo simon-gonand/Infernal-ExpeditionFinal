@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7569049507790534513}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 46.881123, y: -30.821388, z: 70.20202}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -77,7 +77,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 3207150420227362543, guid: 1223a0d0b99a94b4d82e75b68905a3ad, type: 3}
+  m_PlayerPrefab: {fileID: 4223509153915057740, guid: ede485ac38f939d4a99b04b44bbe8897, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -99,7 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8844efae26fce4ca1fc9977520b258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Material: {fileID: 2100000, guid: 2e1d371bf3d3b5c46bcda480ca6ad315, type: 2}
-  player2Material: {fileID: 2100000, guid: 063d73d1e34bf774eae2f421aa9fe9ab, type: 2}
-  player3Material: {fileID: 2100000, guid: 840361a3d1703704b9a4f0f9be3b965b, type: 2}
-  player4Material: {fileID: 2100000, guid: 8e76c06808b819245a6cd2316ebbca86, type: 2}
+  player2: {fileID: 4223509153915057740, guid: 7b7d6d1d394e6844a8260c5f7225452a, type: 3}
+  player3: {fileID: 4223509153915057740, guid: 546a3fb6f79fc3b49983829cbaf03949, type: 3}
+  player4: {fileID: 4223509153915057740, guid: 76b3b5cb668467b4bbfa73cecb28c2c1, type: 3}
+  self: {fileID: 7569049507790534519}
+  targetGroup: {fileID: 0}
+  camManager: {fileID: 0}
+  deadZoneOffsetX: 50
+  deadZoneOffsetY: 50
