@@ -52,6 +52,7 @@ public class Treasure : MonoBehaviour, ICarriable
     #region CollisionCallbacks
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && _playerInteractingWith.Count > 0) return;
         if (collision.collider.CompareTag("Player"))
         {
             foreach (PlayerController player in _playerInteractingWith)
