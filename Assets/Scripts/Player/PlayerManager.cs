@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     private PlayerInputManager self;
 
     [Header("External References")]
+    public CinemachineVirtualCamera camera;
     public CinemachineTargetGroup targetGroup;
     public CameraManager camManager;
 
@@ -29,9 +30,13 @@ public class PlayerManager : MonoBehaviour
     private List<PlayerController> _players = new List<PlayerController>();
     public List<PlayerController> players { get { return _players; } }
 
+    private float cameraOriginalOffset;
+    Coroutine coroutine;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        cameraOriginalOffset = camManager.offsetPositionMovement;
     }
 
     // Update material of player when one is joining to avoid them to have the same color
@@ -65,9 +70,29 @@ public class PlayerManager : MonoBehaviour
         playerSpawnPosition.y += playerTransform.lossyScale.y;
         playerSpawnPosition.z += playerInput.playerIndex * playerSpawnOffset;
         playerTransform.position = playerSpawnPosition;
-        targetGroup.AddMember(playerTransform, 1, 20);
+        targetGroup.AddMember(playerTransform, 3, 20);
         playerTransform.SetParent(BoatManager.instance.self);
         _players.Add(playerInput.gameObject.GetComponent<PlayerController>());
+    }
+
+    private void SetZoomSpeed(PlayerController player)
+    {
+        Vector3 distance = player.self.position - BoatManager.instance.self.position;
+        float time = camera.GetMaxDampTime() / distance.magnitude;
+        camManager.offsetPositionMovement = cameraOriginalOffset;
+        camManager.CalculateOffsetRotationMovement();
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+        coroutine = StartCoroutine(IncreaseZoomSpeed(time));
+    }
+
+    IEnumerator IncreaseZoomSpeed(float time)
+    {
+        camManager.offsetPositionMovement *= 5;
+        camManager.CalculateOffsetRotationMovement();
+        yield return new WaitForSeconds(time);
+        camManager.offsetPositionMovement = cameraOriginalOffset;
+        camManager.CalculateOffsetRotationMovement();
     }
 
     private void Update()
@@ -83,7 +108,17 @@ public class PlayerManager : MonoBehaviour
                 {
                     if (posScreen.y < -deadZoneOffsetY || posScreen.x < -deadZoneOffsetX ||
                         posScreen.x > Camera.main.pixelWidth + deadZoneOffsetX || posScreen.y > Camera.main.pixelHeight + deadZoneOffsetY)
+                    {
+                        SetZoomSpeed(player);
                         player.Die();
+                    }
+                }
+                camManager.offsetPositionMovement = cameraOriginalOffset;
+                camManager.CalculateOffsetRotationMovement();
+                if (coroutine != null)
+                {
+                    StopCoroutine(coroutine);
+                    coroutine = null;
                 }
                 return;
             }

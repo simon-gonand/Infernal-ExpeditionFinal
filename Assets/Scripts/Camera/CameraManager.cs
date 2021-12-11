@@ -11,8 +11,7 @@ public class CameraManager : CinemachineExtension
     private float minYPosition = 25.0f;
     [SerializeField]
     private float maxYPosition = 35.0f;
-    [SerializeField]
-    private float offsetPositionMovement;
+    public float offsetPositionMovement;
 
     [Header("Rotation Movement")]
     [SerializeField]
@@ -36,6 +35,11 @@ public class CameraManager : CinemachineExtension
         lockYPosition = minYPosition;
         lockXRotation = minXRotation;
 
+        CalculateOffsetRotationMovement();
+    }
+
+    public void CalculateOffsetRotationMovement()
+    {
         offsetRotationMovement = offsetPositionMovement * (maxXRotation - minXRotation) / (maxYPosition - minYPosition);
     }
 

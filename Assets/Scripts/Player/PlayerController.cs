@@ -473,7 +473,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!_isStun && !_isCarried && !_hasBeenLaunched && !isDead && (_carrying != null ? !_carrying.isLoadingLaunch : true))
         {
-
             if (isDashing)
             {
                 Dash();
