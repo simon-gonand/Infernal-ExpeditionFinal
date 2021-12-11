@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="3819241499">
+		<SoundBank Id="393239870" Language="SFX" Hash="1481539289">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -30,6 +30,74 @@
 					<ActionTrigger>
 						<ActionTriggerEntry Id="1087296951" Name="Collect_Treasure" ObjectPath="\Triggers\Default Work Unit\Collect_Treasure"/>
 					</ActionTrigger>
+				</Event>
+				<Event Id="44932442" Name="B_Damages" ObjectPath="\Events\Default Work Unit\Boat\B_Damages" DurationType="OneShot" DurationMin="1.132871" DurationMax="1.427327">
+					<IncludedMemoryFiles>
+						<File Id="84042361" Language="SFX">
+							<ShortName>Boat_Damages_Wood_4.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_4_EBA26799.wem</Path>
+						</File>
+						<File Id="316093788" Language="SFX">
+							<ShortName>Boat_Damages_Wood_2.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_2_A8F29840.wem</Path>
+						</File>
+						<File Id="421740773" Language="SFX">
+							<ShortName>Boat_Damages_Wood_6.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_6_1C89FA8F.wem</Path>
+						</File>
+						<File Id="457457790" Language="SFX">
+							<ShortName>Boat_Damages_Coins_1.wav</ShortName>
+							<Path>SFX\Boat_Damages_Coins_1_10C4C929.wem</Path>
+						</File>
+						<File Id="494825628" Language="SFX">
+							<ShortName>Boat_Damages_Wood_5.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_5_1998773D.wem</Path>
+						</File>
+						<File Id="713391774" Language="SFX">
+							<ShortName>Boat_Damages_Impact.wav</ShortName>
+							<Path>SFX\Boat_Damages_Impact_10C4C929.wem</Path>
+						</File>
+						<File Id="717321550" Language="SFX">
+							<ShortName>Boat_Damages_Wood_3.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_3_6E6BB5F9.wem</Path>
+						</File>
+						<File Id="779573900" Language="SFX">
+							<ShortName>Boat_Damages_Coins_2.wav</ShortName>
+							<Path>SFX\Boat_Damages_Coins_2_10C4C929.wem</Path>
+						</File>
+						<File Id="827779130" Language="SFX">
+							<ShortName>Boat_Damages_Wood_1.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_1_C26D5000.wem</Path>
+						</File>
+						<File Id="1044100472" Language="SFX">
+							<ShortName>Boat_Damages_Wood_7.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_7_00160D97.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2703574490" Name="B_Moving" ObjectPath="\Events\Default Work Unit\Boat\B_Moving" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="67829278" Language="SFX">
+							<ShortName>BoatMovement_Water.wav</ShortName>
+							<Path>SFX\BoatMovement_Water_D79FB2B7.wem</Path>
+						</File>
+						<File Id="232977521" Language="SFX">
+							<ShortName>BoatMovement_Sail_4.wav</ShortName>
+							<Path>SFX\BoatMovement_Sail_4_10C4C929.wem</Path>
+						</File>
+						<File Id="322481421" Language="SFX">
+							<ShortName>BoatMovement_Sail_3.wav</ShortName>
+							<Path>SFX\BoatMovement_Sail_3_10C4C929.wem</Path>
+						</File>
+						<File Id="560983859" Language="SFX">
+							<ShortName>BoatMovement_Sail_1.wav</ShortName>
+							<Path>SFX\BoatMovement_Sail_1_10C4C929.wem</Path>
+						</File>
+						<File Id="921271242" Language="SFX">
+							<ShortName>BoatMovement_Sail_2.wav</ShortName>
+							<Path>SFX\BoatMovement_Sail_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="903419691" Name="E_Clsq_Attack" ObjectPath="\Events\Default Work Unit\Enemy\E_Clsq_Attack" DurationType="OneShot" DurationMin="0.471936" DurationMax="0.517484">
 					<IncludedMemoryFiles>
@@ -393,6 +461,18 @@
 						<File Id="618713017" Language="SFX">
 							<ShortName>Stunt_Bell.wav</ShortName>
 							<Path>SFX\Stunt_Bell_B013448C.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1504870946" Name="P_Throw" ObjectPath="\Events\Default Work Unit\Players\P_Throw" DurationType="OneShot" DurationMin="0.247933" DurationMax="1.130663">
+					<IncludedMemoryFiles>
+						<File Id="462619250" Language="SFX">
+							<ShortName>Player_Throw_2.wav</ShortName>
+							<Path>SFX\Player_Throw_2_10C4C929.wem</Path>
+						</File>
+						<File Id="685935742" Language="SFX">
+							<ShortName>Player_Throw.wav</ShortName>
+							<Path>SFX\Player_Throw_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
