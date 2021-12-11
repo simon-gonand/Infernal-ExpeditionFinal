@@ -92,6 +92,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.collider.CompareTag("Treasures") && !_isCarrying)
+        {
+            Debug.Log("saucisse");
+            selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+        }
         if (isDashing)
         {
             collisionDirection = collision.GetContact(0).normal;
@@ -119,6 +124,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
+        if (collision.collider.CompareTag("Treasures"))
+            selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
         if (_isCarrying && collision.collider.GetComponent<IInteractable>() != _interactingWith)
         {
             if (!Physics.Raycast(self.position, -collisionDirection, 0.1f, mask))
@@ -225,7 +232,10 @@ public class PlayerController : MonoBehaviour
                             if (!_interactingWith.InteractWith(this, hit.collider.gameObject))
                                 _interactingWith = null;
                             else
+                            {
                                 selfRigidBody.mass = 1000;
+                                selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+                            }
                             break;
                         }
                     }
@@ -235,6 +245,7 @@ public class PlayerController : MonoBehaviour
             else if ((_isInteracting || _isCarrying) && context.performed)
             {
                 _interactingWith.UninteractWith(this);
+                selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
                 selfRigidBody.mass = 1;
             }
         }
