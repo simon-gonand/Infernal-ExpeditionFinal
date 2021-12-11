@@ -22,7 +22,10 @@ public class DeepWater : MonoBehaviour
             {
                 Treasure transportedTreasure = player.carrying as Treasure;
                 if (transportedTreasure != null)
+                {
                     transportedTreasure.UninteractWith(player);
+                    player.selfRigidBody.mass = 1;
+                }
                 else
                     player.interactingWith.UninteractWith(player);
             }
