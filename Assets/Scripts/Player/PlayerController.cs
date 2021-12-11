@@ -487,6 +487,7 @@ public class PlayerController : MonoBehaviour
     {
         InfoAnim();
         TreasureDetectionForOutline();
+        CheckFallingWhenCarrying();
     }
 
     private void TreasureDetectionForOutline()
@@ -564,6 +565,16 @@ public class PlayerController : MonoBehaviour
             {
                 anim.SetBool("isMoving", false);
             }
+        }
+    }
+
+    private void CheckFallingWhenCarrying()
+    {
+        if (_carrying != null)
+        {
+            Treasure treasure = _carrying as Treasure;
+            if (treasure != null && treasure.self.position.y - self.position.y > self.lossyScale.y)
+                treasure.UninteractWith(this);
         }
     }
 }
