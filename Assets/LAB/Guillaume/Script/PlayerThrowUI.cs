@@ -10,6 +10,25 @@ public class PlayerThrowUI : MonoBehaviour
     public Image coneBackGround;
     public Image coneFiller;
 
+    public PlayerController selfPlayerController;
 
+
+
+    private void Start()
+    {
+        activeCircle.enabled = false;
+    }
+
+    private void Update()
+    {
+        if (selfPlayerController.isLaunching == true)
+        {
+            activeCircle.enabled = true;
+        }
+        else
+        {
+            activeCircle.enabled = false;
+        }
+    }
 
 }
