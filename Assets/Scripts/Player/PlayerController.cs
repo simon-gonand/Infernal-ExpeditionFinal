@@ -272,7 +272,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Enemy has been attacked");
                 // Play sword impact sound
                 EnemiesAI enemy = hitted.GetComponent<EnemiesAI>();
-                enemy.Die(this);
+                enemy.Die();
                 return;
             }
             if (hitted.CompareTag("Player"))

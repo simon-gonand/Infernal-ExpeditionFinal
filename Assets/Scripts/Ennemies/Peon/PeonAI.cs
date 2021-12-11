@@ -21,24 +21,22 @@ public class PeonAI : MonoBehaviour, EnemiesAI
 
     [System.NonSerialized]
     public List<PlayerController> playersSeen = new List<PlayerController>();
-    private PlayerController currentFollowedPlayer = null;
+    private PlayerController _currentFollowedPlayer = null;
+    public PlayerController currentFollowedPlayer { get { return _currentFollowedPlayer; } }
     private PlayerController nextFollowedPlayer;
     private float distanceWithCurrentPlayer = 0.0f;
     private bool isFirstAttack = true;
     private Coroutine attackCoroutine = null;
 
-
-
     public void ResetCurrentTarget()
     {
-        currentFollowedPlayer = null;
+        _currentFollowedPlayer = null;
     }
 
-    public void Die(PlayerController player)
+    public void Die()
     {
         // Play die sound
-        if (player.isAttackedBy.Contains(this))
-            player.isAttackedBy.Remove(this);
+        _currentFollowedPlayer.isAttackedBy.Remove(this);
 
         if (!lockDeathAnim)
         {
@@ -91,12 +89,12 @@ public class PeonAI : MonoBehaviour, EnemiesAI
                     {
                         foreach (PeonAI ai in players[i].isAttackedBy)
                         {
-                            ai.currentFollowedPlayer = null;
+                            ai._currentFollowedPlayer = null;
                         }
                         players[i].isAttackedBy.Clear();
                         continue;
                     }
-                    if (players[i] != currentFollowedPlayer)
+                    if (players[i] != _currentFollowedPlayer)
                     {
                         players.Remove(players[i]);
                         --i;
@@ -179,8 +177,8 @@ public class PeonAI : MonoBehaviour, EnemiesAI
             if (!nextFollowedPlayer.isAttackedBy.Contains(this))
             {
                 nextFollowedPlayer.isAttackedBy.Add(this);
-                if (currentFollowedPlayer != null)
-                    currentFollowedPlayer.isAttackedBy.Remove(this);
+                if (_currentFollowedPlayer != null)
+                    _currentFollowedPlayer.isAttackedBy.Remove(this);
             }
         }
         // If he didn't find a player to attack or player is in range and no need to continue
@@ -193,16 +191,16 @@ public class PeonAI : MonoBehaviour, EnemiesAI
             selfNavMesh.ResetPath();
 
             // He is not attacking the current player anymore
-            if (currentFollowedPlayer != null && currentFollowedPlayer.isAttackedBy.Contains(this) && nextFollowedPlayer == null)
+            if (_currentFollowedPlayer != null && _currentFollowedPlayer.isAttackedBy.Contains(this) && nextFollowedPlayer == null)
             {
-                currentFollowedPlayer.isAttackedBy.Remove(this);
+                _currentFollowedPlayer.isAttackedBy.Remove(this);
             }
         }
 
-        if (currentFollowedPlayer != nextFollowedPlayer)
+        if (_currentFollowedPlayer != nextFollowedPlayer)
         {
             // Play classic aggro sound
-            currentFollowedPlayer = nextFollowedPlayer;
+            _currentFollowedPlayer = nextFollowedPlayer;
         }
     }
 

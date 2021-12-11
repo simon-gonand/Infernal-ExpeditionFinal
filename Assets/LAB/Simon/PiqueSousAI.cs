@@ -103,7 +103,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
         GoBackHome();
     }
 
-    public void Die(PlayerController player)
+    public void Die()
     {
         // Die sound
         if (targetTreasure != null && targetTreasure.isCarriedByPiqueSous)

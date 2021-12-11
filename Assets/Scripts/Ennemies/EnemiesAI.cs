@@ -5,5 +5,5 @@ using UnityEngine;
 public interface EnemiesAI
 {
     public void ResetCurrentTarget();
-    public void Die(PlayerController player);
+    public void Die();
 }

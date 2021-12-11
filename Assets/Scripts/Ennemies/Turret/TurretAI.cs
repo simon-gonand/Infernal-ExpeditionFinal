@@ -23,7 +23,7 @@ public class TurretAI : MonoBehaviour, EnemiesAI
 
     private bool canFire = false;
 
-    public void Die(PlayerController player)
+    public void Die()
     {
         // Play Die sound
 
