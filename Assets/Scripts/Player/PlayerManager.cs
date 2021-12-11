@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour
     [Header("PlayerStats")]
     public float deadZoneOffsetX = 10.0f;
     public float deadZoneOffsetY = 10.0f;
+    public float weight;
 
     private List<PlayerController> _players = new List<PlayerController>();
     public List<PlayerController> players { get { return _players; } }
@@ -70,7 +71,7 @@ public class PlayerManager : MonoBehaviour
         playerSpawnPosition.y += playerTransform.lossyScale.y;
         playerSpawnPosition.z += playerInput.playerIndex * playerSpawnOffset;
         playerTransform.position = playerSpawnPosition;
-        targetGroup.AddMember(playerTransform, 3, 20);
+        targetGroup.AddMember(playerTransform, weight, 20);
         playerTransform.SetParent(BoatManager.instance.self);
         _players.Add(playerInput.gameObject.GetComponent<PlayerController>());
     }
