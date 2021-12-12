@@ -410,9 +410,7 @@ public class Treasure : MonoBehaviour, ICarriable
     {
         _isCarriedByPiqueSous = true;
 
-        selfRigidbody.useGravity = false;
-        selfRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-        Physics.IgnoreCollision(selfCollider, piqueSous.spawner.selfCollider, true);
+        selfRigidbody.isKinematic = true;
 
         self.forward = piqueSous.self.forward;
         self.position = piqueSous.treasureAttach.position + piqueSous.self.forward * (piqueSous.self.localScale.z + piqueSous.preset.attachOffset);
@@ -424,9 +422,7 @@ public class Treasure : MonoBehaviour, ICarriable
     public void UnInteractWithPiqueSous(PiqueSousAI piqueSous)
     {
         _isCarriedByPiqueSous = false;
-        selfRigidbody.useGravity = true;
-        selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
-        Physics.IgnoreCollision(selfCollider, piqueSous.spawner.selfCollider, false);
+        selfRigidbody.isKinematic = false;
 
         self.SetParent(null);
     }
