@@ -51,7 +51,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.27401352
+  m_Radius: 0.5
   m_Height: 1.8209152
   m_Direction: 1
   m_Center: {x: 0, y: 0.34785104, z: 0}
@@ -219,14 +219,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8844efae26fce4ca1fc9977520b258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Material: {fileID: 2100000, guid: 2e1d371bf3d3b5c46bcda480ca6ad315, type: 2}
-  player2Material: {fileID: 2100000, guid: 063d73d1e34bf774eae2f421aa9fe9ab, type: 2}
-  player3Material: {fileID: 2100000, guid: 840361a3d1703704b9a4f0f9be3b965b, type: 2}
-  player4Material: {fileID: 2100000, guid: 8e76c06808b819245a6cd2316ebbca86, type: 2}
+  player2: {fileID: 0}
+  player3: {fileID: 0}
+  player4: {fileID: 0}
+  self: {fileID: 0}
+  camera: {fileID: 0}
   targetGroup: {fileID: 0}
   camManager: {fileID: 0}
   deadZoneOffsetX: 10
   deadZoneOffsetY: 10
+  weight: 0
 --- !u!23 &127302442358388516
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -352,7 +354,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.77
   m_Height: 1.9125514
   m_Direction: 1
   m_Center: {x: 0, y: -1, z: 0}
