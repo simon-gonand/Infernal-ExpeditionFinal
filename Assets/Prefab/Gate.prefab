@@ -425,6 +425,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1604168246934682385}
+  - component: {fileID: 6771668435168153686}
+  - component: {fileID: 2731458417213340258}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Untagged
@@ -452,6 +454,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6771668435168153686
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920073633617504017}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.534634, y: 2.4545088, z: 1}
+  m_Center: {x: 2.5736542, y: 1.0257831, z: 0}
+--- !u!114 &2731458417213340258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920073633617504017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47a33b7f83295a43be9a8725f61306e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selfCollider: {fileID: 6771668435168153686}
 --- !u!1 &1923580595345131087
 GameObject:
   m_ObjectHideFlags: 0

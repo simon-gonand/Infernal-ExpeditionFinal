@@ -40,6 +40,7 @@ public class TurretAI : MonoBehaviour, EnemiesAI
     {
         GameObject ball = Instantiate(cannonBall);
         ball.transform.position = cannonBallSpawnPoint.position;
+
         ball.GetComponent<Rigidbody>().AddForce(self.forward * firePower, ForceMode.Impulse);
 
         // Play fire sound

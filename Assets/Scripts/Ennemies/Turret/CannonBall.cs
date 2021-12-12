@@ -7,6 +7,7 @@ public class CannonBall : MonoBehaviour
     [SerializeField]
     private Transform self;
 
+    public int damage;
     private void OnCollisionEnter(Collision collision)
     {
         // Play impact sound
@@ -15,7 +16,8 @@ public class CannonBall : MonoBehaviour
         if (collision.collider.CompareTag("Boat"))
         {
             Debug.Log("Boat has been hitted");
-            // Update score etc...
+            // Feedbacks
+            ScoreManager.instance.RemoveScore(damage);
         }
 
         Destroy(this.gameObject);

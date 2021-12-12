@@ -53,6 +53,13 @@ public class ScoreManager : MonoBehaviour
         RefreshUiStarState();
     }
 
+    public void RemoveScore(int numberToRemove)
+    {
+        actualScore -= numberToRemove;
+
+        RefreshUiStarState();
+    }
+
     public void RefreshUiStarState()
     {
         CheckStar();

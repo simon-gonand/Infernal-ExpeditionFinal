@@ -94,7 +94,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Treasures") && !_isCarrying)
         {
-            Debug.Log("saucisse");
             selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         }
         if (isDashing)
@@ -229,8 +228,12 @@ public class PlayerController : MonoBehaviour
                             _playerMovementInput = Vector2.zero;
                             // Set with which interactable the player is interacting with
                             _interactingWith = hit.collider.gameObject.GetComponentInParent<IInteractable>();
+                            _isInteracting = true;
                             if (!_interactingWith.InteractWith(this, hit.collider.gameObject))
+                            {
                                 _interactingWith = null;
+                                _isInteracting = false;
+                            }
                             else
                             {
                                 selfRigidBody.mass = 1000;
@@ -245,6 +248,7 @@ public class PlayerController : MonoBehaviour
             else if ((_isInteracting || _isCarrying) && context.performed)
             {
                 _interactingWith.UninteractWith(this);
+                _isInteracting = false;
                 selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
                 selfRigidBody.mass = 1;
             }
@@ -471,7 +475,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!_isStun && !_isCarried && !_hasBeenLaunched && !isDead && (_carrying != null ? !_carrying.isLoadingLaunch : true))
+        if (!_isStun && !_isCarried && !_hasBeenLaunched && !isDead && 
+            ((_isInteracting && _carrying != null) ? !_carrying.isLoadingLaunch : !_isInteracting))
         {
             if (isDashing)
             {
@@ -546,7 +551,7 @@ public class PlayerController : MonoBehaviour
     void InfoAnim()
     {
         
-        if (!_isStun && !_isCarried && !isDead && (_carrying != null ? !_carrying.isLoadingLaunch : true))
+        if (!_isStun && !_isCarried && !isDead && ((_isInteracting && _carrying != null) ? !_carrying.isLoadingLaunch : !_isInteracting))
         {
             if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
             {

@@ -114,6 +114,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
             selfScript.isCarried = false;
 
             player.isCarrying = false;
+            player.isInteracting = false;
             player.carrying = null;
             selfScript.hasBeenLaunched = true;
 

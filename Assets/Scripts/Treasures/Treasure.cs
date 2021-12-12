@@ -298,6 +298,19 @@ public class Treasure : MonoBehaviour, ICarriable
         }
     }
 
+    private bool CheckLaunch()
+    {
+        foreach(PlayerController player in _playerInteractingWith)
+        {
+            if (player.playerMovementInput == Vector2.zero)
+            {
+                StopLaunching();
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void Launch(PlayerController player)
     {
         StopCoroutine(LoadingLaunchForce());
@@ -306,15 +319,11 @@ public class Treasure : MonoBehaviour, ICarriable
             _isLoadingLaunch = false;
 
             Vector3 launchDirection = Vector3.zero;
+            if (!CheckLaunch()) return;
             while(_playerInteractingWith.Count > 0)
             {
                 PlayerController p = _playerInteractingWith[0];
                 Vector3 playerMovement = new Vector3 (p.playerMovementInput.x, 0.0f, p.playerMovementInput.y);
-                if (playerMovement == Vector3.zero)
-                {
-                    StopLaunching();
-                    return;
-                }
                 launchDirection += playerMovement;
                 // Update lists values
                 _playerInteractingWith.Remove(p);
@@ -322,6 +331,7 @@ public class Treasure : MonoBehaviour, ICarriable
                 associateColliders.Remove(p);
 
                 // Update player values
+                p.isInteracting = false;
                 p.isCarrying = false;
                 p.carrying = null;
                 p.isLaunching = false;
@@ -339,7 +349,8 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.isKinematic = false;
             selfRigidbody.useGravity = true;
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
-            selfRigidbody.AddForce((launchDirection.normalized + Vector3.up) * launchForce, ForceMode.Impulse);
+            float power = launchForce / (category.maxPlayerCarrying + 1 - _playerInteractingWith.Count);
+            selfRigidbody.AddForce((launchDirection.normalized + Vector3.up) * power, ForceMode.Impulse);
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             launchForce = 0.0f;
 
@@ -371,7 +382,6 @@ public class Treasure : MonoBehaviour, ICarriable
         player.sword.SetActive(true);
 
         player.carrying = null;
-
 
         // Player does not interact with the treasure anymore
         _playerInteractingWith.Remove(player);
