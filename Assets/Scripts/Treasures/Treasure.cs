@@ -34,7 +34,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
     public bool isColliding { set { _isColliding = value; } }
 
-    private float launchForce = 0.0f;
+    [HideInInspector]public float launchForce = 0.0f;
     private Vector3 lastPosition;
 
     private Vector3 startPlayerPosition;
