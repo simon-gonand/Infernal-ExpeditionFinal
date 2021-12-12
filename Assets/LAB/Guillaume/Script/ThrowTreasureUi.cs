@@ -24,6 +24,10 @@ public class ThrowTreasureUi : MonoBehaviour
         if (selfTreasure.isLoadingPower)
         {
             throwUiGlobal.SetActive(true);
+
+            Quaternion lookRotation = Quaternion.LookRotation(selfTreasure.playerThrowDir);
+
+            objToRotate.rotation = Quaternion.Slerp(objToRotate.rotation, lookRotation, Time.deltaTime * 5);
         }
         else
         {

@@ -22,7 +22,9 @@ public class Treasure : MonoBehaviour, ICarriable
     private bool isGrounded = false;
     private bool _isLoadingLaunch = false;
 
-    public bool isLoadingPower;
+    [HideInInspector]public bool isLoadingPower;
+    [HideInInspector]public Vector3 playerThrowDir;
+    private Vector3 globalDir;
 
     public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
     private bool _isColliding = false;
@@ -293,7 +295,7 @@ public class Treasure : MonoBehaviour, ICarriable
             launchForce += offsetLaunch;
             if (launchForce > category.maxLaunchForce)
                 launchForce = category.maxLaunchForce;
-            Debug.Log(launchForce);
+            //Debug.Log(launchForce);
             yield return new WaitForSeconds(offsetTime);
         }
     }
@@ -491,7 +493,15 @@ public class Treasure : MonoBehaviour, ICarriable
                 else
                 {
                     isLoadingPower = true;
+
+                    Vector3 dir = Vector3.zero;
+                    dir = new Vector3(player.playerMovementInput.x, 0.0f, player.playerMovementInput.y);
+                    globalDir += dir;
                 }
+
+                playerThrowDir = globalDir.normalized;
+                globalDir = Vector3.zero;
+
             }
         }
     }
