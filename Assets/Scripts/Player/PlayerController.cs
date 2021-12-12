@@ -248,7 +248,6 @@ public class PlayerController : MonoBehaviour
             else if ((_isInteracting || _isCarrying) && context.performed)
             {
                 _interactingWith.UninteractWith(this);
-                _isInteracting = false;
                 selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
                 selfRigidBody.mass = 1;
             }

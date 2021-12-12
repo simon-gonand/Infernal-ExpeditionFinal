@@ -377,6 +377,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
         // Update player values
         player.isCarrying = false;
+        player.isInteracting = false;
 
         player.anim.SetBool("isCarrying", false);
         player.sword.SetActive(true);
