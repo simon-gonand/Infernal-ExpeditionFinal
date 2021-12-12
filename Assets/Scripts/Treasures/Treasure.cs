@@ -21,6 +21,9 @@ public class Treasure : MonoBehaviour, ICarriable
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
     private bool isGrounded = false;
     private bool _isLoadingLaunch = false;
+
+    public bool isLoadingPower;
+
     public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
     private bool _isColliding = false;
 
@@ -98,6 +101,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private void Start()
     {
+        isLoadingPower = false;
         lastPosition = self.position;
         outlineScript.enabled = false;
     }
@@ -300,6 +304,7 @@ public class Treasure : MonoBehaviour, ICarriable
         if (isLoadingLaunch)
         {
             _isLoadingLaunch = false;
+            isLoadingPower = false;
 
             Vector3 launchDirection = Vector3.zero;
             while(_playerInteractingWith.Count > 0)
@@ -348,6 +353,7 @@ public class Treasure : MonoBehaviour, ICarriable
     private void StopLaunching()
     {
         _isLoadingLaunch = false;
+        isLoadingPower = false;
         foreach(PlayerController player in _playerInteractingWith)
         {
             player.isLaunching = false;
@@ -471,6 +477,25 @@ public class Treasure : MonoBehaviour, ICarriable
         }
     }
 
+    private void PlayerJoystickDetection()
+    {
+        if (_isLoadingLaunch)
+        {
+            foreach (PlayerController player in _playerInteractingWith)
+            {
+                if (player.playerMovementInput == Vector2.zero)
+                {
+                    isLoadingPower = false;
+                    break;
+                }
+                else
+                {
+                    isLoadingPower = true;
+                }
+            }
+        }
+    }
+
     private void FixedUpdate()
     {
         TreasureMovement();
@@ -528,5 +553,7 @@ public class Treasure : MonoBehaviour, ICarriable
         }
         else
             lastPosition = self.position;
+
+        PlayerJoystickDetection();
     }
 }

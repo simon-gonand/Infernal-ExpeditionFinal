@@ -6,13 +6,7 @@ using UnityEngine.UI;
 public class PlayerThrowUI : MonoBehaviour
 {
     public SpriteRenderer activeCircle;
-
-    public Image coneBackGround;
-    public Image coneFiller;
-
     public PlayerController selfPlayerController;
-
-
 
     private void Start()
     {
