@@ -26,8 +26,9 @@ public class ThrowTreasureUi : MonoBehaviour
             throwUiGlobal.SetActive(true);
 
             Quaternion lookRotation = Quaternion.LookRotation(selfTreasure.playerThrowDir);
-
-            objToRotate.rotation = Quaternion.Slerp(objToRotate.rotation, lookRotation, Time.deltaTime * 5);
+            Vector3 rotation = lookRotation.eulerAngles;
+            objToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            
         }
         else
         {

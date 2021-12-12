@@ -498,11 +498,9 @@ public class Treasure : MonoBehaviour, ICarriable
                     dir = new Vector3(player.playerMovementInput.x, 0.0f, player.playerMovementInput.y);
                     globalDir += dir;
                 }
-
-                playerThrowDir = globalDir.normalized;
-                globalDir = Vector3.zero;
-
             }
+            playerThrowDir = globalDir;
+            globalDir = Vector3.zero;
         }
     }
 
