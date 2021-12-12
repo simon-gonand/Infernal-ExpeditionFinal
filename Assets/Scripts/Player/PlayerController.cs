@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
 
     private GameObject treasureInFront;
 
+    private float playerY;
+
     [System.NonSerialized]
     public List<EnemiesAI> isAttackedBy = new List<EnemiesAI>();
 
@@ -86,6 +88,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isDashing = false;
     private bool isDead = false;
+    private bool isGrounded = false;
     #endregion
 
     #region Collision
@@ -492,6 +495,10 @@ public class PlayerController : MonoBehaviour
         InfoAnim();
         TreasureDetectionForOutline();
         CheckFallingWhenCarrying();
+        CheckIsGrounded();
+        if (isGrounded)
+            playerY = self.position.y;
+        CheckIsUnderMap();
     }
 
     private void TreasureDetectionForOutline()
@@ -580,5 +587,23 @@ public class PlayerController : MonoBehaviour
             if (treasure != null && treasure.self.position.y - self.position.y > self.lossyScale.y)
                 treasure.UninteractWith(this);
         }
+    }
+
+    private void CheckIsGrounded()
+    {
+        Vector3 startPos = self.position;
+        startPos.y -= selfCollider.bounds.size.y / 4;
+        Debug.DrawRay(startPos, Vector3.down * 0.5f);
+        if (Physics.Raycast(startPos, Vector3.down, 0.5f)) isGrounded = true;
+        else isGrounded = false;
+    }
+
+    private void CheckIsUnderMap()
+    {
+        if (self.position.y < -1.0f)
+        {
+           Vector3 upPlayer = new Vector3(self.position.x, playerY, self.position.z);
+           self.position = upPlayer;
+        }            
     }
 }
