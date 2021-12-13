@@ -1,20 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class FollowPath : MonoBehaviour
 {
     public Path path;
     public Transform self;
+    public CinemachineVirtualCamera camera;
 
     private float initialPosY;
+    private Vector3 initialOffset;
 
     private int linkIndex = 0;
 
     private float tParam = 0.0f;
     private bool coroutineAllowed = true;
     int allPointIndex = 0;
-
     private bool pathEnd = false;
 
     private Waypoint currentWaypoint;
@@ -26,6 +28,7 @@ public class FollowPath : MonoBehaviour
         currentWaypoint.ev.Invoke();
 
         initialPosY = self.position.y;
+        initialOffset = camera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
     }
 
     private IEnumerator FollowCurve()
@@ -34,6 +37,7 @@ public class FollowPath : MonoBehaviour
 
         while (tParam < 1)
         {
+            // Object position
             tParam += Time.deltaTime * path.links[linkIndex].speed;
             Vector3 posOnCurve = Mathf.Pow(1 - tParam, 3) * path.allPoints[allPointIndex] +
                 3 * Mathf.Pow(1 - tParam, 2) * tParam * path.allAnchors[allPointIndex * 2] +
@@ -41,13 +45,17 @@ public class FollowPath : MonoBehaviour
                 Mathf.Pow(tParam, 3) * path.allPoints[allPointIndex + 1];
             posOnCurve.y = initialPosY;
             self.position = posOnCurve;
+
+            // Camera position
+            float xOffset = path.links[linkIndex].XCameraOffset.Evaluate(tParam);
+            float zOffset = path.links[linkIndex].YCameraOffset.Evaluate(tParam);
+            camera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = initialOffset +  new Vector3(xOffset, 0.0f, zOffset);
+
             yield return new WaitForEndOfFrame();
         }
 
         tParam = 0.0f;
         ++allPointIndex;
-        Debug.Log(linkIndex);
-        Debug.Log(path.links.Count);
         if (allPointIndex == path.allPoints.Count - 1)
         {
             if (path.loop)
