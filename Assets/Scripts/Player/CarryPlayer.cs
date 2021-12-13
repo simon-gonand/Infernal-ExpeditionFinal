@@ -67,6 +67,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
     public void UninteractWith(PlayerController player)
     {
         player.isCarrying = false;
+        player.isInteracting = false;
         player.carrying = null;
         selfScript.isCarried = false;
         selfScript.selfRigidBody.mass = 1;
