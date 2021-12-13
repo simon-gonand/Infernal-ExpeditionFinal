@@ -7,68 +7,74 @@ public class FollowPath : MonoBehaviour
     public Path path;
     public Transform self;
 
-    private float moveAmount = 0.0f;
+    private float initialPosY;
+
     private int linkIndex = 0;
 
-    private Vector3 initialOffset;
-    private Vector3 initialPos;
+    private float tParam = 0.0f;
+    private bool coroutineAllowed = true;
+    int allPointIndex = 0;
+
+    private bool pathEnd = false;
 
     private Waypoint currentWaypoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (path.allPoints.Count > 0)
-        {
-            self.position = path.allPoints[0];
-            currentWaypoint = path.waypoints[0];
-        }
+        currentWaypoint = path.waypoints[0];
+        currentWaypoint.ev.Invoke();
+
+        initialPosY = self.position.y;
     }
 
-    private Vector3 CalculatePositionOnBeziers(Vector3 a, Vector3 b, Vector3 startAnchor, Vector3 endAnchor, float t)
+    private IEnumerator FollowCurve()
     {
-        Vector3 A = Vector3.Lerp(a, startAnchor, t);
-        Vector3 B = Vector3.Lerp(startAnchor, endAnchor, t);
-        Vector3 C = Vector3.Lerp(endAnchor, b, t);
+        coroutineAllowed = false;
 
-        Vector3 AB = Vector3.Lerp(A, B, t);
-        Vector3 BC = Vector3.Lerp(B, C, t);
+        while (tParam < 1)
+        {
+            tParam += Time.deltaTime * path.links[linkIndex].speed;
+            Vector3 posOnCurve = Mathf.Pow(1 - tParam, 3) * path.allPoints[allPointIndex] +
+                3 * Mathf.Pow(1 - tParam, 2) * tParam * path.allAnchors[allPointIndex * 2] +
+                3 * (1 - tParam) * Mathf.Pow(tParam, 2) * path.allAnchors[allPointIndex * 2 + 1] +
+                Mathf.Pow(tParam, 3) * path.allPoints[allPointIndex + 1];
+            posOnCurve.y = initialPosY;
+            self.position = posOnCurve;
+            yield return new WaitForEndOfFrame();
+        }
 
-        transform.forward = BC - AB;
+        tParam = 0.0f;
+        ++allPointIndex;
+        Debug.Log(linkIndex);
+        Debug.Log(path.links.Count);
+        if (allPointIndex == path.allPoints.Count - 1)
+        {
+            if (path.loop)
+            {
+                allPointIndex = 0;
+                linkIndex = 0;
+            }
+            else
+                pathEnd = true;
+        }
+        else if (linkIndex < path.links.Count - 1 && path.allPoints[allPointIndex] == path.links[linkIndex + 1].start.self.position)
+        {
+            ++linkIndex;
+            currentWaypoint = path.waypoints[linkIndex];
+            currentWaypoint.ev.Invoke();
+        }
 
-        return Vector3.Lerp(AB, BC, t);
+        coroutineAllowed = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (linkIndex >= path.links.Count) return;
-        moveAmount = (moveAmount + (Time.deltaTime * path.links[linkIndex].speed * 0.1f)) % 1.0f;
-        //if (self.position - path.allPoints[0] == Vector3.zero) moveAmount += 0.1f;
-        
-        float fullMoveAmount = moveAmount * path.allPoints.Count - 1;
-        int indexPoint = Mathf.FloorToInt(fullMoveAmount);
-        if (indexPoint < 0) indexPoint = 0;
-        float moveAmountPoint = fullMoveAmount - indexPoint;
-        if (path.allPoints.Count < 2) return;
-        Vector3 nextPoint;
-        if (indexPoint == 0 && indexPoint < path.allPoints.Count - 1)
-        {
-            nextPoint = path.allPoints[indexPoint + 1];
-        }
-        else
-        {
-            nextPoint = path.allPoints[indexPoint + 1];
-        }
+        if (pathEnd) return;
+        if (coroutineAllowed)
+            StartCoroutine(FollowCurve());
 
-        self.position = CalculatePositionOnBeziers(path.allPoints[indexPoint], nextPoint, path.allAnchors[indexPoint * 2], path.allAnchors[indexPoint * 2 + 1], moveAmountPoint);
-        if (moveAmount > 0.98f * (((float)linkIndex + 1) / ((float)path.links.Count)))
-        { 
-            currentWaypoint = path.waypoints[linkIndex];
-            ++linkIndex;
-            currentWaypoint.ev.Invoke();
-        }
-        
         // Play boat movement sound
     }
 }
