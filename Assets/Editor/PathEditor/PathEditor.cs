@@ -426,20 +426,34 @@ public class PathEditor : Editor
     private void UpdateAnchors(Vector3 prevPos, Vector3 newPos, int linkIndex, int anchorIndex)
     {
         Vector3 offset = newPos - prevPos;
-        if (anchorIndex * 2 > pathScript.links[linkIndex].anchors.Count - 2 && linkIndex < pathScript.links.Count - 1)
+        if (anchorIndex * 2 > pathScript.links[linkIndex].anchors.Count - 2)
         {
-            ++linkIndex;
-            pathScript.links[linkIndex].anchors[0] += offset;
-            --linkIndex;
+            if (linkIndex < pathScript.links.Count - 1)
+            {
+                ++linkIndex;
+                pathScript.links[linkIndex].anchors[0] += offset;
+                --linkIndex;
+            }
+            else if (loop.boolValue)
+            {
+                pathScript.links[0].anchors[0] += offset;
+            }
         }
         else if (anchorIndex * 2 <= pathScript.links[linkIndex].anchors.Count - 2)
             pathScript.links[linkIndex].anchors[anchorIndex * 2] += offset;
 
-        if (anchorIndex == 0 && linkIndex > 0)
+        if (anchorIndex == 0)
         {
-            --linkIndex;
-            anchorIndex = pathScript.links[linkIndex].anchors.Count - 1;
-            pathScript.links[linkIndex].anchors[anchorIndex] += offset;
+            if (linkIndex > 0)
+            {
+                --linkIndex;
+                anchorIndex = pathScript.links[linkIndex].anchors.Count - 1;
+                pathScript.links[linkIndex].anchors[anchorIndex] += offset;
+            }
+            else if (loop.boolValue)
+            {
+                pathScript.links[pathScript.links.Count - 1].anchors[pathScript.links[pathScript.links.Count - 1].anchors.Count - 1] += offset;
+            }
         }
         else if (anchorIndex > 0)
         {
@@ -555,6 +569,12 @@ public class PathEditor : Editor
                     if (link.pathPoints.Count == 0) return;
                     link.pathPoints[link.pathPoints.Count - 1] = selectedWaypoint.transform.position;
                 }
+                else if (loop.boolValue)
+                {
+                    Link link = linksList.GetArrayElementAtIndex(linksList.arraySize - 1).objectReferenceValue as Link;
+                    if (link.pathPoints.Count == 0) return;
+                    link.pathPoints[link.pathPoints.Count - 1] = selectedWaypoint.transform.position;
+                }
             }
         }
 
@@ -565,23 +585,54 @@ public class PathEditor : Editor
             {
                 Undo.RecordObject(selectedLink, "Move Path points");
                 selectedLink.pathPoints[i] = Create2DPositionHandles(selectedLink.pathPoints[i], selectedLinkIndex, i);
+                if (linksList.arraySize > 0)
+                {
+                    if (selectedLinkIndex == 0 && i == 0 && loop.boolValue)
+                    {
+                        Link link = linksList.GetArrayElementAtIndex(linksList.arraySize - 1).objectReferenceValue as Link;
+                        if (link.pathPoints.Count == 0) return;
+                        link.pathPoints[link.pathPoints.Count - 1] = selectedLink.pathPoints[i];
+                    }
+                    if (selectedLinkIndex == linksList.arraySize - 1 && i == selectedLink.pathPoints.Count - 1 && loop.boolValue)
+                    {
+                        Link link = linksList.GetArrayElementAtIndex(0).objectReferenceValue as Link;
+                        if (link.pathPoints.Count == 0) return;
+                        link.pathPoints[0] = selectedLink.pathPoints[i];
+                    }
+                }
 
                 if (selectedLink.pathPoints.Count < 2) continue;
                 if (i == selectedLink.pathPoints.Count - 1) continue;
                 float constantZoom = HandleUtility.GetHandleSize(selectedLink.anchors[i * 2]);
                 
-                if (i == 0 && selectedLinkIndex > 0)
+                if (i == 0)
                 {
-                    EditorGUI.BeginChangeCheck();
-                    pathScript.links[selectedLinkIndex - 1].anchors[pathScript.links[selectedLinkIndex - 1].anchors.Count - 1] = 
-                        Handles.Slider2D(pathScript.links[selectedLinkIndex - 1].anchors[pathScript.links[selectedLinkIndex - 1].anchors.Count - 1],
-                        Vector3.up, Vector3.right, Vector3.forward, 0.1f * constantZoom, Handles.DotHandleCap, Handles.SnapValue(1.0f, 1.0f));
-                    if (EditorGUI.EndChangeCheck())
+                    if (selectedLinkIndex > 0)
                     {
-                        Vector3 dist = pathScript.links[selectedLinkIndex - 1].anchors[pathScript.links[selectedLinkIndex - 1].anchors.Count - 1] - selectedLink.pathPoints[i];
-                        selectedLink.anchors[i * 2] = selectedLink.pathPoints[i] - dist;
+                        EditorGUI.BeginChangeCheck();
+                        pathScript.links[selectedLinkIndex - 1].anchors[pathScript.links[selectedLinkIndex - 1].anchors.Count - 1] =
+                            Handles.Slider2D(pathScript.links[selectedLinkIndex - 1].anchors[pathScript.links[selectedLinkIndex - 1].anchors.Count - 1],
+                            Vector3.up, Vector3.right, Vector3.forward, 0.1f * constantZoom, Handles.DotHandleCap, Handles.SnapValue(1.0f, 1.0f));
+                        if (EditorGUI.EndChangeCheck())
+                        {
+                            Vector3 dist = pathScript.links[selectedLinkIndex - 1].anchors[pathScript.links[selectedLinkIndex - 1].anchors.Count - 1] - selectedLink.pathPoints[i];
+                            selectedLink.anchors[i * 2] = selectedLink.pathPoints[i] - dist;
+                        }
+                        Handles.DrawLine(pathScript.links[selectedLinkIndex - 1].anchors[pathScript.links[selectedLinkIndex - 1].anchors.Count - 1], selectedLink.pathPoints[i]);
                     }
-                    Handles.DrawLine(pathScript.links[selectedLinkIndex - 1].anchors[pathScript.links[selectedLinkIndex - 1].anchors.Count - 1], selectedLink.pathPoints[i]);
+                    else
+                    {
+                        EditorGUI.BeginChangeCheck();
+                        pathScript.links[pathScript.links.Count - 1].anchors[pathScript.links[pathScript.links.Count - 1].anchors.Count - 1] =
+                            Handles.Slider2D(pathScript.links[pathScript.links.Count - 1].anchors[pathScript.links[pathScript.links.Count - 1].anchors.Count - 1],
+                            Vector3.up, Vector3.right, Vector3.forward, 0.1f * constantZoom, Handles.DotHandleCap, Handles.SnapValue(1.0f, 1.0f));
+                        if (EditorGUI.EndChangeCheck())
+                        {
+                            Vector3 dist = pathScript.links[pathScript.links.Count - 1].anchors[pathScript.links[pathScript.links.Count - 1].anchors.Count - 1] - selectedLink.pathPoints[i];
+                            selectedLink.anchors[i * 2] = selectedLink.pathPoints[i] - dist;
+                        }
+                        Handles.DrawLine(pathScript.links[pathScript.links.Count - 1].anchors[pathScript.links[pathScript.links.Count - 1].anchors.Count - 1], selectedLink.pathPoints[i]);
+                    }
                 }
                 EditorGUI.BeginChangeCheck();
                 selectedLink.anchors[(i * 2)] = Handles.Slider2D(selectedLink.anchors[i * 2], Vector3.up, Vector3.right, Vector3.forward, 
@@ -597,6 +648,11 @@ public class PathEditor : Editor
                     {
                         Vector3 dist = selectedLink.anchors[i * 2] - selectedLink.pathPoints[i];
                         pathScript.links[selectedLinkIndex - 1].anchors[pathScript.links[selectedLinkIndex - 1].anchors.Count - 1] = selectedLink.pathPoints[i] - dist;
+                    }
+                    else if (selectedLinkIndex == 0)
+                    {
+                        Vector3 dist = selectedLink.anchors[i * 2] - selectedLink.pathPoints[i];
+                        pathScript.links[pathScript.links.Count - 1].anchors[pathScript.links[pathScript.links.Count - 1].anchors.Count - 1] = selectedLink.pathPoints[i] - dist;
                     }
                 }
 
