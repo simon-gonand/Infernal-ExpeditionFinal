@@ -505,13 +505,15 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
+        Vector3 offSet = new Vector3(0,-0.5f,0);
+
         // Draw raycast foward the player
-        if (Physics.Raycast(transform.position, transform.forward, out hit, playerPreset.interactionDistance))
+        if (Physics.Raycast(transform.position + offSet, transform.forward, out hit, playerPreset.interactionDistance))
         {
             // Draw ray for debug
             if (drawIteractLine == true)
             {
-                Debug.DrawRay(transform.position, transform.forward * playerPreset.interactionDistance, Color.green);
+                Debug.DrawRay(transform.position + offSet, transform.forward * playerPreset.interactionDistance, Color.green);
             }
 
             // Check if raycast hit a Treasures
@@ -549,7 +551,7 @@ public class PlayerController : MonoBehaviour
             // Draw ray for debug
             if (drawIteractLine == true)
             {
-                Debug.DrawRay(transform.position, transform.forward * playerPreset.interactionDistance, Color.red);
+                Debug.DrawRay(transform.position + offSet, transform.forward * playerPreset.interactionDistance, Color.red);
             }
         }
     }
