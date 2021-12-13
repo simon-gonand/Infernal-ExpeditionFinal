@@ -10,7 +10,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
     private bool _isLoadingLaunch = false;
     public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
-    private float launchForce = 0.0f;
+    [HideInInspector]public float launchForce = 0.0f;
 
     public bool InteractWith(PlayerController carrier, GameObject interactingWith)
     {
@@ -60,7 +60,6 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
             if (launchForce > selfScript.playerPreset.maxLaunchForce)
                 launchForce = selfScript.playerPreset.maxLaunchForce;
-            Debug.Log(launchForce);
             yield return new WaitForSeconds(offsetTime);
         }
     }

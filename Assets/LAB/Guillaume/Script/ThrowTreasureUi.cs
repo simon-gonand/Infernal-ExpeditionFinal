@@ -13,7 +13,7 @@ public class ThrowTreasureUi : MonoBehaviour
     public Image backGroundThrow;
 
  
-    public float distanceMax;
+    private float distanceMax;
     private float angleSimulation;
 
     private void Start()
@@ -41,7 +41,7 @@ public class ThrowTreasureUi : MonoBehaviour
                 angleSimulation = Vector3.Angle(selfTreasure.playerThrowDir.normalized + Vector3.up, selfTreasure.playerThrowDir.normalized);
 
                 float distForce = (selfTreasure.category.maxLaunchForce / (selfTreasure.category.maxPlayerCarrying + 1 - selfTreasure.playerInteractingWith.Count));
-                distanceMax = ((distForce  * distForce) * Mathf.Sin(2 * angleSimulation)) / (9.8f);
+                distanceMax = ((distForce  * distForce) * Mathf.Sin(2 * angleSimulation)) / 9.8f;
 
                 if (distanceMax < 2.5)
                 {
