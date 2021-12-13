@@ -6,8 +6,7 @@ public class Treasure : MonoBehaviour, ICarriable
 {
     public Transform self;
     public Rigidbody selfRigidbody;
-    [SerializeField]
-    private Collider selfCollider;
+    public Collider selfCollider;
     public TreasuresCategory category;
     [System.NonSerialized]
     public float speedMalus = 0.0f;
@@ -327,6 +326,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
             Vector3 launchDirection = Vector3.zero;
             if (!CheckLaunch()) return;
+            float power = launchForce / ((category.maxPlayerCarrying + 1) - _playerInteractingWith.Count);
             while(_playerInteractingWith.Count > 0)
             {
                 PlayerController p = _playerInteractingWith[0];
@@ -356,7 +356,6 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.isKinematic = false;
             selfRigidbody.useGravity = true;
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
-            float power = launchForce / (category.maxPlayerCarrying + 1 - _playerInteractingWith.Count);
             selfRigidbody.AddForce((launchDirection.normalized + Vector3.up) * power, ForceMode.Impulse);
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             launchForce = 0.0f;
