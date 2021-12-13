@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody selfRigidBody;
     public Collider selfCollider;
     public PlayerPresets playerPreset;
+    public PlayerThrowUI selfPlayerThrowUi;
 
     [Header("Children References")]
     public Transform playerGraphics;
@@ -26,8 +27,8 @@ public class PlayerController : MonoBehaviour
     [Header ("Debug")]
     public bool drawIteractLine;
 
-    public LayerMask mask;
 
+    public LayerMask mask;
     private IInteractable _interactingWith;
     public IInteractable interactingWith { get { return _interactingWith; } }
 
@@ -54,6 +55,10 @@ public class PlayerController : MonoBehaviour
 
     [System.NonSerialized]
     public List<EnemiesAI> isAttackedBy = new List<EnemiesAI>();
+
+    [HideInInspector]public bool isAiming;
+    [HideInInspector]public Vector3 playerThrowDir;
+
 
     #region booleans
     // Is the player interacting with something
@@ -494,6 +499,8 @@ public class PlayerController : MonoBehaviour
     {
         InfoAnim();
         TreasureDetectionForOutline();
+        PlayerJoystickDetection();
+
         CheckFallingWhenCarrying();
         CheckIsGrounded();
         if (isGrounded)
@@ -505,13 +512,15 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
+        Vector3 offSet = new Vector3(0,-0.5f,0);
+
         // Draw raycast foward the player
-        if (Physics.Raycast(transform.position, transform.forward, out hit, playerPreset.interactionDistance))
+        if (Physics.Raycast(transform.position + offSet, transform.forward, out hit, playerPreset.interactionDistance))
         {
             // Draw ray for debug
             if (drawIteractLine == true)
             {
-                Debug.DrawRay(transform.position, transform.forward * playerPreset.interactionDistance, Color.green);
+                Debug.DrawRay(transform.position + offSet, transform.forward * playerPreset.interactionDistance, Color.green);
             }
 
             // Check if raycast hit a Treasures
@@ -549,11 +558,10 @@ public class PlayerController : MonoBehaviour
             // Draw ray for debug
             if (drawIteractLine == true)
             {
-                Debug.DrawRay(transform.position, transform.forward * playerPreset.interactionDistance, Color.red);
+                Debug.DrawRay(transform.position + offSet, transform.forward * playerPreset.interactionDistance, Color.red);
             }
         }
     }
-
     void InfoAnim()
     {
         
@@ -578,6 +586,20 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    private void PlayerJoystickDetection()
+    {
+        playerThrowDir = new Vector3(playerMovementInput.x, 0, playerMovementInput.y).normalized;
+
+        if (playerThrowDir == Vector3.zero)
+        {
+            isAiming = false;
+        }
+        else
+        {
+            isAiming = true;
+        }
+    }
+
 
     private void CheckFallingWhenCarrying()
     {
