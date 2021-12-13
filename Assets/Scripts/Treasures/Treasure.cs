@@ -6,8 +6,7 @@ public class Treasure : MonoBehaviour, ICarriable
 {
     public Transform self;
     public Rigidbody selfRigidbody;
-    [SerializeField]
-    private Collider selfCollider;
+    public Collider selfCollider;
     public TreasuresCategory category;
     [System.NonSerialized]
     public float speedMalus = 0.0f;
@@ -21,13 +20,18 @@ public class Treasure : MonoBehaviour, ICarriable
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
     private bool isGrounded = false;
     private bool _isLoadingLaunch = false;
+
+    [HideInInspector]public bool isLoadingPower;
+    [HideInInspector]public Vector3 playerThrowDir;
+    private Vector3 globalDir;
+
     public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
 
     private int numOfSelected;
     public Outline outlineScript;
 
 
-    private float launchForce = 0.0f;
+    [HideInInspector]public float launchForce = 0.0f;
     private Vector3 lastPosition;
 
     private Vector3 startPlayerPosition;
@@ -52,6 +56,7 @@ public class Treasure : MonoBehaviour, ICarriable
     #region CollisionCallbacks
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && _playerInteractingWith.Count > 0) return;
         if (collision.collider.CompareTag("Player"))
         {
             foreach (PlayerController player in _playerInteractingWith)
@@ -99,6 +104,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private void Start()
     {
+        isLoadingPower = false;
         lastPosition = self.position;
         outlineScript.enabled = false;
     }
@@ -292,9 +298,21 @@ public class Treasure : MonoBehaviour, ICarriable
             launchForce += offsetLaunch;
             if (launchForce > category.maxLaunchForce)
                 launchForce = category.maxLaunchForce;
-            Debug.Log(launchForce);
             yield return new WaitForSeconds(offsetTime);
         }
+    }
+
+    private bool CheckLaunch()
+    {
+        foreach(PlayerController player in _playerInteractingWith)
+        {
+            if (player.playerMovementInput == Vector2.zero)
+            {
+                StopLaunching();
+                return false;
+            }
+        }
+        return true;
     }
 
     public void Launch(PlayerController player)
@@ -303,17 +321,15 @@ public class Treasure : MonoBehaviour, ICarriable
         if (isLoadingLaunch)
         {
             _isLoadingLaunch = false;
+            isLoadingPower = false;
 
             Vector3 launchDirection = Vector3.zero;
+            if (!CheckLaunch()) return;
+            float power = launchForce / ((category.maxPlayerCarrying + 1) - _playerInteractingWith.Count);
             while(_playerInteractingWith.Count > 0)
             {
                 PlayerController p = _playerInteractingWith[0];
                 Vector3 playerMovement = new Vector3 (p.playerMovementInput.x, 0.0f, p.playerMovementInput.y);
-                if (playerMovement == Vector3.zero)
-                {
-                    StopLaunching();
-                    return;
-                }
                 launchDirection += playerMovement;
                 // Update lists values
                 _playerInteractingWith.Remove(p);
@@ -321,6 +337,7 @@ public class Treasure : MonoBehaviour, ICarriable
                 associateColliders.Remove(p);
 
                 // Update player values
+                p.isInteracting = false;
                 p.isCarrying = false;
                 p.carrying = null;
                 p.isLaunching = false;
@@ -338,7 +355,7 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.isKinematic = false;
             selfRigidbody.useGravity = true;
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
-            selfRigidbody.AddForce((launchDirection.normalized + Vector3.up) * launchForce, ForceMode.Impulse);
+            selfRigidbody.AddForce((launchDirection.normalized + Vector3.up) * power, ForceMode.Impulse);
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             launchForce = 0.0f;
 
@@ -351,6 +368,7 @@ public class Treasure : MonoBehaviour, ICarriable
     private void StopLaunching()
     {
         _isLoadingLaunch = false;
+        isLoadingPower = false;
         foreach(PlayerController player in _playerInteractingWith)
         {
             player.isLaunching = false;
@@ -365,12 +383,12 @@ public class Treasure : MonoBehaviour, ICarriable
 
         // Update player values
         player.isCarrying = false;
+        player.isInteracting = false;
 
         player.anim.SetBool("isCarrying", false);
         player.sword.SetActive(true);
 
         player.carrying = null;
-
 
         // Player does not interact with the treasure anymore
         _playerInteractingWith.Remove(player);
@@ -409,9 +427,7 @@ public class Treasure : MonoBehaviour, ICarriable
     {
         _isCarriedByPiqueSous = true;
 
-        selfRigidbody.useGravity = false;
-        selfRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-        Physics.IgnoreCollision(selfCollider, piqueSous.spawner.selfCollider, true);
+        selfRigidbody.isKinematic = true;
 
         self.forward = piqueSous.self.forward;
         self.position = piqueSous.treasureAttach.position + piqueSous.self.forward * (piqueSous.self.localScale.z + piqueSous.preset.attachOffset);
@@ -423,9 +439,7 @@ public class Treasure : MonoBehaviour, ICarriable
     public void UnInteractWithPiqueSous(PiqueSousAI piqueSous)
     {
         _isCarriedByPiqueSous = false;
-        selfRigidbody.useGravity = true;
-        selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
-        Physics.IgnoreCollision(selfCollider, piqueSous.spawner.selfCollider, false);
+        selfRigidbody.isKinematic = false;
 
         self.SetParent(null);
     }
@@ -474,6 +488,31 @@ public class Treasure : MonoBehaviour, ICarriable
         else
         {
             outlineScript.enabled = true;
+        }
+    }
+
+    private void PlayerJoystickDetection()
+    {
+        if (_isLoadingLaunch)
+        {
+            foreach (PlayerController player in _playerInteractingWith)
+            {
+                if (player.playerMovementInput == Vector2.zero)
+                {
+                    isLoadingPower = false;
+                    break;
+                }
+                else
+                {
+                    isLoadingPower = true;
+
+                    Vector3 dir = Vector3.zero;
+                    dir = new Vector3(player.playerMovementInput.x, 0.0f, player.playerMovementInput.y);
+                    globalDir += dir;
+                }
+            }
+            playerThrowDir = globalDir;
+            globalDir = Vector3.zero;
         }
     }
 
@@ -536,5 +575,7 @@ public class Treasure : MonoBehaviour, ICarriable
         }
         else
             lastPosition = self.position;
+
+        PlayerJoystickDetection();
     }
 }

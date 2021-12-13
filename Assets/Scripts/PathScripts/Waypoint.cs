@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Waypoint : MonoBehaviour
 {
     public Transform self;
+    public UnityEvent ev;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +17,6 @@ public class Waypoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 }

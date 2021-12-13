@@ -6,6 +6,10 @@ public class DeepWater : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemiesAI>().Die();
+        }
         if (other.CompareTag("Player"))
         {
             // When the player touch the collider then it means that he is swimming

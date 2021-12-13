@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody selfRigidBody;
     public Collider selfCollider;
     public PlayerPresets playerPreset;
+    public PlayerThrowUI selfPlayerThrowUi;
 
     [Header("Children References")]
     public Transform playerGraphics;
@@ -26,8 +27,8 @@ public class PlayerController : MonoBehaviour
     [Header ("Debug")]
     public bool drawIteractLine;
 
-    public LayerMask mask;
 
+    public LayerMask mask;
     private IInteractable _interactingWith;
     public IInteractable interactingWith { get { return _interactingWith; } }
 
@@ -50,8 +51,14 @@ public class PlayerController : MonoBehaviour
 
     private GameObject treasureInFront;
 
+    private float playerY;
+
     [System.NonSerialized]
     public List<EnemiesAI> isAttackedBy = new List<EnemiesAI>();
+
+    [HideInInspector]public bool isAiming;
+    [HideInInspector]public Vector3 playerThrowDir;
+
 
     #region booleans
     // Is the player interacting with something
@@ -86,6 +93,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isDashing = false;
     private bool isDead = false;
+    private bool isGrounded = false;
     #endregion
 
     #region Collision
@@ -94,7 +102,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Treasures") && !_isCarrying)
         {
-            Debug.Log("saucisse");
             selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         }
         if (isDashing)
@@ -229,8 +236,12 @@ public class PlayerController : MonoBehaviour
                             _playerMovementInput = Vector2.zero;
                             // Set with which interactable the player is interacting with
                             _interactingWith = hit.collider.gameObject.GetComponentInParent<IInteractable>();
+                            _isInteracting = true;
                             if (!_interactingWith.InteractWith(this, hit.collider.gameObject))
+                            {
                                 _interactingWith = null;
+                                _isInteracting = false;
+                            }
                             else
                             {
                                 selfRigidBody.mass = 1000;
@@ -245,7 +256,7 @@ public class PlayerController : MonoBehaviour
             else if ((_isInteracting || _isCarrying) && context.performed)
             {
                 _interactingWith.UninteractWith(this);
-                selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+                selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
                 selfRigidBody.mass = 1;
             }
         }
@@ -272,7 +283,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Enemy has been attacked");
                 // Play sword impact sound
                 EnemiesAI enemy = hitted.GetComponent<EnemiesAI>();
-                enemy.Die(this);
+                enemy.Die();
                 return;
             }
             if (hitted.CompareTag("Player"))
@@ -471,9 +482,9 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!_isStun && !_isCarried && !_hasBeenLaunched && !isDead && (_carrying != null ? !_carrying.isLoadingLaunch : true))
+        if (!_isStun && !_isCarried && !_hasBeenLaunched && !isDead && 
+            ((_isInteracting && _carrying != null) ? !_carrying.isLoadingLaunch : !_isInteracting))
         {
-
             if (isDashing)
             {
                 Dash();
@@ -488,19 +499,28 @@ public class PlayerController : MonoBehaviour
     {
         InfoAnim();
         TreasureDetectionForOutline();
+        PlayerJoystickDetection();
+
+        CheckFallingWhenCarrying();
+        CheckIsGrounded();
+        if (isGrounded)
+            playerY = self.position.y;
+        CheckIsUnderMap();
     }
 
     private void TreasureDetectionForOutline()
     {
         RaycastHit hit;
 
+        Vector3 offSet = new Vector3(0,-0.5f,0);
+
         // Draw raycast foward the player
-        if (Physics.Raycast(transform.position, transform.forward, out hit, playerPreset.interactionDistance))
+        if (Physics.Raycast(transform.position + offSet, transform.forward, out hit, playerPreset.interactionDistance))
         {
             // Draw ray for debug
             if (drawIteractLine == true)
             {
-                Debug.DrawRay(transform.position, transform.forward * playerPreset.interactionDistance, Color.green);
+                Debug.DrawRay(transform.position + offSet, transform.forward * playerPreset.interactionDistance, Color.green);
             }
 
             // Check if raycast hit a Treasures
@@ -538,15 +558,14 @@ public class PlayerController : MonoBehaviour
             // Draw ray for debug
             if (drawIteractLine == true)
             {
-                Debug.DrawRay(transform.position, transform.forward * playerPreset.interactionDistance, Color.red);
+                Debug.DrawRay(transform.position + offSet, transform.forward * playerPreset.interactionDistance, Color.red);
             }
         }
     }
-
     void InfoAnim()
     {
         
-        if (!_isStun && !_isCarried && !isDead && (_carrying != null ? !_carrying.isLoadingLaunch : true))
+        if (!_isStun && !_isCarried && !isDead && ((_isInteracting && _carrying != null) ? !_carrying.isLoadingLaunch : !_isInteracting))
         {
             if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
             {
@@ -566,5 +585,47 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("isMoving", false);
             }
         }
+    }
+    private void PlayerJoystickDetection()
+    {
+        playerThrowDir = new Vector3(playerMovementInput.x, 0, playerMovementInput.y).normalized;
+
+        if (playerThrowDir == Vector3.zero)
+        {
+            isAiming = false;
+        }
+        else
+        {
+            isAiming = true;
+        }
+    }
+
+
+    private void CheckFallingWhenCarrying()
+    {
+        if (_carrying != null)
+        {
+            Treasure treasure = _carrying as Treasure;
+            if (treasure != null && treasure.self.position.y - self.position.y > self.lossyScale.y)
+                treasure.UninteractWith(this);
+        }
+    }
+
+    private void CheckIsGrounded()
+    {
+        Vector3 startPos = self.position;
+        startPos.y -= selfCollider.bounds.size.y / 4;
+        Debug.DrawRay(startPos, Vector3.down * 0.5f);
+        if (Physics.Raycast(startPos, Vector3.down, 0.5f)) isGrounded = true;
+        else isGrounded = false;
+    }
+
+    private void CheckIsUnderMap()
+    {
+        if (self.position.y < -1.0f)
+        {
+           Vector3 upPlayer = new Vector3(self.position.x, playerY, self.position.z);
+           self.position = upPlayer;
+        }            
     }
 }
