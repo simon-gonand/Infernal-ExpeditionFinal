@@ -6,7 +6,8 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 {
     public PlayerController selfScript;
 
-    private PlayerController carrier;
+    [HideInInspector]public PlayerController carrier;
+
     private bool _isLoadingLaunch = false;
     public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
     private float launchForce = 0.0f;
@@ -117,6 +118,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
             player.isCarrying = false;
             player.isInteracting = false;
             player.carrying = null;
+            player.isLaunching = false;
             selfScript.hasBeenLaunched = true;
 
             // Update launched anim
