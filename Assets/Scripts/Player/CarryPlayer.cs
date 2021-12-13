@@ -6,7 +6,8 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 {
     public PlayerController selfScript;
 
-    private PlayerController carrier;
+    [HideInInspector]public PlayerController carrier;
+
     private bool _isLoadingLaunch = false;
     public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
     private float launchForce = 0.0f;

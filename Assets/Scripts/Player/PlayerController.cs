@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody selfRigidBody;
     public Collider selfCollider;
     public PlayerPresets playerPreset;
+    public PlayerThrowUI selfPlayerThrowUi;
 
     [Header("Children References")]
     public Transform playerGraphics;
@@ -26,8 +27,8 @@ public class PlayerController : MonoBehaviour
     [Header ("Debug")]
     public bool drawIteractLine;
 
-    public LayerMask mask;
 
+    public LayerMask mask;
     private IInteractable _interactingWith;
     public IInteractable interactingWith { get { return _interactingWith; } }
 
@@ -54,6 +55,10 @@ public class PlayerController : MonoBehaviour
 
     [System.NonSerialized]
     public List<EnemiesAI> isAttackedBy = new List<EnemiesAI>();
+
+    [HideInInspector]public bool isAiming;
+    [HideInInspector]public Vector3 playerThrowDir;
+
 
     #region booleans
     // Is the player interacting with something
@@ -494,6 +499,8 @@ public class PlayerController : MonoBehaviour
     {
         InfoAnim();
         TreasureDetectionForOutline();
+        PlayerJoystickDetection();
+
         CheckFallingWhenCarrying();
         CheckIsGrounded();
         if (isGrounded)
@@ -555,7 +562,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
     void InfoAnim()
     {
         
@@ -580,6 +586,20 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    private void PlayerJoystickDetection()
+    {
+        playerThrowDir = new Vector3(playerMovementInput.x, 0, playerMovementInput.y);
+
+        if (playerThrowDir == Vector3.zero)
+        {
+            isAiming = false;
+        }
+        else
+        {
+            isAiming = true;
+        }
+    }
+
 
     private void CheckFallingWhenCarrying()
     {
