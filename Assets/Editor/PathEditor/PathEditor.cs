@@ -9,18 +9,20 @@ using UnityEngine.AI;
 [CustomEditor(typeof(Path))]
 public class PathEditor : Editor
 {
-    SerializedProperty waypointsList;
-    SerializedProperty linksList;
+    private SerializedProperty waypointsList;
+    private SerializedProperty linksList;
 
-    ReorderableList waypointsRList;
-    ReorderableList linksRList;
+    private ReorderableList waypointsRList;
+    private ReorderableList linksRList;
 
-    Waypoint selectedWaypoint;
-    int selectedWaypointIndex;
-    Link selectedLink;
-    int selectedLinkIndex;
+    private Waypoint selectedWaypoint;
+    private int selectedWaypointIndex;
+    private Link selectedLink;
+    private int selectedLinkIndex;
 
-    Path pathScript;
+    private Path pathScript;
+
+    private NPCEventWindow npcEventWindow;
         
     private void OnEnable()
     {
@@ -57,9 +59,21 @@ public class PathEditor : Editor
     private void SelectWaypointCallback(ReorderableList rList)
     {
         SerializedProperty sp = waypointsList.GetArrayElementAtIndex(rList.index);
-        selectedWaypoint = sp.objectReferenceValue as Waypoint;
-        selectedWaypointIndex = rList.index;
-        selectedLink = null;
+        Waypoint spWaypoint = sp.objectReferenceValue as Waypoint;
+        if (selectedWaypoint == spWaypoint)
+        {
+            if (npcEventWindow == null || npcEventWindow.waypoint != spWaypoint)
+            {
+                npcEventWindow = (NPCEventWindow) EditorWindow.GetWindow(typeof(NPCEventWindow));
+                npcEventWindow.Initialize(spWaypoint);
+            }
+        }
+        else
+        {
+            selectedWaypoint = spWaypoint;
+            selectedWaypointIndex = rList.index;
+            selectedLink = null;
+        }
     }
 
     private void ElementWaypointCallback(Rect rect, int index, bool isActive, bool isFocused)

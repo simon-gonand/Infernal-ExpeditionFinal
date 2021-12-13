@@ -6,7 +6,6 @@ public class FollowPath : MonoBehaviour
 {
     public Path path;
     public Transform self;
-    public Transform camPosition;
 
     private float moveAmount = 0.0f;
     private int linkIndex = 0;
@@ -14,15 +13,16 @@ public class FollowPath : MonoBehaviour
     private Vector3 initialOffset;
     private Vector3 initialPos;
 
+    private Waypoint currentWaypoint;
+
     // Start is called before the first frame update
     void Start()
     {
         if (path.allPoints.Count > 0)
+        {
             self.position = path.allPoints[0];
-
-        // Get the offset between the camera and the boat
-        initialOffset = camPosition.position - self.position;
-        initialPos = camPosition.position;
+            currentWaypoint = path.waypoints[0];
+        }
     }
 
     private Vector3 CalculatePositionOnBeziers(Vector3 a, Vector3 b, Vector3 startAnchor, Vector3 endAnchor, float t)
@@ -37,17 +37,6 @@ public class FollowPath : MonoBehaviour
         transform.forward = BC - AB;
 
         return Vector3.Lerp(AB, BC, t);
-    }
-
-    private void CameraFollow(float moveAmount)
-    {
-        // Update the position of the camera according to the boat on Z
-        camPosition.position = new Vector3(self.position.x + initialOffset.x, initialPos.y,
-            self.position.z + initialOffset.z);
-        Vector3 camOffset = camPosition.position;
-        camOffset.x += path.links[linkIndex].XCameraOffset.Evaluate(moveAmount);
-        camOffset.z += path.links[linkIndex].YCameraOffset.Evaluate(moveAmount);
-        camPosition.position = camOffset;
     }
 
     // Update is called once per frame
@@ -73,10 +62,11 @@ public class FollowPath : MonoBehaviour
         }
 
         self.position = CalculatePositionOnBeziers(path.allPoints[indexPoint], nextPoint, path.allAnchors[indexPoint * 2], path.allAnchors[indexPoint * 2 + 1], moveAmountPoint);
-        CameraFollow(moveAmount);
         if (moveAmount > 0.98f * (((float)linkIndex + 1) / ((float)path.links.Count)))
         { 
+            currentWaypoint = path.waypoints[linkIndex];
             ++linkIndex;
+            currentWaypoint.ev.Invoke();
         }
         
         // Play boat movement sound
