@@ -28,7 +28,8 @@ public class FollowPath : MonoBehaviour
         currentWaypoint.ev.Invoke();
 
         initialPosY = self.position.y;
-        initialOffset = camera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
+        if (camera != null)
+            initialOffset = camera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
     }
 
     private IEnumerator FollowCurve()
@@ -44,12 +45,21 @@ public class FollowPath : MonoBehaviour
                 3 * (1 - tParam) * Mathf.Pow(tParam, 2) * path.allAnchors[allPointIndex * 2 + 1] +
                 Mathf.Pow(tParam, 3) * path.allPoints[allPointIndex + 1];
             posOnCurve.y = initialPosY;
+            Vector3 oldPos = self.position;
             self.position = posOnCurve;
 
+            Vector3 rotation = self.position - oldPos;
+            rotation.y = 0.0f;
+            self.rotation = Quaternion.LookRotation(rotation);
+            
+
             // Camera position
-            float xOffset = path.links[linkIndex].XCameraOffset.Evaluate(tParam);
-            float zOffset = path.links[linkIndex].YCameraOffset.Evaluate(tParam);
-            camera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = initialOffset +  new Vector3(xOffset, 0.0f, zOffset);
+            if (camera != null)
+            {
+                float xOffset = path.links[linkIndex].XCameraOffset.Evaluate(tParam);
+                float zOffset = path.links[linkIndex].YCameraOffset.Evaluate(tParam);
+                camera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = initialOffset + new Vector3(xOffset, 0.0f, zOffset);
+            }
 
             yield return new WaitForEndOfFrame();
         }
