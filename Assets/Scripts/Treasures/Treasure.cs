@@ -21,13 +21,18 @@ public class Treasure : MonoBehaviour, ICarriable
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
     private bool isGrounded = false;
     private bool _isLoadingLaunch = false;
+
+    [HideInInspector]public bool isLoadingPower;
+    [HideInInspector]public Vector3 playerThrowDir;
+    private Vector3 globalDir;
+
     public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
 
     private int numOfSelected;
     public Outline outlineScript;
 
 
-    private float launchForce = 0.0f;
+    [HideInInspector]public float launchForce = 0.0f;
     private Vector3 lastPosition;
 
     private Vector3 startPlayerPosition;
@@ -100,6 +105,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private void Start()
     {
+        isLoadingPower = false;
         lastPosition = self.position;
         outlineScript.enabled = false;
     }
@@ -293,7 +299,7 @@ public class Treasure : MonoBehaviour, ICarriable
             launchForce += offsetLaunch;
             if (launchForce > category.maxLaunchForce)
                 launchForce = category.maxLaunchForce;
-            Debug.Log(launchForce);
+            //Debug.Log(launchForce);
             yield return new WaitForSeconds(offsetTime);
         }
     }
@@ -317,6 +323,7 @@ public class Treasure : MonoBehaviour, ICarriable
         if (isLoadingLaunch)
         {
             _isLoadingLaunch = false;
+            isLoadingPower = false;
 
             Vector3 launchDirection = Vector3.zero;
             if (!CheckLaunch()) return;
@@ -363,6 +370,7 @@ public class Treasure : MonoBehaviour, ICarriable
     private void StopLaunching()
     {
         _isLoadingLaunch = false;
+        isLoadingPower = false;
         foreach(PlayerController player in _playerInteractingWith)
         {
             player.isLaunching = false;
@@ -484,6 +492,31 @@ public class Treasure : MonoBehaviour, ICarriable
         }
     }
 
+    private void PlayerJoystickDetection()
+    {
+        if (_isLoadingLaunch)
+        {
+            foreach (PlayerController player in _playerInteractingWith)
+            {
+                if (player.playerMovementInput == Vector2.zero)
+                {
+                    isLoadingPower = false;
+                    break;
+                }
+                else
+                {
+                    isLoadingPower = true;
+
+                    Vector3 dir = Vector3.zero;
+                    dir = new Vector3(player.playerMovementInput.x, 0.0f, player.playerMovementInput.y);
+                    globalDir += dir;
+                }
+            }
+            playerThrowDir = globalDir;
+            globalDir = Vector3.zero;
+        }
+    }
+
     private void FixedUpdate()
     {
         TreasureMovement();
@@ -543,5 +576,7 @@ public class Treasure : MonoBehaviour, ICarriable
         }
         else
             lastPosition = self.position;
+
+        PlayerJoystickDetection();
     }
 }
