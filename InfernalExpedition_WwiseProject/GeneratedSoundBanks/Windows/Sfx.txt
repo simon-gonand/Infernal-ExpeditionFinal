@@ -10,6 +10,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2703574490	B_Moving			\Default Work Unit\Boat\B_Moving	
 	3280416103	P_Steps			\Default Work Unit\Players\P_Steps	
 	3383744642	P_Stunt			\Default Work Unit\Players\P_Stunt	
+	3401161239	Beach_Ambient			\Default Work Unit\World\Beach_Ambient	
 	3919743498	P_Dash			\Default Work Unit\Players\P_Dash	
 
 State Group	ID	Name			Wwise Object Path	Notes
@@ -44,7 +45,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	277546652	EnemyTrl_Shot_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\EnemyTrl_Shot_3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_Shot\EnemyTrl_Shot_3		135244
 	286784303	Enemy_ShineAttack	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Enemy_ShineAttack_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_ShineAttack		75720
 	292770977	Enemy_SlashAttack_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Enemy_SlashAttack_2_A51CBA9D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_SlashAttack\Enemy_SlashAttack_2		54320
-	316093788	Boat_Damages_Wood_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Wood_2_A8F29840.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_2		114784
+	316093788	Boat_Damages_Wood_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Wood_2_8ABC3BB3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_2		114784
 	320782930	SwordSlash_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\SwordSlash_3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Sword_Attack\SwordSlash_3		24872
 	322481421	BoatMovement_Sail_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\BoatMovement_Sail_3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatMovement_Sail\BoatMovement_Sail_3		162240
 	382330933	Footsteps_Wood_4	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Wood_4_1A3BDF85.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Wood_Footsteps\Footsteps_Wood_4		25536
@@ -55,7 +56,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	457457790	Boat_Damages_Coins_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Coins_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Coins\Boat_Damages_Coins_1		218300
 	462619250	PlayerThrow_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Player_Throw_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Throw\PlayerThrow_2		182612
 	479127667	EnemyTrl_Shot_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\EnemyTrl_Shot_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_Shot\EnemyTrl_Shot_2		166296
-	494825628	Boat_Damages_Wood_5	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Wood_5_1998773D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_5		101788
+	494825628	Boat_Damages_Wood_5	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Wood_5_750439B6.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_5		101788
 	506895314	Footsteps_Sand_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_1_F5BB8DE1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sand_Footsteps\Footsteps_Sand_1		28262
 	528135933	Player_Damage	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Player_Damage_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Damage		118380
 	529235339	Footsteps_Stone_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Stone_3_00CE49DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Stone_Footsteps\Footsteps_Stone_3		26530
@@ -69,12 +70,13 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	685704333	Footsteps_Grass_5	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Grass_5_A2E4F32A.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Grass_Footsteps\Footsteps_Grass_5		6132
 	685935742	PlayerThrow_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Player_Throw_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Throw\PlayerThrow_1		56672
 	713391774	Boat_Damages_Impact	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Impact_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\Boat_Damages_Impact		117936
-	717321550	Boat_Damages_Wood_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Wood_3_6E6BB5F9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_3		179944
+	717321550	Boat_Damages_Wood_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Wood_3_848BDF57.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_3		179944
 	769848089	Footsteps_Sand_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_2_1903957C.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sand_Footsteps\Footsteps_Sand_2		28980
 	777445666	Player_HardFallImpact	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Player_HardFallImpact_006CA702.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_FallImpact\Player_HardFallImpact		16384
 	779573900	Boat_Damages_Coins_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Coins_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Coins\Boat_Damages_Coins_2		240392
+	780879456	Ambience_Islande_Sea	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Ambience_Islande_Sea_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Beach_Ambience\Ambience_Islande_Sea		20815448
 	817045992	Footsteps_Wood_5	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Wood_5_33DC8D56.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Wood_Footsteps\Footsteps_Wood_5		18736
-	827779130	Boat_Damages_Wood_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Wood_1_C26D5000.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_1		45304
+	827779130	Boat_Damages_Wood_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Wood_1_DF5FDAFE.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_1		45304
 	857342633	Chest_GroundImpact	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Chest_GroundImpact_41DCC55B.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Chest_GroundImpact		67908
 	918785688	EnemyTrl_Shot_4	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\EnemyTrl_Shot_4_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_Shot\EnemyTrl_Shot_4		161712
 	921271242	BoatMovement_Sail_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\BoatMovement_Sail_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatMovement_Sail\BoatMovement_Sail_2		85444
@@ -85,7 +87,8 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	977442422	Player_SoftFallImpact	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Player_FallImpact_576287D3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_FallImpact\Player_SoftFallImpact		21752
 	1007454082	Footsteps_Water_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Water_3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Water_Footsteps\Footsteps_Water_3		303132
 	1017834027	EnemyTrl_Shot_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\EnemyTrl_Shot_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_Shot\EnemyTrl_Shot_1		135244
-	1044100472	Boat_Damages_Wood_7	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Wood_7_00160D97.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_7		244212
+	1044100472	Boat_Damages_Wood_7	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Wood_7_CE8CAF26.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_7		244212
 	1055089053	PlayerDash_Cloth	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\PlayerDash_Cloth_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\PlayerDash_Cloth		92224
+	1062721811	Ambience_Islande_Bird	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Ambience_Islande_Bird_E36F462B.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Beach_Ambience\Ambience_Islande_Bird		20787188
 	1063609588	Enemy_SlashAttack_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Enemy_SlashAttack_3_7C806E9E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_SlashAttack\Enemy_SlashAttack_3		40556
 
