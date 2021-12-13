@@ -320,17 +320,19 @@
 					<ChildrenList>
 						<Event Name="W_TreasursIdle" ID="{DDCBDD01-31DA-408F-9CC4-6D5DB68AF353}"/>
 						<Event Name="W_ChestDrop" ID="{386ADD4D-4A6B-4627-A5A0-6731D6891A74}"/>
-					</ChildrenList>
-				</Folder>
-				<Folder Name="Ambients" ID="{8951F274-C2B5-429D-AF17-5DD13276A75E}" ShortID="1033771644">
-					<PropertyList>
-						<Property Name="Color" Type="int16" Value="16"/>
-						<Property Name="OverrideColor" Type="bool" Value="True"/>
-					</PropertyList>
-					<ChildrenList>
-						<Event Name="Forest_Ambient" ID="{3438B74B-267F-46A6-BBA9-A39C33023080}"/>
-						<Event Name="Beach_Ambient" ID="{5689551D-75AC-4347-9616-1D60758E0A88}"/>
 						<Event Name="Sea_Ambient" ID="{7EAD759C-7A29-4BF7-924C-E40ADFF5CD5C}"/>
+						<Event Name="Beach_Ambient" ID="{5689551D-75AC-4347-9616-1D60758E0A88}">
+							<ChildrenList>
+								<Action Name="" ID="{C88CDD31-C549-421E-B150-0672BD187429}" ShortID="78840240">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Beach_Ambience" ID="{14F67C4C-3851-4E95-9E06-62D483220C9F}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Forest_Ambient" ID="{3438B74B-267F-46A6-BBA9-A39C33023080}"/>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>
