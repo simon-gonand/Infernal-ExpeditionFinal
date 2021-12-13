@@ -382,7 +382,6 @@ GameObject:
   - component: {fileID: 4223509153915057751}
   - component: {fileID: 4223509153915057750}
   - component: {fileID: 2660306658829606644}
-  - component: {fileID: 1573370873271651524}
   - component: {fileID: 127302442358388516}
   - component: {fileID: 5891595701888884371}
   m_Layer: 3
@@ -577,28 +576,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &1573370873271651524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4223509153915057740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea8844efae26fce4ca1fc9977520b258, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player2: {fileID: 0}
-  player3: {fileID: 0}
-  player4: {fileID: 0}
-  self: {fileID: 0}
-  camera: {fileID: 0}
-  targetGroup: {fileID: 0}
-  camManager: {fileID: 0}
-  deadZoneOffsetX: 10
-  deadZoneOffsetY: 10
-  weight: 0
 --- !u!23 &127302442358388516
 MeshRenderer:
   m_ObjectHideFlags: 0
