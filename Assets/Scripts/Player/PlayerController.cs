@@ -588,7 +588,7 @@ public class PlayerController : MonoBehaviour
     }
     private void PlayerJoystickDetection()
     {
-        playerThrowDir = new Vector3(playerMovementInput.x, 0, playerMovementInput.y);
+        playerThrowDir = new Vector3(playerMovementInput.x, 0, playerMovementInput.y).normalized;
 
         if (playerThrowDir == Vector3.zero)
         {

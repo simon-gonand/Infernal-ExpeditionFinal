@@ -10,7 +10,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
     private bool _isLoadingLaunch = false;
     public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
-    private float launchForce = 0.0f;
+    [HideInInspector]public float launchForce = 0.0f;
 
     public bool InteractWith(PlayerController carrier, GameObject interactingWith)
     {
@@ -60,13 +60,15 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
             if (launchForce > selfScript.playerPreset.maxLaunchForce)
                 launchForce = selfScript.playerPreset.maxLaunchForce;
-            Debug.Log(launchForce);
             yield return new WaitForSeconds(offsetTime);
         }
     }
 
     public void UninteractWith(PlayerController player)
     {
+        // It's dirty (UI)
+        carrier.selfPlayerThrowUi.globaleConeCanvas.SetActive(false);
+
         player.isCarrying = false;
         player.isInteracting = false;
         player.carrying = null;
@@ -75,6 +77,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
         selfScript.selfRigidBody.isKinematic = false;
         selfScript.selfRigidBody.AddForce(player.self.forward * 2000.0f);
         selfScript.self.SetParent(null);
+
     }
 
     public void GetOnBoat(Transform entryPosition)
@@ -107,6 +110,9 @@ public class CarryPlayer : MonoBehaviour, ICarriable
                 StopLaunching();
                 return;
             }
+
+            // It's dirty (UI)
+            carrier.selfPlayerThrowUi.globaleConeCanvas.SetActive(false);
 
             // Enable rigidbody
             selfScript.selfRigidBody.mass = 1;
