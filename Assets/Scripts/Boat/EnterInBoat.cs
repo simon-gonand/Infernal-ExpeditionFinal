@@ -63,24 +63,5 @@ public class EnterInBoat : MonoBehaviour
                 player.self.position = playerOnBoatEntryPoint.position;
             }
         }
-        // Let the player getting out the boat
-        else
-        {
-            // Player is carrying a treasure with someone
-            if (player.isCarrying)
-            {
-                Treasure transportedTreasure = player.carrying as Treasure;
-                if (transportedTreasure != null && transportedTreasure.playerInteractingWith.Count > 1)
-                    transportedTreasure.GetOffBoat();
-                else
-                {
-                    if (transportedTreasure == null)
-                    {
-                        CarryPlayer carriedPlayer = player.interactingWith as CarryPlayer;
-                        carriedPlayer.GetOffBoat();
-                    }
-                }
-            }
-        }
     }
 }

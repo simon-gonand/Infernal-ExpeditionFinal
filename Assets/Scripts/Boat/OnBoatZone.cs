@@ -23,6 +23,21 @@ public class OnBoatZone : MonoBehaviour
             if (!player.isCarried)
                 player.self.SetParent(null);
             player.isOnBoat = false;
+
+            if (player.isCarrying)
+            {
+                Treasure transportedTreasure = player.carrying as Treasure;
+                if (transportedTreasure != null && transportedTreasure.playerInteractingWith.Count > 1)
+                    transportedTreasure.GetOffBoat();
+                else
+                {
+                    if (transportedTreasure == null)
+                    {
+                        CarryPlayer carriedPlayer = player.interactingWith as CarryPlayer;
+                        carriedPlayer.GetOffBoat();
+                    }
+                }
+            }
         }
     }
 }
