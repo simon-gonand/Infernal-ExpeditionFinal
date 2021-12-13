@@ -14,6 +14,11 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     [SerializeField]
     private Transform attackPoint;
 
+    [SerializeField]
+    private bool isSkeleton;
+    [SerializeField]
+    private float reviveCooldown;
+
     [Header("Animation Info")]
     public Animator selfAnimator;
     public GameObject sword;
@@ -37,10 +42,15 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     {
         // Play die sound
         _currentFollowedPlayer.isAttackedBy.Remove(this);
+        StopCoroutine(attackCoroutine);
+        attackCoroutine = null;
 
         if (!lockDeathAnim)
         {
-            StartCoroutine(waitBeforeDestroy());
+            if (isSkeleton)
+                StartCoroutine(ReviveCooldown());
+            else
+                StartCoroutine(waitBeforeDestroy());
         }
     }
 
@@ -251,6 +261,15 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         selfAnimator.SetTrigger("die");
         yield return new WaitForSeconds(3f);
         Destroy(this.gameObject);
+    }
+
+    private IEnumerator ReviveCooldown()
+    {
+        lockDeathAnim = true;
+        selfAnimator.SetTrigger("die");
+        yield return new WaitForSeconds(reviveCooldown);
+        lockDeathAnim = false;
+        selfAnimator.SetTrigger("revive");
     }
 
     // Update is called once per frame
