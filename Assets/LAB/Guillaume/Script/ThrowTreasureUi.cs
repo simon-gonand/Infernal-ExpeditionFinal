@@ -43,6 +43,12 @@ public class ThrowTreasureUi : MonoBehaviour
                 float distForce = (selfTreasure.category.maxLaunchForce / (selfTreasure.category.maxPlayerCarrying + 1 - selfTreasure.playerInteractingWith.Count));
                 distanceMax = ((distForce  * distForce) * Mathf.Sin(2 * angleSimulation)) / (9.8f);
 
+                if (distanceMax < 2.5)
+                {
+                    distanceMax = 2.5f;
+                }
+
+
                 distanceMax = distanceMax / selfTreasure.self.lossyScale.x;
 
                 // Set UI position and size correctly 

@@ -298,7 +298,6 @@ public class Treasure : MonoBehaviour, ICarriable
             launchForce += offsetLaunch;
             if (launchForce > category.maxLaunchForce)
                 launchForce = category.maxLaunchForce;
-            //Debug.Log(launchForce);
             yield return new WaitForSeconds(offsetTime);
         }
     }
