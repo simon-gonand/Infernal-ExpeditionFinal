@@ -118,6 +118,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
             player.isCarrying = false;
             player.isInteracting = false;
             player.carrying = null;
+            player.isLaunching = false;
             selfScript.hasBeenLaunched = true;
 
             // Update launched anim
