@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     private PlayerInputManager self;
 
     [Header("External References")]
-    public CinemachineVirtualCamera camera;
+    public CinemachineVirtualCamera cam;
     public CinemachineTargetGroup targetGroup;
     public CameraManager camManager;
 
@@ -78,7 +78,7 @@ public class PlayerManager : MonoBehaviour
     private void SetZoomSpeed(PlayerController player)
     {
         Vector3 distance = player.self.position - BoatManager.instance.self.position;
-        float time = camera.GetMaxDampTime() / distance.magnitude;
+        float time = cam.GetMaxDampTime() / distance.magnitude;
         camManager.offsetPositionMovement = cameraOriginalOffset;
         camManager.CalculateOffsetRotationMovement();
         if (coroutine != null)
