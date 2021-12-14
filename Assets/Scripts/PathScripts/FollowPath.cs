@@ -62,11 +62,10 @@ public class FollowPath : MonoBehaviour
             if (cam != null)
             {
                 float t = tParam / (path.links[linkIndex].pathPoints.Count - 1);
-                Debug.Log(t + lastTValue);
                 float xOffset = path.links[linkIndex].XCameraOffset.Evaluate(t + lastTValue);
-                float zOffset = path.links[linkIndex].YCameraOffset.Evaluate(tParam);
+                float zOffset = path.links[linkIndex].YCameraOffset.Evaluate(t + lastTValue);
                 cam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = initialOffset + new Vector3(xOffset, 0.0f, zOffset);
-                cam.m_Lens.FieldOfView = initialFOV + path.links[linkIndex].UnzoomCameraOffset.Evaluate(tParam);
+                cam.m_Lens.FieldOfView = initialFOV + path.links[linkIndex].UnzoomCameraOffset.Evaluate(t + lastTValue);
             }
 
             yield return new WaitForEndOfFrame();
