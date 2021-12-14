@@ -36,7 +36,6 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
         cameraOriginalOffset = camManager.offsetPositionMovement;
     }
 

@@ -55,7 +55,7 @@ public class EnterInBoat : MonoBehaviour
                     }
                 }
             }
-            // Player carries a treasure solo or does not carry anything
+            // Player does not carry anything
             else
             {
                 player.selfRigidBody.velocity += Vector3.up;

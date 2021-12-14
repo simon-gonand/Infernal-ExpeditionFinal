@@ -264,7 +264,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnReload(InputAction.CallbackContext context)
     {
-        SceneManager.LoadScene(0);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
     #endregion
 
