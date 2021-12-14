@@ -315,7 +315,7 @@ public class PlayerController : MonoBehaviour
         stunFx.SetActive(true);
 
         //Play Stunt Sound
-        AudioManager.AMInstance.PlayerStuntSFX.Post(gameObject);
+        AudioManager.AMInstance.playerStuntSFX.Post(gameObject);
 
         if (isCarrying)
         {

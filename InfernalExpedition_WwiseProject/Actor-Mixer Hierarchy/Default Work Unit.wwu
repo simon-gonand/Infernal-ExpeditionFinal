@@ -2032,6 +2032,76 @@
 								<ActiveSource Name="Chest_GroundImpact" ID="{6763F551-178E-401B-88D2-79864863BD10}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<BlendContainer Name="Beach_Ambience" ID="{14F67C4C-3851-4E95-9E06-62D483220C9F}" ShortID="257629036">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Ambience_Islande_Bird" ID="{5B7FB44B-0275-4F23-9F89-D4A454F1BDAD}" ShortID="87832487">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Ambience_Islande_Bird" ID="{A0465929-C626-49B4-85CF-464E2A8FAA9F}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="3.22221068159923"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="3.22221068159923"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Ambience_Islande_Bird.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1062721811"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Ambience_Islande_Bird" ID="{A0465929-C626-49B4-85CF-464E2A8FAA9F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Ambience_Islande_Sea" ID="{35B3AE4D-A903-449E-A8CE-EA8A1D2D0FB0}" ShortID="813130826">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Ambience_Islande_Sea" ID="{743249CF-05A1-4F75-B6B5-1A0E53CC6488}">
+											<Language>SFX</Language>
+											<AudioFile>Ambience_Islande_Sea.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="780879456"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Ambience_Islande_Sea" ID="{743249CF-05A1-4F75-B6B5-1A0E53CC6488}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</BlendContainer>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Boat" ID="{532E3262-4C12-4E72-A50A-E3C22B920881}" ShortID="49281316">
@@ -2077,6 +2147,497 @@
 								<ActiveSource Name="Treasure_Collect" ID="{B37ADC70-0187-49D6-B273-018188A32383}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="BoatMovement_Water" ID="{55F60629-196C-43D1-8A77-75B10631104D}" ShortID="903199876">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{962F77C4-659A-40D4-A119-879AF2351941}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BoatMovement_Water" ID="{0F03557E-822C-4FCB-A1BF-736F1BB23283}">
+									<Language>SFX</Language>
+									<AudioFile>BoatMovement_Water.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="67829278"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<PositioningInfo>
+								<Position Name="" ID="{2CF8E30F-9A94-46A3-A5E2-A99DF5DA1F7D}"/>
+							</PositioningInfo>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="BoatMovement_Water" ID="{0F03557E-822C-4FCB-A1BF-736F1BB23283}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<RandomSequenceContainer Name="BoatMovement_Sail" ID="{53AD57C7-74CE-435B-9508-84982C905249}" ShortID="1008565187">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{81F1E494-3A8A-4C37-89BB-43DA7EA47998}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="200"/>
+													<Property Name="Min" Type="Real64" Value="-200"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="BoatMovement_Sail_1" ID="{5A9A876B-C617-4678-9C48-FC8DEAAF7862}" ShortID="19348145">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="BoatMovement_Sail_1" ID="{FF71FE99-E8F0-4F15-91AB-6645F74EAAF6}">
+											<Language>SFX</Language>
+											<AudioFile>BoatMovement_Sail_1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="560983859"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="BoatMovement_Sail_1" ID="{FF71FE99-E8F0-4F15-91AB-6645F74EAAF6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="BoatMovement_Sail_2" ID="{0B8E4E7B-0C7B-49B6-979F-C6202125A191}" ShortID="377320109">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="BoatMovement_Sail_2" ID="{02220181-A0D4-4C3F-93E0-8427F1841AB3}">
+											<Language>SFX</Language>
+											<AudioFile>BoatMovement_Sail_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="921271242"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="BoatMovement_Sail_2" ID="{02220181-A0D4-4C3F-93E0-8427F1841AB3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="BoatMovement_Sail_3" ID="{5220F529-54DD-46DD-8FE9-9C6BB964A231}" ShortID="584336229">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="BoatMovement_Sail_3" ID="{55DD3A38-0DC6-48F0-B477-DE0EA4FFDC4C}">
+											<Language>SFX</Language>
+											<AudioFile>BoatMovement_Sail_3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="322481421"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="BoatMovement_Sail_3" ID="{55DD3A38-0DC6-48F0-B477-DE0EA4FFDC4C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="BoatMovement_Sail_4" ID="{11D75FB1-938C-4E9C-830C-BB7139AD3383}" ShortID="630923847">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="BoatMovement_Sail_4" ID="{A90F2A37-9BB3-4D45-926A-038F9A356A69}">
+											<Language>SFX</Language>
+											<AudioFile>BoatMovement_Sail_4.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="232977521"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="BoatMovement_Sail_4" ID="{A90F2A37-9BB3-4D45-926A-038F9A356A69}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</RandomSequenceContainer>
+						<Sound Name="Boat_Damages_Impact" ID="{1DDCA201-D70D-4E74-B4E9-5A3CB9FA9775}" ShortID="235290905">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{D064688B-0C99-4D18-892E-886143D0F026}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="200"/>
+													<Property Name="Min" Type="Real64" Value="-200"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Boat_Damages_Impact" ID="{9DDCA55E-CE26-441A-961A-C7E1EA66F03B}">
+									<Language>SFX</Language>
+									<AudioFile>Boat_Damages_Impact.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="713391774"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Boat_Damages_Impact" ID="{9DDCA55E-CE26-441A-961A-C7E1EA66F03B}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<RandomSequenceContainer Name="BoatDamage_Coins" ID="{A9F11366-32C0-4FBD-8F1D-09130D38EC15}" ShortID="579760004">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{ADD28E12-5ABB-4416-89B5-613923C580DA}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="100"/>
+													<Property Name="Min" Type="Real64" Value="-100"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Boat_Damages_Coins_1" ID="{ECF1EA4A-369A-410A-B5FB-C86323E89236}" ShortID="726647449">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Boat_Damages_Coins_1" ID="{C10F63A0-B452-40E5-AE57-980EAA269FC6}">
+											<Language>SFX</Language>
+											<AudioFile>Boat_Damages_Coins_1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="457457790"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Boat_Damages_Coins_1" ID="{C10F63A0-B452-40E5-AE57-980EAA269FC6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Boat_Damages_Coins_2" ID="{7AE01785-5C21-455A-BF40-91679851C5D3}" ShortID="720464353">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Boat_Damages_Coins_2" ID="{96026DD6-54F1-47CD-A422-0D5F5BE050CC}">
+											<Language>SFX</Language>
+											<AudioFile>Boat_Damages_Coins_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="779573900"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Boat_Damages_Coins_2" ID="{96026DD6-54F1-47CD-A422-0D5F5BE050CC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</RandomSequenceContainer>
+						<ActorMixer Name="BoatDamage_Wood" ID="{3D4F0713-0F56-4A34-B12D-CAE5651C44F0}" ShortID="602958900">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{FFE99D46-EAB0-4C88-9ED1-000F8BA356E5}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="200"/>
+													<Property Name="Min" Type="Real64" Value="-200"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Boat_Damages_Wood_7" ID="{7A58EB28-FE78-412A-8907-D8E0DC7D5FBA}" ShortID="352968633">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Boat_Damages_Wood_7" ID="{07DE15A9-8440-44CF-8297-51A5F0B52894}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.782808345375722"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Boat_Damages_Wood_7.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1044100472"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Boat_Damages_Wood_7" ID="{07DE15A9-8440-44CF-8297-51A5F0B52894}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Boat_Damages_Wood_5" ID="{A7870612-9E1D-450D-9D47-01ADE9B6A652}" ShortID="684329781">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Boat_Damages_Wood_5" ID="{2C13D359-9363-4F2E-B2DE-867A377252F0}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.14546875"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Boat_Damages_Wood_5.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="494825628"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Boat_Damages_Wood_5" ID="{2C13D359-9363-4F2E-B2DE-867A377252F0}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Boat_Damages_Wood_3" ID="{DEDA3562-B106-4BFF-8001-23BC9176AEE2}" ShortID="172673027">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Boat_Damages_Wood_3" ID="{779AE7AA-F0D3-4910-A9DC-6E895684F55A}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0758164739884393"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Boat_Damages_Wood_3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="717321550"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Boat_Damages_Wood_3" ID="{779AE7AA-F0D3-4910-A9DC-6E895684F55A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Boat_Damages_Wood_1" ID="{24FF85DB-75E5-45A7-BE87-DAB739DF55DE}" ShortID="854644633">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Boat_Damages_Wood_1" ID="{64CFA902-9998-484C-9EC4-F8242578CAC8}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0486912933526011"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Boat_Damages_Wood_1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="827779130"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Boat_Damages_Wood_1" ID="{64CFA902-9998-484C-9EC4-F8242578CAC8}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Boat_Damages_Wood_2" ID="{748B7DFB-E864-4045-B2DF-F2850B0E35E9}" ShortID="363573743">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Boat_Damages_Wood_2" ID="{A46023B6-AFDE-4A56-87B9-33240EA13B26}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.202044797687861"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Boat_Damages_Wood_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="316093788"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Boat_Damages_Wood_2" ID="{A46023B6-AFDE-4A56-87B9-33240EA13B26}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Boat_Damages_Wood_4" ID="{D8846B68-148C-4A2C-8010-3FA58F77196F}" ShortID="166224871">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Boat_Damages_Wood_4" ID="{B3289050-6BD5-442E-BD65-D07E151F8CC2}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.32740625"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Boat_Damages_Wood_4.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="84042361"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Boat_Damages_Wood_4" ID="{B3289050-6BD5-442E-BD65-D07E151F8CC2}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Boat_Damages_Wood_6" ID="{1A6458B7-46A1-4776-8F51-1E9C35CBFB4A}" ShortID="911411671">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Boat_Damages_Wood_6" ID="{2FC9AC6B-87B8-4E46-A132-6BAD96643296}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.240776463150289"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Boat_Damages_Wood_6.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="421740773"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Boat_Damages_Wood_6" ID="{2FC9AC6B-87B8-4E46-A132-6BAD96643296}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</ActorMixer>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="_STINGERS" ID="{7EE80180-F65E-4C73-B42D-4F65D6F5A983}" ShortID="750322419">
