@@ -98,6 +98,7 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         if (_players.Count == 0) return;
+        bool playerIsOutCam = false;
         foreach (PlayerController player in _players)
         {
             Vector2 posScreen = Camera.main.WorldToScreenPoint(player.self.position);
@@ -120,9 +121,10 @@ public class PlayerManager : MonoBehaviour
                     StopCoroutine(coroutine);
                     coroutine = null;
                 }
-                return;
+                playerIsOutCam = true;
             }
         }
-        camManager.isUnzooming = false;
+        if (!playerIsOutCam)
+            camManager.isUnzooming = false;
     }
 }

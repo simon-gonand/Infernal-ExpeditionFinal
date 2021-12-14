@@ -475,6 +475,7 @@ public class PlayerController : MonoBehaviour
             selfRigidBody.velocity += Vector3.up;
             UpdateSwimming();
         }
+        selfRigidBody.velocity = Vector3.zero;
         self.position = respawnPosition;
         isDead = false;
 
