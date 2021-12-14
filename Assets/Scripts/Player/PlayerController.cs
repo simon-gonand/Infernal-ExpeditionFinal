@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Treasures") && !_isCarrying)
+        if (collision.collider.CompareTag("Treasures") && !_isCarrying && isGrounded)
         {
             selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         }
