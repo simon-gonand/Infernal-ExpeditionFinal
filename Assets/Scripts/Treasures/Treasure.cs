@@ -543,7 +543,7 @@ public class Treasure : MonoBehaviour, ICarriable
             RaycastHit hit;
             if (Physics.Raycast(raycastStartPos, -Vector3.up, out hit, 0.5f))
             {
-                if (!hit.collider.isTrigger)
+                if (!hit.collider.isTrigger && _playerInteractingWith.Count == 0)
                 {
                     selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
                     isGrounded = true;
