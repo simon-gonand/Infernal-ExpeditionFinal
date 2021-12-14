@@ -22,6 +22,11 @@ public class OnBoatZone : MonoBehaviour
                 }                
             }
         }
+        if (other.CompareTag("Treasures"))
+        {
+            Treasure treasure = other.GetComponent<Treasure>();
+            treasure.self.SetParent(BoatManager.instance.self);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -47,6 +52,12 @@ public class OnBoatZone : MonoBehaviour
                     }
                 }
             }
+        }
+        if (other.CompareTag("Treasures"))
+        {
+            Treasure treasure = other.GetComponent<Treasure>();
+            if (treasure.playerInteractingWith.Count == 0)
+                treasure.GetOffBoat();
         }
     }
 }
