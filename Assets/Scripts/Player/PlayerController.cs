@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour
         if (!_isSwimming && !_isCarried)
         {
             // If the player is not interacting with anything or carrying a treasure
-            if (!_isInteracting && !_isCarrying && context.performed)
+            if (!_isInteracting && !_isCarrying && context.started)
             {
                 // Define from where the raycast will start
                 Vector3 startRayPos = self.position;
@@ -253,7 +253,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             // Else put the treasure down or uninteract with the interactable
-            else if ((_isInteracting || _isCarrying) && context.performed)
+            else if ((_isInteracting || _isCarrying) && context.canceled)
             {
                 _interactingWith.UninteractWith(this);
                 selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
