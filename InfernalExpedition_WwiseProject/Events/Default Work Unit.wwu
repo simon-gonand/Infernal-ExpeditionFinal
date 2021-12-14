@@ -155,7 +155,17 @@
 						</Event>
 						<Event Name="E_Clsq_Death" ID="{DE703633-8F1F-4897-B7F6-692178349B54}"/>
 						<Event Name="E_Trl_Rotation" ID="{086F2351-BCE8-4E14-9D49-35B788126FA3}"/>
-						<Event Name="E_Trl_Shot" ID="{B167BDA0-DC72-4482-99CA-13FF166CCCE0}"/>
+						<Event Name="E_Trl_Shot" ID="{B167BDA0-DC72-4482-99CA-13FF166CCCE0}">
+							<ChildrenList>
+								<Action Name="" ID="{0ED99E0A-574A-4ADD-8043-6D3AAF75DE92}" ShortID="535128114">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Enemy_Shot" ID="{D2A12702-1C65-41D6-BAD6-9BD8C73C9E49}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="E_Trl_Reload" ID="{6B619C78-4E94-4D06-907E-EA4B26B272CD}"/>
 						<Event Name="E_Trl_Death" ID="{F7C254A0-5F5C-43CD-9A84-E3FB92099550}"/>
 						<Event Name="E_Pks_Steps" ID="{BBB10A36-8D94-489F-980B-836E03D6DB4F}"/>
@@ -169,9 +179,24 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ChildrenList>
-						<Event Name="B_Moving" ID="{6C541620-49F8-420A-AB26-53DDDE6AEDEC}"/>
-						<Event Name="B_Rotation" ID="{6728D8F2-5E4E-49E3-A8AE-4CCA1C583B28}"/>
-						<Event Name="B_Ladders" ID="{7B4BFD0B-EEE8-406C-9D2F-3A86BA4B17AB}"/>
+						<Event Name="B_Moving" ID="{6C541620-49F8-420A-AB26-53DDDE6AEDEC}">
+							<ChildrenList>
+								<Action Name="" ID="{61A8AA23-7BD5-42C6-AE10-FF9D91914EB0}" ShortID="303805305">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BoatMovement_Water" ID="{55F60629-196C-43D1-8A77-75B10631104D}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{8183FE63-9990-4BFE-B9ED-14126AC4BD77}" ShortID="770404982">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BoatMovement_Sail" ID="{53AD57C7-74CE-435B-9508-84982C905249}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="B_ChestCollect" ID="{8A949A82-31F4-4174-89A1-8A98EAAF71A5}">
 							<ChildrenList>
 								<Action Name="" ID="{FCD9AD8C-BD17-48E9-983D-CD969ABA8D91}" ShortID="1023648462">
@@ -200,7 +225,85 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="B_Damages" ID="{9EAD575C-7A53-4D5D-B5BC-68022245B8ED}"/>
+						<Event Name="B_Damages" ID="{9EAD575C-7A53-4D5D-B5BC-68022245B8ED}">
+							<ChildrenList>
+								<Action Name="" ID="{C4AE0ED0-15F2-4E4D-A63C-7A21A60F6C4D}" ShortID="287833782">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Boat_Damages_Impact" ID="{1DDCA201-D70D-4E74-B4E9-5A3CB9FA9775}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{5A1AEDD9-3B6D-4D1F-93F6-6BEED28D4F2A}" ShortID="734298674">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Boat_Damages_Wood_4" ID="{D8846B68-148C-4A2C-8010-3FA58F77196F}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{F8FF8265-BCD0-4266-992C-6D2FF5EEC9CB}" ShortID="202954714">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Boat_Damages_Wood_1" ID="{24FF85DB-75E5-45A7-BE87-DAB739DF55DE}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{49D97F9E-C8F3-4165-983E-838B1AD1FA41}" ShortID="733950521">
+									<PropertyList>
+										<Property Name="Probability" Type="Real64" Value="40"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Boat_Damages_Wood_2" ID="{748B7DFB-E864-4045-B2DF-F2850B0E35E9}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{1BD075E9-ED78-49D3-B1FA-575A2091DC50}" ShortID="257784540">
+									<PropertyList>
+										<Property Name="Probability" Type="Real64" Value="20"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Boat_Damages_Wood_3" ID="{DEDA3562-B106-4BFF-8001-23BC9176AEE2}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{31756D95-E09F-4C78-BC0A-4B76233430B3}" ShortID="949786380">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Boat_Damages_Wood_5" ID="{A7870612-9E1D-450D-9D47-01ADE9B6A652}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{C5E799F0-DE9A-410E-9871-208D721CBDE9}" ShortID="435518423">
+									<PropertyList>
+										<Property Name="Probability" Type="Real64" Value="60"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Boat_Damages_Wood_6" ID="{1A6458B7-46A1-4776-8F51-1E9C35CBFB4A}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{7DD19E45-948F-47C3-8AA4-048C45B3E632}" ShortID="179964543">
+									<PropertyList>
+										<Property Name="Probability" Type="Real64" Value="40"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Boat_Damages_Wood_7" ID="{7A58EB28-FE78-412A-8907-D8E0DC7D5FBA}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{53F9952F-A5BB-47C9-B73E-BC5389DB1FA3}" ShortID="269312722">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BoatDamage_Coins" ID="{A9F11366-32C0-4FBD-8F1D-09130D38EC15}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Captain" ID="{8DA6ED24-ACFC-405A-819C-760013F604AB}" ShortID="591252907">
@@ -217,17 +320,19 @@
 					<ChildrenList>
 						<Event Name="W_TreasursIdle" ID="{DDCBDD01-31DA-408F-9CC4-6D5DB68AF353}"/>
 						<Event Name="W_ChestDrop" ID="{386ADD4D-4A6B-4627-A5A0-6731D6891A74}"/>
-					</ChildrenList>
-				</Folder>
-				<Folder Name="Ambients" ID="{8951F274-C2B5-429D-AF17-5DD13276A75E}" ShortID="1033771644">
-					<PropertyList>
-						<Property Name="Color" Type="int16" Value="16"/>
-						<Property Name="OverrideColor" Type="bool" Value="True"/>
-					</PropertyList>
-					<ChildrenList>
-						<Event Name="Forest_Ambient" ID="{3438B74B-267F-46A6-BBA9-A39C33023080}"/>
-						<Event Name="Beach_Ambient" ID="{5689551D-75AC-4347-9616-1D60758E0A88}"/>
 						<Event Name="Sea_Ambient" ID="{7EAD759C-7A29-4BF7-924C-E40ADFF5CD5C}"/>
+						<Event Name="Beach_Ambient" ID="{5689551D-75AC-4347-9616-1D60758E0A88}">
+							<ChildrenList>
+								<Action Name="" ID="{C88CDD31-C549-421E-B150-0672BD187429}" ShortID="78840240">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Beach_Ambience" ID="{14F67C4C-3851-4E95-9E06-62D483220C9F}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Forest_Ambient" ID="{3438B74B-267F-46A6-BBA9-A39C33023080}"/>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

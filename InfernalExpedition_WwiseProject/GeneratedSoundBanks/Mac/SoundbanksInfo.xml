@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="3819241499">
+		<SoundBank Id="393239870" Language="SFX" Hash="3886559748">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -30,6 +30,86 @@
 					<ActionTrigger>
 						<ActionTriggerEntry Id="1087296951" Name="Collect_Treasure" ObjectPath="\Triggers\Default Work Unit\Collect_Treasure"/>
 					</ActionTrigger>
+				</Event>
+				<Event Id="44932442" Name="B_Damages" ObjectPath="\Events\Default Work Unit\Boat\B_Damages" DurationType="OneShot" DurationMin="1.132871" DurationMax="1.427327">
+					<IncludedMemoryFiles>
+						<File Id="84042361" Language="SFX">
+							<ShortName>Boat_Damages_Wood_4.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_4_EBA26799.wem</Path>
+						</File>
+						<File Id="316093788" Language="SFX">
+							<ShortName>Boat_Damages_Wood_2.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_2_8ABC3BB3.wem</Path>
+						</File>
+						<File Id="421740773" Language="SFX">
+							<ShortName>Boat_Damages_Wood_6.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_6_1C89FA8F.wem</Path>
+						</File>
+						<File Id="457457790" Language="SFX">
+							<ShortName>Boat_Damages_Coins_1.wav</ShortName>
+							<Path>SFX\Boat_Damages_Coins_1_10C4C929.wem</Path>
+						</File>
+						<File Id="494825628" Language="SFX">
+							<ShortName>Boat_Damages_Wood_5.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_5_750439B6.wem</Path>
+						</File>
+						<File Id="713391774" Language="SFX">
+							<ShortName>Boat_Damages_Impact.wav</ShortName>
+							<Path>SFX\Boat_Damages_Impact_10C4C929.wem</Path>
+						</File>
+						<File Id="717321550" Language="SFX">
+							<ShortName>Boat_Damages_Wood_3.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_3_848BDF57.wem</Path>
+						</File>
+						<File Id="779573900" Language="SFX">
+							<ShortName>Boat_Damages_Coins_2.wav</ShortName>
+							<Path>SFX\Boat_Damages_Coins_2_10C4C929.wem</Path>
+						</File>
+						<File Id="827779130" Language="SFX">
+							<ShortName>Boat_Damages_Wood_1.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_1_DF5FDAFE.wem</Path>
+						</File>
+						<File Id="1044100472" Language="SFX">
+							<ShortName>Boat_Damages_Wood_7.wav</ShortName>
+							<Path>SFX\Boat_Damages_Wood_7_CE8CAF26.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2703574490" Name="B_Moving" ObjectPath="\Events\Default Work Unit\Boat\B_Moving" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="67829278" Language="SFX">
+							<ShortName>BoatMovement_Water.wav</ShortName>
+							<Path>SFX\BoatMovement_Water_D79FB2B7.wem</Path>
+						</File>
+						<File Id="232977521" Language="SFX">
+							<ShortName>BoatMovement_Sail_4.wav</ShortName>
+							<Path>SFX\BoatMovement_Sail_4_10C4C929.wem</Path>
+						</File>
+						<File Id="322481421" Language="SFX">
+							<ShortName>BoatMovement_Sail_3.wav</ShortName>
+							<Path>SFX\BoatMovement_Sail_3_10C4C929.wem</Path>
+						</File>
+						<File Id="560983859" Language="SFX">
+							<ShortName>BoatMovement_Sail_1.wav</ShortName>
+							<Path>SFX\BoatMovement_Sail_1_10C4C929.wem</Path>
+						</File>
+						<File Id="921271242" Language="SFX">
+							<ShortName>BoatMovement_Sail_2.wav</ShortName>
+							<Path>SFX\BoatMovement_Sail_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3401161239" Name="Beach_Ambient" ObjectPath="\Events\Default Work Unit\World\Beach_Ambient" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="780879456" Language="SFX">
+							<ShortName>Ambience_Islande_Sea.wav</ShortName>
+							<Path>SFX\Ambience_Islande_Sea_D79FB2B7.wem</Path>
+						</File>
+						<File Id="1062721811" Language="SFX">
+							<ShortName>Ambience_Islande_Bird.wav</ShortName>
+							<Path>SFX\Ambience_Islande_Bird_E36F462B.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="903419691" Name="E_Clsq_Attack" ObjectPath="\Events\Default Work Unit\Enemy\E_Clsq_Attack" DurationType="OneShot" DurationMin="0.471936" DurationMax="0.517484">
 					<IncludedMemoryFiles>
@@ -396,6 +476,18 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="1504870946" Name="P_Throw" ObjectPath="\Events\Default Work Unit\Players\P_Throw" DurationType="OneShot" DurationMin="0.247933" DurationMax="1.130663">
+					<IncludedMemoryFiles>
+						<File Id="462619250" Language="SFX">
+							<ShortName>Player_Throw_2.wav</ShortName>
+							<Path>SFX\Player_Throw_2_10C4C929.wem</Path>
+						</File>
+						<File Id="685935742" Language="SFX">
+							<ShortName>Player_Throw.wav</ShortName>
+							<Path>SFX\Player_Throw_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 			</IncludedEvents>
 			<StateGroups>
 				<StateGroup Id="4040317175" Name="Ground_Type" ObjectPath="\States\Default Work Unit\Ground_Type" GUID="{9F5DF1C2-B671-4D8E-8E85-D4F9280FAAF2}">
@@ -419,20 +511,95 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="1730564753" Language="SFX" Hash="3434898113">
+		<SoundBank Id="1730564753" Language="SFX" Hash="2843367234">
 			<ObjectPath>\SoundBanks\Default Work Unit\Musics</ObjectPath>
 			<ShortName>Musics</ShortName>
 			<Path>Musics.bnk</Path>
 			<IncludedEvents>
 				<Event Id="3083031782" Name="Run_Theme" ObjectPath="\Events\Musics\Musics\Run_Theme" DurationType="Infinite">
 					<IncludedMemoryFiles>
-						<File Id="499703967" Language="SFX">
-							<ShortName>Test-Song.wav</ShortName>
-							<Path>SFX\Test-Song_D79FB2B7.wem</Path>
+						<File Id="13670849" Language="SFX">
+							<ShortName>Pillage A\CombatA_Cellos_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Cellos_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="70022786" Language="SFX">
+							<ShortName>Pillage A\CombatA_Basson_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Basson_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="87767042" Language="SFX">
+							<ShortName>CombatB_Flute-2_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\CombatB_Flute-2_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="142469888" Language="SFX">
+							<ShortName>Pillage A\CombatA_Strings-2_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Strings-2_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="163457329" Language="SFX">
+							<ShortName>STINGER_TreasurCollect.wav</ShortName>
+							<Path>SFX\STINGER_TreasurCollect_D79FB2B7.wem</Path>
+						</File>
+						<File Id="169300384" Language="SFX">
+							<ShortName>Pillage A\CombatA_Strings-1_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Strings-1_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="244074245" Language="SFX">
+							<ShortName>CombatB_Marimba-2_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\CombatB_Marimba-2_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="297003049" Language="SFX">
+							<ShortName>Pillage B\CombatB_Basson_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Basson_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="311519212" Language="SFX">
+							<ShortName>CombatB_Dulcimer-3_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\CombatB_Dulcimer-3_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="313398368" Language="SFX">
+							<ShortName>Pillage A\CombatA_Dulcimer_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Dulcimer_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="338165594" Language="SFX">
+							<ShortName>Pillage B\CombatB_Violons_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Violons_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="520914665" Language="SFX">
+							<ShortName>Pillage B\CombatB_Flute_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Flute_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="538941454" Language="SFX">
+							<ShortName>Pillage B\CombatB_Dulcimer_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Dulcimer_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="659660252" Language="SFX">
+							<ShortName>CombatB_Dulcimer-2_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\CombatB_Dulcimer-2_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="662446235" Language="SFX">
+							<ShortName>Pillage B\CombatB_Marimba_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Marimba_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="780506284" Language="SFX">
+							<ShortName>Pillage B\CombatB_Cellos_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Cellos_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="785336816" Language="SFX">
+							<ShortName>Pillage B\CombatB_Beat_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage B\CombatB_Beat_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="831820229" Language="SFX">
+							<ShortName>Pillage A\CombatA_Beat_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Beat_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="910625862" Language="SFX">
+							<ShortName>Pillage A\CombatA_Violons_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Pillage A\CombatA_Violons_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
 			</IncludedEvents>
+			<Triggers>
+				<Trigger Id="1087296951" Name="Collect_Treasure" ObjectPath="\Triggers\Default Work Unit\Collect_Treasure"/>
+			</Triggers>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>
