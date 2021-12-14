@@ -45,7 +45,7 @@ public class PathEditor : Editor
         waypointsRList.draggable = false;
 
         linksRList = new ReorderableList(serializedObject, linksList);
-        linksRList.elementHeight = EditorGUIUtility.singleLineHeight * 2.0f;
+        linksRList.elementHeight = EditorGUIUtility.singleLineHeight * 3.0f;
         linksRList.drawHeaderCallback += HeaderLinkCallback;
         linksRList.onSelectCallback += SelectLinkCallback;
         linksRList.drawElementCallback += ElementLinkCallback;
@@ -190,14 +190,15 @@ public class PathEditor : Editor
     }
     private void ElementLinkCallback(Rect rect, int index, bool isActive, bool isFocused)
     {
-        rect.y += 2;
+        rect.y += 3;
         Rect leftRect = new Rect(rect.x, rect.y, rect.width / 5, rect.height);
         EditorGUI.LabelField(leftRect, index + " - " + (index + 1));
 
         Rect rightRect = new Rect(rect.x + leftRect.width, rect.y, rect.width - rect.width / 5, rect.height);
-        Rect speedRect = new Rect(rect.x + rightRect.width / 2, rect.y, rightRect.width / 3, rect.height / 2);
-        Rect camOffsetXRect = new Rect(rightRect.x, speedRect.y + speedRect.height, rightRect.width / 2, rect.height / 2);
-        Rect camOffsetYRect = new Rect(camOffsetXRect.x + camOffsetXRect.width, speedRect.y + speedRect.height, rightRect.width / 2, rect.height / 2);
+        Rect speedRect = new Rect(rect.x + rightRect.width / 2, rect.y, rightRect.width / 3, rect.height / 3);
+        Rect camOffsetXRect = new Rect(rightRect.x, speedRect.y + speedRect.height, rightRect.width / 2, rect.height / 3);
+        Rect camOffsetYRect = new Rect(camOffsetXRect.x + camOffsetXRect.width, speedRect.y + speedRect.height, rightRect.width / 2, rect.height / 3);
+        Rect camZoomOffset = new Rect(rightRect.x, camOffsetXRect.y + camOffsetXRect.height, rightRect.width, rect.height / 3);
         Link currentLink = linksList.GetArrayElementAtIndex(index).objectReferenceValue as Link;
         EditorGUIUtility.labelWidth /= 4;
         EditorGUI.BeginChangeCheck();
@@ -213,10 +214,12 @@ public class PathEditor : Editor
         SerializedProperty camOffsetX = linkObject.FindProperty("XCameraOffset");
         SerializedProperty camOffsetY = linkObject.FindProperty("YCameraOffset");
         EditorGUIUtility.labelWidth *= 4;
+        SerializedProperty offsetCamera = linkObject.FindProperty("UnzoomCameraOffset");
         EditorGUIUtility.labelWidth /= 2;
         EditorGUIUtility.fieldWidth /= 6;
         EditorGUI.PropertyField(camOffsetXRect, camOffsetX);
         EditorGUI.PropertyField(camOffsetYRect, camOffsetY);
+        EditorGUI.PropertyField(camZoomOffset, offsetCamera);
 
         EditorGUIUtility.labelWidth *= 2;
         EditorGUIUtility.fieldWidth *= 6;

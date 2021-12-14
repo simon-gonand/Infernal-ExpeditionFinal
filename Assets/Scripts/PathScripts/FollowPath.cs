@@ -11,6 +11,7 @@ public class FollowPath : MonoBehaviour
 
     private float initialPosY;
     private Vector3 initialOffset;
+    private float initialFOV;
 
     private int linkIndex = 0;
 
@@ -29,7 +30,10 @@ public class FollowPath : MonoBehaviour
 
         initialPosY = self.position.y;
         if (cam != null)
+        {
             initialOffset = cam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
+            initialFOV = cam.m_Lens.FieldOfView;
+        }
     }
 
     private IEnumerator FollowCurve()
@@ -59,6 +63,7 @@ public class FollowPath : MonoBehaviour
                 float xOffset = path.links[linkIndex].XCameraOffset.Evaluate(tParam);
                 float zOffset = path.links[linkIndex].YCameraOffset.Evaluate(tParam);
                 cam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = initialOffset + new Vector3(xOffset, 0.0f, zOffset);
+                cam.m_Lens.FieldOfView = initialFOV + path.links[linkIndex].UnzoomCameraOffset.Evaluate(tParam);
             }
 
             yield return new WaitForEndOfFrame();
