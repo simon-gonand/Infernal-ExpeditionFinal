@@ -19,6 +19,11 @@ public class CarryPlayer : MonoBehaviour, ICarriable
         carrier.carrying = this;
         this.carrier = carrier;
         selfScript.isCarried = true;
+        if (selfScript.isSwimming)
+        {
+            selfScript.selfRigidBody.velocity += Vector3.up;
+            selfScript.UpdateSwimming();
+        }
         Vector3 snapPosition = carrier.playerCarryingPoint.position;
         snapPosition.y += selfScript.self.lossyScale.y / 2;
         selfScript.self.position = snapPosition;
