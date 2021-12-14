@@ -40,14 +40,10 @@ public class ThrowTreasureUi : MonoBehaviour
 
                 angleSimulation = Vector3.Angle((selfTreasure.playerThrowDir.normalized + (Vector3.up * selfTreasure.category.multiplyUpAngle)), selfTreasure.playerThrowDir);
 
-                Debug.Log((selfTreasure.playerThrowDir.normalized + (Vector3.up * selfTreasure.category.multiplyUpAngle)).normalized);
-
                 float distForce = (selfTreasure.category.maxLaunchForce / (selfTreasure.category.maxPlayerCarrying + 1 - selfTreasure.playerInteractingWith.Count));
                 distanceMax = ((distForce  * distForce) * Mathf.Sin(2 * (Mathf.Deg2Rad * angleSimulation))) / (9.8f * 3);
 
                 distanceMax = distanceMax / selfTreasure.self.lossyScale.x;
-
-                Debug.Log(distanceMax);
 
                 // Set UI position and size correctly 
                 throwFiller.rectTransform.sizeDelta = new Vector2(distanceMax, throwFiller.rectTransform.rect.height);
