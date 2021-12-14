@@ -399,7 +399,7 @@ public class Treasure : MonoBehaviour, ICarriable
         player.playerGraphics.forward = player.self.forward;
 
         // Update speed malus
-        //ApplySpeedMalus();
+        ApplySpeedMalus();
         if (_playerInteractingWith.Count == 1)
         {
             player = _playerInteractingWith[0];
@@ -447,26 +447,28 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private void ApplySpeedMalus()
     {
-        /*// Deal with speed according to the number of player carrying the treasure
+        // Deal with speed according to the number of player carrying the treasure
         if (_playerInteractingWith.Count == category.maxPlayerCarrying)
             speedMalus = 0;
         else
-            speedMalus = category.speedMalus / _playerInteractingWith.Count;*/
-        speedMalus = category.speedMalus;
+            speedMalus = category.speedMalus / (_playerInteractingWith.Count * _playerInteractingWith.Count);
+        //speedMalus = category.speedMalus;
     }
 
     private void TreasureMovement()
     {
+        Vector3 direction = Vector3.zero;
         if (_playerInteractingWith.Count > 0)
         {
             selfRigidbody.velocity = Vector3.zero;
             foreach(PlayerController player in _playerInteractingWith)
             {
                 if (player.isLaunching) continue;
-                Vector3 applyForces = player.movement;
+                Vector3 applyForces = player.movement / _playerInteractingWith.Count;
                 applyForces.y = 0.0f;
-                selfRigidbody.velocity += applyForces;
+                direction += applyForces;
             }
+            selfRigidbody.velocity = direction;
         }
     }
 
