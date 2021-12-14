@@ -614,10 +614,8 @@ public class PlayerController : MonoBehaviour
             Treasure treasure = _carrying as Treasure;
             if (treasure != null && treasure.self.position.y - self.position.y > self.lossyScale.y && !isGrounded)
             {
-                Debug.Log("Treasure " + treasure.self.position.y);
-                Debug.Log("Player " + self.position.y);
-                Debug.Log("Total " + (treasure.self.position.y - self.position.y));
                 treasure.UninteractWith(this);
+                selfRigidBody.mass = 1;
             }
         }
     }
