@@ -365,6 +365,8 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             launchForce = 0.0f;
 
+            if (self.parent != null)
+                self.SetParent(null);
 
             // Play throw sound
 

@@ -127,7 +127,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
             // Enable rigidbody
             selfScript.selfRigidBody.mass = 1;
             selfScript.selfRigidBody.isKinematic = false;
-            selfScript.self.SetParent(player.self.parent);
+            selfScript.self.SetParent(null);
             selfScript.selfRigidBody.AddForce((launchDirection + Vector3.up) * launchForce, ForceMode.Impulse);
             selfScript.isCarried = false;
 
