@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     [Header ("Debug")]
     public bool drawIteractLine;
 
+    [Header("Audio")]
+    public bool canPlaySound = false;
 
     public LayerMask mask;
     private IInteractable _interactingWith;
@@ -628,8 +630,28 @@ public class PlayerController : MonoBehaviour
         Vector3 startPos = self.position;
         startPos.y -= selfCollider.bounds.size.y / 4;
         Debug.DrawRay(startPos, Vector3.down * 0.5f);
-        if (Physics.Raycast(startPos, Vector3.down, 0.5f)) isGrounded = true;
-        else isGrounded = false;
+
+        if (Physics.Raycast(startPos, Vector3.down, 0.5f))
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+            if (canPlaySound == false)
+            {
+                canPlaySound = true;
+            }
+        }
+
+        //Sound
+        if (canPlaySound && isGrounded)
+        {
+            AudioManager.AMInstance.playerGroundImpactSFX.Post(gameObject);
+            canPlaySound = false;
+        }
+        
+
     }
 
     private void CheckIsUnderMap()
