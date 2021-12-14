@@ -44,6 +44,7 @@ public class TurretAI : MonoBehaviour, EnemiesAI
         ball.GetComponent<Rigidbody>().AddForce(self.forward * firePower, ForceMode.Impulse);
 
         // Play fire sound
+        AudioManager.AMInstance.trlEnemyShotSFX.Post(gameObject);
 
         StartCoroutine(FireCoroutine());
     }

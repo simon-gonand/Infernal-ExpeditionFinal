@@ -83,6 +83,8 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
         selfScript.anim.SetBool("IsGettingCarried", false);
 
+        
+
     }
 
     public void GetOnBoat(Transform entryPosition)
@@ -137,7 +139,8 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
             // Update launched anim
 
-            // Play Launch sound
+            // Play Launch Sound
+            AudioManager.AMInstance.playerThrowSFX.Post(gameObject);
 
             launchForce = 0.0f;
         }

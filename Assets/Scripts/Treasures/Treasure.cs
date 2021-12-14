@@ -198,6 +198,9 @@ public class Treasure : MonoBehaviour, ICarriable
         player.anim.SetTrigger("startCarrying");
         player.sword.SetActive(false);
 
+        // Play Carry Sound
+        AudioManager.AMInstance.playerCarrySFX.Post(gameObject);
+
         player.carrying = this;
 
         if (playerColliding.Count > 0)
@@ -366,7 +369,8 @@ public class Treasure : MonoBehaviour, ICarriable
 
             Debug.Log((launchDirection.normalized + (Vector3.up * category.multiplyUpAngle)).normalized);
 
-            // Play throw sound
+            // Play Launch Sound
+            AudioManager.AMInstance.playerThrowSFX.Post(gameObject);
 
             isGrounded = false;
         }

@@ -274,6 +274,7 @@ public class PlayerController : MonoBehaviour
     {
         // Play attack animation
         anim.SetTrigger("attack");
+        AudioManager.AMInstance.playerAttackSFX.Post(gameObject);
 
         Collider[] hit = Physics.OverlapSphere(attackPoint.position, playerPreset.attackRange);
         foreach(Collider hitted in hit)
@@ -433,8 +434,9 @@ public class PlayerController : MonoBehaviour
     private void Dash()
     {
         anim.SetBool("isDashing", true);
-        
+
         // Dash sound
+        AudioManager.AMInstance.playerDashSFX.Post(gameObject);
 
         float normalizedTimer = dashTimer / playerPreset.dashTime;
         

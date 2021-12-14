@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4674846af2838a459e95199a53f1e87, type: 3}
   m_Name: AkWwiseProjectData
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   AcousticTextureWwu:
   - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
     PathAndIcons:
@@ -25,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 5ce880947766eb4cbd5f560f38e08f10
     GuidInternal: 
-    m_lastTime: -8585655692085127774
+    m_lastTime: -8585644368056645582
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -39,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 7b7f0c167fc8a14f946930294b69377c
     GuidInternal: 
-    m_lastTime: -8585655692085177641
+    m_lastTime: -8585644368056675513
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -67,15 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 9dce80c3a7123942813a1007a9fa761f
     GuidInternal: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_lastTime: -8585625283234710933
-=======
-    m_lastTime: -8585624433228116296
->>>>>>> fixBugs
-=======
-    m_lastTime: -8585624552539304673
->>>>>>> FeedBack_UI
+    m_lastTime: -8585621679690570992
     List:
     - name: Musics
       guid: 36549465458ece4a996756f69665369a
@@ -117,33 +108,8 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 06febf392af11e40ad2e9e6e478aa9eb
     GuidInternal: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_lastTime: -8585625283235069966
-=======
-    m_lastTime: -8585624433235037822
->>>>>>> fixBugs
-=======
-    m_lastTime: -8585624552539673686
->>>>>>> FeedBack_UI
+    m_lastTime: -8585621679690513136
     List:
-    - name: Ambients
-      guid: 74f25189b5c29d42af175dd13276a75e
-      id: 4095160042
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Ambients
-        ObjectType: 4
-        guid: 74f25189b5c29d42af175dd13276a75e
-      Path: Events\Default Work Unit\Ambients
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: B_ChestCollect
       guid: 829a948af431744189a18a98eaaf71a5
       id: 1992604323
@@ -182,28 +148,8 @@ MonoBehaviour:
         guid: 5c57ad9e537a5d4db5bc68022245b8ed
       Path: Events\Default Work Unit\Boat\B_Damages
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: B_Ladders
-      guid: 0bfd4b7be8ee6c409d2f3a86ba4b17ab
-      id: 67059487
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Boat
-        ObjectType: 4
-        guid: f42f369205a7374bb730b58bfc05968d
-      - ElementName: B_Ladders
-        ObjectType: 3
-        guid: 0bfd4b7be8ee6c409d2f3a86ba4b17ab
-      Path: Events\Default Work Unit\Boat\B_Ladders
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.427327
+      minDuration: 1.132871
     - name: B_Moving
       guid: 2016546cf8490a42ab2653ddde6aedec
       id: 2703574490
@@ -224,26 +170,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: B_Rotation
-      guid: f2d828674e5ee349a8ae4cca1c583b28
-      id: 1226799098
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Boat
-        ObjectType: 4
-        guid: f42f369205a7374bb730b58bfc05968d
-      - ElementName: B_Rotation
-        ObjectType: 3
-        guid: f2d828674e5ee349a8ae4cca1c583b28
-      Path: Events\Default Work Unit\Boat\B_Rotation
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: Beach_Ambient
       guid: 1d558956ac75474396161d60758e0a88
       id: 3401161239
@@ -254,13 +180,13 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Ambients
+      - ElementName: World
         ObjectType: 4
-        guid: 74f25189b5c29d42af175dd13276a75e
+        guid: 1025725beda7974597f1f8b466ab7bbc
       - ElementName: Beach_Ambient
         ObjectType: 3
         guid: 1d558956ac75474396161d60758e0a88
-      Path: Events\Default Work Unit\Ambients\Beach_Ambient
+      Path: Events\Default Work Unit\World\Beach_Ambient
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -545,13 +471,13 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Ambients
+      - ElementName: World
         ObjectType: 4
-        guid: 74f25189b5c29d42af175dd13276a75e
+        guid: 1025725beda7974597f1f8b466ab7bbc
       - ElementName: Forest_Ambient
         ObjectType: 3
         guid: 4bb738347f26a646bba9a39c33023080
-      Path: Events\Default Work Unit\Ambients\Forest_Ambient
+      Path: Events\Default Work Unit\World\Forest_Ambient
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -793,8 +719,8 @@ MonoBehaviour:
         guid: e2edb52c3d5072468e9cf4a48b3e3126
       Path: Events\Default Work Unit\Players\P_Throw
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.130663
+      minDuration: 0.247933
     - name: Players
       guid: 718ee505135c2340bbc3a7c784e87c30
       id: 2188949101
@@ -822,13 +748,13 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Ambients
+      - ElementName: World
         ObjectType: 4
-        guid: 74f25189b5c29d42af175dd13276a75e
+        guid: 1025725beda7974597f1f8b466ab7bbc
       - ElementName: Sea_Ambient
         ObjectType: 3
         guid: 9c75ad7e297af74b924ce40adff5cd5c
-      Path: Events\Default Work Unit\Ambients\Sea_Ambient
+      Path: Events\Default Work Unit\World\Sea_Ambient
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -900,11 +826,7 @@ MonoBehaviour:
     ParentPath: Events\Musics
     guid: 8b7a9cc2f9341b47876f857ec1bcbfce
     GuidInternal: 
-<<<<<<< HEAD
-    m_lastTime: -8585631572888771520
-=======
-    m_lastTime: -8585627431793970535
->>>>>>> fixBugs
+    m_lastTime: -8585621018770161461
     List:
     - name: Credit_Theme
       guid: b5a5df838c37b849a41524cd44cf21ae
@@ -995,7 +917,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 44e9a2aa08be74469cc4ca937f63ac4a
     GuidInternal: 
-    m_lastTime: -8585655692085187612
+    m_lastTime: -8585644368056705429
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -1009,11 +931,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 45ac22c6d94a704bb944d240967dde98
     GuidInternal: 
-<<<<<<< HEAD
-    m_lastTime: -8585631572884326376
-=======
-    m_lastTime: -8585627431785628825
->>>>>>> fixBugs
+    m_lastTime: -8585644357622712001
     List:
     - name: Ground_Type
       guid: c2f15d9f71b68e4d8e85d4f9280faaf2
@@ -1157,7 +1075,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 23f8d2162ea04c49ba51910d0ab18446
     GuidInternal: 
-    m_lastTime: -8585655692085137751
+    m_lastTime: -8585644368056645582
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -1171,15 +1089,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 27f4251b6ad34743b8dc3552bbe667d3
     GuidInternal: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_lastTime: -8585625283234690988
-=======
-    m_lastTime: -8585624433228106341
->>>>>>> fixBugs
-=======
-    m_lastTime: -8585624552539284723
->>>>>>> FeedBack_UI
+    m_lastTime: -8585626878185918775
     List:
     - name: Collect_Treasure
       guid: 88eb52da3d6b9743ba24b8c441c80d38
@@ -1195,19 +1105,9 @@ MonoBehaviour:
         ObjectType: 14
         guid: 88eb52da3d6b9743ba24b8c441c80d38
       Path: Triggers\Default Work Unit\Collect_Treasure
-=======
-  AcousticTextureWwu: []
-  AuxBusWwu: []
-  BankWwu: []
-  EventWwu: []
-  RtpcWwu: []
-  StateWwu: []
-  SwitchWwu: []
-  TriggerWwu: []
->>>>>>> SDIntegration
-  ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedFileSystemItemIds: 390000003a000000
+  ExpandedWaapiItemIds: 390000003a000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
-  currentDataSource: 0
+  currentDataSource: 1
   CurrentPluginConfig: 
