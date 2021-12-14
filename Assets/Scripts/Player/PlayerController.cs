@@ -462,6 +462,10 @@ public class PlayerController : MonoBehaviour
     {
         isDead = true;
         // Play death out of bounds sound
+        if (isInteracting)
+        {
+            interactingWith.UninteractWith(this);
+        }
         StartCoroutine(Respawn());
     }
 
