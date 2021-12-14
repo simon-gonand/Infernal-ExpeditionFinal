@@ -35,12 +35,12 @@ public class ThrowTreasureUi : MonoBehaviour
                 Vector3 rotation = lookRotation.eulerAngles;
                 objToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-                throwFiller.fillAmount =  selfTreasure.launchForce / selfTreasure.category.maxLaunchForce;
+                throwFiller.fillAmount =  selfTreasure.launchForce / selfTreasure.category.forceNbPlayer[selfTreasure.playerInteractingWith.Count - 1];
 
 
                 angleSimulation = Vector3.Angle((selfTreasure.playerThrowDir.normalized + (Vector3.up * selfTreasure.category.multiplyUpAngle)), selfTreasure.playerThrowDir);
 
-                float distForce = (selfTreasure.category.maxLaunchForce / (selfTreasure.category.maxPlayerCarrying + 1 - selfTreasure.playerInteractingWith.Count));
+                float distForce = selfTreasure.category.forceNbPlayer[selfTreasure.playerInteractingWith.Count - 1];
                 distanceMax = ((distForce  * distForce) * Mathf.Sin(2 * (Mathf.Deg2Rad * angleSimulation))) / (9.8f * 3);
 
                 distanceMax = distanceMax / selfTreasure.self.lossyScale.x;
