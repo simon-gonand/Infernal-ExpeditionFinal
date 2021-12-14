@@ -409,6 +409,9 @@ public class Treasure : MonoBehaviour, ICarriable
         {
             player = _playerInteractingWith[0];
             associateColliders[player].GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
+
+            player.self.forward = associateColliders[player].transform.forward;
+
             startPlayerPosition = player.self.position;
             startPlayerRotation = player.self.rotation;
 
