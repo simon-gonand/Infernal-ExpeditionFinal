@@ -443,6 +443,7 @@ public class PlayerController : MonoBehaviour
 
         dashTimer += Time.deltaTime;
 
+        
         if (dashTimer > playerPreset.dashTime)
         {
             StopDash();

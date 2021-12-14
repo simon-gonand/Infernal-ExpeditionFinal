@@ -27,6 +27,9 @@ public class CarryPlayer : MonoBehaviour, ICarriable
         selfScript.self.SetParent(carrier.self);
 
         // Is Carried animation
+        selfScript.anim.SetTrigger("startGettingCarried");
+        selfScript.anim.SetBool("IsGettingCarried", true);
+
         // Is Carrying animation
 
         // Play Carry Sound
@@ -78,6 +81,8 @@ public class CarryPlayer : MonoBehaviour, ICarriable
         selfScript.selfRigidBody.AddForce(player.self.forward * 2000.0f);
         selfScript.self.SetParent(null);
 
+        selfScript.anim.SetBool("IsGettingCarried", false);
+
     }
 
     public void GetOnBoat(Transform entryPosition)
@@ -126,6 +131,9 @@ public class CarryPlayer : MonoBehaviour, ICarriable
             player.carrying = null;
             player.isLaunching = false;
             selfScript.hasBeenLaunched = true;
+
+            // Is Carried animation
+            selfScript.anim.SetBool("IsGettingCarried", false);
 
             // Update launched anim
 

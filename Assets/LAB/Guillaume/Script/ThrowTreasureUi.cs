@@ -38,16 +38,10 @@ public class ThrowTreasureUi : MonoBehaviour
                 throwFiller.fillAmount =  selfTreasure.launchForce / selfTreasure.category.maxLaunchForce;
 
 
-                angleSimulation = Vector3.Angle(selfTreasure.playerThrowDir.normalized + Vector3.up, selfTreasure.playerThrowDir.normalized);
+                angleSimulation = Vector3.Angle((selfTreasure.playerThrowDir.normalized + (Vector3.up * selfTreasure.category.multiplyUpAngle)), selfTreasure.playerThrowDir);
 
                 float distForce = (selfTreasure.category.maxLaunchForce / (selfTreasure.category.maxPlayerCarrying + 1 - selfTreasure.playerInteractingWith.Count));
-                distanceMax = ((distForce  * distForce) * Mathf.Sin(2 * angleSimulation)) / 9.8f;
-
-                if (distanceMax < 2.5)
-                {
-                    distanceMax = 2.5f;
-                }
-
+                distanceMax = ((distForce  * distForce) * Mathf.Sin(2 * (Mathf.Deg2Rad * angleSimulation))) / (9.8f * 3);
 
                 distanceMax = distanceMax / selfTreasure.self.lossyScale.x;
 
