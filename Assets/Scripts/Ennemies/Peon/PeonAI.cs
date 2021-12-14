@@ -42,8 +42,11 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     {
         // Play die sound
         _currentFollowedPlayer.isAttackedBy.Remove(this);
-        StopCoroutine(attackCoroutine);
-        attackCoroutine = null;
+        if (attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine);
+            attackCoroutine = null;
+        }
 
         if (!lockDeathAnim)
         {

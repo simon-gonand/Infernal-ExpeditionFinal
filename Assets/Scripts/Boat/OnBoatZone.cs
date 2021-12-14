@@ -12,6 +12,20 @@ public class OnBoatZone : MonoBehaviour
             if(!player.isCarried)
                 player.self.SetParent(BoatManager.instance.self);
             player.isOnBoat = true;
+            // Player is carrying a treasure with someone
+            if (player.isCarrying)
+            {
+                Treasure transportedTreasure = player.carrying as Treasure;
+                if (transportedTreasure != null)
+                {
+                    transportedTreasure.self.SetParent(BoatManager.instance.self);
+                }                
+            }
+        }
+        if (other.CompareTag("Treasures"))
+        {
+            Treasure treasure = other.GetComponent<Treasure>();
+            treasure.self.SetParent(BoatManager.instance.self);
         }
     }
 
@@ -38,6 +52,12 @@ public class OnBoatZone : MonoBehaviour
                     }
                 }
             }
+        }
+        if (other.CompareTag("Treasures"))
+        {
+            Treasure treasure = other.GetComponent<Treasure>();
+            if (treasure.playerInteractingWith.Count == 0)
+                treasure.GetOffBoat();
         }
     }
 }

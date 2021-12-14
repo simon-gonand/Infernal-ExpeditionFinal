@@ -13,6 +13,7 @@ public class Link : MonoBehaviour
     public float speed;
     public AnimationCurve XCameraOffset;
     public AnimationCurve YCameraOffset;
+    public AnimationCurve UnzoomCameraOffset;
 
     public bool Equals(Waypoint start, Waypoint end)
     {

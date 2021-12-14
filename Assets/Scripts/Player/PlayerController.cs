@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Treasures") && !_isCarrying)
+        if (collision.collider.CompareTag("Treasures") && !_isCarrying && isGrounded)
         {
             selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         }
@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour
         if (!_isSwimming && !_isCarried)
         {
             // If the player is not interacting with anything or carrying a treasure
-            if (!_isInteracting && !_isCarrying && context.performed)
+            if (!_isInteracting && !_isCarrying && context.started)
             {
                 // Define from where the raycast will start
                 Vector3 startRayPos = self.position;
@@ -253,7 +253,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             // Else put the treasure down or uninteract with the interactable
-            else if ((_isInteracting || _isCarrying) && context.performed)
+            else if ((_isInteracting || _isCarrying) && context.canceled)
             {
                 _interactingWith.UninteractWith(this);
                 selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
@@ -264,7 +264,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnReload(InputAction.CallbackContext context)
     {
-        SceneManager.LoadScene(0);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
     #endregion
 
@@ -461,6 +462,10 @@ public class PlayerController : MonoBehaviour
     {
         isDead = true;
         // Play death out of bounds sound
+        if (isInteracting)
+        {
+            interactingWith.UninteractWith(this);
+        }
         StartCoroutine(Respawn());
     }
 
@@ -474,6 +479,7 @@ public class PlayerController : MonoBehaviour
             selfRigidBody.velocity += Vector3.up;
             UpdateSwimming();
         }
+        selfRigidBody.velocity = Vector3.zero;
         self.position = respawnPosition;
         isDead = false;
 
@@ -501,10 +507,10 @@ public class PlayerController : MonoBehaviour
         TreasureDetectionForOutline();
         PlayerJoystickDetection();
 
-        CheckFallingWhenCarrying();
         CheckIsGrounded();
         if (isGrounded)
             playerY = self.position.y;
+        CheckFallingWhenCarrying();
         CheckIsUnderMap();
     }
 
@@ -606,8 +612,11 @@ public class PlayerController : MonoBehaviour
         if (_carrying != null)
         {
             Treasure treasure = _carrying as Treasure;
-            if (treasure != null && treasure.self.position.y - self.position.y > self.lossyScale.y)
+            if (treasure != null && treasure.self.position.y - self.position.y > self.lossyScale.y && !isGrounded)
+            {
                 treasure.UninteractWith(this);
+                selfRigidBody.mass = 1;
+            }
         }
     }
 

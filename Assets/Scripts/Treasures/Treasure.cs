@@ -57,6 +57,7 @@ public class Treasure : MonoBehaviour, ICarriable
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && _playerInteractingWith.Count > 0) return;
+        if (collision.collider.CompareTag("Boat")) return;
         if (collision.collider.CompareTag("Player"))
         {
             foreach (PlayerController player in _playerInteractingWith)
@@ -69,9 +70,13 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             playerColliding.Add(collision.collider.GetComponent<PlayerController>());
         }
-        _collisionDirection = collision.GetContact(0).normal;
-        _isColliding = true;
-        collidingWith = collision.collider.GetComponent<Rigidbody>();
+        if (_playerInteractingWith.Count > 0)
+        {
+            Debug.Log(collision.collider.name);
+            _collisionDirection = collision.GetContact(0).normal;
+            _isColliding = true;
+            collidingWith = collision.collider.GetComponent<Rigidbody>();
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -399,11 +404,14 @@ public class Treasure : MonoBehaviour, ICarriable
         player.playerGraphics.forward = player.self.forward;
 
         // Update speed malus
-        //ApplySpeedMalus();
+        ApplySpeedMalus();
         if (_playerInteractingWith.Count == 1)
         {
             player = _playerInteractingWith[0];
             associateColliders[player].GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
+
+            player.self.forward = associateColliders[player].transform.forward;
+
             startPlayerPosition = player.self.position;
             startPlayerRotation = player.self.rotation;
 
@@ -447,26 +455,28 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private void ApplySpeedMalus()
     {
-        /*// Deal with speed according to the number of player carrying the treasure
+        // Deal with speed according to the number of player carrying the treasure
         if (_playerInteractingWith.Count == category.maxPlayerCarrying)
             speedMalus = 0;
         else
-            speedMalus = category.speedMalus / _playerInteractingWith.Count;*/
-        speedMalus = category.speedMalus;
+            speedMalus = category.speedMalus / (_playerInteractingWith.Count * _playerInteractingWith.Count);
+        //speedMalus = category.speedMalus;
     }
 
     private void TreasureMovement()
     {
+        Vector3 direction = Vector3.zero;
         if (_playerInteractingWith.Count > 0)
         {
             selfRigidbody.velocity = Vector3.zero;
             foreach(PlayerController player in _playerInteractingWith)
             {
                 if (player.isLaunching) continue;
-                Vector3 applyForces = player.movement;
+                Vector3 applyForces = player.movement / _playerInteractingWith.Count;
                 applyForces.y = 0.0f;
-                selfRigidbody.velocity += applyForces;
+                direction += applyForces;
             }
+            selfRigidbody.velocity = direction;
         }
     }
 
@@ -536,12 +546,7 @@ public class Treasure : MonoBehaviour, ICarriable
             RaycastHit hit;
             if (Physics.Raycast(raycastStartPos, -Vector3.up, out hit, 0.5f))
             {
-                // Set boat as parent if it's touching the ground of it
-                if (hit.collider.CompareTag("Boat"))
-                {
-                    self.SetParent(hit.collider.transform);
-                }
-                if (!hit.collider.isTrigger)
+                if (!hit.collider.isTrigger && _playerInteractingWith.Count == 0)
                 {
                     selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
                     isGrounded = true;
