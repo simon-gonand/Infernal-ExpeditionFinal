@@ -13,6 +13,8 @@ public class NPCEvents : MonoBehaviour
     [SerializeField] private GameObject speedUpToken;
     [SerializeField] private GameObject speedDownToken;
 
+    private GameObject currentObject;
+
 
     private void Start()
     {
@@ -30,12 +32,18 @@ public class NPCEvents : MonoBehaviour
         if (time >= timeToDisplay)
         {
             displayingToken = false;
+            Destroy(currentObject);
             time = 0;
         }
     }
     public void OnSpeedUp()
     {
-        Instantiate(speedUpToken, displayToken.transform);
+        if (currentObject != null)
+        {
+            Destroy(currentObject);
+            time = 0;
+        }
+        currentObject = Instantiate(speedUpToken, displayToken.transform);
 
         displayingToken = true;
         Debug.Log("Speed up !");
@@ -43,7 +51,12 @@ public class NPCEvents : MonoBehaviour
 
     public void OnSpeedDown()
     {
-        Instantiate(speedDownToken, displayToken.transform);
+        if (currentObject != null)
+        {
+            Destroy(currentObject);
+            time = 0;
+        }
+        currentObject = Instantiate(speedDownToken, displayToken.transform);
 
         displayingToken = true;
         Debug.Log("Speed down !");
