@@ -638,6 +638,10 @@ public class PlayerController : MonoBehaviour
         else
         {
             isGrounded = false;
+            if (!isCarried)
+            {
+                selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+            }
             if (canPlaySound == false)
             {
                 canPlaySound = true;

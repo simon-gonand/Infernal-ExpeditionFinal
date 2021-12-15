@@ -65,8 +65,6 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
 
     private void CheckCarryChest()
     {
-        Debug.Log(Vector3.Distance(self.position, targetTreasure.self.position));
-        Debug.Log(targetTreasure.self.localScale.x);
         if(!isCarrying && Vector3.Distance(self.position, targetTreasure.self.position) < targetTreasure.self.localScale.x + 0.5f)
         {
             isCarrying = true;
