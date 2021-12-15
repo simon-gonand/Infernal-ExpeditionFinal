@@ -368,6 +368,8 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             launchForce = 0.0f;
 
+            if (self.parent != null)
+                self.SetParent(null);
             Debug.Log((launchDirection.normalized + (Vector3.up * category.multiplyUpAngle)).normalized);
 
             // Play Launch Sound
