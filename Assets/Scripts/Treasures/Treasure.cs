@@ -283,8 +283,8 @@ public class Treasure : MonoBehaviour, ICarriable
         // Increase every 0.1 seconds
         float offsetTime = 0.1f;
         // Calculate how many the launch force will increase every 0.1 seconds
-        float offsetLaunch = category.maxLaunchForce * offsetTime / category.fullChargeTime;
-        while (isLoadingLaunch && launchForce != category.maxLaunchForce)
+        float offsetLaunch = category.forceNbPlayer[_playerInteractingWith.Count - 1] * offsetTime / category.fullChargeTimeNbPlayer[_playerInteractingWith.Count -1];
+        while (isLoadingLaunch && launchForce != category.forceNbPlayer[_playerInteractingWith.Count - 1])
         {
             bool isPlayerMovementZero = false;
             foreach (PlayerController player in _playerInteractingWith)
@@ -301,8 +301,9 @@ public class Treasure : MonoBehaviour, ICarriable
                 continue; 
             }
             launchForce += offsetLaunch;
-            if (launchForce > category.maxLaunchForce)
-                launchForce = category.maxLaunchForce;
+            Debug.Log(launchForce);
+            if (launchForce > category.forceNbPlayer[_playerInteractingWith.Count - 1])
+                launchForce = category.forceNbPlayer[_playerInteractingWith.Count - 1];
             yield return new WaitForSeconds(offsetTime);
         }
     }
@@ -330,8 +331,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
             Vector3 launchDirection = Vector3.zero;
             if (!CheckLaunch()) return;
-            float power = launchForce / ((category.maxPlayerCarrying + 1) - _playerInteractingWith.Count);
-            while(_playerInteractingWith.Count > 0)
+            while (_playerInteractingWith.Count > 0)
             {
                 PlayerController p = _playerInteractingWith[0];
                 Vector3 playerMovement = new Vector3 (p.playerMovementInput.x, 0.0f, p.playerMovementInput.y);
@@ -360,11 +360,11 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.isKinematic = false;
             selfRigidbody.useGravity = true;
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
-            selfRigidbody.AddForce((launchDirection.normalized + (Vector3.up * category.multiplyUpAngle)).normalized * power, ForceMode.Impulse);
+            selfRigidbody.AddForce((launchDirection.normalized + (Vector3.up * category.multiplyUpAngle)).normalized * launchForce, 
+                ForceMode.Impulse);
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             launchForce = 0.0f;
 
-            Debug.Log((launchDirection.normalized + (Vector3.up * category.multiplyUpAngle)).normalized);
 
             // Play throw sound
 
@@ -462,7 +462,6 @@ public class Treasure : MonoBehaviour, ICarriable
             speedMalus = 0;
         else
             speedMalus = category.speedMalus / (_playerInteractingWith.Count * _playerInteractingWith.Count);
-        //speedMalus = category.speedMalus;
     }
 
     private void TreasureMovement()

@@ -97,7 +97,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7386127602229222781}
-  - component: {fileID: 7994827762372086713}
   - component: {fileID: 2782628819355395595}
   m_Layer: 0
   m_Name: Pique_Sous_Spawner
@@ -127,33 +126,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!205 &7994827762372086713
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5826411292067524462}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.012084961, y: 1.4782422, z: 0.1427195}
-  m_Size: 3.491594
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.19823737
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 2543032310893717151}
-  - screenRelativeHeight: 0.02614288
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 7991822422899144748}
-  - screenRelativeHeight: 0.015969804
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 1366834763959377367}
-  m_Enabled: 1
 --- !u!114 &2782628819355395595
 MonoBehaviour:
   m_ObjectHideFlags: 0
