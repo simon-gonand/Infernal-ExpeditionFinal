@@ -70,12 +70,12 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             playerColliding.Add(collision.collider.GetComponent<PlayerController>());
         }
-        if (_playerInteractingWith.Count > 0)
-        {
-            Debug.Log(collision.collider.name);
-            _collisionDirection = collision.GetContact(0).normal;
-            _isColliding = true;
-            collidingWith = collision.collider.GetComponent<Rigidbody>();
+        if (_playerInteractingWith.Count > 0)
+        {
+            Debug.Log(collision.collider.name);
+            _collisionDirection = collision.GetContact(0).normal;
+            _isColliding = true;
+            collidingWith = collision.collider.GetComponent<Rigidbody>();
         }
     }
 
@@ -196,7 +196,10 @@ public class Treasure : MonoBehaviour, ICarriable
 
         player.anim.SetBool("isCarrying", true);
         player.anim.SetTrigger("startCarrying");
-        player.sword.SetActive(false);
+        player.sword.SetActive(false);
+
+        // Play Carry Sound
+        AudioManager.AMInstance.playerCarrySFX.Post(gameObject);
 
         player.carrying = this;
 
@@ -365,8 +368,10 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             launchForce = 0.0f;
 
-
-            // Play throw sound
+            Debug.Log((launchDirection.normalized + (Vector3.up * category.multiplyUpAngle)).normalized);
+
+            // Play Launch Sound
+            AudioManager.AMInstance.playerThrowSFX.Post(gameObject);
 
             isGrounded = false;
         }
@@ -502,29 +507,29 @@ public class Treasure : MonoBehaviour, ICarriable
         }
     }
 
-    private void PlayerJoystickDetection()
-    {
-        if (_isLoadingLaunch)
-        {
-            foreach (PlayerController player in _playerInteractingWith)
-            {
-                if (player.playerMovementInput == Vector2.zero)
-                {
-                    isLoadingPower = false;
-                    break;
-                }
-                else
-                {
-                    isLoadingPower = true;
-
-                    Vector3 dir = Vector3.zero;
-                    dir = new Vector3(player.playerMovementInput.x, 0.0f, player.playerMovementInput.y);
-                    globalDir += dir;
-                }
-            }
-            playerThrowDir = globalDir;
-            globalDir = Vector3.zero;
-        }
+    private void PlayerJoystickDetection()
+    {
+        if (_isLoadingLaunch)
+        {
+            foreach (PlayerController player in _playerInteractingWith)
+            {
+                if (player.playerMovementInput == Vector2.zero)
+                {
+                    isLoadingPower = false;
+                    break;
+                }
+                else
+                {
+                    isLoadingPower = true;
+
+                    Vector3 dir = Vector3.zero;
+                    dir = new Vector3(player.playerMovementInput.x, 0.0f, player.playerMovementInput.y);
+                    globalDir += dir;
+                }
+            }
+            playerThrowDir = globalDir;
+            globalDir = Vector3.zero;
+        }
     }
 
     private void FixedUpdate()

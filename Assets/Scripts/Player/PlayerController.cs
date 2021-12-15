@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     [Header ("Debug")]
     public bool drawIteractLine;
 
+    [Header("Audio")]
+    public bool canPlaySound = false;
 
     public LayerMask mask;
     private IInteractable _interactingWith;
@@ -274,6 +276,7 @@ public class PlayerController : MonoBehaviour
     {
         // Play attack animation
         anim.SetTrigger("attack");
+        AudioManager.AMInstance.playerAttackSFX.Post(gameObject);
 
         Collider[] hit = Physics.OverlapSphere(attackPoint.position, playerPreset.attackRange);
         foreach(Collider hitted in hit)
@@ -433,8 +436,9 @@ public class PlayerController : MonoBehaviour
     private void Dash()
     {
         anim.SetBool("isDashing", true);
-        
+
         // Dash sound
+        AudioManager.AMInstance.playerDashSFX.Post(gameObject);
 
         float normalizedTimer = dashTimer / playerPreset.dashTime;
         
@@ -626,8 +630,28 @@ public class PlayerController : MonoBehaviour
         Vector3 startPos = self.position;
         startPos.y -= selfCollider.bounds.size.y / 4;
         Debug.DrawRay(startPos, Vector3.down * 0.5f);
-        if (Physics.Raycast(startPos, Vector3.down, 0.5f)) isGrounded = true;
-        else isGrounded = false;
+
+        if (Physics.Raycast(startPos, Vector3.down, 0.5f))
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+            if (canPlaySound == false)
+            {
+                canPlaySound = true;
+            }
+        }
+
+        //Sound
+        if (canPlaySound && isGrounded)
+        {
+            AudioManager.AMInstance.playerGroundImpactSFX.Post(gameObject);
+            canPlaySound = false;
+        }
+        
+
     }
 
     private void CheckIsUnderMap()

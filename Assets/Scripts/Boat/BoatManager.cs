@@ -15,4 +15,10 @@ public class BoatManager : MonoBehaviour
     {
         instance = this;
     }
+
+    private void Start()
+    {
+        // Play Boat Sound
+        AudioManager.AMInstance.boatMovingSFX.Post(gameObject);
+    }
 }
