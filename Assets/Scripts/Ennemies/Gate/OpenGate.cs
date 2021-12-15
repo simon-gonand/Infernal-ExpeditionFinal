@@ -40,6 +40,7 @@ public class OpenGate : MonoBehaviour, IInteractable
 
     public void UninteractWith(PlayerController player)
     {
+        player.isInteracting = false;
         interactingPlayer = null;
     }
 
