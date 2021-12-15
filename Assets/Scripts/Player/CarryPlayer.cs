@@ -58,7 +58,6 @@ public class CarryPlayer : MonoBehaviour, ICarriable
         float offsetLaunch = selfScript.playerPreset.maxLaunchForce * offsetTime / selfScript.playerPreset.fullChargeTime;
         while (isLoadingLaunch && launchForce != selfScript.playerPreset.maxLaunchForce)
         {
-            launchForce += offsetLaunch;
 
             if (carrier.playerMovementInput == Vector2.zero)
             {
@@ -66,6 +65,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
                 continue;
             }
 
+            launchForce += offsetLaunch;
             if (launchForce > selfScript.playerPreset.maxLaunchForce)
                 launchForce = selfScript.playerPreset.maxLaunchForce;
             yield return new WaitForSeconds(offsetTime);
@@ -80,6 +80,11 @@ public class CarryPlayer : MonoBehaviour, ICarriable
         player.isCarrying = false;
         player.isInteracting = false;
         player.carrying = null;
+        player.isLaunching = false;
+
+        _isLoadingLaunch = false;
+        launchForce = 0.0f;
+
         selfScript.isCarried = false;
         selfScript.selfRigidBody.mass = 1;
         selfScript.selfRigidBody.isKinematic = false;

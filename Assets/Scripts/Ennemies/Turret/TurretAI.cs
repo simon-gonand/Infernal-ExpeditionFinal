@@ -41,7 +41,7 @@ public class TurretAI : MonoBehaviour, EnemiesAI
         GameObject ball = Instantiate(cannonBall);
         ball.transform.position = cannonBallSpawnPoint.position;
 
-        ball.GetComponent<Rigidbody>().AddForce(self.forward * firePower, ForceMode.Impulse);
+        ball.GetComponent<Rigidbody>().AddForce(cannonBallSpawnPoint.forward * firePower, ForceMode.Impulse);
 
         // Play fire sound
         AudioManager.AMInstance.trlEnemyShotSFX.Post(gameObject);
@@ -66,7 +66,10 @@ public class TurretAI : MonoBehaviour, EnemiesAI
     {
         if (_isAwake)
         {
-            self.LookAt(BoatManager.instance.self.position);
+            Vector3 lookAtDir = BoatManager.instance.self.position;
+            lookAtDir.y = self.position.y;
+            self.LookAt(lookAtDir);
+            cannonBallSpawnPoint.LookAt(BoatManager.instance.self.position);
             if (canFire)
                 Fire();
         }
