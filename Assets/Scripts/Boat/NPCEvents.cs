@@ -8,7 +8,7 @@ public class NPCEvents : MonoBehaviour
     [SerializeField] private bool displayingToken;
     public float timeToDisplay;
 
-    [SerializeField] private GameObject displayToken;
+    [SerializeField] private Transform displayToken;
 
     [SerializeField] private GameObject speedUpToken;
     [SerializeField] private GameObject speedDownToken;
@@ -24,20 +24,18 @@ public class NPCEvents : MonoBehaviour
     {
         if (displayingToken)
         {
-            time += Time.deltaTime;
-            displayToken.SetActive(true);
+            time += Time.deltaTime;            
         }
 
         if (time >= timeToDisplay)
         {
             displayingToken = false;
-            displayToken.SetActive(false);
             time = 0;
         }
     }
     public void OnSpeedUp()
     {
-        displayToken = speedUpToken;
+        Instantiate(speedUpToken, displayToken.transform);
 
         displayingToken = true;
         Debug.Log("Speed up !");
@@ -45,7 +43,7 @@ public class NPCEvents : MonoBehaviour
 
     public void OnSpeedDown()
     {
-        displayToken = speedDownToken;
+        Instantiate(speedDownToken, displayToken.transform);
 
         displayingToken = true;
         Debug.Log("Speed down !");
