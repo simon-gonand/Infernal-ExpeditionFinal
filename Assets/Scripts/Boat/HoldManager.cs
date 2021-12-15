@@ -12,7 +12,7 @@ public class HoldManager : MonoBehaviour
             AudioManager.AMInstance.boatTreasureCollectSFX.Post(gameObject);
             // Register in score
 
-            ScoreManager.instance.AddScore(1);
+            ScoreManager.instance.AddScore(other.gameObject.GetComponent<Treasure>().price);
             Destroy(other.gameObject);
         }
     }

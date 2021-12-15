@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Treasure : MonoBehaviour, ICarriable
 {
+    [Header("Treasure price")]
+    public int price;
+
     public Transform self;
     public Rigidbody selfRigidbody;
     public Collider selfCollider;
