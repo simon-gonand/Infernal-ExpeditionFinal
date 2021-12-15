@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using Cinemachine;
 
@@ -95,6 +96,18 @@ public class PlayerManager : MonoBehaviour
         camManager.CalculateOffsetRotationMovement();
     }
 
+    private void ChangeScene()
+    {
+        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene("BalanceZone");
+        }
+        if (Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene("Level_04");
+        }
+    }
+
     private void Update()
     {
         if (_players.Count == 0) return;
@@ -126,5 +139,7 @@ public class PlayerManager : MonoBehaviour
         }
         if (!playerIsOutCam)
             camManager.isUnzooming = false;
+
+        ChangeScene();
     }
 }
