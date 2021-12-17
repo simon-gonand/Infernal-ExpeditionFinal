@@ -494,7 +494,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if (!_isStun && !_isCarried && !_hasBeenLaunched && !isDead && 
-            ((_isInteracting && _carrying != null) ? !_carrying.isLoadingLaunch : !_isInteracting))
+            ((_isInteracting && _carrying != null) ? true : !_isInteracting))
         {
             if (isDashing)
             {
@@ -502,7 +502,7 @@ public class PlayerController : MonoBehaviour
                 CheckIfDashCollide();
             }
             else
-                PlayerMovement(); 
+                PlayerMovement();
         }
     }
 

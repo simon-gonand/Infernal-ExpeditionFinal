@@ -281,10 +281,10 @@ public class Treasure : MonoBehaviour, ICarriable
 
         selfRigidbody.velocity = Vector3.zero;
         _isLoadingLaunch = true;
-        StartCoroutine(LoadingLaunchForce());
+        //StartCoroutine(LoadingLaunchForce());
     }
 
-    IEnumerator LoadingLaunchForce()
+    /*IEnumerator LoadingLaunchForce()
     {
         // Increase every 0.1 seconds
         float offsetTime = 0.1f;
@@ -312,7 +312,7 @@ public class Treasure : MonoBehaviour, ICarriable
                 launchForce = category.forceNbPlayer[_playerInteractingWith.Count - 1];
             yield return new WaitForSeconds(offsetTime);
         }
-    }
+    }*/
 
     private bool CheckLaunch()
     {
@@ -329,12 +329,13 @@ public class Treasure : MonoBehaviour, ICarriable
 
     public void Launch(PlayerController player)
     {
-        StopCoroutine(LoadingLaunchForce());
-        if (isLoadingLaunch)
-        {
+        //StopCoroutine(LoadingLaunchForce());
+       /* if (isLoadingLaunch)
+        {*/
             _isLoadingLaunch = false;
             isLoadingPower = false;
 
+        int nbPlayers = _playerInteractingWith.Count;
             Vector3 launchDirection = Vector3.zero;
             if (!CheckLaunch()) return;
             while (_playerInteractingWith.Count > 0)
@@ -366,20 +367,18 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.isKinematic = false;
             selfRigidbody.useGravity = true;
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
-            selfRigidbody.AddForce((launchDirection.normalized + (Vector3.up * category.multiplyUpAngle)).normalized * launchForce, 
+            selfRigidbody.AddForce((launchDirection.normalized + (Vector3.up * category.multiplyUpAngle)).normalized * category.forceNbPlayer[nbPlayers - 1], 
                 ForceMode.Impulse);
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             launchForce = 0.0f;
 
             if (self.parent != null)
-                self.SetParent(null);
-            Debug.Log((launchDirection.normalized + (Vector3.up * category.multiplyUpAngle)).normalized);
-
-            // Play Launch Sound
+                self.SetParent(null);
+            // Play Launch Sound
             AudioManager.AMInstance.playerThrowSFX.Post(gameObject);
 
             isGrounded = false;
-        }
+        //}
     }
 
     private void StopLaunching()
