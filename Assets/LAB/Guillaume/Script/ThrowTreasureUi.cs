@@ -27,7 +27,7 @@ public class ThrowTreasureUi : MonoBehaviour
     {
         if (selfTreasure.playerInteractingWith.Count > 0)
         {
-            if (selfTreasure.isLoadingPower)
+            if (selfTreasure.isLoadingLaunch)
             {
                 throwUiGlobal.SetActive(true);
 
@@ -41,7 +41,7 @@ public class ThrowTreasureUi : MonoBehaviour
                 angleSimulation = Vector3.Angle((selfTreasure.playerThrowDir.normalized + (Vector3.up * selfTreasure.category.multiplyUpAngle)), selfTreasure.playerThrowDir);
 
                 float distForce = selfTreasure.category.forceNbPlayer[selfTreasure.playerInteractingWith.Count - 1];
-                distanceMax = ((distForce  * distForce) * Mathf.Sin(2 * (Mathf.Deg2Rad * angleSimulation))) / (9.8f * 1.5f);
+                distanceMax = ((distForce  * distForce) * Mathf.Sin(2 * (Mathf.Deg2Rad * angleSimulation))) / (9.8f * 2.5f);
 
                 distanceMax = distanceMax / selfTreasure.self.lossyScale.x;
 

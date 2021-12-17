@@ -337,7 +337,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
         int nbPlayers = _playerInteractingWith.Count;
             Vector3 launchDirection = Vector3.zero;
-            if (!CheckLaunch()) return;
+            //if (!CheckLaunch()) return;
             while (_playerInteractingWith.Count > 0)
             {
                 PlayerController p = _playerInteractingWith[0];
@@ -367,7 +367,7 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.isKinematic = false;
             selfRigidbody.useGravity = true;
             Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
-            selfRigidbody.AddForce((launchDirection.normalized + (Vector3.up * category.multiplyUpAngle)).normalized * category.forceNbPlayer[nbPlayers - 1], 
+            selfRigidbody.AddForce((playerThrowDir.normalized + (Vector3.up * category.multiplyUpAngle)).normalized * category.forceNbPlayer[nbPlayers - 1], 
                 ForceMode.Impulse);
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             launchForce = 0.0f;
@@ -513,27 +513,27 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private void PlayerJoystickDetection()
     {
-        if (_isLoadingLaunch)
-        {
+        //if (_isLoadingLaunch)
+        //{
             foreach (PlayerController player in _playerInteractingWith)
             {
-                if (player.playerMovementInput == Vector2.zero)
+                /*if (player.playerMovementInput == Vector2.zero)
                 {
                     isLoadingPower = false;
                     break;
-                }
-                else
-                {
+                }*/
+                //else
+                //{
                     isLoadingPower = true;
 
                     Vector3 dir = Vector3.zero;
                     dir = new Vector3(player.playerMovementInput.x, 0.0f, player.playerMovementInput.y);
                     globalDir += dir;
-                }
-            }
-            playerThrowDir = globalDir;
+                //}
+            }            if (globalDir != Vector3.zero)
+                playerThrowDir = globalDir;
             globalDir = Vector3.zero;
-        }
+        //}
     }
 
     private void FixedUpdate()

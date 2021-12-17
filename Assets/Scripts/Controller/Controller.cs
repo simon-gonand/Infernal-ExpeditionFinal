@@ -129,7 +129,7 @@ public class @Controller : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b33c6f87-e38f-47d4-a1f8-5220bf572cbb"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
