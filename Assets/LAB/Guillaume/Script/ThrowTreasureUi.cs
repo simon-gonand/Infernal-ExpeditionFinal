@@ -9,7 +9,6 @@ public class ThrowTreasureUi : MonoBehaviour
 
     public Transform objToRotate;
     public GameObject throwUiGlobal;
-    public Image throwFiller;
     public Image backGroundThrow;
 
  
@@ -18,25 +17,29 @@ public class ThrowTreasureUi : MonoBehaviour
 
     private void Start()
     {
-        throwFiller.fillAmount = 0;
         throwUiGlobal.SetActive(false);
     }
 
+    private bool CheckIfPlayerAreLaunching()
+    {
+        foreach(PlayerController player in selfTreasure.playerInteractingWith)
+        {
+            if (!player.isLaunching) return false;
+        }
+        return true;
+    }
 
     private void Update()
     {
         if (selfTreasure.playerInteractingWith.Count > 0)
         {
-            if (selfTreasure.isLoadingLaunch)
+            if (CheckIfPlayerAreLaunching())
             {
                 throwUiGlobal.SetActive(true);
 
                 Quaternion lookRotation = Quaternion.LookRotation(selfTreasure.playerThrowDir);
                 Vector3 rotation = lookRotation.eulerAngles;
                 objToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
-                throwFiller.fillAmount =  selfTreasure.launchForce / selfTreasure.category.forceNbPlayer[selfTreasure.playerInteractingWith.Count - 1];
-
 
                 angleSimulation = Vector3.Angle((selfTreasure.playerThrowDir.normalized + (Vector3.up * selfTreasure.category.multiplyUpAngle)), selfTreasure.playerThrowDir);
 
@@ -46,9 +49,6 @@ public class ThrowTreasureUi : MonoBehaviour
                 distanceMax = distanceMax / selfTreasure.self.lossyScale.x;
 
                 // Set UI position and size correctly 
-                throwFiller.rectTransform.sizeDelta = new Vector2(distanceMax, throwFiller.rectTransform.rect.height);
-                throwFiller.rectTransform.localPosition = new Vector3(0, 0, distanceMax / 2);
-
                 backGroundThrow.rectTransform.sizeDelta = new Vector2(distanceMax, backGroundThrow.rectTransform.rect.height);
                 backGroundThrow.rectTransform.localPosition = new Vector3(0, 0, distanceMax / 2);
 

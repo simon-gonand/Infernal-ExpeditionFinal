@@ -271,7 +271,6 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-
     private void Attack()
     {
         // Play attack animation
@@ -576,7 +575,7 @@ public class PlayerController : MonoBehaviour
     void InfoAnim()
     {
         
-        if (!_isStun && !_isCarried && !isDead && ((_isInteracting && _carrying != null) ? !_carrying.isLoadingLaunch : !_isInteracting))
+        if (!_isStun && !_isCarried && !isDead && ((_isInteracting && _carrying != null) ? !_isLaunching : !_isInteracting))
         {
             if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
             {
