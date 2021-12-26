@@ -269,6 +269,12 @@ public class PlayerController : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            PauseMenu.instance.PauseGame();
+    }
     #endregion
 
     private void Attack()

@@ -57,6 +57,14 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""65cf9322-0f3b-4b5a-95f9-20a64e4b77ea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -213,6 +221,28 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""action"": ""ReloadScene"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71dc561e-70d6-4756-80e2-1b0d094e0164"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d526bff9-c08b-4a53-8557-18b4a0142562"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -254,6 +284,7 @@ public class @Controller : IInputActionCollection, IDisposable
         m_Controls_PlayerAction = m_Controls.FindAction("PlayerAction", throwIfNotFound: true);
         m_Controls_PlayerDash = m_Controls.FindAction("PlayerDash", throwIfNotFound: true);
         m_Controls_ReloadScene = m_Controls.FindAction("ReloadScene", throwIfNotFound: true);
+        m_Controls_Pause = m_Controls.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -308,6 +339,7 @@ public class @Controller : IInputActionCollection, IDisposable
     private readonly InputAction m_Controls_PlayerAction;
     private readonly InputAction m_Controls_PlayerDash;
     private readonly InputAction m_Controls_ReloadScene;
+    private readonly InputAction m_Controls_Pause;
     public struct ControlsActions
     {
         private @Controller m_Wrapper;
@@ -317,6 +349,7 @@ public class @Controller : IInputActionCollection, IDisposable
         public InputAction @PlayerAction => m_Wrapper.m_Controls_PlayerAction;
         public InputAction @PlayerDash => m_Wrapper.m_Controls_PlayerDash;
         public InputAction @ReloadScene => m_Wrapper.m_Controls_ReloadScene;
+        public InputAction @Pause => m_Wrapper.m_Controls_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -341,6 +374,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @ReloadScene.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnReloadScene;
                 @ReloadScene.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnReloadScene;
                 @ReloadScene.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnReloadScene;
+                @Pause.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_ControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -360,6 +396,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @ReloadScene.started += instance.OnReloadScene;
                 @ReloadScene.performed += instance.OnReloadScene;
                 @ReloadScene.canceled += instance.OnReloadScene;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -389,5 +428,6 @@ public class @Controller : IInputActionCollection, IDisposable
         void OnPlayerAction(InputAction.CallbackContext context);
         void OnPlayerDash(InputAction.CallbackContext context);
         void OnReloadScene(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
