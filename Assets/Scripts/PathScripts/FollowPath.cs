@@ -5,9 +5,9 @@ using Cinemachine;
 
 public class FollowPath : MonoBehaviour
 {
-    public Path path;
+    [HideInInspector] public Path path;
     public Transform self;
-    public CinemachineVirtualCamera cam;
+    [HideInInspector] public CinemachineVirtualCamera cam;
 
     private float initialPosY;
     private Vector3 initialOffset;
@@ -26,6 +26,17 @@ public class FollowPath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InitializePath();
+    }
+
+    public void InitializePath()
+    {
+        if (path == null) return;
+        if (path.allPoints.Count < 2)
+        {
+            pathEnd = true;
+            return;
+        }
         currentWaypoint = path.waypoints[0];
         currentWaypoint.ev.Invoke();
 
@@ -99,7 +110,7 @@ public class FollowPath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pathEnd) return;
+        if (pathEnd || path == null) return;
         if (coroutineAllowed)
             StartCoroutine(FollowCurve());
 

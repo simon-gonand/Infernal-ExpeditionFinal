@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     [Header("Audio")]
     public bool canPlaySound = false;
 
+    private int _id;
+    public int id { set { _id = value; } }
+
     public LayerMask mask;
     private IInteractable _interactingWith;
     public IInteractable interactingWith { get { return _interactingWith; } }
@@ -97,6 +100,30 @@ public class PlayerController : MonoBehaviour
     private bool isDead = false;
     private bool isGrounded = false;
     #endregion
+    public void ResetPlayer()
+    {
+        isAttackedBy.Clear();
+        if (_carrying != null)
+        {
+            _carrying.UninteractWith(this);
+            _carrying = null;
+        }
+        if (_interactingWith != null)
+            _interactingWith = null;
+
+        _isInteracting = false;
+        _isCarrying = false;
+        _isCarried = false;
+        _hasBeenLaunched = false;
+        _isLaunching = false;
+        _isOnBoat = true;
+        _isSwimming = false;
+        _isInWater = false;
+        _isStun = false;
+        isDashing = false;
+        isDead = false;
+        isGrounded = false;
+    }
 
     #region Collision
 
@@ -476,7 +503,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Respawn()
     {
         yield return new WaitForSeconds(playerPreset.respawnCooldown);
-        Vector3 respawnPosition = BoatManager.instance.spawnPoint.position;
+        Vector3 respawnPosition = BoatManager.instance.spawnPoint1.position;
         respawnPosition.y += self.lossyScale.y;
         if (isSwimming)
         {
