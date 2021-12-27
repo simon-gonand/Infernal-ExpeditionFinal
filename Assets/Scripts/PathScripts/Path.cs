@@ -16,13 +16,20 @@ public class Path : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    public void InitializePath()
+    {
+        allPoints.Clear();
+        allAnchors.Clear();
         for (int i = 0; i < links.Count; ++i)
         {
             if (i == 0)
             {
                 allPoints.Add(links[i].pathPoints[0]);
             }
-            for(int j = 1; j < links[i].pathPoints.Count; ++j)
+            for (int j = 1; j < links[i].pathPoints.Count; ++j)
             {
                 allPoints.Add(links[i].pathPoints[j]);
             }

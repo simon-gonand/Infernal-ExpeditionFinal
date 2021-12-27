@@ -25,14 +25,16 @@ public class GameManager : MonoBehaviour
 
     private void GetObjects(Scene scene, LoadSceneMode sceneMode)
     {
+        GameObject virtualCam = GameObject.FindGameObjectWithTag("VirtualCamera");
+        playerManager.cam = virtualCam.GetComponent<CinemachineVirtualCamera>();
+        playerManager.camManager = virtualCam.GetComponent<CameraManager>();
+
         GameObject boatPath = GameObject.FindGameObjectWithTag("BoatPath");
         if (boatPath != null)
             followPath.path = boatPath.GetComponent<Path>();
-        GameObject virtualCam = GameObject.FindGameObjectWithTag("VirtualCamera");
         followPath.cam = virtualCam.GetComponent<CinemachineVirtualCamera>();
+        followPath.path.InitializePath();
         followPath.InitializePath();
-        playerManager.cam = virtualCam.GetComponent<CinemachineVirtualCamera>();
-        playerManager.camManager = virtualCam.GetComponent<CameraManager>();
         targetGroup = FindObjectOfType<CinemachineTargetGroup>();
 
         playerManager.OnChangeScene();
