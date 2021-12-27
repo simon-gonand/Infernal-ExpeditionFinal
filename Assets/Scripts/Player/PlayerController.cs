@@ -264,12 +264,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnReload(InputAction.CallbackContext context)
-    {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
-    }
-
     public void OnPause(InputAction.CallbackContext context)
     {
         if (context.performed)
