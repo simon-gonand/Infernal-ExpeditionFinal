@@ -105,12 +105,25 @@ public class PlayerController : MonoBehaviour
         isAttackedBy.Clear();
         if (_carrying != null)
         {
-            _carrying.UninteractWith(this);
+            Treasure treasure = _carrying as Treasure;
+            if (treasure != null)
+                Destroy(treasure.gameObject);
             _carrying = null;
         }
         if (_interactingWith != null)
             _interactingWith = null;
 
+        ResetStates();
+        ResetAnimStates();
+
+        selfRigidBody.velocity += Vector3.up;
+        UpdateSwimming();
+        selfRigidBody.velocity -= Vector3.up;
+        selfRigidBody.mass = 1;
+    }
+
+    private void ResetStates()
+    {
         _isInteracting = false;
         _isCarrying = false;
         _isCarried = false;
@@ -123,6 +136,20 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         isDead = false;
         isGrounded = false;
+
+        sword.SetActive(true);
+    }
+
+    private void ResetAnimStates()
+    {
+        anim.SetBool("isMoving", false);
+        anim.SetBool("isDashing", false);
+        anim.SetBool("isSwiming", false);
+        anim.SetBool("isCarrying", false);
+        anim.SetBool("isStun", false);
+        anim.SetBool("isGettingCarried", false);
+
+        anim.Play("Breathing Idle");
     }
 
     #region Collision
