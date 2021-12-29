@@ -2,6 +2,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	44932442	B_Damages			\Default Work Unit\Boat\B_Damages	
 	72805415	P_Carry			\Default Work Unit\Players\P_Carry	
 	491820422	P_Attack			\Default Work Unit\Players\P_Attack	
+	500255786	P_Respawn			\Default Work Unit\Players\P_Respawn	
 	593966612	E_Trl_Shot			\Default Work Unit\Enemy\E_Trl_Shot	
 	819302809	P_GroundImpact			\Default Work Unit\Players\P_GroundImpact	
 	903419691	E_Clsq_Attack			\Default Work Unit\Enemy\E_Clsq_Attack	
@@ -31,11 +32,13 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	46587669	PlayerDash_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\PlayerDash_3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Dash\PlayerDash_3		114356
 	67829278	BoatMovement_Water	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\BoatMovement_Water_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatMovement_Water		9825000
 	84042361	Boat_Damages_Wood_4	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Boat_Damages_Wood_4_EBA26799.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_4		62924
+	85992371	RespawnBass_Hight	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\RespawnBass_Hight_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\PlayerSpawn_Bass\RespawnBass_Hight		412540
 	87450858	PlayerDash_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\PlayerDash_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Dash\PlayerDash_1		111708
 	102166623	Footsteps_Sea_4	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Sea_4_5FE2D3F1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sea_Footsteps\Footsteps_Sea_4		108374
 	114459288	Footsteps_Wood_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Wood_3_56747B60.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Wood_Footsteps\Footsteps_Wood_3		17760
 	116536701	SwordSlash_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\SwordSlash_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Sword_Attack\SwordSlash_2		38976
 	143657092	SwordSlash_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\SwordSlash_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Sword_Attack\SwordSlash_1		47380
+	144454103	RespawnBass_MidLow	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\RespawnBass_MidLow_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\PlayerSpawn_Bass\RespawnBass_MidLow		412540
 	152162454	PlayerDash_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\PlayerDash_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Dash\PlayerDash_2		103052
 	162305526	Footsteps_Wood_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Wood_1_99FCEFDC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Wood_Footsteps\Footsteps_Wood_1		24600
 	184082747	Footsteps_Grass_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Grass_3_58D9F6D7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Grass_Footsteps\Footsteps_Grass_3		6862
@@ -60,11 +63,13 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	506895314	Footsteps_Sand_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_1_F5BB8DE1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sand_Footsteps\Footsteps_Sand_1		28262
 	528135933	Player_Damage	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Player_Damage_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Damage		118380
 	529235339	Footsteps_Stone_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Stone_3_00CE49DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Stone_Footsteps\Footsteps_Stone_3		26530
+	544976667	Player_Spawn	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Player_Spawn_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Spawn		85528
 	547652259	Footsteps_Sea_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Sea_3_970976F7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sea_Footsteps\Footsteps_Sea_3		114736
 	560983859	BoatMovement_Sail_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\BoatMovement_Sail_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatMovement_Sail\BoatMovement_Sail_1		247144
 	582227307	Footsteps_Grass_4	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Grass_4_F1979B73.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Grass_Footsteps\Footsteps_Grass_4		8742
 	582572203	Footsteps_Stone_4	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Stone_4_4A32D10D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Stone_Footsteps\Footsteps_Stone_4		29726
 	592552609	Footsteps_Stone_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Stone_2_702ACB39.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Stone_Footsteps\Footsteps_Stone_2		22666
+	600871656	RespawnBass_MidHight	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\RespawnBass_MidHight_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\PlayerSpawn_Bass\RespawnBass_MidHight		412540
 	618713017	Stunt_Bell	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Stunt_Bell_B013448C.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Stunt_Bell		163398
 	648056530	Footsteps_Sand_4	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_4_F366946E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sand_Footsteps\Footsteps_Sand_4		31514
 	685704333	Footsteps_Grass_5	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Grass_5_A2E4F32A.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Grass_Footsteps\Footsteps_Grass_5		6132
@@ -91,4 +96,5 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	1055089053	PlayerDash_Cloth	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\PlayerDash_Cloth_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\PlayerDash_Cloth		92224
 	1062721811	Ambience_Islande_Bird	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Ambience_Islande_Bird_018D7BB3.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Beach_Ambience\Ambience_Islande_Bird		20787188
 	1063609588	Enemy_SlashAttack_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Enemy_SlashAttack_3_7C806E9E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_SlashAttack\Enemy_SlashAttack_3		40556
+	1073061748	RespawnBass_Low	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\RespawnBass_Low_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\PlayerSpawn_Bass\RespawnBass_Low		412540
 

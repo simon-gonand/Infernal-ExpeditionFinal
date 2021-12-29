@@ -81,7 +81,24 @@
 						</Event>
 						<Event Name="P_OutOfBond" ID="{8724340B-298F-4E9C-94A8-0A3C244FB65B}"/>
 						<Event Name="P_Death" ID="{28480997-C486-404E-9F21-F9C6CF545AAD}"/>
-						<Event Name="P_Respawn" ID="{B8367E5C-81DF-41E7-BEF8-51716DFA8984}"/>
+						<Event Name="P_Respawn" ID="{B8367E5C-81DF-41E7-BEF8-51716DFA8984}">
+							<ChildrenList>
+								<Action Name="" ID="{E5C204C7-01F2-4A19-964C-619C33AA2517}" ShortID="1053479698">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Spawn" ID="{7550A666-7EEA-4341-A6C3-9F1F5F50A577}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{6E18B3C5-0435-4F0B-B867-C02C6CEDAC48}" ShortID="514958249">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PlayerSpawn_Bass" ID="{E9815B78-E8AD-4555-A8E1-00892317AD4C}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="P_Carry" ID="{C54592FA-3E4A-4A3A-8150-AEF2CECBE448}">
 							<ChildrenList>
 								<Action Name="" ID="{76EE57DF-6176-47ED-9905-20FDD60B46E1}" ShortID="136981543">

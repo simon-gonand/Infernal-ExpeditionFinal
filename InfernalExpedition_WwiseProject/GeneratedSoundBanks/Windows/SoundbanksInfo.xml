@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="4270660371">
+		<SoundBank Id="393239870" Language="SFX" Hash="678923568">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -363,6 +363,30 @@
 							</Media>
 						</SwitchContainer>
 					</SwitchContainers>
+				</Event>
+				<Event Id="500255786" Name="P_Respawn" ObjectPath="\Events\Default Work Unit\Players\P_Respawn" DurationType="OneShot" DurationMin="2.148323" DurationMax="2.148323">
+					<IncludedMemoryFiles>
+						<File Id="85992371" Language="SFX">
+							<ShortName>RespawnBass_Hight.wav</ShortName>
+							<Path>SFX\RespawnBass_Hight_10C4C929.wem</Path>
+						</File>
+						<File Id="144454103" Language="SFX">
+							<ShortName>RespawnBass_MidLow.wav</ShortName>
+							<Path>SFX\RespawnBass_MidLow_10C4C929.wem</Path>
+						</File>
+						<File Id="544976667" Language="SFX">
+							<ShortName>Player_Spawn.wav</ShortName>
+							<Path>SFX\Player_Spawn_10C4C929.wem</Path>
+						</File>
+						<File Id="600871656" Language="SFX">
+							<ShortName>RespawnBass_MidHight.wav</ShortName>
+							<Path>SFX\RespawnBass_MidHight_10C4C929.wem</Path>
+						</File>
+						<File Id="1073061748" Language="SFX">
+							<ShortName>RespawnBass_Low.wav</ShortName>
+							<Path>SFX\RespawnBass_Low_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="3280416103" Name="P_Steps" ObjectPath="\Events\Default Work Unit\Players\P_Steps" DurationType="OneShot" DurationMin="0.050171" DurationMax="1.507198">
 					<IncludedMemoryFiles>
