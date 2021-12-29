@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += GetObjects;
     }
 
+    public void LoadLevel(string sceneName, bool isBoatInScene)
+    {
+        SceneManager.LoadScene(sceneName);
+        boatOnTargetGroup = isBoatInScene;
+    }
+
     private void GetObjects(Scene scene, LoadSceneMode sceneMode)
     {
         GameObject virtualCam = GameObject.FindGameObjectWithTag("VirtualCamera");
