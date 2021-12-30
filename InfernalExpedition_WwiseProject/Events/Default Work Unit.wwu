@@ -50,7 +50,6 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="P_SwordImpact" ID="{F9909DB4-B69B-4675-87AC-878DCB5A4821}"/>
 						<Event Name="P_Stunt" ID="{F3DE8B14-C967-42D4-AA78-37BA031673BC}">
 							<ChildrenList>
 								<Action Name="" ID="{C5F75393-1BB3-4E16-8DE0-254FD607E5CA}" ShortID="80504306">
@@ -80,7 +79,6 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="P_OutOfBond" ID="{8724340B-298F-4E9C-94A8-0A3C244FB65B}"/>
-						<Event Name="P_Death" ID="{28480997-C486-404E-9F21-F9C6CF545AAD}"/>
 						<Event Name="P_Respawn" ID="{B8367E5C-81DF-41E7-BEF8-51716DFA8984}">
 							<ChildrenList>
 								<Action Name="" ID="{E5C204C7-01F2-4A19-964C-619C33AA2517}" ShortID="1053479698">
@@ -147,8 +145,6 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ChildrenList>
-						<Event Name="E_Clsq_Steps" ID="{D3814D35-DC97-4F12-9FE6-DA81F02F2CE5}"/>
-						<Event Name="E_Clsq_Aggro" ID="{C2F4B434-ED9D-45A9-9465-0A3D2AE51D98}"/>
 						<Event Name="E_Clsq_Attack" ID="{E78D7109-46CB-4B9A-BED4-264E57EFE960}">
 							<ChildrenList>
 								<Action Name="" ID="{0247FDB2-D9C8-4967-968D-9574CC90A2A1}" ShortID="616165283">
@@ -171,7 +167,6 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="E_Clsq_Death" ID="{DE703633-8F1F-4897-B7F6-692178349B54}"/>
-						<Event Name="E_Trl_Rotation" ID="{086F2351-BCE8-4E14-9D49-35B788126FA3}"/>
 						<Event Name="E_Trl_Shot" ID="{B167BDA0-DC72-4482-99CA-13FF166CCCE0}">
 							<ChildrenList>
 								<Action Name="" ID="{0ED99E0A-574A-4ADD-8043-6D3AAF75DE92}" ShortID="535128114">
@@ -194,9 +189,28 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="E_Trl_Death" ID="{F7C254A0-5F5C-43CD-9A84-E3FB92099550}"/>
-						<Event Name="E_Pks_Steps" ID="{BBB10A36-8D94-489F-980B-836E03D6DB4F}"/>
-						<Event Name="E_Pks_Carry" ID="{772F4B22-2F55-42D7-BDC5-1A4EF6DE3B78}"/>
+						<Event Name="E_Trl_Death" ID="{F7C254A0-5F5C-43CD-9A84-E3FB92099550}">
+							<ChildrenList>
+								<Action Name="" ID="{7A7BB423-44E6-40B0-A6B7-E9ABFCA5B796}" ShortID="729572952">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Trl_Death" ID="{FFAD66C3-AD7D-44D9-A806-420787B10B1F}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="E_Pks_Carry" ID="{772F4B22-2F55-42D7-BDC5-1A4EF6DE3B78}">
+							<ChildrenList>
+								<Action Name="" ID="{94F35029-AB2E-40B4-8544-43CEDC99F6CD}" ShortID="611877765">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Piksou_Carry" ID="{6ECB6F94-5AAF-4FA8-910C-8D4A468215CC}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="E_Pks_Death" ID="{609533A2-EF16-45A3-83D0-E2F3EDB92561}"/>
 					</ChildrenList>
 				</Folder>
@@ -345,8 +359,34 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ChildrenList>
-						<Event Name="W_TreasursIdle" ID="{DDCBDD01-31DA-408F-9CC4-6D5DB68AF353}"/>
-						<Event Name="W_ChestDrop" ID="{386ADD4D-4A6B-4627-A5A0-6731D6891A74}"/>
+						<Event Name="W_ChestDrop" ID="{386ADD4D-4A6B-4627-A5A0-6731D6891A74}">
+							<ChildrenList>
+								<Action Name="" ID="{8190F7A6-DD04-4065-8D86-C0D63DC13F6C}" ShortID="478490820">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Chest_GroundImpact" ID="{B895FEFF-F422-4FDB-9E5F-D04F8A04F486}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{1E6BCFBE-D45E-4987-A56F-73C4F5B2D49C}" ShortID="688410561">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.05"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="ChestImpact_Metal" ID="{CFF22811-E957-4579-AB83-5125979E73B1}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{7633A3D3-54A5-4FE6-8144-3E464BF94153}" ShortID="833293066">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="ChestImpact_Wood" ID="{9A54CC80-22A0-41EB-A84C-67CB557B5EC5}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="Sea_Ambient" ID="{7EAD759C-7A29-4BF7-924C-E40ADFF5CD5C}"/>
 						<Event Name="Beach_Ambient" ID="{5689551D-75AC-4347-9616-1D60758E0A88}">
 							<ChildrenList>

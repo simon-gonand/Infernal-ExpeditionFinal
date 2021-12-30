@@ -3,71 +3,6 @@
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}" PersistMode="Standalone">
 			<ChildrenList>
-				<Folder Name="_LAB" ID="{AD2843B5-4BC0-4556-BD86-659D2C4D08AB}" ShortID="503756429">
-					<ChildrenList>
-						<Sound Name="Test-Song" ID="{0C8967C2-A938-49EE-A108-5AC77D6BA436}" ShortID="48432039">
-							<PropertyList>
-								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-10</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Test-Song" ID="{FA34E069-8901-4197-8EE2-87B2854CD240}">
-									<Language>SFX</Language>
-									<AudioFile>Test-Song.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="499703967"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ObjectLists/>
-							<ActiveSourceList>
-								<ActiveSource Name="Test-Song" ID="{FA34E069-8901-4197-8EE2-87B2854CD240}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Chest_WoodFallImpact" ID="{73F92BB2-880B-4C00-968E-C7CE98063D27}" ShortID="845919207">
-							<PropertyList>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-15</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Wood, Impact, Hit, Table, Hard SND4258" ID="{FFE1CE62-F950-40FD-A023-B70D74AD42F8}">
-									<Language>SFX</Language>
-									<AudioFile>Wood, Impact, Hit, Table, Hard SND4258.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="647524142"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ObjectLists/>
-							<ActiveSourceList>
-								<ActiveSource Name="Wood, Impact, Hit, Table, Hard SND4258" ID="{FFE1CE62-F950-40FD-A023-B70D74AD42F8}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-					</ChildrenList>
-				</Folder>
 				<Folder Name="Player" ID="{817EB36D-AE1D-4ECB-B0C9-A40464191F75}" ShortID="269441539">
 					<PropertyList>
 						<Property Name="Color" Type="int16" Value="2"/>
@@ -1176,11 +1111,6 @@
 											</Modifier>
 										</ModifierInfo>
 									</ModifierList>
-								</Property>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>10</Value>
-									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
@@ -2336,20 +2266,15 @@
 							</ChildrenList>
 							<ObjectLists/>
 						</BlendContainer>
-					</ChildrenList>
-				</Folder>
-				<Folder Name="World" ID="{188E42D3-1760-4945-9F1B-D06A9D4C57A9}" ShortID="372471023">
-					<PropertyList>
-						<Property Name="Color" Type="int16" Value="17"/>
-						<Property Name="OverrideColor" Type="bool" Value="True"/>
-					</PropertyList>
-					<ChildrenList>
-						<Sound Name="Chest_GroundImpact" ID="{B895FEFF-F422-4FDB-9E5F-D04F8A04F486}" ShortID="907051905">
+						<Sound Name="Piksou_Carry" ID="{6ECB6F94-5AAF-4FA8-910C-8D4A468215CC}" ShortID="820581411">
 							<PropertyList>
 								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>400</Value>
+									</ValueList>
 									<ModifierList>
 										<ModifierInfo>
-											<Modifier Name="" ID="{25C0F077-BD5C-4494-8DC3-52A578A56203}">
+											<Modifier Name="" ID="{474ADA28-1190-4486-B7B6-EA100B574D48}">
 												<PropertyList>
 													<Property Name="Enabled" Type="bool" Value="True"/>
 													<Property Name="Max" Type="Real64" Value="150"/>
@@ -2358,6 +2283,11 @@
 											</Modifier>
 										</ModifierInfo>
 									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
@@ -2369,24 +2299,248 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Chest_GroundImpact" ID="{6763F551-178E-401B-88D2-79864863BD10}">
+								<AudioFileSource Name="Piksou_Carry" ID="{AB997EE1-BD27-424B-9433-7243AD92D639}">
 									<PropertyList>
-										<Property Name="FadeOutDuration" Type="Real64" Value="0.258586825626204"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimBegin" Type="Real64" Value="0.00309067919075144"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.0232999044890162"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.0454250238777459"/>
 									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>Chest_GroundImpact.wav</AudioFile>
+									<AudioFile>Piksou_Carry.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="857342633"/>
+										<MediaID ID="419678518"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ObjectLists/>
 							<ActiveSourceList>
-								<ActiveSource Name="Chest_GroundImpact" ID="{6763F551-178E-401B-88D2-79864863BD10}" Platform="Linked"/>
+								<ActiveSource Name="Piksou_Carry" ID="{AB997EE1-BD27-424B-9433-7243AD92D639}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<BlendContainer Name="Trl_Death" ID="{FFAD66C3-AD7D-44D9-A806-420787B10B1F}" ShortID="30842127">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-15</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="TrlDeath_Metal" ID="{56F28AD3-2032-491B-ACCC-5A6B3B183AF4}" ShortID="928918975">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{E6F1923C-5E25-41C8-9D37-D0D851FC6514}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="TrlDeath_Metal1" ID="{898E232E-18D1-4371-8183-D8031C264EBE}" ShortID="341625723">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="TrlDeath_Metal1" ID="{B5E9E06D-F964-4551-B61C-9C0419A28F27}">
+													<Language>SFX</Language>
+													<AudioFile>TrlDeath_Metal1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="348861788"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="TrlDeath_Metal1" ID="{B5E9E06D-F964-4551-B61C-9C0419A28F27}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="TrlDeath_Metal2" ID="{1A88A835-3F70-4873-BCC7-0B0962B742A1}" ShortID="910542374">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="TrlDeath_Metal2" ID="{6DB14A07-0EBD-4F30-94D9-88B6DB4859C3}">
+													<Language>SFX</Language>
+													<AudioFile>TrlDeath_Metal2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="165730868"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="TrlDeath_Metal2" ID="{6DB14A07-0EBD-4F30-94D9-88B6DB4859C3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="TrlDeath_Metal3" ID="{1482D7D0-5742-45E0-B6D7-8D55BC215AC9}" ShortID="818362303">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="TrlDeath_Metal3" ID="{65FF76FD-FF00-405B-96DC-46A44C67FBE6}">
+													<Language>SFX</Language>
+													<AudioFile>TrlDeath_Metal3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="981632398"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="TrlDeath_Metal3" ID="{65FF76FD-FF00-405B-96DC-46A44C67FBE6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="TrlDeath_Metal4" ID="{1EEF44B0-EA6C-4A13-9B57-5F64BB9CE71D}" ShortID="381957778">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="TrlDeath_Metal4" ID="{85808BCB-5680-4D5B-B5C9-9413A4D63C18}">
+													<Language>SFX</Language>
+													<AudioFile>TrlDeath_Metal4.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="114703110"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="TrlDeath_Metal4" ID="{85808BCB-5680-4D5B-B5C9-9413A4D63C18}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+								<Sound Name="TrlDeath_GroundImpact" ID="{84E5B890-33DA-4883-BE3D-F59B8AB84CFC}" ShortID="756838965">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{39B44229-E2A7-4F55-92F6-CDA018E7482E}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TrlDeath_GroundImpact" ID="{033228E9-2B8E-40BE-B92C-6D85B6AD5D41}">
+											<Language>SFX</Language>
+											<AudioFile>TrlDeath_GroundImpact.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="51065844"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="TrlDeath_GroundImpact" ID="{033228E9-2B8E-40BE-B92C-6D85B6AD5D41}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TrlDeath_Wood" ID="{6A25AC59-D7F7-4FDB-9CD8-C9C06DCE36F0}" ShortID="585715269">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{BC4BADC1-F3EE-4A72-8F41-B7816F5A66A1}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="150"/>
+															<Property Name="Min" Type="Real64" Value="-150"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TrlDeath_Wood" ID="{16E5950D-5955-43A9-AB18-AE7B5C2B1B77}">
+											<Language>SFX</Language>
+											<AudioFile>TrlDeath_Wood.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="987030019"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="TrlDeath_Wood" ID="{16E5950D-5955-43A9-AB18-AE7B5C2B1B77}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</BlendContainer>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="World" ID="{188E42D3-1760-4945-9F1B-D06A9D4C57A9}" ShortID="372471023">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="17"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
 						<BlendContainer Name="Beach_Ambience" ID="{14F67C4C-3851-4E95-9E06-62D483220C9F}" ShortID="257629036">
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
@@ -2464,6 +2618,156 @@
 							</ChildrenList>
 							<ObjectLists/>
 						</BlendContainer>
+						<ActorMixer Name="Chest_FallImpact" ID="{EB0774D5-8449-444C-9B19-894C1998DCCD}" ShortID="343514991">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Chest_GroundImpact" ID="{B895FEFF-F422-4FDB-9E5F-D04F8A04F486}" ShortID="907051905">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{25C0F077-BD5C-4494-8DC3-52A578A56203}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="300"/>
+															<Property Name="Min" Type="Real64" Value="-300"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Chest_GroundImpact" ID="{6763F551-178E-401B-88D2-79864863BD10}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.171053005145447"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.00309067919075144"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.179250537249284"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Chest_GroundImpact.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="857342633"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Chest_GroundImpact" ID="{6763F551-178E-401B-88D2-79864863BD10}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ChestImpact_Metal" ID="{CFF22811-E957-4579-AB83-5125979E73B1}" ShortID="129425260">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{2C34243E-29CC-4FC5-8BAE-63206C8BB267}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="500"/>
+															<Property Name="Min" Type="Real64" Value="-500"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ChestImpact_Metal" ID="{12D0DFF4-6188-488B-AF1C-18C0EDEC3C37}">
+											<Language>SFX</Language>
+											<AudioFile>ChestImpact_Metal.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="317925122"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="ChestImpact_Metal" ID="{12D0DFF4-6188-488B-AF1C-18C0EDEC3C37}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ChestImpact_Wood" ID="{9A54CC80-22A0-41EB-A84C-67CB557B5EC5}" ShortID="723175880">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{C7641EC3-DEE8-46A3-93CC-A38024ECA058}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="300"/>
+															<Property Name="Min" Type="Real64" Value="-300"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ChestImpact_Wood" ID="{AAEECA08-3409-4172-B498-6F82E0A5E5A3}">
+											<Language>SFX</Language>
+											<AudioFile>ChestImpact_Wood.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="657582970"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="ChestImpact_Wood" ID="{AAEECA08-3409-4172-B498-6F82E0A5E5A3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</ActorMixer>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Boat" ID="{532E3262-4C12-4E72-A50A-E3C22B920881}" ShortID="49281316">
@@ -3011,12 +3315,6 @@
 							<ObjectLists/>
 						</ActorMixer>
 					</ChildrenList>
-				</Folder>
-				<Folder Name="_STINGERS" ID="{7EE80180-F65E-4C73-B42D-4F65D6F5A983}" ShortID="750322419">
-					<PropertyList>
-						<Property Name="Color" Type="int16" Value="15"/>
-						<Property Name="OverrideColor" Type="bool" Value="True"/>
-					</PropertyList>
 				</Folder>
 			</ChildrenList>
 		</WorkUnit>

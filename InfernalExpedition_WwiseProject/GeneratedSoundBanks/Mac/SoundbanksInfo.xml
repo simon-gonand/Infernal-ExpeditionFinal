@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="4139139313">
+		<SoundBank Id="393239870" Language="SFX" Hash="928495059">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -24,7 +24,7 @@
 						</File>
 						<File Id="857342633" Language="SFX">
 							<ShortName>Chest_GroundImpact.wav</ShortName>
-							<Path>SFX\Chest_GroundImpact_41DCC55B.wem</Path>
+							<Path>SFX\Chest_GroundImpact_E0A90DA3.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 					<ActionTrigger>
@@ -128,6 +128,42 @@
 						<File Id="1063609588" Language="SFX">
 							<ShortName>Enemy_SlashAttack_3.wav</ShortName>
 							<Path>SFX\Enemy_SlashAttack_3_7C806E9E.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1286256413" Name="E_Pks_Carry" ObjectPath="\Events\Default Work Unit\Enemy\E_Pks_Carry" DurationType="OneShot" DurationMin="0.016103" DurationMax="0.019150">
+					<IncludedMemoryFiles>
+						<File Id="419678518" Language="SFX">
+							<ShortName>Piksou_Carry.wav</ShortName>
+							<Path>SFX\Piksou_Carry_AFFFA148.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1927982858" Name="E_Trl_Death" ObjectPath="\Events\Default Work Unit\Enemy\E_Trl_Death" DurationType="OneShot" DurationMin="1.636135" DurationMax="2.284245">
+					<IncludedMemoryFiles>
+						<File Id="51065844" Language="SFX">
+							<ShortName>TrlDeath_GroundImpact.wav</ShortName>
+							<Path>SFX\TrlDeath_GroundImpact_10C4C929.wem</Path>
+						</File>
+						<File Id="114703110" Language="SFX">
+							<ShortName>TrlDeath_Metal4.wav</ShortName>
+							<Path>SFX\TrlDeath_Metal4_10C4C929.wem</Path>
+						</File>
+						<File Id="165730868" Language="SFX">
+							<ShortName>TrlDeath_Metal2.wav</ShortName>
+							<Path>SFX\TrlDeath_Metal2_10C4C929.wem</Path>
+						</File>
+						<File Id="348861788" Language="SFX">
+							<ShortName>TrlDeath_Metal1.wav</ShortName>
+							<Path>SFX\TrlDeath_Metal1_10C4C929.wem</Path>
+						</File>
+						<File Id="981632398" Language="SFX">
+							<ShortName>TrlDeath_Metal3.wav</ShortName>
+							<Path>SFX\TrlDeath_Metal3_10C4C929.wem</Path>
+						</File>
+						<File Id="987030019" Language="SFX">
+							<ShortName>TrlDeath_Wood.wav</ShortName>
+							<Path>SFX\TrlDeath_Wood_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -529,6 +565,22 @@
 						<File Id="685935742" Language="SFX">
 							<ShortName>Player_Throw.wav</ShortName>
 							<Path>SFX\Player_Throw_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4030367049" Name="W_ChestDrop" ObjectPath="\Events\Default Work Unit\World\W_ChestDrop" DurationType="OneShot" DurationMin="0.707281" DurationMax="1.000247">
+					<IncludedMemoryFiles>
+						<File Id="317925122" Language="SFX">
+							<ShortName>ChestImpact_Metal.wav</ShortName>
+							<Path>SFX\ChestImpact_Metal_10C4C929.wem</Path>
+						</File>
+						<File Id="657582970" Language="SFX">
+							<ShortName>ChestImpact_Wood.wav</ShortName>
+							<Path>SFX\ChestImpact_Wood_10C4C929.wem</Path>
+						</File>
+						<File Id="857342633" Language="SFX">
+							<ShortName>Chest_GroundImpact.wav</ShortName>
+							<Path>SFX\Chest_GroundImpact_E0A90DA3.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
