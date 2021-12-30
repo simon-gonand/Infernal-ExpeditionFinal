@@ -21,11 +21,11 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(transform.parent.gameObject);
         SceneManager.sceneLoaded += GetObjects;
+        Cursor.visible = false;
     }
 
     public void LoadLevel(string sceneName, bool isBoatInScene)
     {
-        Debug.Log(sceneName);
         SceneManager.LoadScene(sceneName);
         boatOnTargetGroup = isBoatInScene;
     }

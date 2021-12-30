@@ -14,6 +14,7 @@ public class SelectLevels : MonoBehaviour, IInteractable
         if (playerInteracting != null) return false;
         playerInteracting = player;
         levelSelection.SetActive(true);
+        Cursor.visible = true;
         return true;
     }
 
@@ -46,5 +47,6 @@ public class SelectLevels : MonoBehaviour, IInteractable
     {
         playerInteracting = null;
         levelSelection.SetActive(false);
+        Cursor.visible = false;
     }
 }

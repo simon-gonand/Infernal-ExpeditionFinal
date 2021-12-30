@@ -39,6 +39,7 @@ public class PauseMenu : MonoBehaviour
     private void Pause()
     {
         pauseMenuUI.SetActive(true);
+        Cursor.visible = true;
         Time.timeScale = 0.0f;
         isPause = true;
     }
@@ -46,6 +47,7 @@ public class PauseMenu : MonoBehaviour
     private void Resume()
     {
         pauseMenuUI.SetActive(false);
+        Cursor.visible = false;
         Time.timeScale = 1.0f;
         isPause = false;
     }
@@ -58,5 +60,6 @@ public class PauseMenu : MonoBehaviour
     public void Quit()
     {
         GameManager.instance.LoadLevel("BalanceZone", false);
+        Resume();
     }
 }

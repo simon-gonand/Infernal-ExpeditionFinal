@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
         _hasBeenLaunched = false;
         _isLaunching = false;
         _isOnBoat = true;
+        self.SetParent(BoatManager.instance.self);
         _isSwimming = false;
         _isInWater = false;
         _isStun = false;
