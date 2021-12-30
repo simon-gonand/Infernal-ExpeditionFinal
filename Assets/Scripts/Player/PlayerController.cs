@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
         _hasBeenLaunched = false;
         _isLaunching = false;
         _isOnBoat = true;
+        self.SetParent(BoatManager.instance.self);
         _isSwimming = false;
         _isInWater = false;
         _isStun = false;
@@ -318,10 +319,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnReload(InputAction.CallbackContext context)
+    public void OnPause(InputAction.CallbackContext context)
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        if (context.performed)
+            PauseMenu.instance.PauseGame();
     }
     #endregion
 

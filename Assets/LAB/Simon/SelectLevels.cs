@@ -14,6 +14,7 @@ public class SelectLevels : MonoBehaviour, IInteractable
         if (playerInteracting != null) return false;
         playerInteracting = player;
         levelSelection.SetActive(true);
+        Cursor.visible = true;
         return true;
     }
 
@@ -24,44 +25,9 @@ public class SelectLevels : MonoBehaviour, IInteractable
 
     public void SelectLevel(int number)
     {
-        switch (number)
-        {
-            case 1:
-                //GameManager.instance.LoadLevel("Level_0" + number, true);
-                break;
-            case 2:
-                //GameManager.instance.LoadLevel("Level_0" + number, true);
-                break;
-            case 3:
-                //GameManager.instance.LoadLevel("Level_0" + number, true);
-                break;
-            case 4:
-                GameManager.instance.LoadLevel("Level_0" + number, true);
-                break;
-            case 5:
-                //GameManager.instance.LoadLevel("Level_0" + number, true);
-                break;
-            case 6:
-                //GameManager.instance.LoadLevel("Level_0" + number, true);
-                break;
-            case 7:
-                //GameManager.instance.LoadLevel("Level_0" + number, true);
-                break;
-            case 8:
-                //GameManager.instance.LoadLevel("Level_0" + number, true);
-                break;
-            case 9:
-                //GameManager.instance.LoadLevel("Level_0" + number, true);
-                break;
-            case 10:
-                //GameManager.instance.LoadLevel("Level_0" + number, true);
-                break;
-            default:
-                break;
-        }
+        GameManager.instance.LoadLevel("Level_0" + number, true);
 
-        UninteractWith(playerInteracting);
-        playerInteracting.isInteracting = false;
+        Back();
     }
 
     public string GetTag()
@@ -69,9 +35,18 @@ public class SelectLevels : MonoBehaviour, IInteractable
         return gameObject.tag;
     }
 
+    public void Back()
+    {
+        playerInteracting.selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+        playerInteracting.selfRigidBody.mass = 1;
+        playerInteracting.isInteracting = false;
+        UninteractWith(playerInteracting);
+    }
+
     public void UninteractWith(PlayerController player)
     {
         playerInteracting = null;
         levelSelection.SetActive(false);
+        Cursor.visible = false;
     }
 }
