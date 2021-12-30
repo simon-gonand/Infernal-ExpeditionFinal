@@ -49,4 +49,14 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1.0f;
         isPause = false;
     }
+
+    public void Option()
+    {
+        // TODO
+    }
+
+    public void Quit()
+    {
+        GameManager.instance.LoadLevel("BalanceZone", false);
+    }
 }

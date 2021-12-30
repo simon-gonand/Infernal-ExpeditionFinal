@@ -100,20 +100,6 @@ public class PlayerManager : MonoBehaviour
         camManager.CalculateOffsetRotationMovement();
     }
 
-    private void ChangeScene()
-    {
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
-            SceneManager.LoadScene("BalanceZone");
-            GameManager.instance.boatOnTargetGroup = false;
-        }
-        if (Keyboard.current.digit2Key.wasPressedThisFrame)
-        {
-            SceneManager.LoadScene("Level_04");
-            GameManager.instance.boatOnTargetGroup = true;
-        }
-    }
-
     public void OnChangeScene()
     {
         for (int i = 0; i < players.Count; ++i)
@@ -156,7 +142,5 @@ public class PlayerManager : MonoBehaviour
         }
         if (!playerIsOutCam)
             camManager.isUnzooming = false;
-
-        ChangeScene();
     }
 }
