@@ -181,9 +181,6 @@ public class PlayerController : MonoBehaviour
         }
         if (_hasBeenLaunched)
         {
-            Debug.Log(collision.collider.gameObject.transform.position.y);
-            Debug.Log(self.position.y);
-            Debug.Log(collision.collider.gameObject.transform.position.y < self.position.y);
             if (collision.collider.gameObject.transform.position.y < self.position.y)
             {
                 selfCarryPlayer.StopFall();

@@ -115,7 +115,6 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
     public void StopFall()
     {
-        Debug.Log("saucisse");
         selfScript.hasBeenLaunched = false;
         Physics.IgnoreCollision(selfScript.selfCollider, carrier.selfCollider, false);
         carrier = null;
