@@ -183,7 +183,17 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="E_Trl_Reload" ID="{6B619C78-4E94-4D06-907E-EA4B26B272CD}"/>
+						<Event Name="E_Trl_Reload" ID="{6B619C78-4E94-4D06-907E-EA4B26B272CD}">
+							<ChildrenList>
+								<Action Name="" ID="{7D711C98-C66B-44F0-8A76-263F841E3246}" ShortID="547522687">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Trl_Reload" ID="{57C20087-EC52-4023-8850-0F41146CFA71}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="E_Trl_Death" ID="{F7C254A0-5F5C-43CD-9A84-E3FB92099550}"/>
 						<Event Name="E_Pks_Steps" ID="{BBB10A36-8D94-489F-980B-836E03D6DB4F}"/>
 						<Event Name="E_Pks_Carry" ID="{772F4B22-2F55-42D7-BDC5-1A4EF6DE3B78}"/>

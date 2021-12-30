@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="678923568">
+		<SoundBank Id="393239870" Language="SFX" Hash="4139139313">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -128,6 +128,26 @@
 						<File Id="1063609588" Language="SFX">
 							<ShortName>Enemy_SlashAttack_3.wav</ShortName>
 							<Path>SFX\Enemy_SlashAttack_3_7C806E9E.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="565240443" Name="E_Trl_Reload" ObjectPath="\Events\Default Work Unit\Enemy\E_Trl_Reload" DurationType="OneShot" DurationMin="2.766836" DurationMax="3.836312">
+					<IncludedMemoryFiles>
+						<File Id="580808004" Language="SFX">
+							<ShortName>Reload_Impact.wav</ShortName>
+							<Path>SFX\Reload_Impact_10C4C929.wem</Path>
+						</File>
+						<File Id="756136740" Language="SFX">
+							<ShortName>Reload_Entry.wav</ShortName>
+							<Path>SFX\Reload_Entry_10C4C929.wem</Path>
+						</File>
+						<File Id="785270180" Language="SFX">
+							<ShortName>Reload_Exit.wav</ShortName>
+							<Path>SFX\Reload_Exit_10C4C929.wem</Path>
+						</File>
+						<File Id="910134498" Language="SFX">
+							<ShortName>Reload_Rolling.wav</ShortName>
+							<Path>SFX\Reload_Rolling_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
