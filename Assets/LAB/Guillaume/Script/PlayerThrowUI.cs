@@ -39,7 +39,7 @@ public class PlayerThrowUI : MonoBehaviour
     {
         if (selfPlayerController.isCarried)
         {
-            if (selfCarryPlayer.carrier.isAiming && selfCarryPlayer.carrier.isLaunching)
+            if (selfCarryPlayer.carrier.isLaunching)
             {
                 selfCarryPlayer.carrier.selfPlayerThrowUi.globaleConeCanvas.SetActive(true);
 

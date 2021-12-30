@@ -267,25 +267,16 @@ public class Treasure : MonoBehaviour, ICarriable
     // Launch the treasure
     public void OnAction(PlayerController player)
     {
-        foreach (PlayerController p in _playerInteractingWith)
-        {
-            if (!p.isLaunching) return;
-            p.selfRigidBody.velocity = Vector3.zero;
-        }
-
-        selfRigidbody.velocity = Vector3.zero;
         player.isLaunching = true;
     }
 
     public void Launch(PlayerController player)
     {
         int nbPlayers = _playerInteractingWith.Count;
-        Vector3 launchDirection = Vector3.zero;
         while (_playerInteractingWith.Count > 0)
         {
             PlayerController p = _playerInteractingWith[0];
-            Vector3 playerMovement = new Vector3 (p.playerMovementInput.x, 0.0f, p.playerMovementInput.y);
-            launchDirection += playerMovement;
+
             // Update lists values
             _playerInteractingWith.Remove(p);
             associateColliders[p].GetComponent<BoxCollider>().enabled = true;
@@ -472,7 +463,6 @@ public class Treasure : MonoBehaviour, ICarriable
         }
         if (!isGrounded)
         {
-            selfRigidbody.AddForce((Physics.gravity * 3) * selfRigidbody.mass);
             // Set the position of the raycast
             Vector3 raycastStartPos = self.position;
             raycastStartPos.y -= self.lossyScale.y / 2;

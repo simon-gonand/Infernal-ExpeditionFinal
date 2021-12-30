@@ -10,7 +10,6 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
     private bool _isLoadingLaunch = false;
     public bool isLoadingLaunch { get { return _isLoadingLaunch; } }
-    [HideInInspector]public float launchForce = 0.0f;
 
     public bool InteractWith(PlayerController carrier, GameObject interactingWith)
     {
@@ -45,31 +44,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
     public void OnAction(PlayerController player)
     {
-        player.selfRigidBody.velocity = Vector3.zero;
         _isLoadingLaunch = true;
-        StartCoroutine(LoadingLaunchForce());
-    }
-
-    IEnumerator LoadingLaunchForce()
-    {
-        // Increase every 0.1 seconds
-        float offsetTime = 0.1f;
-        // Calculate how many the launch force will increase every 0.1 seconds
-        float offsetLaunch = selfScript.playerPreset.maxLaunchForce * offsetTime / selfScript.playerPreset.fullChargeTime;
-        while (isLoadingLaunch && launchForce != selfScript.playerPreset.maxLaunchForce)
-        {
-
-            if (carrier.playerMovementInput == Vector2.zero)
-            {
-                yield return new WaitForEndOfFrame();
-                continue;
-            }
-
-            launchForce += offsetLaunch;
-            if (launchForce > selfScript.playerPreset.maxLaunchForce)
-                launchForce = selfScript.playerPreset.maxLaunchForce;
-            yield return new WaitForSeconds(offsetTime);
-        }
     }
 
     public void UninteractWith(PlayerController player)
@@ -83,7 +58,6 @@ public class CarryPlayer : MonoBehaviour, ICarriable
         player.isLaunching = false;
 
         _isLoadingLaunch = false;
-        launchForce = 0.0f;
 
         selfScript.isCarried = false;
         selfScript.selfRigidBody.mass = 1;
@@ -93,8 +67,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
         selfScript.anim.SetBool("IsGettingCarried", false);
 
-        
-
+        carrier = null;
     }
 
     public void GetOnBoat(Transform entryPosition)
@@ -107,40 +80,26 @@ public class CarryPlayer : MonoBehaviour, ICarriable
         selfScript.isOnBoat = false;
     }
 
-    private void StopLaunching()
-    {
-        _isLoadingLaunch = false;
-        carrier.isLaunching = false;
-        launchForce = 0.0f;
-    }
-
     public void Launch(PlayerController player)
     {
-        StopCoroutine(LoadingLaunchForce());
         if (isLoadingLaunch)
         {
             _isLoadingLaunch = false;
-
-            Vector3 launchDirection = new Vector3(carrier.playerMovementInput.x, 0.0f, carrier.playerMovementInput.y);
-            if (carrier.playerMovementInput == Vector2.zero)
-            {
-                StopLaunching();
-                return;
-            }
 
             // It's dirty (UI)
             carrier.selfPlayerThrowUi.globaleConeCanvas.SetActive(false);
 
             // Enable rigidbody
-            selfScript.selfRigidBody.mass = 1;
+            carrier.selfRigidBody.mass = 1;
+
             selfScript.selfRigidBody.isKinematic = false;
             selfScript.self.SetParent(null);
-            selfScript.selfRigidBody.AddForce((launchDirection + Vector3.up) * launchForce, ForceMode.Impulse);
+            Physics.IgnoreCollision(selfScript.selfCollider, carrier.selfCollider, true);
+            selfScript.selfRigidBody.AddForce((carrier.playerThrowDir + Vector3.up).normalized * selfScript.playerPreset.maxLaunchForce, ForceMode.Impulse);
             selfScript.isCarried = false;
 
             player.isCarrying = false;
             player.isInteracting = false;
-            player.carrying = null;
             player.isLaunching = false;
             selfScript.hasBeenLaunched = true;
 
@@ -151,9 +110,15 @@ public class CarryPlayer : MonoBehaviour, ICarriable
 
             // Play Launch Sound
             AudioManager.AMInstance.playerThrowSFX.Post(gameObject);
-
-            launchForce = 0.0f;
         }
+    }
+
+    public void StopFall()
+    {
+        Debug.Log("saucisse");
+        selfScript.hasBeenLaunched = false;
+        Physics.IgnoreCollision(selfScript.selfCollider, carrier.selfCollider, false);
+        carrier = null;
     }
 
     public string GetTag()

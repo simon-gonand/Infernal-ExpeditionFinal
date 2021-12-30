@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Transform self;
     public Rigidbody selfRigidBody;
     public Collider selfCollider;
+    public CarryPlayer selfCarryPlayer;
     public PlayerPresets playerPreset;
     public PlayerThrowUI selfPlayerThrowUi;
 
@@ -61,7 +62,6 @@ public class PlayerController : MonoBehaviour
     [System.NonSerialized]
     public List<EnemiesAI> isAttackedBy = new List<EnemiesAI>();
 
-    [HideInInspector]public bool isAiming;
     [HideInInspector]public Vector3 playerThrowDir;
 
 
@@ -181,8 +181,13 @@ public class PlayerController : MonoBehaviour
         }
         if (_hasBeenLaunched)
         {
+            Debug.Log(collision.collider.gameObject.transform.position.y);
+            Debug.Log(self.position.y);
+            Debug.Log(collision.collider.gameObject.transform.position.y < self.position.y);
             if (collision.collider.gameObject.transform.position.y < self.position.y)
-                _hasBeenLaunched = false;
+            {
+                selfCarryPlayer.StopFall();
+            }
         }
     }
 
@@ -653,16 +658,8 @@ public class PlayerController : MonoBehaviour
     }
     private void PlayerJoystickDetection()
     {
-        playerThrowDir = new Vector3(playerMovementInput.x, 0, playerMovementInput.y).normalized;
-
-        if (playerThrowDir == Vector3.zero)
-        {
-            isAiming = false;
-        }
-        else
-        {
-            isAiming = true;
-        }
+        if (playerMovementInput != Vector2.zero)
+            playerThrowDir = new Vector3(playerMovementInput.x, 0, playerMovementInput.y).normalized;
     }
 
 
@@ -708,8 +705,6 @@ public class PlayerController : MonoBehaviour
             AudioManager.AMInstance.playerGroundImpactSFX.Post(gameObject);
             canPlaySound = false;
         }
-        
-
     }
 
     private void CheckIsUnderMap()
