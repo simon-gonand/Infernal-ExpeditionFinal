@@ -12,22 +12,28 @@ public class GameManager : MonoBehaviour
     public PlayerManager playerManager;
     public CinemachineTargetGroup targetGroup;
 
-    public bool boatOnTargetGroup = false;
+    public bool boatOnTargetGroup;
 
     private void Awake()
     {
         if (instance == null) instance = this;
-        else Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         DontDestroyOnLoad(transform.parent.gameObject);
         SceneManager.sceneLoaded += GetObjects;
         Cursor.visible = false;
+        boatOnTargetGroup = false;
     }
 
     public void LoadLevel(string sceneName, bool isBoatInScene)
     {
-        SceneManager.LoadScene(sceneName);
+        Debug.Log(isBoatInScene);
         boatOnTargetGroup = isBoatInScene;
+        SceneManager.LoadScene(sceneName);
     }
 
     private void GetObjects(Scene scene, LoadSceneMode sceneMode)
@@ -45,11 +51,13 @@ public class GameManager : MonoBehaviour
         targetGroup = FindObjectOfType<CinemachineTargetGroup>();
 
         playerManager.OnChangeScene();
+        Debug.Log("loaded scene");
         BoatInTargetGroup();
     }
 
     private void BoatInTargetGroup()
     {
+        Debug.Log(boatOnTargetGroup);
         if (boatOnTargetGroup)
         {
             targetGroup.AddMember(BoatManager.instance.self, 25, 20);
