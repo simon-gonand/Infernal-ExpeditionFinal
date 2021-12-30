@@ -155,4 +155,9 @@ public class CarryPlayer : MonoBehaviour, ICarriable
             launchForce = 0.0f;
         }
     }
+
+    public string GetTag()
+    {
+        return gameObject.tag;
+    }
 }

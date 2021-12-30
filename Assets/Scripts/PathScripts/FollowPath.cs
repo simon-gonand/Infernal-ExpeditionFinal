@@ -5,31 +5,48 @@ using Cinemachine;
 
 public class FollowPath : MonoBehaviour
 {
-    public Path path;
+    [HideInInspector] public Path path;
     public Transform self;
-    public CinemachineVirtualCamera cam;
+    [HideInInspector] public CinemachineVirtualCamera cam;
 
     private float initialPosY;
     private Vector3 initialOffset;
     private float initialFOV;
 
-    private int linkIndex = 0;
-    private float lastTValue = 0.0f;
+    private int linkIndex;
+    private float lastTValue;
 
-    private float tParam = 0.0f;
-    private bool coroutineAllowed = true;
-    int allPointIndex = 0;
-    private bool pathEnd = false;
+    private float tParam;
+    private bool coroutineAllowed;
+    int allPointIndex;
+    private bool pathEnd;
 
     private Waypoint currentWaypoint;
 
-    // Start is called before the first frame update
-    void Start()
+    public void InitializePath()
     {
+        if (path == null) return;
+        if (path.allPoints.Count < 2)
+        {
+            pathEnd = true;
+            Vector3 startPos = path.waypoints[0].transform.position;
+            startPos.y = BoatManager.instance.self.position.y;
+            BoatManager.instance.self.position = startPos;
+            return;
+        }
+        else
+            pathEnd = false;
         currentWaypoint = path.waypoints[0];
         currentWaypoint.ev.Invoke();
 
-        initialPosY = self.position.y;
+        linkIndex = 0;
+        lastTValue = 0.0f;
+        allPointIndex = 0;
+        tParam = 0.0f;
+
+        coroutineAllowed = true;
+
+        initialPosY = BoatManager.instance.self.position.y;
         if (cam != null)
         {
             initialOffset = cam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
@@ -99,7 +116,7 @@ public class FollowPath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pathEnd) return;
+        if (pathEnd || path == null) return;
         if (coroutineAllowed)
             StartCoroutine(FollowCurve());
 

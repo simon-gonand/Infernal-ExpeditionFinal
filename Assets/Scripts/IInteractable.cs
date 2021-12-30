@@ -10,4 +10,6 @@ public interface IInteractable
 
     // When the player pressed the action button when he's on the interactable
     public void OnAction(PlayerController player);
+
+    public string GetTag();
 }

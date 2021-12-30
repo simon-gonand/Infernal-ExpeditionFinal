@@ -20,9 +20,8 @@ public class PlayerManager : MonoBehaviour
     private PlayerInputManager self;
 
     [Header("External References")]
-    public CinemachineVirtualCamera cam;
-    public CinemachineTargetGroup targetGroup;
-    public CameraManager camManager;
+    [HideInInspector] public CinemachineVirtualCamera cam;
+    [HideInInspector] public CameraManager camManager;
 
     [Header("PlayerStats")]
     public float deadZoneOffsetX = 10.0f;
@@ -35,7 +34,7 @@ public class PlayerManager : MonoBehaviour
     private float cameraOriginalOffset;
     Coroutine coroutine;
 
-    private void Awake()
+    private void Start()
     {
         cameraOriginalOffset = camManager.offsetPositionMovement;
     }
@@ -43,37 +42,42 @@ public class PlayerManager : MonoBehaviour
     // Update material of player when one is joining to avoid them to have the same color
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        float playerSpawnOffset = 0.0f;
-        switch (playerInput.playerIndex)
+        Vector3 playerSpawnPosition = SetPlayerPosition(playerInput.playerIndex);
+
+        // Update players spawn positions according to which player is spawning
+        // Player is spawning on the boat
+        Transform playerTransform = playerInput.gameObject.transform;
+        playerTransform.position = playerSpawnPosition;
+        GameManager.instance.targetGroup.AddMember(playerTransform, weight, 20);
+        playerTransform.SetParent(BoatManager.instance.self);
+        PlayerController player = playerInput.gameObject.GetComponent<PlayerController>();
+        player.id = playerInput.playerIndex;
+        _players.Add(player);
+    }
+
+    private Vector3 SetPlayerPosition(int id)
+    {
+        Vector3 playerSpawnPosition = BoatManager.instance.spawnPoint1.position;
+        switch (id)
         {
             case 0:
                 self.playerPrefab = player2;
                 break;
             case 1:
+                playerSpawnPosition = BoatManager.instance.spawnPoint2.position;
                 self.playerPrefab = player3;
-                playerSpawnOffset = 0.5f;
                 break;
             case 2:
+                playerSpawnPosition = BoatManager.instance.spawnPoint3.position;
                 self.playerPrefab = player4;
-                playerSpawnOffset = -0.5f;
                 break;
             case 3:
-                playerSpawnOffset = 1.0f;
+                playerSpawnPosition = BoatManager.instance.spawnPoint4.position;
                 break;
             default:
                 break;
         }
-
-        // Update players spawn positions according to which player is spawning
-        // Player is spawning on the boat
-        Transform playerTransform = playerInput.gameObject.transform;
-        Vector3 playerSpawnPosition = BoatManager.instance.spawnPoint.position;
-        playerSpawnPosition.y += playerTransform.lossyScale.y;
-        playerSpawnPosition.z += playerInput.playerIndex * playerSpawnOffset;
-        playerTransform.position = playerSpawnPosition;
-        targetGroup.AddMember(playerTransform, weight, 20);
-        playerTransform.SetParent(BoatManager.instance.self);
-        _players.Add(playerInput.gameObject.GetComponent<PlayerController>());
+        return playerSpawnPosition;
     }
 
     private void SetZoomSpeed(PlayerController player)
@@ -101,10 +105,23 @@ public class PlayerManager : MonoBehaviour
         if (Keyboard.current.digit1Key.wasPressedThisFrame)
         {
             SceneManager.LoadScene("BalanceZone");
+            GameManager.instance.boatOnTargetGroup = false;
         }
         if (Keyboard.current.digit2Key.wasPressedThisFrame)
         {
             SceneManager.LoadScene("Level_04");
+            GameManager.instance.boatOnTargetGroup = true;
+        }
+    }
+
+    public void OnChangeScene()
+    {
+        for (int i = 0; i < players.Count; ++i)
+        {
+            PlayerController player = players[i];
+            player.ResetPlayer();
+            player.self.position = SetPlayerPosition(i);
+            GameManager.instance.targetGroup.AddMember(player.self, weight, 20);
         }
     }
 
