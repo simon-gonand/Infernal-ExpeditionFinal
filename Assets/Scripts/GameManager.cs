@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(string sceneName, bool isBoatInScene)
     {
-        Debug.Log(isBoatInScene);
         boatOnTargetGroup = isBoatInScene;
         SceneManager.LoadScene(sceneName);
     }
@@ -51,13 +50,11 @@ public class GameManager : MonoBehaviour
         targetGroup = FindObjectOfType<CinemachineTargetGroup>();
 
         playerManager.OnChangeScene();
-        Debug.Log("loaded scene");
         BoatInTargetGroup();
     }
 
     private void BoatInTargetGroup()
     {
-        Debug.Log(boatOnTargetGroup);
         if (boatOnTargetGroup)
         {
             targetGroup.AddMember(BoatManager.instance.self, 25, 20);
