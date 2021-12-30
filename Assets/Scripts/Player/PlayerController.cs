@@ -309,7 +309,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             // Else put the treasure down or uninteract with the interactable
-            else if ((_isInteracting || _isCarrying) && context.canceled)
+            else if ((_isInteracting || _isCarrying) && context.canceled && !interactingWith.GetTag().Equals("LevelSelection"))
             {
                 _interactingWith.UninteractWith(this);
                 selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;

@@ -516,4 +516,9 @@ public class Treasure : MonoBehaviour, ICarriable
 
         PlayerJoystickDetection();
     }
+
+    public string GetTag()
+    {
+        return gameObject.tag;
+    }
 }

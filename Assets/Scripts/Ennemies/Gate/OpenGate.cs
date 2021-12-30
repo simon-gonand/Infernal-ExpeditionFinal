@@ -44,6 +44,11 @@ public class OpenGate : MonoBehaviour, IInteractable
         interactingPlayer = null;
     }
 
+    public string GetTag()
+    {
+        return gameObject.tag;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

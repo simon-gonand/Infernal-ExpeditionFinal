@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(string sceneName, bool isBoatInScene)
     {
+        Debug.Log(sceneName);
         SceneManager.LoadScene(sceneName);
         boatOnTargetGroup = isBoatInScene;
     }
