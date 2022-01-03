@@ -50,7 +50,6 @@ public class FollowPath : MonoBehaviour
         {
             allPointIndex += path.links[i].pathPoints.Count - 1;
         }
-        Debug.Log(allPointIndex);
         lastTValue = 0.0f;
         tParam = 0.0f;
 
