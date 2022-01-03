@@ -25,27 +25,29 @@ public class FollowPath : MonoBehaviour
 
     private void Start()
     {
-        InitializePath();
+        //InitializePath();
     }
 
     public void InitializePath()
     {
+        StopAllCoroutines();
         if (path == null) return;
         path.InitializePath();
+        linkIndex = path.startWaypoint;
         if (path.allPoints.Count < 2)
         {
             pathEnd = true;
             Vector3 startPos = path.waypoints[linkIndex].transform.position;
-            startPos.y = BoatManager.instance.self.position.y;
-            BoatManager.instance.self.position = startPos;
+            startPos.y = self.position.y;
+            self.position = startPos;
             return;
         }
         else
             pathEnd = false;
-        currentWaypoint = path.waypoints[0];
+        currentWaypoint = path.waypoints[linkIndex];
         currentWaypoint.ev.Invoke();
 
-        linkIndex = path.startWaypoint;
+        allPointIndex = 0;
         for (int i = 0; i < linkIndex; ++i)
         {
             allPointIndex += path.links[i].pathPoints.Count - 1;
@@ -55,7 +57,7 @@ public class FollowPath : MonoBehaviour
 
         coroutineAllowed = true;
 
-        initialPosY = BoatManager.instance.self.position.y;
+        initialPosY = self.position.y;
         if (cam != null)
         {
             initialOffset = cam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
@@ -66,7 +68,6 @@ public class FollowPath : MonoBehaviour
     private IEnumerator FollowCurve()
     {
         coroutineAllowed = false;
-
         while (tParam < 1)
         {
             // Object position
@@ -96,6 +97,7 @@ public class FollowPath : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+
         if (path.links[linkIndex].pathPoints.Count > 1)
             lastTValue = tParam / (path.links[linkIndex].pathPoints.Count - 1);
         tParam = 0.0f;

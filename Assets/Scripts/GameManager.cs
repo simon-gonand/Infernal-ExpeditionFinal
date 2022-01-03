@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour
         if (boatPath != null)
             followPath.path = boatPath.GetComponent<Path>();
         followPath.cam = virtualCam.GetComponent<CinemachineVirtualCamera>();
-        followPath.path.InitializePath();
         followPath.InitializePath();
         targetGroup = FindObjectOfType<CinemachineTargetGroup>();
 
