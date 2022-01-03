@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
 
         playerManager.OnChangeScene();
         BoatInTargetGroup();
+        LevelManager.instance.StartLevel();
     }
 
     private void BoatInTargetGroup()
