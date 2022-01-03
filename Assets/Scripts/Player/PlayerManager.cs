@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using Cinemachine;
 
@@ -27,6 +26,9 @@ public class PlayerManager : MonoBehaviour
     public float deadZoneOffsetY = 10.0f;
     public float weight;
 
+    [Space]
+    public bool onPirateIsland = true;
+
     private List<PlayerController> _players = new List<PlayerController>();
     public List<PlayerController> players { get { return _players; } }
 
@@ -49,15 +51,20 @@ public class PlayerManager : MonoBehaviour
     // Update material of player when one is joining to avoid them to have the same color
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        Vector3 playerSpawnPosition = SetPlayerPosition(playerInput.playerIndex);
 
         // Update players spawn positions according to which player is spawning
         // Player is spawning on the boat
         Transform playerTransform = playerInput.gameObject.transform;
-        playerTransform.position = playerSpawnPosition;
-        playerInput.currentActionMap.Disable();
-        GameManager.instance.targetGroup.AddMember(playerTransform, weight, 20);
-        playerTransform.SetParent(BoatManager.instance.self);
+        Vector3 playerSpawnPosition = SetPlayerPosition(playerInput.playerIndex);
+        if (!onPirateIsland)
+        {
+            playerTransform.position = playerSpawnPosition;
+            playerTransform.SetParent(BoatManager.instance.self);
+        }
+        else
+            playerInput.currentActionMap.Disable();
+        if (GameManager.instance != null)
+            GameManager.instance.targetGroup.AddMember(playerTransform, weight, 20);
         PlayerController player = playerInput.gameObject.GetComponent<PlayerController>();
         player.id = playerInput.playerIndex;
         _players.Add(player);
@@ -114,8 +121,21 @@ public class PlayerManager : MonoBehaviour
         {
             PlayerController player = players[i];
             player.ResetPlayer();
-            player.self.position = SetPlayerPosition(i);
+            if (!onPirateIsland)
+                player.self.position = SetPlayerPosition(i);
             GameManager.instance.targetGroup.AddMember(player.self, weight, 20);
+        }
+    }
+
+    public void CheckInputs()
+    {
+        if (_players.Count == 1)
+        {
+            if (Gamepad.current.aButton.wasPressedThisFrame)
+                _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(Gamepad.current);
+
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+                _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(Keyboard.current);
         }
     }
 
