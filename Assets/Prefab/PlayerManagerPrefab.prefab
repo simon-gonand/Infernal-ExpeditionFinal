@@ -78,7 +78,7 @@ MonoBehaviour:
       m_SingletonActionBindings:
       - m_Name: 
         m_Id: 67c9de63-0677-4d18-9c9d-3ae4393934f9
-        m_Path: <Keyboard>/anyKey
+        m_Path: <Keyboard>/space
         m_Interactions: 
         m_Processors: 
         m_Groups: 
@@ -119,9 +119,9 @@ MonoBehaviour:
   player3: {fileID: 4223509153915057740, guid: 546a3fb6f79fc3b49983829cbaf03949, type: 3}
   player4: {fileID: 4223509153915057740, guid: 76b3b5cb668467b4bbfa73cecb28c2c1, type: 3}
   self: {fileID: 7569049507790534519}
-  camera: {fileID: 0}
+  cam: {fileID: 0}
   targetGroup: {fileID: 0}
   camManager: {fileID: 0}
   deadZoneOffsetX: 50
   deadZoneOffsetY: 50
-  weight: 0
+  weight: 1

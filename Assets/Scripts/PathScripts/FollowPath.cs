@@ -7,27 +7,55 @@ public class FollowPath : MonoBehaviour
 {
     public Path path;
     public Transform self;
-    public CinemachineVirtualCamera cam;
+    [HideInInspector] public CinemachineVirtualCamera cam;
 
     private float initialPosY;
     private Vector3 initialOffset;
     private float initialFOV;
 
-    private int linkIndex = 0;
-    private float lastTValue = 0.0f;
+    private int linkIndex;
+    private float lastTValue;
 
-    private float tParam = 0.0f;
-    private bool coroutineAllowed = true;
-    int allPointIndex = 0;
-    private bool pathEnd = false;
+    private float tParam;
+    private bool coroutineAllowed;
+    int allPointIndex;
+    private bool pathEnd;
 
     private Waypoint currentWaypoint;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        currentWaypoint = path.waypoints[0];
+        //InitializePath();
+    }
+
+    public void InitializePath()
+    {
+        StopAllCoroutines();
+        if (path == null) return;
+        path.InitializePath();
+        linkIndex = path.startWaypoint;
+        if (path.allPoints.Count < 2)
+        {
+            pathEnd = true;
+            Vector3 startPos = path.waypoints[linkIndex].transform.position;
+            startPos.y = self.position.y;
+            self.position = startPos;
+            return;
+        }
+        else
+            pathEnd = false;
+        currentWaypoint = path.waypoints[linkIndex];
         currentWaypoint.ev.Invoke();
+
+        allPointIndex = 0;
+        for (int i = 0; i < linkIndex; ++i)
+        {
+            allPointIndex += path.links[i].pathPoints.Count - 1;
+        }
+        lastTValue = 0.0f;
+        tParam = 0.0f;
+
+        coroutineAllowed = true;
 
         initialPosY = self.position.y;
         if (cam != null)
@@ -40,7 +68,6 @@ public class FollowPath : MonoBehaviour
     private IEnumerator FollowCurve()
     {
         coroutineAllowed = false;
-
         while (tParam < 1)
         {
             // Object position
@@ -56,7 +83,7 @@ public class FollowPath : MonoBehaviour
             Vector3 rotation = self.position - oldPos;
             rotation.y = 0.0f;
             self.rotation = Quaternion.LookRotation(rotation);
-            
+
 
             // Camera position
             if (cam != null)
@@ -70,6 +97,7 @@ public class FollowPath : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+
         if (path.links[linkIndex].pathPoints.Count > 1)
             lastTValue = tParam / (path.links[linkIndex].pathPoints.Count - 1);
         tParam = 0.0f;
@@ -83,7 +111,10 @@ public class FollowPath : MonoBehaviour
                 lastTValue = 0.0f;
             }
             else
+            {
+                LevelManager.instance.EndLevel();
                 pathEnd = true;
+            }
         }
         else if (linkIndex < path.links.Count - 1 && path.allPoints[allPointIndex] == path.links[linkIndex + 1].start.self.position)
         {
@@ -99,7 +130,7 @@ public class FollowPath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pathEnd) return;
+        if (pathEnd && path == null) return;
         if (coroutineAllowed)
             StartCoroutine(FollowCurve());
 

@@ -137,10 +137,8 @@ MonoBehaviour:
   selfRigidbody: {fileID: 2098119113198449785}
   selfCollider: {fileID: 7302959734652682283}
   category: {fileID: 11400000, guid: 34838ba1dacbdec4e8e94f6f67aae8b5, type: 2}
-  isLoadingPower: 0
   playerThrowDir: {x: 0, y: 0, z: 0}
   outlineScript: {fileID: 1132193645431689254}
-  launchForce: 0
 --- !u!114 &1132193645431689254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +198,6 @@ MonoBehaviour:
   selfTreasure: {fileID: 3169733071786855023}
   objToRotate: {fileID: 2826638847445954386}
   throwUiGlobal: {fileID: 4042626263833038906}
-  throwFiller: {fileID: 8180207303518702985}
   backGroundThrow: {fileID: 3748294058600624787}
 --- !u!1 &2020472548992053757
 GameObject:
@@ -532,8 +529,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.1051366}
-  m_Center: {x: 0, y: 0, z: 0.66}
+  m_Size: {x: 1.5, y: 1.5, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0.63}
 --- !u!114 &2819918642237527385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,8 +588,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.1051366}
-  m_Center: {x: 0, y: 0, z: 0.66}
+  m_Size: {x: 1.5, y: 1.5, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0.63}
 --- !u!114 &1210879931502690233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,8 +647,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.1051366}
-  m_Center: {x: 0, y: 0, z: 0.66}
+  m_Size: {x: 1.5, y: 1.5, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0.63}
 --- !u!114 &5711723960073187515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,8 +706,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.1051366}
-  m_Center: {x: 0, y: 0, z: 0.66}
+  m_Size: {x: 1.5, y: 1.5, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0.63}
 --- !u!114 &5822309383478389461
 MonoBehaviour:
   m_ObjectHideFlags: 0

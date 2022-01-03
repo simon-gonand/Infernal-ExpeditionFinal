@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Transform self;
     public Rigidbody selfRigidBody;
     public Collider selfCollider;
+    public CarryPlayer selfCarryPlayer;
     public PlayerPresets playerPreset;
     public PlayerThrowUI selfPlayerThrowUi;
 
@@ -29,6 +30,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Audio")]
     public bool canPlaySound = false;
+
+    private int _id;
+    public int id { set { _id = value; } }
 
     public LayerMask mask;
     private IInteractable _interactingWith;
@@ -58,7 +62,6 @@ public class PlayerController : MonoBehaviour
     [System.NonSerialized]
     public List<EnemiesAI> isAttackedBy = new List<EnemiesAI>();
 
-    [HideInInspector]public bool isAiming;
     [HideInInspector]public Vector3 playerThrowDir;
 
 
@@ -97,6 +100,58 @@ public class PlayerController : MonoBehaviour
     private bool isDead = false;
     private bool isGrounded = false;
     #endregion
+    public void ResetPlayer()
+    {
+        isAttackedBy.Clear();
+        if (_carrying != null)
+        {
+            Treasure treasure = _carrying as Treasure;
+            if (treasure != null)
+                Destroy(treasure.gameObject);
+            _carrying = null;
+        }
+        if (_interactingWith != null)
+            _interactingWith = null;
+
+        ResetStates();
+        ResetAnimStates();
+
+        selfRigidBody.velocity += Vector3.up;
+        UpdateSwimming();
+        selfRigidBody.velocity -= Vector3.up;
+        selfRigidBody.mass = 1;
+    }
+
+    private void ResetStates()
+    {
+        _isInteracting = false;
+        _isCarrying = false;
+        _isCarried = false;
+        _hasBeenLaunched = false;
+        _isLaunching = false;
+        _isOnBoat = true;
+        _isSwimming = false;
+        _isInWater = false;
+        _isStun = false;
+        isDashing = false;
+        isDead = false;
+        isGrounded = false;
+
+        self.SetParent(BoatManager.instance.self);
+        sword.SetActive(true);
+    }
+
+    private void ResetAnimStates()
+    {
+        anim.SetBool("isMoving", false);
+        anim.SetBool("isDashing", false);
+        anim.SetBool("isSwiming", false);
+        anim.SetBool("isCarrying", false);
+        anim.SetBool("isStun", false);
+        anim.SetBool("isGettingCarried", false);
+
+        anim.Play("Breathing Idle");
+    }
 
     #region Collision
 
@@ -127,7 +182,9 @@ public class PlayerController : MonoBehaviour
         if (_hasBeenLaunched)
         {
             if (collision.collider.gameObject.transform.position.y < self.position.y)
-                _hasBeenLaunched = false;
+            {
+                selfCarryPlayer.StopFall();
+            }
         }
     }
 
@@ -255,7 +312,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             // Else put the treasure down or uninteract with the interactable
-            else if ((_isInteracting || _isCarrying) && context.canceled)
+            else if ((_isInteracting || _isCarrying) && context.canceled && !interactingWith.GetTag().Equals("LevelSelection"))
             {
                 _interactingWith.UninteractWith(this);
                 selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
@@ -264,13 +321,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnReload(InputAction.CallbackContext context)
+    public void OnPause(InputAction.CallbackContext context)
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        if (context.performed)
+            PauseMenu.instance.PauseGame();
     }
     #endregion
-
 
     private void Attack()
     {
@@ -477,7 +533,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Respawn()
     {
         yield return new WaitForSeconds(playerPreset.respawnCooldown);
-        Vector3 respawnPosition = BoatManager.instance.spawnPoint.position;
+        Vector3 respawnPosition = BoatManager.instance.spawnPoint1.position;
         respawnPosition.y += self.lossyScale.y;
         if (isSwimming)
         {
@@ -576,7 +632,7 @@ public class PlayerController : MonoBehaviour
     void InfoAnim()
     {
         
-        if (!_isStun && !_isCarried && !isDead && ((_isInteracting && _carrying != null) ? !_carrying.isLoadingLaunch : !_isInteracting))
+        if (!_isStun && !_isCarried && !isDead && ((_isInteracting && _carrying != null) ? !_isLaunching : !_isInteracting))
         {
             if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
             {
@@ -599,16 +655,8 @@ public class PlayerController : MonoBehaviour
     }
     private void PlayerJoystickDetection()
     {
-        playerThrowDir = new Vector3(playerMovementInput.x, 0, playerMovementInput.y).normalized;
-
-        if (playerThrowDir == Vector3.zero)
-        {
-            isAiming = false;
-        }
-        else
-        {
-            isAiming = true;
-        }
+        if (playerMovementInput != Vector2.zero)
+            playerThrowDir = new Vector3(playerMovementInput.x, 0, playerMovementInput.y).normalized;
     }
 
 
@@ -654,8 +702,6 @@ public class PlayerController : MonoBehaviour
             AudioManager.AMInstance.playerGroundImpactSFX.Post(gameObject);
             canPlaySound = false;
         }
-        
-
     }
 
     private void CheckIsUnderMap()

@@ -51,9 +51,9 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""ReloadScene"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
-                    ""id"": ""ad21794e-7b57-4a09-9e44-673a0eec6ea7"",
+                    ""id"": ""65cf9322-0f3b-4b5a-95f9-20a64e4b77ea"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
@@ -194,23 +194,23 @@ public class @Controller : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""64fe3709-6e0f-4792-a15f-e8e82ce1cbc9"",
-                    ""path"": ""<Gamepad>/select"",
+                    ""id"": ""71dc561e-70d6-4756-80e2-1b0d094e0164"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""ReloadScene"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e88f4d4d-3f2d-448a-a677-75c27a30ad76"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""id"": ""d526bff9-c08b-4a53-8557-18b4a0142562"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""ReloadScene"",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -253,7 +253,7 @@ public class @Controller : IInputActionCollection, IDisposable
         m_Controls_PlayerInteraction = m_Controls.FindAction("PlayerInteraction", throwIfNotFound: true);
         m_Controls_PlayerAction = m_Controls.FindAction("PlayerAction", throwIfNotFound: true);
         m_Controls_PlayerDash = m_Controls.FindAction("PlayerDash", throwIfNotFound: true);
-        m_Controls_ReloadScene = m_Controls.FindAction("ReloadScene", throwIfNotFound: true);
+        m_Controls_Pause = m_Controls.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -307,7 +307,7 @@ public class @Controller : IInputActionCollection, IDisposable
     private readonly InputAction m_Controls_PlayerInteraction;
     private readonly InputAction m_Controls_PlayerAction;
     private readonly InputAction m_Controls_PlayerDash;
-    private readonly InputAction m_Controls_ReloadScene;
+    private readonly InputAction m_Controls_Pause;
     public struct ControlsActions
     {
         private @Controller m_Wrapper;
@@ -316,7 +316,7 @@ public class @Controller : IInputActionCollection, IDisposable
         public InputAction @PlayerInteraction => m_Wrapper.m_Controls_PlayerInteraction;
         public InputAction @PlayerAction => m_Wrapper.m_Controls_PlayerAction;
         public InputAction @PlayerDash => m_Wrapper.m_Controls_PlayerDash;
-        public InputAction @ReloadScene => m_Wrapper.m_Controls_ReloadScene;
+        public InputAction @Pause => m_Wrapper.m_Controls_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -338,9 +338,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @PlayerDash.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerDash;
                 @PlayerDash.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerDash;
                 @PlayerDash.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerDash;
-                @ReloadScene.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnReloadScene;
-                @ReloadScene.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnReloadScene;
-                @ReloadScene.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnReloadScene;
+                @Pause.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_ControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -357,9 +357,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @PlayerDash.started += instance.OnPlayerDash;
                 @PlayerDash.performed += instance.OnPlayerDash;
                 @PlayerDash.canceled += instance.OnPlayerDash;
-                @ReloadScene.started += instance.OnReloadScene;
-                @ReloadScene.performed += instance.OnReloadScene;
-                @ReloadScene.canceled += instance.OnReloadScene;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -388,6 +388,6 @@ public class @Controller : IInputActionCollection, IDisposable
         void OnPlayerInteraction(InputAction.CallbackContext context);
         void OnPlayerAction(InputAction.CallbackContext context);
         void OnPlayerDash(InputAction.CallbackContext context);
-        void OnReloadScene(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
