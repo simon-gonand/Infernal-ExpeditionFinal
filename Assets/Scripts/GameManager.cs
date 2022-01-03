@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(transform.parent.gameObject);
         SceneManager.sceneLoaded += GetObjects;
-        Cursor.visible = false;
         boatOnTargetGroup = false;
     }
 

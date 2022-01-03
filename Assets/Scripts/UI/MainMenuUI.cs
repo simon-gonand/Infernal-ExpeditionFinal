@@ -14,6 +14,7 @@ public class MainMenuUI : MonoBehaviour
         mainMenuCam.Priority = 0;
         foreach (PlayerController player in PlayerManager.instance.players)
             player.GetComponent<PlayerInput>().currentActionMap.Enable();
+        Cursor.visible = false;
         gameObject.SetActive(false);
     }
 
