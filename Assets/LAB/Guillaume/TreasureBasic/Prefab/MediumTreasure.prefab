@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.1051366}
-  m_Center: {x: 0, y: 0, z: 0.66}
+  m_Size: {x: 1.5, y: 1.5, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0.63}
 --- !u!114 &6311372419746551950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,8 +102,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.1051366}
-  m_Center: {x: 0, y: 0, z: 0.66}
+  m_Size: {x: 1.5, y: 1.5, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0.63}
 --- !u!114 &1699942482169171426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,8 +161,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.1051366}
-  m_Center: {x: 0, y: 0, z: 0.66}
+  m_Size: {x: 1.5, y: 1.5, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0.63}
 --- !u!114 &585337706638399372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,10 +314,8 @@ MonoBehaviour:
   selfRigidbody: {fileID: 6504766936223290190}
   selfCollider: {fileID: 2450736688467109660}
   category: {fileID: 11400000, guid: 2920579b1ec68e044af82ef2b244fb99, type: 2}
-  isLoadingPower: 0
   playerThrowDir: {x: 0, y: 0, z: 0}
   outlineScript: {fileID: 5255079782496089873}
-  launchForce: 0
 --- !u!114 &5255079782496089873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,7 +375,6 @@ MonoBehaviour:
   selfTreasure: {fileID: 7829138826894568792}
   objToRotate: {fileID: 6945019194404030565}
   throwUiGlobal: {fileID: 9169852260627511053}
-  throwFiller: {fileID: 3953729553152928446}
   backGroundThrow: {fileID: 8313375193656841636}
 --- !u!1 &6580249657152394954
 GameObject:
@@ -609,8 +606,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.1051366}
-  m_Center: {x: 0, y: 0, z: 0.66}
+  m_Size: {x: 1.5, y: 1.5, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0.63}
 --- !u!114 &6951809839626252910
 MonoBehaviour:
   m_ObjectHideFlags: 0
