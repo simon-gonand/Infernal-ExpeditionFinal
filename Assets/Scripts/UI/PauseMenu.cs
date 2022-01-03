@@ -32,7 +32,7 @@ public class PauseMenu : MonoBehaviour
     public void RestartLevel()
     {
         Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        GameManager.instance.LoadLevel(scene.name, GameManager.instance.boatOnTargetGroup);
         Resume();
     }
 

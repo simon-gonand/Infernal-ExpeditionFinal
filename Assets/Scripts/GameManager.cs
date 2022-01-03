@@ -16,7 +16,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null) instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            new LevelManager();
+        }
         else
         {
             Destroy(gameObject);
@@ -45,12 +49,12 @@ public class GameManager : MonoBehaviour
         if (boatPath != null)
             followPath.path = boatPath.GetComponent<Path>();
         followPath.cam = virtualCam.GetComponent<CinemachineVirtualCamera>();
-        followPath.path.InitializePath();
         followPath.InitializePath();
         targetGroup = FindObjectOfType<CinemachineTargetGroup>();
 
         playerManager.OnChangeScene();
         BoatInTargetGroup();
+        LevelManager.instance.StartLevel();
     }
 
     private void BoatInTargetGroup()
