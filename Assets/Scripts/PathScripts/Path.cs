@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Path : MonoBehaviour
 {
+    public int startWaypoint;
+
     public List<Waypoint> waypoints = new List<Waypoint>();
     public List<Link> links = new List<Link>();
 

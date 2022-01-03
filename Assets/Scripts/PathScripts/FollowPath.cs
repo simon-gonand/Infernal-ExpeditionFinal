@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class FollowPath : MonoBehaviour
 {
-    [HideInInspector] public Path path;
+    public Path path;
     public Transform self;
     [HideInInspector] public CinemachineVirtualCamera cam;
 
@@ -29,7 +29,7 @@ public class FollowPath : MonoBehaviour
         if (path.allPoints.Count < 2)
         {
             pathEnd = true;
-            Vector3 startPos = path.waypoints[0].transform.position;
+            Vector3 startPos = path.waypoints[path.startWaypoint].transform.position;
             startPos.y = BoatManager.instance.self.position.y;
             BoatManager.instance.self.position = startPos;
             return;
