@@ -301,6 +301,7 @@ public class Treasure : MonoBehaviour, ICarriable
         selfRigidbody.isKinematic = false;
         selfRigidbody.useGravity = true;
         Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
+        selfRigidbody.velocity = Vector3.zero;
         selfRigidbody.AddForce((playerThrowDir.normalized + (Vector3.up * category.multiplyUpAngle)).normalized * category.forceNbPlayer[nbPlayers - 1], 
             ForceMode.Impulse);
         selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
