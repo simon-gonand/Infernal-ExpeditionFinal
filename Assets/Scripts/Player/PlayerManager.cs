@@ -16,8 +16,7 @@ public class PlayerManager : MonoBehaviour
     private GameObject player4;
 
     [Header("Self Reference")]
-    [SerializeField]
-    private PlayerInputManager self;
+    public PlayerInputManager self;
 
     [Header("External References")]
     [HideInInspector] public CinemachineVirtualCamera cam;
@@ -34,6 +33,14 @@ public class PlayerManager : MonoBehaviour
     private float cameraOriginalOffset;
     Coroutine coroutine;
 
+    public static PlayerManager instance;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
+
     private void Start()
     {
         cameraOriginalOffset = camManager.offsetPositionMovement;
@@ -48,6 +55,7 @@ public class PlayerManager : MonoBehaviour
         // Player is spawning on the boat
         Transform playerTransform = playerInput.gameObject.transform;
         playerTransform.position = playerSpawnPosition;
+        playerInput.currentActionMap.Disable();
         GameManager.instance.targetGroup.AddMember(playerTransform, weight, 20);
         playerTransform.SetParent(BoatManager.instance.self);
         PlayerController player = playerInput.gameObject.GetComponent<PlayerController>();
