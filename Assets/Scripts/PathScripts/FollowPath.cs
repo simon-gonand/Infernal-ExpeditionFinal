@@ -23,13 +23,19 @@ public class FollowPath : MonoBehaviour
 
     private Waypoint currentWaypoint;
 
+    private void Start()
+    {
+        InitializePath();
+    }
+
     public void InitializePath()
     {
         if (path == null) return;
+        path.InitializePath();
         if (path.allPoints.Count < 2)
         {
             pathEnd = true;
-            Vector3 startPos = path.waypoints[path.startWaypoint].transform.position;
+            Vector3 startPos = path.waypoints[linkIndex].transform.position;
             startPos.y = BoatManager.instance.self.position.y;
             BoatManager.instance.self.position = startPos;
             return;
@@ -39,9 +45,13 @@ public class FollowPath : MonoBehaviour
         currentWaypoint = path.waypoints[0];
         currentWaypoint.ev.Invoke();
 
-        linkIndex = 0;
+        linkIndex = path.startWaypoint;
+        for (int i = 0; i < linkIndex; ++i)
+        {
+            allPointIndex += path.links[i].pathPoints.Count - 1;
+        }
+        Debug.Log(allPointIndex);
         lastTValue = 0.0f;
-        allPointIndex = 0;
         tParam = 0.0f;
 
         coroutineAllowed = true;
