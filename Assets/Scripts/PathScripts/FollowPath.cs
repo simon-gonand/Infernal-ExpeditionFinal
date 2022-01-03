@@ -109,7 +109,10 @@ public class FollowPath : MonoBehaviour
                 lastTValue = 0.0f;
             }
             else
+            {
+                LevelManager.instance.EndLevel();
                 pathEnd = true;
+            }
         }
         else if (linkIndex < path.links.Count - 1 && path.allPoints[allPointIndex] == path.links[linkIndex + 1].start.self.position)
         {
@@ -125,7 +128,7 @@ public class FollowPath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pathEnd || path == null) return;
+        if (pathEnd && path == null) return;
         if (coroutineAllowed)
             StartCoroutine(FollowCurve());
 
