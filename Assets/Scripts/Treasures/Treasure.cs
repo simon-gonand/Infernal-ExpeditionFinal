@@ -38,7 +38,7 @@ public class Treasure : MonoBehaviour, ICarriable
     private Vector3 startSelfPosition;
     private Quaternion startSelfRotation;
 
-    public bool _isColliding = false;
+    private bool _isColliding = false;
     public bool isColliding { set { _isColliding = value; } }
     private Vector3 _collisionDirection;
     public Vector3 collisionDirection { set { _collisionDirection = value; } }

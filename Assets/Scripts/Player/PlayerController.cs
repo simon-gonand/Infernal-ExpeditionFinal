@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
     private bool isDashing = false;
     private bool isDead = false;
     private bool isGrounded = false;
-    public bool isColliding = false;
+    private bool isColliding = false;
     #endregion
 
     #region Reset

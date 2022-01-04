@@ -125,7 +125,6 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
             else
             {
                 GoBackHome();
-                Debug.Log(selfNavMesh.speed);
             }
         }
         else
