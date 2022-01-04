@@ -98,7 +98,10 @@ public class PlayerController : MonoBehaviour
     private bool isDashing = false;
     private bool isDead = false;
     private bool isGrounded = false;
+    public bool isColliding = false;
     #endregion
+
+    #region Reset
     public void ResetPlayer()
     {
         isAttackedBy.Clear();
@@ -150,13 +153,27 @@ public class PlayerController : MonoBehaviour
 
         anim.Play("Breathing Idle");
     }
+    #endregion
 
     #region Collision
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Treasures") && !_isCarrying && isGrounded)
+        if (collision.collider.CompareTag("Treasures") && isGrounded)
         {
+            if (_isCarrying)
+            {
+                Treasure treasure = carrying as Treasure;
+                if (treasure != null && treasure.selfCollider == collision.collider)
+                {
+                    isColliding = false;
+                }
+            }
+            if(!_isCarrying)
+            {
+                isColliding = true;
+                collisionDirection = collision.GetContact(0).normal;
+            }
             selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         }
         if (isDashing)
@@ -189,7 +206,10 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         if (collision.collider.CompareTag("Treasures"))
+        {
+            isColliding = false;
             selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+        }
         if (_isCarrying && collision.collider.GetComponent<IInteractable>() != _interactingWith)
         {
             if (!Physics.Raycast(self.position, -collisionDirection, 0.1f, mask))
@@ -547,7 +567,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!_isStun && !_isCarried && !_hasBeenLaunched && !isDead && 
+        if (!isColliding && !_isStun && !_isCarried && !_hasBeenLaunched && !isDead && 
             ((_isInteracting && _carrying != null) ? true : !_isInteracting))
         {
             if (isDashing)
@@ -556,6 +576,14 @@ public class PlayerController : MonoBehaviour
                 CheckIfDashCollide();
             }
             else
+                PlayerMovement();
+        }
+        else if (isColliding)
+        {
+            Vector3 movement = new Vector3(_playerMovementInput.x, 0.0f, _playerMovementInput.y);
+            if (movement != Vector3.zero)
+                Debug.Log(Vector3.Dot(movement, -collisionDirection));
+            if (Vector3.Dot(movement, -collisionDirection) <= 0.1 && _playerMovementInput != Vector2.zero)
                 PlayerMovement();
         }
     }
