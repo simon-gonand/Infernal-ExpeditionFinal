@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.Events;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,6 +8,7 @@ using UnityEngine.AI;
 [CustomEditor(typeof(Path))]
 public class PathEditor : Editor
 {
+    private SerializedProperty startWaypoint;
     private SerializedProperty waypointsList;
     private SerializedProperty linksList;
     private SerializedProperty loop;
@@ -25,9 +25,10 @@ public class PathEditor : Editor
     private Path pathScript;
 
     private NPCEventWindow npcEventWindow;
-        
+
     private void OnEnable()
     {
+        startWaypoint = serializedObject.FindProperty("startWaypoint");
         waypointsList = serializedObject.FindProperty("waypoints");
         linksList = serializedObject.FindProperty("links");
         loop = serializedObject.FindProperty("loop");
@@ -68,7 +69,7 @@ public class PathEditor : Editor
         {
             if (npcEventWindow == null || npcEventWindow.waypoint != spWaypoint)
             {
-                npcEventWindow = (NPCEventWindow) EditorWindow.GetWindow(typeof(NPCEventWindow));
+                npcEventWindow = (NPCEventWindow)EditorWindow.GetWindow(typeof(NPCEventWindow));
                 npcEventWindow.Initialize(spWaypoint);
             }
         }
@@ -203,7 +204,7 @@ public class PathEditor : Editor
         EditorGUIUtility.labelWidth /= 4;
         EditorGUI.BeginChangeCheck();
         currentLink.speed = EditorGUI.FloatField(speedRect, "Speed", currentLink.speed);
-        
+
         if (EditorGUI.EndChangeCheck())
         {
             if ((linksList.GetArrayElementAtIndex(index).objectReferenceValue as Link).speed < 0)
@@ -254,7 +255,7 @@ public class PathEditor : Editor
                 serializedObject.ApplyModifiedPropertiesWithoutUndo();
             }
         }
-        if (i  < waypointsList.arraySize && waypointsList.arraySize > linksList.arraySize + 1)
+        if (i < waypointsList.arraySize && waypointsList.arraySize > linksList.arraySize + 1)
         {
             Waypoint start = waypointsList.GetArrayElementAtIndex(i).objectReferenceValue as Waypoint;
             Waypoint end = waypointsList.GetArrayElementAtIndex(i + 1).objectReferenceValue as Waypoint;
@@ -282,7 +283,7 @@ public class PathEditor : Editor
         obj.hideFlags = HideFlags.HideInHierarchy;
         Waypoint wp = obj.AddComponent<Waypoint>();
 
-        
+
         waypointsList.InsertArrayElementAtIndex(i);
         waypointsList.GetArrayElementAtIndex(i).objectReferenceValue = wp;
         EditorUtility.SetDirty(obj);
@@ -379,7 +380,7 @@ public class PathEditor : Editor
     {
         serializedObject.Update();
 
-        //EditorGUILayout.PropertyField(waypointsList);
+        startWaypoint.intValue = EditorGUILayout.IntSlider("Start Waypoint", startWaypoint.intValue, 0, waypointsList.arraySize - 1);
         waypointsRList.DoLayoutList();
         linksRList.DoLayoutList();
 
@@ -411,10 +412,10 @@ public class PathEditor : Editor
             }
             CalculateLink(selectedLink);
         }
-        
+
         if (GUILayout.Button("Erase all"))
         {
-            while(waypointsList.arraySize !=0 || linksList.arraySize != 0)
+            while (waypointsList.arraySize != 0 || linksList.arraySize != 0)
             {
                 waypointsList.DeleteArrayElementAtIndex(0);
                 if (linksList.arraySize == 0) continue;
@@ -607,7 +608,7 @@ public class PathEditor : Editor
                 if (selectedLink.pathPoints.Count < 2) continue;
                 if (i == selectedLink.pathPoints.Count - 1) continue;
                 float constantZoom = HandleUtility.GetHandleSize(selectedLink.anchors[i * 2]);
-                
+
                 if (i == 0)
                 {
                     if (selectedLinkIndex > 0)
@@ -638,7 +639,7 @@ public class PathEditor : Editor
                     }
                 }
                 EditorGUI.BeginChangeCheck();
-                selectedLink.anchors[(i * 2)] = Handles.Slider2D(selectedLink.anchors[i * 2], Vector3.up, Vector3.right, Vector3.forward, 
+                selectedLink.anchors[(i * 2)] = Handles.Slider2D(selectedLink.anchors[i * 2], Vector3.up, Vector3.right, Vector3.forward,
                     0.1f * constantZoom, Handles.DotHandleCap, Handles.SnapValue(1.0f, 1.0f));
                 if (EditorGUI.EndChangeCheck())
                 {

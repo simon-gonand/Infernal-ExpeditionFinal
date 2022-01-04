@@ -39,7 +39,7 @@ public class PlayerThrowUI : MonoBehaviour
     {
         if (selfPlayerController.isCarried)
         {
-            if (selfCarryPlayer.carrier.isAiming && selfCarryPlayer.carrier.isLaunching)
+            if (selfCarryPlayer.carrier.isLaunching)
             {
                 selfCarryPlayer.carrier.selfPlayerThrowUi.globaleConeCanvas.SetActive(true);
 
@@ -49,11 +49,11 @@ public class PlayerThrowUI : MonoBehaviour
 
 
                 angleSimulation = Vector3.Angle(selfCarryPlayer.carrier.playerThrowDir + Vector3.up, selfCarryPlayer.carrier.playerThrowDir);
-                distanceMax = ((selfPlayerController.playerPreset.maxLaunchForce * selfPlayerController.playerPreset.maxLaunchForce) * Mathf.Sin(2 * angleSimulation)) / 9.8f;
+                distanceMax = ((selfPlayerController.playerPreset.maxLaunchForce * selfPlayerController.playerPreset.maxLaunchForce) * Mathf.Sin(2 * angleSimulation)) / -Physics.gravity.y;
 
-                distanceMax = distanceMax / selfPlayerController.self.lossyScale.x;
+                distanceMax /= selfPlayerController.self.lossyScale.x;
 
-                distanceMax = distanceMax * 3;
+                distanceMax *= 1.25f;
 
                 // Set UI position and size correctly
                 selfCarryPlayer.carrier.selfPlayerThrowUi.coneBackground.rectTransform.sizeDelta = new Vector2(distanceMax, selfCarryPlayer.carrier.selfPlayerThrowUi.coneBackground.rectTransform.rect.height);
