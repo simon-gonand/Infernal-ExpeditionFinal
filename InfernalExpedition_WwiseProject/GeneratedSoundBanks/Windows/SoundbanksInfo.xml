@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="928495059">
+		<SoundBank Id="393239870" Language="SFX" Hash="692897198">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -607,7 +607,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="1730564753" Language="SFX" Hash="3262415426">
+		<SoundBank Id="1730564753" Language="SFX" Hash="2458010034">
 			<ObjectPath>\SoundBanks\Default Work Unit\Musics</ObjectPath>
 			<ShortName>Musics</ShortName>
 			<Path>Musics.bnk</Path>
@@ -637,6 +637,10 @@
 						<File Id="169300384" Language="SFX">
 							<ShortName>Pillage A\CombatA_Strings-1_120Bpm_4-4_L8_P0.wav</ShortName>
 							<Path>SFX\Pillage A\CombatA_Strings-1_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="206044369" Language="SFX">
+							<ShortName>NavigationA_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\NavigationA_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
 						</File>
 						<File Id="244074245" Language="SFX">
 							<ShortName>CombatB_Marimba-2_120Bpm_4-4_L8_P0.wav</ShortName>
@@ -678,6 +682,10 @@
 							<ShortName>Pillage B\CombatB_Cellos_120Bpm_4-4_L8_P0.wav</ShortName>
 							<Path>SFX\Pillage B\CombatB_Cellos_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
 						</File>
+						<File Id="782744123" Language="SFX">
+							<ShortName>NavigationB_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\NavigationB_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
 						<File Id="785336816" Language="SFX">
 							<ShortName>Pillage B\CombatB_Beat_120Bpm_4-4_L8_P0.wav</ShortName>
 							<Path>SFX\Pillage B\CombatB_Beat_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
@@ -691,8 +699,47 @@
 							<Path>SFX\Pillage A\CombatA_Violons_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
+					<SwitchContainers>
+						<SwitchContainer SwitchValue="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}">
+							<Media>
+								<File Id="206044369"/>
+								<File Id="782744123"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{C0654D03-2CF0-4648-85E5-E91A38BFC7DF}">
+							<Media>
+								<File Id="13670849"/>
+								<File Id="70022786"/>
+								<File Id="87767042"/>
+								<File Id="142469888"/>
+								<File Id="163457329"/>
+								<File Id="169300384"/>
+								<File Id="244074245"/>
+								<File Id="297003049"/>
+								<File Id="311519212"/>
+								<File Id="313398368"/>
+								<File Id="338165594"/>
+								<File Id="520914665"/>
+								<File Id="538941454"/>
+								<File Id="659660252"/>
+								<File Id="662446235"/>
+								<File Id="780506284"/>
+								<File Id="785336816"/>
+								<File Id="831820229"/>
+								<File Id="910625862"/>
+							</Media>
+						</SwitchContainer>
+					</SwitchContainers>
 				</Event>
 			</IncludedEvents>
+			<SwitchGroups>
+				<SwitchGroup Id="924435401" Name="GameplayType" ObjectPath="\Switches\Default Work Unit\GameplayType" GUID="{DE7C2D58-7410-44F0-A754-47D7D5A60A22}">
+					<Switches>
+						<Switch Id="2579631677" Name="Pillage" ObjectPath="\Switches\Default Work Unit\GameplayType\Pillage" GUID="{C0654D03-2CF0-4648-85E5-E91A38BFC7DF}"/>
+						<Switch Id="1082482811" Name="Navigation" ObjectPath="\Switches\Default Work Unit\GameplayType\Navigation" GUID="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
 			<Triggers>
 				<Trigger Id="1087296951" Name="Collect_Treasure" ObjectPath="\Triggers\Default Work Unit\Collect_Treasure"/>
 			</Triggers>
