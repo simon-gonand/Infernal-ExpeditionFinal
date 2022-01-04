@@ -166,20 +166,24 @@ public class PlayerController : MonoBehaviour
                 Treasure treasure = carrying as Treasure;
                 if (treasure != null && treasure.selfCollider == collision.collider)
                 {
-                    isColliding = false;
+                    return;
                 }
-                /*else
+                else
                 {
-                    Debug.Log("saucisse");
                     isColliding = true;
+                    selfRigidBody.velocity = Vector3.zero;
                     collisionDirection = collision.GetContact(0).normal;
-                    treasure.isColliding = true;
-                    treasure.collisionDirection = collisionDirection;
-                }*/
+                    if (treasure != null)
+                    {
+                        treasure.isColliding = true;
+                        treasure.collisionDirection = collisionDirection;
+                    }
+                }
             }
             if(!_isCarrying)
             {
                 isColliding = true;
+                selfRigidBody.velocity = Vector3.zero;
                 collisionDirection = collision.GetContact(0).normal;
             }
             selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
@@ -215,8 +219,19 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Treasures"))
         {
-            isColliding = false;
-            selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+            if (_isCarrying)
+            {
+                Treasure t = _carrying as Treasure;
+                if (t != null && t.selfCollider != collision.collider)
+                {
+                    isColliding = false;
+                }
+            }
+            else
+            {
+                isColliding = false;
+                selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+            }
         }
         if (_isCarrying && collision.collider.GetComponent<IInteractable>() != _interactingWith)
         {
@@ -331,6 +346,7 @@ public class PlayerController : MonoBehaviour
                             {
                                 selfRigidBody.mass = 1000;
                                 selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+                                isColliding = false;
                             }
                             break;
                         }
