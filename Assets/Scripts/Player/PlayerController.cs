@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour
             if (treasure != null)
             {
                 treasure.isColliding = true;
-                treasure.collisionDirection = collisionDirection;
+                treasure.collisionDirection = -collisionDirection;
             }
         }
         if (_hasBeenLaunched)

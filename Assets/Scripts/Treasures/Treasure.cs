@@ -19,6 +19,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private List<PlayerController> playerColliding = new List<PlayerController>();
     private List<PlayerController> playerCollisionIgnored = new List<PlayerController>();
+    private List<Collider> collidersColliding = new List<Collider>();
 
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
     private bool isGrounded = false;
@@ -37,7 +38,7 @@ public class Treasure : MonoBehaviour, ICarriable
     private Vector3 startSelfPosition;
     private Quaternion startSelfRotation;
 
-    private bool _isColliding = false;
+    public bool _isColliding = false;
     public bool isColliding { set { _isColliding = value; } }
     private Vector3 _collisionDirection;
     public Vector3 collisionDirection { set { _collisionDirection = value; } }
@@ -61,18 +62,19 @@ public class Treasure : MonoBehaviour, ICarriable
             {
                 if (collision.collider == player.GetComponent<CapsuleCollider>())
                 {
-                    _isColliding = false;
+                    if (collidersColliding.Count <= 0)
+                        _isColliding = false;
                     return;
                 }
             }
             playerColliding.Add(collision.collider.GetComponent<PlayerController>());
         }
         if (_playerInteractingWith.Count > 0)
-        {
-            Debug.Log(collision.collider.name);
-            _collisionDirection = collision.GetContact(0).normal;
-            _isColliding = true;
-            collidingWith = collision.collider.GetComponent<Rigidbody>();
+        {
+            _collisionDirection = collision.GetContact(0).normal;
+            _isColliding = true;
+            collidersColliding.Add(collision.collider);
+            collidingWith = collision.collider.GetComponent<Rigidbody>();
         }
     }
 
@@ -92,15 +94,21 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private void OnCollisionExit(Collision collision)
     {
+        if (collision.collider == selfCollider) return;
         if (collision.collider.CompareTag("Player"))
         {
             foreach (PlayerController player in _playerInteractingWith)
             {
                 if (collision.collider == player.GetComponent<CapsuleCollider>())
+                {
                     playerColliding.Remove(player);
+                    collidersColliding.Remove(player.selfCollider);
+                }
             }
         }
-        _isColliding = false;
+        collidersColliding.Remove(collision.collider);
+        if (collidersColliding.Count <= 0)
+            _isColliding = false;
     }
     #endregion
 
