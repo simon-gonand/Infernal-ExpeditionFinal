@@ -168,6 +168,14 @@ public class PlayerController : MonoBehaviour
                 {
                     isColliding = false;
                 }
+                /*else
+                {
+                    Debug.Log("saucisse");
+                    isColliding = true;
+                    collisionDirection = collision.GetContact(0).normal;
+                    treasure.isColliding = true;
+                    treasure.collisionDirection = collisionDirection;
+                }*/
             }
             if(!_isCarrying)
             {
@@ -581,8 +589,6 @@ public class PlayerController : MonoBehaviour
         else if (isColliding)
         {
             Vector3 movement = new Vector3(_playerMovementInput.x, 0.0f, _playerMovementInput.y);
-            if (movement != Vector3.zero)
-                Debug.Log(Vector3.Dot(movement, -collisionDirection));
             if (Vector3.Dot(movement, -collisionDirection) <= 0.1 && _playerMovementInput != Vector2.zero)
                 PlayerMovement();
         }

@@ -108,7 +108,10 @@ public class Treasure : MonoBehaviour, ICarriable
         }
         collidersColliding.Remove(collision.collider);
         if (collidersColliding.Count <= 0)
-            _isColliding = false;
+        {
+            if (self.position != lastPosition)
+                _isColliding = false;
+        }
     }
     #endregion
 
@@ -486,6 +489,7 @@ public class Treasure : MonoBehaviour, ICarriable
                 while(playerCollisionIgnored.Count > 0)
                 {
                     Physics.IgnoreCollision(selfCollider, playerCollisionIgnored[0].selfCollider, false);
+                    collidersColliding.Remove(playerCollisionIgnored[0].selfCollider);
                     playerCollisionIgnored.RemoveAt(0);
                 }
             }
@@ -493,9 +497,13 @@ public class Treasure : MonoBehaviour, ICarriable
         }
         if (_isColliding && !isCarriedByPiqueSous)
         {
-            if (Vector3.Dot(selfRigidbody.velocity, -_collisionDirection) < 0 && selfRigidbody.velocity != Vector3.zero)
+            if (Vector3.Dot(selfRigidbody.velocity, -_collisionDirection) < 0.0f && selfRigidbody.velocity != Vector3.zero)
             {
-                _isColliding = false;
+                foreach(PlayerController player in playerInteractingWith)
+                {
+                    if (player.playerMovementInput != Vector2.zero)
+                        _isColliding = false;
+                }
             }
             else
             {
