@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
     public bool isLaunching { get { return _isLaunching; } set { _isLaunching = value; } }
 
     // Is the player on the boat
-    private bool _isOnBoat = true;
+    private bool _isOnBoat = false;
     public bool isOnBoat { get { return _isOnBoat; } set { _isOnBoat = value; } }
 
     private bool _isSwimming = false;
@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
         _isCarried = false;
         _hasBeenLaunched = false;
         _isLaunching = false;
-        _isOnBoat = true;
+        _isOnBoat = false;
         _isSwimming = false;
         _isInWater = false;
         _isStun = false;
@@ -136,7 +136,6 @@ public class PlayerController : MonoBehaviour
         isDead = false;
         isGrounded = false;
 
-        self.SetParent(BoatManager.instance.self);
         sword.SetActive(true);
     }
 

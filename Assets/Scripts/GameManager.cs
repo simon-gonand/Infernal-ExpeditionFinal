@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviour
     public void LoadLevel(string sceneName, bool isBoatInScene)
     {
         boatOnTargetGroup = isBoatInScene;
+        if (sceneName.Equals(SceneManager.GetSceneAt(0).name))
+            PlayerManager.instance.onPirateIsland = true;
+        else
+            PlayerManager.instance.onPirateIsland = false;
         SceneManager.LoadScene(sceneName);
     }
 
