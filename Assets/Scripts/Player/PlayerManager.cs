@@ -131,11 +131,11 @@ public class PlayerManager : MonoBehaviour
     {
         if (_players.Count == 1)
         {
-            if (Gamepad.current.aButton.wasPressedThisFrame)
+            if (Gamepad.current != null && Gamepad.current.aButton.wasPressedThisFrame)
                 _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(Gamepad.current);
 
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-                _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(Keyboard.current);
+            if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+                _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(Keyboard.current, Mouse.current);
         }
     }
 
