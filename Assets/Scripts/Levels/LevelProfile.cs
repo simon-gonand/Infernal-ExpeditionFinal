@@ -10,6 +10,4 @@ public class LevelProfile
     public int highScore = 0;
 
     // List secondary missions
-
-    public bool isUnlock = false;
 }

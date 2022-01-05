@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     public bool boatOnTargetGroup;
 
+    [Header("Number Stars Needed to Unlock")]
+    public List<int> neededStarsToUnlock;
+
     private void Awake()
     {
         if (instance == null)

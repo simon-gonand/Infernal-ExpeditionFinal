@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelectLevels : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    private GameObject levelSelection;
+    private UnlockedLevels levelSelection;
 
     private PlayerController playerInteracting = null;
 
@@ -22,9 +22,12 @@ public class SelectLevels : MonoBehaviour, IInteractable
             Debug.Log(profile.starState);
             ++count;
         }
+        Debug.Log("------------------- Nb Stars -------------------");
+        Debug.Log(SaveData.instance.earnedStars);
 
         playerInteracting = player;
-        levelSelection.SetActive(true);
+        levelSelection.CheckLevelState();
+        levelSelection.gameObject.SetActive(true);
         Cursor.visible = true;
         return true;
     }
@@ -59,7 +62,7 @@ public class SelectLevels : MonoBehaviour, IInteractable
     public void UninteractWith(PlayerController player)
     {
         playerInteracting = null;
-        levelSelection.SetActive(false);
+        levelSelection.gameObject.SetActive(false);
         Cursor.visible = false;
     }
 }

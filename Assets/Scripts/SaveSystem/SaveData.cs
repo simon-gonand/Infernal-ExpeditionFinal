@@ -5,6 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData
 {
+    public List<LevelProfile> levels = new List<LevelProfile>(10);
+
+    public int earnedStars = 0;
+    
     private static SaveData _instance;
     public static SaveData instance
     {
@@ -31,5 +35,30 @@ public class SaveData
         }
     }
 
-    public List<LevelProfile> levels = new List<LevelProfile>(10);
+    public void CountStars()
+    {
+        earnedStars = 0;
+        foreach(LevelProfile level in levels)
+        {
+            switch (level.starState)
+            {
+                case ScoreManager.differentStarState.Bronze:
+                    earnedStars += 1;
+                    break;
+                case ScoreManager.differentStarState.Silver:
+                    earnedStars += 2;
+                    break;
+                case ScoreManager.differentStarState.Gold:
+                    earnedStars += 3;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    public void ResetSave()
+    {
+        _instance = new SaveData();
+    }
 }

@@ -27,6 +27,7 @@ public class LevelManager
         {
             SaveData.instance.levels[levelId - 1].highScore = ScoreManager.instance.actualScore;
             SaveData.instance.levels[levelId - 1].starState = ScoreManager.instance.actualStar;
+            SaveData.instance.CountStars();
         }
         SerializationManager.Save(SaveData.instance);
     }
