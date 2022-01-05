@@ -8,15 +8,23 @@ Event	ID	Name			Wwise Object Path	Notes
 	819302809	P_GroundImpact			\Default Work Unit\Players\P_GroundImpact	
 	903419691	E_Clsq_Attack			\Default Work Unit\Enemy\E_Clsq_Attack	
 	1286256413	E_Pks_Carry			\Default Work Unit\Enemy\E_Pks_Carry	
+	1488092454	Game_Ambient			\Default Work Unit\World\Game_Ambient	
 	1504870946	P_Throw			\Default Work Unit\Players\P_Throw	
 	1927982858	E_Trl_Death			\Default Work Unit\Enemy\E_Trl_Death	
 	1992604323	B_ChestCollect			\Default Work Unit\Boat\B_ChestCollect	
 	2703574490	B_Moving			\Default Work Unit\Boat\B_Moving	
 	3280416103	P_Steps			\Default Work Unit\Players\P_Steps	
 	3383744642	P_Stunt			\Default Work Unit\Players\P_Stunt	
-	3401161239	Beach_Ambient			\Default Work Unit\World\Beach_Ambient	
 	3919743498	P_Dash			\Default Work Unit\Players\P_Dash	
+	3942208158	P_Swim			\Default Work Unit\Players\P_Swim	
 	4030367049	W_ChestDrop			\Default Work Unit\World\W_ChestDrop	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	924435401	GameplayType			\Default Work Unit\GameplayType	
+
+Switch	ID	Name	Switch Group			Notes
+	1082482811	Navigation	GameplayType			
+	2579631677	Pillage	GameplayType			
 
 State Group	ID	Name			Wwise Object Path	Notes
 	4040317175	Ground_Type			\Default Work Unit\Ground_Type	
@@ -55,6 +63,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	277546652	EnemyTrl_Shot_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\EnemyTrl_Shot_3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_Shot\EnemyTrl_Shot_3		135244
 	286784303	Enemy_ShineAttack	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Enemy_ShineAttack_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_ShineAttack		75720
 	292770977	Enemy_SlashAttack_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Enemy_SlashAttack_2_A51CBA9D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_SlashAttack\Enemy_SlashAttack_2		54320
+	297768728	Ambience_Islande_Global	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Ambience_Islande_Global_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Ambient\Island\Ambience_Islande_Global\Ambience_Islande_Global		20039036
 	316093788	Boat_Damages_Wood_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Boat_Damages_Wood_2_8ABC3BB3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_2		114784
 	317925122	ChestImpact_Metal	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChestImpact_Metal_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Chest_FallImpact\ChestImpact_Metal		134444
 	320782930	SwordSlash_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\SwordSlash_3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Sword_Attack\SwordSlash_3		24872
@@ -92,7 +101,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	769848089	Footsteps_Sand_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_2_1903957C.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sand_Footsteps\Footsteps_Sand_2		28980
 	777445666	Player_HardFallImpact	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Player_HardFallImpact_006CA702.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_FallImpact\Player_HardFallImpact		16384
 	779573900	Boat_Damages_Coins_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Boat_Damages_Coins_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Coins\Boat_Damages_Coins_2		240392
-	780879456	Ambience_Islande_Sea	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Ambience_Islande_Sea_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Beach_Ambience\Ambience_Islande_Sea		20815448
+	780879456	Ambience_Islande_Sea	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Ambience_Islande_Sea_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Ambient\Sea\Ambience_Islande_Sea\Ambience_Islande_Sea		20039036
 	785270180	Reload_Exit	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Reload_Exit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Trl_Reload\Reload_Exit		569120
 	817045992	Footsteps_Wood_5	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Wood_5_33DC8D56.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Wood_Footsteps\Footsteps_Wood_5		18736
 	827779130	Boat_Damages_Wood_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Boat_Damages_Wood_1_DF5FDAFE.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_1		45304
@@ -111,7 +120,6 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	1017834027	EnemyTrl_Shot_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\EnemyTrl_Shot_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_Shot\EnemyTrl_Shot_1		135244
 	1044100472	Boat_Damages_Wood_7	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Boat_Damages_Wood_7_CE8CAF26.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_7		244212
 	1055089053	PlayerDash_Cloth	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\PlayerDash_Cloth_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\PlayerDash_Cloth		92224
-	1062721811	Ambience_Islande_Bird	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Ambience_Islande_Bird_018D7BB3.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Beach_Ambience\Ambience_Islande_Bird		20787188
 	1063609588	Enemy_SlashAttack_3	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Enemy_SlashAttack_3_7C806E9E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_SlashAttack\Enemy_SlashAttack_3		40556
 	1073061748	RespawnBass_Low	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\RespawnBass_Low_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\PlayerSpawn_Bass\RespawnBass_Low		412540
 

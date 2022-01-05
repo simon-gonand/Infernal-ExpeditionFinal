@@ -20,7 +20,17 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="P_Swim" ID="{B1B2823D-B207-4BB8-9E5C-F26BEDE85B54}"/>
+						<Event Name="P_Swim" ID="{B1B2823D-B207-4BB8-9E5C-F26BEDE85B54}">
+							<ChildrenList>
+								<Action Name="" ID="{76172B59-C2FD-4173-9221-E491656E6BBE}" ShortID="29558114">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Sea_Footsteps" ID="{AFA7055A-A682-4716-A6BA-35B0D6CEE523}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="P_Dash" ID="{CFF6DD99-F808-4B52-93E7-43362255F42E}">
 							<ChildrenList>
 								<Action Name="" ID="{88385B71-AA41-4061-ADA6-6E8051A68331}" ShortID="49795000">
@@ -78,7 +88,6 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="P_OutOfBond" ID="{8724340B-298F-4E9C-94A8-0A3C244FB65B}"/>
 						<Event Name="P_Respawn" ID="{B8367E5C-81DF-41E7-BEF8-51716DFA8984}">
 							<ChildrenList>
 								<Action Name="" ID="{E5C204C7-01F2-4A19-964C-619C33AA2517}" ShortID="1053479698">
@@ -387,19 +396,17 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Sea_Ambient" ID="{7EAD759C-7A29-4BF7-924C-E40ADFF5CD5C}"/>
-						<Event Name="Beach_Ambient" ID="{5689551D-75AC-4347-9616-1D60758E0A88}">
+						<Event Name="Game_Ambient" ID="{5689551D-75AC-4347-9616-1D60758E0A88}">
 							<ChildrenList>
-								<Action Name="" ID="{C88CDD31-C549-421E-B150-0672BD187429}" ShortID="78840240">
+								<Action Name="" ID="{8D54D875-09F4-4CBC-BEED-4B2E5F488137}" ShortID="707706799">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Beach_Ambience" ID="{14F67C4C-3851-4E95-9E06-62D483220C9F}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+											<ObjectRef Name="Ambient" ID="{386CD643-5F3C-4EF8-A315-5B4408D6E5CB}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Forest_Ambient" ID="{3438B74B-267F-46A6-BBA9-A39C33023080}"/>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

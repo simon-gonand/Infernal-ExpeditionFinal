@@ -2543,6 +2543,11 @@
 					<ChildrenList>
 						<BlendContainer Name="Beach_Ambience" ID="{14F67C4C-3851-4E95-9E06-62D483220C9F}" ShortID="257629036">
 							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-5</Value>
