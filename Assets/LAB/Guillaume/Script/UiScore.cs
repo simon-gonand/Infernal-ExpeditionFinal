@@ -9,14 +9,25 @@ public class UiScore : MonoBehaviour
     #region Variable
     public static UiScore instance;
 
-    [Header ("Color setup")]
+    [Header ("Color for stars")]
     public Color noColor;
     public Color bronzeColor;
     public Color silverColor;
     public Color goldColor;
 
+    [Header("Color for score add or remove")]
+    public Color addColor;
+    public Color removeColor;
+
+    [Header("Score ui variable")]
+    public float speed;
+    public float timeForFadeStart;
+    public float timeToWait;
+    public float fadeSpeed;
+
     [Header ("Speed of slider fill")]
     public float timeForTransition;
+    public Transform spawnPoint;
 
     [Header ("Unity setup")]
     public Image imageFillerActualStar;
@@ -26,9 +37,17 @@ public class UiScore : MonoBehaviour
     [Space]
     public Slider sliderBar;
     public Image imageSliderFiller;
+    [Space]
+    public GameObject textBox;
+
+    [Space]
+    public List<int> scoreToAddList = new List<int>();
 
     private Coroutine transitionCoroutine;
     private bool lockBarRefresh;
+
+    private float actualUiScore;
+    private float actualTimeToWait;
     #endregion
 
     private void Awake()
@@ -47,14 +66,68 @@ public class UiScore : MonoBehaviour
 
     private void Start()
     {
+        textActualScore.text = actualUiScore.ToString();
+        actualTimeToWait = 0f; 
         ColorUpdate();
     }
 
-    public void ScoreUpdate()
+    void Update()
     {
-        textActualScore.text = ScoreManager.instance.actualScore.ToString();
+        CheckForDisplayScoreBox();
+    }
 
-        SliderUpdate();
+
+    private void CheckForDisplayScoreBox()
+    {
+        if (actualTimeToWait <= 0)
+        {
+            if (scoreToAddList.Count > 0)
+            {
+                StartCoroutine(WaitForUpdateUi(scoreToAddList[0]));
+                scoreToAddList.Remove(scoreToAddList[0]);
+                actualTimeToWait = timeToWait;
+            }
+        }
+        else
+        {
+            actualTimeToWait -= Time.deltaTime;
+        }
+    }
+
+    public void ScoreUpdate(int scoreAdded)
+    {
+        if (scoreAdded != 0)
+        {
+            scoreToAddList.Add(scoreAdded);
+        }
+    }
+
+    private void SliderUpdate()
+    {
+        if (lockBarRefresh == false)
+        {
+            if (transitionCoroutine == null)
+            {
+                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, (actualUiScore - ScoreManager.instance.scoreOfActualStar) / (float)ScoreManager.instance.scoreNeedForNextStar));
+            }
+            else if (ScoreManager.instance.isLevelUpStar == false && ScoreManager.instance.isDowngradeStar == false)
+            {
+                StopCoroutine(transitionCoroutine);
+                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, (actualUiScore - ScoreManager.instance.scoreOfActualStar) / (float)ScoreManager.instance.scoreNeedForNextStar));
+            }
+            else if (ScoreManager.instance.isLevelUpStar == true)
+            {
+                lockBarRefresh = true;
+                StopCoroutine(transitionCoroutine);
+                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, 1f));
+            }
+            else
+            {
+                lockBarRefresh = true;
+                StopCoroutine(transitionCoroutine);
+                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, 0f));
+            }
+        }
     }
 
     private void ColorUpdate()
@@ -91,32 +164,26 @@ public class UiScore : MonoBehaviour
         }
     }
 
-    private void SliderUpdate()
+    private void InstantiateTextBox(int treasureValue)
     {
-        if (lockBarRefresh == false)
+        GameObject obj = Instantiate(textBox, spawnPoint.position, spawnPoint.rotation);
+        obj.transform.SetParent(gameObject.transform);
+
+        TextMeshProUGUI actualText = obj.GetComponent<TextMeshProUGUI>();
+        TextBoxMouvement script = obj.GetComponent<TextBoxMouvement>();
+
+        if (treasureValue >= 0)
         {
-            if (transitionCoroutine == null)
-            {
-                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, (float)(ScoreManager.instance.actualScore - ScoreManager.instance.scoreOfActualStar) / (float)ScoreManager.instance.scoreNeedForNextStar));
-            }
-            else if (ScoreManager.instance.isLevelUpStar == false && ScoreManager.instance.isDowngradeStar == false)
-            {
-                StopCoroutine(transitionCoroutine);
-                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, (float)(ScoreManager.instance.actualScore - ScoreManager.instance.scoreOfActualStar) / (float)ScoreManager.instance.scoreNeedForNextStar));
-            }
-            else if (ScoreManager.instance.isLevelUpStar == true)
-            {
-                lockBarRefresh = true;
-                StopCoroutine(transitionCoroutine);
-                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, 1f));
-            }
-            else
-            {
-                lockBarRefresh = true;
-                StopCoroutine(transitionCoroutine);
-                transitionCoroutine = StartCoroutine(SliderTransitionValue(sliderBar.value, 0f));
-            }
+            actualText.text = "+" + treasureValue.ToString();
+            actualText.color = addColor;
         }
+        else
+        {
+            actualText.text = treasureValue.ToString();
+            actualText.color = removeColor;
+        }
+
+        script.StartLogic(speed, timeForFadeStart, fadeSpeed);
     }
 
     IEnumerator SliderTransitionValue(float oldValue, float newValue)
@@ -142,7 +209,7 @@ public class UiScore : MonoBehaviour
             if (ScoreManager.instance.actualStar != ScoreManager.differentStarState.Gold)
             {
                 sliderBar.value = 0f;
-                ScoreManager.instance.RefreshUiStarState();
+                ScoreManager.instance.RefreshUiStarState(0);
             }
         }
         else if (ScoreManager.instance.isDowngradeStar == true)
@@ -152,7 +219,27 @@ public class UiScore : MonoBehaviour
             ColorUpdate();
 
             sliderBar.value = 1f;
-            ScoreManager.instance.RefreshUiStarState();
+            ScoreManager.instance.RefreshUiStarState(0);
         }
     }
+
+    IEnumerator WaitForUpdateUi(int treasureValue)
+    {
+        float actualFadeDuration = fadeSpeed;
+        InstantiateTextBox(treasureValue);
+
+        yield return new WaitForSeconds(timeForFadeStart);
+
+        while (actualFadeDuration > 0)
+        {
+            actualFadeDuration -= Time.deltaTime * fadeSpeed;
+        }
+
+        actualUiScore += treasureValue;
+
+        textActualScore.text = actualUiScore.ToString();
+
+        SliderUpdate();
+    }
+
 }

@@ -233,6 +233,7 @@ RectTransform:
   - {fileID: 292906776931350046}
   - {fileID: 292906777118252583}
   - {fileID: 292906775927109430}
+  - {fileID: 2953599287118184018}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -257,12 +258,21 @@ MonoBehaviour:
   bronzeColor: {r: 0.754717, g: 0.424219, b: 0.1459594, a: 1}
   silverColor: {r: 0.6792453, g: 0.66322535, b: 0.66322535, a: 1}
   goldColor: {r: 0.9528302, g: 0.7463888, b: 0.09438412, a: 1}
+  addColor: {r: 0, g: 0, b: 0, a: 0}
+  removeColor: {r: 0, g: 0, b: 0, a: 0}
+  speed: 1
+  timeForFadeStart: 1
+  timeToWait: 0.5
+  fadeSpeed: 5
   timeForTransition: 1
+  spawnPoint: {fileID: 2953599287118184018}
   imageFillerActualStar: {fileID: 292906776055541779}
   imageFillerNextStar: {fileID: 292906775553994317}
   textActualScore: {fileID: 292906777118252582}
   sliderBar: {fileID: 292906775927109433}
   imageSliderFiller: {fileID: 292906776628559641}
+  textBox: {fileID: 3408138865920784556, guid: 13159943c8dcbd14fa41bc23c2a1683c, type: 3}
+  scoreToAddList: 
 --- !u!1 &292906776055541777
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,3 +897,38 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &6517940523989703520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2953599287118184018}
+  m_Layer: 5
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2953599287118184018
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6517940523989703520}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 292906776024328382}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -216, y: -299}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
