@@ -19,6 +19,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private List<PlayerController> playerColliding = new List<PlayerController>();
     private List<PlayerController> playerCollisionIgnored = new List<PlayerController>();
+    private List<Collider> collidersColliding = new List<Collider>();
 
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
     private bool isGrounded = false;
@@ -61,18 +62,19 @@ public class Treasure : MonoBehaviour, ICarriable
             {
                 if (collision.collider == player.GetComponent<CapsuleCollider>())
                 {
-                    _isColliding = false;
+                    if (collidersColliding.Count <= 0)
+                        _isColliding = false;
                     return;
                 }
             }
             playerColliding.Add(collision.collider.GetComponent<PlayerController>());
         }
         if (_playerInteractingWith.Count > 0)
-        {
-            Debug.Log(collision.collider.name);
-            _collisionDirection = collision.GetContact(0).normal;
-            _isColliding = true;
-            collidingWith = collision.collider.GetComponent<Rigidbody>();
+        {
+            _collisionDirection = collision.GetContact(0).normal;
+            _isColliding = true;
+            collidersColliding.Add(collision.collider);
+            collidingWith = collision.collider.GetComponent<Rigidbody>();
         }
     }
 
@@ -92,15 +94,24 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private void OnCollisionExit(Collision collision)
     {
+        if (collision.collider == selfCollider) return;
         if (collision.collider.CompareTag("Player"))
         {
             foreach (PlayerController player in _playerInteractingWith)
             {
                 if (collision.collider == player.GetComponent<CapsuleCollider>())
+                {
                     playerColliding.Remove(player);
+                    collidersColliding.Remove(player.selfCollider);
+                }
             }
         }
-        _isColliding = false;
+        collidersColliding.Remove(collision.collider);
+        if (collidersColliding.Count <= 0)
+        {
+            if (self.position != lastPosition)
+                _isColliding = false;
+        }
     }
     #endregion
 
@@ -478,6 +489,7 @@ public class Treasure : MonoBehaviour, ICarriable
                 while(playerCollisionIgnored.Count > 0)
                 {
                     Physics.IgnoreCollision(selfCollider, playerCollisionIgnored[0].selfCollider, false);
+                    collidersColliding.Remove(playerCollisionIgnored[0].selfCollider);
                     playerCollisionIgnored.RemoveAt(0);
                 }
             }
@@ -485,9 +497,13 @@ public class Treasure : MonoBehaviour, ICarriable
         }
         if (_isColliding && !isCarriedByPiqueSous)
         {
-            if (Vector3.Dot(selfRigidbody.velocity, -_collisionDirection) < 0 && selfRigidbody.velocity != Vector3.zero)
+            if (Vector3.Dot(selfRigidbody.velocity, -_collisionDirection) < 0.0f && selfRigidbody.velocity != Vector3.zero)
             {
-                _isColliding = false;
+                foreach(PlayerController player in playerInteractingWith)
+                {
+                    if (player.playerMovementInput != Vector2.zero)
+                        _isColliding = false;
+                }
             }
             else
             {

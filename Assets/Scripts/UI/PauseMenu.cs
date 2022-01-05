@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenuUI;
+    [SerializeField]
+    private GameObject pauseMenuUI;
+    [SerializeField]
+    private Button firstSelected;
+    private Button lastSelected;
 
     private bool isPause = false;
 
@@ -39,6 +45,7 @@ public class PauseMenu : MonoBehaviour
     private void Pause()
     {
         pauseMenuUI.SetActive(true);
+        firstSelected.Select();
         Cursor.visible = true;
         Time.timeScale = 0.0f;
         isPause = true;
@@ -61,5 +68,18 @@ public class PauseMenu : MonoBehaviour
     {
         GameManager.instance.LoadLevel("BalanceZone", false);
         Resume();
+    }
+
+    private void Update()
+    {
+        if (pauseMenuUI.activeSelf)
+        {
+            if (EventSystem.current.currentSelectedGameObject != null)
+                lastSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+            else
+            {
+                lastSelected.Select();
+            }
+        }
     }
 }

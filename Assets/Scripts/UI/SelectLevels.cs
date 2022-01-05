@@ -1,19 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SelectLevels : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    private GameObject levelSelection;
+    private UnlockedLevels levelSelection;
 
     private PlayerController playerInteracting = null;
 
     public bool InteractWith(PlayerController player, GameObject interactingWith)
     {
         if (playerInteracting != null) return false;
+        
+        SaveData.instance = (SaveData)SerializationManager.Load();
+        int count = 1;
+        foreach (LevelProfile profile in SaveData.instance.levels)
+        {
+            Debug.Log("---------------------- Level_" + count + " ----------------------");
+            Debug.Log(profile.highScore);
+            Debug.Log(profile.starState);
+            ++count;
+        }
+        Debug.Log("------------------- Nb Stars -------------------");
+        Debug.Log(SaveData.instance.earnedStars);
+
+        foreach (PlayerController p in PlayerManager.instance.players)
+            p.GetComponent<PlayerInput>().currentActionMap.Disable();
+
         playerInteracting = player;
-        levelSelection.SetActive(true);
+        levelSelection.CheckLevelState();
+        levelSelection.gameObject.SetActive(true);
         Cursor.visible = true;
         return true;
     }
@@ -25,8 +43,10 @@ public class SelectLevels : MonoBehaviour, IInteractable
 
     public void SelectLevel(int number)
     {
-        GameManager.instance.LoadLevel("Level_0" + number, true);
-
+        if (number == 10)
+            GameManager.instance.LoadLevel("Level_" + number, true);
+        else
+            GameManager.instance.LoadLevel("Level_0" + number, true);
         Back();
     }
 
@@ -46,7 +66,9 @@ public class SelectLevels : MonoBehaviour, IInteractable
     public void UninteractWith(PlayerController player)
     {
         playerInteracting = null;
-        levelSelection.SetActive(false);
+        levelSelection.gameObject.SetActive(false);
         Cursor.visible = false;
+        foreach (PlayerController p in PlayerManager.instance.players)
+            p.GetComponent<PlayerInput>().currentActionMap.Enable();
     }
 }
