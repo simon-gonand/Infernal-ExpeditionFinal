@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 using Cinemachine;
 
 public class GameManager : MonoBehaviour
@@ -59,6 +60,8 @@ public class GameManager : MonoBehaviour
 
     private void GetObjects(Scene scene, LoadSceneMode sceneMode)
     {
+        foreach (PlayerController player in PlayerManager.instance.players)
+            player.GetComponent<PlayerInput>().currentActionMap.Enable();
         GameObject virtualCam = GameObject.FindGameObjectWithTag("VirtualCamera");
         playerManager.cam = virtualCam.GetComponent<CinemachineVirtualCamera>();
         playerManager.camManager = virtualCam.GetComponent<CameraManager>();

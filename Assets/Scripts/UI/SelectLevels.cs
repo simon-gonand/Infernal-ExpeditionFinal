@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SelectLevels : MonoBehaviour, IInteractable
 {
@@ -24,6 +25,9 @@ public class SelectLevels : MonoBehaviour, IInteractable
         }
         Debug.Log("------------------- Nb Stars -------------------");
         Debug.Log(SaveData.instance.earnedStars);
+
+        foreach (PlayerController p in PlayerManager.instance.players)
+            p.GetComponent<PlayerInput>().currentActionMap.Disable();
 
         playerInteracting = player;
         levelSelection.CheckLevelState();
@@ -64,5 +68,7 @@ public class SelectLevels : MonoBehaviour, IInteractable
         playerInteracting = null;
         levelSelection.gameObject.SetActive(false);
         Cursor.visible = false;
+        foreach (PlayerController p in PlayerManager.instance.players)
+            p.GetComponent<PlayerInput>().currentActionMap.Enable();
     }
 }
