@@ -422,7 +422,6 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.velocity = Vector3.zero;
             foreach(PlayerController player in _playerInteractingWith)
             {
-                if (player.isLaunching) continue;
                 Vector3 applyForces = player.movement / _playerInteractingWith.Count;
                 applyForces.y = 0.0f;
                 direction += applyForces;
@@ -497,6 +496,7 @@ public class Treasure : MonoBehaviour, ICarriable
         }
         if (_isColliding && !isCarriedByPiqueSous)
         {
+                Debug.Log(Vector3.Dot(selfRigidbody.velocity, -_collisionDirection));
             if (Vector3.Dot(selfRigidbody.velocity, -_collisionDirection) < 0.0f && selfRigidbody.velocity != Vector3.zero)
             {
                 foreach(PlayerController player in playerInteractingWith)
