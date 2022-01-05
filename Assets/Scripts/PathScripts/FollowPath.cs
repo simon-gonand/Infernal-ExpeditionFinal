@@ -25,7 +25,7 @@ public class FollowPath : MonoBehaviour
 
     private void Start()
     {
-        //InitializePath();
+        InitializePath();
     }
 
     public void InitializePath()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using Cinemachine;
 
 public class MainMenuUI : MonoBehaviour
@@ -11,6 +12,8 @@ public class MainMenuUI : MonoBehaviour
     private CinemachineVirtualCamera mainMenuCam;
     [SerializeField]
     private Button firstSelected;
+
+    private Button lastSelected;
 
     private void Awake()
     {
@@ -35,5 +38,11 @@ public class MainMenuUI : MonoBehaviour
     private void Update()
     {
         PlayerManager.instance.CheckInputs();
+        if (EventSystem.current.currentSelectedGameObject != null)
+            lastSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        else
+        {
+            lastSelected.Select();
+        }
     }
 }
