@@ -26,6 +26,7 @@ public class TurretAI : MonoBehaviour, EnemiesAI
     public void Die()
     {
         // Play Die sound
+        AudioManager.AMInstance.trlEnemyDeathSFX.Post(gameObject);
 
         // Play die animation 
         Destroy(this.gameObject);
@@ -52,6 +53,8 @@ public class TurretAI : MonoBehaviour, EnemiesAI
     IEnumerator FireCoroutine()
     {
         canFire = false;
+        AudioManager.AMInstance.trlEnemyReloadSFX.Post(gameObject);
+
         yield return new WaitForSeconds(fireRate);
         canFire = true;
     }
