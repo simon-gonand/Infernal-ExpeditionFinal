@@ -12,6 +12,17 @@ public class SelectLevels : MonoBehaviour, IInteractable
     public bool InteractWith(PlayerController player, GameObject interactingWith)
     {
         if (playerInteracting != null) return false;
+        
+        SaveData.instance = (SaveData)SerializationManager.Load();
+        int count = 1;
+        foreach (LevelProfile profile in SaveData.instance.levels)
+        {
+            Debug.Log("---------------------- Level_" + count + " ----------------------");
+            Debug.Log(profile.highScore);
+            Debug.Log(profile.starState);
+            ++count;
+        }
+
         playerInteracting = player;
         levelSelection.SetActive(true);
         Cursor.visible = true;
@@ -25,8 +36,10 @@ public class SelectLevels : MonoBehaviour, IInteractable
 
     public void SelectLevel(int number)
     {
-        GameManager.instance.LoadLevel("Level_0" + number, true);
-
+        if (number == 10)
+            GameManager.instance.LoadLevel("Level_" + number, true);
+        else
+            GameManager.instance.LoadLevel("Level_0" + number, true);
         Back();
     }
 
