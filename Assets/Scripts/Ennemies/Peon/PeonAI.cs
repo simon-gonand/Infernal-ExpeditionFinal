@@ -16,8 +16,11 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     [SerializeField]
     private Collider selfCollider;
 
+    [Header("Skeleton")]
     [SerializeField]
     private bool isSkeleton;
+    [SerializeField]
+    private bool isStartingDead;
     [SerializeField]
     private float reviveCooldown;
 
@@ -62,6 +65,10 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     private void Start()
     {
         selfNavMesh.speed = peonPreset.speed;
+        if (isSkeleton && isStartingDead)
+        {
+            selfAnimator.Play("dead");
+        }
     }
 
     private void RemovePlayerNotOnIsland(List<PlayerController> players)
@@ -146,6 +153,11 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         {
             nextFollowedPlayer = null;
             return;
+        }
+        if (isSkeleton && isStartingDead)
+        {
+            isStartingDead = false;
+            Revive();
         }
         // Set the first player as the nearest (in case if the player is alone on the map)
         nextFollowedPlayer = playerTests[0];
@@ -277,6 +289,10 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         yield return new WaitForSeconds(0.2f);
         selfCollider.enabled = false;
         yield return new WaitForSeconds(reviveCooldown);
+    }
+
+    private void Revive()
+    {
         lockDeathAnim = false;
         selfAnimator.SetTrigger("revive");
         selfCollider.enabled = true;
