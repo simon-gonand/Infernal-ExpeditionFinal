@@ -41,11 +41,14 @@ public class EndLevelUI : MonoBehaviour
 
     private void Update()
     {
-        if (EventSystem.current.currentSelectedGameObject != null)
-            lastSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
-        else
+        if (panel.activeSelf)
         {
-            lastSelected.Select();
+            if (EventSystem.current.currentSelectedGameObject != null)
+                lastSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+            else
+            {
+                lastSelected.Select();
+            }
         }
     }
 }
