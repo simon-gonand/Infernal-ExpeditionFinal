@@ -13,6 +13,8 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     private PeonPresets peonPreset;
     [SerializeField]
     private Transform attackPoint;
+    [SerializeField]
+    private Collider selfCollider;
 
     [SerializeField]
     private bool isSkeleton;
@@ -262,6 +264,8 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     {
         lockDeathAnim = true;
         selfAnimator.SetTrigger("die");
+        yield return new WaitForSeconds(0.2f);
+        selfCollider.enabled = false;
         yield return new WaitForSeconds(3f);
         Destroy(this.gameObject);
     }
@@ -270,9 +274,12 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     {
         lockDeathAnim = true;
         selfAnimator.SetTrigger("die");
+        yield return new WaitForSeconds(0.2f);
+        selfCollider.enabled = false;
         yield return new WaitForSeconds(reviveCooldown);
         lockDeathAnim = false;
         selfAnimator.SetTrigger("revive");
+        selfCollider.enabled = true;
     }
 
     // Update is called once per frame

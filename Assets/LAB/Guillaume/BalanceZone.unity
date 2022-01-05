@@ -3095,11 +3095,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!4 &296952278 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 425006, guid: bcb05c2328679e648824c292975f63a0, type: 3}
-  m_PrefabInstance: {fileID: 1292586561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &318811434
 GameObject:
   m_ObjectHideFlags: 1
@@ -14174,18 +14169,6 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 425006, guid: bcb05c2328679e648824c292975f63a0, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 425006, guid: bcb05c2328679e648824c292975f63a0, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 425006, guid: bcb05c2328679e648824c292975f63a0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 425006, guid: bcb05c2328679e648824c292975f63a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 116
       objectReference: {fileID: 0}
@@ -14229,43 +14212,8 @@ PrefabInstance:
       propertyPath: path
       value: 
       objectReference: {fileID: 917065323}
-    - target: {fileID: 4237603427773339382, guid: bcb05c2328679e648824c292975f63a0, type: 3}
-      propertyPath: self
-      value: 
-      objectReference: {fileID: 296952278}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcb05c2328679e648824c292975f63a0, type: 3}
---- !u!1 &1292586562 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 139176, guid: bcb05c2328679e648824c292975f63a0, type: 3}
-  m_PrefabInstance: {fileID: 1292586561}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &1292586563
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292586562}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.83
-  m_Height: 4.43
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -0.69}
---- !u!114 &1292586564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292586562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26f60460c3d8ebf48b1cbff54bb8ec0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1299402562
 Mesh:
   m_ObjectHideFlags: 0
