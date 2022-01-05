@@ -12,6 +12,7 @@ public class OnBoatZone : MonoBehaviour
             if(!player.isCarried)
                 player.self.SetParent(BoatManager.instance.self);
             player.isOnBoat = true;
+            AudioManager.AMInstance.playersOnBoat.Add(player);
             // Player is carrying a treasure with someone
             if (player.isCarrying)
             {
@@ -37,6 +38,7 @@ public class OnBoatZone : MonoBehaviour
             if (!player.isCarried)
                 player.self.SetParent(null);
             player.isOnBoat = false;
+            AudioManager.AMInstance.playersOnBoat.Remove(player);
 
             if (player.isCarrying)
             {

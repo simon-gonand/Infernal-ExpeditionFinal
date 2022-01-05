@@ -22,7 +22,10 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
+    [Header("Switchs")]
 
+    public AK.Wwise.Event gameplayNavigationSWITCH;
+    public AK.Wwise.Event gameplayPillageSWITCH;
 
     [Header("Themes")]
 
@@ -58,11 +61,43 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event chestGroundImpactSFX;
     public AK.Wwise.Event gameAmbientSFX;
 
+
+    private bool typeIsPlunder = false;
+    [HideInInspector]
+    public List<PlayerController> playersOnBoat = new List<PlayerController>(0);
+
     void Start()
     {
         //DEBUG
         runTheme.Post(gameObject);
         gameAmbientSFX.Post(gameObject);
         //
+    }
+
+
+
+
+    private void Update()
+    {
+
+
+        if(playersOnBoat.Count == PlayerManager.instance.players.Count)
+        {
+            if(typeIsPlunder == true)
+            {
+                gameplayNavigationSWITCH.Post(gameObject);
+                typeIsPlunder = false;
+                Debug.Log("Navigation");
+            }
+        }
+        else
+        {
+            if (typeIsPlunder == false)
+            {
+                gameplayPillageSWITCH.Post(gameObject);
+                typeIsPlunder = true;
+                Debug.Log("Pillage");
+            }
+        }
     }
 }
