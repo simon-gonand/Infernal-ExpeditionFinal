@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 5ce880947766eb4cbd5f560f38e08f10
     GuidInternal: 
-    m_lastTime: -8585655695954065187
+    m_lastTime: -8585644368056645582
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 7b7f0c167fc8a14f946930294b69377c
     GuidInternal: 
-    m_lastTime: -8585655695954204817
+    m_lastTime: -8585644368056675513
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 9dce80c3a7123942813a1007a9fa761f
     GuidInternal: 
-    m_lastTime: -8585620375785877835
+    m_lastTime: -8585602158864509063
     List:
     - name: Musics
       guid: 36549465458ece4a996756f69665369a
@@ -108,7 +108,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 06febf392af11e40ad2e9e6e478aa9eb
     GuidInternal: 
-    m_lastTime: -8585620375810764205
+    m_lastTime: -8585602158927696236
     List:
     - name: B_ChestCollect
       guid: 829a948af431744189a18a98eaaf71a5
@@ -170,26 +170,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: Beach_Ambient
-      guid: 1d558956ac75474396161d60758e0a88
-      id: 3401161239
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: World
-        ObjectType: 4
-        guid: 1025725beda7974597f1f8b466ab7bbc
-      - ElementName: Beach_Ambient
-        ObjectType: 3
-        guid: 1d558956ac75474396161d60758e0a88
-      Path: Events\Default Work Unit\World\Beach_Ambient
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: Boat
       guid: f42f369205a7374bb730b58bfc05968d
       id: 1795056175
@@ -221,26 +201,6 @@ MonoBehaviour:
         ObjectType: 4
         guid: 24eda68dfcac5a40819c760013f604ab
       Path: Events\Default Work Unit\Captain
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: E_Clsq_Aggro
-      guid: 34b4f4c29deda94594650a3d2ae51d98
-      id: 3418140235
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Enemy
-        ObjectType: 4
-        guid: c94da1f2984a6744969a66a2325f51cd
-      - ElementName: E_Clsq_Aggro
-        ObjectType: 3
-        guid: 34b4f4c29deda94594650a3d2ae51d98
-      Path: Events\Default Work Unit\Enemy\E_Clsq_Aggro
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -284,26 +244,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: E_Clsq_Steps
-      guid: 354d81d397dc124f9fe6da81f02f2ce5
-      id: 1045676928
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Enemy
-        ObjectType: 4
-        guid: c94da1f2984a6744969a66a2325f51cd
-      - ElementName: E_Clsq_Steps
-        ObjectType: 3
-        guid: 354d81d397dc124f9fe6da81f02f2ce5
-      Path: Events\Default Work Unit\Enemy\E_Clsq_Steps
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: E_Pks_Carry
       guid: 224b2f77552fd742bdc51a4ef6de3b78
       id: 1286256413
@@ -322,8 +262,8 @@ MonoBehaviour:
         guid: 224b2f77552fd742bdc51a4ef6de3b78
       Path: Events\Default Work Unit\Enemy\E_Pks_Carry
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.01915
+      minDuration: 0.016103
     - name: E_Pks_Death
       guid: a233956016efa34583d0e2f3edb92561
       id: 703381894
@@ -341,26 +281,6 @@ MonoBehaviour:
         ObjectType: 3
         guid: a233956016efa34583d0e2f3edb92561
       Path: Events\Default Work Unit\Enemy\E_Pks_Death
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: E_Pks_Steps
-      guid: 360ab1bb948d9f48980b836e03d6db4f
-      id: 2048650433
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Enemy
-        ObjectType: 4
-        guid: c94da1f2984a6744969a66a2325f51cd
-      - ElementName: E_Pks_Steps
-        ObjectType: 3
-        guid: 360ab1bb948d9f48980b836e03d6db4f
-      Path: Events\Default Work Unit\Enemy\E_Pks_Steps
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -382,8 +302,8 @@ MonoBehaviour:
         guid: a054c2f75c5fcd439a84e3fb92099550
       Path: Events\Default Work Unit\Enemy\E_Trl_Death
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 2.284245
+      minDuration: 1.636135
     - name: E_Trl_Reload
       guid: 789c616b944e064d907eea4b26b272cd
       id: 565240443
@@ -402,28 +322,8 @@ MonoBehaviour:
         guid: 789c616b944e064d907eea4b26b272cd
       Path: Events\Default Work Unit\Enemy\E_Trl_Reload
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: E_Trl_Rotation
-      guid: 51236f08e8bc144e9d4935b788126fa3
-      id: 484851294
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Enemy
-        ObjectType: 4
-        guid: c94da1f2984a6744969a66a2325f51cd
-      - ElementName: E_Trl_Rotation
-        ObjectType: 3
-        guid: 51236f08e8bc144e9d4935b788126fa3
-      Path: Events\Default Work Unit\Enemy\E_Trl_Rotation
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 3.836312
+      minDuration: 2.766836
     - name: E_Trl_Shot
       guid: a0bd67b172dc824499ca13ff166ccce0
       id: 593966612
@@ -461,9 +361,9 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: Forest_Ambient
-      guid: 4bb738347f26a646bba9a39c33023080
-      id: 2694022307
+    - name: Game_Ambient
+      guid: 1d558956ac75474396161d60758e0a88
+      id: 1488092454
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -474,10 +374,10 @@ MonoBehaviour:
       - ElementName: World
         ObjectType: 4
         guid: 1025725beda7974597f1f8b466ab7bbc
-      - ElementName: Forest_Ambient
+      - ElementName: Game_Ambient
         ObjectType: 3
-        guid: 4bb738347f26a646bba9a39c33023080
-      Path: Events\Default Work Unit\World\Forest_Ambient
+        guid: 1d558956ac75474396161d60758e0a88
+      Path: Events\Default Work Unit\World\Game_Ambient
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -541,26 +441,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.668169
       minDuration: 0.477874
-    - name: P_Death
-      guid: 9709482886c44e409f21f9c6cf545aad
-      id: 947529532
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Players
-        ObjectType: 4
-        guid: 718ee505135c2340bbc3a7c784e87c30
-      - ElementName: P_Death
-        ObjectType: 3
-        guid: 9709482886c44e409f21f9c6cf545aad
-      Path: Events\Default Work Unit\Players\P_Death
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: P_GroundImpact
       guid: 2f578159ea32e342905a92eb54a56d01
       id: 819302809
@@ -581,26 +461,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.507198
       minDuration: 0.085003
-    - name: P_OutOfBond
-      guid: 0b3424878f299c4e94a80a3c244fb65b
-      id: 3538096274
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Players
-        ObjectType: 4
-        guid: 718ee505135c2340bbc3a7c784e87c30
-      - ElementName: P_OutOfBond
-        ObjectType: 3
-        guid: 0b3424878f299c4e94a80a3c244fb65b
-      Path: Events\Default Work Unit\Players\P_OutOfBond
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: P_Respawn
       guid: 5c7e36b8df81e741bef851716dfa8984
       id: 500255786
@@ -619,8 +479,8 @@ MonoBehaviour:
         guid: 5c7e36b8df81e741bef851716dfa8984
       Path: Events\Default Work Unit\Players\P_Respawn
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 2.148323
+      minDuration: 2.148323
     - name: P_Steps
       guid: cd82d02abc0fcc4a8f7805613ce57ee1
       id: 3280416103
@@ -679,28 +539,8 @@ MonoBehaviour:
         guid: 3d82b2b107b2b84b9e5cf26bede85b54
       Path: Events\Default Work Unit\Players\P_Swim
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: P_SwordImpact
-      guid: b49d90f99bb6754687ac878dcb5a4821
-      id: 2069939267
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Players
-        ObjectType: 4
-        guid: 718ee505135c2340bbc3a7c784e87c30
-      - ElementName: P_SwordImpact
-        ObjectType: 3
-        guid: b49d90f99bb6754687ac878dcb5a4821
-      Path: Events\Default Work Unit\Players\P_SwordImpact
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.948075
+      minDuration: 0.637284
     - name: P_Throw
       guid: e2edb52c3d5072468e9cf4a48b3e3126
       id: 1504870946
@@ -738,26 +578,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: Sea_Ambient
-      guid: 9c75ad7e297af74b924ce40adff5cd5c
-      id: 1528341423
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: World
-        ObjectType: 4
-        guid: 1025725beda7974597f1f8b466ab7bbc
-      - ElementName: Sea_Ambient
-        ObjectType: 3
-        guid: 9c75ad7e297af74b924ce40adff5cd5c
-      Path: Events\Default Work Unit\World\Sea_Ambient
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: W_ChestDrop
       guid: 4ddd6a386b4a2746a5a06731d6891a74
       id: 4030367049
@@ -776,28 +596,8 @@ MonoBehaviour:
         guid: 4ddd6a386b4a2746a5a06731d6891a74
       Path: Events\Default Work Unit\World\W_ChestDrop
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: W_TreasursIdle
-      guid: 01ddcbddda318f409cc46d5db68af353
-      id: 2304210504
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: World
-        ObjectType: 4
-        guid: 1025725beda7974597f1f8b466ab7bbc
-      - ElementName: W_TreasursIdle
-        ObjectType: 3
-        guid: 01ddcbddda318f409cc46d5db68af353
-      Path: Events\Default Work Unit\World\W_TreasursIdle
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.000247
+      minDuration: 0.707281
     - name: World
       guid: 1025725beda7974597f1f8b466ab7bbc
       id: 2609808943
@@ -826,7 +626,7 @@ MonoBehaviour:
     ParentPath: Events\Musics
     guid: 8b7a9cc2f9341b47876f857ec1bcbfce
     GuidInternal: 
-    m_lastTime: -8585620375810764205
+    m_lastTime: -8585602254089246061
     List:
     - name: Credit_Theme
       guid: b5a5df838c37b849a41524cd44cf21ae
@@ -917,7 +717,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 44e9a2aa08be74469cc4ca937f63ac4a
     GuidInternal: 
-    m_lastTime: -8585655695954244700
+    m_lastTime: -8585644368056705429
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -931,7 +731,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 45ac22c6d94a704bb944d240967dde98
     GuidInternal: 
-    m_lastTime: -8585627431785628825
+    m_lastTime: -8585644357622712001
     List:
     - name: Ground_Type
       guid: c2f15d9f71b68e4d8e85d4f9280faaf2
@@ -1075,8 +875,58 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 23f8d2162ea04c49ba51910d0ab18446
     GuidInternal: 
-    m_lastTime: -8585655695954085129
-    List: []
+    m_lastTime: -8585602158864499083
+    List:
+    - name: GameplayType
+      guid: 582d7cde1074f044a75447d7d5a60a22
+      id: 924435401
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 23f8d2162ea04c49ba51910d0ab18446
+      - ElementName: GameplayType
+        ObjectType: 11
+        guid: 582d7cde1074f044a75447d7d5a60a22
+      Path: Switches\Default Work Unit\GameplayType
+      values:
+      - name: Navigation
+        guid: 3db87272e0e43e4895e51512f1bf73e7
+        id: 1082482811
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 23f8d2162ea04c49ba51910d0ab18446
+        - ElementName: GameplayType
+          ObjectType: 11
+          guid: 582d7cde1074f044a75447d7d5a60a22
+        - ElementName: Navigation
+          ObjectType: 10
+          guid: 3db87272e0e43e4895e51512f1bf73e7
+      - name: Pillage
+        guid: 034d65c0f02c484685e5e91a38bfc7df
+        id: 2579631677
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 23f8d2162ea04c49ba51910d0ab18446
+        - ElementName: GameplayType
+          ObjectType: 11
+          guid: 582d7cde1074f044a75447d7d5a60a22
+        - ElementName: Pillage
+          ObjectType: 10
+          guid: 034d65c0f02c484685e5e91a38bfc7df
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     PathAndIcons:
@@ -1089,7 +939,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 27f4251b6ad34743b8dc3552bbe667d3
     GuidInternal: 
-    m_lastTime: -8585624433228106341
+    m_lastTime: -8585626878185918775
     List:
     - name: Collect_Treasure
       guid: 88eb52da3d6b9743ba24b8c441c80d38
@@ -1106,7 +956,7 @@ MonoBehaviour:
         guid: 88eb52da3d6b9743ba24b8c441c80d38
       Path: Triggers\Default Work Unit\Collect_Treasure
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 06000000070000000c0000000d000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

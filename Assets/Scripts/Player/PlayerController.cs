@@ -587,6 +587,7 @@ public class PlayerController : MonoBehaviour
         isDead = false;
 
         // Play respawn sound
+        AudioManager.AMInstance.playerRespawnSFX.Post(gameObject);
     }
 
     void FixedUpdate()

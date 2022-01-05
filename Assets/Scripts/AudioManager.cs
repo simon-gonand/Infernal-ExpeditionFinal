@@ -36,12 +36,17 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event playerGroundImpactSFX;
     public AK.Wwise.Event playerStepsSFX;
     public AK.Wwise.Event playerStuntSFX;
+    public AK.Wwise.Event playerSwimSFX;
     public AK.Wwise.Event playerThrowSFX;
+    public AK.Wwise.Event playerRespawnSFX;
 
     [Header("Enemy")]
 
     public AK.Wwise.Event clsqEnemyAttackSFX;
     public AK.Wwise.Event trlEnemyShotSFX;
+    public AK.Wwise.Event trlEnemyReloadSFX;
+    public AK.Wwise.Event trlEnemyDeathSFX;
+    public AK.Wwise.Event pskEnemyCarrySFX;
 
     [Header("Boat")]
 
@@ -50,14 +55,14 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event boatMovingSFX;
 
     [Header("World")]
-
-    public AK.Wwise.Event beachAmbientSFX;
+    public AK.Wwise.Event chestGroundImpactSFX;
+    public AK.Wwise.Event gameAmbientSFX;
 
     void Start()
     {
         //DEBUG
         runTheme.Post(gameObject);
-        beachAmbientSFX.Post(gameObject);
+        gameAmbientSFX.Post(gameObject);
         //
     }
 }
