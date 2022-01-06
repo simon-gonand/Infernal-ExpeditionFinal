@@ -528,6 +528,7 @@ public class PlayerController : MonoBehaviour
             interactingWith.UninteractWith(this);
         }
         StartCoroutine(Respawn());
+        RespawnUiManager.instance.SpawnPicto(_id);
     }
 
     private IEnumerator Respawn()
@@ -711,5 +712,16 @@ public class PlayerController : MonoBehaviour
            Vector3 upPlayer = new Vector3(self.position.x, playerY, self.position.z);
            self.position = upPlayer;
         }            
+    }
+
+    IEnumerator AutoDie()
+    {
+        yield return new WaitForSeconds(3f);
+        Die();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(AutoDie());
     }
 }
