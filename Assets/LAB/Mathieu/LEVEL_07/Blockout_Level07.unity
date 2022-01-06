@@ -160,7 +160,7 @@ MonoBehaviour:
   anchors:
   - {x: 24.902864, y: 0.030035734, z: 404.92584}
   - {x: 1.1317139, y: 0.030035734, z: 417.38855}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -839,7 +839,7 @@ MonoBehaviour:
   anchors:
   - {x: -38.068882, y: 0.030035734, z: 559.67236}
   - {x: -12.336784, y: 0.030035734, z: 568.15466}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -11988,7 +11988,7 @@ MonoBehaviour:
   anchors:
   - {x: 47.406185, y: 0.030035734, z: 616.65814}
   - {x: 46.028557, y: 0.030035734, z: 636.45966}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -16403,7 +16403,7 @@ MonoBehaviour:
   anchors:
   - {x: -40.91613, y: 0.030035734, z: 704.3031}
   - {x: -39.427574, y: 0.030035734, z: 715.0901}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -16525,7 +16525,7 @@ MonoBehaviour:
   anchors:
   - {x: -21.861116, y: 0.030035734, z: 517.4193}
   - {x: -36.31822, y: 0.030035734, z: 525.0852}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -34210,7 +34210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417335231}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.293552, y: 0.030035734, z: 237.27707}
+  m_LocalPosition: {x: 27.205484, y: 0.030035734, z: 237.27707}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 370241988}
@@ -38591,10 +38591,10 @@ MonoBehaviour:
   start: {fileID: 926910289}
   end: {fileID: 13712047}
   pathPoints:
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0.030035734, z: 0}
   - {x: 0, y: 0.030035734, z: 59.69398}
   anchors:
-  - {x: 0.21444988, y: -0.030035734, z: 14.377266}
+  - {x: -0.423069, y: 0.030035734, z: 14.399235}
   - {x: -0.2392559, y: 0.030035734, z: 47.50645}
   speed: 0.5
   XCameraOffset:
@@ -42676,7 +42676,7 @@ MonoBehaviour:
   anchors:
   - {x: -39.028366, y: 0.030035734, z: 726.45276}
   - {x: -39.98832, y: 0.030035734, z: 755.8843}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -47233,10 +47233,10 @@ MonoBehaviour:
   start: {fileID: 417335232}
   end: {fileID: 1862417087}
   pathPoints:
-  - {x: 28.293552, y: 0.030035734, z: 237.27707}
+  - {x: 27.205484, y: 0.030035734, z: 237.27707}
   - {x: 32.005836, y: 0.030035734, z: 301.11517}
   anchors:
-  - {x: 32.66771, y: 0.030035734, z: 247.06847}
+  - {x: 31.57964, y: 0.030035734, z: 247.06847}
   - {x: 31.204506, y: 0.030035734, z: 286.92117}
   speed: 0.5
   XCameraOffset:
@@ -48699,6 +48699,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2044240300}
     m_Modifications:
+    - target: {fileID: -8597936186340757498, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
+      propertyPath: linkedGate
+      value: 
+      objectReference: {fileID: 1327356852}
+    - target: {fileID: -8597936186340757498, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
+      propertyPath: offsetClick
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1043027363937557962, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
       propertyPath: m_RootOrder
       value: 55
@@ -59178,7 +59186,7 @@ MonoBehaviour:
   anchors:
   - {x: -15.262398, y: 0.030035734, z: 485.0365}
   - {x: -18.722277, y: 0.030035734, z: 503.4606}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -59576,7 +59584,7 @@ MonoBehaviour:
   anchors:
   - {x: -62.3622, y: 0.030035734, z: 904.03326}
   - {x: -62.33133, y: 0.030035734, z: 930.91583}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -60510,7 +60518,7 @@ MonoBehaviour:
   anchors:
   - {x: -41.99416, y: 0.030035734, z: 814.8269}
   - {x: -24.61185, y: 0.030035734, z: 821.5522}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -63562,7 +63570,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926910288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.030035734, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 370241988}
@@ -64367,7 +64375,7 @@ MonoBehaviour:
   anchors:
   - {x: -34.732773, y: 0.030035734, z: 679.4383}
   - {x: -39.043312, y: 0.030035734, z: 682.9242}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -64437,7 +64445,7 @@ MonoBehaviour:
   anchors:
   - {x: -14.014256, y: 0.030035734, z: 840.5101}
   - {x: -27.29478, y: 0.030035734, z: 849.8358}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -65527,7 +65535,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985260882}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -71.90027}
+  m_LocalPosition: {x: 0, y: 0.030035734, z: -71.90027}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 370241988}
@@ -67390,8 +67398,8 @@ MonoBehaviour:
   - {x: 30.104326, y: 0.030035734, z: 679.37445}
   anchors:
   - {x: 44.569565, y: 0.030035734, z: 649.5485}
-  - {x: 36.568874, y: 0.030035734, z: 673.7101}
-  speed: 0
+  - {x: 39.860073, y: 0.030035734, z: 673.8806}
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -67643,7 +67651,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031705915}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.39356, y: 0.030035734, z: 191.2903}
+  m_LocalPosition: {x: 15.342548, y: 0.030035734, z: 191.2903}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 370241988}
@@ -70261,7 +70269,7 @@ MonoBehaviour:
   anchors:
   - {x: 32.807167, y: 0.030035734, z: 315.30917}
   - {x: 42.118484, y: 0.030035734, z: 325.11597}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -70331,7 +70339,7 @@ MonoBehaviour:
   anchors:
   - {x: 4.7790174, y: 0.030035734, z: 579.26404}
   - {x: 3.4344711, y: 0.030035734, z: 594.3064}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -71971,7 +71979,7 @@ MonoBehaviour:
   anchors:
   - {x: 17.153946, y: 0.030035734, z: 610.0679}
   - {x: 27.912006, y: 0.030035734, z: 613.64325}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -72752,7 +72760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1181551038}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5768447, y: 0.030035734, z: 688.0912}
+  m_LocalPosition: {x: -4.5768447, y: 0.030035734, z: 685.5925}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 370241988}
@@ -72959,7 +72967,7 @@ MonoBehaviour:
   anchors:
   - {x: -65.09648, y: 0.030035734, z: 870.62585}
   - {x: -62.511303, y: 0.030035734, z: 890.94684}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -81513,6 +81521,11 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1327356852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1920073633617504017, guid: 0d1bf9d2f3cdcf84ba3c987018992eb9, type: 3}
+  m_PrefabInstance: {fileID: 232191223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1330496037
 GameObject:
   m_ObjectHideFlags: 0
@@ -82038,7 +82051,7 @@ MonoBehaviour:
   anchors:
   - {x: 32.32611, y: 0.030035734, z: 356.68634}
   - {x: 30.634726, y: 0.030035734, z: 364.98938}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -88178,11 +88191,11 @@ MonoBehaviour:
   start: {fileID: 985260883}
   end: {fileID: 926910289}
   pathPoints:
-  - {x: 0, y: 0, z: -71.90027}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0.030035734, z: -71.90027}
+  - {x: 0, y: 0.030035734, z: 0}
   anchors:
-  - {x: -63.17028, y: -0.030035734, z: 949.25116}
-  - {x: -0.21444988, y: 0.030035734, z: -14.377266}
+  - {x: 0, y: 0.030035734, z: -57.520214}
+  - {x: 0.423069, y: 0.030035734, z: -14.399235}
   speed: 0.5
   XCameraOffset:
     serializedVersion: 2
@@ -92040,7 +92053,7 @@ MonoBehaviour:
   anchors:
   - {x: -40.27883, y: 0.030035734, z: 774.87146}
   - {x: -39.571537, y: 0.030035734, z: 792.94995}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -92110,7 +92123,7 @@ MonoBehaviour:
   anchors:
   - {x: -43.497944, y: 0.030035734, z: 461.63342}
   - {x: -29.421787, y: 0.030035734, z: 463.29895}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -95778,12 +95791,12 @@ MonoBehaviour:
   start: {fileID: 1181551039}
   end: {fileID: 1223550589}
   pathPoints:
-  - {x: -4.5768447, y: 0.030035734, z: 688.0912}
+  - {x: -4.5768447, y: 0.030035734, z: 685.5925}
   - {x: -29.207201, y: 0.030035734, z: 678.8341}
   anchors:
-  - {x: -12.1726265, y: 0.030035734, z: 688.1503}
+  - {x: -12.1726265, y: 0.030035734, z: 685.6517}
   - {x: -23.681631, y: 0.030035734, z: 678.2299}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -96370,11 +96383,11 @@ MonoBehaviour:
   start: {fileID: 1031705916}
   end: {fileID: 417335232}
   pathPoints:
-  - {x: 17.39356, y: 0.030035734, z: 191.2903}
-  - {x: 28.293552, y: 0.030035734, z: 237.27707}
+  - {x: 15.342548, y: 0.030035734, z: 191.2903}
+  - {x: 27.205484, y: 0.030035734, z: 237.27707}
   anchors:
-  - {x: 18.473145, y: 0.030035734, z: 202.35289}
-  - {x: 23.919395, y: 0.030035734, z: 227.48567}
+  - {x: 16.422132, y: 0.030035734, z: 202.35289}
+  - {x: 22.831327, y: 0.030035734, z: 227.48567}
   speed: 0.5
   XCameraOffset:
     serializedVersion: 2
@@ -97309,7 +97322,7 @@ MonoBehaviour:
   anchors:
   - {x: -24.642687, y: 0.030035734, z: 429.83258}
   - {x: -52.49042, y: 0.030035734, z: 425.60504}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -100747,10 +100760,10 @@ MonoBehaviour:
   end: {fileID: 1031705916}
   pathPoints:
   - {x: 0.46108246, y: 0.030035734, z: 152.8519}
-  - {x: 17.39356, y: 0.030035734, z: 191.2903}
+  - {x: 15.342548, y: 0.030035734, z: 191.2903}
   anchors:
   - {x: 2.4772651, y: 0.030035734, z: 156.92778}
-  - {x: 16.313976, y: 0.030035734, z: 180.2277}
+  - {x: 14.262964, y: 0.030035734, z: 180.2277}
   speed: 0.5
   XCameraOffset:
     serializedVersion: 2
@@ -114656,11 +114669,11 @@ MonoBehaviour:
   end: {fileID: 1181551039}
   pathPoints:
   - {x: 30.104326, y: 0.030035734, z: 679.37445}
-  - {x: -4.5768447, y: 0.030035734, z: 688.0912}
+  - {x: -4.5768447, y: 0.030035734, z: 685.5925}
   anchors:
-  - {x: 23.639778, y: 0.030035734, z: 685.0388}
-  - {x: 3.018937, y: 0.030035734, z: 688.03204}
-  speed: 0
+  - {x: 20.34858, y: 0.030035734, z: 684.8683}
+  - {x: 3.018937, y: 0.030035734, z: 685.5334}
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
@@ -115090,7 +115103,7 @@ MonoBehaviour:
   anchors:
   - {x: -37.26556, y: 0.030035734, z: 853.10156}
   - {x: -53.22994, y: 0.030035734, z: 856.23206}
-  speed: 0
+  speed: 0.5
   XCameraOffset:
     serializedVersion: 2
     m_Curve: []
