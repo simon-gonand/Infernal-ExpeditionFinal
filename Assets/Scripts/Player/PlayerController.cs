@@ -713,15 +713,4 @@ public class PlayerController : MonoBehaviour
            self.position = upPlayer;
         }            
     }
-
-    IEnumerator AutoDie()
-    {
-        yield return new WaitForSeconds(3f);
-        Die();
-    }
-
-    private void Start()
-    {
-        StartCoroutine(AutoDie());
-    }
 }
