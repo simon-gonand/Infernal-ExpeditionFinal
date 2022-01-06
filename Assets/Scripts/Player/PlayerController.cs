@@ -521,14 +521,18 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        isDead = true;
-        // Play death out of bounds sound
-        if (isInteracting)
+        if (isDead == false)
         {
-            interactingWith.UninteractWith(this);
+            isDead = true;
+            // Play death out of bounds sound
+            if (isInteracting)
+            {
+                interactingWith.UninteractWith(this);
+            }
+
+            StartCoroutine(Respawn());
+            RespawnUiManager.instance.SpawnPicto(_id);
         }
-        StartCoroutine(Respawn());
-        RespawnUiManager.instance.SpawnPicto(_id);
     }
 
     private IEnumerator Respawn()
@@ -543,6 +547,8 @@ public class PlayerController : MonoBehaviour
         }
         selfRigidBody.velocity = Vector3.zero;
         self.position = respawnPosition;
+
+        yield return new WaitForEndOfFrame();
         isDead = false;
 
         // Play respawn sound
