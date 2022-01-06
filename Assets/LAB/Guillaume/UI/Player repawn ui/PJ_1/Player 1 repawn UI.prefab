@@ -235,6 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8710706363154183087}
   - component: {fileID: -595446109728034124}
+  - component: {fileID: 3309264008778719965}
   m_Layer: 5
   m_Name: Player 1 repawn UI
   m_TagString: Untagged
@@ -281,6 +282,26 @@ MonoBehaviour:
   counter: {fileID: 6348603426074194840}
   greyBackground: {fileID: 1825680192570587106}
   playerPreset: {fileID: 11400000, guid: 6e8ed946df7976d4e939d4c409344454, type: 2}
+  selfAnimator: {fileID: 3309264008778719965}
+--- !u!95 &3309264008778719965
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3850768510595967046}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8b6b26a12b17238458ad9759537979cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7192458921871475488
 GameObject:
   m_ObjectHideFlags: 0
