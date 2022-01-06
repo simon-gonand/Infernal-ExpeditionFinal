@@ -22,7 +22,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
 
     private bool isCarrying;
     private bool canStole = true;
-    
+    private bool isDead;
 
     // Start is called before the first frame update
     void Start()
@@ -105,35 +105,43 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
 
     public void Die()
     {
+        isDead = true;
+        selfNavMesh.speed = 0f;
+
         // Die sound
         if (targetTreasure != null && targetTreasure.isCarriedByPiqueSous)
             targetTreasure.UnInteractWithPiqueSous(this);
         // Die animation
-        Destroy(this.gameObject);
+
+        selfAnim.SetTrigger("die");
+        //Destroy(this.gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_isAwake && canStole)
+        if (isDead == false)
         {
-            if (!isCarrying)
+            if (_isAwake && canStole)
             {
-                UpdateTreasureDestination();
-                CheckCarryChest();
+                if (!isCarrying)
+                {
+                    UpdateTreasureDestination();
+                    CheckCarryChest();
+                }
+                else
+                {
+                    GoBackHome();
+                    Debug.Log(selfNavMesh.speed);
+                }
             }
             else
             {
                 GoBackHome();
-                Debug.Log(selfNavMesh.speed);
             }
-        }
-        else
-        {
-            GoBackHome();
-        }
 
-        AnimationInfo();
+            AnimationInfo();
+        }
     }
 
 
