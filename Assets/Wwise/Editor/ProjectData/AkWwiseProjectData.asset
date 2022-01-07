@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 9dce80c3a7123942813a1007a9fa761f
     GuidInternal: 
-    m_lastTime: -8585602158864509063
+    m_lastTime: -8585601984037306847
     List:
     - name: Musics
       guid: 36549465458ece4a996756f69665369a
@@ -108,7 +108,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 06febf392af11e40ad2e9e6e478aa9eb
     GuidInternal: 
-    m_lastTime: -8585602158927696236
+    m_lastTime: -8585601984037596061
     List:
     - name: B_ChestCollect
       guid: 829a948af431744189a18a98eaaf71a5
@@ -381,6 +381,46 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: GameplayNavigationSwitch
+      guid: 1c864faebbf6ad49ae6a458252ae8be4
+      id: 3945971227
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 06febf392af11e40ad2e9e6e478aa9eb
+      - ElementName: World
+        ObjectType: 4
+        guid: 1025725beda7974597f1f8b466ab7bbc
+      - ElementName: GameplayNavigationSwitch
+        ObjectType: 3
+        guid: 1c864faebbf6ad49ae6a458252ae8be4
+      Path: Events\Default Work Unit\World\GameplayNavigationSwitch
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: GameplayPillageSwitch
+      guid: 94baf4557e797644ac6e897375b25f47
+      id: 3180343601
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 06febf392af11e40ad2e9e6e478aa9eb
+      - ElementName: World
+        ObjectType: 4
+        guid: 1025725beda7974597f1f8b466ab7bbc
+      - ElementName: GameplayPillageSwitch
+        ObjectType: 3
+        guid: 94baf4557e797644ac6e897375b25f47
+      Path: Events\Default Work Unit\World\GameplayPillageSwitch
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: P_Attack
       guid: 0659331aad416a4b86bce96e08537ba6
       id: 491820422
@@ -626,7 +666,7 @@ MonoBehaviour:
     ParentPath: Events\Musics
     guid: 8b7a9cc2f9341b47876f857ec1bcbfce
     GuidInternal: 
-    m_lastTime: -8585602254089246061
+    m_lastTime: -8585601984037087422
     List:
     - name: Credit_Theme
       guid: b5a5df838c37b849a41524cd44cf21ae

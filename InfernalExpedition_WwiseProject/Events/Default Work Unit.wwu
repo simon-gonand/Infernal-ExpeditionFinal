@@ -407,6 +407,34 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="GameplayNavigationSwitch" ID="{AE4F861C-F6BB-49AD-AE6A-458252AE8BE4}">
+							<ChildrenList>
+								<Action Name="" ID="{40E0688D-F1D3-4DB7-A369-641B1071BDF1}" ShortID="148973595">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="23"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Navigation" ID="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}" WorkUnitID="{16D2F823-A02E-494C-BA51-910D0AB18446}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="GameplayPillageSwitch" ID="{55F4BA94-797E-4476-AC6E-897375B25F47}">
+							<ChildrenList>
+								<Action Name="" ID="{6D4DD2DD-00E4-469C-89CF-B6D7C28E828C}" ShortID="911154394">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="23"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Pillage" ID="{C0654D03-2CF0-4648-85E5-E91A38BFC7DF}" WorkUnitID="{16D2F823-A02E-494C-BA51-910D0AB18446}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>
