@@ -64,11 +64,14 @@ public class PeonAI : MonoBehaviour, EnemiesAI
 
     private void Start()
     {
-        selfNavMesh.speed = peonPreset.speed;
         if (isSkeleton && isStartingDead)
         {
+            selfNavMesh.enabled = false;
+            selfNavMesh.speed = 0;
             selfAnimator.Play("dead");
         }
+        else
+            selfNavMesh.speed = peonPreset.speed;
     }
 
     private void RemovePlayerNotOnIsland(List<PlayerController> players)
@@ -156,7 +159,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         }
         if (isSkeleton && isStartingDead)
         {
-            isStartingDead = false;
+            selfNavMesh.enabled = true;
             Revive();
         }
         // Set the first player as the nearest (in case if the player is alone on the map)
@@ -289,6 +292,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         yield return new WaitForSeconds(0.2f);
         selfCollider.enabled = false;
         yield return new WaitForSeconds(reviveCooldown);
+        Revive();
     }
 
     private void Revive()
@@ -296,6 +300,18 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         lockDeathAnim = false;
         selfAnimator.SetTrigger("revive");
         selfCollider.enabled = true;
+        if (isStartingDead)
+        {
+            StopCoroutine(NoSpeedReviveCooldown());
+            StartCoroutine(NoSpeedReviveCooldown());
+            isStartingDead = false;
+        }
+    }
+
+    private IEnumerator NoSpeedReviveCooldown()
+    {
+        yield return new WaitForSeconds(1.0f);
+        selfNavMesh.speed = peonPreset.speed;
     }
 
     // Update is called once per frame
