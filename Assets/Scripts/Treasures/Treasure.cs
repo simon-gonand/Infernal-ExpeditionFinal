@@ -189,10 +189,10 @@ public class Treasure : MonoBehaviour, ICarriable
         // Update player values
         _playerInteractingWith.Add(player);
         player.isCarrying = true;
-
         player.anim.SetBool("isCarrying", true);
         player.anim.SetTrigger("startCarrying");
-        player.sword.SetActive(false);
+        player.sword.SetActive(false);
+        
         // Play Carry Sound
         AudioManager.AMInstance.playerCarrySFX.Post(gameObject);
 
@@ -258,6 +258,7 @@ public class Treasure : MonoBehaviour, ICarriable
         player.carrying = null;
 
         player.anim.SetBool("isCarrying", false);
+        player.SweatActivator(false);
         player.sword.SetActive(true);
 
         return false;
@@ -291,6 +292,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
             // Update Anim
             p.anim.SetBool("isCarrying", false);
+            p.SweatActivator(false);
             p.sword.SetActive(true);
 
             Physics.IgnoreCollision(selfCollider, p.selfCollider, true);
@@ -332,6 +334,7 @@ public class Treasure : MonoBehaviour, ICarriable
         player.isInteracting = false;
 
         player.anim.SetBool("isCarrying", false);
+        player.SweatActivator(false);
         player.sword.SetActive(true);
 
         player.carrying = null;
@@ -506,10 +509,32 @@ public class Treasure : MonoBehaviour, ICarriable
             lastPosition = self.position;
 
         PlayerJoystickDetection();
+        UpdateWeightNeed();
     }
 
     public string GetTag()
     {
         return gameObject.tag;
+    }
+
+    public void UpdateWeightNeed()
+    {
+        if (_playerInteractingWith.Count > 0)
+        {
+            if (_playerInteractingWith.Count < category.maxPlayerCarrying)
+            {
+                foreach (PlayerController player in _playerInteractingWith)
+                {
+                    player.SweatActivator(true);
+                }
+            }
+            else
+            {
+                foreach (PlayerController player in _playerInteractingWith)
+                {
+                    player.SweatActivator(false);
+                }
+            }
+        }
     }
 }

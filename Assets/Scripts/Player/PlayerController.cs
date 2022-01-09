@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public CarryPlayer selfCarryPlayer;
     public PlayerPresets playerPreset;
     public PlayerThrowUI selfPlayerThrowUi;
+    public GameObject sweatParticleSysteme;
 
     [Header("Children References")]
     public Transform playerGraphics;
@@ -54,7 +55,6 @@ public class PlayerController : MonoBehaviour
     public Vector3 movement { get { return _movement; } }
 
     private Vector3 collisionDirection;
-
     private GameObject treasureInFront;
 
     private float playerY;
@@ -581,6 +581,7 @@ public class PlayerController : MonoBehaviour
         CheckFallingWhenCarrying();
         CheckIsUnderMap();
     }
+    
 
     private void TreasureDetectionForOutline()
     {
@@ -664,6 +665,18 @@ public class PlayerController : MonoBehaviour
     {
         if (playerMovementInput != Vector2.zero)
             playerThrowDir = new Vector3(playerMovementInput.x, 0, playerMovementInput.y).normalized;
+    }
+    
+    public void SweatActivator(bool activate)
+    {
+        if (activate)
+        {
+            sweatParticleSysteme.SetActive(true);
+        }
+        else
+        {
+            sweatParticleSysteme.SetActive(false);
+        }
     }
 
 

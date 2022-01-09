@@ -120,6 +120,7 @@ Transform:
   - {fileID: 6219935653066116965}
   - {fileID: 7431564144871862304}
   - {fileID: 5710403794087311686}
+  - {fileID: 4499969739865583841}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -155,6 +156,7 @@ MonoBehaviour:
   selfCarryPlayer: {fileID: 5891595701888884371}
   playerPreset: {fileID: 11400000, guid: 6e8ed946df7976d4e939d4c409344454, type: 2}
   selfPlayerThrowUi: {fileID: 3272654801180603234}
+  sweatParticlSysteme: {fileID: 4499969739865583868}
   playerGraphics: {fileID: 7431564144871862304}
   attackPoint: {fileID: 7237748085361382517}
   playerCarryingPoint: {fileID: 6219935653066116965}
@@ -864,6 +866,77 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1001 &1503352778936713806
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4223509153915057737}
+    m_Modifications:
+    - target: {fileID: 3075925293256372911, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075925293256372911, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075925293256372911, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.208
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075925293256372911, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.163
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075925293256372911, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075925293256372911, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.8660254
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075925293256372911, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075925293256372911, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075925293256372911, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075925293256372911, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075925293256372911, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075925293256372914, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+      propertyPath: m_Name
+      value: Sweat particle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075925293256372914, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+--- !u!1 &4499969739865583868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3075925293256372914, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+  m_PrefabInstance: {fileID: 1503352778936713806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4499969739865583841 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3075925293256372911, guid: 0108f462a927b934a9872fc5350d480e, type: 3}
+  m_PrefabInstance: {fileID: 1503352778936713806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2738566127303043891
 PrefabInstance:
   m_ObjectHideFlags: 0
