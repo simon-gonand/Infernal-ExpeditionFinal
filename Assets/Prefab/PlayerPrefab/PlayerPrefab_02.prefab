@@ -189,6 +189,7 @@ MonoBehaviour:
   self: {fileID: 4223509153915057737}
   selfRigidBody: {fileID: 2660306658829606644}
   selfCollider: {fileID: 4223509153915057738}
+  selfCarryPlayer: {fileID: 5891595701888884371}
   playerPreset: {fileID: 11400000, guid: 6e8ed946df7976d4e939d4c409344454, type: 2}
   selfPlayerThrowUi: {fileID: 7624732756004154749}
   playerGraphics: {fileID: 4536792301564843833}
@@ -198,10 +199,10 @@ MonoBehaviour:
   sword: {fileID: 3335621668547960869}
   stunFx: {fileID: 2739789684704048623}
   drawIteractLine: 0
+  canPlaySound: 0
   mask:
     serializedVersion: 2
     m_Bits: 55
-  isAiming: 0
   playerThrowDir: {x: 0, y: 0, z: 0}
 --- !u!114 &4223509153915057750
 MonoBehaviour:
@@ -296,7 +297,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4223509153915057751}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnReload
+        m_MethodName: OnPause
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -306,8 +307,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: ad21794e-7b57-4a09-9e44-673a0eec6ea7
-    m_ActionName: Controls/ReloadScene[/XInputControllerWindows/select,/Keyboard/r]
+    m_ActionId: 65cf9322-0f3b-4b5a-95f9-20a64e4b77ea
+    m_ActionName: Controls/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls
@@ -384,7 +385,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selfScript: {fileID: 4223509153915057751}
   carrier: {fileID: 0}
-  launchForce: 0
 --- !u!1 &5505071618335532881
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +788,6 @@ MonoBehaviour:
   activeCircle: {fileID: 50048235471621969}
   globaleConeCanvas: {fileID: 5505071618335532881}
   objToRotate: {fileID: 6783416472838140356}
-  coneFiller: {fileID: 8080802905442233301}
   coneBackground: {fileID: 2171538072482913634}
 --- !u!1 &7831132290642122590
 GameObject:

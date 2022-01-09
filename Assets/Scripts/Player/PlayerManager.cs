@@ -15,18 +15,19 @@ public class PlayerManager : MonoBehaviour
     private GameObject player4;
 
     [Header("Self Reference")]
-    [SerializeField]
-    private PlayerInputManager self;
+    public PlayerInputManager self;
 
     [Header("External References")]
-    public CinemachineVirtualCamera cam;
-    public CinemachineTargetGroup targetGroup;
-    public CameraManager camManager;
+    [HideInInspector] public CinemachineVirtualCamera cam;
+    [HideInInspector] public CameraManager camManager;
 
     [Header("PlayerStats")]
     public float deadZoneOffsetX = 10.0f;
     public float deadZoneOffsetY = 10.0f;
     public float weight;
+
+    [Space]
+    public bool onPirateIsland = true;
 
     private List<PlayerController> _players = new List<PlayerController>();
     public List<PlayerController> players { get { return _players; } }
@@ -34,7 +35,15 @@ public class PlayerManager : MonoBehaviour
     private float cameraOriginalOffset;
     Coroutine coroutine;
 
+    public static PlayerManager instance;
+
     private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
+
+    private void Start()
     {
         cameraOriginalOffset = camManager.offsetPositionMovement;
     }
@@ -42,37 +51,48 @@ public class PlayerManager : MonoBehaviour
     // Update material of player when one is joining to avoid them to have the same color
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        float playerSpawnOffset = 0.0f;
-        switch (playerInput.playerIndex)
+
+        // Update players spawn positions according to which player is spawning
+        // Player is spawning on the boat
+        Transform playerTransform = playerInput.gameObject.transform;
+        Vector3 playerSpawnPosition = SetPlayerPosition(playerInput.playerIndex);
+        if (!onPirateIsland)
+        {
+            playerTransform.position = playerSpawnPosition;
+            playerTransform.SetParent(BoatManager.instance.self);
+        }
+        else
+            playerInput.currentActionMap.Disable();
+        if (GameManager.instance != null)
+            GameManager.instance.targetGroup.AddMember(playerTransform, weight, 20);
+        PlayerController player = playerInput.gameObject.GetComponent<PlayerController>();
+        player.id = playerInput.playerIndex;
+        _players.Add(player);
+    }
+
+    private Vector3 SetPlayerPosition(int id)
+    {
+        Vector3 playerSpawnPosition = BoatManager.instance.spawnPoint1.position;
+        switch (id)
         {
             case 0:
                 self.playerPrefab = player2;
                 break;
             case 1:
+                playerSpawnPosition = BoatManager.instance.spawnPoint2.position;
                 self.playerPrefab = player3;
-                playerSpawnOffset = 0.5f;
                 break;
             case 2:
+                playerSpawnPosition = BoatManager.instance.spawnPoint3.position;
                 self.playerPrefab = player4;
-                playerSpawnOffset = -0.5f;
                 break;
             case 3:
-                playerSpawnOffset = 1.0f;
+                playerSpawnPosition = BoatManager.instance.spawnPoint4.position;
                 break;
             default:
                 break;
         }
-
-        // Update players spawn positions according to which player is spawning
-        // Player is spawning on the boat
-        Transform playerTransform = playerInput.gameObject.transform;
-        Vector3 playerSpawnPosition = BoatManager.instance.spawnPoint.position;
-        playerSpawnPosition.y += playerTransform.lossyScale.y;
-        playerSpawnPosition.z += playerInput.playerIndex * playerSpawnOffset;
-        playerTransform.position = playerSpawnPosition;
-        targetGroup.AddMember(playerTransform, weight, 20);
-        playerTransform.SetParent(BoatManager.instance.self);
-        _players.Add(playerInput.gameObject.GetComponent<PlayerController>());
+        return playerSpawnPosition;
     }
 
     private void SetZoomSpeed(PlayerController player)
@@ -93,6 +113,30 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         camManager.offsetPositionMovement = cameraOriginalOffset;
         camManager.CalculateOffsetRotationMovement();
+    }
+
+    public void OnChangeScene()
+    {
+        for (int i = 0; i < players.Count; ++i)
+        {
+            PlayerController player = players[i];
+            player.ResetPlayer();
+            if (!onPirateIsland)
+                player.self.position = SetPlayerPosition(i);
+            GameManager.instance.targetGroup.AddMember(player.self, weight, 20);
+        }
+    }
+
+    public void CheckInputs()
+    {
+        if (_players.Count == 1)
+        {
+            if (Gamepad.current != null && Gamepad.current.aButton.wasPressedThisFrame)
+                _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(Gamepad.current);
+
+            if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+                _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(Keyboard.current, Mouse.current);
+        }
     }
 
     private void Update()

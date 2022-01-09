@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b9ae96b6aa759498f6c6f8611393cc, type: 3}
   m_Name: PlayerPresets
   m_EditorClassIdentifier: 
-  interactionDistance: 1
+  interactionDistance: 1.3
   playerGroundSpeed: 600
   playerSwimSpeed: 250
   playerInNotDeepWaterSpeed: 400
@@ -23,6 +23,6 @@ MonoBehaviour:
   attackRange: 3.5
   attackCooldown: 0.5
   stunTime: 2
-  maxLaunchForce: 7
+  maxLaunchForce: 25
   fullChargeTime: 1
   respawnCooldown: 0

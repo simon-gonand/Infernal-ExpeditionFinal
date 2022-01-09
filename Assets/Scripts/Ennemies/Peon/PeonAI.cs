@@ -13,9 +13,14 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     private PeonPresets peonPreset;
     [SerializeField]
     private Transform attackPoint;
+    [SerializeField]
+    private Collider selfCollider;
 
+    [Header("Skeleton")]
     [SerializeField]
     private bool isSkeleton;
+    [SerializeField]
+    private bool isStartingDead;
     [SerializeField]
     private float reviveCooldown;
 
@@ -59,7 +64,14 @@ public class PeonAI : MonoBehaviour, EnemiesAI
 
     private void Start()
     {
-        selfNavMesh.speed = peonPreset.speed;
+        if (isSkeleton && isStartingDead)
+        {
+            selfNavMesh.enabled = false;
+            selfNavMesh.speed = 0;
+            selfAnimator.Play("dead");
+        }
+        else
+            selfNavMesh.speed = peonPreset.speed;
     }
 
     private void RemovePlayerNotOnIsland(List<PlayerController> players)
@@ -144,6 +156,11 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         {
             nextFollowedPlayer = null;
             return;
+        }
+        if (isSkeleton && isStartingDead)
+        {
+            selfNavMesh.enabled = true;
+            Revive();
         }
         // Set the first player as the nearest (in case if the player is alone on the map)
         nextFollowedPlayer = playerTests[0];
@@ -262,6 +279,8 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     {
         lockDeathAnim = true;
         selfAnimator.SetTrigger("die");
+        yield return new WaitForSeconds(0.2f);
+        selfCollider.enabled = false;
         yield return new WaitForSeconds(3f);
         Destroy(this.gameObject);
     }
@@ -270,9 +289,29 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     {
         lockDeathAnim = true;
         selfAnimator.SetTrigger("die");
+        yield return new WaitForSeconds(0.2f);
+        selfCollider.enabled = false;
         yield return new WaitForSeconds(reviveCooldown);
+        Revive();
+    }
+
+    private void Revive()
+    {
         lockDeathAnim = false;
         selfAnimator.SetTrigger("revive");
+        selfCollider.enabled = true;
+        if (isStartingDead)
+        {
+            StopCoroutine(NoSpeedReviveCooldown());
+            StartCoroutine(NoSpeedReviveCooldown());
+            isStartingDead = false;
+        }
+    }
+
+    private IEnumerator NoSpeedReviveCooldown()
+    {
+        yield return new WaitForSeconds(1.0f);
+        selfNavMesh.speed = peonPreset.speed;
     }
 
     // Update is called once per frame
