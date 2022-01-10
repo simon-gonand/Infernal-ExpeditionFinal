@@ -9,16 +9,22 @@ public class GateCollision : MonoBehaviour
     [SerializeField]
     private int penaltyPoints;
 
+    public Animator selfAnimator;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Boat"))
         {
-            Debug.Log("Boat collide with gate");
             selfCollider.enabled = false;
-            ScoreManager.instance.RemoveScore(penaltyPoints);
-            // Destroy gate
+
             // Remove Score
+            ScoreManager.instance.RemoveScore(penaltyPoints);
+
             // Sound boat hit
+
+            // Destroy gate
+            selfAnimator.SetTrigger("Destroy");
+            BoatManager.instance.GetHit();
         }
     }
 }
