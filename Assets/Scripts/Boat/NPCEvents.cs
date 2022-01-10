@@ -66,4 +66,17 @@ public class NPCEvents : MonoBehaviour
     {
         Debug.Log("Last Island !");
     }
+
+    public void StartLanding(Transform t)
+    {
+        PlayerManager.instance.respawnOnBoat = false;
+        PlayerManager.instance.respawnPoint = t.position;
+        GameManager.instance.targetGroup.RemoveMember(BoatManager.instance.self);
+    }
+
+    public void EndLanding()
+    {
+        PlayerManager.instance.respawnOnBoat = true;
+        GameManager.instance.targetGroup.AddMember(BoatManager.instance.self, 25, 20);
+    }
 }

@@ -581,7 +581,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Respawn()
     {
-        Vector3 respawnPosition = BoatManager.instance.spawnPoint1.position;
+        Vector3 respawnPosition;
+        if (PlayerManager.instance.respawnOnBoat)
+            respawnPosition = BoatManager.instance.spawnPoint1.position;
+        else
+            respawnPosition = PlayerManager.instance.respawnPoint;
         respawnPosition.y += self.lossyScale.y;
         if (isSwimming)
         {
