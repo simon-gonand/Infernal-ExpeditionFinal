@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: -8597936186340757498}
   - component: {fileID: 4299291438834106625}
   - component: {fileID: 1455585085599192734}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GateSwitch
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedGate: {fileID: 0}
-  timeToOpen: 0
+  timeToOpen: 1
 --- !u!65 &4299291438834106625
 BoxCollider:
   m_ObjectHideFlags: 0
