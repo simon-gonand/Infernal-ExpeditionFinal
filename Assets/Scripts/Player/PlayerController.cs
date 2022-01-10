@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
     private bool isDashing = false;
     private bool isDead = false;
     private bool isGrounded = false;
-    private bool isColliding = false;
+    public bool isColliding = false;
     #endregion
 
     #region Reset
@@ -224,10 +224,12 @@ public class PlayerController : MonoBehaviour
             if (_isCarrying)
             {
                 Treasure t = _carrying as Treasure;
-                if (t != null && t.selfCollider != collision.collider)
+                if (t != null && t.selfCollider == collision.collider)
                 {
-                    isColliding = false;
+                    return;
                 }
+                else
+                    isColliding = false;
             }
             else
             {
