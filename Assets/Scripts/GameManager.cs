@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
+using UnityEngine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
@@ -18,6 +20,11 @@ public class GameManager : MonoBehaviour
 
     [Header("Number Stars Needed to Unlock")]
     public List<int> neededStarsToUnlock;
+
+    [Header("Modifiers")]
+    public List<IModifier> modifiers;
+    public float timeBetweenTwoModifiers;
+    private bool coroutineAvailable = true;
 
     private void Awake()
     {
@@ -88,5 +95,24 @@ public class GameManager : MonoBehaviour
         {
             targetGroup.RemoveMember(BoatManager.instance.self);
         }
+    }
+
+    private void Update()
+    {
+        if (LevelManager.instance.levelModifiers && coroutineAvailable)
+        {
+            StartCoroutine(ApplyModifier());
+        }
+    }
+
+    private IEnumerator ApplyModifier()
+    {
+        coroutineAvailable = false;
+        int i = UnityEngine.Random.Range(0, modifiers.Count - 1);
+        modifiers[i].Start();
+        yield return new WaitForSeconds(modifiers[i].durationTime);
+        modifiers[i].End();
+        yield return new WaitForSeconds(timeBetweenTwoModifiers);
+        coroutineAvailable = true;
     }
 }

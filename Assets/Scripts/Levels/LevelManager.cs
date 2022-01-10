@@ -8,6 +8,7 @@ public class LevelManager
     public static LevelManager instance;
 
     public int levelId = 0;
+    public bool levelModifiers;
 
     public LevelManager()
     {
