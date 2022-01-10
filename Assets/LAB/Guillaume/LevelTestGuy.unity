@@ -2857,7 +2857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3484607225995517742, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3484607225995517742, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -11856,7 +11856,11 @@ PrefabInstance:
     - target: {fileID: -8597936186340757498, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
       propertyPath: linkedGate
       value: 
-      objectReference: {fileID: 2049838839}
+      objectReference: {fileID: 2049838843}
+    - target: {fileID: -8597936186340757498, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
+      propertyPath: timeToOpen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8597936186340757498, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
       propertyPath: offsetClick
       value: 3
@@ -12439,6 +12443,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1194693024}
     m_Modifications:
+    - target: {fileID: 7569049507790534512, guid: 7bfb4b45130eb3e469db4a8a01aa3b6e, type: 3}
+      propertyPath: onPirateIsland
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7569049507790534513, guid: 7bfb4b45130eb3e469db4a8a01aa3b6e, type: 3}
       propertyPath: m_Name
       value: PlayerManager
@@ -15389,6 +15397,7 @@ MonoBehaviour:
   playerManager: {fileID: 1079631106}
   targetGroup: {fileID: 388795457}
   boatOnTargetGroup: 1
+  neededStarsToUnlock: 
 --- !u!1001 &1341941273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25658,9 +25667,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d1bf9d2f3cdcf84ba3c987018992eb9, type: 3}
---- !u!1 &2049838839 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1920073633617504017, guid: 0d1bf9d2f3cdcf84ba3c987018992eb9, type: 3}
+--- !u!4 &2049838843 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1604168246934682385, guid: 0d1bf9d2f3cdcf84ba3c987018992eb9, type: 3}
   m_PrefabInstance: {fileID: 2049838838}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2050188985 stripped
@@ -27011,7 +27020,7 @@ Transform:
   - {fileID: 1227402274}
   - {fileID: 917065324}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2101576792
 GameObject:
