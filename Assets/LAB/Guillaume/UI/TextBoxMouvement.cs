@@ -15,7 +15,7 @@ public class TextBoxMouvement : MonoBehaviour
     private float fadeSpeed;
     private float time;
 
-    void Update()
+    void FixedUpdate()
     {
         if (startLogic)
         {
@@ -27,8 +27,8 @@ public class TextBoxMouvement : MonoBehaviour
             }
             else
             {
-                text.color = Color.Lerp(text.color, new Color(0,0,0,0), fadeSpeed * Time.deltaTime);
-                time -= Time.deltaTime * fadeSpeed;
+                text.color = Color.Lerp(text.color, new Color(0,0,0,0), fadeSpeed * Time.fixedDeltaTime);
+                time -= Time.fixedDeltaTime * fadeSpeed;
             }
 
             if (time < 0)

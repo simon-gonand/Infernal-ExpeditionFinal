@@ -224,7 +224,7 @@ MonoBehaviour:
   selfCarryPlayer: {fileID: 5891595701888884371}
   playerPreset: {fileID: 11400000, guid: 6e8ed946df7976d4e939d4c409344454, type: 2}
   selfPlayerThrowUi: {fileID: 9107770501370033996}
-  sweatParticlSysteme: {fileID: 5933517843280219473}
+  sweatParticleSysteme: {fileID: 5933517843280219473}
   playerGraphics: {fileID: 7973352325053369555}
   attackPoint: {fileID: 7237748085361382517}
   playerCarryingPoint: {fileID: 6219935653066116965}
@@ -1036,7 +1036,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8126105751378980572, guid: f18c40c0b33ac4844b576cd5a67437c8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f18c40c0b33ac4844b576cd5a67437c8, type: 3}
 --- !u!95 &8254120110123333142 stripped
 Animator:
