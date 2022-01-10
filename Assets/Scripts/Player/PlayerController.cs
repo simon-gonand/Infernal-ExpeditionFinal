@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     [Header("Children References")]
     public Transform playerGraphics;
     [SerializeField]
+    private SkinnedMeshRenderer selfRenderer;
+    [SerializeField]
     private Transform attackPoint;
     public Transform playerCarryingPoint;
 
@@ -579,7 +581,6 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Respawn()
     {
-        yield return new WaitForSeconds(playerPreset.respawnCooldown);
         Vector3 respawnPosition = BoatManager.instance.spawnPoint1.position;
         respawnPosition.y += self.lossyScale.y;
         if (isSwimming)
@@ -590,8 +591,16 @@ public class PlayerController : MonoBehaviour
         selfRigidBody.velocity = Vector3.zero;
         self.position = respawnPosition;
 
-        yield return new WaitForEndOfFrame();
+        selfRenderer.enabled = false;
+        sword.SetActive(false);
+        selfPlayerThrowUi.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(playerPreset.respawnCooldown);
+
         isDead = false;
+        selfRenderer.enabled = true;
+        sword.SetActive(true);
+        selfPlayerThrowUi.gameObject.SetActive(true);
 
         // Play respawn sound
     }

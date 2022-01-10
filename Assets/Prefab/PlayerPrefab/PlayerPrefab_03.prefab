@@ -158,6 +158,7 @@ MonoBehaviour:
   selfPlayerThrowUi: {fileID: 3272654801180603234}
   sweatParticleSysteme: {fileID: 4499969739865583868}
   playerGraphics: {fileID: 7431564144871862304}
+  selfRenderer: {fileID: 7409626959685574024}
   attackPoint: {fileID: 7237748085361382517}
   playerCarryingPoint: {fileID: 6219935653066116965}
   anim: {fileID: 7378762427793906074}
@@ -1112,6 +1113,11 @@ PrefabInstance:
 --- !u!1 &1486051705527817164 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8335077698377949034, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
+  m_PrefabInstance: {fileID: 7436464596224855206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7409626959685574024 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 137334844286243118, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
   m_PrefabInstance: {fileID: 7436464596224855206}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &7378762427793906074 stripped

@@ -349,6 +349,7 @@ MonoBehaviour:
   selfPlayerThrowUi: {fileID: 1499511855413072128}
   sweatParticleSysteme: {fileID: 6188534941834114077}
   playerGraphics: {fileID: 8953784907364789553}
+  selfRenderer: {fileID: 9059022649915174557}
   attackPoint: {fileID: 7237748085361382517}
   playerCarryingPoint: {fileID: 6219935653066116965}
   anim: {fileID: 9007219405739566633}
@@ -971,14 +972,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e35f4911d07c78949bd6fcee2e707765, type: 3}
---- !u!1 &2739789684704048623 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1380238739168988, guid: e35f4911d07c78949bd6fcee2e707765, type: 3}
-  m_PrefabInstance: {fileID: 2738566127303043891}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2743068505636563201 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4504870314295858, guid: e35f4911d07c78949bd6fcee2e707765, type: 3}
+  m_PrefabInstance: {fileID: 2738566127303043891}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2739789684704048623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1380238739168988, guid: e35f4911d07c78949bd6fcee2e707765, type: 3}
   m_PrefabInstance: {fileID: 2738566127303043891}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8958319942429974733
@@ -1042,6 +1043,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 091fad03ccac08c49a16b12d2ad347bb, type: 3}
+--- !u!95 &9007219405739566633 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95220823061333732, guid: 091fad03ccac08c49a16b12d2ad347bb, type: 3}
+  m_PrefabInstance: {fileID: 8958319942429974733}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8953784907364789553 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4612903834308092, guid: 091fad03ccac08c49a16b12d2ad347bb, type: 3}
@@ -1052,9 +1058,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7920034431683555075, guid: 091fad03ccac08c49a16b12d2ad347bb, type: 3}
   m_PrefabInstance: {fileID: 8958319942429974733}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &9007219405739566633 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95220823061333732, guid: 091fad03ccac08c49a16b12d2ad347bb, type: 3}
+--- !u!137 &9059022649915174557 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 137999275790388816, guid: 091fad03ccac08c49a16b12d2ad347bb, type: 3}
   m_PrefabInstance: {fileID: 8958319942429974733}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9173259028798768815

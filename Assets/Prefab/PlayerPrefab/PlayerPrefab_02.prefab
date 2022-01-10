@@ -195,6 +195,7 @@ MonoBehaviour:
   selfPlayerThrowUi: {fileID: 7624732756004154749}
   sweatParticleSysteme: {fileID: 4592180206090932536}
   playerGraphics: {fileID: 4536792301564843833}
+  selfRenderer: {fileID: 4547883682299488551}
   attackPoint: {fileID: 7237748085361382517}
   playerCarryingPoint: {fileID: 6219935653066116965}
   anim: {fileID: 4588752224064056115}
@@ -1109,9 +1110,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
---- !u!1 &3335621668547960869 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1202585516562127176, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
+--- !u!4 &4536792301564843833 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256847283187284, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
   m_PrefabInstance: {fileID: 4538206875246836077}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &4588752224064056115 stripped
@@ -1119,8 +1120,13 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 95832119918301790, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
   m_PrefabInstance: {fileID: 4538206875246836077}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4536792301564843833 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4256847283187284, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
+--- !u!137 &4547883682299488551 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 137261961343864906, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
+  m_PrefabInstance: {fileID: 4538206875246836077}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3335621668547960869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1202585516562127176, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
   m_PrefabInstance: {fileID: 4538206875246836077}
   m_PrefabAsset: {fileID: 0}
