@@ -67,18 +67,12 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             playerColliding.Add(collision.collider.GetComponent<PlayerController>());
         }
-        if (_playerInteractingWith.Count > 0)
-
-        {
-
-            Debug.Log(collision.collider.name);
-
-            _collisionDirection = collision.GetContact(0).normal;
-
-            _isColliding = true;
-
-            collidingWith = collision.collider.GetComponent<Rigidbody>();
-
+        if (_playerInteractingWith.Count > 0)
+        {
+            Debug.Log(collision.collider.name);
+            _collisionDirection = collision.GetContact(0).normal;
+            _isColliding = true;
+            collidingWith = collision.collider.GetComponent<Rigidbody>();
         }
     }
 
@@ -195,11 +189,10 @@ public class Treasure : MonoBehaviour, ICarriable
         // Update player values
         _playerInteractingWith.Add(player);
         player.isCarrying = true;
-
         player.anim.SetBool("isCarrying", true);
         player.anim.SetTrigger("startCarrying");
         player.sword.SetActive(false);
-
+        
         // Play Carry Sound
         AudioManager.AMInstance.playerCarrySFX.Post(gameObject);
 
@@ -265,6 +258,7 @@ public class Treasure : MonoBehaviour, ICarriable
         player.carrying = null;
 
         player.anim.SetBool("isCarrying", false);
+        player.SweatActivator(false);
         player.sword.SetActive(true);
 
         return false;
@@ -298,6 +292,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
             // Update Anim
             p.anim.SetBool("isCarrying", false);
+            p.SweatActivator(false);
             p.sword.SetActive(true);
 
             Physics.IgnoreCollision(selfCollider, p.selfCollider, true);
@@ -308,13 +303,13 @@ public class Treasure : MonoBehaviour, ICarriable
         selfRigidbody.isKinematic = false;
         selfRigidbody.useGravity = true;
         Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
+        selfRigidbody.velocity = Vector3.zero;
         selfRigidbody.AddForce((playerThrowDir.normalized + (Vector3.up * category.multiplyUpAngle)).normalized * category.forceNbPlayer[nbPlayers - 1], 
             ForceMode.Impulse);
         selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 
         if (self.parent != null)
-            self.SetParent(null);
-
+            self.SetParent(null);
         // Play Launch Sound
         AudioManager.AMInstance.playerThrowSFX.Post(gameObject);
 
@@ -339,6 +334,7 @@ public class Treasure : MonoBehaviour, ICarriable
         player.isInteracting = false;
 
         player.anim.SetBool("isCarrying", false);
+        player.SweatActivator(false);
         player.sword.SetActive(true);
 
         player.carrying = null;
@@ -448,19 +444,13 @@ public class Treasure : MonoBehaviour, ICarriable
         }
     }
 
-    private void PlayerJoystickDetection()
-
+    private void PlayerJoystickDetection()
     {
-        foreach (PlayerController player in _playerInteractingWith)
-
+        foreach (PlayerController player in _playerInteractingWith)
         {
-            Vector3 dir = new Vector3(player.playerMovementInput.x, 0.0f, player.playerMovementInput.y);
-            globalDir += dir;
-        }
-
-        if (globalDir != Vector3.zero)
-            playerThrowDir = globalDir;
-
+            Vector3 dir = new Vector3(player.playerMovementInput.x, 0.0f, player.playerMovementInput.y);            globalDir += dir;
+        }        if (globalDir != Vector3.zero)
+            playerThrowDir = globalDir;
         globalDir = Vector3.zero;
     }
 
@@ -519,10 +509,32 @@ public class Treasure : MonoBehaviour, ICarriable
             lastPosition = self.position;
 
         PlayerJoystickDetection();
+        UpdateWeightNeed();
     }
 
     public string GetTag()
     {
         return gameObject.tag;
+    }
+
+    public void UpdateWeightNeed()
+    {
+        if (_playerInteractingWith.Count > 0)
+        {
+            if (_playerInteractingWith.Count < category.maxPlayerCarrying)
+            {
+                foreach (PlayerController player in _playerInteractingWith)
+                {
+                    player.SweatActivator(true);
+                }
+            }
+            else
+            {
+                foreach (PlayerController player in _playerInteractingWith)
+                {
+                    player.SweatActivator(false);
+                }
+            }
+        }
     }
 }

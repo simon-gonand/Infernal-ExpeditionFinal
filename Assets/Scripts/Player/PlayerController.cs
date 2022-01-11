@@ -12,9 +12,12 @@ public class PlayerController : MonoBehaviour
     public CarryPlayer selfCarryPlayer;
     public PlayerPresets playerPreset;
     public PlayerThrowUI selfPlayerThrowUi;
+    public GameObject sweatParticleSysteme;
 
     [Header("Children References")]
     public Transform playerGraphics;
+    [SerializeField]
+    private SkinnedMeshRenderer selfRenderer;
     [SerializeField]
     private Transform attackPoint;
     public Transform playerCarryingPoint;
@@ -53,7 +56,6 @@ public class PlayerController : MonoBehaviour
     public Vector3 movement { get { return _movement; } }
 
     private Vector3 collisionDirection;
-
     private GameObject treasureInFront;
 
     private float playerY;
@@ -98,7 +100,7 @@ public class PlayerController : MonoBehaviour
     private bool isDashing = false;
     private bool isDead = false;
     private bool isGrounded = false;
-    private bool isColliding = false;
+    public bool isColliding = false;
     #endregion
 
     #region Reset
@@ -222,10 +224,12 @@ public class PlayerController : MonoBehaviour
             if (_isCarrying)
             {
                 Treasure t = _carrying as Treasure;
-                if (t != null && t.selfCollider != collision.collider)
+                if (t != null && t.selfCollider == collision.collider)
                 {
-                    isColliding = false;
+                    return;
                 }
+                else
+                    isColliding = false;
             }
             else
             {
@@ -563,19 +567,27 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        isDead = true;
-        // Play death out of bounds sound
-        if (isInteracting)
+        if (isDead == false)
         {
-            interactingWith.UninteractWith(this);
+            isDead = true;
+            // Play death out of bounds sound
+            if (isInteracting)
+            {
+                interactingWith.UninteractWith(this);
+            }
+
+            StartCoroutine(Respawn());
+            RespawnUiManager.instance.SpawnPicto(_id);
         }
-        StartCoroutine(Respawn());
     }
 
     private IEnumerator Respawn()
     {
-        yield return new WaitForSeconds(playerPreset.respawnCooldown);
-        Vector3 respawnPosition = BoatManager.instance.spawnPoint1.position;
+        Vector3 respawnPosition;
+        if (PlayerManager.instance.respawnOnBoat)
+            respawnPosition = BoatManager.instance.spawnPoint1.position;
+        else
+            respawnPosition = PlayerManager.instance.respawnPoint;
         respawnPosition.y += self.lossyScale.y;
         if (isSwimming)
         {
@@ -584,7 +596,17 @@ public class PlayerController : MonoBehaviour
         }
         selfRigidBody.velocity = Vector3.zero;
         self.position = respawnPosition;
+
+        selfRenderer.enabled = false;
+        sword.SetActive(false);
+        selfPlayerThrowUi.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(playerPreset.respawnCooldown);
+
         isDead = false;
+        selfRenderer.enabled = true;
+        sword.SetActive(true);
+        selfPlayerThrowUi.gameObject.SetActive(true);
 
         // Play respawn sound
     }
@@ -622,6 +644,7 @@ public class PlayerController : MonoBehaviour
         CheckFallingWhenCarrying();
         CheckIsUnderMap();
     }
+    
 
     private void TreasureDetectionForOutline()
     {
@@ -705,6 +728,18 @@ public class PlayerController : MonoBehaviour
     {
         if (playerMovementInput != Vector2.zero)
             playerThrowDir = new Vector3(playerMovementInput.x, 0, playerMovementInput.y).normalized;
+    }
+    
+    public void SweatActivator(bool activate)
+    {
+        if (activate)
+        {
+            sweatParticleSysteme.SetActive(true);
+        }
+        else
+        {
+            sweatParticleSysteme.SetActive(false);
+        }
     }
 
 

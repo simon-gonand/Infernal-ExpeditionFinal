@@ -2,57 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenGate : MonoBehaviour, IInteractable
+public class OpenGate : MonoBehaviour, EnemiesAI
 {
     [SerializeField]
-    private GameObject linkedGate;
-    [SerializeField]
-    private Transform snapPoint;
-    [SerializeField]
-    private float offsetClick;
+    private Transform linkedGate;
 
-    private PlayerController interactingPlayer = null;
-    private float openGateYPosition;
+    [SerializeField]
+    private float timeToOpen;
+
+    private Vector3 openGatePosition;
+    private Vector3 initialPos;
     private bool isOpen = false;
 
-    public bool InteractWith(PlayerController player, GameObject interactingWith)
+    public void Die()
     {
-        if (interactingPlayer != null || isOpen) return false;
-        interactingPlayer = player;
-        player.self.position = new Vector3(snapPoint.position.x, player.self.position.y, snapPoint.position.z);
-        return true;
-    }
-
-    public void OnAction(PlayerController player)
-    {
-        Vector3 newPosition = linkedGate.transform.position;
-        newPosition.y -= offsetClick;
-        linkedGate.transform.position = newPosition;
-        if (openGateYPosition + newPosition.y < 0)
+        if (!isOpen)
         {
-            interactingPlayer.isInteracting = false;
-            interactingPlayer.selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
-            interactingPlayer.selfRigidBody.mass = 1;
-            UninteractWith(interactingPlayer);
+            StartCoroutine(Open());
             isOpen = true;
         }
     }
 
-    public void UninteractWith(PlayerController player)
+    IEnumerator Open()
     {
-        player.isInteracting = false;
-        interactingPlayer = null;
+        float t = 0.0f;
+        while (t < 1.0f)
+        {
+            t += Time.deltaTime * (1/timeToOpen);
+            linkedGate.position = Vector3.Lerp(initialPos, openGatePosition, t);
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return null;
     }
 
-    public string GetTag()
+    public void ResetCurrentTarget()
     {
-        return gameObject.tag;
+        // No implementation needed for this
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        initialPos = linkedGate.position;
         Collider fenceCollider = linkedGate.GetComponent<Collider>();
-        openGateYPosition = fenceCollider.bounds.size.y;
+        openGatePosition = new Vector3(initialPos.x, initialPos.y - fenceCollider.bounds.size.y, initialPos.z);
     }
 }

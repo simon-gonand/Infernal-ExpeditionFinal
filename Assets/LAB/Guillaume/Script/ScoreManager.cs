@@ -43,30 +43,30 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        RefreshUiStarState();
+        RefreshUiStarState(0);
     }
 
     public void AddScore(int numberToAdd)
     {
         actualScore += numberToAdd;
 
-        RefreshUiStarState();
+        RefreshUiStarState(numberToAdd);
     }
 
     public void RemoveScore(int numberToRemove)
     {
         actualScore -= numberToRemove;
 
-        RefreshUiStarState();
+        RefreshUiStarState(-numberToRemove);
     }
 
-    public void RefreshUiStarState()
+    public void RefreshUiStarState(int scoreAdded)
     {
         CheckStar();
 
         if (UiScore.instance != null)
         {
-            UiScore.instance.ScoreUpdate();
+            UiScore.instance.ScoreUpdate(scoreAdded);
         }
     }
 

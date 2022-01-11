@@ -35,6 +35,10 @@ public class PlayerManager : MonoBehaviour
     private float cameraOriginalOffset;
     Coroutine coroutine;
 
+    private bool _respawnOnBoat;
+    public bool respawnOnBoat { set { _respawnOnBoat = value; } get { return _respawnOnBoat; } }
+    [HideInInspector] public Vector3 respawnPoint;
+
     public static PlayerManager instance;
 
     private void Awake()
@@ -46,6 +50,7 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         cameraOriginalOffset = camManager.offsetPositionMovement;
+        _respawnOnBoat = true;
     }
 
     // Update material of player when one is joining to avoid them to have the same color
@@ -59,7 +64,8 @@ public class PlayerManager : MonoBehaviour
         if (!onPirateIsland)
         {
             playerTransform.position = playerSpawnPosition;
-            playerTransform.SetParent(BoatManager.instance.self);
+            if (respawnOnBoat)
+                playerTransform.SetParent(BoatManager.instance.self);
         }
         else
             playerInput.currentActionMap.Disable();
@@ -72,27 +78,33 @@ public class PlayerManager : MonoBehaviour
 
     private Vector3 SetPlayerPosition(int id)
     {
-        Vector3 playerSpawnPosition = BoatManager.instance.spawnPoint1.position;
-        switch (id)
+        if (_respawnOnBoat)
         {
-            case 0:
-                self.playerPrefab = player2;
-                break;
-            case 1:
-                playerSpawnPosition = BoatManager.instance.spawnPoint2.position;
-                self.playerPrefab = player3;
-                break;
-            case 2:
-                playerSpawnPosition = BoatManager.instance.spawnPoint3.position;
-                self.playerPrefab = player4;
-                break;
-            case 3:
-                playerSpawnPosition = BoatManager.instance.spawnPoint4.position;
-                break;
-            default:
-                break;
+            Debug.Log(BoatManager.instance.spawnPoint1.position);
+            Vector3 playerSpawnPosition = BoatManager.instance.spawnPoint1.position;
+            switch (id)
+            {
+                case 0:
+                    self.playerPrefab = player2;
+                    break;
+                case 1:
+                    playerSpawnPosition = BoatManager.instance.spawnPoint2.position;
+                    self.playerPrefab = player3;
+                    break;
+                case 2:
+                    playerSpawnPosition = BoatManager.instance.spawnPoint3.position;
+                    self.playerPrefab = player4;
+                    break;
+                case 3:
+                    playerSpawnPosition = BoatManager.instance.spawnPoint4.position;
+                    break;
+                default:
+                    break;
+            }
+            return playerSpawnPosition;
         }
-        return playerSpawnPosition;
+        else
+            return respawnPoint;
     }
 
     private void SetZoomSpeed(PlayerController player)

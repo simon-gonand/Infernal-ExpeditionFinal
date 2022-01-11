@@ -8,16 +8,21 @@ public class CannonBall : MonoBehaviour
     private Transform self;
 
     public int damage;
+    public GameObject impactParticule;
+
     private void OnCollisionEnter(Collision collision)
     {
         // Play impact sound
         AudioManager.AMInstance.boatDamagesSFX.Post(gameObject);
+        GameObject particule = Instantiate(impactParticule, transform.position, transform.rotation);
+        Destroy(particule, 4f);
 
         if (collision.collider.CompareTag("Boat"))
         {
-            Debug.Log("Boat has been hitted");
             // Feedbacks
             ScoreManager.instance.RemoveScore(damage);
+
+            BoatManager.instance.GetHit();
         }
 
         Destroy(this.gameObject);

@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class BoatManager : MonoBehaviour
 {
+    [Header("Animator")]
+    public Animator selfAnimator;
+
+    [Space]
+
     public Transform self;
     public Collider selfCollider;
     public Transform spawnPoint1;
@@ -26,5 +31,11 @@ public class BoatManager : MonoBehaviour
     {
         // Play Boat Sound
         AudioManager.AMInstance.boatMovingSFX.Post(gameObject);
+    }
+
+
+    public void GetHit()
+    {
+        selfAnimator.SetTrigger("GetHit");
     }
 }

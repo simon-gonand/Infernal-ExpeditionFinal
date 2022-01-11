@@ -11748,7 +11748,11 @@ PrefabInstance:
     - target: {fileID: -8597936186340757498, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
       propertyPath: linkedGate
       value: 
-      objectReference: {fileID: 2049838839}
+      objectReference: {fileID: 2049838842}
+    - target: {fileID: -8597936186340757498, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
+      propertyPath: timeToOpen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8597936186340757498, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
       propertyPath: offsetClick
       value: 3
@@ -11800,6 +11804,18 @@ PrefabInstance:
     - target: {fileID: 2044866229181379266, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
       propertyPath: m_Name
       value: GateSwitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044866229181379266, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044866229181379266, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2310495411346658320, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f60745839cc143e4baebeaaadbe20773, type: 3}
@@ -25226,9 +25242,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d1bf9d2f3cdcf84ba3c987018992eb9, type: 3}
---- !u!1 &2049838839 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1920073633617504017, guid: 0d1bf9d2f3cdcf84ba3c987018992eb9, type: 3}
+--- !u!4 &2049838842 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1604168246934682385, guid: 0d1bf9d2f3cdcf84ba3c987018992eb9, type: 3}
   m_PrefabInstance: {fileID: 2049838838}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2050188985 stripped
