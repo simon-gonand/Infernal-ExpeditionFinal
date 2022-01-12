@@ -10,17 +10,19 @@ Event	ID	Name			Wwise Object Path	Notes
 	1286256413	E_Pks_Carry			\Default Work Unit\Enemy\E_Pks_Carry	
 	1488092454	Game_Ambient			\Default Work Unit\World\Game_Ambient	
 	1504870946	P_Throw			\Default Work Unit\Players\P_Throw	
-	1656055475	Map_Completed			\Default Work Unit\World\Map_Completed	
 	1927982858	E_Trl_Death			\Default Work Unit\Enemy\E_Trl_Death	
 	1992604323	B_ChestCollect			\Default Work Unit\Boat\B_ChestCollect	
+	2471227561	Menu_Navigation			\Default Work Unit\UI\Menu_Navigation	
 	2703574490	B_Moving			\Default Work Unit\Boat\B_Moving	
 	3180343601	GameplayPillageSwitch			\Default Work Unit\World\GameplayPillageSwitch	
+	3180909377	Menu_Cancel			\Default Work Unit\UI\Menu_Cancel	
 	3280416103	P_Steps			\Default Work Unit\Players\P_Steps	
 	3383744642	P_Stunt			\Default Work Unit\Players\P_Stunt	
 	3919743498	P_Dash			\Default Work Unit\Players\P_Dash	
 	3942208158	P_Swim			\Default Work Unit\Players\P_Swim	
 	3945971227	GameplayNavigationSwitch			\Default Work Unit\World\GameplayNavigationSwitch	
 	4030367049	W_ChestDrop			\Default Work Unit\World\W_ChestDrop	
+	4203375351	Menu_Select			\Default Work Unit\UI\Menu_Select	
 
 Switch Group	ID	Name			Wwise Object Path	Notes
 	924435401	GameplayType			\Default Work Unit\GameplayType	
@@ -81,6 +83,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	455967247	Footsteps_Sea_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Sea_2_97327C67.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sea_Footsteps\Footsteps_Sea_2		97180
 	457457790	Boat_Damages_Coins_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Coins_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Coins\Boat_Damages_Coins_1		218300
 	462619250	PlayerThrow_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Player_Throw_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Throw\PlayerThrow_2		182612
+	472259761	UI_Return_Type2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\UI_Return_Type2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\UI_Return_Type2		9800
 	479127667	EnemyTrl_Shot_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\EnemyTrl_Shot_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_Shot\EnemyTrl_Shot_2		166296
 	494825628	Boat_Damages_Wood_5	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Wood_5_750439B6.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_5		101788
 	506895314	Footsteps_Sand_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_1_F5BB8DE1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sand_Footsteps\Footsteps_Sand_1		28262
@@ -110,6 +113,8 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	817045992	Footsteps_Wood_5	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Wood_5_33DC8D56.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Wood_Footsteps\Footsteps_Wood_5		18736
 	827779130	Boat_Damages_Wood_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Boat_Damages_Wood_1_DF5FDAFE.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatDamage_Wood\Boat_Damages_Wood_1		45304
 	857342633	Chest_GroundImpact	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Chest_GroundImpact_E0A90DA3.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Chest_FallImpact\Chest_GroundImpact		33884
+	870951256	UI_Open_Type2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\UI_Open_Type2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\UI_Open_Type2		42544
+	876289008	UI_Navigate_Type2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\UI_Navigate_Type2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\UI_Navigate_Type2		2044
 	910134498	Reload_Rolling	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Reload_Rolling_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Trl_Reload\Reload_Rolling		432996
 	918785688	EnemyTrl_Shot_4	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\EnemyTrl_Shot_4_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Enemy\Enemy_Shot\EnemyTrl_Shot_4		161712
 	921271242	BoatMovement_Sail_2	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\BoatMovement_Sail_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Boat\BoatMovement_Sail\BoatMovement_Sail_2		85444
