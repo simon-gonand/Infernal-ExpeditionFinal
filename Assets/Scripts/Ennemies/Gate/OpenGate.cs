@@ -5,7 +5,11 @@ using UnityEngine;
 public class OpenGate : MonoBehaviour, EnemiesAI
 {
     [SerializeField]
-    private Transform linkedGate;
+    private GateCollision linkedGateScript;
+    [SerializeField]
+    private Outline selfOutline;
+    [SerializeField]
+    private LineRenderer selfLineRenderer;
 
     [SerializeField]
     private float timeToOpen;
@@ -14,10 +18,15 @@ public class OpenGate : MonoBehaviour, EnemiesAI
     private Vector3 initialPos;
     private bool isOpen = false;
 
+    private int numOfPlayerClose;
+
     public void Die()
     {
         if (!isOpen)
         {
+            selfLineRenderer.enabled = false;
+            selfOutline.enabled = false;
+
             StartCoroutine(Open());
             isOpen = true;
         }
@@ -29,7 +38,7 @@ public class OpenGate : MonoBehaviour, EnemiesAI
         while (t < 1.0f)
         {
             t += Time.deltaTime * (1/timeToOpen);
-            linkedGate.position = Vector3.Lerp(initialPos, openGatePosition, t);
+            linkedGateScript.gameObject.transform.position = Vector3.Lerp(initialPos, openGatePosition, t);
             yield return new WaitForEndOfFrame();
         }
 
@@ -44,8 +53,54 @@ public class OpenGate : MonoBehaviour, EnemiesAI
     // Start is called before the first frame update
     void Start()
     {
-        initialPos = linkedGate.position;
-        Collider fenceCollider = linkedGate.GetComponent<Collider>();
+        
+        selfOutline.enabled = false;
+        linkedGateScript.line = selfLineRenderer;
+
+        initialPos = linkedGateScript.transform.position;
+        Collider fenceCollider = linkedGateScript.gameObject.GetComponent<Collider>();
         openGatePosition = new Vector3(initialPos.x, initialPos.y - fenceCollider.bounds.size.y, initialPos.z);
+
+        selfLineRenderer.SetPosition(0, selfLineRenderer.transform.position);
+        selfLineRenderer.SetPosition(1, linkedGateScript.ropeLinkTransform.position);
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!isOpen)
+        {
+            if (other.gameObject.tag == "Player")
+            {
+                numOfPlayerClose += 1;
+
+                if (numOfPlayerClose > 0)
+                {
+                    selfOutline.enabled = true;
+
+                    if (numOfPlayerClose > 4)
+                    {
+                        numOfPlayerClose = 4;
+                    }
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!isOpen)
+        {
+            if (other.gameObject.tag == "Player")
+            {
+                numOfPlayerClose -= 1;
+
+                if (numOfPlayerClose <= 0)
+                {
+                    numOfPlayerClose = 0;
+                    selfOutline.enabled = false;
+                }
+            }
+        }
     }
 }

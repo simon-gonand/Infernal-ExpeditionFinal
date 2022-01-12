@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class GateCollision : MonoBehaviour
 {
+    public Transform ropeLinkTransform;
     [SerializeField]
     private Collider selfCollider;
     [SerializeField]
     private int penaltyPoints;
 
     public Animator selfAnimator;
+
+    [HideInInspector]
+    public LineRenderer line;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,6 +27,8 @@ public class GateCollision : MonoBehaviour
             // Sound boat hit
 
             // Destroy gate
+
+            line.enabled = false;
             selfAnimator.SetTrigger("Destroy");
             BoatManager.instance.GetHit();
         }
