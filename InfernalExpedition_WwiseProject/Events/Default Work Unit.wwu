@@ -437,6 +437,47 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Folder Name="UI" ID="{AF716618-CE0C-4A19-8084-070B8D3CB72E}" ShortID="573908604">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="16"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Event Name="Menu_Select" ID="{1D9A067A-BC1E-4CAE-BDDC-EF961EF9EBE7}">
+							<ChildrenList>
+								<Action Name="" ID="{A29CA503-C20E-458E-9739-046A68150A22}" ShortID="874465269">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Open_Type2" ID="{EB7AFAA0-7427-4CFB-B8F3-40C175E99BE4}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Menu_Navigation" ID="{DE54D95D-C793-4A9D-AA14-75ED349EA62C}">
+							<ChildrenList>
+								<Action Name="" ID="{67B9A397-792E-478F-9E06-250587EB1737}" ShortID="785188513">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Navigate_Type2" ID="{D90D0D47-CC00-43CF-9CB8-2112DD54E323}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Menu_Cancel" ID="{34D0AD02-4064-4E0F-B44E-516B7CE6BF1F}">
+							<ChildrenList>
+								<Action Name="" ID="{23E5DB40-51B3-4519-91FE-578AD857B775}" ShortID="506573239">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Return_Type2" ID="{E2548737-3D01-43AE-A11E-772CEF0E5033}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
