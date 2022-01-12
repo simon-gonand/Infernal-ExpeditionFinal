@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public class Waypoint : MonoBehaviour
 {
     public Transform self;
-    public UnityEvent ev;
+    public UnityEvent NPCEvent;
+    public UnityEvent modifierEvent;
 
     // Start is called before the first frame update
     void Start()

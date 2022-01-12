@@ -18,7 +18,8 @@ public class NPCEventWindow : EditorWindow
     private void OnGUI()
     {
         waypointSO.Update();
-        EditorGUILayout.PropertyField(waypointSO.FindProperty("ev"), true);
+        EditorGUILayout.PropertyField(waypointSO.FindProperty("NPCEvent"), true);
+        EditorGUILayout.PropertyField(waypointSO.FindProperty("modifierEvent"), true);
         waypointSO.ApplyModifiedProperties();
     }
 }

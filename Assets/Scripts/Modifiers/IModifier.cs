@@ -2,10 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IModifier
+[System.Serializable]
+public abstract class IModifier : MonoBehaviour
 {
-    public float durationTime { get; }
+    protected float durationTime;
 
-    public void Start();
-    public void End();
+    public void StartModifier(float durationTime)
+    {
+        if (LevelManager.instance.levelModifiers)
+        {
+            this.durationTime = durationTime;
+            StartCoroutine(ApplyModifierCoroutine());
+        }
+    }
+
+    private IEnumerator ApplyModifierCoroutine()
+    {
+        StartBehaviour();
+        yield return new WaitForSeconds(durationTime);
+        EndModifier();
+    }
+
+    protected abstract void StartBehaviour();
+
+    protected void EndModifier()
+    {
+        Debug.Log("End modifier");
+    }
 }

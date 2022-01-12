@@ -14,6 +14,7 @@ public class LevelManager
     {
         if (instance == null) instance = this;
         else return;
+        levelModifiers = true;
     }
 
     public void StartLevel()
