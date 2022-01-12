@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: aaf02ace79a41554d81f5b97f74509da, type: 2}
 --- !u!1001 &1241376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6328,8 +6328,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1168125952}
   end: {fileID: 1979999269}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -145.29536, y: 0.08333349, z: 641.0165}
+  - {x: -116.18648, y: 0.08333349, z: 654.20557}
+  anchors:
+  - {x: -139.19762, y: 0.08333349, z: 646.5882}
+  - {x: -123.30841, y: 0.08333349, z: 651.29224}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -6706,7 +6710,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108860655}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.141527, y: 0, z: 315.6662}
+  m_LocalPosition: {x: -26.807991, y: 0.08333349, z: 315.6662}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -8471,8 +8475,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1200316304}
   end: {fileID: 1434977026}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -120.303696, y: 0.08333349, z: 1000.8983}
+  - {x: -114.77634, y: 0.08333349, z: 1026.2432}
+  anchors:
+  - {x: -117.790146, y: 0.08333349, z: 1005.0495}
+  - {x: -115.0973, y: 0.08333349, z: 1020.36884}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -9936,8 +9944,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1211867287}
   end: {fileID: 108860656}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -20.912552, y: 0.08333349, z: 258.5574}
+  - {x: -26.807991, y: 0.08333349, z: 315.6662}
+  anchors:
+  - {x: -22.29896, y: 0.08333349, z: 265.44904}
+  - {x: -26.404562, y: 0.08333349, z: 304.05392}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -10635,7 +10647,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168378627}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -150.47345, y: 0, z: 599.26855}
+  m_LocalPosition: {x: -150.99234, y: 0.08333349, z: 599.26855}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -13182,7 +13194,7 @@ MonoBehaviour:
   - {fileID: 168378628}
   - {fileID: 1168125952}
   - {fileID: 1979999269}
-  - {fileID: 774049676}
+  - {fileID: 554180446}
   - {fileID: 1729029288}
   - {fileID: 2061436282}
   - {fileID: 608771685}
@@ -13220,8 +13232,8 @@ MonoBehaviour:
   - {fileID: 2004899179}
   - {fileID: 350331102}
   - {fileID: 88124366}
-  - {fileID: 1373252894}
-  - {fileID: 2044505084}
+  - {fileID: 1483926641}
+  - {fileID: 299265341}
   - {fileID: 2014695273}
   - {fileID: 1922178773}
   - {fileID: 700885400}
@@ -13324,6 +13336,10 @@ Transform:
   - {fileID: 596970167}
   - {fileID: 1431430480}
   - {fileID: 1302723921}
+  - {fileID: 1540624690}
+  - {fileID: 554180447}
+  - {fileID: 1483926642}
+  - {fileID: 299265342}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17484,6 +17500,76 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &299265340
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 299265342}
+  - component: {fileID: 299265341}
+  m_Layer: 0
+  m_Name: Link
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &299265341
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299265340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1dffcd3285bf5a46929a75551ea4320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: {fileID: 554180446}
+  end: {fileID: 1729029288}
+  pathPoints:
+  - {x: -80.74435, y: 0, z: 688.8345}
+  - {x: -74.03275, y: 0.08333349, z: 778.8383}
+  anchors:
+  - {x: -76.87602, y: -0.08333349, z: 695.7809}
+  - {x: -68.298676, y: 0.08333349, z: 767.3731}
+  speed: 0
+  XCameraOffset:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  YCameraOffset:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  UnzoomCameraOffset:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &299265342
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299265340}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 228515561}
+  m_RootOrder: 78
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &299673015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18390,7 +18476,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310808623}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -117.564224, y: 0, z: 971.29785}
+  m_LocalPosition: {x: -122.30165, y: 0.08333349, z: 973.79626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -18489,8 +18575,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1043305215}
   end: {fileID: 584650773}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -69.9412, y: 0.08333349, z: 555.4426}
+  - {x: -99.68449, y: 0.08333349, z: 564.3757}
+  anchors:
+  - {x: -75.56255, y: 0.08333349, z: 557.951}
+  - {x: -92.52688, y: 0.08333349, z: 564.3266}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -20870,8 +20960,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 168378628}
   end: {fileID: 1168125952}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -150.99234, y: 0.08333349, z: 599.26855}
+  - {x: -145.29536, y: 0.08333349, z: 641.0165}
+  anchors:
+  - {x: -151.38835, y: 0.08333349, z: 606.8312}
+  - {x: -151.39311, y: 0.08333349, z: 635.44476}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -24750,8 +24844,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 580229993}
   end: {fileID: 1493896146}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: 76.95312, y: 0.08333349, z: 89.47937}
+  - {x: 78.40092, y: 0.08333349, z: 114.22058}
+  anchors:
+  - {x: 73.71805, y: 0.08333349, z: 93.43986}
+  - {x: 71.038605, y: 0.08333349, z: 108.01955}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -28378,8 +28476,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1568704874}
   end: {fileID: 885256146}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -140.01816, y: 0.08333349, z: 861.2175}
+  - {x: -83.994774, y: 0.08333349, z: 867.6768}
+  anchors:
+  - {x: -133.20378, y: 0.08333349, z: 866.4379}
+  - {x: -91.00609, y: 0.08333349, z: 867.0188}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -30675,7 +30777,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500885486}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 79.506805, y: 0, z: 144.3588}
+  m_LocalPosition: {x: 79.506805, y: 0.08333349, z: 148.14717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -32499,7 +32601,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522667493}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -99.93151, y: 0, z: 965.1362}
+  m_LocalPosition: {x: -99.93151, y: 0.08333349, z: 965.1362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -32864,8 +32966,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 522667494}
   end: {fileID: 310808624}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -99.93151, y: 0.08333349, z: 965.1362}
+  - {x: -122.30165, y: 0.08333349, z: 973.79626}
+  anchors:
+  - {x: -107.181274, y: 0.08333349, z: 966.63214}
+  - {x: -118.96726, y: 0.08333349, z: 970.9937}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -32930,8 +33036,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 924472313}
   end: {fileID: 2137602245}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -34.116882, y: 0.08333349, z: 388.32962}
+  - {x: -35.42472, y: 0.08333349, z: 476.2523}
+  anchors:
+  - {x: -33.89694, y: 0.08333349, z: 397.03015}
+  - {x: -35.72084, y: 0.08333349, z: 458.16437}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -33648,6 +33758,56 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &554180445
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 554180447}
+  - component: {fileID: 554180446}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &554180446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554180445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd64b83146dbf834681127961fdca537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 0}
+  NPCEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  modifierEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &554180447
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554180445}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -80.74435, y: 0, z: 688.8345}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 228515561}
+  m_RootOrder: 76
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &554950149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2415532194192255397, guid: 4615e23515a53314e914c551e0cde416, type: 3}
@@ -35438,7 +35598,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580229992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 72.65583, y: 0, z: 95.32594}
+  m_LocalPosition: {x: 76.95312, y: 0.08333349, z: 89.47937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -35657,7 +35817,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584650772}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -99.68449, y: 0, z: 564.3757}
+  m_LocalPosition: {x: -99.68449, y: 0.08333349, z: 564.3757}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -36320,8 +36480,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1434977026}
   end: {fileID: 597753394}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -114.77634, y: 0.08333349, z: 1026.2432}
+  - {x: -96.06983, y: 0.08333349, z: 1043.0765}
+  anchors:
+  - {x: -114.455376, y: 0.08333349, z: 1032.1174}
+  - {x: -98.05525, y: 0.08333349, z: 1035.176}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -36399,7 +36563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597753393}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -96.06983, y: 0, z: 1048.9302}
+  m_LocalPosition: {x: -96.06983, y: 0.08333349, z: 1043.0765}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -37239,7 +37403,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608771684}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -147.03903, y: 0, z: 831.1063}
+  m_LocalPosition: {x: -150.78423, y: 0.08333349, z: 831.1063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -39168,7 +39332,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642045740}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -63.77822, y: 0, z: 954.52954}
+  m_LocalPosition: {x: -63.77822, y: 0.08333349, z: 954.52954}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -43293,8 +43457,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 608771685}
   end: {fileID: 1568704874}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -150.78423, y: 0.08333349, z: 831.1063}
+  - {x: -140.01816, y: 0.08333349, z: 861.2175}
+  anchors:
+  - {x: -150.71393, y: 0.08333349, z: 837.47375}
+  - {x: -146.83253, y: 0.08333349, z: 855.99713}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -45479,8 +45647,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 310808624}
   end: {fileID: 1200316304}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -122.30165, y: 0.08333349, z: 973.79626}
+  - {x: -120.303696, y: 0.08333349, z: 1000.8983}
+  anchors:
+  - {x: -125.63604, y: 0.08333349, z: 976.5988}
+  - {x: -122.817245, y: 0.08333349, z: 996.74713}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -46933,7 +47105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774049675}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -82.40139, y: 0, z: 684.58453}
+  m_LocalPosition: {x: -82.40139, y: 0.08333349, z: 684.58453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -50857,8 +51029,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1599560146}
   end: {fileID: 1020414565}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: 46.71376, y: 0.08333349, z: 49.788048}
+  - {x: 65.442154, y: 0.08333349, z: 58.914906}
+  anchors:
+  - {x: 49.969, y: 0.08333349, z: 54.79453}
+  - {x: 58.964943, y: 0.08333349, z: 59.42169}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -51556,7 +51732,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869729372}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.4078064, y: 0, z: 225.53757}
+  m_LocalPosition: {x: -3.4078064, y: 0.08333349, z: 225.53757}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -52442,7 +52618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885256145}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -85.30438, y: 0, z: 870.9885}
+  m_LocalPosition: {x: -83.994774, y: 0.08333349, z: 867.6768}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -52479,8 +52655,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1447851930}
   end: {fileID: 869729373}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: 39.455753, y: 0.08333349, z: 186.8834}
+  - {x: -3.4078064, y: 0.08333349, z: 225.53757}
+  anchors:
+  - {x: 31.07127, y: 0.08333349, z: 191.10345}
+  - {x: 2.958709, y: 0.08333349, z: 218.11826}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -54752,7 +54932,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924472312}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34.116882, y: 0, z: 388.32962}
+  m_LocalPosition: {x: -34.116882, y: 0.08333349, z: 388.32962}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -61212,7 +61392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020414564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 65.442154, y: 0, z: 59.98082}
+  m_LocalPosition: {x: 65.442154, y: 0.08333349, z: 58.914906}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -61249,8 +61429,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 885256146}
   end: {fileID: 1768353749}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -83.994774, y: 0.08333349, z: 867.6768}
+  - {x: -63.44264, y: 0.08333349, z: 908.28467}
+  anchors:
+  - {x: -76.98346, y: 0.08333349, z: 868.33484}
+  - {x: -64.33957, y: 0.08333349, z: 899.6254}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -62016,7 +62200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043305214}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -69.9412, y: 0, z: 555.4426}
+  m_LocalPosition: {x: -69.9412, y: 0.08333349, z: 555.4426}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -65100,8 +65284,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 421159432}
   end: {fileID: 504076747}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: 0, y: 0, z: -78.24292}
+  - {x: 4.4421406, y: 0, z: -43.46498}
+  anchors:
+  - {x: 0.042683005, y: 0.08333349, z: -71.28819}
+  - {x: -1.6145716, y: -0.08333349, z: -48.672726}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -67635,7 +67823,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127769400}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 85.34997, y: 0, z: 79.04668}
+  m_LocalPosition: {x: 86.36466, y: 0.08333349, z: 79.04668}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -69954,7 +70142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168125951}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -144.40793, y: 0, z: 641.0165}
+  m_LocalPosition: {x: -145.29536, y: 0.08333349, z: 641.0165}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -70367,8 +70555,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1493896146}
   end: {fileID: 500885487}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: 78.40092, y: 0.08333349, z: 114.22058}
+  - {x: 79.506805, y: 0.08333349, z: 148.14717}
+  anchors:
+  - {x: 85.76323, y: 0.08333349, z: 120.421616}
+  - {x: 81.35844, y: 0.08333349, z: 144.52371}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -71673,7 +71865,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200316303}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -118.956154, y: 0, z: 998.20593}
+  m_LocalPosition: {x: -120.303696, y: 0.08333349, z: 1000.8983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -72205,7 +72397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211867286}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.912552, y: 0, z: 258.5574}
+  m_LocalPosition: {x: -20.912552, y: 0.08333349, z: 258.5574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -76676,8 +76868,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1020414565}
   end: {fileID: 1643417412}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: 65.442154, y: 0.08333349, z: 58.914906}
+  - {x: 84.822044, y: 0.08333349, z: 60.908318}
+  anchors:
+  - {x: 71.919365, y: 0.08333349, z: 58.40812}
+  - {x: 82.24183, y: 0.08333349, z: 58.29784}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -77606,8 +77802,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 597753394}
   end: {fileID: 1431430479}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -96.06983, y: 0.08333349, z: 1043.0765}
+  - {x: -95.19797, y: 0.08333349, z: 1068.4606}
+  - {x: -94.13121, y: 0.08333349, z: 1092.4253}
+  - {x: -95.300285, y: 0.08333349, z: 1112.185}
+  anchors:
+  - {x: -94.08441, y: 0.08333349, z: 1050.977}
+  - {x: -95.02926, y: 0.08333349, z: 1062.8248}
+  - {x: -95.36668, y: 0.08333349, z: 1074.0963}
+  - {x: -93.85911, y: 0.08333349, z: 1086.8016}
+  - {x: -94.40331, y: 0.08333349, z: 1098.049}
+  - {x: -94.21657, y: 0.08333349, z: 1105.1218}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -79412,7 +79618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339157904}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 34.346214, y: 0, z: -20.190813}
+  m_LocalPosition: {x: 35.557823, y: 0, z: -20.190813}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -80721,8 +80927,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1127769401}
   end: {fileID: 580229993}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: 86.36466, y: 0.08333349, z: 79.04668}
+  - {x: 76.95312, y: 0.08333349, z: 89.47937}
+  anchors:
+  - {x: 84.51574, y: 0.08333349, z: 81.35093}
+  - {x: 80.18819, y: 0.08333349, z: 85.51888}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -81231,8 +81441,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1979999269}
   end: {fileID: 774049676}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -109.26225, y: 0.08333349, z: 656.54236}
+  - {x: -85.333336, y: 0.08333349, z: 682.6667}
+  - {x: -82.40139, y: 0.08333349, z: 684.58453}
+  anchors:
+  - {x: -104.47647, y: 0.08333349, z: 661.7672}
+  - {x: -90.11912, y: 0.08333349, z: 677.44183}
+  - {x: -82.64725, y: 0.08333349, z: 685.4709}
+  - {x: -85.08748, y: 0.08333349, z: 681.78033}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -82467,7 +82684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389612986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.729183, y: 0, z: 14.303675}
+  m_LocalPosition: {x: 40.729183, y: 0.08333349, z: 14.303675}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -84188,7 +84405,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431430478}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -95.300285, y: 0, z: 1088.2285}
+  m_LocalPosition: {x: -95.300285, y: 0.08333349, z: 1112.185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -84578,7 +84795,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434977025}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -113.28492, y: 0, z: 1027.1849}
+  m_LocalPosition: {x: -114.77634, y: 0.08333349, z: 1026.2432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -84854,7 +85071,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447851929}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 39.455753, y: 0, z: 186.8834}
+  m_LocalPosition: {x: 39.455753, y: 0.08333349, z: 186.8834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -85978,8 +86195,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 869729373}
   end: {fileID: 1211867287}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -3.4078064, y: 0.08333349, z: 225.53757}
+  - {x: -20.912552, y: 0.08333349, z: 258.5574}
+  anchors:
+  - {x: -9.774322, y: 0.08333349, z: 232.95688}
+  - {x: -19.526144, y: 0.08333349, z: 251.66576}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -86659,6 +86880,76 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1483926640
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1483926642}
+  - component: {fileID: 1483926641}
+  m_Layer: 0
+  m_Name: Link
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1483926641
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483926640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1dffcd3285bf5a46929a75551ea4320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: {fileID: 1979999269}
+  end: {fileID: 554180446}
+  pathPoints:
+  - {x: -116.18648, y: 0.08333349, z: 654.20557}
+  - {x: -80.74435, y: 0, z: 688.8345}
+  anchors:
+  - {x: -109.064545, y: 0.08333349, z: 657.1189}
+  - {x: -84.61267, y: 0.08333349, z: 681.88806}
+  speed: 0
+  XCameraOffset:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  YCameraOffset:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  UnzoomCameraOffset:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1483926642
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483926640}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 228515561}
+  m_RootOrder: 77
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1485829752
 Mesh:
   m_ObjectHideFlags: 0
@@ -87493,7 +87784,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493896145}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 81.31772, y: 0, z: 117.58389}
+  m_LocalPosition: {x: 78.40092, y: 0.08333349, z: 114.22058}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -91739,6 +92030,72 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1540624689
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1540624690}
+  - component: {fileID: 1540624691}
+  m_Layer: 0
+  m_Name: Link
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1540624690
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540624689}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 228515561}
+  m_RootOrder: 75
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1540624691
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540624689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1dffcd3285bf5a46929a75551ea4320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: {fileID: 1979999269}
+  end: {fileID: 1729029288}
+  pathPoints: []
+  anchors: []
+  speed: 0
+  XCameraOffset:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  YCameraOffset:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  UnzoomCameraOffset:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1541708875
 GameObject:
   m_ObjectHideFlags: 0
@@ -92770,7 +93127,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568704873}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -130.29147, y: 0, z: 870.6873}
+  m_LocalPosition: {x: -140.01816, y: 0.08333349, z: 861.2175}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -93120,8 +93477,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1389612987}
   end: {fileID: 1599560146}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: 40.729183, y: 0.08333349, z: 14.303675}
+  - {x: 42.666668, y: 0.08333349, z: 40.279167}
+  - {x: 46.71376, y: 0.08333349, z: 49.788048}
+  anchors:
+  - {x: 41.39744, y: 0.08333349, z: 20.156628}
+  - {x: 42.27917, y: 0.08333349, z: 34.60657}
+  - {x: 42.996914, y: 0.08333349, z: 43.827606}
+  - {x: 43.45852, y: 0.08333349, z: 44.781567}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -94724,7 +95088,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599560145}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 44.03163, y: 0, z: 49.788048}
+  m_LocalPosition: {x: 46.71376, y: 0.08333349, z: 49.788048}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -97530,7 +97894,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1643417411}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 84.822044, y: 0, z: 60.908318}
+  m_LocalPosition: {x: 84.822044, y: 0.08333349, z: 60.908318}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -99917,8 +100281,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 584650773}
   end: {fileID: 1948988640}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -99.68449, y: 0.08333349, z: 564.3757}
+  - {x: -142.7949, y: 0.08333349, z: 565.1573}
+  anchors:
+  - {x: -106.842094, y: 0.08333349, z: 564.42474}
+  - {x: -133.57281, y: 0.08333349, z: 563.2619}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -100624,8 +100992,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 108860656}
   end: {fileID: 924472313}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -26.807991, y: 0.08333349, z: 315.6662}
+  - {x: -31.780422, y: 0.08333349, z: 349.88733}
+  - {x: -34.116882, y: 0.08333349, z: 388.32962}
+  anchors:
+  - {x: -27.21142, y: 0.08333349, z: 327.27847}
+  - {x: -31.567904, y: 0.08333349, z: 342.94803}
+  - {x: -31.99294, y: 0.08333349, z: 356.82663}
+  - {x: -34.336826, y: 0.08333349, z: 379.6291}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -101642,7 +102017,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729029287}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -74.03275, y: 0, z: 778.8383}
+  m_LocalPosition: {x: -74.03275, y: 0.08333349, z: 778.8383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -104283,7 +104658,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768353748}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -63.44264, y: 0, z: 908.28467}
+  m_LocalPosition: {x: -63.44264, y: 0.08333349, z: 908.28467}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -105627,8 +106002,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1339157905}
   end: {fileID: 1389612987}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: 35.557823, y: 0, z: -20.190813}
+  - {x: 40.729183, y: 0.08333349, z: 14.303675}
+  anchors:
+  - {x: 41.699554, y: -0.08333349, z: -12.853186}
+  - {x: 40.060925, y: 0.08333349, z: 8.450722}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -108246,8 +108625,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 504076747}
   end: {fileID: 1339157905}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: 4.4421406, y: 0, z: -43.46498}
+  - {x: 35.557823, y: 0, z: -20.190813}
+  anchors:
+  - {x: 10.498853, y: 0.08333349, z: -38.257236}
+  - {x: 29.416094, y: 0.08333349, z: -27.52844}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -112520,8 +112903,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1643417412}
   end: {fileID: 1127769401}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: 84.822044, y: 0.08333349, z: 60.908318}
+  - {x: 86.36466, y: 0.08333349, z: 79.04668}
+  anchors:
+  - {x: 87.40226, y: 0.08333349, z: 63.518795}
+  - {x: 88.213585, y: 0.08333349, z: 76.742424}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -113072,8 +113459,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 642045741}
   end: {fileID: 522667494}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -63.77822, y: 0.08333349, z: 954.52954}
+  - {x: -99.93151, y: 0.08333349, z: 965.1362}
+  anchors:
+  - {x: -65.04239, y: 0.08333349, z: 962.73285}
+  - {x: -92.68175, y: 0.08333349, z: 963.6403}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -114112,8 +114503,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 2061436282}
   end: {fileID: 608771685}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -111.8539, y: 0.08333349, z: 788.0959}
+  - {x: -132.79723, y: 0.08333349, z: 794.69507}
+  - {x: -144.6291, y: 0.08333349, z: 808.9076}
+  - {x: -150.78423, y: 0.08333349, z: 831.1063}
+  anchors:
+  - {x: -123.236336, y: 0.08333349, z: 790.19147}
+  - {x: -127.365326, y: 0.08333349, z: 791.7536}
+  - {x: -138.22913, y: 0.08333349, z: 797.63654}
+  - {x: -142.35526, y: 0.08333349, z: 803.06537}
+  - {x: -146.90295, y: 0.08333349, z: 814.7498}
+  - {x: -150.85452, y: 0.08333349, z: 824.7389}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -114178,8 +114579,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1768353749}
   end: {fileID: 642045741}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -63.44264, y: 0.08333349, z: 908.28467}
+  - {x: -63.77822, y: 0.08333349, z: 954.52954}
+  anchors:
+  - {x: -62.545708, y: 0.08333349, z: 916.9439}
+  - {x: -62.514057, y: 0.08333349, z: 946.32623}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -114244,8 +114649,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 500885487}
   end: {fileID: 1447851930}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: 79.506805, y: 0.08333349, z: 148.14717}
+  - {x: 39.455753, y: 0.08333349, z: 186.8834}
+  anchors:
+  - {x: 77.655174, y: 0.08333349, z: 151.77063}
+  - {x: 47.840237, y: 0.08333349, z: 182.66336}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -115277,7 +115686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948988639}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -141.79553, y: 0, z: 565.1573}
+  m_LocalPosition: {x: -142.7949, y: 0.08333349, z: 565.1573}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -115401,7 +115810,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954839400}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -46.22848, y: 0, z: 543.8752}
+  m_LocalPosition: {x: -46.22848, y: 0.08333349, z: 543.8752}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -116479,7 +116888,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979999268}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -109.26225, y: 0, z: 656.54236}
+  m_LocalPosition: {x: -116.18648, y: 0.08333349, z: 654.20557}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -118822,8 +119231,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1948988640}
   end: {fileID: 168378628}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -142.7949, y: 0.08333349, z: 565.1573}
+  - {x: -150.99234, y: 0.08333349, z: 599.26855}
+  anchors:
+  - {x: -152.017, y: 0.08333349, z: 567.0527}
+  - {x: -150.59633, y: 0.08333349, z: 591.70593}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -119904,8 +120317,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1729029288}
   end: {fileID: 2061436282}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -74.03275, y: 0.08333349, z: 778.8383}
+  - {x: -111.8539, y: 0.08333349, z: 788.0959}
+  anchors:
+  - {x: -79.76683, y: 0.08333349, z: 790.3035}
+  - {x: -100.47146, y: 0.08333349, z: 786.0003}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -122237,8 +122654,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 774049676}
   end: {fileID: 1729029288}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -82.40139, y: 0.08333349, z: 684.58453}
+  - {x: -74.03275, y: 0.08333349, z: 778.8383}
+  anchors:
+  - {x: -80.72766, y: 0.08333349, z: 703.4353}
+  - {x: -75.70648, y: 0.08333349, z: 759.98755}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -123408,8 +123829,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 2137602245}
   end: {fileID: 1954839401}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -35.42472, y: 0.08333349, z: 476.2523}
+  - {x: -40.489395, y: 0.08333349, z: 512}
+  - {x: -46.22848, y: 0.08333349, z: 543.8752}
+  anchors:
+  - {x: -35.1286, y: 0.08333349, z: 494.3402}
+  - {x: -38.50844, y: 0.08333349, z: 505.0987}
+  - {x: -42.470352, y: 0.08333349, z: 518.9013}
+  - {x: -42.95365, y: 0.08333349, z: 536.3525}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -124351,7 +124779,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061436281}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -111.8539, y: 0, z: 788.0959}
+  m_LocalPosition: {x: -111.8539, y: 0.08333349, z: 788.0959}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
@@ -126823,8 +127251,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1954839401}
   end: {fileID: 1043305215}
-  pathPoints: []
-  anchors: []
+  pathPoints:
+  - {x: -46.22848, y: 0.08333349, z: 543.8752}
+  - {x: -69.9412, y: 0.08333349, z: 555.4426}
+  anchors:
+  - {x: -49.50331, y: 0.08333349, z: 551.3979}
+  - {x: -64.31985, y: 0.08333349, z: 552.93427}
   speed: 0
   XCameraOffset:
     serializedVersion: 2
@@ -127692,7 +128124,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137602244}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.42472, y: 0, z: 476.2523}
+  m_LocalPosition: {x: -35.42472, y: 0.08333349, z: 476.2523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228515561}
