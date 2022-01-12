@@ -20,13 +20,10 @@ public abstract class IModifier : MonoBehaviour
     {
         StartBehaviour();
         yield return new WaitForSeconds(durationTime);
-        EndModifier();
+        EndBehaviour();
     }
 
     protected abstract void StartBehaviour();
 
-    protected void EndModifier()
-    {
-        Debug.Log("End modifier");
-    }
+    protected abstract void EndBehaviour();
 }

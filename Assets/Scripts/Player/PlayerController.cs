@@ -75,12 +75,15 @@ public class PlayerController : MonoBehaviour
     private bool _isCarrying = false;
     public bool isCarrying { get { return _isCarrying; } set { _isCarrying = value; } }
 
+    // Is the player carried by another player
     private bool _isCarried = false;
     public bool isCarried { get { return _isCarried; } set { _isCarried = value; } }
 
+    // If the player has been launched by another player
     private bool _hasBeenLaunched = false;
     public bool hasBeenLaunched { get { return _hasBeenLaunched; } set { _hasBeenLaunched = value; } }
 
+    // If the player has press the launch button but didn't release yet
     private bool _isLaunching = false;
     public bool isLaunching { get { return _isLaunching; } set { _isLaunching = value; } }
 
@@ -96,6 +99,10 @@ public class PlayerController : MonoBehaviour
 
     private bool _isStun = false;
     public bool isStun { get { return _isStun; } }
+
+    // Is the No attack modifier has been triggered
+    private bool _canAttack = true;
+    public bool canAttack { set { _canAttack = value; } }
 
     private bool isDashing = false;
     private bool isDead = false;
@@ -285,7 +292,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if (context.performed && Time.time > nextAttack && !_isStun)
+                if (context.performed && Time.time > nextAttack && !_isStun && _canAttack)
                 {
                     Attack();
                     nextAttack = Time.time + playerPreset.attackCooldown;
