@@ -22,7 +22,10 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
+    [Header("Switchs")]
 
+    public AK.Wwise.Event gameplayNavigationSWITCH;
+    public AK.Wwise.Event gameplayPillageSWITCH;
 
     [Header("Themes")]
 
@@ -36,12 +39,17 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event playerGroundImpactSFX;
     public AK.Wwise.Event playerStepsSFX;
     public AK.Wwise.Event playerStuntSFX;
+    public AK.Wwise.Event playerSwimSFX;
     public AK.Wwise.Event playerThrowSFX;
+    public AK.Wwise.Event playerRespawnSFX;
 
     [Header("Enemy")]
 
     public AK.Wwise.Event clsqEnemyAttackSFX;
     public AK.Wwise.Event trlEnemyShotSFX;
+    public AK.Wwise.Event trlEnemyReloadSFX;
+    public AK.Wwise.Event trlEnemyDeathSFX;
+    public AK.Wwise.Event pskEnemyCarrySFX;
 
     [Header("Boat")]
 
@@ -50,14 +58,46 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event boatMovingSFX;
 
     [Header("World")]
+    public AK.Wwise.Event chestGroundImpactSFX;
+    public AK.Wwise.Event gameAmbientSFX;
 
-    public AK.Wwise.Event beachAmbientSFX;
+
+    private bool typeIsPlunder = false;
+    [HideInInspector]
+    public List<PlayerController> playersOnBoat = new List<PlayerController>(0);
 
     void Start()
     {
         //DEBUG
         runTheme.Post(gameObject);
-        beachAmbientSFX.Post(gameObject);
+        gameAmbientSFX.Post(gameObject);
         //
+    }
+
+
+
+
+    private void Update()
+    {
+
+
+        if(playersOnBoat.Count == PlayerManager.instance.players.Count)
+        {
+            if(typeIsPlunder == true)
+            {
+                gameplayNavigationSWITCH.Post(gameObject);
+                typeIsPlunder = false;
+                Debug.Log("Navigation");
+            }
+        }
+        else
+        {
+            if (typeIsPlunder == false)
+            {
+                gameplayPillageSWITCH.Post(gameObject);
+                typeIsPlunder = true;
+                Debug.Log("Pillage");
+            }
+        }
     }
 }

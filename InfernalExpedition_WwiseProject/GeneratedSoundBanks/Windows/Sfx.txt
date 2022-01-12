@@ -10,13 +10,16 @@ Event	ID	Name			Wwise Object Path	Notes
 	1286256413	E_Pks_Carry			\Default Work Unit\Enemy\E_Pks_Carry	
 	1488092454	Game_Ambient			\Default Work Unit\World\Game_Ambient	
 	1504870946	P_Throw			\Default Work Unit\Players\P_Throw	
+	1656055475	Map_Completed			\Default Work Unit\World\Map_Completed	
 	1927982858	E_Trl_Death			\Default Work Unit\Enemy\E_Trl_Death	
 	1992604323	B_ChestCollect			\Default Work Unit\Boat\B_ChestCollect	
 	2703574490	B_Moving			\Default Work Unit\Boat\B_Moving	
+	3180343601	GameplayPillageSwitch			\Default Work Unit\World\GameplayPillageSwitch	
 	3280416103	P_Steps			\Default Work Unit\Players\P_Steps	
 	3383744642	P_Stunt			\Default Work Unit\Players\P_Stunt	
 	3919743498	P_Dash			\Default Work Unit\Players\P_Dash	
 	3942208158	P_Swim			\Default Work Unit\Players\P_Swim	
+	3945971227	GameplayNavigationSwitch			\Default Work Unit\World\GameplayNavigationSwitch	
 	4030367049	W_ChestDrop			\Default Work Unit\World\W_ChestDrop	
 
 Switch Group	ID	Name			Wwise Object Path	Notes
@@ -25,6 +28,7 @@ Switch Group	ID	Name			Wwise Object Path	Notes
 Switch	ID	Name	Switch Group			Notes
 	1082482811	Navigation	GameplayType			
 	2579631677	Pillage	GameplayType			
+	2716678721	Victory	GameplayType			
 
 State Group	ID	Name			Wwise Object Path	Notes
 	4040317175	Ground_Type			\Default Work Unit\Ground_Type	

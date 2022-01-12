@@ -74,6 +74,8 @@ public class PlayerManager : MonoBehaviour
         PlayerController player = playerInput.gameObject.GetComponent<PlayerController>();
         player.id = playerInput.playerIndex;
         _players.Add(player);
+
+        AudioManager.AMInstance.playerRespawnSFX.Post(gameObject);
     }
 
     private Vector3 SetPlayerPosition(int id)

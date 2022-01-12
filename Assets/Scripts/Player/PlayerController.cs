@@ -622,6 +622,7 @@ public class PlayerController : MonoBehaviour
         selfPlayerThrowUi.gameObject.SetActive(true);
 
         // Play respawn sound
+        AudioManager.AMInstance.playerRespawnSFX.Post(gameObject);
     }
 
     void FixedUpdate()

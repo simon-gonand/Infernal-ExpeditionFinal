@@ -71,6 +71,7 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
             targetTreasure.InteractWithPiqueSous(this);
 
             selfAnim.SetBool("isCarrying", true);
+            AudioManager.AMInstance.pskEnemyCarrySFX.Post(gameObject);
         }
     }
 

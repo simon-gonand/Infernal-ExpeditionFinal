@@ -73,11 +73,13 @@ public class CarryPlayer : MonoBehaviour, ICarriable
     public void GetOnBoat(Transform entryPosition)
     {
         selfScript.isOnBoat = true;
+        AudioManager.AMInstance.playersOnBoat.Add(selfScript);
     }
 
     public void GetOffBoat()
     {
         selfScript.isOnBoat = false;
+        AudioManager.AMInstance.playersOnBoat.Remove(selfScript);
     }
 
     public void Launch(PlayerController player)
