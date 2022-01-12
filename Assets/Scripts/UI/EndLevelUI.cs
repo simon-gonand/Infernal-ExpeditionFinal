@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class EndLevelUI : MonoBehaviour
@@ -17,6 +18,10 @@ public class EndLevelUI : MonoBehaviour
     [Header("External Reference")]
     [SerializeField]
     private UiScore uiScore;
+    [SerializeField]
+    private Button firstSelected;
+
+    private Button lastSelected;
 
     public static EndLevelUI instance;
 
@@ -29,7 +34,21 @@ public class EndLevelUI : MonoBehaviour
     public void InitializeUI()
     {
         panel.SetActive(true);
+        firstSelected.Select();
         score.text = ScoreManager.instance.actualScore.ToString();
         fillerStar.color = uiScore.imageFillerActualStar.color;
+    }
+
+    private void Update()
+    {
+        if (panel.activeSelf)
+        {
+            if (EventSystem.current.currentSelectedGameObject != null)
+                lastSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+            else
+            {
+                lastSelected.Select();
+            }
+        }
     }
 }

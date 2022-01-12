@@ -19,7 +19,6 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private List<PlayerController> playerColliding = new List<PlayerController>();
     private List<PlayerController> playerCollisionIgnored = new List<PlayerController>();
-    private List<Collider> collidersColliding = new List<Collider>();
 
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
     private bool isGrounded = false;
@@ -62,19 +61,18 @@ public class Treasure : MonoBehaviour, ICarriable
             {
                 if (collision.collider == player.GetComponent<CapsuleCollider>())
                 {
-                    if (collidersColliding.Count <= 0)
-                        _isColliding = false;
+                    _isColliding = false;
                     return;
                 }
             }
             playerColliding.Add(collision.collider.GetComponent<PlayerController>());
         }
         if (_playerInteractingWith.Count > 0)
-        {
-            _collisionDirection = collision.GetContact(0).normal;
-            _isColliding = true;
-            collidersColliding.Add(collision.collider);
-            collidingWith = collision.collider.GetComponent<Rigidbody>();
+        {
+            Debug.Log(collision.collider.name);
+            _collisionDirection = collision.GetContact(0).normal;
+            _isColliding = true;
+            collidingWith = collision.collider.GetComponent<Rigidbody>();
         }
     }
 
@@ -94,24 +92,15 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.collider == selfCollider) return;
         if (collision.collider.CompareTag("Player"))
         {
             foreach (PlayerController player in _playerInteractingWith)
             {
                 if (collision.collider == player.GetComponent<CapsuleCollider>())
-                {
                     playerColliding.Remove(player);
-                    collidersColliding.Remove(player.selfCollider);
-                }
             }
         }
-        collidersColliding.Remove(collision.collider);
-        if (collidersColliding.Count <= 0)
-        {
-            if (self.position != lastPosition)
-                _isColliding = false;
-        }
+        _isColliding = false;
     }
     #endregion
 
@@ -200,10 +189,10 @@ public class Treasure : MonoBehaviour, ICarriable
         // Update player values
         _playerInteractingWith.Add(player);
         player.isCarrying = true;
-
         player.anim.SetBool("isCarrying", true);
         player.anim.SetTrigger("startCarrying");
-        player.sword.SetActive(false);
+        player.sword.SetActive(false);
+        
         // Play Carry Sound
         AudioManager.AMInstance.playerCarrySFX.Post(gameObject);
 
@@ -269,6 +258,7 @@ public class Treasure : MonoBehaviour, ICarriable
         player.carrying = null;
 
         player.anim.SetBool("isCarrying", false);
+        player.SweatActivator(false);
         player.sword.SetActive(true);
 
         return false;
@@ -302,6 +292,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
             // Update Anim
             p.anim.SetBool("isCarrying", false);
+            p.SweatActivator(false);
             p.sword.SetActive(true);
 
             Physics.IgnoreCollision(selfCollider, p.selfCollider, true);
@@ -343,6 +334,7 @@ public class Treasure : MonoBehaviour, ICarriable
         player.isInteracting = false;
 
         player.anim.SetBool("isCarrying", false);
+        player.SweatActivator(false);
         player.sword.SetActive(true);
 
         player.carrying = null;
@@ -489,7 +481,6 @@ public class Treasure : MonoBehaviour, ICarriable
                 while(playerCollisionIgnored.Count > 0)
                 {
                     Physics.IgnoreCollision(selfCollider, playerCollisionIgnored[0].selfCollider, false);
-                    collidersColliding.Remove(playerCollisionIgnored[0].selfCollider);
                     playerCollisionIgnored.RemoveAt(0);
                 }
             }
@@ -497,13 +488,9 @@ public class Treasure : MonoBehaviour, ICarriable
         }
         if (_isColliding && !isCarriedByPiqueSous)
         {
-            if (Vector3.Dot(selfRigidbody.velocity, -_collisionDirection) < 0.0f && selfRigidbody.velocity != Vector3.zero)
+            if (Vector3.Dot(selfRigidbody.velocity, -_collisionDirection) < 0 && selfRigidbody.velocity != Vector3.zero)
             {
-                foreach(PlayerController player in playerInteractingWith)
-                {
-                    if (player.playerMovementInput != Vector2.zero)
-                        _isColliding = false;
-                }
+                _isColliding = false;
             }
             else
             {
@@ -522,10 +509,32 @@ public class Treasure : MonoBehaviour, ICarriable
             lastPosition = self.position;
 
         PlayerJoystickDetection();
+        UpdateWeightNeed();
     }
 
     public string GetTag()
     {
         return gameObject.tag;
+    }
+
+    public void UpdateWeightNeed()
+    {
+        if (_playerInteractingWith.Count > 0)
+        {
+            if (_playerInteractingWith.Count < category.maxPlayerCarrying)
+            {
+                foreach (PlayerController player in _playerInteractingWith)
+                {
+                    player.SweatActivator(true);
+                }
+            }
+            else
+            {
+                foreach (PlayerController player in _playerInteractingWith)
+                {
+                    player.SweatActivator(false);
+                }
+            }
+        }
     }
 }

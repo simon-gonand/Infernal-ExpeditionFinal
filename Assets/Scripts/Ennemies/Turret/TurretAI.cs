@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class TurretAI : MonoBehaviour, EnemiesAI
 {
+    [Header("Stat")]
+    [SerializeField]
+    private float fireRate;
+    [SerializeField]
+    private float firePower;
+
+    [Header ("Animation")]
+    public Animator gunnerAnimator;
+    public Animator cannonAnimator;
+    public GameObject smokeParticule;
+
     [Header("Reference")]
     [SerializeField]
     private Transform self;
@@ -11,24 +22,28 @@ public class TurretAI : MonoBehaviour, EnemiesAI
     private Transform cannonBallSpawnPoint;
     [SerializeField]
     GameObject cannonBall;
-
-    [Header("Stat")]
     [SerializeField]
-    private float fireRate;
-    [SerializeField]
-    private float firePower;
+    private Collider bodyBlock;
 
     private bool _isAwake = false;
     public bool isAwake { set { _isAwake = value; } }
 
     private bool canFire = false;
+    private bool isDead;
 
     public void Die()
     {
+        isDead = true;
+
         // Play Die sound
 
         // Play die animation 
-        Destroy(this.gameObject);
+        gunnerAnimator.SetBool("Dead", true);
+        cannonAnimator.SetBool("Dead", true);
+        smokeParticule.SetActive(true);
+
+        bodyBlock.enabled = false;
+       
     }
 
     public void ResetCurrentTarget()
@@ -64,7 +79,7 @@ public class TurretAI : MonoBehaviour, EnemiesAI
     // Update is called once per frame
     void Update()
     {
-        if (_isAwake)
+        if (_isAwake && isDead == false)
         {
             Vector3 lookAtDir = BoatManager.instance.self.position;
             lookAtDir.y = self.position.y;

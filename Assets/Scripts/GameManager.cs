@@ -1,7 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+
+using UnityEngine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 using Cinemachine;
 
 public class GameManager : MonoBehaviour
@@ -13,6 +17,9 @@ public class GameManager : MonoBehaviour
     public CinemachineTargetGroup targetGroup;
 
     public bool boatOnTargetGroup;
+
+    [Header("Number Stars Needed to Unlock")]
+    public List<int> neededStarsToUnlock;
 
     private void Awake()
     {
@@ -34,6 +41,17 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(string sceneName, bool isBoatInScene)
     {
+        string levelIdStr = sceneName.Substring(sceneName.Length - 2);
+        if (levelIdStr[0] == '0')
+            levelIdStr = levelIdStr.Substring(1);
+        try
+        {
+            LevelManager.instance.levelId = Convert.ToInt32(levelIdStr);
+        }
+        catch (FormatException e)
+        {
+            LevelManager.instance.levelId = 0;
+        }
         boatOnTargetGroup = isBoatInScene;
         if (sceneName.Equals(SceneManager.GetSceneAt(0).name))
             PlayerManager.instance.onPirateIsland = true;
@@ -44,6 +62,8 @@ public class GameManager : MonoBehaviour
 
     private void GetObjects(Scene scene, LoadSceneMode sceneMode)
     {
+        foreach (PlayerController player in PlayerManager.instance.players)
+            player.GetComponent<PlayerInput>().currentActionMap.Enable();
         GameObject virtualCam = GameObject.FindGameObjectWithTag("VirtualCamera");
         playerManager.cam = virtualCam.GetComponent<CinemachineVirtualCamera>();
         playerManager.camManager = virtualCam.GetComponent<CameraManager>();

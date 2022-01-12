@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 public class NPCEventWindow : EditorWindow
 {
@@ -16,6 +17,9 @@ public class NPCEventWindow : EditorWindow
 
     private void OnGUI()
     {
-        EditorGUILayout.PropertyField(waypointSO.FindProperty("ev"), true);
+        waypointSO.Update();
+        EditorGUILayout.PropertyField(waypointSO.FindProperty("NPCEvent"), true);
+        EditorGUILayout.PropertyField(waypointSO.FindProperty("modifierEvent"), true);
+        waypointSO.ApplyModifiedProperties();
     }
 }

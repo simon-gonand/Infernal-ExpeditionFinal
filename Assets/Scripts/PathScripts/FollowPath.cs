@@ -25,7 +25,7 @@ public class FollowPath : MonoBehaviour
 
     private void Start()
     {
-        //InitializePath();
+        InitializePath();
     }
 
     public void InitializePath()
@@ -45,7 +45,8 @@ public class FollowPath : MonoBehaviour
         else
             pathEnd = false;
         currentWaypoint = path.waypoints[linkIndex];
-        currentWaypoint.ev.Invoke();
+        currentWaypoint.NPCEvent.Invoke();
+        currentWaypoint.modifierEvent.Invoke();
 
         allPointIndex = 0;
         for (int i = 0; i < linkIndex; ++i)
@@ -121,7 +122,8 @@ public class FollowPath : MonoBehaviour
             ++linkIndex;
             lastTValue = 0.0f;
             currentWaypoint = path.waypoints[linkIndex];
-            currentWaypoint.ev.Invoke();
+            currentWaypoint.NPCEvent.Invoke();
+            currentWaypoint.modifierEvent.Invoke();
         }
 
         coroutineAllowed = true;

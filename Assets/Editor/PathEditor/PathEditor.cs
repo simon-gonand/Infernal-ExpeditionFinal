@@ -624,7 +624,7 @@ public class PathEditor : Editor
                         }
                         Handles.DrawLine(pathScript.links[selectedLinkIndex - 1].anchors[pathScript.links[selectedLinkIndex - 1].anchors.Count - 1], selectedLink.pathPoints[i]);
                     }
-                    else
+                    else if (pathScript.loop)
                     {
                         EditorGUI.BeginChangeCheck();
                         pathScript.links[pathScript.links.Count - 1].anchors[pathScript.links[pathScript.links.Count - 1].anchors.Count - 1] =
@@ -653,7 +653,7 @@ public class PathEditor : Editor
                         Vector3 dist = selectedLink.anchors[i * 2] - selectedLink.pathPoints[i];
                         pathScript.links[selectedLinkIndex - 1].anchors[pathScript.links[selectedLinkIndex - 1].anchors.Count - 1] = selectedLink.pathPoints[i] - dist;
                     }
-                    else if (selectedLinkIndex == 0)
+                    else if (selectedLinkIndex == 0 && pathScript.loop)
                     {
                         Vector3 dist = selectedLink.anchors[i * 2] - selectedLink.pathPoints[i];
                         pathScript.links[pathScript.links.Count - 1].anchors[pathScript.links[pathScript.links.Count - 1].anchors.Count - 1] = selectedLink.pathPoints[i] - dist;
@@ -704,7 +704,7 @@ public class PathEditor : Editor
                         Vector3 dist = selectedLink.anchors[i * 2 + 1] - selectedLink.pathPoints[i + 1];
                         pathScript.links[selectedLinkIndex + 1].anchors[0] = selectedLink.pathPoints[i + 1] - dist;
                     }
-                    else if (selectedLinkIndex == pathScript.links.Count - 1)
+                    else if (selectedLinkIndex == pathScript.links.Count - 1 && pathScript.loop)
                     {
                         Vector3 dist = selectedLink.anchors[i * 2 + 1] - selectedLink.pathPoints[i + 1];
                         pathScript.links[0].anchors[0] = selectedLink.pathPoints[i + 1] - dist;
