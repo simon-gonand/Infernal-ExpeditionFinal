@@ -100,9 +100,15 @@ public class PlayerController : MonoBehaviour
     private bool _isStun = false;
     public bool isStun { get { return _isStun; } }
 
-    // Is the No attack modifier has been triggered
+    #region ModifierBooleans
+    // Is the No Attack modifier has been triggered
     private bool _canAttack = true;
     public bool canAttack { set { _canAttack = value; } }
+
+    // Is the No Dash modifier has been triggered
+    private bool _canDash = true;
+    public bool canDash { set { _canDash = value; } }
+    #endregion
 
     private bool isDashing = false;
     private bool isDead = false;
@@ -304,7 +310,7 @@ public class PlayerController : MonoBehaviour
     // When the player pressed the dash button
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming && !isDashing && !_isCarried && isGrounded)
+        if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming && !isDashing && !_isCarried && isGrounded && _canDash)
         {
             isDashing = true;
             Vector3 currentVelocity = selfRigidBody.velocity;
