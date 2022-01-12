@@ -229,6 +229,7 @@ MonoBehaviour:
   selfRenderer: {fileID: 8021421501958908599}
   attackPoint: {fileID: 7237748085361382517}
   playerCarryingPoint: {fileID: 6219935653066116965}
+  outline: {fileID: 2712487959258992020}
   anim: {fileID: 8254120110123333142}
   sword: {fileID: 2204097168393240673}
   stunFx: {fileID: 2739789684704048623}
@@ -238,6 +239,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   playerThrowDir: {x: 0, y: 0, z: 0}
+  isColliding: 0
 --- !u!114 &4223509153915057750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,6 +1056,17 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 137352039805052814, guid: f18c40c0b33ac4844b576cd5a67437c8, type: 3}
   m_PrefabInstance: {fileID: 7977608494170869049}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2712487959258992020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5409555177857974445, guid: f18c40c0b33ac4844b576cd5a67437c8, type: 3}
+  m_PrefabInstance: {fileID: 7977608494170869049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &8254120110123333142 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2034129679496952623, guid: f18c40c0b33ac4844b576cd5a67437c8, type: 3}

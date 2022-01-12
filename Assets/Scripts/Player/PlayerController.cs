@@ -16,11 +16,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Children References")]
     public Transform playerGraphics;
-    [SerializeField]
-    private SkinnedMeshRenderer selfRenderer;
+    public SkinnedMeshRenderer selfRenderer;
     [SerializeField]
     private Transform attackPoint;
     public Transform playerCarryingPoint;
+    public Outline outline;
 
     [Header ("Anim info")]
     public Animator anim;

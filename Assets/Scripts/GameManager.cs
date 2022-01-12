@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using Cinemachine;
@@ -48,7 +47,7 @@ public class GameManager : MonoBehaviour
         {
             LevelManager.instance.levelId = Convert.ToInt32(levelIdStr);
         }
-        catch (FormatException e)
+        catch
         {
             LevelManager.instance.levelId = 0;
         }
