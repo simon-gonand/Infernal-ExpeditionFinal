@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private Transform attackPoint;
     public Transform playerCarryingPoint;
     public Outline outline;
+    public GameObject playerUICircle;
 
     [Header ("Anim info")]
     public Animator anim;

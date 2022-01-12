@@ -26,6 +26,7 @@ public class ChangeMeshModifier : IModifier
             meshes.Add(PlayerManager.instance.players[i].selfRenderer.sharedMesh);
             PlayerManager.instance.players[i].selfRenderer.sharedMesh = newMesh;
             PlayerManager.instance.players[i].outline.OutlineWidth = newOutlineWidth;
+            PlayerManager.instance.players[i].playerUICircle.SetActive(false);
         }
     }
     protected override void EndBehaviour()
@@ -34,6 +35,7 @@ public class ChangeMeshModifier : IModifier
         {
             PlayerManager.instance.players[i].selfRenderer.sharedMesh = meshes[i];
             PlayerManager.instance.players[i].outline.OutlineWidth = originalOutlineWidth;
+            PlayerManager.instance.players[i].playerUICircle.SetActive(true);
         }
     }
 }
