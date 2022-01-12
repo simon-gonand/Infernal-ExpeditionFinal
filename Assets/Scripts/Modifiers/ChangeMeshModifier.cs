@@ -13,14 +13,10 @@ public class ChangeMeshModifier : IModifier
 
     private List<Mesh> meshes = new List<Mesh>();
 
-    private void Start()
-    {
-        originalOutlineWidth = PlayerManager.instance.players[0].outline.OutlineWidth;
-    }
-
     protected override void StartBehaviour()
     {
         meshes.Clear();
+        originalOutlineWidth = PlayerManager.instance.players[0].outline.OutlineWidth;
         for (int i = 0; i < PlayerManager.instance.players.Count; ++i)
         {
             meshes.Add(PlayerManager.instance.players[i].selfRenderer.sharedMesh);
