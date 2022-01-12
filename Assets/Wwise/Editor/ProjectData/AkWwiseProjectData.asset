@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 9dce80c3a7123942813a1007a9fa761f
     GuidInternal: 
-    m_lastTime: -8585601984037306847
+    m_lastTime: -8585596057440357141
     List:
     - name: Musics
       guid: 36549465458ece4a996756f69665369a
@@ -108,7 +108,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 06febf392af11e40ad2e9e6e478aa9eb
     GuidInternal: 
-    m_lastTime: -8585601984037596061
+    m_lastTime: -8585596057481442067
     List:
     - name: B_ChestCollect
       guid: 829a948af431744189a18a98eaaf71a5
@@ -666,7 +666,7 @@ MonoBehaviour:
     ParentPath: Events\Musics
     guid: 8b7a9cc2f9341b47876f857ec1bcbfce
     GuidInternal: 
-    m_lastTime: -8585601984037087422
+    m_lastTime: -8585596057481442067
     List:
     - name: Credit_Theme
       guid: b5a5df838c37b849a41524cd44cf21ae
@@ -915,7 +915,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 23f8d2162ea04c49ba51910d0ab18446
     GuidInternal: 
-    m_lastTime: -8585602158864499083
+    m_lastTime: -8585596057440347179
     List:
     - name: GameplayType
       guid: 582d7cde1074f044a75447d7d5a60a22
@@ -964,6 +964,22 @@ MonoBehaviour:
         - ElementName: Pillage
           ObjectType: 10
           guid: 034d65c0f02c484685e5e91a38bfc7df
+      - name: Victory
+        guid: 2774b982b888fa48b6c3eef601635e90
+        id: 2716678721
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 23f8d2162ea04c49ba51910d0ab18446
+        - ElementName: GameplayType
+          ObjectType: 11
+          guid: 582d7cde1074f044a75447d7d5a60a22
+        - ElementName: Victory
+          ObjectType: 10
+          guid: 2774b982b888fa48b6c3eef601635e90
       ValueGuids: []
       ValueIcons: []
       valuesInternal: []
@@ -996,7 +1012,7 @@ MonoBehaviour:
         guid: 88eb52da3d6b9743ba24b8c441c80d38
       Path: Triggers\Default Work Unit\Collect_Treasure
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 06000000070000000c0000000d00000011000000150000001600000017000000
+  ExpandedWaapiItemIds: 
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

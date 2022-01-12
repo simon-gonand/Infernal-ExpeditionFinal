@@ -161,6 +161,8 @@ MonoBehaviour:
   selfRenderer: {fileID: 7409626959685574024}
   attackPoint: {fileID: 7237748085361382517}
   playerCarryingPoint: {fileID: 6219935653066116965}
+  outline: {fileID: 5327620668290371990}
+  playerUICircle: {fileID: 1308064655206194996}
   anim: {fileID: 7378762427793906074}
   sword: {fileID: 1486051705527817164}
   stunFx: {fileID: 2739789684704048623}
@@ -170,6 +172,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   playerThrowDir: {x: 0, y: 0, z: 0}
+  isColliding: 0
 --- !u!114 &4223509153915057750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,6 +1113,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
+--- !u!4 &7431564144871862304 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4953374078123142, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
+  m_PrefabInstance: {fileID: 7436464596224855206}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1486051705527817164 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8335077698377949034, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
@@ -1120,13 +1128,19 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 137334844286243118, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
   m_PrefabInstance: {fileID: 7436464596224855206}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5327620668290371990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3376613279118548272, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
+  m_PrefabInstance: {fileID: 7436464596224855206}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &7378762427793906074 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95983461456139580, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
-  m_PrefabInstance: {fileID: 7436464596224855206}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7431564144871862304 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4953374078123142, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
   m_PrefabInstance: {fileID: 7436464596224855206}
   m_PrefabAsset: {fileID: 0}
