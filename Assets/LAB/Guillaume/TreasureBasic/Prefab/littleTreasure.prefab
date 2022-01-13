@@ -736,19 +736,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5701843617175313605, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 50
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701843617175313605, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 9071143426188075732, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 9071143426188075732, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 9071143426188075732, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 9071143426188075732, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
       propertyPath: m_LocalPosition.y
