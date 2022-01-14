@@ -20,8 +20,8 @@ GameObject:
   m_Name: TreasurePrefab
   m_TagString: Treasures
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3329265842200371522
 Transform:
@@ -132,14 +132,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7b1c33498298d49ab4259edceea60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  price: 10
   self: {fileID: 3329265842200371522}
   selfRigidbody: {fileID: 1344421421682408606}
   selfCollider: {fileID: 7705394190541965516}
-  category: {fileID: 11400000, guid: 76773af0a35dd0c489de87142b2c81fc, type: 2}
-  isLoadingPower: 0
+  category: {fileID: 11400000, guid: 34838ba1dacbdec4e8e94f6f67aae8b5, type: 2}
+  mesh: {fileID: 4083193116903739770}
+  speedMalus: 0
   playerThrowDir: {x: 0, y: 0, z: 0}
   outlineScript: {fileID: 1367447745}
-  launchForce: 0
 --- !u!114 &1367447745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,9 +200,7 @@ MonoBehaviour:
   selfTreasure: {fileID: 2615319730487116424}
   objToRotate: {fileID: 2921816985496807349}
   throwUiGlobal: {fileID: 4011606881964808413}
-  throwFiller: {fileID: 9093809077743601006}
   backGroundThrow: {fileID: 4301713388816333428}
-  distanceMax: 0
 --- !u!1 &1422140274400950554
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,8 +403,8 @@ GameObject:
   m_Name: Snap1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1381686555007138895
 Transform:
@@ -563,8 +562,8 @@ GameObject:
   m_Name: Snap4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &245407069279628098
 Transform:
@@ -622,8 +621,8 @@ GameObject:
   m_Name: Snap3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &968878615079394338
 Transform:
@@ -681,8 +680,8 @@ GameObject:
   m_Name: Snap2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2202058325800593268
 Transform:

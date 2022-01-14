@@ -11,7 +11,8 @@ public class Treasure : MonoBehaviour, ICarriable
     public Rigidbody selfRigidbody;
     public Collider selfCollider;
     public TreasuresCategory category;
-    [System.NonSerialized]
+    public MeshFilter mesh;
+    [HideInInspector]
     public float speedMalus = 0.0f;
 
     private List<PlayerController> _playerInteractingWith = new List<PlayerController>();
