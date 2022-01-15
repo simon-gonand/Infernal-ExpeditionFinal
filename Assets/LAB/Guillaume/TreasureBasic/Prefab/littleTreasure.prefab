@@ -139,6 +139,7 @@ MonoBehaviour:
   selfCollider: {fileID: 7302959734652682283}
   category: {fileID: 11400000, guid: 34838ba1dacbdec4e8e94f6f67aae8b5, type: 2}
   mesh: {fileID: 3971109027814218141}
+  selfAura: {fileID: 7886559180404676089}
   speedMalus: 0
   playerThrowDir: {x: 0, y: 0, z: 0}
   outlineScript: {fileID: 1132193645431689254}
@@ -830,6 +831,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
+--- !u!1 &7886559180404676089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9071143426676909853, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
+  m_PrefabInstance: {fileID: 1193879586294706916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7886559180404676070 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9071143426676909826, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
