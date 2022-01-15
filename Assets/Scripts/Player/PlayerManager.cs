@@ -86,7 +86,7 @@ public class PlayerManager : MonoBehaviour
         player.id = playerInput.playerIndex;
         _players.Add(player);
 
-        //AudioManager.AMInstance.playerRespawnSFX.Post(gameObject);
+        AudioManager.AMInstance.playerRespawnSFX.Post(gameObject);
     }
 
     private Vector3 SetPlayerPosition(int id)
