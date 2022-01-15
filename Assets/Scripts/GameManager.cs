@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     [Header("Number Stars Needed to Unlock")]
     public List<int> neededStarsToUnlock;
 
+    [Header("All treasures in scene")]
+    public List<Treasure> treasuresInScene;
+
     private void Awake()
     {
         if (instance == null)
@@ -35,7 +38,7 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(transform.parent.gameObject);
         SceneManager.sceneLoaded += GetObjects;
-        boatOnTargetGroup = false;
+        //boatOnTargetGroup = false;
     }
 
     public void LoadLevel(string sceneName, bool isBoatInScene)
@@ -73,6 +76,16 @@ public class GameManager : MonoBehaviour
         followPath.cam = virtualCam.GetComponent<CinemachineVirtualCamera>();
         followPath.InitializePath();
         targetGroup = FindObjectOfType<CinemachineTargetGroup>();
+
+        if (LevelManager.instance.levelModifiers)
+        {
+            treasuresInScene.Clear();
+            Treasure[] treasures = GameObject.FindObjectsOfType<Treasure>();
+            foreach (Treasure treasure in treasures)
+            {
+                treasuresInScene.Add(treasure);
+            }
+        }
 
         playerManager.OnChangeScene();
         BoatInTargetGroup();
