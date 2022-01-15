@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(transform.parent.gameObject);
         SceneManager.sceneLoaded += GetObjects;
-        boatOnTargetGroup = false;
+        //boatOnTargetGroup = false;
     }
 
     public void LoadLevel(string sceneName, bool isBoatInScene)
