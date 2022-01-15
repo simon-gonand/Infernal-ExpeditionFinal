@@ -12,6 +12,7 @@ public class Treasure : MonoBehaviour, ICarriable
     public Collider selfCollider;
     public TreasuresCategory category;
     public MeshFilter mesh;
+    public GameObject selfAura;
     [HideInInspector]
     public float speedMalus = 0.0f;
 
@@ -197,6 +198,8 @@ public class Treasure : MonoBehaviour, ICarriable
         // Play Carry Sound
         AudioManager.AMInstance.playerCarrySFX.Post(gameObject);
 
+        selfAura.SetActive(false);
+
         player.carrying = this;
 
         if (playerColliding.Count > 0)
@@ -299,6 +302,8 @@ public class Treasure : MonoBehaviour, ICarriable
             Physics.IgnoreCollision(selfCollider, p.selfCollider, true);
             playerCollisionIgnored.Add(p);
         }
+
+        selfAura.SetActive(true);
 
         // Enable rigidbody
         selfRigidbody.isKinematic = false;

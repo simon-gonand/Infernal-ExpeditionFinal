@@ -691,11 +691,14 @@ public class PlayerController : MonoBehaviour
                     {
                         // Unselecte the old treasure
                         treasureInFront.GetComponent<Treasure>().SelecteTreasure(false);
+                        if (!isCarrying || (isCarrying && treasureInFront.GetComponent<Treasure>() != (Treasure)carrying))
+                            treasureInFront.GetComponent<Treasure>().selfAura.SetActive(true);
                     }
 
                     // Save and selected the new treasure
                     treasureInFront = hit.collider.gameObject.transform.parent.gameObject;
                     treasureInFront.GetComponent<Treasure>().SelecteTreasure(true);
+                    treasureInFront.GetComponent<Treasure>().selfAura.SetActive(false);
                 }
             }
         }
@@ -704,6 +707,8 @@ public class PlayerController : MonoBehaviour
         {
             // Reset and unselect the old treasure
             treasureInFront.GetComponent<Treasure>().SelecteTreasure(false);
+            if (!isCarrying || (isCarrying && treasureInFront.GetComponent<Treasure>() != (Treasure)carrying))
+                treasureInFront.GetComponent<Treasure>().selfAura.SetActive(true);
             treasureInFront = null;
         }
         else
