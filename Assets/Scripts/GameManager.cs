@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(transform.parent.gameObject);
         SceneManager.sceneLoaded += GetObjects;
-        //boatOnTargetGroup = false;
     }
 
     public void LoadLevel(string sceneName, bool isBoatInScene)
@@ -64,8 +63,6 @@ public class GameManager : MonoBehaviour
 
     private void GetObjects(Scene scene, LoadSceneMode sceneMode)
     {
-        foreach (PlayerController player in PlayerManager.instance.players)
-            player.GetComponent<PlayerInput>().currentActionMap.Enable();
         GameObject virtualCam = GameObject.FindGameObjectWithTag("VirtualCamera");
         playerManager.cam = virtualCam.GetComponent<CinemachineVirtualCamera>();
         playerManager.camManager = virtualCam.GetComponent<CameraManager>();

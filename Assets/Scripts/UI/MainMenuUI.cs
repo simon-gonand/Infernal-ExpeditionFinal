@@ -23,6 +23,7 @@ public class MainMenuUI : MonoBehaviour
     public void Play()
     {
         PlayerManager.instance.CheckInputs();
+        PlayerManager.instance.onMainMenu = false;
         mainMenuCam.Priority = 0;
         foreach (PlayerController player in PlayerManager.instance.players)
             player.GetComponent<PlayerInput>().currentActionMap.Enable();

@@ -19,7 +19,7 @@ public class LevelManager
 
     public void StartLevel()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     public void EndLevel()

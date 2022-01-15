@@ -2954,6 +2954,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266777136}
   m_CullTransparentMesh: 1
+--- !u!1 &1271361003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1867271385891192, guid: 80deacc8c7395be4b87ed134de6f0a32, type: 3}
+  m_PrefabInstance: {fileID: 777436090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1320414051
 GameObject:
   m_ObjectHideFlags: 3
@@ -3048,6 +3053,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1413532467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1563132292346966, guid: 091fad03ccac08c49a16b12d2ad347bb, type: 3}
+  m_PrefabInstance: {fileID: 774040384}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1452980223
 GameObject:
   m_ObjectHideFlags: 0
@@ -3806,6 +3816,11 @@ Transform:
   m_Father: {fileID: 850613966}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1656694166 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1414087151732628, guid: 8ecfeb1cff449d2429c3cd78ad9aeca4, type: 3}
+  m_PrefabInstance: {fileID: 1226802050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1662188442
 GameObject:
   m_ObjectHideFlags: 0
@@ -4950,6 +4965,18 @@ PrefabInstance:
       propertyPath: targetGroup
       value: 
       objectReference: {fileID: 2138222757}
+    - target: {fileID: 7924138907722542903, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
+      propertyPath: player2Spawn
+      value: 
+      objectReference: {fileID: 1271361003}
+    - target: {fileID: 7924138907722542903, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
+      propertyPath: player3Spawn
+      value: 
+      objectReference: {fileID: 1656694166}
+    - target: {fileID: 7924138907722542903, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
+      propertyPath: player4Spawn
+      value: 
+      objectReference: {fileID: 1413532467}
     - target: {fileID: 7924138907722542903, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
       propertyPath: onPirateIsland
       value: 1
