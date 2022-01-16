@@ -20,8 +20,8 @@ GameObject:
   m_Name: Treasur_Little_Poor_1
   m_TagString: Treasures
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3184889319234033327
 Transform:
@@ -217,8 +217,8 @@ GameObject:
   m_Name: ObjToRotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!224 &3066233655491678296
 RectTransform:
@@ -256,8 +256,8 @@ GameObject:
   m_Name: ConeBackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!224 &1759977452155382658
 RectTransform:
@@ -331,8 +331,8 @@ GameObject:
   m_Name: ConeFIller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!224 &2149806391776304314
 RectTransform:
@@ -407,8 +407,8 @@ GameObject:
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!224 &3625193635132856106
 RectTransform:
@@ -506,8 +506,8 @@ GameObject:
   m_Name: Snap1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1237837660185332642
 Transform:
@@ -565,8 +565,8 @@ GameObject:
   m_Name: Snap4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &100994812229491887
 Transform:
@@ -625,8 +625,8 @@ GameObject:
   m_Name: Graph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8406095340583411809
 Transform:
@@ -720,8 +720,8 @@ GameObject:
   m_Name: Snap3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1113294716118969295
 Transform:
@@ -779,8 +779,8 @@ GameObject:
   m_Name: Snap2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2057681257442676889
 Transform:
@@ -830,6 +830,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3184889319234033327}
     m_Modifications:
+    - target: {fileID: 5612771111295514119, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612771111295514119, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071143426188075735, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071143426188075735, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9071143426676909826, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -877,6 +893,14 @@ PrefabInstance:
     - target: {fileID: 9071143426676909853, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
       propertyPath: m_Name
       value: Basic_Aura 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071143426676909853, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071143426676909853, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa26d120a884434684c0f0341b9b269, type: 3}
