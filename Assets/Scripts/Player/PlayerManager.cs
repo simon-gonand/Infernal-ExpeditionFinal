@@ -15,12 +15,11 @@ public class PlayerManager : MonoBehaviour
     private GameObject player4;
 
     [Header("Pirate's Island player spawns")]
-    [SerializeField]
-    private GameObject player2Spawn;
-    [SerializeField]
-    private GameObject player3Spawn;
-    [SerializeField]
-    private GameObject player4Spawn;
+    public GameObject firstPlayer;
+    public GameObject player1Spawn;
+    public GameObject player2Spawn;
+    public GameObject player3Spawn;
+    public GameObject player4Spawn;
 
     [Header("Self Reference")]
     public PlayerInputManager self;
@@ -52,7 +51,12 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null) instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            firstPlayer.SetActive(true);
+            firstPlayer.transform.SetParent(BoatManager.instance.transform.parent);
+        }
         else Destroy(gameObject);
     }
 
@@ -80,6 +84,10 @@ public class PlayerManager : MonoBehaviour
         {
             playerInput.currentActionMap.Disable();
         }
+        if (onPirateIsland)
+        {
+            playerTransform.SetParent(BoatManager.instance.self.parent);
+        }
         if (GameManager.instance != null)
             GameManager.instance.targetGroup.AddMember(playerTransform, weight, 20);
         PlayerController player = playerInput.gameObject.GetComponent<PlayerController>();
@@ -92,6 +100,8 @@ public class PlayerManager : MonoBehaviour
     private Vector3 SetPlayerPosition(int id)
     {
         Vector3 playerSpawnPosition = BoatManager.instance.spawnPoint1.position;
+        if (onPirateIsland)
+            playerSpawnPosition = player1Spawn.transform.position;
         switch (id)
         {
             case 0:
@@ -161,8 +171,7 @@ public class PlayerManager : MonoBehaviour
         {
             PlayerController player = players[i];
             player.ResetPlayer();
-            if (!onPirateIsland)
-                player.self.position = SetPlayerPosition(i);
+            player.self.position = SetPlayerPosition(i);
             GameManager.instance.targetGroup.AddMember(player.self, weight, 20);
         }
     }

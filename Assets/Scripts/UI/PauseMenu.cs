@@ -66,7 +66,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Quit()
     {
-        GameManager.instance.LoadLevel("BalanceZone", false);
+        GameManager.instance.LoadLevel("ÎleAuxPirates", false);
         Resume();
     }
 

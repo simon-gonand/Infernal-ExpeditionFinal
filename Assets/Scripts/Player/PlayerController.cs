@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public PlayerPresets playerPreset;
     public PlayerThrowUI selfPlayerThrowUi;
     public GameObject sweatParticleSysteme;
+    public PlayerInput selfPlayerInput;
 
     [Header("Children References")]
     public Transform playerGraphics;

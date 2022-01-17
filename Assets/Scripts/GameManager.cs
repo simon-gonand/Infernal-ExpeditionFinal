@@ -54,8 +54,15 @@ public class GameManager : MonoBehaviour
             LevelManager.instance.levelId = 0;
         }
         boatOnTargetGroup = isBoatInScene;
-        if (sceneName.Equals(SceneManager.GetSceneAt(0).name))
+        if (sceneName.Equals("ÎleAuxPirates"))
+        {
             PlayerManager.instance.onPirateIsland = true;
+            PlayerManager.instance.onMainMenu = true;
+            foreach(PlayerController p in PlayerManager.instance.players)
+            {
+                p.selfPlayerInput.currentActionMap.Disable();
+            }
+        }
         else
             PlayerManager.instance.onPirateIsland = false;
         SceneManager.LoadScene(sceneName);
@@ -73,6 +80,20 @@ public class GameManager : MonoBehaviour
         followPath.cam = virtualCam.GetComponent<CinemachineVirtualCamera>();
         followPath.InitializePath();
         targetGroup = FindObjectOfType<CinemachineTargetGroup>();
+
+        Debug.Log(PlayerManager.instance.onPirateIsland);
+        if (PlayerManager.instance.onPirateIsland)
+        {
+            GameObject spawn1 = GameObject.FindGameObjectWithTag("PlayerMesh");
+            GameObject spawn2 = GameObject.FindGameObjectWithTag("PlayerMesh2");
+            GameObject spawn3 = GameObject.FindGameObjectWithTag("PlayerMesh3");
+            GameObject spawn4 = GameObject.FindGameObjectWithTag("PlayerMesh4");
+
+            PlayerManager.instance.player1Spawn = spawn1;
+            PlayerManager.instance.player2Spawn = spawn2;
+            PlayerManager.instance.player3Spawn = spawn3;
+            PlayerManager.instance.player4Spawn = spawn4;
+        }
 
         if (LevelManager.instance.levelModifiers)
         {
