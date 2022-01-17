@@ -71,12 +71,40 @@ public class NPCEvents : MonoBehaviour
     {
         PlayerManager.instance.respawnOnBoat = false;
         PlayerManager.instance.respawnPoint = t.position;
+        foreach (PlayerController player in PlayerManager.instance.players)
+        {
+            if (player.isOnBoat)
+                player.self.position = t.position;
+        }
+
+        StartCoroutine(RemoveBoatSmoothly());
+    }
+
+    private IEnumerator RemoveBoatSmoothly()
+    {
+        int index = GameManager.instance.targetGroup.FindMember(BoatManager.instance.self);
+        for (int i = 25; i > 0; --i)
+        {
+            GameManager.instance.targetGroup.m_Targets[index].weight = i;
+            yield return new WaitForSeconds(0.2f);
+        }
         GameManager.instance.targetGroup.RemoveMember(BoatManager.instance.self);
     }
 
     public void EndLanding()
     {
         PlayerManager.instance.respawnOnBoat = true;
-        GameManager.instance.targetGroup.AddMember(BoatManager.instance.self, 25, 20);
+        StartCoroutine(AddBoatSmoothly());
+    }
+
+    private IEnumerator AddBoatSmoothly()
+    {
+        GameManager.instance.targetGroup.AddMember(BoatManager.instance.self, 0.01f, 20);
+        int index = GameManager.instance.targetGroup.FindMember(BoatManager.instance.self);
+        for (int i = 0; i <= 25; ++i)
+        {
+            GameManager.instance.targetGroup.m_Targets[index].weight += i;
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 }

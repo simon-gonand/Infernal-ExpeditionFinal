@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 1
+  m_text: Tuto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 160424387}
   - component: {fileID: 160424386}
   m_Layer: 5
-  m_Name: Level 7
+  m_Name: Level 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +262,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 2
+  m_text: Level 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -674,7 +674,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 4
+  m_text: Level 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 269872224}
   - component: {fileID: 269872223}
   m_Layer: 5
-  m_Name: Level 9
+  m_Name: Level 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -871,7 +871,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 9
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -887,6 +887,7 @@ GameObject:
   - component: {fileID: 332728558}
   - component: {fileID: 332728560}
   - component: {fileID: 332728559}
+  - component: {fileID: 5965994493907889753}
   m_Layer: 5
   m_Name: LevelSelectionUI
   m_TagString: Untagged
@@ -963,6 +964,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5965994493907889753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332728557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cdb263f403670d4ba38faa54acdcb1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelButtons:
+  - {fileID: 1681752512}
+  - {fileID: 360739579}
+  - {fileID: 692780191}
+  - {fileID: 1165919580}
+  - {fileID: 626642401}
+  - {fileID: 1196926834}
+  - {fileID: 160424386}
+  - {fileID: 977277507}
+  - {fileID: 269872223}
+  - {fileID: 732106673}
+  lockedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &360739577
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,7 +1001,7 @@ GameObject:
   - component: {fileID: 360739580}
   - component: {fileID: 360739579}
   m_Layer: 5
-  m_Name: Level 2
+  m_Name: Level 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1091,7 +1116,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1429,7 +1454,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 3
+  m_text: Level 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1511,7 +1536,7 @@ GameObject:
   - component: {fileID: 626642402}
   - component: {fileID: 626642401}
   m_Layer: 5
-  m_Name: Level 5
+  m_Name: Level 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1626,7 +1651,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1644,7 +1669,7 @@ GameObject:
   - component: {fileID: 692780192}
   - component: {fileID: 692780191}
   m_Layer: 5
-  m_Name: Level 3
+  m_Name: Level 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1759,7 +1784,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1777,7 +1802,7 @@ GameObject:
   - component: {fileID: 732106674}
   - component: {fileID: 732106673}
   m_Layer: 5
-  m_Name: Level 10
+  m_Name: Level 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1892,7 +1917,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 9
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2525,7 +2550,7 @@ GameObject:
   - component: {fileID: 977277508}
   - component: {fileID: 977277507}
   m_Layer: 5
-  m_Name: Level 8
+  m_Name: Level 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2640,7 +2665,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 8
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2710,7 +2735,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 6
+  m_text: Level 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2844,7 +2869,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 10
+  m_text: Level 9
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3198,7 +3223,7 @@ GameObject:
   - component: {fileID: 1165919581}
   - component: {fileID: 1165919580}
   m_Layer: 5
-  m_Name: Level 4
+  m_Name: Level 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3313,7 +3338,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3331,7 +3356,7 @@ GameObject:
   - component: {fileID: 1196926835}
   - component: {fileID: 1196926834}
   m_Layer: 5
-  m_Name: Level 6
+  m_Name: Level 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3446,7 +3471,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3916,7 +3941,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 9
+  m_text: Level 8
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4733,7 +4758,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 8
+  m_text: Level 7
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4815,7 +4840,7 @@ GameObject:
   - component: {fileID: 1681752513}
   - component: {fileID: 1681752512}
   m_Layer: 5
-  m_Name: Level 1
+  m_Name: Level Tuto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4930,7 +4955,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5268,7 +5293,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Level 5
+  m_text: 'Level 4
 
 '
   m_isRightToLeft: 0
@@ -5404,7 +5429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 7
+  m_text: Level 6
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5855,7 +5880,7 @@ PrefabInstance:
     - target: {fileID: 803494858, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: levelSelection
       value: 
-      objectReference: {fileID: 332728557}
+      objectReference: {fileID: 5965994493907889753}
     - target: {fileID: 4072395182782826382, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: m_Name
       value: SelectLevelTable
@@ -5882,31 +5907,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -955.16
+      value: -949.53
       objectReference: {fileID: 0}
     - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -539.01
+      value: -500.23
       objectReference: {fileID: 0}
     - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.52
+      value: -53.71
       objectReference: {fileID: 0}
     - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalRotation.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5914,7 +5939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -5922,6 +5947,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
+--- !u!4 &7182250772220607119 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
+  m_PrefabInstance: {fileID: 2005288440}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1482825266 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 803494858, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
@@ -5933,11 +5963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 440c59ef402bfa84680b0c1ad01b5162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7182250772220607119 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-  m_PrefabInstance: {fileID: 2005288440}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3768196662691065752
 PrefabInstance:
   m_ObjectHideFlags: 0
