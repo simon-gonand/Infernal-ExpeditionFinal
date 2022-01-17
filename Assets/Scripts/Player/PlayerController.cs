@@ -602,7 +602,7 @@ public class PlayerController : MonoBehaviour
         if (PlayerManager.instance.respawnOnBoat)
             respawnPosition = BoatManager.instance.spawnPoint1.position;
         else
-            respawnPosition = PlayerManager.instance.respawnPoint;
+            respawnPosition = PlayerManager.instance.respawnPoint.position;
         respawnPosition.y += self.lossyScale.y;
         if (isSwimming)
         {

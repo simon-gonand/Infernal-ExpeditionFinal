@@ -70,7 +70,7 @@ public class NPCEvents : MonoBehaviour
     public void StartLanding(Transform t)
     {
         PlayerManager.instance.respawnOnBoat = false;
-        PlayerManager.instance.respawnPoint = t.position;
+        PlayerManager.instance.respawnPoint = t;
         foreach (PlayerController player in PlayerManager.instance.players)
         {
             if (player.isOnBoat)

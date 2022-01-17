@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
 
     private bool _respawnOnBoat;
     public bool respawnOnBoat { set { _respawnOnBoat = value; } get { return _respawnOnBoat; } }
-    [HideInInspector] public Vector3 respawnPoint;
+    [HideInInspector] public Transform respawnPoint;
 
     public static PlayerManager instance;
 
@@ -72,10 +72,10 @@ public class PlayerManager : MonoBehaviour
         // Update players spawn positions according to which player is spawning
         // Player is spawning on the boat
         Transform playerTransform = playerInput.gameObject.transform;
-        Vector3 playerSpawnPosition = SetPlayerPosition(playerInput.playerIndex);
+        Transform playerSpawnPosition = SetPlayerPosition(playerInput.playerIndex);
         if (onPirateIsland && playerInput.playerIndex == 0)
-            playerSpawnPosition = playerTransform.position;
-        playerTransform.position = playerSpawnPosition;
+            playerSpawnPosition = playerTransform;
+        playerTransform.position = playerSpawnPosition.position;
         if (!onPirateIsland && respawnOnBoat)
         {
             playerTransform.SetParent(BoatManager.instance.self);
@@ -87,6 +87,7 @@ public class PlayerManager : MonoBehaviour
         if (onPirateIsland)
         {
             playerTransform.SetParent(BoatManager.instance.self.parent);
+            playerTransform.rotation = playerSpawnPosition.rotation;
         }
         if (GameManager.instance != null)
             GameManager.instance.targetGroup.AddMember(playerTransform, weight, 20);
@@ -94,14 +95,14 @@ public class PlayerManager : MonoBehaviour
         player.id = playerInput.playerIndex;
         _players.Add(player);
 
-        AudioManager.AMInstance.playerRespawnSFX.Post(gameObject);
+        //AudioManager.AMInstance.playerRespawnSFX.Post(gameObject);
     }
 
-    private Vector3 SetPlayerPosition(int id)
+    private Transform SetPlayerPosition(int id)
     {
-        Vector3 playerSpawnPosition = BoatManager.instance.spawnPoint1.position;
+        Transform playerSpawnPosition = BoatManager.instance.spawnPoint1;
         if (onPirateIsland)
-            playerSpawnPosition = player1Spawn.transform.position;
+            playerSpawnPosition = player1Spawn.transform;
         switch (id)
         {
             case 0:
@@ -110,31 +111,31 @@ public class PlayerManager : MonoBehaviour
             case 1:
                 if (onPirateIsland)
                 {
-                    playerSpawnPosition = player2Spawn.transform.position;
+                    playerSpawnPosition = player2Spawn.transform;
                     Destroy(player2Spawn);
                 }
                 else
-                    playerSpawnPosition = BoatManager.instance.spawnPoint2.position;
+                    playerSpawnPosition = BoatManager.instance.spawnPoint2;
                 self.playerPrefab = player3;
                 break;
             case 2:
                 if (onPirateIsland)
                 {
-                    playerSpawnPosition = player3Spawn.transform.position;
+                    playerSpawnPosition = player3Spawn.transform;
                     Destroy(player3Spawn);
                 }
                 else
-                    playerSpawnPosition = BoatManager.instance.spawnPoint3.position;
+                    playerSpawnPosition = BoatManager.instance.spawnPoint3;
                 self.playerPrefab = player4;
                 break;
             case 3:
                 if (onPirateIsland)
                 {
-                    playerSpawnPosition = player4Spawn.transform.position;
+                    playerSpawnPosition = player4Spawn.transform;
                     Destroy(player4Spawn);
                 }
                 else
-                    playerSpawnPosition = BoatManager.instance.spawnPoint4.position;
+                    playerSpawnPosition = BoatManager.instance.spawnPoint4;
                 break;
             default:
                 break;
@@ -171,7 +172,10 @@ public class PlayerManager : MonoBehaviour
         {
             PlayerController player = players[i];
             player.ResetPlayer();
-            player.self.position = SetPlayerPosition(i);
+            Transform spawn = SetPlayerPosition(i);
+            player.self.position = spawn.position;
+            if (onPirateIsland)
+                player.self.rotation = spawn.rotation;
             GameManager.instance.targetGroup.AddMember(player.self, weight, 20);
         }
     }
