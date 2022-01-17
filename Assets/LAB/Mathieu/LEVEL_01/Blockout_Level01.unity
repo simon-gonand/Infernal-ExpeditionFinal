@@ -13383,7 +13383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720dfe0740be3744d80d5413be352592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWaypoint: 29
+  startWaypoint: 0
   waypoints:
   - {fileID: 421159432}
   - {fileID: 504076747}
@@ -13556,7 +13556,7 @@ Transform:
   - {fileID: 1483926642}
   - {fileID: 299265342}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &231305412
 Mesh:
@@ -30030,7 +30030,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &515140236
 GameObject:
@@ -38571,7 +38571,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 51.649, y: 0, z: 0}
 --- !u!1001 &667517953
 PrefabInstance:
@@ -50605,7 +50605,19 @@ MonoBehaviour:
   self: {fileID: 0}
   NPCEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1432790804}
+        m_TargetAssemblyTypeName: NPCEvents, Assembly-CSharp
+        m_MethodName: EndLanding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   modifierEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -52963,7 +52975,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &944097634
 Mesh:
@@ -67641,7 +67653,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!43 &1178460640
 Mesh:
@@ -68909,6 +68921,68 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1001 &1194303649
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1183381494965175089, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183381494965175089, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -106.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183381494965175089, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.36336994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183381494965175089, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 805.5461
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183381494965175089, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.82442266
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183381494965175089, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183381494965175089, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.56597465
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183381494965175089, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183381494965175089, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183381494965175089, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 68.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183381494965175089, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632411386656871921, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+      propertyPath: m_Name
+      value: SpawnFlag
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+--- !u!4 &1194303650 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1183381494965175089, guid: a49b8e7f1e473544ba6e65cc923cbcad, type: 3}
+  m_PrefabInstance: {fileID: 1194303649}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1197378199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81097,6 +81171,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 332886954977132276, guid: c8e909e23e583c44890dd052a563af6d, type: 3}
   m_PrefabInstance: {fileID: 1432790802}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1432790804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3378882920823183795, guid: c8e909e23e583c44890dd052a563af6d, type: 3}
+  m_PrefabInstance: {fileID: 1432790802}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6791a8683f52c4c4680ad564c366f6b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1433781909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89586,7 +89671,7 @@ Transform:
   - {fileID: 441116667}
   - {fileID: 1802324588}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1586437096
 GameObject:
@@ -119313,7 +119398,19 @@ MonoBehaviour:
   self: {fileID: 0}
   NPCEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1432790804}
+        m_TargetAssemblyTypeName: NPCEvents, Assembly-CSharp
+        m_MethodName: StartLanding
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1194303650}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   modifierEvent:
     m_PersistentCalls:
       m_Calls: []
