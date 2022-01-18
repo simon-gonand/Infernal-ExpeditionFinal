@@ -211,7 +211,8 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(self.position, -collisionDirection, 1.0f, mask))
                 StopDash();
         }
-        if (_isCarrying && collision.collider.GetComponent<ICarriable>() != _carrying)
+        if (_isCarrying && collision.collider.GetComponent<ICarriable>() != _carrying &&
+            collision.collider.gameObject.layer != LayerMask.NameToLayer("Floor"))
         {
             collisionDirection = collision.GetContact(0).normal;
             if (!Physics.Raycast(self.position, -collisionDirection, 1.0f, mask))

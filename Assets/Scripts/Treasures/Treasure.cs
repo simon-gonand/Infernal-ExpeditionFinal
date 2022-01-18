@@ -71,7 +71,6 @@ public class Treasure : MonoBehaviour, ICarriable
         }
         if (_playerInteractingWith.Count > 0)
         {
-            Debug.Log(collision.collider.name);
             _collisionDirection = collision.GetContact(0).normal;
             _isColliding = true;
             collidingWith = collision.collider.GetComponent<Rigidbody>();
