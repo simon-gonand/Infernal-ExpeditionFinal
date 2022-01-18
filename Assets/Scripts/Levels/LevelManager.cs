@@ -19,7 +19,17 @@ public class LevelManager
 
     public void StartLevel()
     {
-        //Cursor.visible = false;
+        if (levelId == 0)
+            Cursor.visible = false;
+        else
+            Cursor.visible = true;
+        if (levelId == 7)
+        {
+            foreach (PlayerController player in PlayerManager.instance.players)
+            {
+                player.selfPlayerInput.currentActionMap.Disable();
+            }
+        }
     }
 
     public void EndLevel()

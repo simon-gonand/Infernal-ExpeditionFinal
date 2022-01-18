@@ -24,6 +24,10 @@ public class FogLevel7Behaviour : MonoBehaviour
             rend.material.SetFloat("Vector1_6F1EA0F8", fogValue);
             yield return new WaitForSeconds(timeOffset);
         }
+        foreach (PlayerController player in PlayerManager.instance.players)
+        {
+            player.selfPlayerInput.currentActionMap.Enable();
+        }
         yield return null;
     }
 }

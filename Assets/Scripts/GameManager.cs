@@ -42,9 +42,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(string sceneName, bool isBoatInScene)
     {
-        string levelIdStr = sceneName.Substring(sceneName.Length - 2);
-        if (levelIdStr[0] == '0')
-            levelIdStr = levelIdStr.Substring(1);
+        string levelIdStr = sceneName.Substring(sceneName.Length - 1);
         try
         {
             LevelManager.instance.levelId = Convert.ToInt32(levelIdStr);
