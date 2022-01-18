@@ -1,69 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPCEvents : MonoBehaviour
 {
-    [SerializeField] private float time;
-    [SerializeField] private bool displayingToken;
-    public float timeToDisplay;
+    public Transform spawnPopUp;
+    public ParticleSystem popUpSystem;
 
-    [SerializeField] private Transform displayToken;
+    [Space(10)]
+    public GameObject popUpDisplay;
+    public GameObject[] popUp;
 
-    [SerializeField] private GameObject speedUpToken;
-    [SerializeField] private GameObject speedDownToken;
-
-    private GameObject currentObject;
 
 
     private void Start()
     {
-        time = 0;
-        displayingToken = false;
-    }
-
-    private void Update()
-    {
-        if (displayingToken)
+        for (int i = 0; i < popUp.Length; i++)
         {
-            time += Time.deltaTime;            
-        }
-
-        if (time >= timeToDisplay)
-        {
-            displayingToken = false;
-            Destroy(currentObject);
-            time = 0;
+            popUp[i].SetActive(true);
         }
     }
-    public void OnSpeedUp()
-    {
-        if (currentObject != null)
-        {
-            Destroy(currentObject);
-            time = 0;
-        }
-        currentObject = Instantiate(speedUpToken, displayToken.transform);
 
-        displayingToken = true;
-        Debug.Log("Speed up !");
+    //CAPTAIN NPC 
+    public void OnCaptainCallLanding()
+    {
+        popUpSystem.transform.position = spawnPopUp.position;
+        popUpSystem.Play();
+        Debug.Log("Landing !");
     }
 
-    public void OnSpeedDown()
+    public void OnCaptainCallAllAboard()
     {
-        if (currentObject != null)
-        {
-            Destroy(currentObject);
-            time = 0;
-        }
-        currentObject = Instantiate(speedDownToken, displayToken.transform);
-
-        displayingToken = true;
-        Debug.Log("Speed down !");
+        popUpSystem.transform.position = spawnPopUp.position;
+        popUpSystem.Play();
+        Debug.Log("All Aboard !");
     }
 
-    public void OnLastCall()
+    //LEVEL ADVERTISING
+    public void OnStartLevel()
     {
+        popUp[0].SetActive(true);
+
+        popUpDisplay = popUp[0];
+
+        for (int i = 0; i < popUp.Length; i++)
+        {
+            if (popUp[i] != popUpDisplay)
+            {
+                popUp[i].SetActive(false);
+            }
+        }
+
+        popUpSystem.transform.position = spawnPopUp.position;
+        popUpSystem.Play();
+        Debug.Log("Level Start !");
+    }
+
+    public void OnLastIsland()
+    {
+        popUp[1].SetActive(true);
+
+        popUpDisplay = popUp[1];
+
+        for (int i = 0; i < popUp.Length; i++)
+        {
+            if (popUp[i] != popUpDisplay)
+            {
+                popUp[i].SetActive(false);
+            }
+        }
+
+        popUpSystem.transform.position = spawnPopUp.position;
+        popUpSystem.Play();
         Debug.Log("Last Island !");
     }
 
