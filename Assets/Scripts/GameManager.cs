@@ -121,4 +121,58 @@ public class GameManager : MonoBehaviour
             targetGroup.RemoveMember(BoatManager.instance.self);
         }
     }
+
+
+    public void GetStarsValue(List<Treasure> _Treasurs,int _numberOfPlayer , int _firstStar, int _secondStar, int _thirdStar)
+    {
+        List<Treasure> littleTreasurs = new List<Treasure>();
+        List<Treasure> mediumTreasurs = new List<Treasure>();
+        List<Treasure> bigTreasurs = new List<Treasure>();
+
+        int littleValue = 0;
+        int mediumValue = 0;
+        int bigValue = 0;
+
+        for (int i= 0; i < _Treasurs.Count; i++)
+        {
+            if(_Treasurs[i].category.maxPlayerCarrying == 4)
+            {
+                bigTreasurs.Add(_Treasurs[i]);
+                bigValue += _Treasurs[i].price;
+            }
+            else if(_Treasurs[i].category.maxPlayerCarrying == 2)
+            {
+                mediumTreasurs.Add(_Treasurs[i]);
+                mediumValue += _Treasurs[i].price;
+            }
+            else if (_Treasurs[i].category.maxPlayerCarrying == 1)
+            {
+                littleTreasurs.Add(_Treasurs[i]);
+                littleValue += _Treasurs[i].price;
+            }
+        }
+
+
+        int duoGlobalValue = littleValue + mediumValue + (bigValue/2);
+        int trioGlobalValue = littleValue + mediumValue + ((bigValue / 3)*2);
+        int quatuorGlobalValue = littleValue + mediumValue + bigValue;
+
+
+
+        if(_numberOfPlayer == 4)
+        {
+            _thirdStar = (quatuorGlobalValue / 3) * 2;
+        }
+        else if (_numberOfPlayer == 3)
+        {
+            _thirdStar = (trioGlobalValue / 3) * 2;
+        }
+        else
+        {
+            _thirdStar = (duoGlobalValue / 3) * 2;
+        }
+
+        _secondStar = (_firstStar / 3) * 2;
+        _firstStar = (_firstStar / 3);
+    }
 }
