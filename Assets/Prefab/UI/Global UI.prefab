@@ -255,7 +255,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482825266}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectLevels, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
@@ -864,7 +864,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482825266}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectLevels, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
@@ -919,7 +919,7 @@ RectTransform:
   - {fileID: 732106672}
   - {fileID: 1197573994}
   m_Father: {fileID: 3484607225995517742}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1109,7 +1109,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482825266}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectLevels, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
@@ -1644,7 +1644,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482825266}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectLevels, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
@@ -1777,7 +1777,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482825266}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectLevels, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
@@ -1910,7 +1910,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482825266}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectLevels, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
@@ -2658,7 +2658,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482825266}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectLevels, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
@@ -3331,7 +3331,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482825266}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectLevels, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
@@ -3464,7 +3464,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482825266}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectLevels, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
@@ -3597,7 +3597,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482825266}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectLevels, Assembly-CSharp
         m_MethodName: Back
         m_Mode: 1
@@ -4516,7 +4516,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3484607225995517742}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1602486897
 MonoBehaviour:
@@ -4948,7 +4948,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482825266}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectLevels, Assembly-CSharp
         m_MethodName: SelectLevel
         m_Mode: 3
@@ -5673,7 +5673,6 @@ RectTransform:
   m_Children:
   - {fileID: 3484607226054657830}
   - {fileID: 968316107}
-  - {fileID: 7182250772220607119}
   - {fileID: 332728558}
   - {fileID: 1602486895}
   - {fileID: 3408202290180684757}
@@ -5791,7 +5790,7 @@ RectTransform:
   m_Children:
   - {fileID: 1974273979}
   m_Father: {fileID: 3484607225995517742}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -5845,7 +5844,7 @@ RectTransform:
   m_Children:
   - {fileID: 2046235083516285851}
   m_Father: {fileID: 3484607225995517742}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5870,99 +5869,6 @@ MonoBehaviour:
   - {fileID: 3711102633642900278, guid: 556a0f0936cd495438b983c17ea32adf, type: 3}
   - {fileID: 6643827241043025187, guid: 39d1340c4145a8c4598ef778c1a46841, type: 3}
   verticalGroup: {fileID: 2046235083516285851}
---- !u!1001 &2005288440
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 3484607225995517742}
-    m_Modifications:
-    - target: {fileID: 803494858, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: levelSelection
-      value: 
-      objectReference: {fileID: 5965994493907889753}
-    - target: {fileID: 4072395182782826382, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_Name
-      value: SelectLevelTable
-      objectReference: {fileID: 0}
-    - target: {fileID: 4072395182782826382, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -892.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -763.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -93.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
---- !u!4 &7182250772220607119 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-  m_PrefabInstance: {fileID: 2005288440}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1482825266 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 803494858, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
-  m_PrefabInstance: {fileID: 2005288440}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440c59ef402bfa84680b0c1ad01b5162, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3768196662691065752
 PrefabInstance:
   m_ObjectHideFlags: 0
