@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21392,7 +21392,7 @@ MonoBehaviour:
   anchors:
   - {x: 12.0495205, y: 0.030038118, z: 195.46104}
   - {x: 23.538357, y: 0.030038118, z: 228.72984}
-  speed: 0.1
+  speed: 0.08
   XCameraOffset:
     serializedVersion: 2
     m_Curve:
@@ -23881,7 +23881,7 @@ MonoBehaviour:
   anchors:
   - {x: 5.2946315, y: 0.030035734, z: 161.67215}
   - {x: 9.901615, y: 0.030035734, z: 187.11955}
-  speed: 0.2
+  speed: 0.1
   XCameraOffset:
     serializedVersion: 2
     m_Curve:
