@@ -435,6 +435,17 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Map_Opening" ID="{654FA256-57ED-4FD4-A229-29EC1CBBAC29}">
+							<ChildrenList>
+								<Action Name="" ID="{3180BA52-A906-4B6F-B505-F40946B151F3}" ShortID="295427363">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Map_Open" ID="{E199E3D9-BA6F-4607-A621-9369892B0A9F}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="UI" ID="{AF716618-CE0C-4A19-8084-070B8D3CB72E}" ShortID="573908604">
