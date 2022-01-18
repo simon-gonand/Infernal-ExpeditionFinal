@@ -21,7 +21,7 @@ public class FogLevel7Behaviour : MonoBehaviour
         while (fogValue > 0.0f)
         {
             fogValue -= 0.5f;
-            rend.sharedMaterial.SetFloat("Vector1_6F1EA0F8", fogValue);
+            rend.material.SetFloat("Vector1_6F1EA0F8", fogValue);
             yield return new WaitForSeconds(timeOffset);
         }
         yield return null;
