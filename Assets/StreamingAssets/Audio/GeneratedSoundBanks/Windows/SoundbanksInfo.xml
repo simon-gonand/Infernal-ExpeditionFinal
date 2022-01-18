@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="4270660371">
+		<SoundBank Id="393239870" Language="SFX" Hash="76589531">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -24,7 +24,7 @@
 						</File>
 						<File Id="857342633" Language="SFX">
 							<ShortName>Chest_GroundImpact.wav</ShortName>
-							<Path>SFX\Chest_GroundImpact_41DCC55B.wem</Path>
+							<Path>SFX\Chest_GroundImpact_E0A90DA3.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 					<ActionTrigger>
@@ -99,18 +99,6 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3401161239" Name="Beach_Ambient" ObjectPath="\Events\Default Work Unit\World\Beach_Ambient" DurationType="Infinite">
-					<IncludedMemoryFiles>
-						<File Id="780879456" Language="SFX">
-							<ShortName>Ambience_Islande_Sea.wav</ShortName>
-							<Path>SFX\Ambience_Islande_Sea_D79FB2B7.wem</Path>
-						</File>
-						<File Id="1062721811" Language="SFX">
-							<ShortName>Ambience_Islande_Bird.wav</ShortName>
-							<Path>SFX\Ambience_Islande_Bird_018D7BB3.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
 				<Event Id="903419691" Name="E_Clsq_Attack" ObjectPath="\Events\Default Work Unit\Enemy\E_Clsq_Attack" DurationType="OneShot" DurationMin="0.471936" DurationMax="0.517484">
 					<IncludedMemoryFiles>
 						<File Id="22319495" Language="SFX">
@@ -128,6 +116,62 @@
 						<File Id="1063609588" Language="SFX">
 							<ShortName>Enemy_SlashAttack_3.wav</ShortName>
 							<Path>SFX\Enemy_SlashAttack_3_7C806E9E.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1286256413" Name="E_Pks_Carry" ObjectPath="\Events\Default Work Unit\Enemy\E_Pks_Carry" DurationType="OneShot" DurationMin="0.016103" DurationMax="0.019150">
+					<IncludedMemoryFiles>
+						<File Id="419678518" Language="SFX">
+							<ShortName>Piksou_Carry.wav</ShortName>
+							<Path>SFX\Piksou_Carry_AFFFA148.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1927982858" Name="E_Trl_Death" ObjectPath="\Events\Default Work Unit\Enemy\E_Trl_Death" DurationType="OneShot" DurationMin="1.636135" DurationMax="2.284245">
+					<IncludedMemoryFiles>
+						<File Id="51065844" Language="SFX">
+							<ShortName>TrlDeath_GroundImpact.wav</ShortName>
+							<Path>SFX\TrlDeath_GroundImpact_10C4C929.wem</Path>
+						</File>
+						<File Id="114703110" Language="SFX">
+							<ShortName>TrlDeath_Metal4.wav</ShortName>
+							<Path>SFX\TrlDeath_Metal4_10C4C929.wem</Path>
+						</File>
+						<File Id="165730868" Language="SFX">
+							<ShortName>TrlDeath_Metal2.wav</ShortName>
+							<Path>SFX\TrlDeath_Metal2_10C4C929.wem</Path>
+						</File>
+						<File Id="348861788" Language="SFX">
+							<ShortName>TrlDeath_Metal1.wav</ShortName>
+							<Path>SFX\TrlDeath_Metal1_10C4C929.wem</Path>
+						</File>
+						<File Id="981632398" Language="SFX">
+							<ShortName>TrlDeath_Metal3.wav</ShortName>
+							<Path>SFX\TrlDeath_Metal3_10C4C929.wem</Path>
+						</File>
+						<File Id="987030019" Language="SFX">
+							<ShortName>TrlDeath_Wood.wav</ShortName>
+							<Path>SFX\TrlDeath_Wood_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="565240443" Name="E_Trl_Reload" ObjectPath="\Events\Default Work Unit\Enemy\E_Trl_Reload" DurationType="OneShot" DurationMin="2.766836" DurationMax="3.836312">
+					<IncludedMemoryFiles>
+						<File Id="580808004" Language="SFX">
+							<ShortName>Reload_Impact.wav</ShortName>
+							<Path>SFX\Reload_Impact_10C4C929.wem</Path>
+						</File>
+						<File Id="756136740" Language="SFX">
+							<ShortName>Reload_Entry.wav</ShortName>
+							<Path>SFX\Reload_Entry_10C4C929.wem</Path>
+						</File>
+						<File Id="785270180" Language="SFX">
+							<ShortName>Reload_Exit.wav</ShortName>
+							<Path>SFX\Reload_Exit_10C4C929.wem</Path>
+						</File>
+						<File Id="910134498" Language="SFX">
+							<ShortName>Reload_Rolling.wav</ShortName>
+							<Path>SFX\Reload_Rolling_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -150,6 +194,45 @@
 							<Path>SFX\EnemyTrl_Shot_1_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1488092454" Name="Game_Ambient" ObjectPath="\Events\Default Work Unit\World\Game_Ambient" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="297768728" Language="SFX">
+							<ShortName>Ambience_Islande_Global.wav</ShortName>
+							<Path>SFX\Ambience_Islande_Global_D79FB2B7.wem</Path>
+						</File>
+						<File Id="780879456" Language="SFX">
+							<ShortName>Ambience_Islande_Sea.wav</ShortName>
+							<Path>SFX\Ambience_Islande_Sea_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<SwitchContainers>
+						<SwitchContainer SwitchValue="{C0654D03-2CF0-4648-85E5-E91A38BFC7DF}">
+							<Media>
+								<File Id="297768728"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}">
+							<Media>
+								<File Id="780879456"/>
+							</Media>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="3945971227" Name="GameplayNavigationSwitch" ObjectPath="\Events\Default Work Unit\World\GameplayNavigationSwitch" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry Id="1082482811" Name="Navigation" ObjectPath="\Switches\Default Work Unit\GameplayType\Navigation"/>
+					</ActionSetSwitch>
+				</Event>
+				<Event Id="3180343601" Name="GameplayPillageSwitch" ObjectPath="\Events\Default Work Unit\World\GameplayPillageSwitch" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry Id="2579631677" Name="Pillage" ObjectPath="\Switches\Default Work Unit\GameplayType\Pillage"/>
+					</ActionSetSwitch>
+				</Event>
+				<Event Id="1656055475" Name="Map_Completed" ObjectPath="\Events\Default Work Unit\World\Map_Completed" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry Id="2716678721" Name="Victory" ObjectPath="\Switches\Default Work Unit\GameplayType\Victory"/>
+					</ActionSetSwitch>
 				</Event>
 				<Event Id="491820422" Name="P_Attack" ObjectPath="\Events\Default Work Unit\Players\P_Attack" DurationType="OneShot" DurationMin="0.111844" DurationMax="0.284734">
 					<IncludedMemoryFiles>
@@ -364,6 +447,30 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
+				<Event Id="500255786" Name="P_Respawn" ObjectPath="\Events\Default Work Unit\Players\P_Respawn" DurationType="OneShot" DurationMin="2.148323" DurationMax="2.148323">
+					<IncludedMemoryFiles>
+						<File Id="85992371" Language="SFX">
+							<ShortName>RespawnBass_Hight.wav</ShortName>
+							<Path>SFX\RespawnBass_Hight_10C4C929.wem</Path>
+						</File>
+						<File Id="144454103" Language="SFX">
+							<ShortName>RespawnBass_MidLow.wav</ShortName>
+							<Path>SFX\RespawnBass_MidLow_10C4C929.wem</Path>
+						</File>
+						<File Id="544976667" Language="SFX">
+							<ShortName>Player_Spawn.wav</ShortName>
+							<Path>SFX\Player_Spawn_10C4C929.wem</Path>
+						</File>
+						<File Id="600871656" Language="SFX">
+							<ShortName>RespawnBass_MidHight.wav</ShortName>
+							<Path>SFX\RespawnBass_MidHight_10C4C929.wem</Path>
+						</File>
+						<File Id="1073061748" Language="SFX">
+							<ShortName>RespawnBass_Low.wav</ShortName>
+							<Path>SFX\RespawnBass_Low_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3280416103" Name="P_Steps" ObjectPath="\Events\Default Work Unit\Players\P_Steps" DurationType="OneShot" DurationMin="0.050171" DurationMax="1.507198">
 					<IncludedMemoryFiles>
 						<File Id="169199" Language="SFX">
@@ -476,6 +583,26 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3942208158" Name="P_Swim" ObjectPath="\Events\Default Work Unit\Players\P_Swim" DurationType="OneShot" DurationMin="0.637284" DurationMax="0.948075">
+					<IncludedMemoryFiles>
+						<File Id="169199" Language="SFX">
+							<ShortName>Footsteps_Sea_1.wav</ShortName>
+							<Path>SFX\Footsteps_Sea_1_0089FE84.wem</Path>
+						</File>
+						<File Id="102166623" Language="SFX">
+							<ShortName>Footsteps_Sea_4.wav</ShortName>
+							<Path>SFX\Footsteps_Sea_4_5FE2D3F1.wem</Path>
+						</File>
+						<File Id="455967247" Language="SFX">
+							<ShortName>Footsteps_Sea_2.wav</ShortName>
+							<Path>SFX\Footsteps_Sea_2_97327C67.wem</Path>
+						</File>
+						<File Id="547652259" Language="SFX">
+							<ShortName>Footsteps_Sea_3.wav</ShortName>
+							<Path>SFX\Footsteps_Sea_3_970976F7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="1504870946" Name="P_Throw" ObjectPath="\Events\Default Work Unit\Players\P_Throw" DurationType="OneShot" DurationMin="0.247933" DurationMax="1.130663">
 					<IncludedMemoryFiles>
 						<File Id="462619250" Language="SFX">
@@ -485,6 +612,22 @@
 						<File Id="685935742" Language="SFX">
 							<ShortName>Player_Throw.wav</ShortName>
 							<Path>SFX\Player_Throw_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4030367049" Name="W_ChestDrop" ObjectPath="\Events\Default Work Unit\World\W_ChestDrop" DurationType="OneShot" DurationMin="0.707281" DurationMax="1.000247">
+					<IncludedMemoryFiles>
+						<File Id="317925122" Language="SFX">
+							<ShortName>ChestImpact_Metal.wav</ShortName>
+							<Path>SFX\ChestImpact_Metal_10C4C929.wem</Path>
+						</File>
+						<File Id="657582970" Language="SFX">
+							<ShortName>ChestImpact_Wood.wav</ShortName>
+							<Path>SFX\ChestImpact_Wood_10C4C929.wem</Path>
+						</File>
+						<File Id="857342633" Language="SFX">
+							<ShortName>Chest_GroundImpact.wav</ShortName>
+							<Path>SFX\Chest_GroundImpact_E0A90DA3.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -502,6 +645,24 @@
 					</States>
 				</StateGroup>
 			</StateGroups>
+			<SwitchGroups>
+				<SwitchGroup Id="924435401" Name="GameplayType" ObjectPath="\Switches\Default Work Unit\GameplayType" GUID="{DE7C2D58-7410-44F0-A754-47D7D5A60A22}">
+					<Switches>
+						<Switch Id="2579631677" Name="Pillage" ObjectPath="\Switches\Default Work Unit\GameplayType\Pillage" GUID="{C0654D03-2CF0-4648-85E5-E91A38BFC7DF}"/>
+						<Switch Id="1082482811" Name="Navigation" ObjectPath="\Switches\Default Work Unit\GameplayType\Navigation" GUID="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}"/>
+						<Switch Id="2716678721" Name="Victory" ObjectPath="\Switches\Default Work Unit\GameplayType\Victory" GUID="{82B97427-88B8-48FA-B6C3-EEF601635E90}"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="1082482811" Name="Navigation" ObjectPath="\Switches\Default Work Unit\GameplayType\Navigation" GUID="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}">
+					<Switches/>
+				</SwitchGroup>
+				<SwitchGroup Id="2579631677" Name="Pillage" ObjectPath="\Switches\Default Work Unit\GameplayType\Pillage" GUID="{C0654D03-2CF0-4648-85E5-E91A38BFC7DF}">
+					<Switches/>
+				</SwitchGroup>
+				<SwitchGroup Id="2716678721" Name="Victory" ObjectPath="\Switches\Default Work Unit\GameplayType\Victory" GUID="{82B97427-88B8-48FA-B6C3-EEF601635E90}">
+					<Switches/>
+				</SwitchGroup>
+			</SwitchGroups>
 			<Triggers>
 				<Trigger Id="1087296951" Name="Collect_Treasure" ObjectPath="\Triggers\Default Work Unit\Collect_Treasure"/>
 			</Triggers>
@@ -511,7 +672,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="1730564753" Language="SFX" Hash="3262415426">
+		<SoundBank Id="1730564753" Language="SFX" Hash="1958256380">
 			<ObjectPath>\SoundBanks\Default Work Unit\Musics</ObjectPath>
 			<ShortName>Musics</ShortName>
 			<Path>Musics.bnk</Path>
@@ -542,6 +703,10 @@
 							<ShortName>Pillage A\CombatA_Strings-1_120Bpm_4-4_L8_P0.wav</ShortName>
 							<Path>SFX\Pillage A\CombatA_Strings-1_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
 						</File>
+						<File Id="206044369" Language="SFX">
+							<ShortName>NavigationA_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\NavigationA_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
 						<File Id="244074245" Language="SFX">
 							<ShortName>CombatB_Marimba-2_120Bpm_4-4_L8_P0.wav</ShortName>
 							<Path>SFX\CombatB_Marimba-2_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
@@ -561,6 +726,10 @@
 						<File Id="338165594" Language="SFX">
 							<ShortName>Pillage B\CombatB_Violons_120Bpm_4-4_L8_P0.wav</ShortName>
 							<Path>SFX\Pillage B\CombatB_Violons_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="433189164" Language="SFX">
+							<ShortName>TransToVictory_120Bpm_4-4_L2_P0.wav</ShortName>
+							<Path>SFX\TransToVictory_120Bpm_4-4_L2_P0_D79FB2B7.wem</Path>
 						</File>
 						<File Id="520914665" Language="SFX">
 							<ShortName>Pillage B\CombatB_Flute_120Bpm_4-4_L8_P0.wav</ShortName>
@@ -582,6 +751,10 @@
 							<ShortName>Pillage B\CombatB_Cellos_120Bpm_4-4_L8_P0.wav</ShortName>
 							<Path>SFX\Pillage B\CombatB_Cellos_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
 						</File>
+						<File Id="782744123" Language="SFX">
+							<ShortName>NavigationB_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\NavigationB_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
 						<File Id="785336816" Language="SFX">
 							<ShortName>Pillage B\CombatB_Beat_120Bpm_4-4_L8_P0.wav</ShortName>
 							<Path>SFX\Pillage B\CombatB_Beat_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
@@ -594,9 +767,58 @@
 							<ShortName>Pillage A\CombatA_Violons_120Bpm_4-4_L8_P0.wav</ShortName>
 							<Path>SFX\Pillage A\CombatA_Violons_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
 						</File>
+						<File Id="1014217387" Language="SFX">
+							<ShortName>Victory_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\Victory_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
 					</IncludedMemoryFiles>
+					<SwitchContainers>
+						<SwitchContainer SwitchValue="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}">
+							<Media>
+								<File Id="206044369"/>
+								<File Id="782744123"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{C0654D03-2CF0-4648-85E5-E91A38BFC7DF}">
+							<Media>
+								<File Id="13670849"/>
+								<File Id="70022786"/>
+								<File Id="87767042"/>
+								<File Id="142469888"/>
+								<File Id="163457329"/>
+								<File Id="169300384"/>
+								<File Id="244074245"/>
+								<File Id="297003049"/>
+								<File Id="311519212"/>
+								<File Id="313398368"/>
+								<File Id="338165594"/>
+								<File Id="520914665"/>
+								<File Id="538941454"/>
+								<File Id="659660252"/>
+								<File Id="662446235"/>
+								<File Id="780506284"/>
+								<File Id="785336816"/>
+								<File Id="831820229"/>
+								<File Id="910625862"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{82B97427-88B8-48FA-B6C3-EEF601635E90}">
+							<Media>
+								<File Id="1014217387"/>
+							</Media>
+						</SwitchContainer>
+					</SwitchContainers>
 				</Event>
 			</IncludedEvents>
+			<SwitchGroups>
+				<SwitchGroup Id="924435401" Name="GameplayType" ObjectPath="\Switches\Default Work Unit\GameplayType" GUID="{DE7C2D58-7410-44F0-A754-47D7D5A60A22}">
+					<Switches>
+						<Switch Id="2579631677" Name="Pillage" ObjectPath="\Switches\Default Work Unit\GameplayType\Pillage" GUID="{C0654D03-2CF0-4648-85E5-E91A38BFC7DF}"/>
+						<Switch Id="1082482811" Name="Navigation" ObjectPath="\Switches\Default Work Unit\GameplayType\Navigation" GUID="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}"/>
+						<Switch Id="2716678721" Name="Victory" ObjectPath="\Switches\Default Work Unit\GameplayType\Victory" GUID="{82B97427-88B8-48FA-B6C3-EEF601635E90}"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
 			<Triggers>
 				<Trigger Id="1087296951" Name="Collect_Treasure" ObjectPath="\Triggers\Default Work Unit\Collect_Treasure"/>
 			</Triggers>

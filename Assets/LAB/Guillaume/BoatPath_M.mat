@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BoatPath_M
+  m_Shader: {fileID: -6465566751694194690, guid: c647b8ab7e3f3a7428c3c2f1983f51b0, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_6bc7ee927554474ba1ed5fd8d38e91e3:
+        m_Texture: {fileID: 2800000, guid: c3cd543f6ef6218448ab3ee9fb3b1bcc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_ba42e64944424d518e080d5c5f35502a:
+        m_Texture: {fileID: 2800000, guid: c3cd543f6ef6218448ab3ee9fb3b1bcc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_2a2aa94102e84a4e9b045126ac8bdd09: 0
+    - Vector1_41140aef2f4841ddbdce13e83b00f14d: 1
+    - Vector1_51019ea1fed44fa3abb69a0f16ca0f03: 18.52
+    - Vector1_5daa7df5f58d4e19a557ffc94226bd52: -1
+    - Vector1_7705cbd7ecf048329369ef0cd19cb86b: 0.5
+    - Vector1_b4d2962e97964d51a1cbe71e91d7a66f: -1
+    - Vector1_d939ccd5d7c247a7ad8686cc4cf1bc54: 0.5
+    - Vector1_dc08015a0d364f4d9f13c8378a3ce2a8: 0.05
+    m_Colors:
+    - Color_0b1c34625e3140d59dd86509a3993310: {r: 0.8679245, g: 0.20813997, b: 0.15966538, a: 0.78431374}
+    - Color_c515422c6f0d4896bda3f2c59bd20fac: {r: 0.2235294, g: 0.28939041, b: 1, a: 1}
+    - Vector2_1014158891c342ba87ea5111b46a5021: {r: 0.05, g: 1, b: 0, a: 0}
+    - Vector2_1fa2351b33b4422bb9e7f479578ea7b9: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
