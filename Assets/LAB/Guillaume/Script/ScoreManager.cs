@@ -37,6 +37,8 @@ public class ScoreManager : MonoBehaviour
         }
         #endregion
 
+        GameManager.instance.GetStarsValue(4, scoreNeedForBronze, scoreNeedForSilver, scoreNeedForGold);
+
         scoreNeedForNextStar = scoreNeedForBronze;
         scoreOfActualStar = 0;
     }

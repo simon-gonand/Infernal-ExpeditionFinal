@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void GetStarsValue(List<Treasure> _Treasurs,int _numberOfPlayer , int _firstStar, int _secondStar, int _thirdStar)
+    public void GetStarsValue(int _numberOfPlayer , int _firstStar, int _secondStar, int _thirdStar)
     {
         List<Treasure> littleTreasurs = new List<Treasure>();
         List<Treasure> mediumTreasurs = new List<Treasure>();
@@ -133,22 +133,22 @@ public class GameManager : MonoBehaviour
         int mediumValue = 0;
         int bigValue = 0;
 
-        for (int i= 0; i < _Treasurs.Count; i++)
+        for (int i= 0; i < treasuresInScene.Count; i++)
         {
-            if(_Treasurs[i].category.maxPlayerCarrying == 4)
+            if(treasuresInScene[i].category.maxPlayerCarrying == 4)
             {
-                bigTreasurs.Add(_Treasurs[i]);
-                bigValue += _Treasurs[i].price;
+                bigTreasurs.Add(treasuresInScene[i]);
+                bigValue += treasuresInScene[i].price;
             }
-            else if(_Treasurs[i].category.maxPlayerCarrying == 2)
+            else if(treasuresInScene[i].category.maxPlayerCarrying == 2)
             {
-                mediumTreasurs.Add(_Treasurs[i]);
-                mediumValue += _Treasurs[i].price;
+                mediumTreasurs.Add(treasuresInScene[i]);
+                mediumValue += treasuresInScene[i].price;
             }
-            else if (_Treasurs[i].category.maxPlayerCarrying == 1)
+            else if (treasuresInScene[i].category.maxPlayerCarrying == 1)
             {
-                littleTreasurs.Add(_Treasurs[i]);
-                littleValue += _Treasurs[i].price;
+                littleTreasurs.Add(treasuresInScene[i]);
+                littleValue += treasuresInScene[i].price;
             }
         }
 
