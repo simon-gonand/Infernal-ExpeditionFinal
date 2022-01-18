@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="76589531">
+		<SoundBank Id="393239870" Language="SFX" Hash="2824131369">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -229,10 +229,29 @@
 						<ActionSetSwitchEntry Id="2579631677" Name="Pillage" ObjectPath="\Switches\Default Work Unit\GameplayType\Pillage"/>
 					</ActionSetSwitch>
 				</Event>
-				<Event Id="1656055475" Name="Map_Completed" ObjectPath="\Events\Default Work Unit\World\Map_Completed" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
-					<ActionSetSwitch>
-						<ActionSetSwitchEntry Id="2716678721" Name="Victory" ObjectPath="\Switches\Default Work Unit\GameplayType\Victory"/>
-					</ActionSetSwitch>
+				<Event Id="3180909377" Name="Menu_Cancel" ObjectPath="\Events\Default Work Unit\UI\Menu_Cancel" DurationType="OneShot" DurationMin="0.047862" DurationMax="0.053724">
+					<IncludedMemoryFiles>
+						<File Id="472259761" Language="SFX">
+							<ShortName>UI_Return_Type2.wav</ShortName>
+							<Path>SFX\UI_Return_Type2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2471227561" Name="Menu_Navigation" ObjectPath="\Events\Default Work Unit\UI\Menu_Navigation" DurationType="OneShot" DurationMin="0.009197" DurationMax="0.011587">
+					<IncludedMemoryFiles>
+						<File Id="876289008" Language="SFX">
+							<ShortName>UI_Navigate_Type2.wav</ShortName>
+							<Path>SFX\UI_Navigate_Type2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4203375351" Name="Menu_Select" ObjectPath="\Events\Default Work Unit\UI\Menu_Select" DurationType="OneShot" DurationMin="0.214962" DurationMax="0.227744">
+					<IncludedMemoryFiles>
+						<File Id="870951256" Language="SFX">
+							<ShortName>UI_Open_Type2.wav</ShortName>
+							<Path>SFX\UI_Open_Type2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="491820422" Name="P_Attack" ObjectPath="\Events\Default Work Unit\Players\P_Attack" DurationType="OneShot" DurationMin="0.111844" DurationMax="0.284734">
 					<IncludedMemoryFiles>
@@ -659,9 +678,6 @@
 				<SwitchGroup Id="2579631677" Name="Pillage" ObjectPath="\Switches\Default Work Unit\GameplayType\Pillage" GUID="{C0654D03-2CF0-4648-85E5-E91A38BFC7DF}">
 					<Switches/>
 				</SwitchGroup>
-				<SwitchGroup Id="2716678721" Name="Victory" ObjectPath="\Switches\Default Work Unit\GameplayType\Victory" GUID="{82B97427-88B8-48FA-B6C3-EEF601635E90}">
-					<Switches/>
-				</SwitchGroup>
 			</SwitchGroups>
 			<Triggers>
 				<Trigger Id="1087296951" Name="Collect_Treasure" ObjectPath="\Triggers\Default Work Unit\Collect_Treasure"/>
@@ -672,7 +688,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="1730564753" Language="SFX" Hash="1958256380">
+		<SoundBank Id="1730564753" Language="SFX" Hash="1736750927">
 			<ObjectPath>\SoundBanks\Default Work Unit\Musics</ObjectPath>
 			<ShortName>Musics</ShortName>
 			<Path>Musics.bnk</Path>
