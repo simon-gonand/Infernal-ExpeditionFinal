@@ -7,7 +7,7 @@ public class LevelManager
 {
     public static LevelManager instance;
 
-    public int levelId = 0;
+    public int levelId = -1;
     public bool levelModifiers;
 
     public LevelManager()
@@ -19,10 +19,10 @@ public class LevelManager
 
     public void StartLevel()
     {
-        if (levelId == 0)
-            Cursor.visible = false;
-        else
+        if (levelId == -1)
             Cursor.visible = true;
+        else
+            Cursor.visible = false;
         if (levelId == 7)
         {
             foreach (PlayerController player in PlayerManager.instance.players)

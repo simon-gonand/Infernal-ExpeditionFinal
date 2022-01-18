@@ -95,7 +95,7 @@ public class NPCEvents : MonoBehaviour
         for (int i = 25; i > 0; --i)
         {
             GameManager.instance.targetGroup.m_Targets[index].weight = i;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.05f);
         }
         GameManager.instance.targetGroup.RemoveMember(BoatManager.instance.self);
     }
@@ -113,7 +113,7 @@ public class NPCEvents : MonoBehaviour
         for (int i = 0; i <= 25; ++i)
         {
             GameManager.instance.targetGroup.m_Targets[index].weight += i;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 }
