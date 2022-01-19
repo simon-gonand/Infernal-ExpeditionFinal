@@ -20,22 +20,7 @@ public class NPCEvents : MonoBehaviour
         {
             popUp[i].SetActive(true);
         }
-    }
-
-    //CAPTAIN NPC 
-    public void OnCaptainCallLanding()
-    {
-        popUpSystem.transform.position = spawnPopUp.position;
-        popUpSystem.Play();
-        Debug.Log("Landing !");
-    }
-
-    public void OnCaptainCallAllAboard()
-    {
-        popUpSystem.transform.position = spawnPopUp.position;
-        popUpSystem.Play();
-        Debug.Log("All Aboard !");
-    }
+    }    
 
     //LEVEL ADVERTISING
     public void OnStartLevel()
@@ -75,6 +60,46 @@ public class NPCEvents : MonoBehaviour
         popUpSystem.Play();
         Debug.Log("Last Island !");
     }
+
+    //CAPTAIN NPC 
+    public void OnCaptainCallLanding()
+    {
+        popUp[2].SetActive(true);
+
+        popUpDisplay = popUp[2];
+
+        for (int i = 0; i < popUp.Length; i++)
+        {
+            if (popUp[i] != popUpDisplay)
+            {
+                popUp[i].SetActive(false);
+            }
+        }
+        popUpSystem.transform.position = spawnPopUp.position;
+        popUpSystem.Play();
+        Debug.Log("Landing !");
+    }
+
+    public void OnCaptainCallAllAboard()
+    {
+        popUp[3].SetActive(true);
+
+        popUpDisplay = popUp[3];
+
+        for (int i = 0; i < popUp.Length; i++)
+        {
+            if (popUp[i] != popUpDisplay)
+            {
+                popUp[i].SetActive(false);
+            }
+        }
+
+        popUpSystem.transform.position = spawnPopUp.position;
+        popUpSystem.Play();
+        Debug.Log("All Aboard !");
+    }
+
+    //END UI
 
     public void StartLanding(Transform t)
     {
