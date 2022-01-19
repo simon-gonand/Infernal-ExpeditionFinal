@@ -173,9 +173,16 @@ public class PlayerManager : MonoBehaviour
             PlayerController player = players[i];
             player.ResetPlayer();
             Transform spawn = SetPlayerPosition(i);
+            Debug.Log(spawn.position);
             player.self.position = spawn.position;
             if (onPirateIsland)
+            {
                 player.self.rotation = spawn.rotation;
+            }
+            else
+            {
+                player.self.SetParent(BoatManager.instance.self);
+            }
             GameManager.instance.targetGroup.AddMember(player.self, weight, 20);
         }
     }

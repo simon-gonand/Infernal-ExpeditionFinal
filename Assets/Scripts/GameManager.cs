@@ -79,7 +79,6 @@ public class GameManager : MonoBehaviour
         followPath.InitializePath();
         targetGroup = FindObjectOfType<CinemachineTargetGroup>();
 
-        Debug.Log(PlayerManager.instance.onPirateIsland);
         if (PlayerManager.instance.onPirateIsland)
         {
             GameObject spawn1 = GameObject.FindGameObjectWithTag("PlayerMesh");
