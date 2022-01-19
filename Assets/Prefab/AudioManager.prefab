@@ -43,10 +43,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba0bd754681c4642a122eb94765f5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameplayNavigationSWITCH:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 952b361874509844fbad4680af4b0551, type: 2}
+  gameplayPillageSWITCH:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 33dbe69a8c5234b42b77a91601b2754c, type: 2}
+  mapCompletedSWITCH:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 2b0aece17004c4d46adb672401384582, type: 2}
   runTheme:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 9fbb2e1b0042df84f9312dcd9b8782a6, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 060fc741543f8a84db11786a30c9dea3, type: 2}
+  lobbiTheme:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e7aa4c36072a83645baf751ce556cf1a, type: 2}
   playerAttackSFX:
     idInternal: 0
     valueGuidInternal: 
@@ -123,3 +139,20 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: adc9eccfc11b18649a4d0d8d67422684, type: 2}
+  mapOpeningSFX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 51f9a29b6e2af954b8e8496d7fc7e4bb, type: 2}
+  menuCancelSFX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 5117ceb284f952344bed4462772500a3, type: 2}
+  menuNavigationSFX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4fdfacecdd9686b468b5bbe34454ced0, type: 2}
+  menuSelectSFX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3f5e0788bdb683146a66b93bafaaae3c, type: 2}
+  playersOnBoat: []

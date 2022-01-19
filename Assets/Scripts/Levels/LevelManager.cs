@@ -36,6 +36,9 @@ public class LevelManager
     {
         EndLevelUI.instance.InitializeUI();
         Cursor.visible = true;
+
+        AudioManager.AMInstance.mapCompletedSWITCH.Post(AudioManager.AMInstance.gameObject);
+
         foreach (PlayerController player in PlayerManager.instance.players)
             player.GetComponent<PlayerInput>().currentActionMap.Disable();
         if (levelId == 0) return;

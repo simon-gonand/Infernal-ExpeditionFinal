@@ -32,6 +32,9 @@ public class SelectLevels : MonoBehaviour, IInteractable
         playerInteracting = player;
         levelSelection.CheckLevelState();
         levelSelection.gameObject.SetActive(true);
+
+        AudioManager.AMInstance.mapOpeningSFX.Post(gameObject);
+
         Cursor.visible = true;
         return true;
     }
@@ -47,6 +50,9 @@ public class SelectLevels : MonoBehaviour, IInteractable
             GameManager.instance.LoadLevel("Landscape_LevelTuto" + number, true);
         else
             GameManager.instance.LoadLevel("Landscape_Level0" + number, true);
+
+            AudioManager.AMInstance.lobbiTheme.Stop(gameObject);
+            AudioManager.AMInstance.runTheme.Post(gameObject);
         Back();
     }
 

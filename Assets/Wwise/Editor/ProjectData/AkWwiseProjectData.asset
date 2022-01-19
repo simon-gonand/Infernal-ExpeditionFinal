@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 9dce80c3a7123942813a1007a9fa761f
     GuidInternal: 
-    m_lastTime: -8585590661229026300
+    m_lastTime: -8585590201152885125
     List:
     - name: Musics
       guid: 36549465458ece4a996756f69665369a
@@ -108,7 +108,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 06febf392af11e40ad2e9e6e478aa9eb
     GuidInternal: 
-    m_lastTime: -8585590661262008845
+    m_lastTime: -8585590201210841035
     List:
     - name: B_ChestCollect
       guid: 829a948af431744189a18a98eaaf71a5
@@ -421,6 +421,26 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: Map_Opening
+      guid: 56a24f65ed57d44fa22929ec1cbbac29
+      id: 2282291936
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 06febf392af11e40ad2e9e6e478aa9eb
+      - ElementName: World
+        ObjectType: 4
+        guid: 1025725beda7974597f1f8b466ab7bbc
+      - ElementName: Map_Opening
+        ObjectType: 3
+        guid: 56a24f65ed57d44fa22929ec1cbbac29
+      Path: Events\Default Work Unit\World\Map_Opening
+      maxAttenuation: 0
+      maxDuration: 0.684717
+      minDuration: 0.684717
     - name: Menu_Cancel
       guid: 02add03464400f4eb44e516b7ce6bf1f
       id: 3180909377
@@ -743,7 +763,7 @@ MonoBehaviour:
     ParentPath: Events\Musics
     guid: 8b7a9cc2f9341b47876f857ec1bcbfce
     GuidInternal: 
-    m_lastTime: -8585596053422058841
+    m_lastTime: -8585590201923027899
     List:
     - name: Credit_Theme
       guid: b5a5df838c37b849a41524cd44cf21ae
@@ -1089,7 +1109,7 @@ MonoBehaviour:
         guid: 88eb52da3d6b9743ba24b8c441c80d38
       Path: Triggers\Default Work Unit\Collect_Treasure
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 070000000c0000000d000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
