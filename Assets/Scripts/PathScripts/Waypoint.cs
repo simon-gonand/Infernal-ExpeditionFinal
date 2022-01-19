@@ -15,9 +15,9 @@ public class Waypoint : MonoBehaviour
         self = transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetSelfTransform()
     {
-        
+        self = transform;
     }
+
 }

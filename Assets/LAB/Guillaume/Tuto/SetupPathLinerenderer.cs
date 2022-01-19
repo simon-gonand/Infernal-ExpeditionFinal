@@ -9,6 +9,12 @@ public class SetupPathLinerenderer : MonoBehaviour
 
     void Start()
     {
+        SetupLineRendererPos();
+    }
+
+    [ContextMenu ("Setup Line")]
+    public void SetupLineRendererPos()
+    {
         boatPath.positionCount = selfPath.waypoints.Count;
 
         for (int i = 0; i < selfPath.waypoints.Count; i++)
