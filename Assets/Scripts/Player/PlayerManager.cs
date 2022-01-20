@@ -101,7 +101,35 @@ public class PlayerManager : MonoBehaviour
         //AudioManager.AMInstance.playerRespawnSFX.Post(gameObject);
     }
 
-    private Transform SetPlayerPosition(int id)
+    private Transform FindClosestPlayer()
+    {
+        Vector3 camCenter = Camera.current.ScreenToWorldPoint(Vector3.zero);
+        Transform closest = null;
+        float distanceToCamCenter = 0.0f;
+        foreach(PlayerController player in _players)
+        {
+            if (player.isDead) continue;
+            if (closest == null) 
+            {
+                closest = player.self;
+                distanceToCamCenter = Vector3.Distance(player.self.position, camCenter);
+            }
+            else
+            {
+                float distanceCompare = Vector3.Distance(player.self.position, camCenter);
+                if (distanceCompare < distanceToCamCenter)
+                {
+                    closest = player.self;
+                    distanceToCamCenter = distanceCompare;
+                }
+            }
+        }
+
+        if (closest == null)
+            return respawnPoint;
+        return closest;
+    }
+    public Transform SetPlayerPosition(int id)
     {
         Transform playerSpawnPosition = BoatManager.instance.spawnPoint1;
         if (onPirateIsland)
@@ -146,7 +174,7 @@ public class PlayerManager : MonoBehaviour
         if (_respawnOnBoat || onPirateIsland)
             return playerSpawnPosition;
         else
-            return respawnPoint;
+            return FindClosestPlayer();
     }
 
     private void SetZoomSpeed(PlayerController player)

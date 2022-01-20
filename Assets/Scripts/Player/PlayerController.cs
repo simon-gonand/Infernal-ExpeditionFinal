@@ -101,6 +101,9 @@ public class PlayerController : MonoBehaviour
 
     private bool _isStun = false;
     public bool isStun { get { return _isStun; } }
+    
+    private bool _isDead = false;
+    public bool isDead { get { return _isDead; } }
 
     #region ModifierBooleans
     // Is the No Attack modifier has been triggered
@@ -113,7 +116,6 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     private bool isDashing = false;
-    private bool isDead = false;
     private bool isGrounded = false;
     public bool isColliding = false;
     #endregion
@@ -153,7 +155,7 @@ public class PlayerController : MonoBehaviour
         _isInWater = false;
         _isStun = false;
         isDashing = false;
-        isDead = false;
+        _isDead = false;
         isGrounded = false;
 
         sword.SetActive(true);
@@ -583,9 +585,9 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        if (isDead == false)
+        if (_isDead == false)
         {
-            isDead = true;
+            _isDead = true;
             // Play death out of bounds sound
             if (isInteracting)
             {
@@ -599,11 +601,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Respawn()
     {
-        Vector3 respawnPosition;
-        if (PlayerManager.instance.respawnOnBoat)
-            respawnPosition = BoatManager.instance.spawnPoint1.position;
-        else
-            respawnPosition = PlayerManager.instance.respawnPoint.position;
+        Vector3 respawnPosition = PlayerManager.instance.SetPlayerPosition(_id).position;
         respawnPosition.y += self.lossyScale.y;
         if (isSwimming)
         {
@@ -619,7 +617,7 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(playerPreset.respawnCooldown);
 
-        isDead = false;
+        _isDead = false;
         selfRenderer.enabled = true;
         sword.SetActive(true);
         selfPlayerThrowUi.gameObject.SetActive(true);
@@ -630,7 +628,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isColliding && !_isStun && !_isCarried && !_hasBeenLaunched && !isDead && 
+        if (!isColliding && !_isStun && !_isCarried && !_hasBeenLaunched && !_isDead && 
             ((_isInteracting && _carrying != null) ? true : !_isInteracting))
         {
             if (isDashing)
@@ -725,7 +723,7 @@ public class PlayerController : MonoBehaviour
     void InfoAnim()
     {
         
-        if (!_isStun && !_isCarried && !isDead && ((_isInteracting && _carrying != null) ? !_isLaunching : !_isInteracting))
+        if (!_isStun && !_isCarried && !_isDead && ((_isInteracting && _carrying != null) ? !_isLaunching : !_isInteracting))
         {
             if (playerMovementInput.x != 0 || playerMovementInput.y != 0)
             {
