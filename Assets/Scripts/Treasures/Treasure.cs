@@ -149,6 +149,10 @@ public class Treasure : MonoBehaviour, ICarriable
     {
         Vector3 treasureOnBoat = entryPosition.position;
         treasureOnBoat.y += self.lossyScale.y / 2;
+        foreach (PlayerController player in playerInteractingWith)
+        {
+            player.self.position = entryPosition.position;
+        }
         self.position = treasureOnBoat;
         self.SetParent(BoatManager.instance.self);
     }

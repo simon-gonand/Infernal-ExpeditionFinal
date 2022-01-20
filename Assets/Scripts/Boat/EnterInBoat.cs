@@ -43,7 +43,6 @@ public class EnterInBoat : MonoBehaviour
                         player.self.position = playerOnBoatEntryPoint.position;
                         player.selfRigidBody.velocity += Vector3.up;
                     }
-                    else
                         transportedTreasure.GetOnBoat(playerOnBoatEntryPoint);
                 }
                 else
