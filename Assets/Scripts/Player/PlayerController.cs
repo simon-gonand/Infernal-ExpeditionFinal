@@ -685,11 +685,12 @@ public class PlayerController : MonoBehaviour
             }
 
             // Check if raycast hit a Treasures
-            if (hit.collider.gameObject.transform.parent.gameObject.tag == "Treasures")
+            if (hit.collider.gameObject.transform.parent.CompareTag("Treasures"))
             {
                 // If it's the same treasure detected, cancel everything
                 if (treasureInFront == hit.collider.gameObject.transform.parent.gameObject)
                 {
+                    treasureInFront.GetComponent<Treasure>().selfAura.SetActive(false);
                     return;
                 }
                 else
