@@ -75,6 +75,7 @@ public class ScoreManager : MonoBehaviour
         CheckStar();
 
         ScoreUI.instance.UpdateUiScore();
+        GoldBagTextUi.instance.AddScoreToSpawn(scoreAdded);
 
         if (UiScore.instance != null)
         {
@@ -91,7 +92,7 @@ public class ScoreManager : MonoBehaviour
                 {
                     actualStar = differentStarState.Bronze;
                     scoreOfActualStar = scoreNeedForBronze;
-                    scoreNeedForNextStar = scoreNeedForBronze;
+                    scoreNeedForNextStar = scoreNeedForSilver - scoreNeedForBronze;
 
                     isLevelUpStar = true;
                 }
