@@ -17,12 +17,25 @@ public class NPCEvents : MonoBehaviour
     public Animator aboveBand;
     public Animator belowBand;
 
+    [Header("UI")]
+    public GameObject tutoBillboardUI;
+    private bool canResumeGame = false;
+    [SerializeField] private GameObject billboard;
+
 
     private void Start()
     {
         for (int i = 0; i < popUp.Length; i++)
         {
             popUp[i].SetActive(true);
+        }
+
+        billboard = null;
+
+        if (aboveBand == null && belowBand == null)
+        {
+            aboveBand = null;
+            belowBand = null;
         }
     }    
 
@@ -127,12 +140,36 @@ public class NPCEvents : MonoBehaviour
     }
 
     //TOKEN
-
     public void OnDisplayingToken(GameObject token)
     {
         token.SetActive(true);
     }
 
+    //TUTO 
+    public void DisplayingTutorialBillboard (GameObject tutoBillboard)
+    {
+        tutoBillboardUI.SetActive(true);
+
+        tutoBillboard.SetActive(true);
+        tutoBillboard = billboard;        
+
+        canResumeGame = true;
+        
+        Time.timeScale = 0.0f;
+    }
+
+    public void ResumeGame()
+    {
+        if (canResumeGame)
+        {           
+            canResumeGame = false;
+
+            billboard.SetActive(false);
+            tutoBillboardUI.SetActive(false);
+
+            Time.timeScale = 1.0f;
+        }
+    }
 
     //END UI
 
