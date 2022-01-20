@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
             treasuresInScene.Add(treasure);
         }
 
+        GetStarsValue(PlayerManager.instance.players.Count, ScoreManager.instance.maxScore);
+
         playerManager.OnChangeScene();
         BoatInTargetGroup();
         LevelManager.instance.StartLevel();
@@ -125,8 +127,10 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void GetStarsValue(int _numberOfPlayer , int _firstStar, int _secondStar, int _thirdStar, int _maxScore)
+    public void GetStarsValue(int _numberOfPlayer , int _maxScore)
     {
+        Debug.Log("Entering scoring setting function");
+
         List<Treasure> littleTreasurs = new List<Treasure>();
         List<Treasure> mediumTreasurs = new List<Treasure>();
         List<Treasure> bigTreasurs = new List<Treasure>();
@@ -137,6 +141,8 @@ public class GameManager : MonoBehaviour
 
         for (int i= 0; i < treasuresInScene.Count; i++)
         {
+            Debug.Log("Processing chests draft...");
+
             if(treasuresInScene[i].category.maxPlayerCarrying == 4)
             {
                 bigTreasurs.Add(treasuresInScene[i]);
@@ -153,28 +159,37 @@ public class GameManager : MonoBehaviour
                 littleValue += treasuresInScene[i].price;
             }
         }
+        Debug.Log("Chest Draft over ! Values :" + littleValue + " " + mediumValue + " " + bigValue);
 
 
         int duoGlobalValue = littleValue + mediumValue + (bigValue/2);
         int trioGlobalValue = littleValue + mediumValue + ((bigValue / 3)*2);
         int quatuorGlobalValue = littleValue + mediumValue + bigValue;
 
-        _maxScore = quatuorGlobalValue;
+        ScoreManager.instance.maxScore = quatuorGlobalValue;
+
+        Debug.Log("Max scene score = " + _maxScore);
 
         if(_numberOfPlayer == 4)
         {
-            _thirdStar = (quatuorGlobalValue / 3) * 2;
+            ScoreManager.instance.scoreNeedForGold = (quatuorGlobalValue / 3) * 2;
+            Debug.Log("Score for 4 player : " + ScoreManager.instance.scoreNeedForGold);
         }
         else if (_numberOfPlayer == 3)
         {
-            _thirdStar = (trioGlobalValue / 3) * 2;
+            ScoreManager.instance.scoreNeedForGold = (trioGlobalValue / 3) * 2;
+            Debug.Log("Score for 3 player : " + ScoreManager.instance.scoreNeedForGold);
         }
         else
         {
-            _thirdStar = (duoGlobalValue / 3) * 2;
+            ScoreManager.instance.scoreNeedForGold = (duoGlobalValue / 3) * 2;
+            Debug.Log("Score for 2 player : " + ScoreManager.instance.scoreNeedForGold);
         }
 
-        _secondStar = (_firstStar / 3) * 2;
-        _firstStar = (_firstStar / 3);
+        ScoreManager.instance.scoreNeedForSilver = (ScoreManager.instance.scoreNeedForGold / 3) * 2;
+        ScoreManager.instance.scoreNeedForBronze = (ScoreManager.instance.scoreNeedForGold / 3);
+
+
+        Debug.Log("Score setting done !");
     }
 }
