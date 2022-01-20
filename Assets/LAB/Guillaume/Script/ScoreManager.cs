@@ -74,6 +74,8 @@ public class ScoreManager : MonoBehaviour
     {
         CheckStar();
 
+        ScoreUI.instance.UpdateUiScore();
+
         if (UiScore.instance != null)
         {
             UiScore.instance.ScoreUpdate(scoreAdded);
@@ -89,7 +91,7 @@ public class ScoreManager : MonoBehaviour
                 {
                     actualStar = differentStarState.Bronze;
                     scoreOfActualStar = scoreNeedForBronze;
-                    scoreNeedForNextStar = scoreNeedForSilver - scoreNeedForBronze;
+                    scoreNeedForNextStar = scoreNeedForBronze;
 
                     isLevelUpStar = true;
                 }
