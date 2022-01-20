@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 9dce80c3a7123942813a1007a9fa761f
     GuidInternal: 
-    m_lastTime: -8585590201152885125
+    m_lastTime: -8585589983138599512
     List:
     - name: Musics
       guid: 36549465458ece4a996756f69665369a
@@ -108,7 +108,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 06febf392af11e40ad2e9e6e478aa9eb
     GuidInternal: 
-    m_lastTime: -8585590201210841035
+    m_lastTime: -8585589983139028028
     List:
     - name: B_ChestCollect
       guid: 829a948af431744189a18a98eaaf71a5
@@ -224,26 +224,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.517484
       minDuration: 0.471936
-    - name: E_Clsq_Death
-      guid: 333670de1f8f9748b7f6692178349b54
-      id: 2473324379
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Enemy
-        ObjectType: 4
-        guid: c94da1f2984a6744969a66a2325f51cd
-      - ElementName: E_Clsq_Death
-        ObjectType: 3
-        guid: 333670de1f8f9748b7f6692178349b54
-      Path: Events\Default Work Unit\Enemy\E_Clsq_Death
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: E_Pks_Carry
       guid: 224b2f77552fd742bdc51a4ef6de3b78
       id: 1286256413
@@ -264,26 +244,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.01915
       minDuration: 0.016103
-    - name: E_Pks_Death
-      guid: a233956016efa34583d0e2f3edb92561
-      id: 703381894
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 06febf392af11e40ad2e9e6e478aa9eb
-      - ElementName: Enemy
-        ObjectType: 4
-        guid: c94da1f2984a6744969a66a2325f51cd
-      - ElementName: E_Pks_Death
-        ObjectType: 3
-        guid: a233956016efa34583d0e2f3edb92561
-      Path: Events\Default Work Unit\Enemy\E_Pks_Death
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: E_Trl_Death
       guid: a054c2f75c5fcd439a84e3fb92099550
       id: 1927982858
@@ -418,6 +378,26 @@ MonoBehaviour:
         ObjectType: 3
         guid: 94baf4557e797644ac6e897375b25f47
       Path: Events\Default Work Unit\World\GameplayPillageSwitch
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Map_Completed
+      guid: d4155d8e826e8c429326d7ef2810eadd
+      id: 1656055475
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 06febf392af11e40ad2e9e6e478aa9eb
+      - ElementName: World
+        ObjectType: 4
+        guid: 1025725beda7974597f1f8b466ab7bbc
+      - ElementName: Map_Completed
+        ObjectType: 3
+        guid: d4155d8e826e8c429326d7ef2810eadd
+      Path: Events\Default Work Unit\World\Map_Completed
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -763,7 +743,7 @@ MonoBehaviour:
     ParentPath: Events\Musics
     guid: 8b7a9cc2f9341b47876f857ec1bcbfce
     GuidInternal: 
-    m_lastTime: -8585590201923027899
+    m_lastTime: -8585589983138779040
     List:
     - name: Credit_Theme
       guid: b5a5df838c37b849a41524cd44cf21ae
@@ -782,6 +762,26 @@ MonoBehaviour:
         ObjectType: 3
         guid: b5a5df838c37b849a41524cd44cf21ae
       Path: Events\Musics\Musics\Credit_Theme
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Lobbi_Theme
+      guid: 3e042827e008f34f9d86245d6d9a8d53
+      id: 474510645
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Musics
+        ObjectType: 12
+        guid: 8b7a9cc2f9341b47876f857ec1bcbfce
+      - ElementName: Musics
+        ObjectType: 4
+        guid: 535760f856312a4cb03d1b63e91ac86f
+      - ElementName: Lobbi_Theme
+        ObjectType: 3
+        guid: 3e042827e008f34f9d86245d6d9a8d53
+      Path: Events\Musics\Musics\Lobbi_Theme
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1

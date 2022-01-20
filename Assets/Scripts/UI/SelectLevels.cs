@@ -49,10 +49,13 @@ public class SelectLevels : MonoBehaviour, IInteractable
         if (number == 0)
             GameManager.instance.LoadLevel("Landscape_LevelTuto" + number, true);
         else
+        {
+            
             GameManager.instance.LoadLevel("Landscape_Level0" + number, true);
+        }
+            
 
-            AudioManager.AMInstance.lobbiTheme.Stop(gameObject);
-            AudioManager.AMInstance.runTheme.Post(gameObject);
+            
         Back();
     }
 

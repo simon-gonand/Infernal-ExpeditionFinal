@@ -77,17 +77,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        //DEBUG
-        if(isLobbi)
-        {
-            lobbiTheme.Post(gameObject);
-        }
-        else
-        {
-            runTheme.Post(gameObject);
-        }
-        gameAmbientSFX.Post(gameObject);
-        //
+
     }
 
 

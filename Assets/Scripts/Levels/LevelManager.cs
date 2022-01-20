@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class LevelManager
 {
@@ -19,10 +20,28 @@ public class LevelManager
 
     public void StartLevel()
     {
+        if (levelId != 0)
+        {
+            AudioManager.AMInstance.runTheme.Post(AudioManager.AMInstance.gameObject);
+        }
+
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            AudioManager.AMInstance.lobbiTheme.Post(AudioManager.AMInstance.gameObject);
+        }
+        else
+        {
+            AudioManager.AMInstance.runTheme.Post(AudioManager.AMInstance.gameObject);
+        }
+
+
         if (levelId == -1)
             Cursor.visible = true;
         else
+        {
             Cursor.visible = false;
+        }
+            
         if (levelId == 7)
         {
             foreach (PlayerController player in PlayerManager.instance.players)
@@ -34,10 +53,12 @@ public class LevelManager
 
     public void EndLevel()
     {
+        AudioManager.AMInstance.mapCompletedSWITCH.Post(AudioManager.AMInstance.gameObject);
+        Debug.Log("Victoryyy0");
+
         EndLevelUI.instance.InitializeUI();
         Cursor.visible = true;
 
-        AudioManager.AMInstance.mapCompletedSWITCH.Post(AudioManager.AMInstance.gameObject);
 
         foreach (PlayerController player in PlayerManager.instance.players)
             player.GetComponent<PlayerInput>().currentActionMap.Disable();
