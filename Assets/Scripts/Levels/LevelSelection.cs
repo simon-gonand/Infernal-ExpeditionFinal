@@ -20,15 +20,20 @@ public class LevelSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    public void ActivateLevelSelectionUi()
+    {
         if (canActivateLevelSelectionUI)
         {
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                mainCam.Priority = 0;
-                tableCam.Priority = 10;
-                Debug.Log("LaunchLevelUI");
-            }
-        }
+            mainCam.Priority = 0;
+            tableCam.Priority = 15;
+
+            //Désactiver mort PJ
+
+            Debug.Log("LaunchLevelUI");
+        }        
     }
 
     private void OnTriggerEnter(Collider other)

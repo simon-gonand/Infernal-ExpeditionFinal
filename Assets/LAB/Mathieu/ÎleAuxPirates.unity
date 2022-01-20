@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -634,7 +634,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -777,11 +777,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5558128433517114984, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5962177872803262310, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: m_Priority
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7182250772967309175, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: m_RootOrder
@@ -2901,6 +2901,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1199998503 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1011656442598414535, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
+  m_PrefabInstance: {fileID: 176039078}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6084b905b62ba8f47aeaf112a25ae9f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1226802050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5032,10 +5043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPrefab_01
       objectReference: {fileID: 0}
-    - target: {fileID: 4223509153915057740, guid: ede485ac38f939d4a99b04b44bbe8897, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 4223509153915057750, guid: ede485ac38f939d4a99b04b44bbe8897, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1199998503}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ede485ac38f939d4a99b04b44bbe8897, type: 3}
 --- !u!1 &1870218075
