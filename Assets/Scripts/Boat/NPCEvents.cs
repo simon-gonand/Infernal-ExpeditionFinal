@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class NPCEvents : MonoBehaviour
 {
+    [Header("Pop UP")]
     public Transform spawnPopUp;
     public ParticleSystem popUpSystem;
 
@@ -12,6 +13,9 @@ public class NPCEvents : MonoBehaviour
     public GameObject popUpDisplay;
     public GameObject[] popUp;
 
+    [Header("Black Bands Intro")]
+    public Animator aboveBand;
+    public Animator belowBand;
 
 
     private void Start()
@@ -98,6 +102,37 @@ public class NPCEvents : MonoBehaviour
         popUpSystem.Play();
         Debug.Log("All Aboard !");
     }
+
+    //BLACK BANDS
+    public void BlackBandsRemove()
+    {
+        aboveBand.SetBool("aboveBandRemove", true);
+        belowBand.SetBool("belowBandRemove", true);
+
+        aboveBand.SetBool("aboveBandDisplay", false);
+        belowBand.SetBool("belowBandDisplay", false);
+
+        Debug.Log("BlackBandsRemove"); 
+    }
+
+    public void BlackBandsDisplay()
+    {
+        aboveBand.SetBool("aboveBandDisplay", true);
+        belowBand.SetBool("belowBandDisplay", true);
+
+        aboveBand.SetBool("aboveBandRemove", false);
+        belowBand.SetBool("belowBandRemove", false);
+
+        Debug.Log("BlackBandsDisplay");
+    }
+
+    //TOKEN
+
+    public void OnDisplayingToken(GameObject token)
+    {
+        token.SetActive(true);
+    }
+
 
     //END UI
 

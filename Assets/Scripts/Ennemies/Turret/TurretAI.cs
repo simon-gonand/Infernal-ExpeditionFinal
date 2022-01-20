@@ -14,6 +14,8 @@ public class TurretAI : MonoBehaviour, EnemiesAI
     public Animator gunnerAnimator;
     public Animator cannonAnimator;
     public GameObject smokeParticule;
+    [SerializeField]
+    private GameObject tokenFeedback;
 
     [Header("Reference")]
     [SerializeField]
@@ -42,6 +44,8 @@ public class TurretAI : MonoBehaviour, EnemiesAI
         gunnerAnimator.SetBool("Dead", true);
         cannonAnimator.SetBool("Dead", true);
         smokeParticule.SetActive(true);
+
+        tokenFeedback.SetActive(false);
 
         bodyBlock.enabled = false;
        

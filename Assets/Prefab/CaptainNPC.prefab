@@ -2230,7 +2230,7 @@ Transform:
   m_GameObject: {fileID: 1365012927439312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4962126029609864}
   - {fileID: 4804294066458666}
@@ -2327,6 +2327,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6791a8683f52c4c4680ad564c366f6b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPopUp: {fileID: 0}
+  popUpSystem: {fileID: 0}
+  popUpDisplay: {fileID: 0}
+  popUp:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  aboveBand: {fileID: 0}
+  belowBand: {fileID: 0}
 --- !u!1 &1369696271282570
 GameObject:
   m_ObjectHideFlags: 0
