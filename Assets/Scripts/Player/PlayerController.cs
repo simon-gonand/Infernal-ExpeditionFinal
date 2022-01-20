@@ -320,6 +320,7 @@ public class PlayerController : MonoBehaviour
             isDashing = true;
             Vector3 currentVelocity = selfRigidBody.velocity;
             currentVelocity += self.forward * playerPreset.dashSpeed * Time.deltaTime * 0.1f;
+            currentVelocity.y = 0.0f;
             originalDashPos = self.position;
             targetDashPos = self.position + currentVelocity;
         }

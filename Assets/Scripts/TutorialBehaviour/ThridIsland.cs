@@ -29,7 +29,7 @@ public class ThridIsland : MonoBehaviour
             }
             if (nbPlayerOnBoat == PlayerManager.instance.players.Count)
             {
-                path.links[2].speed = 0.2f;
+                path.links[2].speed = 0.1f;
                 this.enabled = false;
             }
         }

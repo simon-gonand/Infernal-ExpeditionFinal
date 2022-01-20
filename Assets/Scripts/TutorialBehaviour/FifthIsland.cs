@@ -29,7 +29,7 @@ public class FifthIsland : MonoBehaviour
             }
             if (nbPlayerOnBoat == PlayerManager.instance.players.Count)
             {
-                path.links[4].speed = 0.2f;
+                path.links[4].speed = 0.1f;
                 this.enabled = false;
             }
         }
