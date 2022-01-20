@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6609,7 +6609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4512300890362992, guid: 7c2d45330a7b1894ca1aacb0ebd30599, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.72
+      value: -31.58
       objectReference: {fileID: 0}
     - target: {fileID: 4512300890362992, guid: 7c2d45330a7b1894ca1aacb0ebd30599, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6617,7 +6617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4512300890362992, guid: 7c2d45330a7b1894ca1aacb0ebd30599, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 149
+      value: 140.59
       objectReference: {fileID: 0}
     - target: {fileID: 4512300890362992, guid: 7c2d45330a7b1894ca1aacb0ebd30599, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6892,6 +6892,18 @@ MonoBehaviour:
       - m_Target: {fileID: 72575427}
         m_TargetAssemblyTypeName: IntroSkeletonBehaviour, Assembly-CSharp
         m_MethodName: AwakeSkeleton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1726819060}
+        m_TargetAssemblyTypeName: NPCEvents, Assembly-CSharp
+        m_MethodName: BlackBandsRemove
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24348,7 +24360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456916, guid: 856e58d826331da43a700f8d4761bbf4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.72
+      value: -31.58
       objectReference: {fileID: 0}
     - target: {fileID: 456916, guid: 856e58d826331da43a700f8d4761bbf4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24356,7 +24368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456916, guid: 856e58d826331da43a700f8d4761bbf4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 149
+      value: 140.59
       objectReference: {fileID: 0}
     - target: {fileID: 456916, guid: 856e58d826331da43a700f8d4761bbf4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53717,18 +53729,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1600566836}
         m_TargetAssemblyTypeName: FogLevel7Behaviour, Assembly-CSharp
         m_MethodName: RemoveFog
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1726819060}
-        m_TargetAssemblyTypeName: NPCEvents, Assembly-CSharp
-        m_MethodName: BlackBandsRemove
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
