@@ -54,8 +54,11 @@ public class PlayerManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            firstPlayer.SetActive(true);
-            firstPlayer.transform.SetParent(BoatManager.instance.transform.parent);
+            if (onPirateIsland)
+            {
+                firstPlayer.SetActive(true);
+                firstPlayer.transform.SetParent(BoatManager.instance.transform.parent);
+            }
         }
         else Destroy(gameObject);
     }
