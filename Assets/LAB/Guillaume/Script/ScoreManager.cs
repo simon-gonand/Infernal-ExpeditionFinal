@@ -37,7 +37,8 @@ public class ScoreManager : MonoBehaviour
         }
         #endregion
 
-        GameManager.instance.GetStarsValue(4, scoreNeedForBronze, scoreNeedForSilver, scoreNeedForGold);
+        GameManager.instance.GetStarsValue(PlayerManager.instance.players.Count, 
+            scoreNeedForBronze, scoreNeedForSilver, scoreNeedForGold);
 
         scoreNeedForNextStar = scoreNeedForBronze;
         scoreOfActualStar = 0;
@@ -46,6 +47,11 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         RefreshUiStarState(0);
+    }
+
+    private void OnDestroy()
+    {
+        instance = null;
     }
 
     public void AddScore(int numberToAdd)

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 using Cinemachine;
 
 public class GameManager : MonoBehaviour
@@ -79,7 +78,6 @@ public class GameManager : MonoBehaviour
         followPath.InitializePath();
         targetGroup = FindObjectOfType<CinemachineTargetGroup>();
 
-        Debug.Log(PlayerManager.instance.onPirateIsland);
         if (PlayerManager.instance.onPirateIsland)
         {
             GameObject spawn1 = GameObject.FindGameObjectWithTag("PlayerMesh");
@@ -93,14 +91,17 @@ public class GameManager : MonoBehaviour
             PlayerManager.instance.player4Spawn = spawn4;
         }
 
-        if (LevelManager.instance.levelModifiers)
+        while (treasuresInScene.Count > 0)
         {
-            treasuresInScene.Clear();
-            Treasure[] treasures = GameObject.FindObjectsOfType<Treasure>();
-            foreach (Treasure treasure in treasures)
-            {
-                treasuresInScene.Add(treasure);
-            }
+            if (treasuresInScene[0] != null)
+                Destroy(treasuresInScene[0].gameObject);
+            treasuresInScene.RemoveAt(0);
+        }
+        treasuresInScene.Clear();
+        Treasure[] treasures = GameObject.FindObjectsOfType<Treasure>();
+        foreach (Treasure treasure in treasures)
+        {
+            treasuresInScene.Add(treasure);
         }
 
         playerManager.OnChangeScene();
