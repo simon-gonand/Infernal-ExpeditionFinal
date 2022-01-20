@@ -10,8 +10,13 @@ State	ID	Name	State Group			Notes
 	2654748154	Water	Ground_Type			
 	4248645337	Grass	Ground_Type			
 
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	1564184899	SFX_Volume			\Default Work Unit\SFX_Volume	
+	1905425858	Musics_Volume			\Default Work Unit\Musics_Volume	
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
-	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+	1655318877	Musics Audio Bus			\Default Work Unit\Musics Audio Bus	
+	4084199202	SFX Audio Bus			\Default Work Unit\SFX Audio Bus	
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			

@@ -33,13 +33,13 @@ public class OptionMenu : MonoBehaviour
     public void OnChangeMusicVolume()
     {
         musicVolume = musicVolumeSlider.value;
-        // Set music volume to Wwise
+        AudioManager.AMInstance.musicVolumeRTPC.SetGlobalValue(musicVolume);
     }
 
     public void OnChangeSFXVolume()
     {
         sfxVolume = sfxVolumeSlider.value;
-        // Set music volume to Wwise
+        AudioManager.AMInstance.SFXVolumeRTPC.SetGlobalValue(sfxVolume);
     }
 
     public void CloseMenu()

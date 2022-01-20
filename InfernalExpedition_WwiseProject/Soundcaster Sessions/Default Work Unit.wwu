@@ -30,12 +30,21 @@
 							<Position X="2" Y="1"/>
 						</Module>
 					</ModuleList>
-					<RTPCValueList ShowAll="true"/>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="SFX_Volume" ID="{D1E952A5-1BAF-4CC0-8077-C1409819B7F6}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="Musics_Volume" ID="{A80ABF00-7CF5-4E9E-BE9C-31FCE98F717E}"/>
+							<Value>100</Value>
+						</RTPCValue>
+					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
 						<CurrentStateRef Name="Sea" ID="{6CA64AE8-43F4-45B2-84C3-E863CC6A80A8}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true">
-						<CurrentSwitchRef Name="Navigation" ID="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}"/>
+						<CurrentSwitchRef Name="Pillage" ID="{C0654D03-2CF0-4648-85E5-E91A38BFC7DF}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>
 				<SoundcasterSession Name="Player" ID="{C1E4D348-E1ED-4932-B168-A982B008BAEF}">

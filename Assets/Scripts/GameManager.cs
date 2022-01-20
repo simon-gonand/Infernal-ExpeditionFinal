@@ -162,6 +162,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Chest Draft over ! Values :" + littleValue + " " + mediumValue + " " + bigValue);
 
 
+        int soloGlobalValue = littleValue + ((mediumValue / 3) *2);
         int duoGlobalValue = littleValue + mediumValue + (bigValue/2);
         int trioGlobalValue = littleValue + mediumValue + ((bigValue / 3)*2);
         int quatuorGlobalValue = littleValue + mediumValue + bigValue;
@@ -173,17 +174,18 @@ public class GameManager : MonoBehaviour
         if(_numberOfPlayer == 4)
         {
             ScoreManager.instance.scoreNeedForGold = (quatuorGlobalValue / 3) * 2;
-            Debug.Log("Score for 4 player : " + ScoreManager.instance.scoreNeedForGold);
         }
         else if (_numberOfPlayer == 3)
         {
             ScoreManager.instance.scoreNeedForGold = (trioGlobalValue / 3) * 2;
-            Debug.Log("Score for 3 player : " + ScoreManager.instance.scoreNeedForGold);
+        }
+        else if(_numberOfPlayer == 2)
+        {
+            ScoreManager.instance.scoreNeedForGold = (duoGlobalValue / 3) * 2;
         }
         else
         {
-            ScoreManager.instance.scoreNeedForGold = (duoGlobalValue / 3) * 2;
-            Debug.Log("Score for 2 player : " + ScoreManager.instance.scoreNeedForGold);
+            ScoreManager.instance.scoreNeedForGold = (soloGlobalValue / 3) * 2;
         }
 
         ScoreManager.instance.scoreNeedForSilver = (ScoreManager.instance.scoreNeedForGold / 3) * 2;

@@ -28,6 +28,10 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event gameplayPillageSWITCH;
     public AK.Wwise.Event mapCompletedSWITCH;
 
+    [Header("Switchs")]
+    public AK.Wwise.RTPC SFXVolumeRTPC;
+    public AK.Wwise.RTPC musicVolumeRTPC;
+
     [Header("Themes")]
 
     public bool isLobbi = false;
