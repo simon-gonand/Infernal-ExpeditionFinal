@@ -55,13 +55,16 @@ public class GameManager : MonoBehaviour
         {
             PlayerManager.instance.onPirateIsland = true;
             PlayerManager.instance.onMainMenu = true;
-            foreach(PlayerController p in PlayerManager.instance.players)
+            foreach (PlayerController p in PlayerManager.instance.players)
             {
                 p.selfPlayerInput.currentActionMap.Disable();
             }
         }
         else
+        {
             PlayerManager.instance.onPirateIsland = false;
+            PlayerManager.instance.respawnOnBoat = true;
+        }
         SceneManager.LoadScene(sceneName);
     }
 

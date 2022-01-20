@@ -137,6 +137,9 @@ public class PlayerController : MonoBehaviour
         ResetStates();
         ResetAnimStates();
 
+        selfRenderer.enabled = true;
+        selfPlayerThrowUi.gameObject.SetActive(true);
+
         selfRigidBody.velocity += Vector3.up;
         UpdateSwimming();
         selfRigidBody.velocity -= Vector3.up;
@@ -602,7 +605,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Respawn()
     {
-        Vector3 respawnPosition = PlayerManager.instance.SetPlayerPosition(_id).position;
+        Vector3 respawnPosition = PlayerManager.instance.SetPlayerPosition(_id, false).position;
         respawnPosition.y += self.lossyScale.y;
         if (isSwimming)
         {

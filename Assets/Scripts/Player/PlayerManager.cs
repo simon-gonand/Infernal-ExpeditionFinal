@@ -56,6 +56,7 @@ public class PlayerManager : MonoBehaviour
             instance = this;
             if (onPirateIsland)
             {
+                _respawnOnBoat = false;
                 firstPlayer.SetActive(true);
                 firstPlayer.transform.SetParent(BoatManager.instance.transform.parent);
             }
@@ -66,7 +67,6 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         cameraOriginalOffset = camManager.offsetPositionMovement;
-        _respawnOnBoat = true;
     }
 
     // Update material of player when one is joining to avoid them to have the same color
@@ -75,7 +75,7 @@ public class PlayerManager : MonoBehaviour
         // Update players spawn positions according to which player is spawning
         // Player is spawning on the boat
         Transform playerTransform = playerInput.gameObject.transform;
-        Transform playerSpawnPosition = SetPlayerPosition(playerInput.playerIndex);
+        Transform playerSpawnPosition = SetPlayerPosition(playerInput.playerIndex, true);
         if (onPirateIsland && playerInput.playerIndex == 0)
             playerSpawnPosition = playerTransform;
         playerTransform.position = playerSpawnPosition.position;
@@ -129,7 +129,7 @@ public class PlayerManager : MonoBehaviour
             return respawnPoint;
         return closest;
     }
-    public Transform SetPlayerPosition(int id)
+    public Transform SetPlayerPosition(int id, bool onJoin)
     {
         Transform playerSpawnPosition = BoatManager.instance.spawnPoint1;
         if (onPirateIsland)
@@ -140,7 +140,7 @@ public class PlayerManager : MonoBehaviour
                 self.playerPrefab = player2;
                 break;
             case 1:
-                if (onPirateIsland)
+                if (onPirateIsland && onJoin)
                 {
                     playerSpawnPosition = player2Spawn.transform;
                     Destroy(player2Spawn);
@@ -150,7 +150,7 @@ public class PlayerManager : MonoBehaviour
                 self.playerPrefab = player3;
                 break;
             case 2:
-                if (onPirateIsland)
+                if (onPirateIsland && onJoin)
                 {
                     playerSpawnPosition = player3Spawn.transform;
                     Destroy(player3Spawn);
@@ -160,7 +160,7 @@ public class PlayerManager : MonoBehaviour
                 self.playerPrefab = player4;
                 break;
             case 3:
-                if (onPirateIsland)
+                if (onPirateIsland && onJoin)
                 {
                     playerSpawnPosition = player4Spawn.transform;
                     Destroy(player4Spawn);
@@ -171,7 +171,7 @@ public class PlayerManager : MonoBehaviour
             default:
                 break;
         }
-        if (_respawnOnBoat || onPirateIsland)
+        if (_respawnOnBoat || (onPirateIsland && onJoin))
             return playerSpawnPosition;
         else
             return FindClosestPlayer();
@@ -203,7 +203,7 @@ public class PlayerManager : MonoBehaviour
         {
             PlayerController player = players[i];
             player.ResetPlayer();
-            Transform spawn = SetPlayerPosition(i);
+            Transform spawn = SetPlayerPosition(i, true);
             Debug.Log(spawn.position);
             player.self.position = spawn.position;
             if (onPirateIsland)
