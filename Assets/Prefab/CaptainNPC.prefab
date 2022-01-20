@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1365012927439312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 3908163596478250326}
   m_Father: {fileID: 0}
@@ -47,7 +47,15 @@ MonoBehaviour:
   spawnPopUp: {fileID: 0}
   popUpSystem: {fileID: 0}
   popUpDisplay: {fileID: 0}
-  popUp: []
+  popUp:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  aboveBand: {fileID: 0}
+  belowBand: {fileID: 0}
+--- !u!1 &1369696271282570
+GameObject:
 --- !u!95 &1786950837967876486
 Animator:
   serializedVersion: 3

@@ -57,6 +57,22 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""ValidationUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b1ea310-ac9a-48c0-89a5-323a3e430353"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""CancelUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd3bc46a-709b-4660-a74a-cdad7f4a4bbd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -235,6 +251,28 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""370ae87f-bcf1-44e5-a517-2011154d5be6"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ValidationUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""925e8523-089e-480b-b831-a52a58010d0c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""CancelUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -276,6 +314,8 @@ public class @Controller : IInputActionCollection, IDisposable
         m_Controls_PlayerAction = m_Controls.FindAction("PlayerAction", throwIfNotFound: true);
         m_Controls_PlayerDash = m_Controls.FindAction("PlayerDash", throwIfNotFound: true);
         m_Controls_Pause = m_Controls.FindAction("Pause", throwIfNotFound: true);
+        m_Controls_ValidationUI = m_Controls.FindAction("ValidationUI", throwIfNotFound: true);
+        m_Controls_CancelUI = m_Controls.FindAction("CancelUI", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -330,6 +370,8 @@ public class @Controller : IInputActionCollection, IDisposable
     private readonly InputAction m_Controls_PlayerAction;
     private readonly InputAction m_Controls_PlayerDash;
     private readonly InputAction m_Controls_Pause;
+    private readonly InputAction m_Controls_ValidationUI;
+    private readonly InputAction m_Controls_CancelUI;
     public struct ControlsActions
     {
         private @Controller m_Wrapper;
@@ -339,6 +381,8 @@ public class @Controller : IInputActionCollection, IDisposable
         public InputAction @PlayerAction => m_Wrapper.m_Controls_PlayerAction;
         public InputAction @PlayerDash => m_Wrapper.m_Controls_PlayerDash;
         public InputAction @Pause => m_Wrapper.m_Controls_Pause;
+        public InputAction @ValidationUI => m_Wrapper.m_Controls_ValidationUI;
+        public InputAction @CancelUI => m_Wrapper.m_Controls_CancelUI;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -363,6 +407,12 @@ public class @Controller : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
+                @ValidationUI.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnValidationUI;
+                @ValidationUI.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnValidationUI;
+                @ValidationUI.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnValidationUI;
+                @CancelUI.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnCancelUI;
+                @CancelUI.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnCancelUI;
+                @CancelUI.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnCancelUI;
             }
             m_Wrapper.m_ControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -382,6 +432,12 @@ public class @Controller : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @ValidationUI.started += instance.OnValidationUI;
+                @ValidationUI.performed += instance.OnValidationUI;
+                @ValidationUI.canceled += instance.OnValidationUI;
+                @CancelUI.started += instance.OnCancelUI;
+                @CancelUI.performed += instance.OnCancelUI;
+                @CancelUI.canceled += instance.OnCancelUI;
             }
         }
     }
@@ -411,5 +467,7 @@ public class @Controller : IInputActionCollection, IDisposable
         void OnPlayerAction(InputAction.CallbackContext context);
         void OnPlayerDash(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnValidationUI(InputAction.CallbackContext context);
+        void OnCancelUI(InputAction.CallbackContext context);
     }
 }
