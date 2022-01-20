@@ -4293,9 +4293,37 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5965994493907889753, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: lockedColor.a
+      value: 0.48235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965994493907889753, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: lockedColor.b
+      value: 0.5526878
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965994493907889753, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: lockedColor.g
+      value: 0.5526878
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965994493907889753, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: lockedColor.r
+      value: 0.5660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385740918898180712, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658243357725903825, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7182250772220607119, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: m_LocalPosition.y
       value: -468.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8878073373998186788, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
@@ -4332,11 +4360,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 458786, guid: 31d4aed1e3fa69f48916a476ab5cebdf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7
+      value: -7.4500003
       objectReference: {fileID: 0}
     - target: {fileID: 458786, guid: 31d4aed1e3fa69f48916a476ab5cebdf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -56
+      value: -53.17
       objectReference: {fileID: 0}
     - target: {fileID: 458786, guid: 31d4aed1e3fa69f48916a476ab5cebdf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4995,11 +5023,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 458786, guid: 31d4aed1e3fa69f48916a476ab5cebdf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7
+      value: -7.4500003
       objectReference: {fileID: 0}
     - target: {fileID: 458786, guid: 31d4aed1e3fa69f48916a476ab5cebdf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -70.89993
+      value: -68.06993
       objectReference: {fileID: 0}
     - target: {fileID: 458786, guid: 31d4aed1e3fa69f48916a476ab5cebdf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5299,11 +5327,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 442492, guid: c3fa0933550fdd74f9320818b48a8276, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.37
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 442492, guid: c3fa0933550fdd74f9320818b48a8276, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -71
+      value: -68.17
       objectReference: {fileID: 0}
     - target: {fileID: 442492, guid: c3fa0933550fdd74f9320818b48a8276, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5521,7 +5549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 356514682270913766, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.72
       objectReference: {fileID: 0}
     - target: {fileID: 356514682270913766, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5565,7 +5593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 356514682389932175, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
       propertyPath: neededStarsToUnlock.Array.data[0]
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 356514682389932175, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
       propertyPath: neededStarsToUnlock.Array.data[2]

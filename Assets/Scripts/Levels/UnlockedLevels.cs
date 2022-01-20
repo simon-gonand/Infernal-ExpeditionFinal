@@ -14,6 +14,7 @@ public class UnlockedLevels : MonoBehaviour
 
     public void CheckLevelState()
     {
+        levelButtons[0].Select();
         for (int i = 0; i < levelButtons.Count; ++i)
         {
             if (SaveData.instance.earnedStars < GameManager.instance.neededStarsToUnlock[i])

@@ -117,7 +117,7 @@ public class FollowPath : MonoBehaviour
                 pathEnd = true;
             }
         }
-        else if (linkIndex < path.links.Count - 1 && path.allPoints[allPointIndex] == path.links[linkIndex + 1].start.self.position)
+        else if (linkIndex < path.links.Count - 1 && path.allPoints[allPointIndex] == path.links[linkIndex + 1].pathPoints[0])
         {
             ++linkIndex;
             lastTValue = 0.0f;
