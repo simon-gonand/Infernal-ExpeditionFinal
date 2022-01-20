@@ -516,7 +516,11 @@ public class PlayerController : MonoBehaviour
         // Apply speed malus if the player is carrying an heavy treasure
         Treasure transportedTreasure = _carrying as Treasure;
         if (_isCarrying && transportedTreasure != null)
+        {
             currentSpeed -= transportedTreasure.speedMalus;
+            if (currentSpeed < 50.0f)
+                currentSpeed = 50.0f;
+        }
 
         // Apply movements
         Vector3 calculatePlayerInput = playerMovementInput * currentSpeed * Time.deltaTime;
