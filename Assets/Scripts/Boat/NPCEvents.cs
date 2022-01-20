@@ -83,7 +83,9 @@ public class NPCEvents : MonoBehaviour
         foreach (PlayerController player in PlayerManager.instance.players)
         {
             if (player.isOnBoat)
+            {
                 player.self.position = t.position;
+            }
         }
 
         StartCoroutine(RemoveBoatSmoothly());

@@ -12,6 +12,8 @@ public class MainMenuUI : MonoBehaviour
     private CinemachineVirtualCamera mainMenuCam;
     [SerializeField]
     private Button firstSelected;
+    [SerializeField]
+    private OptionMenu optionMenu;
 
     private Button lastSelected;
 
@@ -28,6 +30,12 @@ public class MainMenuUI : MonoBehaviour
         foreach (PlayerController player in PlayerManager.instance.players)
             player.GetComponent<PlayerInput>().currentActionMap.Enable();
         Cursor.visible = false;
+        gameObject.SetActive(false);
+    }
+
+    public void Option()
+    {
+        optionMenu.OpenMenu(gameObject, EventSystem.current.currentSelectedGameObject);
         gameObject.SetActive(false);
     }
 

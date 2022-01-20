@@ -16,14 +16,14 @@ public class Path : MonoBehaviour
     public Link loopLink;
 
 
-    [ContextMenu ("Set Transform of waypoints")]
+    /*[ContextMenu ("Set Transform of waypoints")]
     public void SepPosOfEachWaypoint()
     {
         foreach (Waypoint point in waypoints)
         {
             point.SetSelfTransform();
         }
-    }
+    }*/
 
 
     public void InitializePath()

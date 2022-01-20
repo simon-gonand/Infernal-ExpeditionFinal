@@ -44,7 +44,7 @@ public class SelectLevels : MonoBehaviour, IInteractable
     public void SelectLevel(int number)
     {
         if (number == 0)
-            GameManager.instance.LoadLevel("Landscape_LevelTuto" + number, true);
+            GameManager.instance.LoadLevel("LandScape_Tuto", false);
         else
             GameManager.instance.LoadLevel("Landscape_Level0" + number, true);
         Back();

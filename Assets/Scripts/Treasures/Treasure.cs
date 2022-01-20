@@ -423,6 +423,7 @@ public class Treasure : MonoBehaviour, ICarriable
             selfRigidbody.velocity = Vector3.zero;
             foreach(PlayerController player in _playerInteractingWith)
             {
+                if (player.isColliding && !player.CheckMovementWhenColliding()) return;
                 if (player.isLaunching) continue;
                 Vector3 applyForces = player.movement / _playerInteractingWith.Count;
                 applyForces.y = 0.0f;

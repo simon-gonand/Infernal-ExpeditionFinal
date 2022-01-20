@@ -87,7 +87,6 @@ public class AudioManager : MonoBehaviour
             {
                 gameplayNavigationSWITCH.Post(gameObject);
                 typeIsPlunder = false;
-                Debug.Log("Navigation");
             }
         }
         else
@@ -96,7 +95,6 @@ public class AudioManager : MonoBehaviour
             {
                 gameplayPillageSWITCH.Post(gameObject);
                 typeIsPlunder = true;
-                Debug.Log("Pillage");
             }
         }
     }

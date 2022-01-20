@@ -137,6 +137,9 @@ public class PlayerController : MonoBehaviour
         ResetStates();
         ResetAnimStates();
 
+        selfRenderer.enabled = true;
+        selfPlayerThrowUi.gameObject.SetActive(true);
+
         selfRigidBody.velocity += Vector3.up;
         UpdateSwimming();
         selfRigidBody.velocity -= Vector3.up;
@@ -320,6 +323,7 @@ public class PlayerController : MonoBehaviour
             isDashing = true;
             Vector3 currentVelocity = selfRigidBody.velocity;
             currentVelocity += self.forward * playerPreset.dashSpeed * Time.deltaTime * 0.1f;
+            currentVelocity.y = 0.0f;
             originalDashPos = self.position;
             targetDashPos = self.position + currentVelocity;
         }
@@ -601,7 +605,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Respawn()
     {
-        Vector3 respawnPosition = PlayerManager.instance.SetPlayerPosition(_id).position;
+        Vector3 respawnPosition = PlayerManager.instance.SetPlayerPosition(_id, false).position;
         respawnPosition.y += self.lossyScale.y;
         if (isSwimming)
         {
@@ -626,6 +630,14 @@ public class PlayerController : MonoBehaviour
         AudioManager.AMInstance.playerRespawnSFX.Post(gameObject);
     }
 
+    public bool CheckMovementWhenColliding()
+    {
+        Vector3 movement = new Vector3(_playerMovementInput.x, 0.0f, _playerMovementInput.y);
+        if (Vector3.Dot(movement, -collisionDirection) <= 0.1 && _playerMovementInput != Vector2.zero)
+            return true;
+        return false;
+    }
+
     void FixedUpdate()
     {
         if (!isColliding && !_isStun && !_isCarried && !_hasBeenLaunched && !_isDead && 
@@ -641,8 +653,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (isColliding)
         {
-            Vector3 movement = new Vector3(_playerMovementInput.x, 0.0f, _playerMovementInput.y);
-            if (Vector3.Dot(movement, -collisionDirection) <= 0.1 && _playerMovementInput != Vector2.zero)
+            if (CheckMovementWhenColliding())
                 PlayerMovement();
         }
     }
@@ -677,11 +688,12 @@ public class PlayerController : MonoBehaviour
             }
 
             // Check if raycast hit a Treasures
-            if (hit.collider.gameObject.transform.parent.gameObject.tag == "Treasures")
+            if (hit.collider.gameObject.transform.parent.CompareTag("Treasures"))
             {
                 // If it's the same treasure detected, cancel everything
                 if (treasureInFront == hit.collider.gameObject.transform.parent.gameObject)
                 {
+                    treasureInFront.GetComponent<Treasure>().selfAura.SetActive(false);
                     return;
                 }
                 else

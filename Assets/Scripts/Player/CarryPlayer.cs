@@ -62,7 +62,7 @@ public class CarryPlayer : MonoBehaviour, ICarriable
         selfScript.isCarried = false;
         selfScript.selfRigidBody.mass = 1;
         selfScript.selfRigidBody.isKinematic = false;
-        if (player.isStun)
+        if (selfScript.isStun)
             selfScript.selfRigidBody.AddForce(player.self.forward * 250.0f);
         else 
             selfScript.selfRigidBody.AddForce(player.self.forward * 5000.0f);

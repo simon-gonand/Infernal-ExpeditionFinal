@@ -16,19 +16,20 @@ public class OpenGate : MonoBehaviour, EnemiesAI
 
     private Vector3 openGatePosition;
     private Vector3 initialPos;
-    private bool isOpen = false;
+    private bool _isOpen = false;
+    public bool isOpen { get { return _isOpen; } }
 
     private int numOfPlayerClose;
 
     public void Die()
     {
-        if (!isOpen)
+        if (!_isOpen)
         {
             selfLineRenderer.enabled = false;
             selfOutline.enabled = false;
 
             StartCoroutine(Open());
-            isOpen = true;
+            _isOpen = true;
         }
     }
 
@@ -68,7 +69,7 @@ public class OpenGate : MonoBehaviour, EnemiesAI
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isOpen)
+        if (!_isOpen)
         {
             if (other.gameObject.tag == "Player")
             {
@@ -89,7 +90,7 @@ public class OpenGate : MonoBehaviour, EnemiesAI
 
     private void OnTriggerExit(Collider other)
     {
-        if (!isOpen)
+        if (!_isOpen)
         {
             if (other.gameObject.tag == "Player")
             {

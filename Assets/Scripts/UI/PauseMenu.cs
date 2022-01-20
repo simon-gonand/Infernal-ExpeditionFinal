@@ -10,6 +10,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject pauseMenuUI;
     [SerializeField]
+    private OptionMenu optionMenuUI;
+    [SerializeField]
     private Button firstSelected;
     private Button lastSelected;
 
@@ -61,7 +63,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Option()
     {
-        // TODO
+        optionMenuUI.OpenMenu(pauseMenuUI, EventSystem.current.currentSelectedGameObject);
+        pauseMenuUI.SetActive(false);
     }
 
     public void Quit()

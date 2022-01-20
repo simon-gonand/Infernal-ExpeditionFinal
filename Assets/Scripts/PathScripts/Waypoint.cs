@@ -15,9 +15,9 @@ public class Waypoint : MonoBehaviour
         self = transform;
     }
 
-    public void SetSelfTransform()
+    /*public void SetSelfTransform()
     {
         self = transform;
-    }
+    }*/
 
 }
