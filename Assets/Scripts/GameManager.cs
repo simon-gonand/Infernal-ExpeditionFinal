@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void GetStarsValue(int _numberOfPlayer , int _firstStar, int _secondStar, int _thirdStar)
+    public void GetStarsValue(int _numberOfPlayer , int _firstStar, int _secondStar, int _thirdStar, int _maxScore)
     {
         List<Treasure> littleTreasurs = new List<Treasure>();
         List<Treasure> mediumTreasurs = new List<Treasure>();
@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
         int trioGlobalValue = littleValue + mediumValue + ((bigValue / 3)*2);
         int quatuorGlobalValue = littleValue + mediumValue + bigValue;
 
-
+        _maxScore = quatuorGlobalValue;
 
         if(_numberOfPlayer == 4)
         {

@@ -8,9 +8,9 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
 
     [Header ("Setup score")]
-    [Range(1, 100)] public int scoreNeedForBronze;
-    [Range(1, 100)] public int scoreNeedForSilver;
-    [Range(1, 100)] public int scoreNeedForGold;
+    public int scoreNeedForBronze;
+    public int scoreNeedForSilver;
+    public int scoreNeedForGold;
 
     public enum differentStarState {NoStar, Bronze, Silver, Gold}
     [HideInInspector]public differentStarState actualStar;
@@ -18,6 +18,8 @@ public class ScoreManager : MonoBehaviour
     [HideInInspector]public int actualScore;
     [HideInInspector]public int scoreNeedForNextStar;
     [HideInInspector]public int scoreOfActualStar;
+
+    [HideInInspector]public int maxScore;
 
     [HideInInspector]public bool isLevelUpStar;
     [HideInInspector]public bool isDowngradeStar;

@@ -15,11 +15,16 @@ public class Path : MonoBehaviour
     public bool loop;
     public Link loopLink;
 
-    // Start is called before the first frame update
-    void Start()
+
+    [ContextMenu ("Set Transform of waypoints")]
+    public void SepPosOfEachWaypoint()
     {
-        
+        foreach (Waypoint point in waypoints)
+        {
+            point.SetSelfTransform();
+        }
     }
+
 
     public void InitializePath()
     {
@@ -42,9 +47,4 @@ public class Path : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
