@@ -7,7 +7,7 @@ using TMPro;
 
 public class EndLevelUI : MonoBehaviour
 {
-    [Header("Sefl References")]
+    [Header("Self References")]
     [SerializeField]
     private GameObject panel;
     [SerializeField]
@@ -33,6 +33,9 @@ public class EndLevelUI : MonoBehaviour
 
     public void InitializeUI()
     {
+        AudioManager.AMInstance.mapCompletedSWITCH.Post(AudioManager.AMInstance.gameObject);
+        Debug.Log("Victoryyy0");
+
         panel.SetActive(true);
         firstSelected.Select();
         score.text = ScoreManager.instance.actualScore.ToString();

@@ -32,6 +32,9 @@ public class SelectLevels : MonoBehaviour, IInteractable
         playerInteracting = player;
         levelSelection.CheckLevelState();
         levelSelection.gameObject.SetActive(true);
+
+        AudioManager.AMInstance.mapOpeningSFX.Post(gameObject);
+
         Cursor.visible = true;
         return true;
     }

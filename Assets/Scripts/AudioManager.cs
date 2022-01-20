@@ -26,10 +26,13 @@ public class AudioManager : MonoBehaviour
 
     public AK.Wwise.Event gameplayNavigationSWITCH;
     public AK.Wwise.Event gameplayPillageSWITCH;
+    public AK.Wwise.Event mapCompletedSWITCH;
 
     [Header("Themes")]
 
+    public bool isLobbi = false;
     public AK.Wwise.Event runTheme;
+    public AK.Wwise.Event lobbiTheme;
 
     [Header("Player")]
 
@@ -60,6 +63,12 @@ public class AudioManager : MonoBehaviour
     [Header("World")]
     public AK.Wwise.Event chestGroundImpactSFX;
     public AK.Wwise.Event gameAmbientSFX;
+    public AK.Wwise.Event mapOpeningSFX;
+
+    [Header("UI")]
+    public AK.Wwise.Event menuCancelSFX;
+    public AK.Wwise.Event menuNavigationSFX;
+    public AK.Wwise.Event menuSelectSFX;
 
 
     private bool typeIsPlunder = false;
@@ -68,10 +77,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        //DEBUG
-        runTheme.Post(gameObject);
-        gameAmbientSFX.Post(gameObject);
-        //
+
     }
 
 

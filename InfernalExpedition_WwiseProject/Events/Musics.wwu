@@ -22,6 +22,17 @@
 						</Event>
 						<Event Name="MainMenu_Theme" ID="{1285B71A-DAD5-4C5B-809C-172B749A1C13}"/>
 						<Event Name="Credit_Theme" ID="{83DFA5B5-378C-49B8-A415-24CD44CF21AE}"/>
+						<Event Name="Lobbi_Theme" ID="{2728043E-08E0-4FF3-9D86-245D6D9A8D53}">
+							<ChildrenList>
+								<Action Name="" ID="{15FBA919-CFFC-4304-99D4-917C7410FF12}" ShortID="262443275">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Lobbi_Theme" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>
