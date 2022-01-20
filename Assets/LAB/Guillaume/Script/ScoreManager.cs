@@ -40,7 +40,7 @@ public class ScoreManager : MonoBehaviour
         #endregion
 
         GameManager.instance.GetStarsValue(PlayerManager.instance.players.Count, 
-            scoreNeedForBronze, scoreNeedForSilver, scoreNeedForGold);
+            scoreNeedForBronze, scoreNeedForSilver, scoreNeedForGold, maxScore);
 
         scoreNeedForNextStar = scoreNeedForBronze;
         scoreOfActualStar = 0;
