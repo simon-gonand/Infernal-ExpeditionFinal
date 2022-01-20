@@ -627,6 +627,14 @@ public class PlayerController : MonoBehaviour
         AudioManager.AMInstance.playerRespawnSFX.Post(gameObject);
     }
 
+    public bool CheckMovementWhenColliding()
+    {
+        Vector3 movement = new Vector3(_playerMovementInput.x, 0.0f, _playerMovementInput.y);
+        if (Vector3.Dot(movement, -collisionDirection) <= 0.1 && _playerMovementInput != Vector2.zero)
+            return true;
+        return false;
+    }
+
     void FixedUpdate()
     {
         if (!isColliding && !_isStun && !_isCarried && !_hasBeenLaunched && !_isDead && 
@@ -642,8 +650,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (isColliding)
         {
-            Vector3 movement = new Vector3(_playerMovementInput.x, 0.0f, _playerMovementInput.y);
-            if (Vector3.Dot(movement, -collisionDirection) <= 0.1 && _playerMovementInput != Vector2.zero)
+            if (CheckMovementWhenColliding())
                 PlayerMovement();
         }
     }
