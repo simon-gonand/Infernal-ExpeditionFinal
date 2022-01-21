@@ -279,6 +279,14 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""MoveUI"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""8cdedc71-925d-4485-9600-d51e96172f79"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -303,6 +311,182 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""action"": ""CancelUI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2da24bbd-98f7-4efc-82dd-3645cbb4908c"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""ZQSD"",
+                    ""id"": ""fe71f516-fc2e-4d0b-876f-40d4b5a42472"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""9ee7fca2-815a-46cb-9ec8-848c77383cfb"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""407f23d2-f56c-47a1-b3aa-bf736fe5f264"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""f8ba8aca-3657-4da7-ac9c-5cbfceef1b38"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""6b7eaf32-57c4-4eb5-88f1-81fd7b90cee0"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrows"",
+                    ""id"": ""f9d11fd2-f869-448c-8f15-e96ca2af7f97"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""2ad70acc-6014-4fd8-ab3b-15e7ddfc38ce"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""2fcc507b-bdf1-476f-ba06-e2677d3ef49b"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""a2329b6b-55c0-490e-abe3-5cb9f8c40b81"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""b5634f08-30fb-412d-90f1-2014ea47710f"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Cross"",
+                    ""id"": ""09724d04-8cd8-4897-8792-161ffe64a644"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b7ecc028-1445-4904-bc8b-12b40ca63f79"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""06324274-8262-4559-a8e9-8a302bcd65c2"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""106d0e6b-60fc-4ab9-85f4-69f1dd403b67"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""a361bf95-910d-4ef2-ab04-e35519242876"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""MoveUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -348,6 +532,7 @@ public class @Controller : IInputActionCollection, IDisposable
         // ControlsUI
         m_ControlsUI = asset.FindActionMap("ControlsUI", throwIfNotFound: true);
         m_ControlsUI_CancelUI = m_ControlsUI.FindAction("CancelUI", throwIfNotFound: true);
+        m_ControlsUI_MoveUI = m_ControlsUI.FindAction("MoveUI", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -471,11 +656,13 @@ public class @Controller : IInputActionCollection, IDisposable
     private readonly InputActionMap m_ControlsUI;
     private IControlsUIActions m_ControlsUIActionsCallbackInterface;
     private readonly InputAction m_ControlsUI_CancelUI;
+    private readonly InputAction m_ControlsUI_MoveUI;
     public struct ControlsUIActions
     {
         private @Controller m_Wrapper;
         public ControlsUIActions(@Controller wrapper) { m_Wrapper = wrapper; }
         public InputAction @CancelUI => m_Wrapper.m_ControlsUI_CancelUI;
+        public InputAction @MoveUI => m_Wrapper.m_ControlsUI_MoveUI;
         public InputActionMap Get() { return m_Wrapper.m_ControlsUI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -488,6 +675,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @CancelUI.started -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnCancelUI;
                 @CancelUI.performed -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnCancelUI;
                 @CancelUI.canceled -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnCancelUI;
+                @MoveUI.started -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnMoveUI;
+                @MoveUI.performed -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnMoveUI;
+                @MoveUI.canceled -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnMoveUI;
             }
             m_Wrapper.m_ControlsUIActionsCallbackInterface = instance;
             if (instance != null)
@@ -495,6 +685,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @CancelUI.started += instance.OnCancelUI;
                 @CancelUI.performed += instance.OnCancelUI;
                 @CancelUI.canceled += instance.OnCancelUI;
+                @MoveUI.started += instance.OnMoveUI;
+                @MoveUI.performed += instance.OnMoveUI;
+                @MoveUI.canceled += instance.OnMoveUI;
             }
         }
     }
@@ -529,5 +722,6 @@ public class @Controller : IInputActionCollection, IDisposable
     public interface IControlsUIActions
     {
         void OnCancelUI(InputAction.CallbackContext context);
+        void OnMoveUI(InputAction.CallbackContext context);
     }
 }

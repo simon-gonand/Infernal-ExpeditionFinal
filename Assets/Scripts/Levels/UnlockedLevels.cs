@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class UnlockedLevels : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class UnlockedLevels : MonoBehaviour
             if (SaveData.instance.earnedStars < GameManager.instance.neededStarsToUnlock[i])
             {
                 levelButtons[i].interactable = false;
-                levelButtons[i].GetComponentInChildren<TextMeshProUGUI>().color = lockedColor;
+                //levelButtons[i].GetComponentInChildren<TextMeshProUGUI>().color = lockedColor;
             }
         }
     }   
