@@ -123,38 +123,6 @@
 						<CurrentSwitchRef Name="Navigation" ID="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>
-				<SoundcasterSession Name="Player" ID="{C1E4D348-E1ED-4932-B168-A982B008BAEF}">
-					<RTPCValueList ShowAll="true"/>
-					<CurrentStateList ShowAll="true">
-						<CurrentStateRef Name="None" ID="{0E1BC8D7-5D98-4D72-B8FC-48FA7BACDDC3}"/>
-					</CurrentStateList>
-					<CurrentSwitchList ShowAll="true"/>
-				</SoundcasterSession>
-				<SoundcasterSession Name="Music" ID="{56AE2FA2-8D9A-4762-AE6C-F954DCAD5FAE}">
-					<RTPCValueList ShowAll="true"/>
-					<CurrentStateList ShowAll="true">
-						<CurrentStateRef Name="None" ID="{0E1BC8D7-5D98-4D72-B8FC-48FA7BACDDC3}"/>
-					</CurrentStateList>
-					<CurrentSwitchList ShowAll="true"/>
-				</SoundcasterSession>
-				<SoundcasterSession Name="GlobalSound" ID="{E8FDD417-B8A8-47E0-AB7F-879912B64E6F}">
-					<RTPCValueList ShowAll="true">
-						<RTPCValue>
-							<GameParameterRef Name="SFX_Volume" ID="{D1E952A5-1BAF-4CC0-8077-C1409819B7F6}"/>
-							<Value>50</Value>
-						</RTPCValue>
-						<RTPCValue>
-							<GameParameterRef Name="Musics_Volume" ID="{A80ABF00-7CF5-4E9E-BE9C-31FCE98F717E}"/>
-							<Value>50</Value>
-						</RTPCValue>
-					</RTPCValueList>
-					<CurrentStateList ShowAll="true">
-						<CurrentStateRef Name="None" ID="{0E1BC8D7-5D98-4D72-B8FC-48FA7BACDDC3}"/>
-					</CurrentStateList>
-					<CurrentSwitchList ShowAll="true">
-						<CurrentSwitchRef Name="Navigation" ID="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}"/>
-					</CurrentSwitchList>
-				</SoundcasterSession>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundcasterSessions>
