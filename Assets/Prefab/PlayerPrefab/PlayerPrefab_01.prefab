@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 2660306658829606644}
   - component: {fileID: 127302442358388516}
   - component: {fileID: 5891595701888884371}
+  - component: {fileID: 2155699088311170835}
   m_Layer: 3
   m_Name: PlayerPrefab_01
   m_TagString: Player
@@ -361,8 +362,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NPCEvents, Assembly-CSharp
+      - m_Target: {fileID: 2155699088311170835}
+        m_TargetAssemblyTypeName: ClosingTutoUI, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
@@ -455,6 +456,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selfScript: {fileID: 4223509153915057751}
   carrier: {fileID: 0}
+--- !u!114 &2155699088311170835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223509153915057740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25da2c6a2a69d044bc8ef9eed67a1e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeTuto: 0
+  billboardUIActivate: {fileID: 0}
 --- !u!1 &5128916393287146836
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,8 +19,6 @@ public class NPCEvents : MonoBehaviour
 
     [Header("UI")]
     public GameObject tutoBillboardUI;
-    private bool canCloseBillboard = false;
-    [SerializeField] private GameObject billboard;
 
 
     private void Start()
@@ -30,14 +28,16 @@ public class NPCEvents : MonoBehaviour
             popUp[i].SetActive(true);
         }
 
-        billboard = null;
+        
 
         if (aboveBand == null && belowBand == null)
         {
             aboveBand = null;
             belowBand = null;
         }
-    }    
+    }
+
+    
 
     //LEVEL ADVERTISING
     public void OnStartLevel()
@@ -146,35 +146,11 @@ public class NPCEvents : MonoBehaviour
     }
 
     //TUTO 
-    public void DisplayingTutorialBillboard (GameObject tutoBillboard)
+    public void DisplayingTutorialBillboard()
     {
-        tutoBillboardUI.SetActive(true);
-
-        billboard = tutoBillboard;
-        billboard.SetActive(true);                
-
-        canCloseBillboard = true;
+        tutoBillboardUI.SetActive(true);                       
         
         Time.timeScale = 0.0f;
-    }
-
-    public void ResumeGame()
-    {
-        if (canCloseBillboard)
-        {           
-            billboard.SetActive(false);
-            tutoBillboardUI.SetActive(false);
-
-            Time.timeScale = 1.0f;
-
-            StartCoroutine(BillboardAvailable());
-        }
-    }
-
-    IEnumerator BillboardAvailable()
-    {
-        yield return new WaitForSeconds(0.5f);
-        canCloseBillboard = false;
     }
 
     //END UI
