@@ -20,17 +20,16 @@ public class LevelManager
 
     public void StartLevel()
     {
-        if (levelId != 0)
-        {
-            AudioManager.AMInstance.runTheme.Post(AudioManager.AMInstance.gameObject);
-        }
+        Debug.Log("Star LEVL LETS GO");
 
-        if(SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex <= 1)
         {
+            Debug.Log("Star Lobbie Song");
             AudioManager.AMInstance.lobbiTheme.Post(AudioManager.AMInstance.gameObject);
         }
         else
         {
+            Debug.Log("Star Run Song");
             AudioManager.AMInstance.runTheme.Post(AudioManager.AMInstance.gameObject);
         }
 
