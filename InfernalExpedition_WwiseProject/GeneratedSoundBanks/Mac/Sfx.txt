@@ -38,6 +38,7 @@ Switch	ID	Name	Switch Group			Notes
 
 State Group	ID	Name			Wwise Object Path	Notes
 	4040317175	Ground_Type			\Default Work Unit\Ground_Type	
+	4226268555	AudioDevice			\Default Work Unit\AudioDevice	
 
 State	ID	Name	State Group			Notes
 	376462290	Sea	Ground_Type			
@@ -47,6 +48,12 @@ State	ID	Name	State Group			Notes
 	2058049674	Wood	Ground_Type			
 	2654748154	Water	Ground_Type			
 	4248645337	Grass	Ground_Type			
+	748895195	None	AudioDevice			
+	880395932	Headphones	AudioDevice			
+	2888874631	Speakers	AudioDevice			
+
+Custom State	ID	Name	State Group	Owner		Notes
+	161261919	Headphones	AudioDevice	\Actor-Mixer Hierarchy\Default Work Unit\Player\Sword_Attack		
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	169199	Footsteps_Sea_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\Footsteps_Sea_1_0089FE84.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sea_Footsteps\Footsteps_Sea_1		99684
