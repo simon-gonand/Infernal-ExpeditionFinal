@@ -17,6 +17,9 @@ public class NPCEvents : MonoBehaviour
     public Animator aboveBand;
     public Animator belowBand;
 
+    [Header("UI")]
+    public GameObject tutoBillboardUI;
+
 
     private void Start()
     {
@@ -24,7 +27,17 @@ public class NPCEvents : MonoBehaviour
         {
             popUp[i].SetActive(true);
         }
-    }    
+
+        
+
+        if (aboveBand == null && belowBand == null)
+        {
+            aboveBand = null;
+            belowBand = null;
+        }
+    }
+
+    
 
     //LEVEL ADVERTISING
     public void OnStartLevel()
@@ -127,12 +140,18 @@ public class NPCEvents : MonoBehaviour
     }
 
     //TOKEN
-
     public void OnDisplayingToken(GameObject token)
     {
         token.SetActive(true);
     }
 
+    //TUTO 
+    public void DisplayingTutorialBillboard()
+    {
+        tutoBillboardUI.SetActive(true);                       
+        
+        Time.timeScale = 0.0f;
+    }
 
     //END UI
 

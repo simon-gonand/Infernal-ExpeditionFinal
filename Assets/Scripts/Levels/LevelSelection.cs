@@ -1,38 +1,130 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Cinemachine;
 
 public class LevelSelection : MonoBehaviour
 {
     public GameObject inputButtonA;
-    public bool canActivateLevelSelectionUI = false;
 
     public CinemachineVirtualCamera mainCam;
     public CinemachineVirtualCamera tableCam;
 
+    [SerializeField]
+    private UnlockedLevels levelSelection;
+
+    private List<PlayerController> playerWhoCanInteract = new List<PlayerController>();
+    private bool _uiActivate = false;
+    public bool uiActivate { get { return _uiActivate; } }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _uiActivate = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SelectLevel(int number)
     {
-        
+        if (number == 0)
+            GameManager.instance.LoadLevel("LandScape_Tuto", false);
+        else
+            GameManager.instance.LoadLevel("Landscape_Level0" + number, true);
+        Back();
+    }
+
+    public string GetTag()
+    {
+        return gameObject.tag;
+    }
+
+    private void ResumeGame()
+    {
+        PlayerManager.instance.onLevelSelectionUI = false;
+    }
+
+    private IEnumerator WaitForCameraMovementsToMainCam()
+    {
+        while (Camera.main.transform.position != mainCam.transform.position)
+            yield return new WaitForEndOfFrame();
+        ResumeGame();
+    }
+
+    public void Back()
+    {
+        mainCam.Priority = 15;
+        tableCam.Priority = 0;
+
+        StartCoroutine(WaitForCameraMovementsToMainCam());
+
+        levelSelection.gameObject.SetActive(false);
+        Cursor.visible = false;
+        foreach (PlayerController p in PlayerManager.instance.players)
+        {
+            p.selfPlayerInput.currentActionMap.Disable();
+            p.selfPlayerInput.SwitchCurrentActionMap("Controls");
+            p.selfPlayerInput.currentActionMap.Enable();
+        }
+        _uiActivate = false;
+    }
+
+    private void AwakeUI()
+    {
+        SaveData.instance = (SaveData)SerializationManager.Load();
+        int count = 1;
+        foreach (LevelProfile profile in SaveData.instance.levels)
+        {
+            Debug.Log("---------------------- Level_" + count + " ----------------------");
+            Debug.Log(profile.highScore);
+            Debug.Log(profile.starState);
+            ++count;
+        }
+        Debug.Log("------------------- Nb Stars -------------------");
+        Debug.Log(SaveData.instance.earnedStars);
+
+        foreach (PlayerController p in PlayerManager.instance.players)
+        {
+            p.selfPlayerInput.currentActionMap.Disable();
+            p.selfPlayerInput.SwitchCurrentActionMap("ControlsUI");
+            p.selfPlayerInput.currentActionMap.Enable();
+        }
+
+        levelSelection.CheckLevelState();
+        levelSelection.gameObject.SetActive(true);
+
+        AudioManager.AMInstance.mapOpeningSFX.Post(gameObject);
+
+        Cursor.visible = true;
+    }
+
+    private IEnumerator WaitForCameraMovementsToTableCam()
+    {
+        while (Camera.main.transform.position != tableCam.transform.position)
+            yield return new WaitForEndOfFrame();
+
+        AwakeUI();
     }
 
     public void ActivateLevelSelectionUi()
     {
-        if (canActivateLevelSelectionUI)
+        if (!_uiActivate)
         {
             mainCam.Priority = 0;
             tableCam.Priority = 15;
 
-            //Désactiver mort PJ
+            StartCoroutine(WaitForCameraMovementsToTableCam());
+
+            _uiActivate = true;
+
+            PlayerManager.instance.onLevelSelectionUI = true;
+            foreach(PlayerController player in PlayerManager.instance.players)
+            {
+                player.selfPlayerInput.currentActionMap.Disable();
+            }
 
             Debug.Log("LaunchLevelUI");
+
+            return;
         }        
     }
 
@@ -41,7 +133,10 @@ public class LevelSelection : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             inputButtonA.SetActive(true);
-            canActivateLevelSelectionUI = true;
+            PlayerController player = other.GetComponent<PlayerController>();
+            playerWhoCanInteract.Add(player);
+            player.levelSelectionTable = this;
+            
         }
     }
 
@@ -50,7 +145,9 @@ public class LevelSelection : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             inputButtonA.SetActive(false);
-            canActivateLevelSelectionUI = false;
+            PlayerController player = other.GetComponent<PlayerController>();
+            playerWhoCanInteract.Remove(player);
+            player.levelSelectionTable = null;
         }
     }
 }

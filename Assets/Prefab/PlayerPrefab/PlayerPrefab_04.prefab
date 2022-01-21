@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 2660306658829606644}
   - component: {fileID: 127302442358388516}
   - component: {fileID: 5891595701888884371}
+  - component: {fileID: 8362409756230189291}
   m_Layer: 3
   m_Name: PlayerPrefab_04
   m_TagString: Player
@@ -349,6 +350,7 @@ MonoBehaviour:
   selfPlayerThrowUi: {fileID: 1499511855413072128}
   sweatParticleSysteme: {fileID: 6188534941834114077}
   selfPlayerInput: {fileID: 4223509153915057750}
+  closingTutoUI: {fileID: 8362409756230189291}
   playerGraphics: {fileID: 8953784907364789553}
   selfRenderer: {fileID: 9059022649915174557}
   attackPoint: {fileID: 7237748085361382517}
@@ -470,6 +472,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 65cf9322-0f3b-4b5a-95f9-20a64e4b77ea
     m_ActionName: Controls/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4223509153915057751}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnValidationUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6b1ea310-ac9a-48c0-89a5-323a3e430353
+    m_ActionName: Controls/ValidationUI[/XInputControllerWindows/buttonSouth,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4223509153915057751}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnCancelUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 41385977-5afc-41d0-aedb-34f43913c689
+    m_ActionName: ControlsUI/CancelUI[/XInputControllerWindows/buttonEast,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls
@@ -546,6 +580,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selfScript: {fileID: 4223509153915057751}
   carrier: {fileID: 0}
+--- !u!114 &8362409756230189291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223509153915057740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25da2c6a2a69d044bc8ef9eed67a1e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeTuto: 0
+  billboardUIActivate: {fileID: 0}
 --- !u!1 &6059808003193911324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,11 +1095,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 091fad03ccac08c49a16b12d2ad347bb, type: 3}
---- !u!137 &9059022649915174557 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 137999275790388816, guid: 091fad03ccac08c49a16b12d2ad347bb, type: 3}
-  m_PrefabInstance: {fileID: 8958319942429974733}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1962455547833376850 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7452985048980799647, guid: 091fad03ccac08c49a16b12d2ad347bb, type: 3}
@@ -1076,6 +1119,11 @@ Transform:
 --- !u!1 &1277832469005619150 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7920034431683555075, guid: 091fad03ccac08c49a16b12d2ad347bb, type: 3}
+  m_PrefabInstance: {fileID: 8958319942429974733}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &9059022649915174557 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 137999275790388816, guid: 091fad03ccac08c49a16b12d2ad347bb, type: 3}
   m_PrefabInstance: {fileID: 8958319942429974733}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9173259028798768815

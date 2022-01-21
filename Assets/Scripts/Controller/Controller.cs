@@ -65,14 +65,6 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""CancelUI"",
-                    ""type"": ""Button"",
-                    ""id"": ""dd3bc46a-709b-4660-a74a-cdad7f4a4bbd"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -265,11 +257,49 @@ public class @Controller : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""925e8523-089e-480b-b831-a52a58010d0c"",
+                    ""id"": ""5bd6a0c0-45dd-4bfe-96ff-c0a93b28ef80"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ValidationUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""ControlsUI"",
+            ""id"": ""5b91eee1-e05e-4c03-989f-4a5725978bd1"",
+            ""actions"": [
+                {
+                    ""name"": ""CancelUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""41385977-5afc-41d0-aedb-34f43913c689"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4a8dc73d-0532-4090-afff-7ef2e2817696"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
+                    ""action"": ""CancelUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c45315be-6c27-43a9-ab76-285e62ab7d28"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""CancelUI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -315,7 +345,9 @@ public class @Controller : IInputActionCollection, IDisposable
         m_Controls_PlayerDash = m_Controls.FindAction("PlayerDash", throwIfNotFound: true);
         m_Controls_Pause = m_Controls.FindAction("Pause", throwIfNotFound: true);
         m_Controls_ValidationUI = m_Controls.FindAction("ValidationUI", throwIfNotFound: true);
-        m_Controls_CancelUI = m_Controls.FindAction("CancelUI", throwIfNotFound: true);
+        // ControlsUI
+        m_ControlsUI = asset.FindActionMap("ControlsUI", throwIfNotFound: true);
+        m_ControlsUI_CancelUI = m_ControlsUI.FindAction("CancelUI", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -371,7 +403,6 @@ public class @Controller : IInputActionCollection, IDisposable
     private readonly InputAction m_Controls_PlayerDash;
     private readonly InputAction m_Controls_Pause;
     private readonly InputAction m_Controls_ValidationUI;
-    private readonly InputAction m_Controls_CancelUI;
     public struct ControlsActions
     {
         private @Controller m_Wrapper;
@@ -382,7 +413,6 @@ public class @Controller : IInputActionCollection, IDisposable
         public InputAction @PlayerDash => m_Wrapper.m_Controls_PlayerDash;
         public InputAction @Pause => m_Wrapper.m_Controls_Pause;
         public InputAction @ValidationUI => m_Wrapper.m_Controls_ValidationUI;
-        public InputAction @CancelUI => m_Wrapper.m_Controls_CancelUI;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -410,9 +440,6 @@ public class @Controller : IInputActionCollection, IDisposable
                 @ValidationUI.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnValidationUI;
                 @ValidationUI.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnValidationUI;
                 @ValidationUI.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnValidationUI;
-                @CancelUI.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnCancelUI;
-                @CancelUI.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnCancelUI;
-                @CancelUI.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnCancelUI;
             }
             m_Wrapper.m_ControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -435,13 +462,43 @@ public class @Controller : IInputActionCollection, IDisposable
                 @ValidationUI.started += instance.OnValidationUI;
                 @ValidationUI.performed += instance.OnValidationUI;
                 @ValidationUI.canceled += instance.OnValidationUI;
+            }
+        }
+    }
+    public ControlsActions @Controls => new ControlsActions(this);
+
+    // ControlsUI
+    private readonly InputActionMap m_ControlsUI;
+    private IControlsUIActions m_ControlsUIActionsCallbackInterface;
+    private readonly InputAction m_ControlsUI_CancelUI;
+    public struct ControlsUIActions
+    {
+        private @Controller m_Wrapper;
+        public ControlsUIActions(@Controller wrapper) { m_Wrapper = wrapper; }
+        public InputAction @CancelUI => m_Wrapper.m_ControlsUI_CancelUI;
+        public InputActionMap Get() { return m_Wrapper.m_ControlsUI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ControlsUIActions set) { return set.Get(); }
+        public void SetCallbacks(IControlsUIActions instance)
+        {
+            if (m_Wrapper.m_ControlsUIActionsCallbackInterface != null)
+            {
+                @CancelUI.started -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnCancelUI;
+                @CancelUI.performed -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnCancelUI;
+                @CancelUI.canceled -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnCancelUI;
+            }
+            m_Wrapper.m_ControlsUIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
                 @CancelUI.started += instance.OnCancelUI;
                 @CancelUI.performed += instance.OnCancelUI;
                 @CancelUI.canceled += instance.OnCancelUI;
             }
         }
     }
-    public ControlsActions @Controls => new ControlsActions(this);
+    public ControlsUIActions @ControlsUI => new ControlsUIActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -468,6 +525,9 @@ public class @Controller : IInputActionCollection, IDisposable
         void OnPlayerDash(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnValidationUI(InputAction.CallbackContext context);
+    }
+    public interface IControlsUIActions
+    {
         void OnCancelUI(InputAction.CallbackContext context);
     }
 }

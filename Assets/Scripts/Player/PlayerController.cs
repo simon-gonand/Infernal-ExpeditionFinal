@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public PlayerThrowUI selfPlayerThrowUi;
     public GameObject sweatParticleSysteme;
     public PlayerInput selfPlayerInput;
+    public ClosingTutoUI closingTutoUI;
 
     [Header("Children References")]
     public Transform playerGraphics;
@@ -41,6 +42,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask mask;
     private IInteractable _interactingWith;
     public IInteractable interactingWith { get { return _interactingWith; } }
+
+    private LevelSelection _levelSelectionTable;
+    public LevelSelection levelSelectionTable { set { _levelSelectionTable = value; } }
 
     private float nextDash;
     private float dashTimer;
@@ -389,6 +393,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnValidationUI(InputAction.CallbackContext context)
+    {
+        if (_levelSelectionTable != null && context.performed)
+            _levelSelectionTable.ActivateLevelSelectionUi();
+    }
+
+    public void OnCancelUI(InputAction.CallbackContext context)
+    {
+        Debug.Log(_levelSelectionTable.uiActivate);
+        if (_levelSelectionTable != null && _levelSelectionTable.uiActivate && context.performed)
+            _levelSelectionTable.Back();
+    }
+
     public void OnPause(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -516,7 +533,11 @@ public class PlayerController : MonoBehaviour
         // Apply speed malus if the player is carrying an heavy treasure
         Treasure transportedTreasure = _carrying as Treasure;
         if (_isCarrying && transportedTreasure != null)
+        {
             currentSpeed -= transportedTreasure.speedMalus;
+            if (currentSpeed < 50.0f)
+                currentSpeed = 50.0f;
+        }
 
         // Apply movements
         Vector3 calculatePlayerInput = playerMovementInput * currentSpeed * Time.deltaTime;
