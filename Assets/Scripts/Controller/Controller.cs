@@ -65,6 +65,14 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""ResetPlayer"",
+                    ""type"": ""Button"",
+                    ""id"": ""c32155c7-5d39-4063-b9a0-308662dc4a3f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -265,6 +273,28 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""action"": ""ValidationUI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7a4624f-91d4-4675-9b5c-3b628cb4b660"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ResetPlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ab612fd-8e95-4501-9fbc-aec0fc2b24e0"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ResetPlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -345,6 +375,7 @@ public class @Controller : IInputActionCollection, IDisposable
         m_Controls_PlayerDash = m_Controls.FindAction("PlayerDash", throwIfNotFound: true);
         m_Controls_Pause = m_Controls.FindAction("Pause", throwIfNotFound: true);
         m_Controls_ValidationUI = m_Controls.FindAction("ValidationUI", throwIfNotFound: true);
+        m_Controls_ResetPlayer = m_Controls.FindAction("ResetPlayer", throwIfNotFound: true);
         // ControlsUI
         m_ControlsUI = asset.FindActionMap("ControlsUI", throwIfNotFound: true);
         m_ControlsUI_CancelUI = m_ControlsUI.FindAction("CancelUI", throwIfNotFound: true);
@@ -403,6 +434,7 @@ public class @Controller : IInputActionCollection, IDisposable
     private readonly InputAction m_Controls_PlayerDash;
     private readonly InputAction m_Controls_Pause;
     private readonly InputAction m_Controls_ValidationUI;
+    private readonly InputAction m_Controls_ResetPlayer;
     public struct ControlsActions
     {
         private @Controller m_Wrapper;
@@ -413,6 +445,7 @@ public class @Controller : IInputActionCollection, IDisposable
         public InputAction @PlayerDash => m_Wrapper.m_Controls_PlayerDash;
         public InputAction @Pause => m_Wrapper.m_Controls_Pause;
         public InputAction @ValidationUI => m_Wrapper.m_Controls_ValidationUI;
+        public InputAction @ResetPlayer => m_Wrapper.m_Controls_ResetPlayer;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -440,6 +473,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @ValidationUI.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnValidationUI;
                 @ValidationUI.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnValidationUI;
                 @ValidationUI.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnValidationUI;
+                @ResetPlayer.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnResetPlayer;
+                @ResetPlayer.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnResetPlayer;
+                @ResetPlayer.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnResetPlayer;
             }
             m_Wrapper.m_ControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -462,6 +498,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @ValidationUI.started += instance.OnValidationUI;
                 @ValidationUI.performed += instance.OnValidationUI;
                 @ValidationUI.canceled += instance.OnValidationUI;
+                @ResetPlayer.started += instance.OnResetPlayer;
+                @ResetPlayer.performed += instance.OnResetPlayer;
+                @ResetPlayer.canceled += instance.OnResetPlayer;
             }
         }
     }
@@ -525,6 +564,7 @@ public class @Controller : IInputActionCollection, IDisposable
         void OnPlayerDash(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnValidationUI(InputAction.CallbackContext context);
+        void OnResetPlayer(InputAction.CallbackContext context);
     }
     public interface IControlsUIActions
     {

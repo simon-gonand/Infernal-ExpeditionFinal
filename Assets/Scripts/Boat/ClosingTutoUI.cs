@@ -12,20 +12,8 @@ public class ClosingTutoUI : MonoBehaviour
 
     public void Awake()
     {
-        Instance = this;
-    }
-
-    private void Update()
-    {
-        CheckingUiActivation();
-    }
-
-    public void CheckingUiActivation()
-    {
-        if (billboardUIActivate.activeInHierarchy)
-        {
-            closeTuto = true;
-        }
+        if (Instance == null) Instance = this;
+        else Destroy(this);
     }
 
     public void ResumeGame()

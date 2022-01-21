@@ -148,7 +148,8 @@ public class NPCEvents : MonoBehaviour
     //TUTO 
     public void DisplayingTutorialBillboard()
     {
-        tutoBillboardUI.SetActive(true);                       
+        tutoBillboardUI.SetActive(true);
+        tutoBillboardUI.GetComponent<ClosingTutoUI>().closeTuto = true;
         
         Time.timeScale = 0.0f;
     }
