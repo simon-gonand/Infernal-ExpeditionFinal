@@ -75,6 +75,9 @@ public class ScoreManager : MonoBehaviour
     {
         CheckStar();
 
+        ScoreUI.instance.UpdateUiScore();
+        GoldBagTextUi.instance.AddScoreToSpawn(scoreAdded);
+
         if (UiScore.instance != null)
         {
             UiScore.instance.ScoreUpdate(scoreAdded);
