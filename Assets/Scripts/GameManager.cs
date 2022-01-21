@@ -59,13 +59,19 @@ public class GameManager : MonoBehaviour
             {
                 p.selfPlayerInput.currentActionMap.Disable();
                 p.selfPlayerInput.SwitchCurrentActionMap("Controls");
-                p.selfPlayerInput.currentActionMap.Enable();
+                p.selfPlayerInput.currentActionMap.Disable();
             }
         }
         else
         {
             PlayerManager.instance.onPirateIsland = false;
             PlayerManager.instance.respawnOnBoat = true;
+            foreach (PlayerController p in PlayerManager.instance.players)
+            {
+                p.selfPlayerInput.currentActionMap.Disable();
+                p.selfPlayerInput.SwitchCurrentActionMap("Controls");
+                p.selfPlayerInput.currentActionMap.Enable();
+            }
         }
         SceneManager.LoadScene(sceneName);
     }
