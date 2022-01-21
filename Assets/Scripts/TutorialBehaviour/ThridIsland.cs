@@ -1,26 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ThridIsland : MonoBehaviour
 {
+    [Header ("UI")]
+    public GameObject globalUi;
+    public TextMeshProUGUI counter;
+
     [SerializeField]
     private Path path;
 
     [SerializeField]
     private List<Treasure> treasures;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (treasures.Count == 0)
         {
+            globalUi.SetActive(false);
+
             int nbPlayerOnBoat = 0;
             foreach (PlayerController player in PlayerManager.instance.players)
             {
@@ -33,7 +33,6 @@ public class ThridIsland : MonoBehaviour
                 this.enabled = false;
             }
         }
-
         else
         {
             for (int i = 0; i < treasures.Count; ++i)
@@ -42,5 +41,7 @@ public class ThridIsland : MonoBehaviour
                     treasures.RemoveAt(i);
             }
         }
+
+        counter.text = treasures.Count.ToString();
     }
 }

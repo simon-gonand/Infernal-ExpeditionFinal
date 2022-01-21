@@ -58,13 +58,18 @@ public class GoldBagTextUi : MonoBehaviour
 
     private void InstantiateScoreBox(int treasureValue)
     {
+        if (treasureValue == 0)
+        {
+            return;
+        }
+
         GameObject actualTextBox = Instantiate(scoreBox, transform.position, transform.rotation);
         actualTextBox.transform.SetParent(gameObject.transform);
 
         TextMeshProUGUI actualText = actualTextBox.GetComponent<TextMeshProUGUI>();
         TextBoxMouvement scrpit = actualTextBox.GetComponent<TextBoxMouvement>();
 
-        if (treasureValue >= 0)
+        if (treasureValue > 0)
         {
             actualText.text = "+" + treasureValue.ToString();
             actualText.color = addColor;

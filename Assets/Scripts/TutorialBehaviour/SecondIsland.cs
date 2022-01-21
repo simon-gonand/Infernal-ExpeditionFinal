@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class SecondIsland : MonoBehaviour
 {
+    public GameObject globalUi;
+    public TextMeshProUGUI counter;
+
     [SerializeField]
     private Path path;
 
@@ -15,6 +20,7 @@ public class SecondIsland : MonoBehaviour
     {
         if (treasures.Count == 0)
         {
+            globalUi.SetActive(false);
             int nbPlayerOnBoat = 0;
             foreach (PlayerController player in PlayerManager.instance.players)
             {
@@ -35,5 +41,7 @@ public class SecondIsland : MonoBehaviour
                     treasures.RemoveAt(i);
             }
         }
+
+        counter.text = treasures.Count.ToString();
     }
 }

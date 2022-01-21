@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class FourthIsland : MonoBehaviour
 {
+    public GameObject globalUi;
+
     [SerializeField]
     private Path path;
 
     [SerializeField]
     private OpenGate gate;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if (gate.isOpen)
         {
+            globalUi.SetActive(false);
+
             int nbPlayerOnBoat = 0;
             foreach (PlayerController player in PlayerManager.instance.players)
             {
