@@ -1,5 +1,6 @@
 State Group	ID	Name			Wwise Object Path	Notes
 	4040317175	Ground_Type			\Default Work Unit\Ground_Type	
+	4226268555	AudioDevice			\Default Work Unit\AudioDevice	
 
 State	ID	Name	State Group			Notes
 	376462290	Sea	Ground_Type			
@@ -9,6 +10,12 @@ State	ID	Name	State Group			Notes
 	2058049674	Wood	Ground_Type			
 	2654748154	Water	Ground_Type			
 	4248645337	Grass	Ground_Type			
+	748895195	None	AudioDevice			
+	880395932	Headphones	AudioDevice			
+	2888874631	Speakers	AudioDevice			
+
+Custom State	ID	Name	State Group	Owner		Notes
+	451871208	Headphones	AudioDevice	\Master-Mixer Hierarchy\Default Work Unit\SFX Audio Bus		
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	1564184899	SFX_Volume			\Default Work Unit\SFX_Volume	

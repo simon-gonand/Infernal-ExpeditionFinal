@@ -699,7 +699,7 @@
 				<Trigger Id="1087296951" Name="Collect_Treasure" ObjectPath="\Triggers\Default Work Unit\Collect_Treasure"/>
 			</Triggers>
 		</SoundBank>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3146127433">
+		<SoundBank Id="1355168291" Language="SFX" Hash="1246350811">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -707,6 +707,15 @@
 				<GameParameter Id="1564184899" Name="SFX_Volume" ObjectPath="\Game Parameters\Default Work Unit\SFX_Volume"/>
 				<GameParameter Id="1905425858" Name="Musics_Volume" ObjectPath="\Game Parameters\Default Work Unit\Musics_Volume"/>
 			</GameParameters>
+			<StateGroups>
+				<StateGroup Id="4226268555" Name="AudioDevice" ObjectPath="\States\Default Work Unit\AudioDevice" GUID="{0373B539-98E9-47BC-9F95-557A51E4AA56}">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\AudioDevice\None" GUID="{6AF92635-CCE6-4443-9572-09573DE12CE3}"/>
+						<State Id="2888874631" Name="Speakers" ObjectPath="\States\Default Work Unit\AudioDevice\Speakers" GUID="{6A6C8F4A-3113-4CFD-943F-5EAA80930A92}"/>
+						<State Id="880395932" Name="Headphones" ObjectPath="\States\Default Work Unit\AudioDevice\Headphones" GUID="{4C976629-80F8-449F-B89F-271C94A49D20}"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
 		<SoundBank Id="1730564753" Language="SFX" Hash="3323631435">
 			<ObjectPath>\SoundBanks\Default Work Unit\Musics</ObjectPath>

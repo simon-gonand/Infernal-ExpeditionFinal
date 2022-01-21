@@ -14,6 +14,13 @@
 						<State Name="Sea" ID="{6CA64AE8-43F4-45B2-84C3-E863CC6A80A8}"/>
 					</ChildrenList>
 				</StateGroup>
+				<StateGroup Name="AudioDevice" ID="{0373B539-98E9-47BC-9F95-557A51E4AA56}">
+					<ChildrenList>
+						<State Name="None" ID="{6AF92635-CCE6-4443-9572-09573DE12CE3}"/>
+						<State Name="Speakers" ID="{6A6C8F4A-3113-4CFD-943F-5EAA80930A92}"/>
+						<State Name="Headphones" ID="{4C976629-80F8-449F-B89F-271C94A49D20}"/>
+					</ChildrenList>
+				</StateGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</States>
