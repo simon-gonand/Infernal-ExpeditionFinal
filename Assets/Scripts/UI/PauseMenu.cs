@@ -41,6 +41,10 @@ public class PauseMenu : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         GameManager.instance.LoadLevel(scene.name, GameManager.instance.boatOnTargetGroup);
+        foreach(PlayerController player in PlayerManager.instance.players)
+        {
+            player.selfPlayerInput.currentActionMap.Enable();
+        }
         Resume();
     }
 
