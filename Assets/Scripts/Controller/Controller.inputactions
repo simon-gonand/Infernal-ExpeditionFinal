@@ -52,14 +52,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
-                },
-                {
-                    "name": "CancelUI",
-                    "type": "Button",
-                    "id": "dd3bc46a-709b-4660-a74a-cdad7f4a4bbd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -260,10 +252,26 @@
                     "action": "ValidationUI",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "ControlsUI",
+            "id": "5b91eee1-e05e-4c03-989f-4a5725978bd1",
+            "actions": [
+                {
+                    "name": "CancelUI",
+                    "type": "Button",
+                    "id": "41385977-5afc-41d0-aedb-34f43913c689",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "925e8523-089e-480b-b831-a52a58010d0c",
+                    "id": "4a8dc73d-0532-4090-afff-7ef2e2817696",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
@@ -274,7 +282,7 @@
                 },
                 {
                     "name": "",
-                    "id": "68415c1d-84dc-4bf6-b1ea-858380f96e9e",
+                    "id": "c45315be-6c27-43a9-ab76-285e62ab7d28",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",

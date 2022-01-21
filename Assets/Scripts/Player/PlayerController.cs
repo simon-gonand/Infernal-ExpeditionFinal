@@ -398,6 +398,13 @@ public class PlayerController : MonoBehaviour
             _levelSelectionTable.ActivateLevelSelectionUi();
     }
 
+    public void OnCancelUI(InputAction.CallbackContext context)
+    {
+        Debug.Log(_levelSelectionTable.uiActivate);
+        if (_levelSelectionTable != null && _levelSelectionTable.uiActivate && context.performed)
+            _levelSelectionTable.Back();
+    }
+
     public void OnPause(InputAction.CallbackContext context)
     {
         if (context.performed)

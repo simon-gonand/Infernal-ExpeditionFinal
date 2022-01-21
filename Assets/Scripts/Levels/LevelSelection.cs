@@ -15,12 +15,13 @@ public class LevelSelection : MonoBehaviour
     private UnlockedLevels levelSelection;
 
     private List<PlayerController> playerWhoCanInteract = new List<PlayerController>();
-    private bool uiActivate = false;
+    private bool _uiActivate = false;
+    public bool uiActivate { get { return _uiActivate; } }
 
     // Start is called before the first frame update
     void Start()
     {
-        uiActivate = false;
+        _uiActivate = false;
     }
 
     public void SelectLevel(int number)
@@ -59,8 +60,12 @@ public class LevelSelection : MonoBehaviour
         levelSelection.gameObject.SetActive(false);
         Cursor.visible = false;
         foreach (PlayerController p in PlayerManager.instance.players)
-            p.GetComponent<PlayerInput>().currentActionMap.Enable();
-        uiActivate = false;
+        {
+            p.selfPlayerInput.currentActionMap.Disable();
+            p.selfPlayerInput.SwitchCurrentActionMap("Controls");
+            p.selfPlayerInput.currentActionMap.Enable();
+        }
+        _uiActivate = false;
     }
 
     private void AwakeUI()
@@ -78,7 +83,11 @@ public class LevelSelection : MonoBehaviour
         Debug.Log(SaveData.instance.earnedStars);
 
         foreach (PlayerController p in PlayerManager.instance.players)
-            p.GetComponent<PlayerInput>().currentActionMap.Disable();
+        {
+            p.selfPlayerInput.currentActionMap.Disable();
+            p.selfPlayerInput.SwitchCurrentActionMap("ControlsUI");
+            p.selfPlayerInput.currentActionMap.Enable();
+        }
 
         levelSelection.CheckLevelState();
         levelSelection.gameObject.SetActive(true);
@@ -98,14 +107,14 @@ public class LevelSelection : MonoBehaviour
 
     public void ActivateLevelSelectionUi()
     {
-        if (!uiActivate)
+        if (!_uiActivate)
         {
             mainCam.Priority = 0;
             tableCam.Priority = 15;
 
             StartCoroutine(WaitForCameraMovementsToTableCam());
 
-            uiActivate = true;
+            _uiActivate = true;
 
             PlayerManager.instance.onLevelSelectionUI = true;
             foreach(PlayerController player in PlayerManager.instance.players)
