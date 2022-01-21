@@ -41,4 +41,25 @@ public class ModifierUiManager : MonoBehaviour
         obj.GetComponent<ModifierLogic>().SetValue(timeBeforeMove, _duration);
     }
 
+    public void SpawnTransformationToken(float _duration)
+    {
+        GameObject obj = Instantiate(transformationToken, transform.position, transform.rotation);
+        obj.transform.SetParent(transform);
+        obj.GetComponent<ModifierLogic>().SetValue(timeBeforeMove, _duration);
+    }
+
+    public void SpawnExpensiveToken(float _duration)
+    {
+        GameObject obj = Instantiate(expensiveTreasureToken, transform.position, transform.rotation);
+        obj.transform.SetParent(transform);
+        obj.GetComponent<ModifierLogic>().SetValue(timeBeforeMove, _duration);
+    }
+
+    public void SpawnSickToken(float _duration)
+    {
+        GameObject obj = Instantiate(sickToken, transform.position, transform.rotation);
+        obj.transform.SetParent(transform);
+        obj.GetComponent<ModifierLogic>().SetValue(timeBeforeMove, _duration);
+    }
+
 }
