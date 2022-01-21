@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour
     private IInteractable _interactingWith;
     public IInteractable interactingWith { get { return _interactingWith; } }
 
+    private LevelSelection _levelSelectionTable;
+    public LevelSelection levelSelectionTable { set { _levelSelectionTable = value; } }
+
     private float nextDash;
     private float dashTimer;
     private Vector3 originalDashPos;
@@ -387,6 +390,12 @@ public class PlayerController : MonoBehaviour
                 selfRigidBody.mass = 1;
             }
         }
+    }
+
+    public void OnValidationUI(InputAction.CallbackContext context)
+    {
+        if (_levelSelectionTable != null && context.performed)
+            _levelSelectionTable.ActivateLevelSelectionUi();
     }
 
     public void OnPause(InputAction.CallbackContext context)
