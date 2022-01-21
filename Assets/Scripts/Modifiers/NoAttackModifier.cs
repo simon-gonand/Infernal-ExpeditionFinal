@@ -6,6 +6,8 @@ public class NoAttackModifier : IModifier
 {
     protected override void StartBehaviour()
     {
+        ModifierUiManager.instance.SpawnNoAttackToken(durationTime);
+
         foreach(PlayerController player in PlayerManager.instance.players)
         {
             player.canAttack = false;
