@@ -118,10 +118,9 @@ public class NPCEvents : MonoBehaviour
 
     //TUTO 
     public void DisplayingTutorialBillboard()
-    {
-        tutoBillboardUI.SetActive(true);
-        tutoBillboardUI.GetComponent<ClosingTutoUI>().closeTuto = true;
-        
+    {
+        tutoBillboardUI.SetActive(true);
+        ClosingTutoUI.Instance.closeTuto = true;      
         Time.timeScale = 0.0f;
     }
     //BLACK BANDS
