@@ -24,6 +24,15 @@ public class LevelSelection : MonoBehaviour
         _uiActivate = false;
     }
 
+    private void Update()
+    {
+        if (_uiActivate)
+        {
+            inputButtonA.SetActive(false);
+        }
+
+    }
+
     public void SelectLevel(int number)
     {
         if (number == 0)
@@ -137,7 +146,6 @@ public class LevelSelection : MonoBehaviour
             PlayerController player = other.GetComponent<PlayerController>();
             playerWhoCanInteract.Add(player);
             player.levelSelectionTable = this;
-            
         }
     }
 
