@@ -82,13 +82,15 @@ public class PlayerManager : MonoBehaviour
         Transform playerSpawnPosition;
         if (onPirateIsland && playerInput.playerIndex == 0)
         {
+            playerSpawnPosition = playerTransform;
             playerInput.gameObject.GetComponent<PlayerController>().self = playerTransform;
-            GameManager.instance.targetGroup.AddMember(playerTransform, weight, 20);
-            return;
         }
-        playerSpawnPosition = SetPlayerPosition(playerInput.playerIndex, true);
-        playerTransform.position = playerSpawnPosition.position;
-        
+        else
+        {
+            playerSpawnPosition = SetPlayerPosition(playerInput.playerIndex, true);
+            playerTransform.position = playerSpawnPosition.position;
+        }
+
         if (!onPirateIsland && respawnOnBoat)
         {
             playerTransform.SetParent(BoatManager.instance.self);
