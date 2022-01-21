@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
             foreach (PlayerController p in PlayerManager.instance.players)
             {
                 p.selfPlayerInput.currentActionMap.Disable();
+                p.selfPlayerInput.SwitchCurrentActionMap("Controls");
+                p.selfPlayerInput.currentActionMap.Enable();
             }
         }
         else

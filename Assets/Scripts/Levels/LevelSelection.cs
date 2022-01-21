@@ -59,6 +59,7 @@ public class LevelSelection : MonoBehaviour
 
         levelSelection.gameObject.SetActive(false);
         Cursor.visible = false;
+        PlayerManager.instance.onLevelSelectionUI = false;
         foreach (PlayerController p in PlayerManager.instance.players)
         {
             p.selfPlayerInput.currentActionMap.Disable();
