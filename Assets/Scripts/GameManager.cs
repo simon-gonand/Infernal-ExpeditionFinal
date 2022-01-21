@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("awake");
         if (instance == null)
         {
             instance = this;

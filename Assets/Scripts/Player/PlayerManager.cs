@@ -54,10 +54,6 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-    }
-
-    private void Start()
-    {
         if (instance == null)
         {
             instance = this;
@@ -65,12 +61,16 @@ public class PlayerManager : MonoBehaviour
             {
                 _respawnOnBoat = false;
                 firstPlayer.SetActive(true);
-                firstPlayer.transform.SetParent(BoatManager.instance.transform.parent);
             }
-            cameraOriginalOffset = camManager.offsetPositionMovement;
         }
         else Destroy(gameObject);
+    }
 
+    private void Start()
+    {
+        if (onPirateIsland)
+            firstPlayer.transform.SetParent(BoatManager.instance.transform.parent);
+        cameraOriginalOffset = camManager.offsetPositionMovement;
     }
 
     // Update material of player when one is joining to avoid them to have the same color
@@ -79,10 +79,16 @@ public class PlayerManager : MonoBehaviour
         // Update players spawn positions according to which player is spawning
         // Player is spawning on the boat
         Transform playerTransform = playerInput.gameObject.transform;
-        Transform playerSpawnPosition = SetPlayerPosition(playerInput.playerIndex, true);
+        Transform playerSpawnPosition;
         if (onPirateIsland && playerInput.playerIndex == 0)
-            playerSpawnPosition = playerTransform;
+        {
+            playerInput.gameObject.GetComponent<PlayerController>().self = playerTransform;
+            GameManager.instance.targetGroup.AddMember(playerTransform, weight, 20);
+            return;
+        }
+        playerSpawnPosition = SetPlayerPosition(playerInput.playerIndex, true);
         playerTransform.position = playerSpawnPosition.position;
+        
         if (!onPirateIsland && respawnOnBoat)
         {
             playerTransform.SetParent(BoatManager.instance.self);
