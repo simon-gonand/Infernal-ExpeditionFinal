@@ -8,9 +8,21 @@ public class LevelSelection : MonoBehaviour
 {
     public GameObject inputButtonA;
 
+    private Coroutine coroutine;
+
+    [Header("CAMERA")]
     public CinemachineVirtualCamera mainCam;
     public CinemachineVirtualCamera tableCam;
 
+    [Header("SCORE TOKEN")]
+    public GameObject bronzeToken;
+    public GameObject silverToken;
+    public GameObject goldToken;
+
+    [Space(5)]
+    public GameObject cursor;
+
+    [Space(10)]
     [SerializeField]
     private UnlockedLevels levelSelection;
 
@@ -82,34 +94,80 @@ public class LevelSelection : MonoBehaviour
         _uiActivate = false;
     }
 
+    private IEnumerator LerpTransition(float offset)
+    {
+        RectTransform cursorTransform = cursor.GetComponent<RectTransform>();
+
+        Vector3 startPos = cursorTransform.localPosition;
+        float t = 0.0f;
+        while (t < 1.0f)
+        {
+            cursorTransform.localPosition = Vector3.Lerp(startPos, new Vector3(startPos.x + offset, startPos.y, startPos.z),t);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        
+        coroutine = null;
+        yield return null;
+    }
+
     public void ChangeSelection(Vector2 value)
     {
+
         currentSelectedObject = EventSystem.current.currentSelectedGameObject;
         if (value.x < 0.0f)
         {
-            // Move left
-            --currentLevelSelectedIndex;
+            if (currentLevelSelectedIndex == 0)
+            {
+                return;
+            }
+
+            if (coroutine == null)
+            {
+                // Move left
+                coroutine = StartCoroutine(LerpTransition(+1288));
+                --currentLevelSelectedIndex;
+            }
+
         }
         else if (value.x > 0.0f)
         {
-            // Move right
-            ++currentLevelSelectedIndex;
+            if (currentLevelSelectedIndex == 4)
+            {
+                return;
+            }
+
+            if (coroutine == null)
+            {
+                // Move right
+                coroutine = StartCoroutine(LerpTransition(-1288));
+                ++currentLevelSelectedIndex;
+            }
         }
 
         LevelProfile level = SaveData.instance.levels[currentLevelSelectedIndex];
         switch (level.starState)
         {
             case ScoreManager.differentStarState.NoStar:
-                // Nique
+                bronzeToken.SetActive(false);
+                silverToken.SetActive(false);
+                goldToken.SetActive(false);
                 break;
             case ScoreManager.differentStarState.Bronze:
-                // Display bronze
+                bronzeToken.SetActive(true);
+                silverToken.SetActive(false);
+                goldToken.SetActive(false);
                 break;
             case ScoreManager.differentStarState.Silver:
-                // Display bronze et silver
+                bronzeToken.SetActive(true);
+                silverToken.SetActive(true);
+                goldToken.SetActive(false);
+
                 break;
             case ScoreManager.differentStarState.Gold:
-                // Display bronze, silver et gold
+                bronzeToken.SetActive(true);
+                silverToken.SetActive(true);
+                goldToken.SetActive(true);
                 break;
             default:
                 break;

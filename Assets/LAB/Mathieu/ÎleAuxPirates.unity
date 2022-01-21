@@ -705,15 +705,35 @@ PrefabInstance:
     - target: {fileID: 176039082, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 1480766863}
+      objectReference: {fileID: 111245538}
+    - target: {fileID: 1011656442598414535, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
+      propertyPath: cursor
+      value: 
+      objectReference: {fileID: 1646518469}
     - target: {fileID: 1011656442598414535, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 1480766862}
     - target: {fileID: 1011656442598414535, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
+      propertyPath: goldToken
+      value: 
+      objectReference: {fileID: 1646518468}
+    - target: {fileID: 1011656442598414535, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
+      propertyPath: bronzeToken
+      value: 
+      objectReference: {fileID: 1646518466}
+    - target: {fileID: 1011656442598414535, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
+      propertyPath: silverToken
+      value: 
+      objectReference: {fileID: 1646518467}
+    - target: {fileID: 1011656442598414535, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: levelSelection
       value: 
       objectReference: {fileID: 1111258670}
+    - target: {fileID: 3434664144408042316, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4072395182782826382, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: m_Name
       value: SelectLevelTable
@@ -3941,11 +3961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1480766863 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7337800160630842970, guid: a7c1db40a12f98441801d74235923dc3, type: 3}
-  m_PrefabInstance: {fileID: 1480766861}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1551774241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4335,6 +4350,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2058816878865640633, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3484607224747088263, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: m_NavMeshLayer
       value: 4
@@ -4621,6 +4640,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+--- !u!1 &1646518466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4420459756795572002, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+  m_PrefabInstance: {fileID: 1646518465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1646518467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7377878633785805034, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+  m_PrefabInstance: {fileID: 1646518465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1646518468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4720447551235575193, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+  m_PrefabInstance: {fileID: 1646518465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1646518469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5362838798923798163, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+  m_PrefabInstance: {fileID: 1646518465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1653845280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5894,23 +5933,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 356514682389932175, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
       propertyPath: neededStarsToUnlock.Array.data[2]
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 356514682389932175, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
       propertyPath: neededStarsToUnlock.Array.data[3]
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 356514682389932175, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
       propertyPath: neededStarsToUnlock.Array.data[6]
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 356514682389932175, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
       propertyPath: neededStarsToUnlock.Array.data[8]
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 356514682389932175, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
       propertyPath: neededStarsToUnlock.Array.data[9]
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7924138907722542903, guid: eb8f3d53e00004a4cbab5c89d62b5156, type: 3}
       propertyPath: firstPlayer
