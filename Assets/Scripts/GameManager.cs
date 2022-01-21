@@ -111,7 +111,8 @@ public class GameManager : MonoBehaviour
         playerManager.OnChangeScene();
         BoatInTargetGroup();
         LevelManager.instance.StartLevel();
-        GetStarsValue(PlayerManager.instance.players.Count, ScoreManager.instance.maxScore);
+        if (!PlayerManager.instance.onPirateIsland)
+            GetStarsValue(PlayerManager.instance.players.Count, ScoreManager.instance.maxScore);
     }
 
     private void BoatInTargetGroup()

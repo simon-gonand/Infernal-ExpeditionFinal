@@ -54,6 +54,10 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
+    }
+
+    private void Start()
+    {
         if (instance == null)
         {
             instance = this;
@@ -63,13 +67,10 @@ public class PlayerManager : MonoBehaviour
                 firstPlayer.SetActive(true);
                 firstPlayer.transform.SetParent(BoatManager.instance.transform.parent);
             }
+            cameraOriginalOffset = camManager.offsetPositionMovement;
         }
         else Destroy(gameObject);
-    }
 
-    private void Start()
-    {
-        cameraOriginalOffset = camManager.offsetPositionMovement;
     }
 
     // Update material of player when one is joining to avoid them to have the same color
@@ -220,7 +221,8 @@ public class PlayerManager : MonoBehaviour
             GameManager.instance.targetGroup.AddMember(player.self, weight, 20);
 
             player.closingTutoUI.billboardUIActivate = GameObject.FindGameObjectWithTag("TutoBillboard");
-            player.closingTutoUI.billboardUIActivate.SetActive(false);
+            if (player.closingTutoUI.billboardUIActivate != null)
+                player.closingTutoUI.billboardUIActivate.SetActive(false);
         }
     }
 
