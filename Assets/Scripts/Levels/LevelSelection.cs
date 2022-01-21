@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using Cinemachine;
 
 public class LevelSelection : MonoBehaviour
@@ -14,6 +14,9 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private UnlockedLevels levelSelection;
 
+    private GameObject currentSelectedObject;
+    private int currentLevelSelectedIndex;
+
     private List<PlayerController> playerWhoCanInteract = new List<PlayerController>();
     private bool _uiActivate = false;
     public bool uiActivate { get { return _uiActivate; } }
@@ -22,6 +25,16 @@ public class LevelSelection : MonoBehaviour
     void Start()
     {
         _uiActivate = false;
+        currentLevelSelectedIndex = 0;
+    }
+
+    private void Update()
+    {
+        if (_uiActivate)
+        {
+            inputButtonA.SetActive(false);
+        }
+
     }
 
     public void SelectLevel(int number)
@@ -69,6 +82,39 @@ public class LevelSelection : MonoBehaviour
         _uiActivate = false;
     }
 
+    public void ChangeSelection(Vector2 value)
+    {
+        currentSelectedObject = EventSystem.current.currentSelectedGameObject;
+        if (value.x < 0.0f)
+        {
+            // Move left
+            --currentLevelSelectedIndex;
+        }
+        else if (value.x > 0.0f)
+        {
+            // Move right
+            ++currentLevelSelectedIndex;
+        }
+
+        LevelProfile level = SaveData.instance.levels[currentLevelSelectedIndex];
+        switch (level.starState)
+        {
+            case ScoreManager.differentStarState.NoStar:
+                // Nique
+                break;
+            case ScoreManager.differentStarState.Bronze:
+                // Display bronze
+                break;
+            case ScoreManager.differentStarState.Silver:
+                // Display bronze et silver
+                break;
+            case ScoreManager.differentStarState.Gold:
+                // Display bronze, silver et gold
+                break;
+            default:
+                break;
+        }
+    }
     private void AwakeUI()
     {
         SaveData.instance = (SaveData)SerializationManager.Load();
@@ -92,6 +138,9 @@ public class LevelSelection : MonoBehaviour
 
         levelSelection.CheckLevelState();
         levelSelection.gameObject.SetActive(true);
+
+        if (currentSelectedObject != null)
+            EventSystem.current.SetSelectedGameObject(currentSelectedObject);
 
         AudioManager.AMInstance.mapOpeningSFX.Post(gameObject);
 
@@ -137,7 +186,6 @@ public class LevelSelection : MonoBehaviour
             PlayerController player = other.GetComponent<PlayerController>();
             playerWhoCanInteract.Add(player);
             player.levelSelectionTable = this;
-            
         }
     }
 

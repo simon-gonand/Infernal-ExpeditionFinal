@@ -393,6 +393,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #region UI
     public void OnValidationUI(InputAction.CallbackContext context)
     {
         if (_levelSelectionTable != null && context.performed)
@@ -405,6 +406,16 @@ public class PlayerController : MonoBehaviour
         if (_levelSelectionTable != null && _levelSelectionTable.uiActivate && context.performed)
             _levelSelectionTable.Back();
     }
+
+    public void OnChangeSelectionUI(InputAction.CallbackContext context)
+    {
+        if (_levelSelectionTable != null)
+        {
+            _levelSelectionTable.ChangeSelection(context.ReadValue<Vector2>());
+        }
+    }
+
+    #endregion
 
     public void OnPause(InputAction.CallbackContext context)
     {
