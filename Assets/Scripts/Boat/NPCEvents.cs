@@ -19,7 +19,7 @@ public class NPCEvents : MonoBehaviour
 
     [Header("UI")]
     public GameObject tutoBillboardUI;
-    private bool canResumeGame = false;
+    private bool canCloseBillboard = false;
     [SerializeField] private GameObject billboard;
 
 
@@ -150,25 +150,31 @@ public class NPCEvents : MonoBehaviour
     {
         tutoBillboardUI.SetActive(true);
 
-        tutoBillboard.SetActive(true);
-        tutoBillboard = billboard;        
+        billboard = tutoBillboard;
+        billboard.SetActive(true);                
 
-        canResumeGame = true;
+        canCloseBillboard = true;
         
         Time.timeScale = 0.0f;
     }
 
     public void ResumeGame()
     {
-        if (canResumeGame)
+        if (canCloseBillboard)
         {           
-            canResumeGame = false;
-
             billboard.SetActive(false);
             tutoBillboardUI.SetActive(false);
 
             Time.timeScale = 1.0f;
+
+            StartCoroutine(BillboardAvailable());
         }
+    }
+
+    IEnumerator BillboardAvailable()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canCloseBillboard = false;
     }
 
     //END UI
