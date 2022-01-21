@@ -44,6 +44,27 @@
 							<ObjectRef Name="System" ID="{1BD1CA33-CA18-4473-BFD5-BDC7FCB93246}" WorkUnitID="{D3D0D05B-0EC7-46BE-BE05-FD847FAD013B}"/>
 						</Reference>
 					</ReferenceList>
+					<StateInfo>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="AudioDevice" ID="{0373B539-98E9-47BC-9F95-557A51E4AA56}"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="Headphones" ID="{4C976629-80F8-449F-B89F-271C94A49D20}"/>
+								<CustomState Name="" ID="{43C04D1D-6162-47D6-8311-2B57F9811396}" ShortID="451871208">
+									<PropertyList>
+										<Property Name="BusVolume" Type="Real64" Value="-10"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Speakers" ID="{6A6C8F4A-3113-4CFD-943F-5EAA80930A92}"/>
+								<CustomState Name="" ID="{C94F9921-B392-4729-9651-FA566742D0D7}" ShortID="1028044357"/>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
 					<ObjectLists/>
 				</Bus>
 				<Bus Name="Musics Audio Bus" ID="{6FF2873C-417A-43C7-AE7D-EDA382BC9380}">
