@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 7b7f0c167fc8a14f946930294b69377c
     GuidInternal: 
-    m_lastTime: -8585588132510697704
+    m_lastTime: -8585588101014558092
     List:
     - name: Musics Audio Bus
       guid: 3c87f26f7a41c743ae7deda382bc9380
@@ -910,8 +910,74 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 45ac22c6d94a704bb944d240967dde98
     GuidInternal: 
-    m_lastTime: -8585627431785628825
+    m_lastTime: -8585588101014548112
     List:
+    - name: AudioDevice
+      guid: 39b57303e998bc479f95557a51e4aa56
+      id: 4226268555
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 45ac22c6d94a704bb944d240967dde98
+      - ElementName: AudioDevice
+        ObjectType: 9
+        guid: 39b57303e998bc479f95557a51e4aa56
+      Path: States\Default Work Unit\AudioDevice
+      values:
+      - name: Headphones
+        guid: 2966974cf8809f44b89f271c94a49d20
+        id: 880395932
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 45ac22c6d94a704bb944d240967dde98
+        - ElementName: AudioDevice
+          ObjectType: 9
+          guid: 39b57303e998bc479f95557a51e4aa56
+        - ElementName: Headphones
+          ObjectType: 8
+          guid: 2966974cf8809f44b89f271c94a49d20
+      - name: None
+        guid: 3526f96ae6cc4344957209573de12ce3
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 45ac22c6d94a704bb944d240967dde98
+        - ElementName: AudioDevice
+          ObjectType: 9
+          guid: 39b57303e998bc479f95557a51e4aa56
+        - ElementName: None
+          ObjectType: 8
+          guid: 3526f96ae6cc4344957209573de12ce3
+      - name: Speakers
+        guid: 4a8f6c6a1331fd4c943f5eaa80930a92
+        id: 2888874631
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 45ac22c6d94a704bb944d240967dde98
+        - ElementName: AudioDevice
+          ObjectType: 9
+          guid: 39b57303e998bc479f95557a51e4aa56
+        - ElementName: Speakers
+          ObjectType: 8
+          guid: 4a8f6c6a1331fd4c943f5eaa80930a92
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
     - name: Ground_Type
       guid: c2f15d9f71b68e4d8e85d4f9280faaf2
       id: 4040317175
