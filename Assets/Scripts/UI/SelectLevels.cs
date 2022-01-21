@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SelectLevels : MonoBehaviour, IInteractable
+public class SelectLevels : MonoBehaviour
 {
     [SerializeField]
     private UnlockedLevels levelSelection;

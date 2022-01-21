@@ -47,6 +47,9 @@ public class PlayerManager : MonoBehaviour
     public bool respawnOnBoat { set { _respawnOnBoat = value; } get { return _respawnOnBoat; } }
     [HideInInspector] public Transform respawnPoint;
 
+    private bool _onLevelSelectionUI = false;
+    public bool onLevelSelectionUI { set { _onLevelSelectionUI = value; } }
+
     public static PlayerManager instance;
 
     private void Awake()
@@ -222,17 +225,19 @@ public class PlayerManager : MonoBehaviour
     {
         if (_players.Count == 1)
         {
-            if (Gamepad.current != null && Gamepad.current.aButton.wasPressedThisFrame)
-                _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(Gamepad.current);
+            foreach (Gamepad gamepad in Gamepad.all)
+            {
+                if (gamepad.aButton.wasPressedThisFrame)
+                    _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(Gamepad.current);
+            }
 
             if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
                 _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(Keyboard.current, Mouse.current);
         }
     }
 
-    private void Update()
+    private bool CheckIfPlayerIsOutOfCam()
     {
-        if (_players.Count == 0) return;
         bool playerIsOutCam = false;
         foreach (PlayerController player in _players)
         {
@@ -259,7 +264,15 @@ public class PlayerManager : MonoBehaviour
                 playerIsOutCam = true;
             }
         }
-        if (!playerIsOutCam)
-            camManager.isUnzooming = false;
+        return playerIsOutCam;
+    }
+
+    private void Update()
+    {
+        if (_players.Count == 0) return;
+        
+        if (!_onLevelSelectionUI)
+            if (!CheckIfPlayerIsOutOfCam())
+                camManager.isUnzooming = false;
     }
 }
