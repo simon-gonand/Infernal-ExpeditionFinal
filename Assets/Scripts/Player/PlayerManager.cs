@@ -215,6 +215,9 @@ public class PlayerManager : MonoBehaviour
                 player.self.SetParent(BoatManager.instance.self);
             }
             GameManager.instance.targetGroup.AddMember(player.self, weight, 20);
+
+            player.closingTutoUI.billboardUIActivate = GameObject.FindGameObjectWithTag("TutoBillboard");
+            player.closingTutoUI.billboardUIActivate.SetActive(false);
         }
     }
 
