@@ -411,6 +411,15 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
             PauseMenu.instance.PauseGame();
     }
+
+    public void OnRestart(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            ResetPlayer();
+            Die();
+        }
+    }
     #endregion
 
     private void Attack()

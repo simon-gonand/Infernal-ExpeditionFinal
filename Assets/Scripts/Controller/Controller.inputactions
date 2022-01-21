@@ -52,6 +52,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "ResetPlayer",
+                    "type": "Button",
+                    "id": "c32155c7-5d39-4063-b9a0-308662dc4a3f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -250,6 +258,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "ValidationUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c7a4624f-91d4-4675-9b5c-3b628cb4b660",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "ResetPlayer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ab612fd-8e95-4501-9fbc-aec0fc2b24e0",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ResetPlayer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
