@@ -7692,9 +7692,6 @@ MonoBehaviour:
   bronzeMedalGlobal: {fileID: 6963567472265428426}
   silverMedalGlobal: {fileID: 5938603055606006498}
   goldMedalGlobal: {fileID: 1670217947100775166}
-  scoreOfNextStarUi: 0
-  oldScoreOfNextStarUi: 0
-  actualUiScore: 0
 --- !u!1 &6617900193799657273
 GameObject:
   m_ObjectHideFlags: 0
@@ -8664,6 +8661,10 @@ PrefabInstance:
       value: ScoreUI
       objectReference: {fileID: 0}
     - target: {fileID: 292906776024328383, guid: ab4aa4ebe454cc946889cfbef1b24643, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 292906776024328383, guid: ab4aa4ebe454cc946889cfbef1b24643, type: 3}
       propertyPath: m_NavMeshLayer
       value: 4
       objectReference: {fileID: 0}
@@ -8703,6 +8704,10 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 292906776494566477, guid: ab4aa4ebe454cc946889cfbef1b24643, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 292906776574360824, guid: ab4aa4ebe454cc946889cfbef1b24643, type: 3}
       propertyPath: m_NavMeshLayer
       value: 4
@@ -8733,7 +8738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 292906776628559638, guid: ab4aa4ebe454cc946889cfbef1b24643, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 292906776628559639, guid: ab4aa4ebe454cc946889cfbef1b24643, type: 3}
       propertyPath: m_NavMeshLayer
