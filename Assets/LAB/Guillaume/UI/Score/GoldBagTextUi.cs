@@ -7,18 +7,22 @@ public class GoldBagTextUi : MonoBehaviour
 {
     public static GoldBagTextUi instance;
 
+    [Header ("Color")]
     public Color addColor;
     public Color minusColor;
 
-    public GameObject scoreBox;
-
+    [Header ("Text box parameter")]
     public float cooldown;
     public float speed;
     public float timeBeforeFade;
     public float fadeSpeed;
-    public Transform spawnPoint;
 
-    public List<int> scoreToSpawn = new List<int>();
+    [Header ("Reference")]
+    public Transform spawnPoint;
+    public GameObject scoreBox;
+
+
+    private List<int> scoreToSpawn = new List<int>();
     private float actualCooldown;
 
     private void Awake()

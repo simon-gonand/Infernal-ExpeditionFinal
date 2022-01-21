@@ -30,10 +30,10 @@ public class ScoreUI : MonoBehaviour
     public Transform silverMedalGlobal;
     public Transform goldMedalGlobal;
 
-    public float scoreOfNextStarUi;
-    public float oldScoreOfNextStarUi;
+    private float scoreOfNextStarUi;
+    private float oldScoreOfNextStarUi;
 
-    public float actualUiScore;
+    private float actualUiScore;
     private Coroutine actualCoroutine;
 
     public void Awake()

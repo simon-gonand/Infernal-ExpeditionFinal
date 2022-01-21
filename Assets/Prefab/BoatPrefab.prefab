@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 357331384468388233}
   - component: {fileID: 6423642130517083536}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Ui Text Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,13 +273,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   addColor: {r: 0.8867924, g: 0.79182315, b: 0.071110725, a: 1}
   minusColor: {r: 1, g: 0, b: 0, a: 1}
-  scoreBox: {fileID: 196312899963748091, guid: ead3ec1b35c08914296e10107e0fa770, type: 3}
-  cooldown: 2
+  cooldown: 0.8
   speed: 0.05
   timeBeforeFade: 1.5
-  fadeSpeed: 0.5
+  fadeSpeed: 0.8
   spawnPoint: {fileID: 7127214871130152211}
-  scoreToSpawn: 
+  scoreBox: {fileID: 196312899963748091, guid: ead3ec1b35c08914296e10107e0fa770, type: 3}
 --- !u!1 &2173909848676360228
 GameObject:
   m_ObjectHideFlags: 0

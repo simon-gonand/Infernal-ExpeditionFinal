@@ -15,6 +15,8 @@ public class SpecialOfferModifier : IModifier
     private List<int> oldValues = new List<int>();
     protected override void StartBehaviour()
     {
+        ModifierUiManager.instance.SpawnExpensiveToken(durationTime);
+
         oldValues.Clear();
         foreach(Treasure treasure in GameManager.instance.treasuresInScene)
         {

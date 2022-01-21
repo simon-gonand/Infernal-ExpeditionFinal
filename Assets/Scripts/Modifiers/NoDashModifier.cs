@@ -6,6 +6,8 @@ public class NoDashModifier : IModifier
 {
     protected override void StartBehaviour()
     {
+        ModifierUiManager.instance.SpawnNoDashToken(durationTime);
+
         foreach (PlayerController player in PlayerManager.instance.players)
         {
             player.canDash = false;

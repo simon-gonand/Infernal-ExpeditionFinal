@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public abstract class IModifier : MonoBehaviour
 {
-    protected float durationTime;
+    [HideInInspector]
+    public float durationTime;
 
     public void StartModifier(float durationTime)
     {

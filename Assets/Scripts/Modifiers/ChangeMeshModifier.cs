@@ -15,6 +15,8 @@ public class ChangeMeshModifier : IModifier
 
     protected override void StartBehaviour()
     {
+        ModifierUiManager.instance.SpawnTransformationToken(durationTime);
+
         meshes.Clear();
         originalOutlineWidth = PlayerManager.instance.players[0].outline.OutlineWidth;
         for (int i = 0; i < PlayerManager.instance.players.Count; ++i)

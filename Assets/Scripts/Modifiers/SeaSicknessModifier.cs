@@ -7,6 +7,8 @@ public class SeaSicknessModifier : IModifier
 {
     protected override void StartBehaviour()
     {
+        ModifierUiManager.instance.SpawnSickToken(durationTime);
+
         UniversalAdditionalCameraData additionalCameraData = Camera.main.GetComponent<UniversalAdditionalCameraData>();
         additionalCameraData.SetRenderer(1);
     }

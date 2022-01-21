@@ -21,20 +21,20 @@ public class NPCEvents : MonoBehaviour
     public GameObject tutoBillboardUI;
 
 
-    private void Start()
-    {
-        for (int i = 0; i < popUp.Length; i++)
-        {
-            popUp[i].SetActive(true);
-        }
-
-        
-
-        if (aboveBand == null && belowBand == null)
-        {
-            aboveBand = null;
-            belowBand = null;
-        }
+    private void Start()
+    {
+        for (int i = 0; i < popUp.Length; i++)
+        {
+            popUp[i].SetActive(true);
+        }
+
+        
+
+        if (aboveBand == null && belowBand == null)
+        {
+            aboveBand = null;
+            belowBand = null;
+        }
     }
 
     
@@ -116,6 +116,14 @@ public class NPCEvents : MonoBehaviour
         Debug.Log("All Aboard !");
     }
 
+    //TUTO 
+    public void DisplayingTutorialBillboard()
+    {
+        tutoBillboardUI.SetActive(true);
+        tutoBillboardUI.GetComponent<ClosingTutoUI>().closeTuto = true;
+        
+        Time.timeScale = 0.0f;
+    }
     //BLACK BANDS
     public void BlackBandsRemove()
     {
@@ -140,19 +148,12 @@ public class NPCEvents : MonoBehaviour
     }
 
     //TOKEN
+
     public void OnDisplayingToken(GameObject token)
     {
         token.SetActive(true);
     }
 
-    //TUTO 
-    public void DisplayingTutorialBillboard()
-    {
-        tutoBillboardUI.SetActive(true);
-        tutoBillboardUI.GetComponent<ClosingTutoUI>().closeTuto = true;
-        
-        Time.timeScale = 0.0f;
-    }
 
     //END UI
 
