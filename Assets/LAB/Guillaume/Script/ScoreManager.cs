@@ -35,12 +35,13 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("There is multiple ScoreManager in the scene");
+            Debug.LogError("There is multiple ScoreManager in the scene");
         }
         #endregion
 
-        GameManager.instance.GetStarsValue(PlayerManager.instance.players.Count, 
-            scoreNeedForBronze, scoreNeedForSilver, scoreNeedForGold, maxScore);
+        
+
+
 
         scoreNeedForNextStar = scoreNeedForBronze;
         scoreOfActualStar = 0;
@@ -73,6 +74,9 @@ public class ScoreManager : MonoBehaviour
     public void RefreshUiStarState(int scoreAdded)
     {
         CheckStar();
+
+        ScoreUI.instance.UpdateUiScore();
+        GoldBagTextUi.instance.AddScoreToSpawn(scoreAdded);
 
         if (UiScore.instance != null)
         {

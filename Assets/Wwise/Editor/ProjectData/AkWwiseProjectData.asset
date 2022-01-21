@@ -38,11 +38,11 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 7b7f0c167fc8a14f946930294b69377c
     GuidInternal: 
-    m_lastTime: -8585644368056675513
+    m_lastTime: -8585588829565795138
     List:
-    - name: Master Audio Bus
-      guid: d8a41415a61d2a41a17e75ca0c2149f3
-      id: 3803692087
+    - name: Musics Audio Bus
+      guid: 3c87f26f7a41c743ae7deda382bc9380
+      id: 1655318877
       PathAndIcons:
       - ElementName: Master-Mixer Hierarchy
         ObjectType: 5
@@ -50,10 +50,24 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 7b7f0c167fc8a14f946930294b69377c
-      - ElementName: Master Audio Bus
+      - ElementName: Musics Audio Bus
+        ObjectType: 2
+        guid: 3c87f26f7a41c743ae7deda382bc9380
+      Path: Master-Mixer Hierarchy\Default Work Unit\Musics Audio Bus
+    - name: SFX Audio Bus
+      guid: d8a41415a61d2a41a17e75ca0c2149f3
+      id: 4084199202
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7b7f0c167fc8a14f946930294b69377c
+      - ElementName: SFX Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus
+      Path: Master-Mixer Hierarchy\Default Work Unit\SFX Audio Bus
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     PathAndIcons:
@@ -743,7 +757,7 @@ MonoBehaviour:
     ParentPath: Events\Musics
     guid: 8b7a9cc2f9341b47876f857ec1bcbfce
     GuidInternal: 
-    m_lastTime: -8585589983138779040
+    m_lastTime: -8585588823832623228
     List:
     - name: Credit_Theme
       guid: b5a5df838c37b849a41524cd44cf21ae
@@ -854,8 +868,36 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 44e9a2aa08be74469cc4ca937f63ac4a
     GuidInternal: 
-    m_lastTime: -8585644368056705429
-    List: []
+    m_lastTime: -8585588829579476693
+    List:
+    - name: Musics_Volume
+      guid: 00bf0aa8f57c9e4ebe9c31fce98f717e
+      id: 1905425858
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 44e9a2aa08be74469cc4ca937f63ac4a
+      - ElementName: Musics_Volume
+        ObjectType: 13
+        guid: 00bf0aa8f57c9e4ebe9c31fce98f717e
+      Path: Game Parameters\Default Work Unit\Musics_Volume
+    - name: SFX_Volume
+      guid: a552e9d1af1bc04c8077c1409819b7f6
+      id: 1564184899
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 44e9a2aa08be74469cc4ca937f63ac4a
+      - ElementName: SFX_Volume
+        ObjectType: 13
+        guid: a552e9d1af1bc04c8077c1409819b7f6
+      Path: Game Parameters\Default Work Unit\SFX_Volume
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
@@ -1108,9 +1150,9 @@ MonoBehaviour:
         ObjectType: 14
         guid: 88eb52da3d6b9743ba24b8c441c80d38
       Path: Triggers\Default Work Unit\Collect_Treasure
-  ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 070000000c0000000d000000
+  ExpandedFileSystemItemIds: 02000000030000000600000007000000080000000a0000000b0000000c0000000d0000000e0000000f0000003b000000
+  ExpandedWaapiItemIds: 0600000007000000080000000a0000000b0000000c0000000d0000000e0000000f0000003a0000003b000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
-  currentDataSource: 0
+  currentDataSource: 1
   CurrentPluginConfig: 
