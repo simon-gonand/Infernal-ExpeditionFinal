@@ -107,11 +107,11 @@ public class GameManager : MonoBehaviour
             treasuresInScene.Add(treasure);
         }
 
-        GetStarsValue(PlayerManager.instance.players.Count, ScoreManager.instance.maxScore);
 
         playerManager.OnChangeScene();
         BoatInTargetGroup();
         LevelManager.instance.StartLevel();
+        GetStarsValue(PlayerManager.instance.players.Count, ScoreManager.instance.maxScore);
     }
 
     private void BoatInTargetGroup()

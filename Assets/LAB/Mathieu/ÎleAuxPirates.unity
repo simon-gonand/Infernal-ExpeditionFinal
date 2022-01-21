@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4246,10 +4246,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: LevelSelection, Assembly-CSharp
       objectReference: {fileID: 0}
-    - target: {fileID: 1906488470, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1917931663, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: optionMenuUI
       value: 
@@ -4412,7 +4408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4955833987942119525, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5972658268548175360, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4429,7 +4425,7 @@ PrefabInstance:
     - target: {fileID: 6843728142524385501, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: firstSelected
       value: 
-      objectReference: {fileID: 1646518466}
+      objectReference: {fileID: 0}
     - target: {fileID: 7001474571493785286, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
