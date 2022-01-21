@@ -1007,11 +1007,6 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>5</Value>
-									</ValueList>
-								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -1451,7 +1446,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>3</Value>
+										<Value>-2</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1557,6 +1552,11 @@
 						</Sound>
 						<RandomSequenceContainer Name="Player_Throw" ID="{E606E9CD-FCA8-45EA-8B4C-A35F958E9C78}" ShortID="816433722">
 							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>45</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Pitch" Type="int32">
 									<ModifierList>
 										<ModifierInfo>
@@ -1572,7 +1572,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>12</Value>
+										<Value>6</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1656,6 +1656,13 @@
 							<ObjectLists/>
 						</RandomSequenceContainer>
 						<Sound Name="Player_Spawn" ID="{7550A666-7EEA-4341-A6C3-9F1F5F50A577}" ShortID="155635412">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -1697,6 +1704,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<Sound Name="RespawnBass_Hight" ID="{DAB20F3B-834F-4F17-892C-6472935C54E6}" ShortID="496270970">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -1720,6 +1734,13 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="RespawnBass_Low" ID="{2BC00059-3A26-4F94-86A8-74523C6A4948}" ShortID="663566479">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -1743,6 +1764,13 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="RespawnBass_MidHight" ID="{41E97975-70C3-48BD-8E63-5A5DC7E836CF}" ShortID="245209687">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -1766,6 +1794,13 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="RespawnBass_MidLow" ID="{B36DB13D-91F0-4358-8E80-AFEDB6056661}" ShortID="1021298928">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-1</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -1935,7 +1970,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-6</Value>
+										<Value>-5</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1975,6 +2010,11 @@
 											</Modifier>
 										</ModifierInfo>
 									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
@@ -2082,6 +2122,13 @@
 							<ObjectLists/>
 						</RandomSequenceContainer>
 						<BlendContainer Name="Trl_Reload" ID="{57C20087-EC52-4023-8850-0F41146CFA71}" ShortID="385046637">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -2321,7 +2368,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-15</Value>
+										<Value>-11</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -2774,6 +2821,13 @@
 							<ObjectLists/>
 						</ActorMixer>
 						<Sound Name="Map_Open" ID="{E199E3D9-BA6F-4607-A621-9369892B0A9F}" ShortID="706468080">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -2822,6 +2876,11 @@
 											</Modifier>
 										</ModifierInfo>
 									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
@@ -3067,6 +3126,11 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -3140,6 +3204,11 @@
 											</Modifier>
 										</ModifierInfo>
 									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
@@ -3458,7 +3527,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-10</Value>
+										<Value>-13</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>

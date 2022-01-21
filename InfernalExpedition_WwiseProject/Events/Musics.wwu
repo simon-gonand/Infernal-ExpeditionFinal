@@ -11,7 +11,27 @@
 					<ChildrenList>
 						<Event Name="Run_Theme" ID="{9F1ADFAC-E258-43AE-BE23-3A1E28F62293}">
 							<ChildrenList>
+								<Action Name="" ID="{988D4A23-9802-41FE-980E-E980F2849978}" ShortID="428645229">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Lobbi_Theme" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 								<Action Name="" ID="{DC01DD06-8ADC-47B0-87A0-EC56D6C02983}" ShortID="6470091">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Run_Theme" ID="{38761F50-3A66-42B0-9807-E348BAD58D7C}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{BABBD9E1-FC60-47E2-91CE-4FF131895864}" ShortID="958770737">
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Run_Theme" ID="{38761F50-3A66-42B0-9807-E348BAD58D7C}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
@@ -24,7 +44,27 @@
 						<Event Name="Credit_Theme" ID="{83DFA5B5-378C-49B8-A415-24CD44CF21AE}"/>
 						<Event Name="Lobbi_Theme" ID="{2728043E-08E0-4FF3-9D86-245D6D9A8D53}">
 							<ChildrenList>
+								<Action Name="" ID="{93327E7E-209C-4CCB-B761-CDC0897EEC01}" ShortID="256267468">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Run_Theme" ID="{38761F50-3A66-42B0-9807-E348BAD58D7C}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 								<Action Name="" ID="{15FBA919-CFFC-4304-99D4-917C7410FF12}" ShortID="262443275">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Lobbi_Theme" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{DDCA85FE-13AE-454A-B503-C7F4E134B16C}" ShortID="21715104">
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Lobbi_Theme" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>

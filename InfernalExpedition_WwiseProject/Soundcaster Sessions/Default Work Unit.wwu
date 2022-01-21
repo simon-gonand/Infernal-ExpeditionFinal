@@ -6,28 +6,104 @@
 				<SoundcasterSession Name="Global" ID="{8CC0A723-3691-42D8-AD65-A550F7E76193}">
 					<ModuleList>
 						<Module>
-							<ObjectRef Name="Run_Theme" ID="{38761F50-3A66-42B0-9807-E348BAD58D7C}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+							<ObjectRef Name="Lobbi_Theme" ID="{2728043E-08E0-4FF3-9D86-245D6D9A8D53}" WorkUnitID="{C29C7A8B-34F9-471B-876F-857EC1BCBFCE}"/>
 							<Position X="0" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="P_Attack" ID="{1A335906-41AD-4B6A-86BC-E96E08537BA6}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<ObjectRef Name="Game_Ambient" ID="{5689551D-75AC-4347-9616-1D60758E0A88}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
 							<Position X="0" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Game_Ambient" ID="{5689551D-75AC-4347-9616-1D60758E0A88}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<ObjectRef Name="GameplayNavigationSwitch" ID="{AE4F861C-F6BB-49AD-AE6A-458252AE8BE4}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="P_Respawn" ID="{B8367E5C-81DF-41E7-BEF8-51716DFA8984}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="0" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="P_Attack" ID="{1A335906-41AD-4B6A-86BC-E96E08537BA6}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="0" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Map_Opening" ID="{654FA256-57ED-4FD4-A229-29EC1CBBAC29}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="0" Y="7"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Run_Theme" ID="{9F1ADFAC-E258-43AE-BE23-3A1E28F62293}" WorkUnitID="{C29C7A8B-34F9-471B-876F-857EC1BCBFCE}"/>
 							<Position X="1" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="P_Carry" ID="{C54592FA-3E4A-4A3A-8150-AEF2CECBE448}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
-							<Position X="1" Y="1"/>
+							<ObjectRef Name="GameplayPillageSwitch" ID="{55F4BA94-797E-4476-AC6E-897375B25F47}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="1" Y="2"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="B_Moving" ID="{6C541620-49F8-420A-AB26-53DDDE6AEDEC}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
-							<Position X="2" Y="0"/>
+							<ObjectRef Name="P_Stunt" ID="{F3DE8B14-C967-42D4-AA78-37BA031673BC}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="1" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="P_Carry" ID="{C54592FA-3E4A-4A3A-8150-AEF2CECBE448}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="1" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Map_Completed" ID="{8E5D15D4-6E82-428C-9326-D7EF2810EADD}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="2" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="P_GroundImpact" ID="{5981572F-32EA-42E3-905A-92EB54A56D01}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="2" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="P_Throw" ID="{2CB5EDE2-503D-4672-8E9C-F4A48B3E3126}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="2" Y="5"/>
 						</Module>
 						<Module>
 							<ObjectRef Name="P_Dash" ID="{CFF6DD99-F808-4B52-93E7-43362255F42E}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
-							<Position X="2" Y="1"/>
+							<Position X="3" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Menu_Select" ID="{1D9A067A-BC1E-4CAE-BDDC-EF961EF9EBE7}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="5" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="B_Moving" ID="{6C541620-49F8-420A-AB26-53DDDE6AEDEC}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="5" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="E_Trl_Shot" ID="{B167BDA0-DC72-4482-99CA-13FF166CCCE0}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="5" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Menu_Navigation" ID="{DE54D95D-C793-4A9D-AA14-75ED349EA62C}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="6" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="B_Damages" ID="{9EAD575C-7A53-4D5D-B5BC-68022245B8ED}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="6" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="E_Clsq_Attack" ID="{E78D7109-46CB-4B9A-BED4-264E57EFE960}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="6" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="E_Trl_Reload" ID="{6B619C78-4E94-4D06-907E-EA4B26B272CD}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="6" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Menu_Cancel" ID="{34D0AD02-4064-4E0F-B44E-516B7CE6BF1F}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="7" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="B_ChestCollect" ID="{8A949A82-31F4-4174-89A1-8A98EAAF71A5}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="7" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="E_Pks_Carry" ID="{772F4B22-2F55-42D7-BDC5-1A4EF6DE3B78}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="7" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="E_Trl_Death" ID="{F7C254A0-5F5C-43CD-9A84-E3FB92099550}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
+							<Position X="7" Y="5"/>
 						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true">
@@ -44,7 +120,7 @@
 						<CurrentStateRef Name="Sea" ID="{6CA64AE8-43F4-45B2-84C3-E863CC6A80A8}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true">
-						<CurrentSwitchRef Name="Pillage" ID="{C0654D03-2CF0-4648-85E5-E91A38BFC7DF}"/>
+						<CurrentSwitchRef Name="Navigation" ID="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>
 				<SoundcasterSession Name="Player" ID="{C1E4D348-E1ED-4932-B168-A982B008BAEF}">
@@ -60,6 +136,24 @@
 						<CurrentStateRef Name="None" ID="{0E1BC8D7-5D98-4D72-B8FC-48FA7BACDDC3}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+				<SoundcasterSession Name="GlobalSound" ID="{E8FDD417-B8A8-47E0-AB7F-879912B64E6F}">
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="SFX_Volume" ID="{D1E952A5-1BAF-4CC0-8077-C1409819B7F6}"/>
+							<Value>50</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="Musics_Volume" ID="{A80ABF00-7CF5-4E9E-BE9C-31FCE98F717E}"/>
+							<Value>50</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="None" ID="{0E1BC8D7-5D98-4D72-B8FC-48FA7BACDDC3}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Navigation" ID="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}"/>
+					</CurrentSwitchList>
 				</SoundcasterSession>
 			</ChildrenList>
 		</WorkUnit>

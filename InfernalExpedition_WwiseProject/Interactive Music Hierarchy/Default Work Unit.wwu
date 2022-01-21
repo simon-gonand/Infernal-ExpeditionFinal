@@ -6,6 +6,13 @@
 				<Folder Name="STINGERS" ID="{5F2940B7-1007-4D37-9660-F61E4AC8C3A4}" ShortID="885164065">
 					<ChildrenList>
 						<MusicSegment Name="STINGER_TreasurCollect" ID="{768FD054-142F-42DE-BDBB-CC07A5D2E69C}" ShortID="829430824">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
