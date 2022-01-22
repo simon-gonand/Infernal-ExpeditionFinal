@@ -106,7 +106,7 @@ public class LevelSelection : MonoBehaviour
         while (t < 1.0f)
         {
             cursorTransform.localPosition = Vector3.Lerp(startPos, new Vector3(startPos.x + offset, startPos.y, startPos.z),t);
-            t += Time.deltaTime;
+            t += Time.deltaTime*2;
             yield return null;
         }
         
