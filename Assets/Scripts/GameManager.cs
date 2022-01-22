@@ -48,7 +48,10 @@ public class GameManager : MonoBehaviour
         }
         catch
         {
-            LevelManager.instance.levelId = -1;
+            if (sceneName.Equals("LandScape_Tuto"))
+                LevelManager.instance.levelId = 0;
+            else
+                LevelManager.instance.levelId = -1;
         }
         boatOnTargetGroup = isBoatInScene;
         if (sceneName.Equals("ÎleAuxPirates"))
