@@ -52,11 +52,12 @@ public class ScoreUI : MonoBehaviour
 
     void Start()
     {
-        selfSlider.maxValue = 50000f;
-        SetUpUiScore();
+        selfSlider.maxValue = ScoreManager.instance.maxScore;
 
         oldScoreOfNextStarUi = 0f;
         scoreOfNextStarUi = ScoreManager.instance.scoreNeedForBronze;
+
+        SetUpUiScore();
     }
     
     public void SetUpUiScore()

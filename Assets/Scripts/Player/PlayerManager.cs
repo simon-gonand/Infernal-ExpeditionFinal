@@ -216,7 +216,6 @@ public class PlayerManager : MonoBehaviour
             PlayerController player = players[i];
             player.ResetPlayer();
             Transform spawn = SetPlayerPosition(i, true);
-            Debug.Log(spawn.position);
             player.self.position = spawn.position;
             if (onPirateIsland)
             {

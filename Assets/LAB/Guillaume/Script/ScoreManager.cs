@@ -39,10 +39,6 @@ public class ScoreManager : MonoBehaviour
         }
         #endregion
 
-        
-
-
-
         scoreNeedForNextStar = scoreNeedForBronze;
         scoreOfActualStar = 0;
     }
@@ -75,13 +71,12 @@ public class ScoreManager : MonoBehaviour
     {
         CheckStar();
 
-        ScoreUI.instance.UpdateUiScore();
-        GoldBagTextUi.instance.AddScoreToSpawn(scoreAdded);
-
-        if (UiScore.instance != null)
+        if (ScoreUI.instance != null)
         {
-            UiScore.instance.ScoreUpdate(scoreAdded);
+            ScoreUI.instance.UpdateUiScore();
         }
+
+        GoldBagTextUi.instance.AddScoreToSpawn(scoreAdded);
     }
 
     private void CheckStar()
