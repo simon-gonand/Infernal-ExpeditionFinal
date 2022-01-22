@@ -9,7 +9,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-5</Value>
+										<Value>-8</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -73,6 +73,27 @@
 									</ObjectLists>
 								</MusicTrack>
 							</ChildrenList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="AudioDevice" ID="{0373B539-98E9-47BC-9F95-557A51E4AA56}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Headphones" ID="{4C976629-80F8-449F-B89F-271C94A49D20}"/>
+										<CustomState Name="" ID="{6E180998-1273-42C0-9877-AAD9AAB4A453}" ShortID="916058422">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64" Value="-4"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Speakers" ID="{6A6C8F4A-3113-4CFD-943F-5EAA80930A92}"/>
+										<CustomState Name="" ID="{0449D9D6-BF46-49AB-9EB7-33FEC957F1FC}" ShortID="424650448"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
 							<ObjectLists>
 								<ObjectList Name="Cues">
 									<Reference>
@@ -1803,6 +1824,13 @@
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="Victory" ID="{0BD53C66-FAAE-498A-AD18-03EBD486DC71}" ShortID="680048785">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-8</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -2385,6 +2413,11 @@
 						<MusicSegment Name="TransToVictory_120Bpm_4-4_L2_P0" ID="{72CBD9BE-3624-456F-A269-170B0289D7D3}" ShortID="941695957">
 							<PropertyList>
 								<Property Name="EndPosition" Type="Real64" Value="8411.45124716553"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-8</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -2469,6 +2502,11 @@
 						<MusicSegment Name="TransToVictoryA_120Bpm_4-4_L2_P0" ID="{A4B7D1D1-1589-4033-927B-27EA3EA95D0C}" ShortID="1001226589">
 							<PropertyList>
 								<Property Name="EndPosition" Type="Real64" Value="9437.50566893424"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-8</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -2551,6 +2589,27 @@
 							</ObjectLists>
 						</MusicSegment>
 					</ChildrenList>
+					<StateInfo>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="AudioDevice" ID="{0373B539-98E9-47BC-9F95-557A51E4AA56}"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="Headphones" ID="{4C976629-80F8-449F-B89F-271C94A49D20}"/>
+								<CustomState Name="" ID="{76E10DAB-5AEC-4316-B7E2-177727A2B031}" ShortID="446566566">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64" Value="-4"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Speakers" ID="{6A6C8F4A-3113-4CFD-943F-5EAA80930A92}"/>
+								<CustomState Name="" ID="{77D15165-29B9-4A12-8EFE-7DCBE58D42DB}" ShortID="340185180"/>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
 					<TransitionList>
 						<MusicTransition Name="Root" ID="{7C38EF95-1A2C-4BCF-9CD0-5B5F01B19460}">
 							<PropertyList>
@@ -3299,6 +3358,13 @@
 					</EntryList>
 				</MusicSwitchContainer>
 				<MusicPlaylistContainer Name="Lobbi_Theme" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" ShortID="511501719">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
@@ -3561,6 +3627,27 @@
 							</ObjectLists>
 						</MusicSegment>
 					</ChildrenList>
+					<StateInfo>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="AudioDevice" ID="{0373B539-98E9-47BC-9F95-557A51E4AA56}"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="Headphones" ID="{4C976629-80F8-449F-B89F-271C94A49D20}"/>
+								<CustomState Name="" ID="{91A18793-5CFF-4D95-8AD5-3D7C2E0339C4}" ShortID="483007795">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64" Value="-4"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Speakers" ID="{6A6C8F4A-3113-4CFD-943F-5EAA80930A92}"/>
+								<CustomState Name="" ID="{9A90CA16-1B7A-4E58-BF66-5F26DC196278}" ShortID="355291239"/>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
 					<TransitionList>
 						<MusicTransition Name="Root" ID="{8BBD8870-D89B-46A7-A9F6-D6EE13F81AFA}">
 							<PropertyList>

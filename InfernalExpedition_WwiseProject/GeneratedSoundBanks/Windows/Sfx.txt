@@ -7,6 +7,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	593966612	E_Trl_Shot			\Default Work Unit\Enemy\E_Trl_Shot	
 	819302809	P_GroundImpact			\Default Work Unit\Players\P_GroundImpact	
 	903419691	E_Clsq_Attack			\Default Work Unit\Enemy\E_Clsq_Attack	
+	960920763	Switch_to_HeadPhones			\Default Work Unit\Switch_to_HeadPhones	
 	1286256413	E_Pks_Carry			\Default Work Unit\Enemy\E_Pks_Carry	
 	1488092454	Game_Ambient			\Default Work Unit\World\Game_Ambient	
 	1504870946	P_Throw			\Default Work Unit\Players\P_Throw	
@@ -16,6 +17,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2282291936	Map_Opening			\Default Work Unit\World\Map_Opening	
 	2471227561	Menu_Navigation			\Default Work Unit\UI\Menu_Navigation	
 	2703574490	B_Moving			\Default Work Unit\Boat\B_Moving	
+	3130102552	Switch_to_Speakers			\Default Work Unit\Switch_to_Speakers	
 	3180343601	GameplayPillageSwitch			\Default Work Unit\World\GameplayPillageSwitch	
 	3180909377	Menu_Cancel			\Default Work Unit\UI\Menu_Cancel	
 	3280416103	P_Steps			\Default Work Unit\Players\P_Steps	
@@ -36,6 +38,7 @@ Switch	ID	Name	Switch Group			Notes
 
 State Group	ID	Name			Wwise Object Path	Notes
 	4040317175	Ground_Type			\Default Work Unit\Ground_Type	
+	4226268555	AudioDevice			\Default Work Unit\AudioDevice	
 
 State	ID	Name	State Group			Notes
 	376462290	Sea	Ground_Type			
@@ -45,6 +48,12 @@ State	ID	Name	State Group			Notes
 	2058049674	Wood	Ground_Type			
 	2654748154	Water	Ground_Type			
 	4248645337	Grass	Ground_Type			
+	748895195	None	AudioDevice			
+	880395932	Headphones	AudioDevice			
+	2888874631	Speakers	AudioDevice			
+
+Custom State	ID	Name	State Group	Owner		Notes
+	161261919	Headphones	AudioDevice	\Actor-Mixer Hierarchy\Default Work Unit\Player\Sword_Attack		
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	169199	Footsteps_Sea_1	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Windows\SFX\Footsteps_Sea_1_0089FE84.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player\Player_Footsteps\Sea_Footsteps\Footsteps_Sea_1		99684

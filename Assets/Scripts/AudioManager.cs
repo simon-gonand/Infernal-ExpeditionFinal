@@ -22,19 +22,22 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
+    public bool headphones = false;
+
     [Header("Switchs")]
 
     public AK.Wwise.Event gameplayNavigationSWITCH;
     public AK.Wwise.Event gameplayPillageSWITCH;
     public AK.Wwise.Event mapCompletedSWITCH;
+    public AK.Wwise.Event audioDeviceToSpeakersSWITCH;
+    public AK.Wwise.Event audioDeviceToHeadphonesSWITCH;
 
-    [Header("Switchs")]
+    [Header("RTPC")]
     public AK.Wwise.RTPC SFXVolumeRTPC;
     public AK.Wwise.RTPC musicVolumeRTPC;
 
     [Header("Themes")]
 
-    public bool isLobbi = false;
     public AK.Wwise.Event runTheme;
     public AK.Wwise.Event lobbiTheme;
 
@@ -79,13 +82,17 @@ public class AudioManager : MonoBehaviour
     [HideInInspector]
     public List<PlayerController> playersOnBoat = new List<PlayerController>(0);
 
-    void Start()
+    private void Start()
     {
-
+        if (headphones == false)
+        {
+            audioDeviceToSpeakersSWITCH.Post(gameObject);
+        }
+        else
+        {
+            audioDeviceToHeadphonesSWITCH.Post(gameObject);
+        }
     }
-
-
-
 
     private void Update()
     {

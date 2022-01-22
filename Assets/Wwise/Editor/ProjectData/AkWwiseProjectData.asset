@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 5ce880947766eb4cbd5f560f38e08f10
     GuidInternal: 
-    m_lastTime: -8585655692085127774
+    m_lastTime: -8585644368056645582
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 7b7f0c167fc8a14f946930294b69377c
     GuidInternal: 
-    m_lastTime: -8585588101014558092
+    m_lastTime: -8585588225704150198
     List:
     - name: Musics Audio Bus
       guid: 3c87f26f7a41c743ae7deda382bc9380
@@ -80,7 +80,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 9dce80c3a7123942813a1007a9fa761f
     GuidInternal: 
-    m_lastTime: -8585589040387899040
+    m_lastTime: -8585588001623310106
     List:
     - name: Musics
       guid: 36549465458ece4a996756f69665369a
@@ -122,7 +122,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 06febf392af11e40ad2e9e6e478aa9eb
     GuidInternal: 
-    m_lastTime: -8585589040410293070
+    m_lastTime: -8585588001623838697
     List:
     - name: B_ChestCollect
       guid: 829a948af431744189a18a98eaaf71a5
@@ -692,6 +692,40 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Switch_to_HeadPhones
+      guid: c3c6f65dc2fc7f48bd5cce1bf9a019f3
+      id: 960920763
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 06febf392af11e40ad2e9e6e478aa9eb
+      - ElementName: Switch_to_HeadPhones
+        ObjectType: 3
+        guid: c3c6f65dc2fc7f48bd5cce1bf9a019f3
+      Path: Events\Default Work Unit\Switch_to_HeadPhones
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Switch_to_Speakers
+      guid: 5a0e248d44e6b44e91c7f1dc235f16eb
+      id: 3130102552
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 06febf392af11e40ad2e9e6e478aa9eb
+      - ElementName: Switch_to_Speakers
+        ObjectType: 3
+        guid: 5a0e248d44e6b44e91c7f1dc235f16eb
+      Path: Events\Default Work Unit\Switch_to_Speakers
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: UI
       guid: 186671af0cce194a8084070b8d3cb72e
       id: 1551306167
@@ -757,7 +791,7 @@ MonoBehaviour:
     ParentPath: Events\Musics
     guid: 8b7a9cc2f9341b47876f857ec1bcbfce
     GuidInternal: 
-    m_lastTime: -8585588132517429098
+    m_lastTime: -8585588823832623228
     List:
     - name: Credit_Theme
       guid: b5a5df838c37b849a41524cd44cf21ae
@@ -868,7 +902,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 44e9a2aa08be74469cc4ca937f63ac4a
     GuidInternal: 
-    m_lastTime: -8585588132517419272
+    m_lastTime: -8585588829579476693
     List:
     - name: Musics_Volume
       guid: 00bf0aa8f57c9e4ebe9c31fce98f717e
@@ -910,7 +944,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 45ac22c6d94a704bb944d240967dde98
     GuidInternal: 
-    m_lastTime: -8585588101014548112
+    m_lastTime: -8585588225857046903
     List:
     - name: AudioDevice
       guid: 39b57303e998bc479f95557a51e4aa56
@@ -1120,7 +1154,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 23f8d2162ea04c49ba51910d0ab18446
     GuidInternal: 
-    m_lastTime: -8585596127525771632
+    m_lastTime: -8585596053392879115
     List:
     - name: GameplayType
       guid: 582d7cde1074f044a75447d7d5a60a22
@@ -1200,7 +1234,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 27f4251b6ad34743b8dc3552bbe667d3
     GuidInternal: 
-    m_lastTime: -8585624433228106341
+    m_lastTime: -8585626878185918775
     List:
     - name: Collect_Treasure
       guid: 88eb52da3d6b9743ba24b8c441c80d38
@@ -1216,9 +1250,9 @@ MonoBehaviour:
         ObjectType: 14
         guid: 88eb52da3d6b9743ba24b8c441c80d38
       Path: Triggers\Default Work Unit\Collect_Treasure
-  ExpandedFileSystemItemIds: 02000000030000000600000007000000080000000a0000000b0000000c0000000d0000000e0000000f0000003b000000
-  ExpandedWaapiItemIds: 0600000007000000080000000a0000000b0000000c0000000d0000000e0000000f0000003a0000003b000000
+  ExpandedFileSystemItemIds: 
+  ExpandedWaapiItemIds: 0700000008000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
-  currentDataSource: 1
+  currentDataSource: 0
   CurrentPluginConfig: 

@@ -501,6 +501,34 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="Switch_to_Speakers" ID="{8D240E5A-E644-4EB4-91C7-F1DC235F16EB}">
+					<ChildrenList>
+						<Action Name="" ID="{56002B42-D366-48B1-B7B1-7BC77D4EC597}" ShortID="388248103">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Speakers" ID="{6A6C8F4A-3113-4CFD-943F-5EAA80930A92}" WorkUnitID="{C622AC45-4AD9-4B70-B944-D240967DDE98}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Switch_to_HeadPhones" ID="{5DF6C6C3-FCC2-487F-BD5C-CE1BF9A019F3}">
+					<ChildrenList>
+						<Action Name="" ID="{4F56D4B9-7604-4269-B55C-57863B750CE9}" ShortID="803790465">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Headphones" ID="{4C976629-80F8-449F-B89F-271C94A49D20}" WorkUnitID="{C622AC45-4AD9-4B70-B944-D240967DDE98}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

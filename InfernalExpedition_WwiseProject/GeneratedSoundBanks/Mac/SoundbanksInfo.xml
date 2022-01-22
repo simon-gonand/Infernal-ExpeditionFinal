@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Language="SFX" Hash="2421137899">
+		<SoundBank Id="393239870" Language="SFX" Hash="4075677478">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sfx</ObjectPath>
 			<ShortName>Sfx</ShortName>
 			<Path>Sfx.bnk</Path>
@@ -647,6 +647,16 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="960920763" Name="Switch_to_HeadPhones" ObjectPath="\Events\Default Work Unit\Switch_to_HeadPhones" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionSetState>
+						<ActionSetStateEntry Id="880395932" Name="Headphones" ObjectPath="\States\Default Work Unit\AudioDevice\Headphones"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="3130102552" Name="Switch_to_Speakers" ObjectPath="\Events\Default Work Unit\Switch_to_Speakers" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionSetState>
+						<ActionSetStateEntry Id="2888874631" Name="Speakers" ObjectPath="\States\Default Work Unit\AudioDevice\Speakers"/>
+					</ActionSetState>
+				</Event>
 				<Event Id="4030367049" Name="W_ChestDrop" ObjectPath="\Events\Default Work Unit\World\W_ChestDrop" DurationType="OneShot" DurationMin="0.707281" DurationMax="1.000247">
 					<IncludedMemoryFiles>
 						<File Id="317925122" Language="SFX">
@@ -665,6 +675,12 @@
 				</Event>
 			</IncludedEvents>
 			<StateGroups>
+				<StateGroup Id="880395932" Name="Headphones" ObjectPath="\States\Default Work Unit\AudioDevice\Headphones" GUID="{4C976629-80F8-449F-B89F-271C94A49D20}">
+					<States/>
+				</StateGroup>
+				<StateGroup Id="2888874631" Name="Speakers" ObjectPath="\States\Default Work Unit\AudioDevice\Speakers" GUID="{6A6C8F4A-3113-4CFD-943F-5EAA80930A92}">
+					<States/>
+				</StateGroup>
 				<StateGroup Id="4040317175" Name="Ground_Type" ObjectPath="\States\Default Work Unit\Ground_Type" GUID="{9F5DF1C2-B671-4D8E-8E85-D4F9280FAAF2}">
 					<States>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\Ground_Type\None" GUID="{0E1BC8D7-5D98-4D72-B8FC-48FA7BACDDC3}"/>
@@ -717,7 +733,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1730564753" Language="SFX" Hash="3323631435">
+		<SoundBank Id="1730564753" Language="SFX" Hash="3058860204">
 			<ObjectPath>\SoundBanks\Default Work Unit\Musics</ObjectPath>
 			<ShortName>Musics</ShortName>
 			<Path>Musics.bnk</Path>

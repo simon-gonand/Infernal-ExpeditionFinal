@@ -1087,6 +1087,27 @@
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="AudioDevice" ID="{0373B539-98E9-47BC-9F95-557A51E4AA56}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Headphones" ID="{4C976629-80F8-449F-B89F-271C94A49D20}"/>
+										<CustomState Name="" ID="{4BB28453-7491-489D-8FA6-3716B16431F1}" ShortID="161261919">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64" Value="-5"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Speakers" ID="{6A6C8F4A-3113-4CFD-943F-5EAA80930A92}"/>
+										<CustomState Name="" ID="{483E654A-0557-4A99-B8E0-A489363D273B}" ShortID="811665313"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
 							<ObjectLists/>
 						</RandomSequenceContainer>
 						<Sound Name="Player_Carry" ID="{3B947E8F-A139-4E31-8124-A7CBED8B2D23}" ShortID="555834391">
@@ -1301,7 +1322,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-15</Value>
+										<Value>-13</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1524,7 +1545,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-5</Value>
+										<Value>-13</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
