@@ -179,23 +179,27 @@ public class GameManager : MonoBehaviour
         int trioGlobalValue = littleValue + mediumValue + ((bigValue / 3)*2);
         int quatuorGlobalValue = littleValue + mediumValue + bigValue;
 
-        ScoreManager.instance.maxScore = quatuorGlobalValue;
+        
 
         if(_numberOfPlayer == 4)
         {
             ScoreManager.instance.scoreNeedForGold = (quatuorGlobalValue / 3) * 2;
+            ScoreManager.instance.maxScore = quatuorGlobalValue;
         }
         else if (_numberOfPlayer == 3)
         {
             ScoreManager.instance.scoreNeedForGold = (trioGlobalValue / 3) * 2;
+            ScoreManager.instance.maxScore = trioGlobalValue;
         }
         else if(_numberOfPlayer == 2)
         {
             ScoreManager.instance.scoreNeedForGold = (duoGlobalValue / 3) * 2;
+            ScoreManager.instance.maxScore = duoGlobalValue;
         }
         else
         {
             ScoreManager.instance.scoreNeedForGold = (soloGlobalValue / 3) * 2;
+            ScoreManager.instance.maxScore = soloGlobalValue;
         }
 
         ScoreManager.instance.scoreNeedForSilver = (ScoreManager.instance.scoreNeedForGold / 3) * 2;
