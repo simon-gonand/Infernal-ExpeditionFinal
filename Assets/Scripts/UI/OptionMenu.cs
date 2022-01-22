@@ -10,10 +10,13 @@ public class OptionMenu : MonoBehaviour
     private Slider musicVolumeSlider;
     [SerializeField]
     private Slider sfxVolumeSlider;
+    [SerializeField]
+    private Toggle headphonesToggle;
 
     private GameObject previousMenu;
     private GameObject optionButton;
 
+    private bool headphones = false;
     private float musicVolume = 50.0f;
     private float sfxVolume = 50.0f;
 
@@ -26,8 +29,17 @@ public class OptionMenu : MonoBehaviour
         // Get sfxVolume
         sfxVolumeSlider.value = sfxVolume;
 
+        headphones = AudioManager.AMInstance.headphones;
+        headphonesToggle.isOn = headphones;
+
         this.previousMenu = previousMenu;
         optionButton = previousButton;
+    }
+
+    public void OnToggleChange()
+    {
+        headphones = headphonesToggle.isOn;
+        AudioManager.AMInstance.headphones = true;
     }
 
     public void OnChangeMusicVolume()
