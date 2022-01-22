@@ -71,6 +71,8 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event chestGroundImpactSFX;
     public AK.Wwise.Event gameAmbientSFX;
     public AK.Wwise.Event mapOpeningSFX;
+    public AK.Wwise.Event ropeCutSFX;
+    public AK.Wwise.Event doorImpactSFX;
 
     [Header("UI")]
     public AK.Wwise.Event menuCancelSFX;

@@ -11,6 +11,11 @@
 					<ChildrenList>
 						<SwitchContainer Name="Player_Footsteps" ID="{75DCA35D-EBD8-4C0F-BC27-7F1436DE8E51}" ShortID="268201679">
 							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-10</Value>
@@ -1409,6 +1414,11 @@
 						</RandomSequenceContainer>
 						<Sound Name="Player_Stunt" ID="{50D4D310-7EB2-4490-B309-B79FAA39496B}" ShortID="796147354">
 							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Pitch" Type="int32">
 									<ModifierList>
 										<ModifierInfo>
@@ -2874,6 +2884,131 @@
 							<ObjectLists/>
 							<ActiveSourceList>
 								<ActiveSource Name="PAPER- MAP-MOVES" ID="{BF263C7B-F526-4572-932C-E047FC066715}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Rope_Cut" ID="{865E45E9-4501-413F-BBEE-D50F8C2C8257}" ShortID="194448412">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-600</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-15</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Rope_Cut" ID="{0313FD92-D143-433D-B629-258F1DD1E194}">
+									<Language>SFX</Language>
+									<AudioFile>Rope_Cut.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="24312495"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Rope_Cut" ID="{0313FD92-D143-433D-B629-258F1DD1E194}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DoorImpact_Water" ID="{6E0DCBDD-4C69-4255-8092-162EF42CF72D}" ShortID="472521189">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-15</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DoorImpact_Water" ID="{010C0DFE-A054-448D-A846-AE6C097173EC}">
+									<Language>SFX</Language>
+									<AudioFile>DoorImpact_Water.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1025660004"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="DoorImpact_Water" ID="{010C0DFE-A054-448D-A846-AE6C097173EC}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DoorImpact_Wood" ID="{3D96D108-2366-4608-AE69-99C51A005B51}" ShortID="605844672">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-20</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DoorImpact_Wood" ID="{8A74C9EB-06DB-4AD2-BD41-F33E72EC7CD1}">
+									<Language>SFX</Language>
+									<AudioFile>DoorImpact_Wood.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="950466243"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="DoorImpact_Wood" ID="{8A74C9EB-06DB-4AD2-BD41-F33E72EC7CD1}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Requin" ID="{8827F5E0-771D-4643-BAEF-A299B93BAF64}" ShortID="16654967">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-15</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Requin" ID="{1223FC6F-A19F-4CC3-9B88-E7F82FF32488}">
+									<Language>SFX</Language>
+									<AudioFile>Requin.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="784158414"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Requin" ID="{1223FC6F-A19F-4CC3-9B88-E7F82FF32488}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>

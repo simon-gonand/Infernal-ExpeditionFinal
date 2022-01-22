@@ -458,6 +458,46 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Door_Impact" ID="{322CE6F7-2A0D-48B3-92E3-11F0403CD495}">
+							<ChildrenList>
+								<Action Name="" ID="{3330393F-E328-45D9-9E44-2BF954731330}" ShortID="196472880">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="DoorImpact_Wood" ID="{3D96D108-2366-4608-AE69-99C51A005B51}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{352E8EF1-C9BD-4990-BF9A-C17EBF93FD72}" ShortID="184433425">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="DoorImpact_Water" ID="{6E0DCBDD-4C69-4255-8092-162EF42CF72D}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Cut_Rope" ID="{32EA2F43-4B51-4725-9C2C-492051413819}">
+							<ChildrenList>
+								<Action Name="" ID="{BEBD6510-F48E-43BA-8B91-9E914D310917}" ShortID="540913210">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Rope_Cut" ID="{865E45E9-4501-413F-BBEE-D50F8C2C8257}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Shark" ID="{F2C83EED-E30C-46C1-898C-DB3AAF1689B9}">
+							<ChildrenList>
+								<Action Name="" ID="{8013C335-A283-4D6F-90F9-8E133AAE5CFF}" ShortID="258645231">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Requin" ID="{8827F5E0-771D-4643-BAEF-A299B93BAF64}" WorkUnitID="{1EC69DD2-51C3-4303-9614-902FD56E3E73}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="UI" ID="{AF716618-CE0C-4A19-8084-070B8D3CB72E}" ShortID="573908604">
