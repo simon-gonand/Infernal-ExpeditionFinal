@@ -15,6 +15,7 @@ public class LevelSelection : MonoBehaviour
     public CinemachineVirtualCamera tableCam;
 
     [Header("SCORE TOKEN")]
+    public GameObject tokenGroup;
     public GameObject bronzeToken;
     public GameObject silverToken;
     public GameObject goldToken;
@@ -92,6 +93,8 @@ public class LevelSelection : MonoBehaviour
             p.selfPlayerInput.currentActionMap.Enable();
         }
         _uiActivate = false;
+
+        tokenGroup.SetActive(false);
     }
 
     private IEnumerator LerpTransition(float offset)
@@ -203,6 +206,8 @@ public class LevelSelection : MonoBehaviour
         AudioManager.AMInstance.mapOpeningSFX.Post(gameObject);
 
         Cursor.visible = true;
+
+        tokenGroup.SetActive(true);
     }
 
     private IEnumerator WaitForCameraMovementsToTableCam()

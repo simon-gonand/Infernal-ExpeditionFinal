@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -718,6 +718,10 @@ PrefabInstance:
       propertyPath: goldToken
       value: 
       objectReference: {fileID: 1646518468}
+    - target: {fileID: 1011656442598414535, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
+      propertyPath: tokenGroup
+      value: 
+      objectReference: {fileID: 885338539}
     - target: {fileID: 1011656442598414535, guid: fb82877ca42267b4dad93d9eefacac5f, type: 3}
       propertyPath: bronzeToken
       value: 
@@ -2439,6 +2443,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 51.649, y: 0, z: 0}
+--- !u!1 &885338539 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6388234502063719638, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+  m_PrefabInstance: {fileID: 1646518465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &978337118
 GameObject:
   m_ObjectHideFlags: 0
@@ -4258,6 +4267,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -523
       objectReference: {fileID: 0}
+    - target: {fileID: 1499796822, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 1538926225, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -396
@@ -4502,6 +4515,10 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3775008373726478915, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 70830fa4752961a42b4b259aaf2dda39, type: 3}
     - target: {fileID: 3915275348749241794, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -4547,6 +4564,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6385740918898180712, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388234502063719638, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: m_Name
+      value: 'TokenGroup '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388234502063719638, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4630,6 +4655,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7854000172161841757, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d7b977b8f7409e4cb9c87093e4da7a2, type: 3}
+    - target: {fileID: 8725971103494961315, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bbf964170dfe53b459931fb25e37cd7f, type: 3}
     - target: {fileID: 8878073373998186788, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
