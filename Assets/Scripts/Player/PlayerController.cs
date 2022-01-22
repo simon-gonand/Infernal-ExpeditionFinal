@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
     public bool isInteracting { get { return _isInteracting; } set { _isInteracting = value; } }
 
     // Is the player carrying a treasure
-    private bool _isCarrying = false;
+    public bool _isCarrying = false;
     public bool isCarrying { get { return _isCarrying; } set { _isCarrying = value; } }
 
     // Is the player carried by another player
@@ -165,6 +165,8 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         _isDead = false;
         isGrounded = false;
+        isColliding = false;
+        interactionButtonPressed = false;
 
         sword.SetActive(true);
     }
@@ -186,7 +188,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Treasures") && isGrounded)
+        if (collision.collider.CompareTag("Treasures") && isGrounded && !_isSwimming)
         {
             if (_isCarrying)
             {

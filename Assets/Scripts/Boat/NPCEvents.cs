@@ -21,20 +21,16 @@ public class NPCEvents : MonoBehaviour
     public GameObject tutoBillboardUI;
 
 
-    private void Start()
-    {
-        for (int i = 0; i < popUp.Length; i++)
-        {
-            popUp[i].SetActive(true);
+    private void Start()
+    {
+        for (int i = 0; i < popUp.Length; i++)
+        {            popUp[i].SetActive(true);
         }
-
-        
-
-        if (aboveBand == null && belowBand == null)
-        {
-            aboveBand = null;
-            belowBand = null;
-        }
+        if (aboveBand == null && belowBand == null)
+        {
+            aboveBand = null;
+            belowBand = null;
+        }
     }
 
     
