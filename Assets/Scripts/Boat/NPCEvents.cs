@@ -19,7 +19,9 @@ public class NPCEvents : MonoBehaviour
 
     [Header("UI")]
     public GameObject tutoBillboardUI;
+    public List<GameObject> endLandingToken;
 
+    private int landingCount = 0;
 
     private void Start()
     {
@@ -90,7 +92,7 @@ public class NPCEvents : MonoBehaviour
         }
         popUpSystem.transform.position = spawnPopUp.position;
         popUpSystem.Play();
-        Debug.Log("Landing !");
+        
     }
 
     public void OnCaptainCallAllAboard()
@@ -164,6 +166,9 @@ public class NPCEvents : MonoBehaviour
             }
         }
 
+        endLandingToken[landingCount].gameObject.SetActive(true);
+        
+
         StartCoroutine(RemoveBoatSmoothly());
     }
 
@@ -181,6 +186,8 @@ public class NPCEvents : MonoBehaviour
     public void EndLanding()
     {
         PlayerManager.instance.respawnOnBoat = true;
+        endLandingToken[landingCount].gameObject.SetActive(false);
+        ++landingCount;
         StartCoroutine(AddBoatSmoothly());
     }
 

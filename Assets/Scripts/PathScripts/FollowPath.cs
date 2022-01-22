@@ -13,7 +13,8 @@ public class FollowPath : MonoBehaviour
     private Vector3 initialOffset;
     private float initialFOV;
 
-    private int linkIndex;
+    private int _linkIndex;
+    public int linkIndex { get { return _linkIndex; } }
     private float lastTValue;
 
     private float tParam;
@@ -33,7 +34,7 @@ public class FollowPath : MonoBehaviour
         StopAllCoroutines();
         if (path == null) return;
         path.InitializePath();
-        linkIndex = path.startWaypoint;
+        _linkIndex = path.startWaypoint;
         if (path.allPoints.Count < 2)
         {
             pathEnd = true;
@@ -108,7 +109,7 @@ public class FollowPath : MonoBehaviour
             if (path.loop)
             {
                 allPointIndex = 0;
-                linkIndex = 0;
+                _linkIndex = 0;
                 lastTValue = 0.0f;
             }
             else
@@ -119,7 +120,7 @@ public class FollowPath : MonoBehaviour
         }
         else if (linkIndex < path.links.Count - 1 && path.allPoints[allPointIndex] == path.links[linkIndex + 1].pathPoints[0])
         {
-            ++linkIndex;
+            ++_linkIndex;
             lastTValue = 0.0f;
             currentWaypoint = path.waypoints[linkIndex];
             currentWaypoint.NPCEvent.Invoke();
