@@ -39,10 +39,6 @@ public class ScoreManager : MonoBehaviour
         }
         #endregion
 
-        
-
-
-
         scoreNeedForNextStar = scoreNeedForBronze;
         scoreOfActualStar = 0;
     }

@@ -178,8 +178,6 @@ public class GameManager : MonoBehaviour
 
         ScoreManager.instance.maxScore = quatuorGlobalValue;
 
-        Debug.Log("Max scene score = " + _maxScore);
-
         if(_numberOfPlayer == 4)
         {
             ScoreManager.instance.scoreNeedForGold = (quatuorGlobalValue / 3) * 2;
