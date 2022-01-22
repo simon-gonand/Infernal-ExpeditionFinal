@@ -30,6 +30,7 @@ public class GateCollision : MonoBehaviour
 
             line.enabled = false;
             selfAnimator.SetTrigger("Destroy");
+            AudioManager.AMInstance.doorImpactSFX.Post(gameObject);
             BoatManager.instance.GetHit();
         }
     }

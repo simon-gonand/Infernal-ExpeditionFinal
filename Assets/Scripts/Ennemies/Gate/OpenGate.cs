@@ -28,6 +28,8 @@ public class OpenGate : MonoBehaviour, EnemiesAI
             selfLineRenderer.enabled = false;
             selfOutline.enabled = false;
 
+            AudioManager.AMInstance.ropeCutSFX.Post(gameObject);
+
             StartCoroutine(Open());
             _isOpen = true;
         }
