@@ -73,6 +73,7 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event mapOpeningSFX;
     public AK.Wwise.Event ropeCutSFX;
     public AK.Wwise.Event doorImpactSFX;
+    public AK.Wwise.Event sharkBiteSFX;
 
     [Header("UI")]
     public AK.Wwise.Event menuCancelSFX;

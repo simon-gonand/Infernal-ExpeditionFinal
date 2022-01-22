@@ -2925,7 +2925,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-15</Value>
+										<Value>-8</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -2939,6 +2939,10 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="DoorImpact_Water" ID="{010C0DFE-A054-448D-A846-AE6C097173EC}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.288839113680154"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DoorImpact_Water.wav</AudioFile>
 									<MediaIDList>
@@ -2955,7 +2959,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-20</Value>
+										<Value>-10</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>

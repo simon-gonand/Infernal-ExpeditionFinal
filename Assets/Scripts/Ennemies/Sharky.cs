@@ -10,6 +10,7 @@ public class Sharky : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerController player = other.GetComponent<PlayerController>();
+            AudioManager.AMInstance.sharkBiteSFX.Post(gameObject);
             player.Die();
         }
     }
