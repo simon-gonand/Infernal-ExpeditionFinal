@@ -105,7 +105,7 @@ public class PlayerManager : MonoBehaviour
             playerTransform.rotation = playerSpawnPosition.rotation;
         }
         if (GameManager.instance != null)
-            GameManager.instance.targetGroup.AddMember(playerTransform, weight, 20);
+            GameManager.instance.targetGroup.AddMember(playerTransform, weight, 180);
         PlayerController player = playerInput.gameObject.GetComponent<PlayerController>();
         player.id = playerInput.playerIndex;
         _players.Add(player);

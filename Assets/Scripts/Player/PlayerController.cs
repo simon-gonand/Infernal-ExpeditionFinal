@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour
     private bool isDashing = false;
     private bool isGrounded = false;
     public bool isColliding = false;
+    private bool interactionButtonPressed = false;
     #endregion
 
     #region Reset
@@ -304,6 +305,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (_carrying != null)
                     {
+                        interactionButtonPressed = false;
                         _carrying.Launch(this);
                     }
                 }
@@ -336,60 +338,17 @@ public class PlayerController : MonoBehaviour
     // When the player pressed the interaction button
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        if (!_isSwimming && !_isCarried)
+        if (context.started)
+            interactionButtonPressed = true;
+        else if (context.canceled)
+            interactionButtonPressed = false;
+        
+        // Else put the treasure down or uninteract with the interactable
+        if ((_isInteracting || _isCarrying) && !interactionButtonPressed && !interactingWith.GetTag().Equals("LevelSelection"))
         {
-            // If the player is not interacting with anything or carrying a treasure
-            if (!_isInteracting && !_isCarrying && context.started)
-            {
-                // Define from where the raycast will start
-                Vector3 startRayPos = self.position;
-                startRayPos.y -= self.lossyScale.y / 2;
-
-                // If the raycast is encountering an interactable
-                int layerMask = 1 << LayerMask.NameToLayer("Interactable");
-                List<Vector3> raycastsStartPos = new List<Vector3>();
-
-                // Set three different Raycasts (one at the bottom, one at the center and one at the top)
-                raycastsStartPos.Add(startRayPos);
-                startRayPos.y += self.lossyScale.y;
-                raycastsStartPos.Add(startRayPos);
-                raycastsStartPos.Add(self.position);
-
-                for (int i = 0; i < raycastsStartPos.Count; ++i)
-                {
-                    RaycastHit hit;
-                    if (Physics.Raycast(raycastsStartPos[i], self.forward, out hit, playerPreset.interactionDistance, layerMask))
-                    {
-                        if (hit.collider.isTrigger && hit.collider.enabled)
-                        {
-                            // Stop player's movements
-                            _playerMovementInput = Vector2.zero;
-                            // Set with which interactable the player is interacting with
-                            _interactingWith = hit.collider.gameObject.GetComponentInParent<IInteractable>();
-                            _isInteracting = true;
-                            if (!_interactingWith.InteractWith(this, hit.collider.gameObject))
-                            {
-                                _interactingWith = null;
-                                _isInteracting = false;
-                            }
-                            else
-                            {
-                                selfRigidBody.mass = 1000;
-                                selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
-                                isColliding = false;
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-            // Else put the treasure down or uninteract with the interactable
-            else if ((_isInteracting || _isCarrying) && context.canceled && !interactingWith.GetTag().Equals("LevelSelection"))
-            {
-                _interactingWith.UninteractWith(this);
-                selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
-                selfRigidBody.mass = 1;
-            }
+            _interactingWith.UninteractWith(this);
+            selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+            selfRigidBody.mass = 1;
         }
     }
 
@@ -494,6 +453,58 @@ public class PlayerController : MonoBehaviour
         stunFx.SetActive(false);
 
         // Stop sound stun
+    }
+
+    private void CheckIfInteraction()
+    {
+        if (!_isSwimming && !_isCarried)
+        {
+            // If the player is not interacting with anything or carrying a treasure
+            if (!_isInteracting && !_isCarrying && interactionButtonPressed)
+            {
+                // Define from where the raycast will start
+                Vector3 startRayPos = self.position;
+                startRayPos.y -= self.lossyScale.y / 2;
+
+                // If the raycast is encountering an interactable
+                int layerMask = 1 << LayerMask.NameToLayer("Interactable");
+                List<Vector3> raycastsStartPos = new List<Vector3>();
+
+                // Set three different Raycasts (one at the bottom, one at the center and one at the top)
+                raycastsStartPos.Add(startRayPos);
+                startRayPos.y += self.lossyScale.y;
+                raycastsStartPos.Add(startRayPos);
+                raycastsStartPos.Add(self.position);
+
+                for (int i = 0; i < raycastsStartPos.Count; ++i)
+                {
+                    RaycastHit hit;
+                    if (Physics.Raycast(raycastsStartPos[i], self.forward, out hit, playerPreset.interactionDistance, layerMask))
+                    {
+                        if (hit.collider.isTrigger && hit.collider.enabled)
+                        {
+                            // Stop player's movements
+                            _playerMovementInput = Vector2.zero;
+                            // Set with which interactable the player is interacting with
+                            _interactingWith = hit.collider.gameObject.GetComponentInParent<IInteractable>();
+                            _isInteracting = true;
+                            if (!_interactingWith.InteractWith(this, hit.collider.gameObject))
+                            {
+                                _interactingWith = null;
+                                _isInteracting = false;
+                            }
+                            else
+                            {
+                                selfRigidBody.mass = 1000;
+                                selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+                                isColliding = false;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void UpdateSwimming()
@@ -681,6 +692,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        CheckIfInteraction();
         if (!isColliding && !_isStun && !_isCarried && !_hasBeenLaunched && !_isDead && 
             ((_isInteracting && _carrying != null) ? true : !_isInteracting))
         {

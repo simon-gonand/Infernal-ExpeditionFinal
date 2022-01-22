@@ -53,7 +53,6 @@ public class LevelManager
     public void EndLevel()
     {
         AudioManager.AMInstance.mapCompletedSWITCH.Post(AudioManager.AMInstance.gameObject);
-        Debug.Log("Victoryyy0");
 
         EndLevelUI.instance.InitializeUI();
         Cursor.visible = true;
@@ -61,11 +60,12 @@ public class LevelManager
 
         foreach (PlayerController player in PlayerManager.instance.players)
             player.GetComponent<PlayerInput>().currentActionMap.Disable();
-        if (levelId == 0) return;
-        if (SaveData.instance.levels[levelId - 1].highScore < ScoreManager.instance.actualScore)
+        if (levelId == -1) return;
+        if (SaveData.instance.levels[levelId].highScore < ScoreManager.instance.actualScore)
         {
-            SaveData.instance.levels[levelId - 1].highScore = ScoreManager.instance.actualScore;
-            SaveData.instance.levels[levelId - 1].starState = ScoreManager.instance.actualStar;
+            Debug.Log(ScoreManager.instance.actualStar);
+            SaveData.instance.levels[levelId].highScore = ScoreManager.instance.actualScore;
+            SaveData.instance.levels[levelId].starState = ScoreManager.instance.actualStar;
             SaveData.instance.CountStars();
         }
         SerializationManager.Save(SaveData.instance);

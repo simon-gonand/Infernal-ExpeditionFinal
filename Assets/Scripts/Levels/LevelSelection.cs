@@ -148,7 +148,39 @@ public class LevelSelection : MonoBehaviour
             }
         }
 
-        LevelProfile level = SaveData.instance.levels[currentLevelSelectedIndex];
+        CheckStarsStates();
+    }
+
+    // Remove this function when we got all the levels
+    private int DebugGetLevelIndex()
+    {
+        switch (currentLevelSelectedIndex)
+        {
+            case 0:
+                return 0;
+                break;
+            case 1:
+                return 1;
+                break;
+            case 2:
+                return 4;
+                break;
+            case 3:
+                return 5;
+                break;
+            case 4:
+                return 7;
+                break;
+            default:
+                Debug.Log("Sérieux ?");
+                return 0;
+                break;
+        }
+    }
+
+    private void CheckStarsStates()
+    {
+        LevelProfile level = SaveData.instance.levels[DebugGetLevelIndex()];
         switch (level.starState)
         {
             case ScoreManager.differentStarState.NoStar:
@@ -176,10 +208,11 @@ public class LevelSelection : MonoBehaviour
                 break;
         }
     }
+
     private void AwakeUI()
     {
         SaveData.instance = (SaveData)SerializationManager.Load();
-        int count = 1;
+        int count = 0;
         foreach (LevelProfile profile in SaveData.instance.levels)
         {
             Debug.Log("---------------------- Level_" + count + " ----------------------");
@@ -208,6 +241,7 @@ public class LevelSelection : MonoBehaviour
         Cursor.visible = true;
 
         tokenGroup.SetActive(true);
+        CheckStarsStates();
     }
 
     private IEnumerator WaitForCameraMovementsToTableCam()
