@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 5ce880947766eb4cbd5f560f38e08f10
     GuidInternal: 
-    m_lastTime: -8585655710372948890
+    m_lastTime: -8585644368056645582
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -80,7 +80,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 9dce80c3a7123942813a1007a9fa761f
     GuidInternal: 
-    m_lastTime: -8585587230408141944
+    m_lastTime: -8585586775111780265
     List:
     - name: Musics
       guid: 36549465458ece4a996756f69665369a
@@ -851,28 +851,8 @@ MonoBehaviour:
     ParentPath: Events\Musics
     guid: 8b7a9cc2f9341b47876f857ec1bcbfce
     GuidInternal: 
-    m_lastTime: -8585587230408331439
+    m_lastTime: -8585586775111630657
     List:
-    - name: Credit_Theme
-      guid: b5a5df838c37b849a41524cd44cf21ae
-      id: 3955819204
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Musics
-        ObjectType: 12
-        guid: 8b7a9cc2f9341b47876f857ec1bcbfce
-      - ElementName: Musics
-        ObjectType: 4
-        guid: 535760f856312a4cb03d1b63e91ac86f
-      - ElementName: Credit_Theme
-        ObjectType: 3
-        guid: b5a5df838c37b849a41524cd44cf21ae
-      Path: Events\Musics\Musics\Credit_Theme
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: Lobbi_Theme
       guid: 3e042827e008f34f9d86245d6d9a8d53
       id: 474510645
@@ -907,6 +887,26 @@ MonoBehaviour:
         ObjectType: 4
         guid: 535760f856312a4cb03d1b63e91ac86f
       Path: Events\Musics\Musics
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Naufrage_Theme
+      guid: b776c3075d44ac4683e738ca6c1b1f5a
+      id: 1774282194
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Musics
+        ObjectType: 12
+        guid: 8b7a9cc2f9341b47876f857ec1bcbfce
+      - ElementName: Musics
+        ObjectType: 4
+        guid: 535760f856312a4cb03d1b63e91ac86f
+      - ElementName: Naufrage_Theme
+        ObjectType: 3
+        guid: b776c3075d44ac4683e738ca6c1b1f5a
+      Path: Events\Musics\Musics\Naufrage_Theme
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -1194,7 +1194,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 23f8d2162ea04c49ba51910d0ab18446
     GuidInternal: 
-    m_lastTime: -8585596127525771632
+    m_lastTime: -8585596053392879115
     List:
     - name: GameplayType
       guid: 582d7cde1074f044a75447d7d5a60a22
@@ -1291,8 +1291,8 @@ MonoBehaviour:
         guid: 88eb52da3d6b9743ba24b8c441c80d38
       Path: Triggers\Default Work Unit\Collect_Treasure
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 0200000003000000290000002a000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
-  currentDataSource: 0
+  currentDataSource: 1
   CurrentPluginConfig: 

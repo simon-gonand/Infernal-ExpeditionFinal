@@ -40,6 +40,7 @@ public class AudioManager : MonoBehaviour
 
     public AK.Wwise.Event runTheme;
     public AK.Wwise.Event lobbiTheme;
+    public AK.Wwise.Event run03Theme;
 
     [Header("Player")]
 

@@ -27,6 +27,11 @@ public class LevelManager
             Debug.Log("Star Lobbie Song");
             AudioManager.AMInstance.lobbiTheme.Post(AudioManager.AMInstance.gameObject);
         }
+        else if(SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            Debug.Log("Star 03Run Song");
+            AudioManager.AMInstance.run03Theme.Post(AudioManager.AMInstance.gameObject);
+        }
         else
         {
             Debug.Log("Star Run Song");
