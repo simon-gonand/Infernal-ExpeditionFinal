@@ -363,7 +363,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnCancelUI(InputAction.CallbackContext context)
     {
-        Debug.Log(_levelSelectionTable.uiActivate);
         if (_levelSelectionTable != null && _levelSelectionTable.uiActivate && context.performed)
             _levelSelectionTable.Back();
     }
@@ -414,7 +413,6 @@ public class PlayerController : MonoBehaviour
             // For sound design
             if (hitted.CompareTag("Enemy"))
             {
-                Debug.Log("Enemy has been attacked");
                 // Play sword impact sound
                 EnemiesAI enemy = hitted.GetComponent<EnemiesAI>();
                 enemy.Die();
@@ -454,9 +452,7 @@ public class PlayerController : MonoBehaviour
         {
             _carrying.UninteractWith(this);
         }
-        Debug.Log("Player is stun");
         yield return new WaitForSeconds(playerPreset.stunTime);
-        Debug.Log("Player is not stun anymore");
 
         _isStun = false;
         anim.SetBool("isStun", false);

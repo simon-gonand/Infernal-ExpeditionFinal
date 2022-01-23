@@ -109,10 +109,8 @@ public class ScoreUI : MonoBehaviour
 
     private void CheckIfGainMedal()
     {
-        Debug.Log("je suis la");
         if (ScoreManager.instance.isLevelUpStar)
         {
-            Debug.Log("je rentre");
 
             ScoreManager.instance.isLevelUpStar = false;
 
@@ -122,20 +120,17 @@ public class ScoreUI : MonoBehaviour
                     bronzeAnimator.SetTrigger("GainMedal");
                     scoreOfNextStarUi = ScoreManager.instance.scoreNeedForSilver;
                     oldScoreOfNextStarUi = ScoreManager.instance.scoreNeedForBronze;
-                    Debug.Log("Bronze");
                     break;
 
                 case ScoreManager.differentStarState.Silver:
                     silverAnimator.SetTrigger("GainMedal");
                     scoreOfNextStarUi = ScoreManager.instance.scoreNeedForGold;
                     oldScoreOfNextStarUi = ScoreManager.instance.scoreNeedForSilver;
-                    Debug.Log("Silver");
                     break;
 
                 case ScoreManager.differentStarState.Gold:
                     oldScoreOfNextStarUi = ScoreManager.instance.scoreNeedForGold;
                     goldAnimator.SetTrigger("GainMedal");
-                    Debug.Log("Gold");
                     break;
             }
         }

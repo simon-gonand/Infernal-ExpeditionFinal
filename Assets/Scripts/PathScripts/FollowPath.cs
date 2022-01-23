@@ -67,6 +67,11 @@ public class FollowPath : MonoBehaviour
         }
     }
 
+    private bool CoordiantesComparison(Vector3 a, Vector3 b)
+    {
+        return Mathf.Abs(a.x - b.x) < 0.1f && Mathf.Abs(a.z - b.z) < 0.1f;
+    }
+
     private IEnumerator FollowCurve()
     {
         coroutineAllowed = false;
@@ -84,7 +89,8 @@ public class FollowPath : MonoBehaviour
 
             Vector3 rotation = self.position - oldPos;
             rotation.y = 0.0f;
-            self.rotation = Quaternion.LookRotation(rotation);
+            if (rotation != Vector3.zero)
+                self.rotation = Quaternion.LookRotation(rotation);
 
 
             // Camera position
@@ -104,6 +110,10 @@ public class FollowPath : MonoBehaviour
             lastTValue = tParam / (path.links[linkIndex].pathPoints.Count - 1);
         tParam = 0.0f;
         ++allPointIndex;
+        Debug.Log(path.allPoints[allPointIndex]);
+        Debug.Log(path.links[linkIndex + 1].pathPoints[0]);
+        Debug.Log(CoordiantesComparison(path.allPoints[allPointIndex], path.links[linkIndex + 1].pathPoints[0]));
+        Debug.Log(allPointIndex);
         if (allPointIndex == path.allPoints.Count - 1)
         {
             if (path.loop)
@@ -118,8 +128,9 @@ public class FollowPath : MonoBehaviour
                 pathEnd = true;
             }
         }
-        else if (linkIndex < path.links.Count - 1 && path.allPoints[allPointIndex] == path.links[linkIndex + 1].pathPoints[0])
+        else if (linkIndex < path.links.Count - 1 && CoordiantesComparison(path.allPoints[allPointIndex], path.links[linkIndex + 1].pathPoints[0]))
         {
+            Debug.Log("saucisse");
             ++_linkIndex;
             lastTValue = 0.0f;
             currentWaypoint = path.waypoints[linkIndex];

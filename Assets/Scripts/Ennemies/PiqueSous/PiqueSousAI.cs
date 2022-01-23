@@ -80,7 +80,6 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
         selfNavMesh.SetDestination(spawner.spawnPoint.position);
         if (targetTreasure != null && targetTreasure.isCarriedByPiqueSous && Vector3.Distance(self.position, spawner.spawnPoint.position) < 0.3f)
         {
-            Debug.Log("Treasure has been stolen");
             Destroy(targetTreasure.gameObject);
             targetTreasure = null;
             isCarrying = false;
@@ -133,7 +132,6 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
                 else
                 {
                     GoBackHome();
-                    Debug.Log(selfNavMesh.speed);
                 }
             }
             else

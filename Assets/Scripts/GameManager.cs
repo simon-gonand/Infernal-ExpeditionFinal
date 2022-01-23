@@ -141,8 +141,6 @@ public class GameManager : MonoBehaviour
 
     public void GetStarsValue(int _numberOfPlayer , int _maxScore)
     {
-        Debug.Log("Entering scoring setting function");
-
         List<Treasure> littleTreasurs = new List<Treasure>();
         List<Treasure> mediumTreasurs = new List<Treasure>();
         List<Treasure> bigTreasurs = new List<Treasure>();
@@ -153,8 +151,6 @@ public class GameManager : MonoBehaviour
 
         for (int i= 0; i < treasuresInScene.Count; i++)
         {
-            Debug.Log("Processing chests draft...");
-
             if(treasuresInScene[i].category.maxPlayerCarrying == 4)
             {
                 bigTreasurs.Add(treasuresInScene[i]);
@@ -171,15 +167,11 @@ public class GameManager : MonoBehaviour
                 littleValue += treasuresInScene[i].price;
             }
         }
-        Debug.Log("Chest Draft over ! Values :" + littleValue + " " + mediumValue + " " + bigValue);
-
 
         int soloGlobalValue = littleValue + ((mediumValue / 3) *2);
         int duoGlobalValue = littleValue + mediumValue + (bigValue/2);
         int trioGlobalValue = littleValue + mediumValue + ((bigValue / 3)*2);
         int quatuorGlobalValue = littleValue + mediumValue + bigValue;
-
-        
 
         if(_numberOfPlayer == 4)
         {
@@ -204,8 +196,5 @@ public class GameManager : MonoBehaviour
 
         ScoreManager.instance.scoreNeedForSilver = (ScoreManager.instance.scoreNeedForGold / 3) * 2;
         ScoreManager.instance.scoreNeedForBronze = (ScoreManager.instance.scoreNeedForGold / 3);
-
-
-        Debug.Log("Score setting done !");
     }
 }

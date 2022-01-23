@@ -15,17 +15,6 @@ public class SelectLevels : MonoBehaviour
         if (playerInteracting != null) return false;
         
         SaveData.instance = (SaveData)SerializationManager.Load();
-        int count = 1;
-        foreach (LevelProfile profile in SaveData.instance.levels)
-        {
-            Debug.Log("---------------------- Level_" + count + " ----------------------");
-            Debug.Log(profile.highScore);
-            Debug.Log(profile.starState);
-            ++count;
-        }
-        Debug.Log("------------------- Nb Stars -------------------");
-        Debug.Log(SaveData.instance.earnedStars);
-
         foreach (PlayerController p in PlayerManager.instance.players)
             p.GetComponent<PlayerInput>().currentActionMap.Disable();
 

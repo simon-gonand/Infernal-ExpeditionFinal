@@ -34,7 +34,6 @@ public class EndLevelUI : MonoBehaviour
     public void InitializeUI()
     {
         AudioManager.AMInstance.mapCompletedSWITCH.Post(AudioManager.AMInstance.gameObject);
-        Debug.Log("Victoryyy0");
 
         panel.SetActive(true);
         firstSelected.Select();

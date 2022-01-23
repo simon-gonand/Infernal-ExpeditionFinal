@@ -11,7 +11,7 @@ public class NPCEvents : MonoBehaviour
 
     [Space(10)]
     public GameObject popUpDisplay;
-    public GameObject[] popUp;
+    public GameObject[] popUp = new GameObject[4];
 
     [Header("Black Bands Intro")]
     public Animator aboveBand;
@@ -54,7 +54,6 @@ public class NPCEvents : MonoBehaviour
 
         popUpSystem.transform.position = spawnPopUp.position;
         popUpSystem.Play();
-        Debug.Log("Level Start !");
     }
 
     public void OnLastIsland()
@@ -73,7 +72,6 @@ public class NPCEvents : MonoBehaviour
 
         popUpSystem.transform.position = spawnPopUp.position;
         popUpSystem.Play();
-        Debug.Log("Last Island !");
     }
 
     //CAPTAIN NPC 
@@ -111,7 +109,6 @@ public class NPCEvents : MonoBehaviour
 
         popUpSystem.transform.position = spawnPopUp.position;
         popUpSystem.Play();
-        Debug.Log("All Aboard !");
     }
 
     //TUTO 
@@ -129,8 +126,6 @@ public class NPCEvents : MonoBehaviour
 
         aboveBand.SetBool("aboveBandDisplay", false);
         belowBand.SetBool("belowBandDisplay", false);
-
-        Debug.Log("BlackBandsRemove"); 
     }
 
     public void BlackBandsDisplay()
@@ -140,8 +135,6 @@ public class NPCEvents : MonoBehaviour
 
         aboveBand.SetBool("aboveBandRemove", false);
         belowBand.SetBool("belowBandRemove", false);
-
-        Debug.Log("BlackBandsDisplay");
     }
 
     //TOKEN

@@ -173,7 +173,6 @@ public class LevelSelection : MonoBehaviour
                 return 7;
                 break;
             default:
-                Debug.Log("Sérieux ?");
                 return 0;
                 break;
         }
@@ -224,16 +223,6 @@ public class LevelSelection : MonoBehaviour
     private void AwakeUI()
     {
         SaveData.instance = (SaveData)SerializationManager.Load();
-        int count = 0;
-        foreach (LevelProfile profile in SaveData.instance.levels)
-        {
-            Debug.Log("---------------------- Level_" + count + " ----------------------");
-            Debug.Log(profile.highScore);
-            Debug.Log(profile.starState);
-            ++count;
-        }
-        Debug.Log("------------------- Nb Stars -------------------");
-        Debug.Log(SaveData.instance.earnedStars);
 
         foreach (PlayerController p in PlayerManager.instance.players)
         {
@@ -280,8 +269,6 @@ public class LevelSelection : MonoBehaviour
             {
                 player.selfPlayerInput.currentActionMap.Disable();
             }
-
-            Debug.Log("LaunchLevelUI");
 
             return;
         }        

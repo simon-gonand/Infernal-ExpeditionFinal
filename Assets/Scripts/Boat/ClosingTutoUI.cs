@@ -20,7 +20,6 @@ public class ClosingTutoUI : MonoBehaviour
     {
         if (closeTuto)
         {
-            Debug.Log("Resume Game");
             Time.timeScale = 1.0f;
 
             closeTuto = false;
