@@ -32,16 +32,22 @@ public class OptionMenu : MonoBehaviour
 
         this.previousMenu = previousMenu;
         optionButton = previousButton;
+
+        headphonesToggle.Select();
     }
 
     public void OnToggleChange()
     {
         if (headphonesToggle.isOn)
         {
+            Debug.Log("true");
+            AudioManager.AMInstance.headphones = true;
             AudioManager.AMInstance.audioDeviceToHeadphonesSWITCH.Post(gameObject);
         }
         else
         {
+            Debug.Log("false");
+            AudioManager.AMInstance.headphones = false;
             AudioManager.AMInstance.audioDeviceToSpeakersSWITCH.Post(gameObject);
         }
     }
