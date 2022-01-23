@@ -317,6 +317,14 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""ValidModifUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""8348d3e6-93b9-462f-af8b-d4e4429d3a30"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -517,6 +525,28 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""action"": ""MoveUI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6cdc356c-791c-4a46-b62b-86a21759f016"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ValidModifUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1692ece8-8e6f-4fe6-93c9-5ada9320cf98"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ValidModifUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -564,6 +594,7 @@ public class @Controller : IInputActionCollection, IDisposable
         m_ControlsUI = asset.FindActionMap("ControlsUI", throwIfNotFound: true);
         m_ControlsUI_CancelUI = m_ControlsUI.FindAction("CancelUI", throwIfNotFound: true);
         m_ControlsUI_MoveUI = m_ControlsUI.FindAction("MoveUI", throwIfNotFound: true);
+        m_ControlsUI_ValidModifUI = m_ControlsUI.FindAction("ValidModifUI", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -696,12 +727,14 @@ public class @Controller : IInputActionCollection, IDisposable
     private IControlsUIActions m_ControlsUIActionsCallbackInterface;
     private readonly InputAction m_ControlsUI_CancelUI;
     private readonly InputAction m_ControlsUI_MoveUI;
+    private readonly InputAction m_ControlsUI_ValidModifUI;
     public struct ControlsUIActions
     {
         private @Controller m_Wrapper;
         public ControlsUIActions(@Controller wrapper) { m_Wrapper = wrapper; }
         public InputAction @CancelUI => m_Wrapper.m_ControlsUI_CancelUI;
         public InputAction @MoveUI => m_Wrapper.m_ControlsUI_MoveUI;
+        public InputAction @ValidModifUI => m_Wrapper.m_ControlsUI_ValidModifUI;
         public InputActionMap Get() { return m_Wrapper.m_ControlsUI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -717,6 +750,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @MoveUI.started -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnMoveUI;
                 @MoveUI.performed -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnMoveUI;
                 @MoveUI.canceled -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnMoveUI;
+                @ValidModifUI.started -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnValidModifUI;
+                @ValidModifUI.performed -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnValidModifUI;
+                @ValidModifUI.canceled -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnValidModifUI;
             }
             m_Wrapper.m_ControlsUIActionsCallbackInterface = instance;
             if (instance != null)
@@ -727,6 +763,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @MoveUI.started += instance.OnMoveUI;
                 @MoveUI.performed += instance.OnMoveUI;
                 @MoveUI.canceled += instance.OnMoveUI;
+                @ValidModifUI.started += instance.OnValidModifUI;
+                @ValidModifUI.performed += instance.OnValidModifUI;
+                @ValidModifUI.canceled += instance.OnValidModifUI;
             }
         }
     }
@@ -763,5 +802,6 @@ public class @Controller : IInputActionCollection, IDisposable
     {
         void OnCancelUI(InputAction.CallbackContext context);
         void OnMoveUI(InputAction.CallbackContext context);
+        void OnValidModifUI(InputAction.CallbackContext context);
     }
 }

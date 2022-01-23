@@ -175,6 +175,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   playerThrowDir: {x: 0, y: 0, z: 0}
+  _isCarrying: 0
   isColliding: 0
 --- !u!114 &4223509153915057750
 MonoBehaviour:
@@ -345,6 +346,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c32155c7-5d39-4063-b9a0-308662dc4a3f
     m_ActionName: Controls/ResetPlayer[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4223509153915057751}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnSelectionModifier
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8348d3e6-93b9-462f-af8b-d4e4429d3a30
+    m_ActionName: ControlsUI/ValidModifUI[/Keyboard/y]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls

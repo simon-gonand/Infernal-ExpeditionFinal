@@ -370,9 +370,17 @@ public class PlayerController : MonoBehaviour
 
     public void OnChangeSelectionUI(InputAction.CallbackContext context)
     {
-        if (_levelSelectionTable != null)
+        if (_levelSelectionTable != null && context.performed)
         {
             _levelSelectionTable.ChangeSelection(context.ReadValue<Vector2>());
+        }
+    }
+
+    public void OnSelectionModifier(InputAction.CallbackContext context)
+    {
+        if (_levelSelectionTable != null && context.performed)
+        {
+            _levelSelectionTable.SelectModifierLevel();
         }
     }
 

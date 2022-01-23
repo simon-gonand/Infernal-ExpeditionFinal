@@ -52,6 +52,7 @@ public class LevelSelection : MonoBehaviour
 
     public void SelectLevel(int number)
     {
+        LevelManager.instance.levelModifiers = false;
         if (number == 0)
             GameManager.instance.LoadLevel("LandScape_Tuto", false);
         else
@@ -176,6 +177,17 @@ public class LevelSelection : MonoBehaviour
                 return 0;
                 break;
         }
+    }
+
+    public void SelectModifierLevel()
+    {
+        LevelManager.instance.levelModifiers = true;
+        int number = DebugGetLevelIndex();
+        if (number == 0)
+            GameManager.instance.LoadLevel("LandScape_Tuto", false);
+        else
+            GameManager.instance.LoadLevel("Landscape_Level0" + number, true);
+        Back();
     }
 
     private void CheckStarsStates()
