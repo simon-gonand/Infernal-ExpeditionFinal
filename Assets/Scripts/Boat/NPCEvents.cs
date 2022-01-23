@@ -39,7 +39,7 @@ public class NPCEvents : MonoBehaviour
     public void OnStartLevel()
     {
         popUpParticleSystem.Particle = popUp[0];
-        popUpParticleSystem.Size = 5;
+        popUpParticleSystem.Size = 3;
         popUpParticleSystem.ChangeParticle();
         popUpParticleSystem.Play();
     }
@@ -47,7 +47,7 @@ public class NPCEvents : MonoBehaviour
     public void OnLastIsland()
     {
         popUpParticleSystem.Particle = popUp[1];
-        popUpParticleSystem.Size = 5;
+        popUpParticleSystem.Size = 3;
         popUpParticleSystem.ChangeParticle();
         popUpParticleSystem.Play();
     }
