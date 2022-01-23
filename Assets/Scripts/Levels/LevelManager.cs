@@ -20,6 +20,8 @@ public class LevelManager
 
     public void StartLevel()
     {
+        AudioManager.AMInstance.gameplayNavigationSWITCH.Post(AudioManager.AMInstance.gameObject);
+
         if (SceneManager.GetActiveScene().buildIndex <= 1)
         {
             AudioManager.AMInstance.lobbiTheme.Post(AudioManager.AMInstance.gameObject);
