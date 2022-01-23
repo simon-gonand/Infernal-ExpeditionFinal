@@ -46,16 +46,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPopUp: {fileID: 0}
   popUpSystem: {fileID: 0}
+  popUpParticleSystem: {fileID: 0}
   popUpDisplay: {fileID: 0}
   popUp:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 91c586f01e9cb7740a995b60b33ca1fe, type: 3}
+  - {fileID: 21300000, guid: 740c19ec8d245534f9c9bbafd2cd117b, type: 3}
+  - {fileID: 21300000, guid: cfefeaffce62fb6448327cf39d97ed78, type: 3}
+  - {fileID: 21300000, guid: 6d04413cad6acbf449f580aa968826bf, type: 3}
   aboveBand: {fileID: 0}
   belowBand: {fileID: 0}
   tutoBillboardUI: {fileID: 0}
-  endLandingToken: []
+  endLandingToken:
+  - {fileID: 0}
 --- !u!95 &1786950837967876486
 Animator:
   serializedVersion: 3

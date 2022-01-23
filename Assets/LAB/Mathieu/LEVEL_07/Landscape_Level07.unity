@@ -16342,26 +16342,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07eb7c6e24914674192b3f794e4d962b, type: 3}
---- !u!1 &596483447 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2009491842280788784, guid: 07eb7c6e24914674192b3f794e4d962b, type: 3}
-  m_PrefabInstance: {fileID: 596483446}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &596483448 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2009491843698356889, guid: 07eb7c6e24914674192b3f794e4d962b, type: 3}
-  m_PrefabInstance: {fileID: 596483446}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &596483449 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2009491842881705946, guid: 07eb7c6e24914674192b3f794e4d962b, type: 3}
-  m_PrefabInstance: {fileID: 596483446}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &596483450 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2009491842862806168, guid: 07eb7c6e24914674192b3f794e4d962b, type: 3}
-  m_PrefabInstance: {fileID: 596483446}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &596483451 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2009491843215235802, guid: 07eb7c6e24914674192b3f794e4d962b, type: 3}
@@ -49282,6 +49262,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3484607225995517742, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
   m_PrefabInstance: {fileID: 1725286817}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1725286819 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6859902829816511639, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+  m_PrefabInstance: {fileID: 1725286817}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e001449fdb41c940aae8960579eb438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1726819059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49354,21 +49345,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 596483451}
     - target: {fileID: 1770622682288072244, guid: 3db5c72c0df3ace4aaa375f5703eaa8c, type: 3}
-      propertyPath: popUp.Array.data[0]
+      propertyPath: popUpParticleSystem
       value: 
-      objectReference: {fileID: 596483450}
-    - target: {fileID: 1770622682288072244, guid: 3db5c72c0df3ace4aaa375f5703eaa8c, type: 3}
-      propertyPath: popUp.Array.data[1]
-      value: 
-      objectReference: {fileID: 596483449}
-    - target: {fileID: 1770622682288072244, guid: 3db5c72c0df3ace4aaa375f5703eaa8c, type: 3}
-      propertyPath: popUp.Array.data[2]
-      value: 
-      objectReference: {fileID: 596483448}
-    - target: {fileID: 1770622682288072244, guid: 3db5c72c0df3ace4aaa375f5703eaa8c, type: 3}
-      propertyPath: popUp.Array.data[3]
-      value: 
-      objectReference: {fileID: 596483447}
+      objectReference: {fileID: 1725286819}
     - target: {fileID: 1770622682288072244, guid: 3db5c72c0df3ace4aaa375f5703eaa8c, type: 3}
       propertyPath: endLandingToken.Array.size
       value: 1

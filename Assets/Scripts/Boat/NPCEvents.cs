@@ -8,10 +8,11 @@ public class NPCEvents : MonoBehaviour
     [Header("Pop UP")]
     public Transform spawnPopUp;
     public ParticleSystem popUpSystem;
+    public UIParticleSystem popUpParticleSystem;
 
     [Space(10)]
     public GameObject popUpDisplay;
-    public GameObject[] popUp = new GameObject[4];
+    public Sprite[] popUp = new Sprite[4];
 
     [Header("Black Bands Intro")]
     public Animator aboveBand;
@@ -25,9 +26,6 @@ public class NPCEvents : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < popUp.Length; i++)
-        {            popUp[i].SetActive(true);
-        }
         if (aboveBand == null && belowBand == null)
         {
             aboveBand = null;
@@ -40,75 +38,36 @@ public class NPCEvents : MonoBehaviour
     //LEVEL ADVERTISING
     public void OnStartLevel()
     {
-        popUp[0].SetActive(true);
-
-        popUpDisplay = popUp[0];
-
-        for (int i = 0; i < popUp.Length; i++)
-        {
-            if (popUp[i] != popUpDisplay)
-            {
-                popUp[i].SetActive(false);
-            }
-        }
-
-        popUpSystem.transform.position = spawnPopUp.position;
-        popUpSystem.Play();
+        popUpParticleSystem.Particle = popUp[0];
+        popUpParticleSystem.Size = 5;
+        popUpParticleSystem.ChangeParticle();
+        popUpParticleSystem.Play();
     }
 
     public void OnLastIsland()
     {
-        popUp[1].SetActive(true);
-
-        popUpDisplay = popUp[1];
-
-        for (int i = 0; i < popUp.Length; i++)
-        {
-            if (popUp[i] != popUpDisplay)
-            {
-                popUp[i].SetActive(false);
-            }
-        }
-
-        popUpSystem.transform.position = spawnPopUp.position;
-        popUpSystem.Play();
+        popUpParticleSystem.Particle = popUp[1];
+        popUpParticleSystem.Size = 5;
+        popUpParticleSystem.ChangeParticle();
+        popUpParticleSystem.Play();
     }
 
     //CAPTAIN NPC 
     public void OnCaptainCallLanding()
     {
-        popUp[2].SetActive(true);
+        popUpParticleSystem.Particle = popUp[2];
+        popUpParticleSystem.Size = 7.5f;
+        popUpParticleSystem.ChangeParticle();
+        popUpParticleSystem.Play();
 
-        popUpDisplay = popUp[2];
-
-        for (int i = 0; i < popUp.Length; i++)
-        {
-            if (popUp[i] != popUpDisplay)
-            {
-                popUp[i].SetActive(false);
-            }
-        }
-        popUpSystem.transform.position = spawnPopUp.position;
-        popUpSystem.Play();
-        
     }
 
     public void OnCaptainCallAllAboard()
     {
-        popUp[3].SetActive(true);
-
-        popUpDisplay = popUp[3];
-
-        for (int i = 0; i < popUp.Length; i++)
-        {
-            if (popUp[i] != popUpDisplay)
-            {
-                popUp[i].SetActive(false);
-            }
-        }
-
-        popUpSystem.transform.position = spawnPopUp.position;
-        popUpSystem.Play();
+        popUpParticleSystem.Particle = popUp[3];
+        popUpParticleSystem.Size = 10;
+        popUpParticleSystem.ChangeParticle();
+        popUpParticleSystem.Play();
     }
 
     //TUTO 
