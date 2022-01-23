@@ -26,6 +26,8 @@ public class LevelSelection : MonoBehaviour
     [Space(10)]
     [SerializeField]
     private UnlockedLevels levelSelection;
+    [SerializeField]
+    private Outline outline;
 
     private GameObject currentSelectedObject;
     private int currentLevelSelectedIndex;
@@ -47,7 +49,6 @@ public class LevelSelection : MonoBehaviour
         {
             inputButtonA.SetActive(false);
         }
-
     }
 
     public void SelectLevel(int number)
@@ -283,6 +284,7 @@ public class LevelSelection : MonoBehaviour
             PlayerController player = other.GetComponent<PlayerController>();
             playerWhoCanInteract.Add(player);
             player.levelSelectionTable = this;
+            outline.enabled = true;
         }
     }
 
@@ -294,6 +296,7 @@ public class LevelSelection : MonoBehaviour
             PlayerController player = other.GetComponent<PlayerController>();
             playerWhoCanInteract.Remove(player);
             player.levelSelectionTable = null;
+            outline.enabled = false;
         }
     }
 }
