@@ -11,6 +11,16 @@
 					<ChildrenList>
 						<Event Name="Run_Theme" ID="{9F1ADFAC-E258-43AE-BE23-3A1E28F62293}">
 							<ChildrenList>
+								<Action Name="" ID="{499E9871-CE36-4E17-83D0-3B5567EFE3C1}" ShortID="186064922">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Run_Theme_Biome3" ID="{150F45A2-CB54-4047-ABB4-6E33791A6422}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 								<Action Name="" ID="{988D4A23-9802-41FE-980E-E980F2849978}" ShortID="428645229">
 									<PropertyList>
 										<Property Name="ActionType" Type="int16" Value="2"/>
@@ -40,9 +50,18 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Credit_Theme" ID="{83DFA5B5-378C-49B8-A415-24CD44CF21AE}"/>
 						<Event Name="Lobbi_Theme" ID="{2728043E-08E0-4FF3-9D86-245D6D9A8D53}">
 							<ChildrenList>
+								<Action Name="" ID="{809BA763-FF19-4CD5-A4E4-DF710A90312F}" ShortID="785288617">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Run_Theme_Biome3" ID="{150F45A2-CB54-4047-ABB4-6E33791A6422}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 								<Action Name="" ID="{93327E7E-209C-4CCB-B761-CDC0897EEC01}" ShortID="256267468">
 									<PropertyList>
 										<Property Name="ActionType" Type="int16" Value="2"/>
@@ -67,6 +86,47 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Lobbi_Theme" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Naufrage_Theme" ID="{07C376B7-445D-46AC-83E7-38CA6C1B1F5A}">
+							<ChildrenList>
+								<Action Name="" ID="{75C539D6-0226-440E-A38B-553458DF4869}" ShortID="481878960">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Run_Theme" ID="{38761F50-3A66-42B0-9807-E348BAD58D7C}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{D9AE7A6A-56B0-4783-8CDE-AB9F117DF706}" ShortID="89446925">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Lobbi_Theme" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{29D09135-00B6-4A6D-B37A-DF74305E9C88}" ShortID="130082077">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Run_Theme_Biome3" ID="{150F45A2-CB54-4047-ABB4-6E33791A6422}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{8DE313FF-C231-4F6A-92D8-5086EF0537A9}" ShortID="834914971">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Run_Theme_Biome3" ID="{150F45A2-CB54-4047-ABB4-6E33791A6422}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
