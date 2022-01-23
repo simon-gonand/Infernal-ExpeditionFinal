@@ -115,7 +115,7 @@ public class PlayerManager : MonoBehaviour
 
     private Transform FindClosestPlayer()
     {
-        Vector3 camCenter = Camera.current.ScreenToWorldPoint(Vector3.zero);
+        Vector3 camCenter = Camera.main.ScreenToWorldPoint(Vector3.zero);
         Transform closest = null;
         float distanceToCamCenter = 0.0f;
         foreach(PlayerController player in _players)
