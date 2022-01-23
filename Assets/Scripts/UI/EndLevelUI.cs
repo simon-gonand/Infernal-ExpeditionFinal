@@ -13,13 +13,15 @@ public class EndLevelUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI score;
     [SerializeField]
-    private Image fillerStar;
+    private Image earnCoin;
 
     [Header("External Reference")]
     [SerializeField]
     private UiScore uiScore;
     [SerializeField]
     private Button firstSelected;
+    [SerializeField]
+    private List<Sprite> coins;
 
     private Button lastSelected;
 
@@ -38,7 +40,18 @@ public class EndLevelUI : MonoBehaviour
         panel.SetActive(true);
         firstSelected.Select();
         score.text = ScoreManager.instance.actualScore.ToString();
-        fillerStar.color = uiScore.imageFillerActualStar.color;
+        switch (ScoreManager.instance.actualStar)
+        {
+            case ScoreManager.differentStarState.Bronze:
+                earnCoin.sprite = coins[0];
+                break;
+            case ScoreManager.differentStarState.Silver:
+                earnCoin.sprite = coins[1];
+                break;
+            case ScoreManager.differentStarState.Gold:
+                earnCoin.sprite = coins[2];
+                break;
+        }
     }
 
     private void Update()
