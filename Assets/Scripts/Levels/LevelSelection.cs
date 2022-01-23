@@ -101,16 +101,19 @@ public class LevelSelection : MonoBehaviour
     private IEnumerator LerpTransition(float offset)
     {
         RectTransform cursorTransform = cursor.GetComponent<RectTransform>();
+        tokenGroup.SetActive(false);
 
         Vector3 startPos = cursorTransform.localPosition;
         float t = 0.0f;
         while (t < 1.0f)
         {
-            cursorTransform.localPosition = Vector3.Lerp(startPos, new Vector3(startPos.x + offset, startPos.y, startPos.z),t);
             t += Time.deltaTime*2;
+            cursorTransform.localPosition = Vector3.Lerp(startPos, new Vector3(startPos.x + offset, startPos.y, startPos.z),t);
             yield return null;
         }
-        
+
+        tokenGroup.SetActive(true);
+        CheckStarsStates();
         coroutine = null;
         yield return null;
     }
@@ -148,8 +151,6 @@ public class LevelSelection : MonoBehaviour
                 ++currentLevelSelectedIndex;
             }
         }
-
-        CheckStarsStates();
     }
 
     // Remove this function when we got all the levels

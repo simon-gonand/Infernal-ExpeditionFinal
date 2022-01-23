@@ -110,10 +110,6 @@ public class FollowPath : MonoBehaviour
             lastTValue = tParam / (path.links[linkIndex].pathPoints.Count - 1);
         tParam = 0.0f;
         ++allPointIndex;
-        Debug.Log(path.allPoints[allPointIndex]);
-        Debug.Log(path.links[linkIndex + 1].pathPoints[0]);
-        Debug.Log(CoordiantesComparison(path.allPoints[allPointIndex], path.links[linkIndex + 1].pathPoints[0]));
-        Debug.Log(allPointIndex);
         if (allPointIndex == path.allPoints.Count - 1)
         {
             if (path.loop)
@@ -130,7 +126,6 @@ public class FollowPath : MonoBehaviour
         }
         else if (linkIndex < path.links.Count - 1 && CoordiantesComparison(path.allPoints[allPointIndex], path.links[linkIndex + 1].pathPoints[0]))
         {
-            Debug.Log("saucisse");
             ++_linkIndex;
             lastTValue = 0.0f;
             currentWaypoint = path.waypoints[linkIndex];
