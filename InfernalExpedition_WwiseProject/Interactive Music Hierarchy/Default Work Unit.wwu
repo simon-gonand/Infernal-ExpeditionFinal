@@ -1528,6 +1528,11 @@
 								<MusicSegment Name="Cool_120Bpm_4-4_L8_P0" ID="{EEA233E9-496F-49DD-BDDE-BF8957C03ECC}" ShortID="785304027">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="21500"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-2</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -5308,9 +5313,9 @@
 										</ObjectList>
 									</ObjectLists>
 								</MusicSegment>
-								<MusicSegment Name="NaufrageIntro_120Bpm_4-4_L16_P0_01" ID="{5C6FBA31-504B-4761-A1E5-8348F53AD11C}" ShortID="654197355">
+								<MusicSegment Name="NaufrageIntro_120Bpm_4-4_L24_P0_01" ID="{692B0CDE-B515-4193-A21F-8ED766DEDAB1}" ShortID="581691720">
 									<PropertyList>
-										<Property Name="EndPosition" Type="Real64" Value="34500"/>
+										<Property Name="EndPosition" Type="Real64" Value="50583.3333333333"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -5321,23 +5326,23 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="NaufrageIntro_120Bpm_4-4_L8_P0" ID="{0746C1FF-8E8C-41F3-B128-9EBC73ECAD49}" ShortID="821356427">
+										<MusicTrack Name="SpookyPirate" ID="{6D93BB6D-B2CB-4636-9F26-43F447BF9A8C}" ShortID="42293207">
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="NaufrageIntro_120Bpm_4-4_L8_P0" ID="{E10FE215-1065-48D1-AFB0-0E54ADC16233}">
+												<AudioFileSource Name="SpookyPirate" ID="{46562943-ACEE-4411-8C5D-E8B218D236BD}">
 													<Language>SFX</Language>
-													<AudioFile>NaufrageIntro_120Bpm_4-4_L8_P0.wav</AudioFile>
+													<AudioFile>SpookyPirate.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="811793756"/>
+														<MediaID ID="290499147"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<TransitionList>
-												<MusicTransition Name="Root" ID="{D54312F9-D6CB-42E4-B297-53ECC106C1F6}">
+												<MusicTransition Name="Root" ID="{CAB50BEC-C139-4142-9389-C62A050841FD}">
 													<PropertyList>
 														<Property Name="IsFolder" Type="bool" Value="True"/>
 													</PropertyList>
@@ -5348,18 +5353,18 @@
 												<ObjectList Name="Sequences">
 													<Reference>
 														<Local>
-															<MusicTrackSequence Name="" ID="{C5808A10-8F9A-4A15-B32E-1B775E7862BE}">
+															<MusicTrackSequence Name="" ID="{134EBA32-7A9F-47EA-A41B-93D630F8B77A}">
 																<ObjectLists>
 																	<ObjectList Name="Clips">
 																		<Reference>
 																			<Local>
-																				<MusicClip Name="NaufrageIntro_120Bpm_4-4_L8_P0" ID="{934F93B5-A010-4EC9-A038-B5AC98FDC2A5}">
+																				<MusicClip Name="SpookyPirate" ID="{A5A54D47-6F06-468A-B3A8-2BF94F75E3D4}">
 																					<PropertyList>
-																						<Property Name="EndTrimOffset" Type="Real64" Value="34484.3764172336"/>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="50583.3333333333"/>
 																						<Property Name="FadeInMode" Type="int16" Value="0"/>
 																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
 																					</PropertyList>
-																					<AudioSourceRef Name="NaufrageIntro_120Bpm_4-4_L8_P0" ID="{E10FE215-1065-48D1-AFB0-0E54ADC16233}"/>
+																					<AudioSourceRef Name="SpookyPirate" ID="{46562943-ACEE-4411-8C5D-E8B218D236BD}"/>
 																				</MusicClip>
 																			</Local>
 																		</Reference>
@@ -5376,15 +5381,15 @@
 										<ObjectList Name="Cues">
 											<Reference>
 												<Local>
-													<MusicCue Name="Entry Cue" ID="{6884500F-8A01-48CA-9202-1E0CA19E4BC5}"/>
+													<MusicCue Name="Entry Cue" ID="{806097A6-C735-4676-A5FD-F05D767C7F38}"/>
 												</Local>
 											</Reference>
 											<Reference>
 												<Local>
-													<MusicCue Name="Exit Cue" ID="{0D25857C-1B51-4AC1-9FD1-FC6EE070BE3A}">
+													<MusicCue Name="Exit Cue" ID="{043CBE93-A90B-42B8-81B2-D422F23D7200}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="32000"/>
+															<Property Name="TimeMs" Type="Real64" Value="48000"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -5424,11 +5429,11 @@
 							<Playlist>
 								<MusicPlaylistItem Name="" ID="{99DFE13C-B007-4084-A1CB-E69E21474E8B}" ShortID="256522580">
 									<ChildrenList>
-										<MusicPlaylistItem Name="" ID="{D1DCF4D0-014A-493C-98AB-572F254423C3}" ShortID="224072734">
+										<MusicPlaylistItem Name="" ID="{6DB9DB38-5EAB-4960-AFB9-EFED9BF14693}" ShortID="222913362">
 											<PropertyList>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
-											<SegmentRef Name="NaufrageIntro_120Bpm_4-4_L16_P0_01" ID="{5C6FBA31-504B-4761-A1E5-8348F53AD11C}"/>
+											<SegmentRef Name="NaufrageIntro_120Bpm_4-4_L24_P0_01" ID="{692B0CDE-B515-4193-A21F-8ED766DEDAB1}"/>
 										</MusicPlaylistItem>
 										<MusicPlaylistItem Name="" ID="{FBC0EC27-579D-47F4-94D7-3B0EEE6FD6D4}" ShortID="761372249">
 											<PropertyList>
@@ -5662,36 +5667,36 @@
 										</ObjectList>
 									</ObjectLists>
 								</MusicSegment>
-								<MusicSegment Name="NaufrageIntro_120Bpm_4-4_L16_P0" ID="{3D80F390-3CE2-4303-BA01-59EBFBF63111}" ShortID="314936266">
+								<MusicSegment Name="NaufrageIntro_120Bpm_4-4_L24_P0" ID="{87AB3251-D130-414D-AD6D-3CBAE2091546}" ShortID="157763063">
 									<PropertyList>
-										<Property Name="EndPosition" Type="Real64" Value="34500"/>
+										<Property Name="EndPosition" Type="Real64" Value="50583.3333333333"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Musics Audio Bus" ID="{6FF2873C-417A-43C7-AE7D-EDA382BC9380}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+											<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="NaufrageIntro_120Bpm_4-4_L8_P0" ID="{CDF0AA54-18DA-4522-A04D-B60C74825CD5}" ShortID="934238349">
+										<MusicTrack Name="SpookyPirate" ID="{513FFE53-8CAC-4ECB-82A1-EBDD0E5AE957}" ShortID="1030688075">
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="NaufrageIntro_120Bpm_4-4_L8_P0" ID="{3FF96CBC-2E65-40F9-BA46-3096BA4F1862}">
+												<AudioFileSource Name="SpookyPirate" ID="{40C539E5-718D-4AB4-AFFF-D971590F87BD}">
 													<Language>SFX</Language>
-													<AudioFile>NaufrageIntro_120Bpm_4-4_L8_P0.wav</AudioFile>
+													<AudioFile>SpookyPirate.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="811793756"/>
+														<MediaID ID="290499147"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<TransitionList>
-												<MusicTransition Name="Root" ID="{355D54F4-B030-4642-AD72-B9A0B48B884D}">
+												<MusicTransition Name="Root" ID="{D763B836-83D2-4CBA-A28F-16DD266D29DF}">
 													<PropertyList>
 														<Property Name="IsFolder" Type="bool" Value="True"/>
 													</PropertyList>
@@ -5702,18 +5707,18 @@
 												<ObjectList Name="Sequences">
 													<Reference>
 														<Local>
-															<MusicTrackSequence Name="" ID="{E2F820D0-4381-4ABF-9178-8FA8AEDED5CF}">
+															<MusicTrackSequence Name="" ID="{826D5762-8CED-4C1B-88B2-F71BCD9A8617}">
 																<ObjectLists>
 																	<ObjectList Name="Clips">
 																		<Reference>
 																			<Local>
-																				<MusicClip Name="NaufrageIntro_120Bpm_4-4_L8_P0" ID="{698C8B46-9A63-4262-8FA6-76072D18EFD4}">
+																				<MusicClip Name="SpookyPirate" ID="{B04E9669-6710-4276-AD73-7D7D3A647262}">
 																					<PropertyList>
-																						<Property Name="EndTrimOffset" Type="Real64" Value="34484.3764172336"/>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="50583.3333333333"/>
 																						<Property Name="FadeInMode" Type="int16" Value="0"/>
 																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
 																					</PropertyList>
-																					<AudioSourceRef Name="NaufrageIntro_120Bpm_4-4_L8_P0" ID="{3FF96CBC-2E65-40F9-BA46-3096BA4F1862}"/>
+																					<AudioSourceRef Name="SpookyPirate" ID="{40C539E5-718D-4AB4-AFFF-D971590F87BD}"/>
 																				</MusicClip>
 																			</Local>
 																		</Reference>
@@ -5730,15 +5735,15 @@
 										<ObjectList Name="Cues">
 											<Reference>
 												<Local>
-													<MusicCue Name="Entry Cue" ID="{38FC501F-9936-4A98-BE7C-DE7BBE929192}"/>
+													<MusicCue Name="Entry Cue" ID="{C6487406-0B63-4CCB-A04D-0E48BEE90E84}"/>
 												</Local>
 											</Reference>
 											<Reference>
 												<Local>
-													<MusicCue Name="Exit Cue" ID="{DD7331F3-AE00-4291-B055-B41CAD1439AB}">
+													<MusicCue Name="Exit Cue" ID="{7A47BAD0-7C53-43D5-8A8B-0DBE88E50E27}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="32000"/>
+															<Property Name="TimeMs" Type="Real64" Value="48000"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -5764,11 +5769,11 @@
 							<Playlist>
 								<MusicPlaylistItem Name="" ID="{8A4A4273-6AD9-4FD6-9172-30D498541B6E}" ShortID="1052504187">
 									<ChildrenList>
-										<MusicPlaylistItem Name="" ID="{1E50AAEB-6051-40DA-8204-DF93225994F7}" ShortID="268408311">
+										<MusicPlaylistItem Name="" ID="{87056625-ACA8-4BD0-A68C-B8C746D58A4A}" ShortID="455877326">
 											<PropertyList>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
-											<SegmentRef Name="NaufrageIntro_120Bpm_4-4_L16_P0" ID="{3D80F390-3CE2-4303-BA01-59EBFBF63111}"/>
+											<SegmentRef Name="NaufrageIntro_120Bpm_4-4_L24_P0" ID="{87AB3251-D130-414D-AD6D-3CBAE2091546}"/>
 										</MusicPlaylistItem>
 										<MusicPlaylistItem Name="" ID="{57EE0721-8C7F-4F53-9FF2-7780973011DD}" ShortID="469090100">
 											<PropertyList>
