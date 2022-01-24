@@ -44,12 +44,19 @@ public class EndLevelUI : MonoBehaviour
         {
             case ScoreManager.differentStarState.Bronze:
                 earnCoin.sprite = coins[0];
+                earnCoin.color = Color.white;
                 break;
             case ScoreManager.differentStarState.Silver:
                 earnCoin.sprite = coins[1];
+                earnCoin.color = Color.white;
                 break;
             case ScoreManager.differentStarState.Gold:
                 earnCoin.sprite = coins[2];
+                earnCoin.color = Color.white;
+                break;
+            default:
+                earnCoin.sprite = coins[0];
+                earnCoin.color = Color.black;
                 break;
         }
     }
