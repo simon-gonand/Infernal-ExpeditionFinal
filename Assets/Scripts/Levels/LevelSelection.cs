@@ -115,6 +115,10 @@ public class LevelSelection : MonoBehaviour
 
         tokenGroup.SetActive(true);
         CheckStarsStates();
+        if (offset < 0.0f)
+            ++currentLevelSelectedIndex;
+        else
+            --currentLevelSelectedIndex;
         coroutine = null;
         yield return null;
     }
@@ -134,7 +138,6 @@ public class LevelSelection : MonoBehaviour
             {
                 // Move left
                 coroutine = StartCoroutine(LerpTransition(+1288));
-                --currentLevelSelectedIndex;
             }
 
         }
@@ -149,7 +152,6 @@ public class LevelSelection : MonoBehaviour
             {
                 // Move right
                 coroutine = StartCoroutine(LerpTransition(-1288));
-                ++currentLevelSelectedIndex;
             }
         }
     }
