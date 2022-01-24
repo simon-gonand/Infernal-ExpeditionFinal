@@ -20,6 +20,7 @@ public class MainMenuUI : MonoBehaviour
     private void Awake()
     {
         firstSelected.Select();
+        firstSelected.GetComponent<MainMenuButton>().SetSelectAtStart();
     }
 
     public void Play()
