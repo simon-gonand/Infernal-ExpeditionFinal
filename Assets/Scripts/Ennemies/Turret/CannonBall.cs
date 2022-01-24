@@ -17,8 +17,10 @@ public class CannonBall : MonoBehaviour
         GameObject particule = Instantiate(impactParticule, transform.position, transform.rotation);
         Destroy(particule, 4f);
 
+        Debug.Log("collision");
         if (collision.collider.CompareTag("Boat"))
         {
+            Debug.Log("Boat");
             // Feedbacks
             ScoreManager.instance.RemoveScore(damage);
 
@@ -31,6 +33,9 @@ public class CannonBall : MonoBehaviour
     private void Update()
     {
         if (self.position.y < 0.0f)
+        {
+            Debug.Log("water");
             Destroy(this.gameObject);
+        }
     }
 }
