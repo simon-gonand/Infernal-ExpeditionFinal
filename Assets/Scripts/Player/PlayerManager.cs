@@ -84,6 +84,7 @@ public class PlayerManager : MonoBehaviour
         {
             playerSpawnPosition = playerTransform;
             playerInput.gameObject.GetComponent<PlayerController>().self = playerTransform;
+            playerInput.SwitchCurrentControlScheme(Gamepad.all[0]);
         }
         else
         {
@@ -236,7 +237,7 @@ public class PlayerManager : MonoBehaviour
             foreach (Gamepad gamepad in Gamepad.all)
             {
                 if (gamepad.aButton.wasPressedThisFrame)
-                    _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(Gamepad.current);
+                    _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(gamepad);
             }
 
             if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
