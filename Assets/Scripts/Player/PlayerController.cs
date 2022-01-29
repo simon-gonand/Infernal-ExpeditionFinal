@@ -580,7 +580,7 @@ public class PlayerController : MonoBehaviour
         Vector3 calculatePlayerInput = playerMovementInput * currentSpeed * Time.deltaTime;
         _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
-        if(!isCarrying)
+        if(!isCarrying || transportedTreasure == null)
             selfRigidBody.velocity = _movement;
         /*else
         {
