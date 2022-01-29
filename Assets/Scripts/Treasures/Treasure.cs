@@ -69,17 +69,17 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             playerColliding.Add(collision.collider.GetComponent<PlayerController>());
         }
-        if (_playerInteractingWith.Count > 0)
+        /*if (_playerInteractingWith.Count > 0)
         {
             _collisionDirection = collision.GetContact(0).normal;
             _isColliding = true;
             collidingWith = collision.collider.GetComponent<Rigidbody>();
-        }
+        }*/
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collidingWith != null && collidingWith.velocity != Vector3.zero && isMovingWhenColliding)
+        /*if (collidingWith != null && collidingWith.velocity != Vector3.zero && isMovingWhenColliding)
         {
             _collisionDirection = -_collisionDirection;
             isMovingWhenColliding = false;
@@ -88,7 +88,7 @@ public class Treasure : MonoBehaviour, ICarriable
         {
             _collisionDirection = -_collisionDirection;
             isMovingWhenColliding = true;
-        }
+        }*/
     }
 
     private void OnCollisionExit(Collision collision)
@@ -115,13 +115,13 @@ public class Treasure : MonoBehaviour, ICarriable
     {
         if (_playerInteractingWith.Count == 1)
         {
-            if (!_isColliding)
+            /*if (!_isColliding)
             {
                 playerMatrix = Matrix4x4.TRS(playerTransform.position, playerTransform.rotation, playerTransform.lossyScale);
 
                 self.position = playerMatrix.MultiplyPoint3x4(startSelfPosition);
                 self.rotation = (playerTransform.rotation * Quaternion.Inverse(startPlayerRotation)) * startSelfRotation;
-            }
+            }*/
         }
         else
             if (associateColliders[player] != null)
@@ -134,10 +134,10 @@ public class Treasure : MonoBehaviour, ICarriable
         {
             if (_isColliding)
                 player.selfRigidBody.velocity = Vector3.zero;
-            return;
         }
         if (associateColliders[player] != null)
         {
+            Debug.Log("saucisse");
             Vector3 newPlayerPos = associateColliders[player].transform.position;
             newPlayerPos.y = player.self.position.y;
             player.self.position = newPlayerPos;
@@ -243,6 +243,8 @@ public class Treasure : MonoBehaviour, ICarriable
         // If there is more than one player to carry it, snap treasures to the players' joint
         if (_playerInteractingWith.Count <= category.maxPlayerCarrying)
         {
+            Physics.IgnoreCollision(selfCollider, player.selfCollider, true);
+
             DealWithCollider(player, interactingWith);
 
             selfRigidbody.velocity = Vector3.zero;
@@ -415,21 +417,27 @@ public class Treasure : MonoBehaviour, ICarriable
             speedMalus = category.speedMalus / (_playerInteractingWith.Count * _playerInteractingWith.Count);
     }
 
-    private void TreasureMovement()
+    public Vector3 GetTreasuresVelocity()
     {
         Vector3 direction = Vector3.zero;
+        foreach (PlayerController player in _playerInteractingWith)
+        {
+            //if (player.isColliding && !player.CheckMovementWhenColliding()) return;
+            //if (player.isLaunching) continue;
+            Vector3 applyForces = player.movement / _playerInteractingWith.Count;
+            applyForces.y = 0.0f;
+            direction += applyForces;
+        }
+        return direction;
+    }
+
+    private void TreasureMovement()
+    {
+        
         if (_playerInteractingWith.Count > 0)
         {
             selfRigidbody.velocity = Vector3.zero;
-            foreach(PlayerController player in _playerInteractingWith)
-            {
-                if (player.isColliding && !player.CheckMovementWhenColliding()) return;
-                if (player.isLaunching) continue;
-                Vector3 applyForces = player.movement / _playerInteractingWith.Count;
-                applyForces.y = 0.0f;
-                direction += applyForces;
-            }
-            selfRigidbody.velocity = direction;
+            selfRigidbody.velocity = GetTreasuresVelocity();
         }
     }
 

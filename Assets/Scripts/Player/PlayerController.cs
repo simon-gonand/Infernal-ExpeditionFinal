@@ -188,7 +188,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Treasures") && isGrounded && !_isSwimming)
+        /*if (collision.collider.CompareTag("Treasures") && isGrounded && !_isSwimming)
         {
             if (_isCarrying)
             {
@@ -216,14 +216,14 @@ public class PlayerController : MonoBehaviour
                 collisionDirection = collision.GetContact(0).normal;
             }
             selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
-        }
+        }*/
         if (isDashing)
         {
             collisionDirection = collision.GetContact(0).normal;
             if (Physics.Raycast(self.position, -collisionDirection, 1.0f, mask))
                 StopDash();
         }
-        if (_isCarrying && collision.collider.GetComponent<ICarriable>() != _carrying &&
+        /*if (_isCarrying && collision.collider.GetComponent<ICarriable>() != _carrying &&
             collision.collider.gameObject.layer != LayerMask.NameToLayer("Floor"))
         {
             collisionDirection = collision.GetContact(0).normal;
@@ -235,7 +235,7 @@ public class PlayerController : MonoBehaviour
                 treasure.isColliding = true;
                 treasure.collisionDirection = -collisionDirection;
             }
-        }
+        }*/
         if (_hasBeenLaunched)
         {
             if (collision.collider.gameObject.transform.position.y < self.position.y)
@@ -580,7 +580,14 @@ public class PlayerController : MonoBehaviour
         Vector3 calculatePlayerInput = playerMovementInput * currentSpeed * Time.deltaTime;
         _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
-        selfRigidBody.velocity = _movement;
+        if(!isCarrying)
+            selfRigidBody.velocity = _movement;
+        /*else
+        {
+            Treasure treasure = _carrying as Treasure;
+            if (treasure != null)
+                selfRigidBody.velocity = treasure.GetTreasuresVelocity();
+        }*/
         
         // Set the rotation of the player according to his movements
         if (_movement.x != 0 || _movement.z != 0)
