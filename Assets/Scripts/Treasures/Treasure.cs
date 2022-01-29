@@ -358,6 +358,8 @@ public class Treasure : MonoBehaviour, ICarriable
 
         player.playerGraphics.forward = player.self.forward;
 
+        Physics.IgnoreCollision(selfCollider, player.selfCollider, false);
+
         // Update speed malus
         ApplySpeedMalus();
         if (_playerInteractingWith.Count == 1)
