@@ -173,6 +173,82 @@ public class Treasure : MonoBehaviour, ICarriable
         associateColliders.Add(player, interactingWith);
     }
 
+    private void AdjustCollider(Vector3 localSnapPosition, PlayerController player, bool add)
+    {
+        if (localSnapPosition.x > 0)
+        {
+            float offset = (localSnapPosition.x + player.selfCollider.bounds.size.z) / 2;
+            Vector3 newSize = selfColliderX.size;
+            Vector3 newCenter = selfColliderX.center;
+            if (add)
+            {
+                newSize.x += offset;
+                newCenter.x += offset / 2;
+            }
+            else
+            {
+                newSize.x -= offset;
+                newCenter.x -= offset / 2;
+            }
+            selfColliderX.size = newSize;
+            selfColliderX.center = newCenter;
+        }
+        else if (localSnapPosition.x < 0)
+        {
+            float offset = (localSnapPosition.x - player.selfCollider.bounds.size.z) / 2;
+            Vector3 newSize = selfColliderX.size;
+            Vector3 newCenter = selfColliderX.center;
+            if (add)
+            {
+                newSize.x -= offset;
+                newCenter.x += offset / 2;
+            }
+            else
+            {
+                newSize.x += offset;
+                newCenter.x -= offset / 2;
+            }
+            selfColliderX.size = newSize;
+            selfColliderX.center = newCenter;
+        }
+        else if (localSnapPosition.z > 0)
+        {
+            float offset = (localSnapPosition.z + player.selfCollider.bounds.size.z) / 2;
+            Vector3 newSize = selfColliderZ.size;
+            Vector3 newCenter = selfColliderZ.center;
+            if (add)
+            {
+                newSize.z += offset;
+                newCenter.z += offset / 2;
+            }
+            else
+            {
+                newSize.z -= offset;
+                newCenter.z -= offset / 2;
+            }
+            selfColliderZ.size = newSize;
+            selfColliderZ.center = newCenter;
+        }
+        else if (localSnapPosition.z < 0)
+        {
+            float offset = (localSnapPosition.z - player.selfCollider.bounds.size.z) / 2;
+            Vector3 newSize = selfColliderZ.size;
+            Vector3 newCenter = selfColliderZ.center;
+            if (add)
+            {
+                newSize.z -= offset;
+                newCenter.z += offset / 2;
+            }
+            else
+            {
+                newSize.z += offset;
+                newCenter.z -= offset / 2;
+            }
+            selfColliderZ.size = newSize;
+            selfColliderZ.center = newCenter;
+        }
+    }
+
     public void UpTreasure(Transform interact)
     {
         // Snap treasure to the player
@@ -248,47 +324,8 @@ public class Treasure : MonoBehaviour, ICarriable
             Physics.IgnoreCollision(selfColliderZ, player.selfCollider, true);
 
             DealWithCollider(player, interactingWith);
-            Vector3 localSnapPosition = interactingWith.transform.localPosition;
-            if (localSnapPosition.x > 0)
-            {
-                float offset = (localSnapPosition.x + player.selfCollider.bounds.size.z) / 2;
-                Vector3 newSize = selfColliderX.size;
-                newSize.x += offset;
-                Vector3 newCenter = selfColliderX.center;
-                newCenter.x += offset / 2;
-                selfColliderX.size = newSize;
-                selfColliderX.center = newCenter;
-            }
-            else if (localSnapPosition.x < 0)
-            {
-                float offset = (localSnapPosition.x - player.selfCollider.bounds.size.z) / 2;
-                Vector3 newSize = selfColliderX.size;
-                newSize.x -= offset;
-                Vector3 newCenter = selfColliderX.center;
-                newCenter.x += offset / 2;
-                selfColliderX.size = newSize;
-                selfColliderX.center = newCenter;
-            }
-            else if (localSnapPosition.z > 0)
-            {
-                float offset = (localSnapPosition.z + player.selfCollider.bounds.size.z) / 2;
-                Vector3 newSize = selfColliderZ.size;
-                newSize.z += offset;
-                Vector3 newCenter = selfColliderZ.center;
-                newCenter.z += offset / 2;
-                selfColliderZ.size = newSize;
-                selfColliderZ.center = newCenter;
-            }
-            else if (localSnapPosition.z < 0)
-            {
-                float offset = (localSnapPosition.z - player.selfCollider.bounds.size.z) / 2;
-                Vector3 newSize = selfColliderZ.size;
-                newSize.z -= offset;
-                Vector3 newCenter = selfColliderZ.center;
-                newCenter.z += offset / 2;
-                selfColliderZ.size = newSize;
-                selfColliderZ.center = newCenter;
-            }
+            AdjustCollider(interactingWith.transform.localPosition, player, true);
+            
 
             selfRigidbody.velocity = Vector3.zero;
 
@@ -332,6 +369,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
             // Update lists values
             _playerInteractingWith.Remove(p);
+            AdjustCollider(associateColliders[p].transform.localPosition, p, false);
             associateColliders[p].GetComponent<BoxCollider>().enabled = true;
             associateColliders.Remove(p);
 
@@ -398,6 +436,8 @@ public class Treasure : MonoBehaviour, ICarriable
         // Player does not interact with the treasure anymore
         _playerInteractingWith.Remove(player);
 
+        AdjustCollider(associateColliders[player].transform.localPosition, player, false);
+        
         associateColliders[player].GetComponent<BoxCollider>().enabled = true;
         associateColliders.Remove(player);
 
