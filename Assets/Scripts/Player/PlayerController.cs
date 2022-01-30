@@ -252,7 +252,7 @@ public class PlayerController : MonoBehaviour
             if (_isCarrying)
             {
                 Treasure t = _carrying as Treasure;
-                if (t != null && t.selfCollider == collision.collider)
+                if (t != null && (t.selfColliderX == collision.collider || t.selfColliderZ == collision.collider))
                 {
                     return;
                 }

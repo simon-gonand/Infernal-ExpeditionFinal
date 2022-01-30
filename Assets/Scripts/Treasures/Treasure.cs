@@ -9,7 +9,8 @@ public class Treasure : MonoBehaviour, ICarriable
 
     public Transform self;
     public Rigidbody selfRigidbody;
-    public Collider selfCollider;
+    public BoxCollider selfColliderX;
+    public BoxCollider selfColliderZ;
     public TreasuresCategory category;
     public MeshFilter mesh;
     public GameObject selfAura;
@@ -130,14 +131,13 @@ public class Treasure : MonoBehaviour, ICarriable
 
     public void UpdatePlayerMovement(PlayerController player)
     {
-        if (_playerInteractingWith.Count == 1)
+        /*if (_playerInteractingWith.Count == 1)
         {
             if (_isColliding)
                 player.selfRigidBody.velocity = Vector3.zero;
-        }
+        }*/
         if (associateColliders[player] != null)
         {
-            Debug.Log("saucisse");
             Vector3 newPlayerPos = associateColliders[player].transform.position;
             newPlayerPos.y = player.self.position.y;
             player.self.position = newPlayerPos;
@@ -226,7 +226,8 @@ public class Treasure : MonoBehaviour, ICarriable
         // If the player is alone to carry it just snap the treasure as child of the player
         if (_playerInteractingWith.Count == 1)
         {
-            Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, true);
+            Physics.IgnoreCollision(selfColliderX, BoatManager.instance.selfCollider, true);
+            Physics.IgnoreCollision(selfColliderZ, BoatManager.instance.selfCollider, true);
             UpTreasure(player.self);
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
             selfRigidbody.useGravity = false;
@@ -243,9 +244,51 @@ public class Treasure : MonoBehaviour, ICarriable
         // If there is more than one player to carry it, snap treasures to the players' joint
         if (_playerInteractingWith.Count <= category.maxPlayerCarrying)
         {
-            Physics.IgnoreCollision(selfCollider, player.selfCollider, true);
+            Physics.IgnoreCollision(selfColliderX, player.selfCollider, true);
+            Physics.IgnoreCollision(selfColliderZ, player.selfCollider, true);
 
             DealWithCollider(player, interactingWith);
+            Vector3 localSnapPosition = interactingWith.transform.localPosition;
+            if (localSnapPosition.x > 0)
+            {
+                float offset = (localSnapPosition.x + player.selfCollider.bounds.size.z) / 2;
+                Vector3 newSize = selfColliderX.size;
+                newSize.x += offset;
+                Vector3 newCenter = selfColliderX.center;
+                newCenter.x += offset / 2;
+                selfColliderX.size = newSize;
+                selfColliderX.center = newCenter;
+            }
+            else if (localSnapPosition.x < 0)
+            {
+                float offset = (localSnapPosition.x - player.selfCollider.bounds.size.z) / 2;
+                Vector3 newSize = selfColliderX.size;
+                newSize.x -= offset;
+                Vector3 newCenter = selfColliderX.center;
+                newCenter.x += offset / 2;
+                selfColliderX.size = newSize;
+                selfColliderX.center = newCenter;
+            }
+            else if (localSnapPosition.z > 0)
+            {
+                float offset = (localSnapPosition.z + player.selfCollider.bounds.size.z) / 2;
+                Vector3 newSize = selfColliderZ.size;
+                newSize.z += offset;
+                Vector3 newCenter = selfColliderZ.center;
+                newCenter.z += offset / 2;
+                selfColliderZ.size = newSize;
+                selfColliderZ.center = newCenter;
+            }
+            else if (localSnapPosition.z < 0)
+            {
+                float offset = (localSnapPosition.z - player.selfCollider.bounds.size.z) / 2;
+                Vector3 newSize = selfColliderZ.size;
+                newSize.z -= offset;
+                Vector3 newCenter = selfColliderZ.center;
+                newCenter.z += offset / 2;
+                selfColliderZ.size = newSize;
+                selfColliderZ.center = newCenter;
+            }
 
             selfRigidbody.velocity = Vector3.zero;
 
@@ -304,7 +347,8 @@ public class Treasure : MonoBehaviour, ICarriable
             p.SweatActivator(false);
             p.sword.SetActive(true);
 
-            Physics.IgnoreCollision(selfCollider, p.selfCollider, true);
+            Physics.IgnoreCollision(selfColliderX, p.selfCollider, true);
+            Physics.IgnoreCollision(selfColliderZ, p.selfCollider, true);
             playerCollisionIgnored.Add(p);
         }
 
@@ -313,7 +357,8 @@ public class Treasure : MonoBehaviour, ICarriable
         // Enable rigidbody
         selfRigidbody.isKinematic = false;
         selfRigidbody.useGravity = true;
-        Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
+        Physics.IgnoreCollision(selfColliderX, BoatManager.instance.selfCollider, false);
+        Physics.IgnoreCollision(selfColliderZ, BoatManager.instance.selfCollider, false);
         selfRigidbody.velocity = Vector3.zero;
         selfRigidbody.AddForce((playerThrowDir.normalized + (Vector3.up * category.multiplyUpAngle)).normalized * category.forceNbPlayer[nbPlayers - 1], 
             ForceMode.Impulse);
@@ -358,7 +403,8 @@ public class Treasure : MonoBehaviour, ICarriable
 
         player.playerGraphics.forward = player.self.forward;
 
-        Physics.IgnoreCollision(selfCollider, player.selfCollider, false);
+        Physics.IgnoreCollision(selfColliderX, player.selfCollider, false);
+        Physics.IgnoreCollision(selfColliderZ, player.selfCollider, false);
 
         // Update speed malus
         ApplySpeedMalus();
@@ -379,7 +425,8 @@ public class Treasure : MonoBehaviour, ICarriable
         }
         if (_playerInteractingWith.Count < 1)
         {
-            Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
+            Physics.IgnoreCollision(selfColliderX, BoatManager.instance.selfCollider, false);
+            Physics.IgnoreCollision(selfColliderZ, BoatManager.instance.selfCollider, false);
 
             // Enable rigidbody
             selfRigidbody.useGravity = true;
@@ -500,7 +547,8 @@ public class Treasure : MonoBehaviour, ICarriable
                 }
                 while(playerCollisionIgnored.Count > 0)
                 {
-                    Physics.IgnoreCollision(selfCollider, playerCollisionIgnored[0].selfCollider, false);
+                    Physics.IgnoreCollision(selfColliderX, playerCollisionIgnored[0].selfCollider, false);
+                    Physics.IgnoreCollision(selfColliderZ, playerCollisionIgnored[0].selfCollider, false);
                     playerCollisionIgnored.RemoveAt(0);
                 }
             }
