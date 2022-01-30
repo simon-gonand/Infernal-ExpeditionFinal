@@ -124,23 +124,20 @@ public class Treasure : MonoBehaviour, ICarriable
                 self.rotation = (playerTransform.rotation * Quaternion.Inverse(startPlayerRotation)) * startSelfRotation;
             }*/
         }
-        else
-            if (associateColliders[player] != null)
+        else if (associateColliders[player] != null)
                 playerTransform.forward = associateColliders[player].transform.forward;
     }
 
     public void UpdatePlayerMovement(PlayerController player)
     {
-        /*if (_playerInteractingWith.Count == 1)
-        {
-            if (_isColliding)
-                player.selfRigidBody.velocity = Vector3.zero;
-        }*/
-        if (associateColliders[player] != null)
-        {
-            Vector3 newPlayerPos = associateColliders[player].transform.position;
-            newPlayerPos.y = player.self.position.y;
-            player.self.position = newPlayerPos;
+        if (_playerInteractingWith.Count > 1)
+        {    
+            if (associateColliders[player] != null)
+            {
+                Vector3 newPlayerPos = associateColliders[player].transform.position;
+                newPlayerPos.y = player.self.position.y;
+                player.self.position = newPlayerPos;
+            }
         }
     }
 
@@ -192,6 +189,19 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             selfColliderX.size = newSize;
             selfColliderX.center = newCenter;
+            if (_playerInteractingWith.Count == 1)
+            {
+                newSize.y = player.soloCarrierCollider.size.y;
+                newCenter.y = player.soloCarrierCollider.center.y;
+                Vector3 playerColliderSize = newSize;
+                playerColliderSize.x = newSize.z;
+                playerColliderSize.z = newSize.x;
+                Vector3 playerColliderCenter = newCenter;
+                playerColliderCenter.x = newCenter.z - 0.5f;
+                playerColliderCenter.z = newCenter.x;
+                player.soloCarrierCollider.size = playerColliderSize;
+                player.soloCarrierCollider.center = playerColliderCenter;
+            }
         }
         else if (localSnapPosition.x < 0)
         {
@@ -210,6 +220,19 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             selfColliderX.size = newSize;
             selfColliderX.center = newCenter;
+            if (_playerInteractingWith.Count == 1)
+            {
+                newSize.y = player.soloCarrierCollider.size.y;
+                newCenter.y = player.soloCarrierCollider.center.y;
+                Vector3 playerColliderSize = newSize;
+                playerColliderSize.x = newSize.z;
+                playerColliderSize.z = newSize.x;
+                Vector3 playerColliderCenter = newCenter;
+                playerColliderCenter.x = newCenter.z - 0.5f;
+                playerColliderCenter.z = -newCenter.x;
+                player.soloCarrierCollider.size = playerColliderSize;
+                player.soloCarrierCollider.center = playerColliderCenter;
+            }
         }
         else if (localSnapPosition.z > 0)
         {
@@ -228,6 +251,14 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             selfColliderZ.size = newSize;
             selfColliderZ.center = newCenter;
+            if (_playerInteractingWith.Count == 1)
+            {
+                newSize.y = player.soloCarrierCollider.size.y;
+                newCenter.y = player.soloCarrierCollider.center.y;
+                newSize.z -= 0.5f;
+                player.soloCarrierCollider.size = newSize;
+                player.soloCarrierCollider.center = newCenter;
+            }
         }
         else if (localSnapPosition.z < 0)
         {
@@ -246,6 +277,15 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             selfColliderZ.size = newSize;
             selfColliderZ.center = newCenter;
+            if (_playerInteractingWith.Count == 1)
+            {
+                newSize.y = player.soloCarrierCollider.size.y;
+                newSize.z -= 0.5f;
+                newCenter.y = player.soloCarrierCollider.center.y;
+                player.soloCarrierCollider.size = newSize;
+                newCenter.z = -newCenter.z;
+                player.soloCarrierCollider.center = newCenter;
+            }
         }
     }
 
@@ -304,19 +344,35 @@ public class Treasure : MonoBehaviour, ICarriable
         {
             Physics.IgnoreCollision(selfColliderX, BoatManager.instance.selfCollider, true);
             Physics.IgnoreCollision(selfColliderZ, BoatManager.instance.selfCollider, true);
+
             UpTreasure(player.self);
-            selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+            selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
             selfRigidbody.useGravity = false;
 
-            startPlayerPosition = player.self.position;
+            player.selfRigidBody.velocity = Vector3.zero;
+            player.soloCarrierCollider.enabled = true;
+            selfColliderX.enabled = false;
+            selfColliderZ.enabled = false;
+
+            self.SetParent(player.self);
+
+            /*startPlayerPosition = player.self.position;
             startPlayerRotation = player.self.rotation;
 
             startSelfPosition = self.position;
             startSelfRotation = self.rotation;
 
-            startSelfPosition = DivideVectors(Quaternion.Inverse(player.self.rotation) * (startSelfPosition - startPlayerPosition), player.self.lossyScale);
+            startSelfPosition = DivideVectors(Quaternion.Inverse(player.self.rotation) * (startSelfPosition - startPlayerPosition), player.self.lossyScale);*/
         }
+        else if (_playerInteractingWith.Count == 2)
+        {
+            _playerInteractingWith[0].soloCarrierCollider.enabled = false;
+            selfColliderX.enabled = true;
+            selfColliderZ.enabled = true;
 
+
+            self.SetParent(null);
+        }
         // If there is more than one player to carry it, snap treasures to the players' joint
         if (_playerInteractingWith.Count <= category.maxPlayerCarrying)
         {
@@ -325,7 +381,6 @@ public class Treasure : MonoBehaviour, ICarriable
 
             DealWithCollider(player, interactingWith);
             AdjustCollider(interactingWith.transform.localPosition, player, true);
-            
 
             selfRigidbody.velocity = Vector3.zero;
 
@@ -363,6 +418,12 @@ public class Treasure : MonoBehaviour, ICarriable
     public void Launch(PlayerController player)
     {
         int nbPlayers = _playerInteractingWith.Count;
+        if (_playerInteractingWith.Count == 1)
+        {
+            _playerInteractingWith[0].soloCarrierCollider.enabled = false;
+            selfColliderX.enabled = true;
+            selfColliderZ.enabled = true;
+        }
         while (_playerInteractingWith.Count > 0)
         {
             PlayerController p = _playerInteractingWith[0];
@@ -393,7 +454,6 @@ public class Treasure : MonoBehaviour, ICarriable
         selfAura.SetActive(true);
 
         // Enable rigidbody
-        selfRigidbody.isKinematic = false;
         selfRigidbody.useGravity = true;
         Physics.IgnoreCollision(selfColliderX, BoatManager.instance.selfCollider, false);
         Physics.IgnoreCollision(selfColliderZ, BoatManager.instance.selfCollider, false);
@@ -455,23 +515,35 @@ public class Treasure : MonoBehaviour, ICarriable
 
             player.self.forward = associateColliders[player].transform.forward;
 
-            startPlayerPosition = player.self.position;
+            self.SetParent(player.self);
+
+            _playerInteractingWith[0].soloCarrierCollider.enabled = true;
+            selfColliderX.enabled = false;
+            selfColliderZ.enabled = false;
+
+            /*startPlayerPosition = player.self.position;
             startPlayerRotation = player.self.rotation;
 
             startSelfPosition = self.position;
             startSelfRotation = self.rotation;
 
-            startSelfPosition = DivideVectors(Quaternion.Inverse(player.self.rotation) * (startSelfPosition - startPlayerPosition), player.self.lossyScale);
+            startSelfPosition = DivideVectors(Quaternion.Inverse(player.self.rotation) * (startSelfPosition - startPlayerPosition), player.self.lossyScale);*/
         }
         if (_playerInteractingWith.Count < 1)
         {
             Physics.IgnoreCollision(selfColliderX, BoatManager.instance.selfCollider, false);
             Physics.IgnoreCollision(selfColliderZ, BoatManager.instance.selfCollider, false);
 
+            player.soloCarrierCollider.enabled = false;
+            selfColliderX.enabled = true;
+            selfColliderZ.enabled = true;
+
             // Enable rigidbody
             selfRigidbody.useGravity = true;
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
             isGrounded = false;
+
+            self.SetParent(null);
         }
     }
 
@@ -522,8 +594,9 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private void TreasureMovement()
     {
-        
-        if (_playerInteractingWith.Count > 0)
+        if (_playerInteractingWith.Count == 1)
+            selfRigidbody.velocity = Vector3.zero;
+        else if (_playerInteractingWith.Count > 1)
         {
             selfRigidbody.velocity = Vector3.zero;
             selfRigidbody.velocity = GetTreasuresVelocity();
@@ -594,7 +667,7 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             
         }
-        if (_isColliding && !isCarriedByPiqueSous)
+        /*if (_isColliding && !isCarriedByPiqueSous)
         {
             if (Vector3.Dot(selfRigidbody.velocity, -_collisionDirection) < 0 && selfRigidbody.velocity != Vector3.zero)
             {
@@ -614,7 +687,7 @@ public class Treasure : MonoBehaviour, ICarriable
             }
         }
         else
-            lastPosition = self.position;
+            lastPosition = self.position;*/
 
         PlayerJoystickDetection();
         UpdateWeightNeed();

@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Transform self;
     public Rigidbody selfRigidBody;
     public Collider selfCollider;
+    public BoxCollider soloCarrierCollider;
     public CarryPlayer selfCarryPlayer;
     public PlayerPresets playerPreset;
     public PlayerThrowUI selfPlayerThrowUi;
@@ -247,7 +248,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.collider.CompareTag("Treasures"))
+        /*if (collision.collider.CompareTag("Treasures"))
         {
             if (_isCarrying)
             {
@@ -264,15 +265,15 @@ public class PlayerController : MonoBehaviour
                 isColliding = false;
                 selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
             }
-        }
-        if (_isCarrying && collision.collider.GetComponent<IInteractable>() != _interactingWith)
+        }*/
+        /*if (_isCarrying && collision.collider.GetComponent<IInteractable>() != _interactingWith)
         {
             if (!Physics.Raycast(self.position, -collisionDirection, 0.1f, mask))
                 return;
             Treasure treasure = _interactingWith as Treasure;
             if (treasure != null)
                 treasure.isColliding = false;
-        }
+        }*/
     }
 
     private void CheckIfDashCollide()
@@ -580,7 +581,7 @@ public class PlayerController : MonoBehaviour
         Vector3 calculatePlayerInput = playerMovementInput * currentSpeed * Time.deltaTime;
         _movement = new Vector3(calculatePlayerInput.x, selfRigidBody.velocity.y,
             calculatePlayerInput.y);
-        if(!isCarrying || transportedTreasure == null)
+        if(!isCarrying || transportedTreasure == null || transportedTreasure.playerInteractingWith.Count == 1)
             selfRigidBody.velocity = _movement;
         /*else
         {
