@@ -195,9 +195,9 @@ public class Treasure : MonoBehaviour, ICarriable
                 newCenter.y = player.soloCarrierCollider.center.y;
                 Vector3 playerColliderSize = newSize;
                 playerColliderSize.x = newSize.z;
-                playerColliderSize.z = newSize.x;
+                playerColliderSize.z = newSize.x - 1.0f;
                 Vector3 playerColliderCenter = newCenter;
-                playerColliderCenter.x = newCenter.z - 0.5f;
+                playerColliderCenter.x = newCenter.z;
                 playerColliderCenter.z = newCenter.x;
                 player.soloCarrierCollider.size = playerColliderSize;
                 player.soloCarrierCollider.center = playerColliderCenter;
@@ -226,9 +226,9 @@ public class Treasure : MonoBehaviour, ICarriable
                 newCenter.y = player.soloCarrierCollider.center.y;
                 Vector3 playerColliderSize = newSize;
                 playerColliderSize.x = newSize.z;
-                playerColliderSize.z = newSize.x;
+                playerColliderSize.z = newSize.x - 1.0f;
                 Vector3 playerColliderCenter = newCenter;
-                playerColliderCenter.x = newCenter.z - 0.5f;
+                playerColliderCenter.x = newCenter.z;
                 playerColliderCenter.z = -newCenter.x;
                 player.soloCarrierCollider.size = playerColliderSize;
                 player.soloCarrierCollider.center = playerColliderCenter;
@@ -255,7 +255,7 @@ public class Treasure : MonoBehaviour, ICarriable
             {
                 newSize.y = player.soloCarrierCollider.size.y;
                 newCenter.y = player.soloCarrierCollider.center.y;
-                newSize.z -= 0.5f;
+                newSize.z -= 1.0f;
                 player.soloCarrierCollider.size = newSize;
                 player.soloCarrierCollider.center = newCenter;
             }
@@ -280,7 +280,7 @@ public class Treasure : MonoBehaviour, ICarriable
             if (_playerInteractingWith.Count == 1)
             {
                 newSize.y = player.soloCarrierCollider.size.y;
-                newSize.z -= 0.5f;
+                newSize.z -= 1.0f;
                 newCenter.y = player.soloCarrierCollider.center.y;
                 player.soloCarrierCollider.size = newSize;
                 newCenter.z = -newCenter.z;
@@ -339,40 +339,7 @@ public class Treasure : MonoBehaviour, ICarriable
         // Update speed malus
         ApplySpeedMalus();
 
-        // If the player is alone to carry it just snap the treasure as child of the player
-        if (_playerInteractingWith.Count == 1)
-        {
-            Physics.IgnoreCollision(selfColliderX, BoatManager.instance.selfCollider, true);
-            Physics.IgnoreCollision(selfColliderZ, BoatManager.instance.selfCollider, true);
-
-            UpTreasure(player.self);
-            selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
-            selfRigidbody.useGravity = false;
-
-            player.selfRigidBody.velocity = Vector3.zero;
-            player.soloCarrierCollider.enabled = true;
-            selfColliderX.enabled = false;
-            selfColliderZ.enabled = false;
-
-            self.SetParent(player.self);
-
-            /*startPlayerPosition = player.self.position;
-            startPlayerRotation = player.self.rotation;
-
-            startSelfPosition = self.position;
-            startSelfRotation = self.rotation;
-
-            startSelfPosition = DivideVectors(Quaternion.Inverse(player.self.rotation) * (startSelfPosition - startPlayerPosition), player.self.lossyScale);*/
-        }
-        else if (_playerInteractingWith.Count == 2)
-        {
-            _playerInteractingWith[0].soloCarrierCollider.enabled = false;
-            selfColliderX.enabled = true;
-            selfColliderZ.enabled = true;
-
-
-            self.SetParent(null);
-        }
+        
         // If there is more than one player to carry it, snap treasures to the players' joint
         if (_playerInteractingWith.Count <= category.maxPlayerCarrying)
         {
@@ -381,6 +348,41 @@ public class Treasure : MonoBehaviour, ICarriable
 
             DealWithCollider(player, interactingWith);
             AdjustCollider(interactingWith.transform.localPosition, player, true);
+
+            // If the player is alone to carry it just snap the treasure as child of the player
+            if (_playerInteractingWith.Count == 1)
+            {
+                Physics.IgnoreCollision(selfColliderX, BoatManager.instance.selfCollider, true);
+                Physics.IgnoreCollision(selfColliderZ, BoatManager.instance.selfCollider, true);
+
+                UpTreasure(player.self);
+                selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
+                selfRigidbody.useGravity = false;
+
+                player.selfRigidBody.velocity = Vector3.zero;
+                player.soloCarrierCollider.enabled = true;
+                selfColliderX.enabled = false;
+                selfColliderZ.enabled = false;
+
+                self.SetParent(player.self);
+
+                /*startPlayerPosition = player.self.position;
+                startPlayerRotation = player.self.rotation;
+
+                startSelfPosition = self.position;
+                startSelfRotation = self.rotation;
+
+                startSelfPosition = DivideVectors(Quaternion.Inverse(player.self.rotation) * (startSelfPosition - startPlayerPosition), player.self.lossyScale);*/
+            }
+            else if (_playerInteractingWith.Count == 2)
+            {
+                _playerInteractingWith[0].soloCarrierCollider.enabled = false;
+                selfColliderX.enabled = true;
+                selfColliderZ.enabled = true;
+
+
+                self.SetParent(null);
+            }
 
             selfRigidbody.velocity = Vector3.zero;
 
