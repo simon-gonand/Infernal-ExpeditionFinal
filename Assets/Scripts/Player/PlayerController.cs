@@ -322,7 +322,9 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
+            bool temp = _isDead;
             ResetPlayer();
+            _isDead = temp;
             Die();
         }
     }
@@ -570,7 +572,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        if (_isDead == false)
+        if (!_isDead)
         {
             _isDead = true;
             // Play death out of bounds sound
@@ -605,13 +607,13 @@ public class PlayerController : MonoBehaviour
 
         PlayerManager.instance.AddRemovePlayerFromTargetGroup(self, true);
 
-        _isDead = false;
         selfRenderer.enabled = true;
         sword.SetActive(true);
         selfPlayerThrowUi.gameObject.SetActive(true);
 
         // Play respawn sound
         AudioManager.AMInstance.playerRespawnSFX.Post(gameObject);
+        _isDead = false;
     }
 
     void FixedUpdate()
