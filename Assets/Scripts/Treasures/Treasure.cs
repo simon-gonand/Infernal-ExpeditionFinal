@@ -40,6 +40,7 @@ public class Treasure : MonoBehaviour, ICarriable
     private void Start()
     {
         outlineScript.enabled = false;
+        Physics.IgnoreCollision(selfColliderZ, selfColliderX, true);
     }
 
     public void UpdatePlayerRotation(PlayerController player, Transform playerTransform)
@@ -327,6 +328,7 @@ public class Treasure : MonoBehaviour, ICarriable
             _playerInteractingWith[0].soloCarrierCollider.enabled = false;
             selfColliderX.enabled = true;
             selfColliderZ.enabled = true;
+            selfRigidbody.isKinematic = false;
         }
         while (_playerInteractingWith.Count > 0)
         {
@@ -356,22 +358,22 @@ public class Treasure : MonoBehaviour, ICarriable
         }
 
         selfAura.SetActive(true);
-
+        
+        if (self.parent != null)
+            self.SetParent(null);
         // Enable rigidbody
         selfRigidbody.useGravity = true;
+        isGrounded = false;
         Physics.IgnoreCollision(selfColliderX, BoatManager.instance.selfCollider, false);
         Physics.IgnoreCollision(selfColliderZ, BoatManager.instance.selfCollider, false);
         selfRigidbody.velocity = Vector3.zero;
+        selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         selfRigidbody.AddForce((playerThrowDir.normalized + (Vector3.up * category.multiplyUpAngle)).normalized * category.forceNbPlayer[nbPlayers - 1], 
             ForceMode.Impulse);
-        selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 
-        if (self.parent != null)
-            self.SetParent(null);
         // Play Launch Sound
         AudioManager.AMInstance.playerThrowSFX.Post(gameObject);
 
-        isGrounded = false;
     }
 
     private void StopLaunching()
@@ -488,7 +490,8 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private void TreasureMovement()
     {
-        selfRigidbody.velocity = Vector3.zero;
+        if (_playerInteractingWith.Count > 0)
+            selfRigidbody.velocity = Vector3.zero;
         if (_playerInteractingWith.Count > 1)
         {
             selfRigidbody.velocity = GetTreasuresVelocity();
