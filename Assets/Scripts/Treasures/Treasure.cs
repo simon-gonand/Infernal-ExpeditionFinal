@@ -380,6 +380,8 @@ public class Treasure : MonoBehaviour, ICarriable
                 selfColliderX.enabled = true;
                 selfColliderZ.enabled = true;
 
+                selfRigidbody.isKinematic = false;
+                selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
 
                 self.SetParent(null);
             }
@@ -588,20 +590,22 @@ public class Treasure : MonoBehaviour, ICarriable
             //if (player.isColliding && !player.CheckMovementWhenColliding()) return;
             //if (player.isLaunching) continue;
             Vector3 applyForces = player.movement / _playerInteractingWith.Count;
+            Debug.Log(player.movement);
             applyForces.y = 0.0f;
             direction += applyForces;
         }
+        Debug.Log("Total direction = " + direction);
         return direction;
     }
 
     private void TreasureMovement()
     {
-        if (_playerInteractingWith.Count == 1)
-            selfRigidbody.velocity = Vector3.zero;
-        else if (_playerInteractingWith.Count > 1)
+        selfRigidbody.velocity = Vector3.zero;
+        if (_playerInteractingWith.Count > 1)
         {
-            selfRigidbody.velocity = Vector3.zero;
             selfRigidbody.velocity = GetTreasuresVelocity();
+            if (selfRigidbody.velocity != Vector3.zero)
+                Debug.Log("Get velocity");
         }
     }
 
@@ -647,6 +651,8 @@ public class Treasure : MonoBehaviour, ICarriable
             if (topTreasureY < NotDeepWater.instance.self.position.y)
                 Destroy(gameObject);
         }
+        if (selfRigidbody.velocity != Vector3.zero)
+            Debug.Log("After deep water");
         if (!isGrounded)
         {
             // Set the position of the raycast
@@ -669,6 +675,8 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             
         }
+        if (selfRigidbody.velocity != Vector3.zero)
+            Debug.Log("after grounded");
         /*if (_isColliding && !isCarriedByPiqueSous)
         {
             if (Vector3.Dot(selfRigidbody.velocity, -_collisionDirection) < 0 && selfRigidbody.velocity != Vector3.zero)
@@ -692,7 +700,11 @@ public class Treasure : MonoBehaviour, ICarriable
             lastPosition = self.position;*/
 
         PlayerJoystickDetection();
+        if (selfRigidbody.velocity != Vector3.zero)
+            Debug.Log("detection");
         UpdateWeightNeed();
+        if (selfRigidbody.velocity != Vector3.zero)
+            Debug.Log("end Update !");
     }
 
     public string GetTag()

@@ -716,7 +716,9 @@ public class PlayerController : MonoBehaviour
                 CheckIfDashCollide();
             }
             else
+            {
                 PlayerMovement();
+            }
         }
         else if (isColliding)
         {

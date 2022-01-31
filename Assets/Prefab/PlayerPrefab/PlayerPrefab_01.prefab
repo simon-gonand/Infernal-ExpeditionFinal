@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 127302442358388516}
   - component: {fileID: 5891595701888884371}
   - component: {fileID: 2155699088311170835}
+  - component: {fileID: 6125247156541125697}
   m_Layer: 3
   m_Name: PlayerPrefab_01
   m_TagString: Player
@@ -222,6 +223,7 @@ MonoBehaviour:
   self: {fileID: 4223509153915057737}
   selfRigidBody: {fileID: 2660306658829606644}
   selfCollider: {fileID: 4223509153915057738}
+  soloCarrierCollider: {fileID: 6125247156541125697}
   selfCarryPlayer: {fileID: 5891595701888884371}
   playerPreset: {fileID: 11400000, guid: 6e8ed946df7976d4e939d4c409344454, type: 2}
   selfPlayerThrowUi: {fileID: 9107770501370033996}
@@ -532,6 +534,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeTuto: 0
   billboardUIActivate: {fileID: 0}
+--- !u!65 &6125247156541125697
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223509153915057740}
+  m_Material: {fileID: 13400000, guid: 970fe22a20c8ed24c8b2d72936bd3aab, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.8261003, z: 1}
+  m_Center: {x: 0, y: 0.3902855, z: 0}
 --- !u!1 &5128916393287146836
 GameObject:
   m_ObjectHideFlags: 0
