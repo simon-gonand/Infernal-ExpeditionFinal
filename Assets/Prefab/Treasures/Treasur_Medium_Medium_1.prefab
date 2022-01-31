@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 8761618300672480467}
   - component: {fileID: 6763560136639631002}
   - component: {fileID: 4913731541728631220}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Treasur_Medium_Medium_1
   m_TagString: Treasures
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6899105204267054135}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 970fe22a20c8ed24c8b2d72936bd3aab, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -365,8 +365,8 @@ MonoBehaviour:
   price: 500
   self: {fileID: 8353917518008923929}
   selfRigidbody: {fileID: 5725383771300719301}
-  selfColliderX: {fileID: 0}
-  selfColliderZ: {fileID: 0}
+  selfColliderX: {fileID: 5883815470191209726}
+  selfColliderZ: {fileID: 3977788070089498263}
   category: {fileID: 11400000, guid: 2920579b1ec68e044af82ef2b244fb99, type: 2}
   mesh: {fileID: 8507323603098431416}
   selfAura: {fileID: 6206642704875170572}
