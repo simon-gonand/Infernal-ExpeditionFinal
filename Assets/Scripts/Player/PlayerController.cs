@@ -122,7 +122,6 @@ public class PlayerController : MonoBehaviour
 
     private bool isDashing = false;
     private bool isGrounded = false;
-    public bool isColliding = false;
     private bool interactionButtonPressed = false;
     #endregion
 
@@ -166,7 +165,6 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         _isDead = false;
         isGrounded = false;
-        isColliding = false;
         interactionButtonPressed = false;
 
         sword.SetActive(true);
@@ -189,54 +187,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        /*if (collision.collider.CompareTag("Treasures") && isGrounded && !_isSwimming)
-        {
-            if (_isCarrying)
-            {
-                Treasure treasure = carrying as Treasure;
-                if (treasure != null && treasure.selfCollider == collision.collider)
-                {
-                    return;
-                }
-                else
-                {
-                    isColliding = true;
-                    selfRigidBody.velocity = Vector3.zero;
-                    collisionDirection = collision.GetContact(0).normal;
-                    if (treasure != null)
-                    {
-                        treasure.isColliding = true;
-                        treasure.collisionDirection = collisionDirection;
-                    }
-                }
-            }
-            if(!_isCarrying)
-            {
-                isColliding = true;
-                selfRigidBody.velocity = Vector3.zero;
-                collisionDirection = collision.GetContact(0).normal;
-            }
-            selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
-        }*/
         if (isDashing)
         {
             collisionDirection = collision.GetContact(0).normal;
             if (Physics.Raycast(self.position, -collisionDirection, 1.0f, mask))
                 StopDash();
         }
-        /*if (_isCarrying && collision.collider.GetComponent<ICarriable>() != _carrying &&
-            collision.collider.gameObject.layer != LayerMask.NameToLayer("Floor"))
-        {
-            collisionDirection = collision.GetContact(0).normal;
-            if (!Physics.Raycast(self.position, -collisionDirection, 1.0f, mask))
-                return;
-            Treasure treasure = _carrying as Treasure;
-            if (treasure != null)
-            {
-                treasure.isColliding = true;
-                treasure.collisionDirection = -collisionDirection;
-            }
-        }*/
         if (_hasBeenLaunched)
         {
             if (collision.collider.gameObject.transform.position.y < self.position.y)
@@ -244,36 +200,6 @@ public class PlayerController : MonoBehaviour
                 selfCarryPlayer.StopFall();
             }
         }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        /*if (collision.collider.CompareTag("Treasures"))
-        {
-            if (_isCarrying)
-            {
-                Treasure t = _carrying as Treasure;
-                if (t != null && (t.selfColliderX == collision.collider || t.selfColliderZ == collision.collider))
-                {
-                    return;
-                }
-                else
-                    isColliding = false;
-            }
-            else
-            {
-                isColliding = false;
-                selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
-            }
-        }*/
-        /*if (_isCarrying && collision.collider.GetComponent<IInteractable>() != _interactingWith)
-        {
-            if (!Physics.Raycast(self.position, -collisionDirection, 0.1f, mask))
-                return;
-            Treasure treasure = _interactingWith as Treasure;
-            if (treasure != null)
-                treasure.isColliding = false;
-        }*/
     }
 
     private void CheckIfDashCollide()
@@ -504,7 +430,6 @@ public class PlayerController : MonoBehaviour
                             {
                                 selfRigidBody.mass = 1000;
                                 selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
-                                isColliding = false;
                             }
                             break;
                         }
@@ -563,10 +488,6 @@ public class PlayerController : MonoBehaviour
             // Play walk in water
             currentSpeed = playerPreset.playerInNotDeepWaterSpeed;
         }
-        else
-        {
-            // Play Footsteps sound
-        }
 
         // Apply speed malus if the player is carrying an heavy treasure
         Treasure transportedTreasure = _carrying as Treasure;
@@ -583,12 +504,6 @@ public class PlayerController : MonoBehaviour
             calculatePlayerInput.y);
         if(!isCarrying || transportedTreasure == null || transportedTreasure.playerInteractingWith.Count == 1)
             selfRigidBody.velocity = _movement;
-        /*else
-        {
-            Treasure treasure = _carrying as Treasure;
-            if (treasure != null)
-                selfRigidBody.velocity = treasure.GetTreasuresVelocity();
-        }*/
         
         // Set the rotation of the player according to his movements
         if (_movement.x != 0 || _movement.z != 0)
@@ -696,18 +611,10 @@ public class PlayerController : MonoBehaviour
         AudioManager.AMInstance.playerRespawnSFX.Post(gameObject);
     }
 
-    public bool CheckMovementWhenColliding()
-    {
-        Vector3 movement = new Vector3(_playerMovementInput.x, 0.0f, _playerMovementInput.y);
-        if (Vector3.Dot(movement, -collisionDirection) <= 0.1 && _playerMovementInput != Vector2.zero)
-            return true;
-        return false;
-    }
-
     void FixedUpdate()
     {
         CheckIfInteraction();
-        if (!isColliding && !_isStun && !_isCarried && !_hasBeenLaunched && !_isDead && 
+        if (!_isStun && !_isCarried && !_hasBeenLaunched && !_isDead && 
             ((_isInteracting && _carrying != null) ? true : !_isInteracting))
         {
             if (isDashing)
@@ -719,11 +626,6 @@ public class PlayerController : MonoBehaviour
             {
                 PlayerMovement();
             }
-        }
-        else if (isColliding)
-        {
-            if (CheckMovementWhenColliding())
-                PlayerMovement();
         }
     }
 

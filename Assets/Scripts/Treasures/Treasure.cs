@@ -20,7 +20,6 @@ public class Treasure : MonoBehaviour, ICarriable
     private List<PlayerController> _playerInteractingWith = new List<PlayerController>();
     public List<PlayerController> playerInteractingWith { get { return _playerInteractingWith; } }
 
-    private List<PlayerController> playerColliding = new List<PlayerController>();
     private List<PlayerController> playerCollisionIgnored = new List<PlayerController>();
 
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
@@ -32,99 +31,20 @@ public class Treasure : MonoBehaviour, ICarriable
     private int numOfSelected;
     public Outline outlineScript;
 
-    private Vector3 lastPosition;
-
-    private Vector3 startPlayerPosition;
-    private Quaternion startPlayerRotation;
-    private Matrix4x4 playerMatrix;
-    private Vector3 startSelfPosition;
-    private Quaternion startSelfRotation;
-
-    private bool _isColliding = false;
-    public bool isColliding { set { _isColliding = value; } }
-    private Vector3 _collisionDirection;
-    public Vector3 collisionDirection { set { _collisionDirection = value; } }
-    private Rigidbody collidingWith;
-    private bool isMovingWhenColliding;
-
     private bool _isInDeepWater = false;
     public bool isInDeepWater { set { _isInDeepWater = value; } get { return _isInDeepWater; } }
 
     private bool _isCarriedByPiqueSous = false;
     public bool isCarriedByPiqueSous { get { return _isCarriedByPiqueSous; } }
 
-    #region CollisionCallbacks
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && _playerInteractingWith.Count > 0) return;
-        if (collision.collider.CompareTag("Boat")) return;
-        if (collision.collider.CompareTag("Player"))
-        {
-            foreach (PlayerController player in _playerInteractingWith)
-            {
-                if (collision.collider == player.GetComponent<CapsuleCollider>())
-                {
-                    _isColliding = false;
-                    return;
-                }
-            }
-            playerColliding.Add(collision.collider.GetComponent<PlayerController>());
-        }
-        /*if (_playerInteractingWith.Count > 0)
-        {
-            _collisionDirection = collision.GetContact(0).normal;
-            _isColliding = true;
-            collidingWith = collision.collider.GetComponent<Rigidbody>();
-        }*/
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        /*if (collidingWith != null && collidingWith.velocity != Vector3.zero && isMovingWhenColliding)
-        {
-            _collisionDirection = -_collisionDirection;
-            isMovingWhenColliding = false;
-        }
-        else if (!isMovingWhenColliding)
-        {
-            _collisionDirection = -_collisionDirection;
-            isMovingWhenColliding = true;
-        }*/
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            foreach (PlayerController player in _playerInteractingWith)
-            {
-                if (collision.collider == player.GetComponent<CapsuleCollider>())
-                    playerColliding.Remove(player);
-            }
-        }
-        _isColliding = false;
-    }
-    #endregion
-
     private void Start()
     {
-        lastPosition = self.position;
         outlineScript.enabled = false;
     }
 
     public void UpdatePlayerRotation(PlayerController player, Transform playerTransform)
     {
-        if (_playerInteractingWith.Count == 1)
-        {
-            /*if (!_isColliding)
-            {
-                playerMatrix = Matrix4x4.TRS(playerTransform.position, playerTransform.rotation, playerTransform.lossyScale);
-
-                self.position = playerMatrix.MultiplyPoint3x4(startSelfPosition);
-                self.rotation = (playerTransform.rotation * Quaternion.Inverse(startPlayerRotation)) * startSelfRotation;
-            }*/
-        }
-        else if (associateColliders[player] != null)
+        if (associateColliders[player] != null)
                 playerTransform.forward = associateColliders[player].transform.forward;
     }
 
@@ -321,19 +241,6 @@ public class Treasure : MonoBehaviour, ICarriable
 
         player.carrying = this;
 
-        if (playerColliding.Count > 0)
-        {
-            foreach (PlayerController p in playerColliding)
-            {
-                if (p == player)
-                {
-                    playerColliding.Remove(p);
-                    _isColliding = false;
-                    break;
-                }
-            }
-        }
-
         selfRigidbody.useGravity = false;
 
         // Update speed malus
@@ -366,13 +273,6 @@ public class Treasure : MonoBehaviour, ICarriable
 
                 self.SetParent(player.self);
 
-                /*startPlayerPosition = player.self.position;
-                startPlayerRotation = player.self.rotation;
-
-                startSelfPosition = self.position;
-                startSelfRotation = self.rotation;
-
-                startSelfPosition = DivideVectors(Quaternion.Inverse(player.self.rotation) * (startSelfPosition - startPlayerPosition), player.self.lossyScale);*/
             }
             else if (_playerInteractingWith.Count == 2)
             {
@@ -524,14 +424,6 @@ public class Treasure : MonoBehaviour, ICarriable
             _playerInteractingWith[0].soloCarrierCollider.enabled = true;
             selfColliderX.enabled = false;
             selfColliderZ.enabled = false;
-
-            /*startPlayerPosition = player.self.position;
-            startPlayerRotation = player.self.rotation;
-
-            startSelfPosition = self.position;
-            startSelfRotation = self.rotation;
-
-            startSelfPosition = DivideVectors(Quaternion.Inverse(player.self.rotation) * (startSelfPosition - startPlayerPosition), player.self.lossyScale);*/
         }
         if (_playerInteractingWith.Count < 1)
         {
@@ -587,14 +479,10 @@ public class Treasure : MonoBehaviour, ICarriable
         Vector3 direction = Vector3.zero;
         foreach (PlayerController player in _playerInteractingWith)
         {
-            //if (player.isColliding && !player.CheckMovementWhenColliding()) return;
-            //if (player.isLaunching) continue;
             Vector3 applyForces = player.movement / _playerInteractingWith.Count;
-            Debug.Log(player.movement);
             applyForces.y = 0.0f;
             direction += applyForces;
         }
-        Debug.Log("Total direction = " + direction);
         return direction;
     }
 
@@ -604,8 +492,6 @@ public class Treasure : MonoBehaviour, ICarriable
         if (_playerInteractingWith.Count > 1)
         {
             selfRigidbody.velocity = GetTreasuresVelocity();
-            if (selfRigidbody.velocity != Vector3.zero)
-                Debug.Log("Get velocity");
         }
     }
 
@@ -651,8 +537,6 @@ public class Treasure : MonoBehaviour, ICarriable
             if (topTreasureY < NotDeepWater.instance.self.position.y)
                 Destroy(gameObject);
         }
-        if (selfRigidbody.velocity != Vector3.zero)
-            Debug.Log("After deep water");
         if (!isGrounded)
         {
             // Set the position of the raycast
@@ -675,36 +559,9 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             
         }
-        if (selfRigidbody.velocity != Vector3.zero)
-            Debug.Log("after grounded");
-        /*if (_isColliding && !isCarriedByPiqueSous)
-        {
-            if (Vector3.Dot(selfRigidbody.velocity, -_collisionDirection) < 0 && selfRigidbody.velocity != Vector3.zero)
-            {
-                _isColliding = false;
-            }
-            else
-            {
-
-                foreach (PlayerController player in _playerInteractingWith)
-                {
-                    if (_playerInteractingWith.Count > 1)
-                    {
-                        associateColliders[player].GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
-                    }
-                }
-                self.position = lastPosition;
-            }
-        }
-        else
-            lastPosition = self.position;*/
 
         PlayerJoystickDetection();
-        if (selfRigidbody.velocity != Vector3.zero)
-            Debug.Log("detection");
         UpdateWeightNeed();
-        if (selfRigidbody.velocity != Vector3.zero)
-            Debug.Log("end Update !");
     }
 
     public string GetTag()
