@@ -245,6 +245,18 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void AddRemovePlayerFromTargetGroup(Transform player, bool add)
+    {
+        if (add)
+        {
+            GameManager.instance.targetGroup.AddMember(player, weight, 180);
+        }
+        else
+        {
+            GameManager.instance.targetGroup.RemoveMember(player);
+        }
+    }
+
     private bool CheckIfPlayerIsOutOfCam()
     {
         bool playerIsOutCam = false;

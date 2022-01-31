@@ -586,6 +586,13 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Respawn()
     {
+        PlayerManager.instance.AddRemovePlayerFromTargetGroup(self, false);
+        selfRenderer.enabled = false;
+        sword.SetActive(false);
+        selfPlayerThrowUi.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(playerPreset.respawnCooldown);
+
         Vector3 respawnPosition = PlayerManager.instance.SetPlayerPosition(_id, false).position;
         respawnPosition.y += self.lossyScale.y;
         if (isSwimming)
@@ -596,11 +603,7 @@ public class PlayerController : MonoBehaviour
         selfRigidBody.velocity = Vector3.zero;
         self.position = respawnPosition;
 
-        selfRenderer.enabled = false;
-        sword.SetActive(false);
-        selfPlayerThrowUi.gameObject.SetActive(false);
-
-        yield return new WaitForSeconds(playerPreset.respawnCooldown);
+        PlayerManager.instance.AddRemovePlayerFromTargetGroup(self, true);
 
         _isDead = false;
         selfRenderer.enabled = true;
