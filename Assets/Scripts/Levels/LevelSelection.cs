@@ -114,11 +114,11 @@ public class LevelSelection : MonoBehaviour
         }
 
         tokenGroup.SetActive(true);
-        CheckStarsStates();
         if (offset < 0.0f)
             ++currentLevelSelectedIndex;
         else
             --currentLevelSelectedIndex;
+        CheckStarsStates();
         coroutine = null;
         yield return null;
     }
@@ -189,6 +189,7 @@ public class LevelSelection : MonoBehaviour
 
     private void CheckStarsStates()
     {
+        Debug.Log(DebugGetLevelIndex());
         LevelProfile level = SaveData.instance.levels[DebugGetLevelIndex()];
         switch (level.starState)
         {
