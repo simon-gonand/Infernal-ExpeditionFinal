@@ -499,16 +499,24 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1730564753" Language="SFX" Hash="2777046902">
+		<SoundBank Id="1730564753" Language="SFX" Hash="2195234558">
 			<ObjectPath>\SoundBanks\Default Work Unit\Musics</ObjectPath>
 			<ShortName>Musics</ShortName>
 			<Path>Musics.bnk</Path>
 			<IncludedEvents>
 				<Event Id="474510645" Name="Lobbi_Theme" ObjectPath="\Events\Musics\Musics\Lobbi_Theme" DurationType="Infinite">
 					<IncludedMemoryFiles>
+						<File Id="67662359" Language="SFX">
+							<ShortName>ChillA-Bay_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\ChillA-Bay_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
 						<File Id="172857931" Language="SFX">
 							<ShortName>ChillA_120Bpm_4-4_L8_P0.wav</ShortName>
 							<Path>SFX\ChillA_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="176843474" Language="SFX">
+							<ShortName>ChillC-Ville_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\ChillC-Ville_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
 						</File>
 						<File Id="331249355" Language="SFX">
 							<ShortName>ChillB_120Bpm_4-4_L8_P0.wav</ShortName>
@@ -518,7 +526,46 @@
 							<ShortName>ChillC_120Bpm_4-4_L8_P0.wav</ShortName>
 							<Path>SFX\ChillC_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
 						</File>
+						<File Id="571518169" Language="SFX">
+							<ShortName>ChillA-Ville_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\ChillA-Ville_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="616743026" Language="SFX">
+							<ShortName>ChillC-Bay_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\ChillC-Bay_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="1072042686" Language="SFX">
+							<ShortName>ChillB-Ville_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\ChillB-Ville_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
+						<File Id="1072483169" Language="SFX">
+							<ShortName>ChillB-Bay_120Bpm_4-4_L8_P0.wav</ShortName>
+							<Path>SFX\ChillB-Bay_120Bpm_4-4_L8_P0_D79FB2B7.wem</Path>
+						</File>
 					</IncludedMemoryFiles>
+					<SwitchContainers>
+						<SwitchContainer SwitchValue="{34C08821-2EE3-4764-9833-9528F409C4DE}">
+							<Media>
+								<File Id="67662359"/>
+								<File Id="616743026"/>
+								<File Id="1072483169"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{1A0E72E8-FBB3-4E08-8CA8-2DD3DE2EE6B0}">
+							<Media>
+								<File Id="176843474"/>
+								<File Id="571518169"/>
+								<File Id="1072042686"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{94CD29EB-7452-4E35-8716-B3F06458B8C2}">
+							<Media>
+								<File Id="172857931"/>
+								<File Id="331249355"/>
+								<File Id="464518798"/>
+							</Media>
+						</SwitchContainer>
+					</SwitchContainers>
 				</Event>
 				<Event Id="1774282194" Name="Naufrage_Theme" ObjectPath="\Events\Musics\Musics\Naufrage_Theme" DurationType="Infinite">
 					<IncludedMemoryFiles>
@@ -857,6 +904,13 @@
 						<Switch Id="2579631677" Name="Pillage" ObjectPath="\Switches\Default Work Unit\GameplayType\Pillage" GUID="{C0654D03-2CF0-4648-85E5-E91A38BFC7DF}"/>
 						<Switch Id="1082482811" Name="Navigation" ObjectPath="\Switches\Default Work Unit\GameplayType\Navigation" GUID="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}"/>
 						<Switch Id="2716678721" Name="Victory" ObjectPath="\Switches\Default Work Unit\GameplayType\Victory" GUID="{82B97427-88B8-48FA-B6C3-EEF601635E90}"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="3153767688" Name="MapSelection_Biome" ObjectPath="\Switches\Default Work Unit\MapSelection_Biome" GUID="{28C34D68-0E8D-4286-B525-9E943B44B1D1}">
+					<Switches>
+						<Switch Id="269384475" Name="Classic" ObjectPath="\Switches\Default Work Unit\MapSelection_Biome\Classic" GUID="{94CD29EB-7452-4E35-8716-B3F06458B8C2}"/>
+						<Switch Id="3888786832" Name="City" ObjectPath="\Switches\Default Work Unit\MapSelection_Biome\City" GUID="{1A0E72E8-FBB3-4E08-8CA8-2DD3DE2EE6B0}"/>
+						<Switch Id="513390123" Name="Bay" ObjectPath="\Switches\Default Work Unit\MapSelection_Biome\Bay" GUID="{34C08821-2EE3-4764-9833-9528F409C4DE}"/>
 					</Switches>
 				</SwitchGroup>
 			</SwitchGroups>
