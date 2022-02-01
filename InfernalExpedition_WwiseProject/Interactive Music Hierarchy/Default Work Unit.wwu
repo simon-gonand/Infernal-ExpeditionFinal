@@ -3553,339 +3553,6 @@
 						</Entry>
 					</EntryList>
 				</MusicSwitchContainer>
-				<MusicPlaylistContainer Name="Lobbi_Theme" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" ShortID="511501719">
-					<PropertyList>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>-6</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Musics Audio Bus" ID="{6FF2873C-417A-43C7-AE7D-EDA382BC9380}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<MusicSegment Name="ChillA_120Bpm_4-4_L8_P0" ID="{A92DEB65-CF73-4E86-9938-94111B5D5B4D}" ShortID="529491868">
-							<PropertyList>
-								<Property Name="EndPosition" Type="Real64" Value="17500"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<MusicTrack Name="ChillA_120Bpm_4-4_L8_P0" ID="{19415888-1290-4DD8-B9CB-F99FD019E1F9}" ShortID="96200223">
-									<ReferenceList>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="ChillA_120Bpm_4-4_L8_P0" ID="{50F59BBD-9FAB-477D-9C50-F21467175B9C}">
-											<Language>SFX</Language>
-											<AudioFile>ChillA_120Bpm_4-4_L8_P0.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="172857931"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<TransitionList>
-										<MusicTransition Name="Root" ID="{1A9A8EA2-F43E-462E-A900-4AA77E7056C0}">
-											<PropertyList>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</TransitionList>
-									<ObjectLists>
-										<ObjectList Name="Sequences">
-											<Reference>
-												<Local>
-													<MusicTrackSequence Name="" ID="{CC31026E-B443-4CA6-954A-095F96AD04A6}">
-														<ObjectLists>
-															<ObjectList Name="Clips">
-																<Reference>
-																	<Local>
-																		<MusicClip Name="ChillA_120Bpm_4-4_L8_P0" ID="{0E93C24A-16E3-4AD6-9CC7-642C972666CB}">
-																			<PropertyList>
-																				<Property Name="EndTrimOffset" Type="Real64" Value="17416.6666666667"/>
-																				<Property Name="FadeInMode" Type="int16" Value="0"/>
-																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																			</PropertyList>
-																			<AudioSourceRef Name="ChillA_120Bpm_4-4_L8_P0" ID="{50F59BBD-9FAB-477D-9C50-F21467175B9C}"/>
-																		</MusicClip>
-																	</Local>
-																</Reference>
-															</ObjectList>
-														</ObjectLists>
-													</MusicTrackSequence>
-												</Local>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
-								</MusicTrack>
-							</ChildrenList>
-							<ObjectLists>
-								<ObjectList Name="Cues">
-									<Reference>
-										<Local>
-											<MusicCue Name="Entry Cue" ID="{B6D7791C-1D40-4741-A52C-8D57F6AD8741}"/>
-										</Local>
-									</Reference>
-									<Reference>
-										<Local>
-											<MusicCue Name="Exit Cue" ID="{4C56B6FA-E16F-432B-BB81-52DBC8FC73F7}">
-												<PropertyList>
-													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="16000"/>
-												</PropertyList>
-											</MusicCue>
-										</Local>
-									</Reference>
-								</ObjectList>
-							</ObjectLists>
-						</MusicSegment>
-						<MusicSegment Name="ChillB_120Bpm_4-4_L8_P0" ID="{808EE1D8-2518-44B8-9594-50600B9C1135}" ShortID="662940306">
-							<PropertyList>
-								<Property Name="EndPosition" Type="Real64" Value="17260.4081632653"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<MusicTrack Name="ChillB_120Bpm_4-4_L8_P0" ID="{3B139CFF-1CC8-48AA-B9BF-FD8D8432B451}" ShortID="516104627">
-									<ReferenceList>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="ChillB_120Bpm_4-4_L8_P0" ID="{04419773-D1E6-4266-8870-AB7E93562835}">
-											<Language>SFX</Language>
-											<AudioFile>ChillB_120Bpm_4-4_L8_P0.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="331249355"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<TransitionList>
-										<MusicTransition Name="Root" ID="{12116D26-D647-413B-9668-A2722AD97301}">
-											<PropertyList>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</TransitionList>
-									<ObjectLists>
-										<ObjectList Name="Sequences">
-											<Reference>
-												<Local>
-													<MusicTrackSequence Name="" ID="{12740B65-91E5-49EC-9863-B402152A9CC9}">
-														<ObjectLists>
-															<ObjectList Name="Clips">
-																<Reference>
-																	<Local>
-																		<MusicClip Name="ChillB_120Bpm_4-4_L8_P0" ID="{EC7B9C58-4D05-4024-B29E-86846555B141}">
-																			<PropertyList>
-																				<Property Name="EndTrimOffset" Type="Real64" Value="17260.4081632653"/>
-																				<Property Name="FadeInMode" Type="int16" Value="0"/>
-																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																			</PropertyList>
-																			<AudioSourceRef Name="ChillB_120Bpm_4-4_L8_P0" ID="{04419773-D1E6-4266-8870-AB7E93562835}"/>
-																		</MusicClip>
-																	</Local>
-																</Reference>
-															</ObjectList>
-														</ObjectLists>
-													</MusicTrackSequence>
-												</Local>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
-								</MusicTrack>
-							</ChildrenList>
-							<ObjectLists>
-								<ObjectList Name="Cues">
-									<Reference>
-										<Local>
-											<MusicCue Name="Entry Cue" ID="{3265E81E-E16C-4518-8DB3-DAE71451FEBB}"/>
-										</Local>
-									</Reference>
-									<Reference>
-										<Local>
-											<MusicCue Name="Exit Cue" ID="{E70C0DFF-9FA7-4743-A3F5-4DD5E8F12DB1}">
-												<PropertyList>
-													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="16000"/>
-												</PropertyList>
-											</MusicCue>
-										</Local>
-									</Reference>
-								</ObjectList>
-							</ObjectLists>
-						</MusicSegment>
-						<MusicSegment Name="ChillC_120Bpm_4-4_L8_P0" ID="{5ACEAA2C-E8D0-48D3-970B-AFB91990B1A8}" ShortID="330970964">
-							<PropertyList>
-								<Property Name="EndPosition" Type="Real64" Value="17229.1609977324"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<MusicTrack Name="ChillC_120Bpm_4-4_L8_P0" ID="{6574B106-EA38-4D33-BCBE-6D50602C041E}" ShortID="209008268">
-									<ReferenceList>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="ChillC_120Bpm_4-4_L8_P0" ID="{5362B44F-97AB-4F05-A58D-7802C50A792A}">
-											<Language>SFX</Language>
-											<AudioFile>ChillC_120Bpm_4-4_L8_P0.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="464518798"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<TransitionList>
-										<MusicTransition Name="Root" ID="{DBF61D3B-E2F5-40A6-B3DC-CB99A890F543}">
-											<PropertyList>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</TransitionList>
-									<ObjectLists>
-										<ObjectList Name="Sequences">
-											<Reference>
-												<Local>
-													<MusicTrackSequence Name="" ID="{7E1040F4-2CE9-4590-B1AA-43E178FAA0AB}">
-														<ObjectLists>
-															<ObjectList Name="Clips">
-																<Reference>
-																	<Local>
-																		<MusicClip Name="ChillC_120Bpm_4-4_L8_P0" ID="{B2D413B1-84F1-4147-B29C-50E23903DE61}">
-																			<PropertyList>
-																				<Property Name="EndTrimOffset" Type="Real64" Value="17229.1609977324"/>
-																				<Property Name="FadeInMode" Type="int16" Value="0"/>
-																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																			</PropertyList>
-																			<AudioSourceRef Name="ChillC_120Bpm_4-4_L8_P0" ID="{5362B44F-97AB-4F05-A58D-7802C50A792A}"/>
-																		</MusicClip>
-																	</Local>
-																</Reference>
-															</ObjectList>
-														</ObjectLists>
-													</MusicTrackSequence>
-												</Local>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
-								</MusicTrack>
-							</ChildrenList>
-							<ObjectLists>
-								<ObjectList Name="Cues">
-									<Reference>
-										<Local>
-											<MusicCue Name="Entry Cue" ID="{6BC6ECCA-08F0-4327-9093-45531AADD3AF}"/>
-										</Local>
-									</Reference>
-									<Reference>
-										<Local>
-											<MusicCue Name="Exit Cue" ID="{DBB1F52A-3E29-48A6-BF86-D365AE76792B}">
-												<PropertyList>
-													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="16000"/>
-												</PropertyList>
-											</MusicCue>
-										</Local>
-									</Reference>
-								</ObjectList>
-							</ObjectLists>
-						</MusicSegment>
-					</ChildrenList>
-					<StateInfo>
-						<StateGroupList>
-							<StateGroupInfo>
-								<StateGroupRef Name="AudioDevice" ID="{0373B539-98E9-47BC-9F95-557A51E4AA56}"/>
-							</StateGroupInfo>
-						</StateGroupList>
-						<CustomStateList>
-							<CustomState>
-								<StateRef Name="Headphones" ID="{4C976629-80F8-449F-B89F-271C94A49D20}"/>
-								<CustomState Name="" ID="{91A18793-5CFF-4D95-8AD5-3D7C2E0339C4}" ShortID="483007795">
-									<PropertyList>
-										<Property Name="Volume" Type="Real64" Value="-4"/>
-									</PropertyList>
-								</CustomState>
-							</CustomState>
-							<CustomState>
-								<StateRef Name="Speakers" ID="{6A6C8F4A-3113-4CFD-943F-5EAA80930A92}"/>
-								<CustomState Name="" ID="{9A90CA16-1B7A-4E58-BF66-5F26DC196278}" ShortID="355291239"/>
-							</CustomState>
-						</CustomStateList>
-					</StateInfo>
-					<TransitionList>
-						<MusicTransition Name="Root" ID="{8BBD8870-D89B-46A7-A9F6-D6EE13F81AFA}">
-							<PropertyList>
-								<Property Name="IsFolder" Type="bool" Value="True"/>
-							</PropertyList>
-							<ChildrenList>
-								<MusicTransition Name="Transition" ID="{995A0905-0240-459E-89F9-87A029A24531}">
-									<TransitionInfo/>
-								</MusicTransition>
-							</ChildrenList>
-							<TransitionInfo/>
-						</MusicTransition>
-					</TransitionList>
-					<ObjectLists/>
-					<Playlist>
-						<MusicPlaylistItem Name="" ID="{9A7020AE-88BE-4056-AF36-DD6150789CF3}" ShortID="770400750">
-							<PropertyList>
-								<Property Name="LoopCount" Type="int16" Value="0"/>
-							</PropertyList>
-							<ChildrenList>
-								<MusicPlaylistItem Name="" ID="{677266B1-C7BC-440E-ADFD-37D297586B75}" ShortID="244002867">
-									<PropertyList>
-										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-									</PropertyList>
-									<SegmentRef Name="ChillA_120Bpm_4-4_L8_P0" ID="{A92DEB65-CF73-4E86-9938-94111B5D5B4D}"/>
-								</MusicPlaylistItem>
-								<MusicPlaylistItem Name="" ID="{C1F444D0-604A-46E1-9E79-A328EFEF3678}" ShortID="424381464">
-									<PropertyList>
-										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-									</PropertyList>
-									<SegmentRef Name="ChillB_120Bpm_4-4_L8_P0" ID="{808EE1D8-2518-44B8-9594-50600B9C1135}"/>
-								</MusicPlaylistItem>
-								<MusicPlaylistItem Name="" ID="{31C7379E-561F-44BF-A68D-4768D875F157}" ShortID="935134979">
-									<PropertyList>
-										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-									</PropertyList>
-									<SegmentRef Name="ChillC_120Bpm_4-4_L8_P0" ID="{5ACEAA2C-E8D0-48D3-970B-AFB91990B1A8}"/>
-								</MusicPlaylistItem>
-							</ChildrenList>
-						</MusicPlaylistItem>
-					</Playlist>
-				</MusicPlaylistContainer>
 				<MusicSwitchContainer Name="Run_Theme_Biome3" ID="{150F45A2-CB54-4047-ABB4-6E33791A6422}" ShortID="1061120907">
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -7225,6 +6892,1766 @@
 							</Path>
 							<AudioNodeInfo>
 								<AudioNodeRef Name="Victory" ID="{452E59F6-B21B-472E-82AE-29BB297FC4E9}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}" Platform="Linked"/>
+							</AudioNodeInfo>
+						</Entry>
+					</EntryList>
+				</MusicSwitchContainer>
+				<MusicSwitchContainer Name="Lobby_Theme" ID="{4AD9C391-4096-4789-AFF9-2B838BE2F8B6}" ShortID="335948276">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicPlaylistContainer Name="Lobbi_Bay" ID="{6D055C0E-38A1-4666-9C7A-C7664376ADE4}" ShortID="839605977">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-8</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Musics Audio Bus" ID="{6FF2873C-417A-43C7-AE7D-EDA382BC9380}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicSegment Name="ChillA-Bay_120Bpm_4-4_L8_P0" ID="{469910E9-E357-40AC-B985-FDDD75B3FE51}" ShortID="118638146">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="25026.0317460317"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="ChillA-Bay_120Bpm_4-4_L8_P0" ID="{62BFB0D4-9F5C-431F-B686-E3479EC86242}" ShortID="896548398">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ChillA-Bay_120Bpm_4-4_L8_P0" ID="{45CACAA7-41FF-4827-AF2D-C5F0F487BDFF}">
+													<Language>SFX</Language>
+													<AudioFile>ChillA-Bay_120Bpm_4-4_L8_P0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="67662359"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{6FF8A335-0420-4254-A7EB-173E37732058}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{8222AE7D-E810-4585-B53F-EB37786F95FC}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="ChillA-Bay_120Bpm_4-4_L8_P0" ID="{42FDA1EA-D8F6-4C6F-89F3-D516D98D51AC}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="25026.0317460317"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="ChillA-Bay_120Bpm_4-4_L8_P0" ID="{45CACAA7-41FF-4827-AF2D-C5F0F487BDFF}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{B820B08F-3E8B-4D0A-AD5A-8C865635D4D9}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{C970FD9B-42E6-4F5F-8091-3A94246D66E9}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="16000"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+								<MusicSegment Name="ChillB-Bay_120Bpm_4-4_L8_P0" ID="{B02746F7-7A55-4B61-922F-43F59866B10F}" ShortID="766005089">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="25000"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="ChillB-Bay_120Bpm_4-4_L8_P0" ID="{DDA312C9-4683-492F-8023-1847D1F46315}" ShortID="946901748">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ChillB-Bay_120Bpm_4-4_L8_P0" ID="{B8204995-D095-4C00-8535-A498A125B649}">
+													<Language>SFX</Language>
+													<AudioFile>ChillB-Bay_120Bpm_4-4_L8_P0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1072483169"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{AC31ACF7-2609-4207-AA03-A49813FC0D79}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{6C0C3432-C55F-408B-8B5F-27B495311EDE}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="ChillB-Bay_120Bpm_4-4_L8_P0" ID="{B4307790-5FE4-40AC-A169-143896AFAA12}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="24927.074829932"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="ChillB-Bay_120Bpm_4-4_L8_P0" ID="{B8204995-D095-4C00-8535-A498A125B649}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{C6A0D4FE-AA3E-48F4-BE4C-7E592F09CB4A}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{EE4CEFB4-2AD4-409B-B6F2-46ED3333BFB4}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="16000"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+								<MusicSegment Name="ChillC-Bay_120Bpm_4-4_L8_P0" ID="{526DB946-C7BE-4DA7-A7B1-29E4D80141BC}" ShortID="625673880">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="26500"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="ChillC-Bay_120Bpm_4-4_L8_P0" ID="{CF8DD40F-E09E-4CB7-9AD7-1D366133DDFB}" ShortID="460306212">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ChillC-Bay_120Bpm_4-4_L8_P0" ID="{81BE7261-9D21-4B56-A611-006C5640F8EA}">
+													<Language>SFX</Language>
+													<AudioFile>ChillC-Bay_120Bpm_4-4_L8_P0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="616743026"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{2536A155-7DFB-4855-B93B-4EBB3B60AC63}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{B818F259-40C3-4A66-AB1B-06AA78EDCD8F}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="ChillC-Bay_120Bpm_4-4_L8_P0" ID="{C8F64933-5542-49E0-B12E-E44F301EA245}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="26343.7414965986"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="ChillC-Bay_120Bpm_4-4_L8_P0" ID="{81BE7261-9D21-4B56-A611-006C5640F8EA}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{426BD630-75FD-4FE0-A2F2-F49374BA5317}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{4F5180E3-5C3D-4844-950C-94EFDCA962FF}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="16000"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+							</ChildrenList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="AudioDevice" ID="{0373B539-98E9-47BC-9F95-557A51E4AA56}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Headphones" ID="{4C976629-80F8-449F-B89F-271C94A49D20}"/>
+										<CustomState Name="" ID="{3044E9F4-BB84-4938-8351-B81AD523EA42}" ShortID="1018988405">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64" Value="-4"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Speakers" ID="{6A6C8F4A-3113-4CFD-943F-5EAA80930A92}"/>
+										<CustomState Name="" ID="{756A2E26-D584-44DB-B80F-9D971484DC2F}" ShortID="176015528"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<TransitionList>
+								<MusicTransition Name="Root" ID="{F4AE9B78-0886-4429-8D60-8D3031C0EB70}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicTransition Name="Transition" ID="{25BB8CC1-EAF9-4BFA-828D-6370065426CA}">
+											<TransitionInfo/>
+										</MusicTransition>
+									</ChildrenList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</TransitionList>
+							<ObjectLists/>
+							<Playlist>
+								<MusicPlaylistItem Name="" ID="{004AFA71-968B-465D-AB39-BA5E34CCDD46}" ShortID="557091978">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{C36F5B98-6ACF-45F6-A1F5-CA5A4ADC6486}" ShortID="1012033537">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="ChillA-Bay_120Bpm_4-4_L8_P0" ID="{469910E9-E357-40AC-B985-FDDD75B3FE51}"/>
+										</MusicPlaylistItem>
+										<MusicPlaylistItem Name="" ID="{A73C951A-2C0A-4E80-AE70-6B168547622C}" ShortID="555868469">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="ChillB-Bay_120Bpm_4-4_L8_P0" ID="{B02746F7-7A55-4B61-922F-43F59866B10F}"/>
+										</MusicPlaylistItem>
+										<MusicPlaylistItem Name="" ID="{9F0AE294-FCC4-45B0-A1D3-09F985A34A7E}" ShortID="708478463">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="ChillC-Bay_120Bpm_4-4_L8_P0" ID="{526DB946-C7BE-4DA7-A7B1-29E4D80141BC}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
+							</Playlist>
+						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="Lobbi_City" ID="{58560CED-22FB-460D-A635-CC71014D046B}" ShortID="644906386">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-8</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Musics Audio Bus" ID="{6FF2873C-417A-43C7-AE7D-EDA382BC9380}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicSegment Name="ChillA-Ville_120Bpm_4-4_L8_P0" ID="{8E63FBA7-E3B4-4D3D-9658-D89319A1E50A}" ShortID="532549872">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="21744.7845804989"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="ChillA-Ville_120Bpm_4-4_L8_P0" ID="{52FCF6F9-0BCD-41DF-98CE-9FFFD643763D}" ShortID="899891182">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ChillA-Ville_120Bpm_4-4_L8_P0" ID="{AED8CE25-D43A-4C10-B3F0-9CFB321920E3}">
+													<Language>SFX</Language>
+													<AudioFile>ChillA-Ville_120Bpm_4-4_L8_P0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="571518169"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{8DE8A311-CCEE-446D-9509-1E667A56415E}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{834AA723-6FB3-4760-AB07-81C19113FB75}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="ChillA-Ville_120Bpm_4-4_L8_P0" ID="{6B885EBF-B1A6-4F3B-87A9-63DF83ACEF8C}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="21744.7845804989"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="ChillA-Ville_120Bpm_4-4_L8_P0" ID="{AED8CE25-D43A-4C10-B3F0-9CFB321920E3}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{76864BB2-B8CD-4A84-B70E-302337F2B40A}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{0FAE70B3-0C87-4CA5-B25D-4F1BD2AD4EA3}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="16000"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+								<MusicSegment Name="ChillB-Ville_120Bpm_4-4_L8_P0" ID="{BDEA0E56-E3DF-41FA-9C78-8F909F843421}" ShortID="789280843">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="17578.1179138322"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="ChillB-Ville_120Bpm_4-4_L8_P0" ID="{B1D6662C-F56D-42D6-8095-A2432A638A45}" ShortID="787277333">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ChillB-Ville_120Bpm_4-4_L8_P0" ID="{75B544E8-2217-4E45-9871-B91D3F882488}">
+													<Language>SFX</Language>
+													<AudioFile>ChillB-Ville_120Bpm_4-4_L8_P0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1072042686"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{B3BC13F9-6188-47CC-B64D-2FA07D8EB7BA}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{04AD32E5-97B2-488E-8EE2-5F3ADE9EC8C4}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="ChillB-Ville_120Bpm_4-4_L8_P0" ID="{7FF0B3B5-9D4A-41DD-80B2-FC846B4DFC29}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="17578.1179138322"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="ChillB-Ville_120Bpm_4-4_L8_P0" ID="{75B544E8-2217-4E45-9871-B91D3F882488}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{0F70F326-B2B3-4F39-94C3-6E8676856DBD}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{A6C8847D-1488-4B23-9904-8FBC13EA991C}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="16000"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+								<MusicSegment Name="ChillC-Ville_120Bpm_4-4_L8_P0" ID="{039C01A4-46CB-4A0F-9381-0EA8504B29BB}" ShortID="640924510">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="20510.4081632653"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="ChillC-Ville_120Bpm_4-4_L8_P0" ID="{E3B08815-C2DC-4106-A209-C65065A7ADE2}" ShortID="673167848">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ChillC-Ville_120Bpm_4-4_L8_P0" ID="{CBA4D62C-0A04-4DE8-95D3-8ABF093F792F}">
+													<Language>SFX</Language>
+													<AudioFile>ChillC-Ville_120Bpm_4-4_L8_P0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="176843474"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{F0E0A714-184E-46D1-A970-B17B80196CEE}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{3687B1EF-630F-4FF4-AE5D-6485A6970141}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="ChillC-Ville_120Bpm_4-4_L8_P0" ID="{8C6BAFDD-8635-4A65-B360-907F69D69C42}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="20510.4081632653"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="ChillC-Ville_120Bpm_4-4_L8_P0" ID="{CBA4D62C-0A04-4DE8-95D3-8ABF093F792F}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{C62C8CF3-29C4-4A7E-B2C4-3C57F205A8AA}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{426D777A-0896-4D9D-B25C-0C30747353D6}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="16000"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+							</ChildrenList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="AudioDevice" ID="{0373B539-98E9-47BC-9F95-557A51E4AA56}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Headphones" ID="{4C976629-80F8-449F-B89F-271C94A49D20}"/>
+										<CustomState Name="" ID="{DD95593E-82AB-46E5-8136-B4ACB4D05C64}" ShortID="661842290">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64" Value="-4"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Speakers" ID="{6A6C8F4A-3113-4CFD-943F-5EAA80930A92}"/>
+										<CustomState Name="" ID="{5E21B547-9312-400F-87CE-720D802A199D}" ShortID="74916696"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<TransitionList>
+								<MusicTransition Name="Root" ID="{78C6D202-E077-44EC-B985-9D6256DD8BAA}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicTransition Name="Transition" ID="{1019AA59-533C-4351-9332-0EE08872C37A}">
+											<TransitionInfo/>
+										</MusicTransition>
+									</ChildrenList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</TransitionList>
+							<ObjectLists/>
+							<Playlist>
+								<MusicPlaylistItem Name="" ID="{28621807-BC5B-49E6-9E09-8383A1B34866}" ShortID="575537951">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{82861453-3337-46F6-8440-3D7DABF4CC62}" ShortID="1059171283">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="ChillA-Ville_120Bpm_4-4_L8_P0" ID="{8E63FBA7-E3B4-4D3D-9658-D89319A1E50A}"/>
+										</MusicPlaylistItem>
+										<MusicPlaylistItem Name="" ID="{3EAA0918-4F20-4411-86C6-9632FF9A0877}" ShortID="152309978">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="ChillB-Ville_120Bpm_4-4_L8_P0" ID="{BDEA0E56-E3DF-41FA-9C78-8F909F843421}"/>
+										</MusicPlaylistItem>
+										<MusicPlaylistItem Name="" ID="{C9F5CD56-73C8-496A-A99E-A93AC590581B}" ShortID="500075472">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="ChillC-Ville_120Bpm_4-4_L8_P0" ID="{039C01A4-46CB-4A0F-9381-0EA8504B29BB}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
+							</Playlist>
+						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="Lobbi_Classic" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" ShortID="511501719">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Musics Audio Bus" ID="{6FF2873C-417A-43C7-AE7D-EDA382BC9380}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicSegment Name="ChillA_120Bpm_4-4_L8_P0" ID="{A92DEB65-CF73-4E86-9938-94111B5D5B4D}" ShortID="529491868">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="17500"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="ChillA_120Bpm_4-4_L8_P0" ID="{19415888-1290-4DD8-B9CB-F99FD019E1F9}" ShortID="96200223">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ChillA_120Bpm_4-4_L8_P0" ID="{50F59BBD-9FAB-477D-9C50-F21467175B9C}">
+													<Language>SFX</Language>
+													<AudioFile>ChillA_120Bpm_4-4_L8_P0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="172857931"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{1A9A8EA2-F43E-462E-A900-4AA77E7056C0}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{CC31026E-B443-4CA6-954A-095F96AD04A6}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="ChillA_120Bpm_4-4_L8_P0" ID="{0E93C24A-16E3-4AD6-9CC7-642C972666CB}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="17416.6666666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="ChillA_120Bpm_4-4_L8_P0" ID="{50F59BBD-9FAB-477D-9C50-F21467175B9C}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{B6D7791C-1D40-4741-A52C-8D57F6AD8741}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{4C56B6FA-E16F-432B-BB81-52DBC8FC73F7}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="16000"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+								<MusicSegment Name="ChillB_120Bpm_4-4_L8_P0" ID="{808EE1D8-2518-44B8-9594-50600B9C1135}" ShortID="662940306">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="17260.4081632653"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="ChillB_120Bpm_4-4_L8_P0" ID="{3B139CFF-1CC8-48AA-B9BF-FD8D8432B451}" ShortID="516104627">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ChillB_120Bpm_4-4_L8_P0" ID="{04419773-D1E6-4266-8870-AB7E93562835}">
+													<Language>SFX</Language>
+													<AudioFile>ChillB_120Bpm_4-4_L8_P0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="331249355"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{12116D26-D647-413B-9668-A2722AD97301}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{12740B65-91E5-49EC-9863-B402152A9CC9}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="ChillB_120Bpm_4-4_L8_P0" ID="{EC7B9C58-4D05-4024-B29E-86846555B141}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="17260.4081632653"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="ChillB_120Bpm_4-4_L8_P0" ID="{04419773-D1E6-4266-8870-AB7E93562835}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{3265E81E-E16C-4518-8DB3-DAE71451FEBB}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{E70C0DFF-9FA7-4743-A3F5-4DD5E8F12DB1}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="16000"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+								<MusicSegment Name="ChillC_120Bpm_4-4_L8_P0" ID="{5ACEAA2C-E8D0-48D3-970B-AFB91990B1A8}" ShortID="330970964">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="17229.1609977324"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="ChillC_120Bpm_4-4_L8_P0" ID="{6574B106-EA38-4D33-BCBE-6D50602C041E}" ShortID="209008268">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ChillC_120Bpm_4-4_L8_P0" ID="{5362B44F-97AB-4F05-A58D-7802C50A792A}">
+													<Language>SFX</Language>
+													<AudioFile>ChillC_120Bpm_4-4_L8_P0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="464518798"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{DBF61D3B-E2F5-40A6-B3DC-CB99A890F543}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{7E1040F4-2CE9-4590-B1AA-43E178FAA0AB}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="ChillC_120Bpm_4-4_L8_P0" ID="{B2D413B1-84F1-4147-B29C-50E23903DE61}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="17229.1609977324"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="ChillC_120Bpm_4-4_L8_P0" ID="{5362B44F-97AB-4F05-A58D-7802C50A792A}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{6BC6ECCA-08F0-4327-9093-45531AADD3AF}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{DBB1F52A-3E29-48A6-BF86-D365AE76792B}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="16000"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+							</ChildrenList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="AudioDevice" ID="{0373B539-98E9-47BC-9F95-557A51E4AA56}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Headphones" ID="{4C976629-80F8-449F-B89F-271C94A49D20}"/>
+										<CustomState Name="" ID="{91A18793-5CFF-4D95-8AD5-3D7C2E0339C4}" ShortID="483007795">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64" Value="-4"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Speakers" ID="{6A6C8F4A-3113-4CFD-943F-5EAA80930A92}"/>
+										<CustomState Name="" ID="{9A90CA16-1B7A-4E58-BF66-5F26DC196278}" ShortID="355291239"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<TransitionList>
+								<MusicTransition Name="Root" ID="{8BBD8870-D89B-46A7-A9F6-D6EE13F81AFA}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicTransition Name="Transition" ID="{995A0905-0240-459E-89F9-87A029A24531}">
+											<TransitionInfo/>
+										</MusicTransition>
+									</ChildrenList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</TransitionList>
+							<ObjectLists/>
+							<Playlist>
+								<MusicPlaylistItem Name="" ID="{9A7020AE-88BE-4056-AF36-DD6150789CF3}" ShortID="770400750">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{677266B1-C7BC-440E-ADFD-37D297586B75}" ShortID="244002867">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="ChillA_120Bpm_4-4_L8_P0" ID="{A92DEB65-CF73-4E86-9938-94111B5D5B4D}"/>
+										</MusicPlaylistItem>
+										<MusicPlaylistItem Name="" ID="{C1F444D0-604A-46E1-9E79-A328EFEF3678}" ShortID="424381464">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="ChillB_120Bpm_4-4_L8_P0" ID="{808EE1D8-2518-44B8-9594-50600B9C1135}"/>
+										</MusicPlaylistItem>
+										<MusicPlaylistItem Name="" ID="{31C7379E-561F-44BF-A68D-4768D875F157}" ShortID="935134979">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="ChillC_120Bpm_4-4_L8_P0" ID="{5ACEAA2C-E8D0-48D3-970B-AFB91990B1A8}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
+							</Playlist>
+						</MusicPlaylistContainer>
+					</ChildrenList>
+					<TransitionList>
+						<MusicTransition Name="Root" ID="{633656D7-9559-4855-B774-110B54C6855B}">
+							<PropertyList>
+								<Property Name="IsFolder" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<MusicTransition Name="Transition" ID="{6E53AEAB-412F-432F-94DD-DD397B626A11}">
+									<PropertyList>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+									</PropertyList>
+									<TransitionInfo>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{4277DCE5-C4A2-4A0D-8529-8060DACB2F5B}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{D3470106-59DD-44F7-9E96-18005E23B1DF}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{0EC5C030-0BCC-468F-A14B-A9C6D50D30B1}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_City" ID="{58560CED-22FB-460D-A635-CC71014D046B}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillA-Bay_120Bpm_4-4_L8_P0" ID="{469910E9-E357-40AC-B985-FDDD75B3FE51}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{82861453-3337-46F6-8440-3D7DABF4CC62}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{C8DC8FB7-62AB-46F4-B883-33678188221D}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{E63D2368-8949-48FC-A318-64D4381833A8}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{5731BBA4-482F-4557-AB54-3F55700DC07C}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_Classic" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillA-Bay_120Bpm_4-4_L8_P0" ID="{469910E9-E357-40AC-B985-FDDD75B3FE51}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{677266B1-C7BC-440E-ADFD-37D297586B75}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{BBD9B150-585C-4260-A15A-07047C1A1EF3}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{B9B1C7DC-435F-4E49-85CA-E90F56B796BA}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{8FCD2B33-28C3-48B2-A66D-DF15EC76DA73}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_Classic" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillB-Bay_120Bpm_4-4_L8_P0" ID="{B02746F7-7A55-4B61-922F-43F59866B10F}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{C1F444D0-604A-46E1-9E79-A328EFEF3678}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{E37CC049-6135-4BED-8304-3912F9FDDA40}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{3C959C81-9A25-4490-911E-1C70E5D11952}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{F54B8C0F-3A93-444F-8A39-9258BA6E8D06}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_City" ID="{58560CED-22FB-460D-A635-CC71014D046B}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillB-Bay_120Bpm_4-4_L8_P0" ID="{B02746F7-7A55-4B61-922F-43F59866B10F}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{3EAA0918-4F20-4411-86C6-9632FF9A0877}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{826511B7-FA3E-44B1-83B9-27F0C6C29A95}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{98D9E30E-46E8-4F62-928C-BDD6A06CAF8F}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{605F0141-D797-413A-8828-09104E0CE2E6}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_City" ID="{58560CED-22FB-460D-A635-CC71014D046B}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillC-Bay_120Bpm_4-4_L8_P0" ID="{526DB946-C7BE-4DA7-A7B1-29E4D80141BC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{C9F5CD56-73C8-496A-A99E-A93AC590581B}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{7A4989DF-E438-4030-9ED1-8165D779B841}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{4172CC20-28A7-4A26-B37F-D9D8D40C487E}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{DDC296BE-28AD-441F-B21A-4526265792A0}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_Classic" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillC-Bay_120Bpm_4-4_L8_P0" ID="{526DB946-C7BE-4DA7-A7B1-29E4D80141BC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{31C7379E-561F-44BF-A68D-4768D875F157}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{EF503901-E03D-4858-8848-DE8E272050D9}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{D0535AC6-5A9F-472A-9EFE-688B58EC2C70}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{15DE12C1-A12C-474E-8D36-386AF040260A}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_Bay" ID="{6D055C0E-38A1-4666-9C7A-C7664376ADE4}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillA-Ville_120Bpm_4-4_L8_P0" ID="{8E63FBA7-E3B4-4D3D-9658-D89319A1E50A}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{C36F5B98-6ACF-45F6-A1F5-CA5A4ADC6486}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{481BE36F-1CEC-452A-81FC-878B9F7840A2}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{0ED37DC6-D1FC-45E9-BA24-3271D3CA34A5}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{C111C4EE-1095-47F4-A1B4-9E4C86EDDF2E}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_Classic" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillA-Ville_120Bpm_4-4_L8_P0" ID="{8E63FBA7-E3B4-4D3D-9658-D89319A1E50A}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{677266B1-C7BC-440E-ADFD-37D297586B75}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{3AB7DA71-A4AE-4643-BA60-9FBF9BEDC581}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{2217E0C4-D6A8-4117-9699-363FFF0429A3}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{3ACB0129-5114-4A76-AA60-152617242531}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_Bay" ID="{6D055C0E-38A1-4666-9C7A-C7664376ADE4}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillB-Ville_120Bpm_4-4_L8_P0" ID="{BDEA0E56-E3DF-41FA-9C78-8F909F843421}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{A73C951A-2C0A-4E80-AE70-6B168547622C}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{BB95B8D5-7C05-4F8C-9DD7-F38195D32FDF}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{8BC8B928-E69A-4C6C-8A85-AFB1E5D57813}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{BC34E5D3-393F-4CFD-9784-4521889816FB}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_Classic" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillB-Ville_120Bpm_4-4_L8_P0" ID="{BDEA0E56-E3DF-41FA-9C78-8F909F843421}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{C1F444D0-604A-46E1-9E79-A328EFEF3678}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{91C449F8-F14E-4515-8D32-04F956FC2730}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{54311A85-7402-4715-9BF0-59BB71F85B45}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{6D36619D-ADA2-4E7F-869C-FD295B8452B7}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_Bay" ID="{6D055C0E-38A1-4666-9C7A-C7664376ADE4}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillC-Ville_120Bpm_4-4_L8_P0" ID="{039C01A4-46CB-4A0F-9381-0EA8504B29BB}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{9F0AE294-FCC4-45B0-A1D3-09F985A34A7E}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{7F3604B1-C378-4F16-94FE-A61782CEA5A6}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{72610C13-5019-4E3C-BFCE-F48DA8CB495D}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{C436F348-D6CF-4FC8-9DEC-6C33B85C20C2}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_Classic" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillC-Ville_120Bpm_4-4_L8_P0" ID="{039C01A4-46CB-4A0F-9381-0EA8504B29BB}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{31C7379E-561F-44BF-A68D-4768D875F157}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{B54129AD-4F98-493C-B412-F8FAD72F08DE}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{00D1F86C-B529-4FFB-BD62-2FCB68EB32B2}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{B8A98861-A23E-428A-9A7B-5A111A5D4179}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_Bay" ID="{6D055C0E-38A1-4666-9C7A-C7664376ADE4}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillA_120Bpm_4-4_L8_P0" ID="{A92DEB65-CF73-4E86-9938-94111B5D5B4D}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{C36F5B98-6ACF-45F6-A1F5-CA5A4ADC6486}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{150C4800-97EE-4391-B78D-41D2475E36EA}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{C94ED3D5-411A-41BF-BAB5-31E77D751290}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{32A6C407-F274-4A5E-AC6C-0263C863E83E}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_City" ID="{58560CED-22FB-460D-A635-CC71014D046B}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillA_120Bpm_4-4_L8_P0" ID="{A92DEB65-CF73-4E86-9938-94111B5D5B4D}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{82861453-3337-46F6-8440-3D7DABF4CC62}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{69861925-3AA1-4FB2-8FE6-0F07D28C70EF}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{D8749617-F0A2-4FD9-86A1-09BED5882B1A}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{2FBCF56F-8F6E-494F-9DB5-EABC6B4EFE63}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_City" ID="{58560CED-22FB-460D-A635-CC71014D046B}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillB_120Bpm_4-4_L8_P0" ID="{808EE1D8-2518-44B8-9594-50600B9C1135}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{3EAA0918-4F20-4411-86C6-9632FF9A0877}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{D052DF69-E8E9-42DB-9A34-B6DA845A8143}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{6FA781BA-CB93-4D5E-B653-2EB19D517514}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{80840CC1-91B4-4F44-86F9-916F4D4A3425}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_Bay" ID="{6D055C0E-38A1-4666-9C7A-C7664376ADE4}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillB_120Bpm_4-4_L8_P0" ID="{808EE1D8-2518-44B8-9594-50600B9C1135}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{A73C951A-2C0A-4E80-AE70-6B168547622C}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{7A219A12-0CDD-40AB-B316-9FE4BBB773AB}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{FEE01BD8-5CD0-464C-855F-2AEF584DBF27}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{F84E5726-02EA-4B09-90AD-DA05E513AE1F}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_City" ID="{58560CED-22FB-460D-A635-CC71014D046B}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillC_120Bpm_4-4_L8_P0" ID="{5ACEAA2C-E8D0-48D3-970B-AFB91990B1A8}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{C9F5CD56-73C8-496A-A99E-A93AC590581B}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{F23F9A26-05B8-48A4-BFAD-7D9C67014C9F}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{3F053C2F-1F3C-46C9-845D-A4FFDD14D138}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{349C2CCF-1612-46BF-A43A-67581A8531A5}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationJumpPositionPreset" Type="int16" Value="1"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="Lobbi_Bay" ID="{6D055C0E-38A1-4666-9C7A-C7664376ADE4}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="ChillC_120Bpm_4-4_L8_P0" ID="{5ACEAA2C-E8D0-48D3-970B-AFB91990B1A8}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<JumpToPlaylistItemRef Name="" ID="{9F0AE294-FCC4-45B0-A1D3-09F985A34A7E}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{7CFDDF06-60D5-4CEC-8992-8A2AF59CF3ED}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{4A13CCC6-A93D-479E-930C-5DF2F44386EB}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+							</ChildrenList>
+							<TransitionInfo/>
+						</MusicTransition>
+					</TransitionList>
+					<ObjectLists/>
+					<ArgumentList>
+						<ArgumentRef Name="MapSelection_Biome" ID="{28C34D68-0E8D-4286-B525-9E943B44B1D1}"/>
+					</ArgumentList>
+					<EntryList>
+						<Entry>
+							<Path>
+								<PathElementRef Name="Bay" ID="{34C08821-2EE3-4764-9833-9528F409C4DE}"/>
+							</Path>
+							<AudioNodeInfo>
+								<AudioNodeRef Name="Lobbi_Bay" ID="{6D055C0E-38A1-4666-9C7A-C7664376ADE4}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}" Platform="Linked"/>
+							</AudioNodeInfo>
+						</Entry>
+						<Entry>
+							<Path>
+								<PathElementRef Name="City" ID="{1A0E72E8-FBB3-4E08-8CA8-2DD3DE2EE6B0}"/>
+							</Path>
+							<AudioNodeInfo>
+								<AudioNodeRef Name="Lobbi_City" ID="{58560CED-22FB-460D-A635-CC71014D046B}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}" Platform="Linked"/>
+							</AudioNodeInfo>
+						</Entry>
+						<Entry>
+							<Path>
+								<PathElementRef Name="Classic" ID="{94CD29EB-7452-4E35-8716-B3F06458B8C2}"/>
+							</Path>
+							<AudioNodeInfo>
+								<AudioNodeRef Name="Lobbi_Classic" ID="{858505F8-E5A9-4843-A1CA-0F18A1F044DC}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}" Platform="Linked"/>
 							</AudioNodeInfo>
 						</Entry>
 					</EntryList>
