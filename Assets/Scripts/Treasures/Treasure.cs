@@ -234,9 +234,6 @@ public class Treasure : MonoBehaviour, ICarriable
         player.anim.SetBool("isCarrying", true);
         player.anim.SetTrigger("startCarrying");
         player.sword.SetActive(false);
-        
-        // Play Carry Sound
-        AudioManager.AMInstance.playerCarrySFX.Post(gameObject);
 
         selfAura.SetActive(false);
 
@@ -251,6 +248,9 @@ public class Treasure : MonoBehaviour, ICarriable
         // If there is more than one player to carry it, snap treasures to the players' joint
         if (_playerInteractingWith.Count <= category.maxPlayerCarrying)
         {
+            // Play Carry Sound
+            AudioManager.AMInstance.playerCarrySFX.Post(gameObject);
+
             Physics.IgnoreCollision(selfColliderX, player.selfCollider, true);
             Physics.IgnoreCollision(selfColliderZ, player.selfCollider, true);
 
