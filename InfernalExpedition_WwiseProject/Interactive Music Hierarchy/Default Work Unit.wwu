@@ -608,6 +608,19 @@
 												</Local>
 											</Reference>
 										</ObjectList>
+										<ObjectList Name="Stingers">
+											<Reference>
+												<Local>
+													<MusicStinger Name="" ID="{DCD40602-F384-40E2-934E-A1BF024B1F46}">
+														<PropertyList>
+															<Property Name="PlaySegmentAt" Type="int16" Value="3"/>
+														</PropertyList>
+														<TriggerRef Name="Collect_Treasure" ID="{DA52EB88-6B3D-4397-BA24-B8C441C80D38}" WorkUnitID="{1B25F427-D36A-4347-B8DC-3552BBE667D3}"/>
+														<SegmentRef Name="STINGER_TreasurCollect" ID="{768FD054-142F-42DE-BDBB-CC07A5D2E69C}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+													</MusicStinger>
+												</Local>
+											</Reference>
+										</ObjectList>
 									</ObjectLists>
 								</MusicSegment>
 								<MusicSegment Name="Pillage B" ID="{B40C65F6-298E-4DD8-87BC-F8F08025F345}" ShortID="265815386">
@@ -1520,6 +1533,19 @@
 															<Property Name="TimeMs" Type="Real64" Value="16000"/>
 														</PropertyList>
 													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+										<ObjectList Name="Stingers">
+											<Reference>
+												<Local>
+													<MusicStinger Name="" ID="{CE2E2D76-AB80-4A6F-8433-2856D6CAF358}">
+														<PropertyList>
+															<Property Name="PlaySegmentAt" Type="int16" Value="3"/>
+														</PropertyList>
+														<TriggerRef Name="Collect_Treasure" ID="{DA52EB88-6B3D-4397-BA24-B8C441C80D38}" WorkUnitID="{1B25F427-D36A-4347-B8DC-3552BBE667D3}"/>
+														<SegmentRef Name="STINGER_TreasurCollect" ID="{768FD054-142F-42DE-BDBB-CC07A5D2E69C}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+													</MusicStinger>
 												</Local>
 											</Reference>
 										</ObjectList>
