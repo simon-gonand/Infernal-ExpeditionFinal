@@ -138,7 +138,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void GetStarsValue(int _numberOfPlayer , int _maxScore)
     {
         List<Treasure> littleTreasurs = new List<Treasure>();

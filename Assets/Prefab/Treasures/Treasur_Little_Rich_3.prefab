@@ -420,11 +420,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8614582343537896416}
   - component: {fileID: 8614582343537896419}
+  - component: {fileID: 7977774805528018584}
   - component: {fileID: 8614582343537896444}
   - component: {fileID: 8614582343537896445}
   - component: {fileID: 8614582343537896446}
   - component: {fileID: 8614582343537896447}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Treasur_Little_Rich_3
   m_TagString: Treasures
   m_Icon: {fileID: 0}
@@ -459,7 +460,20 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8614582343537896440}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 970fe22a20c8ed24c8b2d72936bd3aab, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9869089, y: 1, z: 0.95454407}
+  m_Center: {x: 0.062297344, y: 0, z: 0.2028122}
+--- !u!65 &7977774805528018584
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8614582343537896440}
+  m_Material: {fileID: 13400000, guid: 970fe22a20c8ed24c8b2d72936bd3aab, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -496,7 +510,8 @@ MonoBehaviour:
   price: 1200
   self: {fileID: 8614582343537896416}
   selfRigidbody: {fileID: 8614582343537896444}
-  selfCollider: {fileID: 8614582343537896419}
+  selfColliderX: {fileID: 8614582343537896419}
+  selfColliderZ: {fileID: 7977774805528018584}
   category: {fileID: 11400000, guid: 34838ba1dacbdec4e8e94f6f67aae8b5, type: 2}
   mesh: {fileID: 6163071584219948804}
   selfAura: {fileID: 2143105353925578379}

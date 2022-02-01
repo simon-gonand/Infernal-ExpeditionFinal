@@ -225,12 +225,13 @@ GameObject:
   - component: {fileID: 8353917518008923929}
   - component: {fileID: 7311194450380343073}
   - component: {fileID: 5894386766288277553}
+  - component: {fileID: 5883815470191209726}
   - component: {fileID: 3977788070089498263}
   - component: {fileID: 5725383771300719301}
   - component: {fileID: 8761618300672480467}
   - component: {fileID: 6763560136639631002}
   - component: {fileID: 4913731541728631220}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Treasur_Medium_Medium_1
   m_TagString: Treasures
   m_Icon: {fileID: 0}
@@ -307,6 +308,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5883815470191209726
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6899105204267054135}
+  m_Material: {fileID: 13400000, guid: 970fe22a20c8ed24c8b2d72936bd3aab, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3399649, y: 1.9266136, z: 1.342906}
+  m_Center: {x: 0.01805989, y: 0.46330643, z: 0.019246262}
 --- !u!65 &3977788070089498263
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -314,7 +328,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6899105204267054135}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 970fe22a20c8ed24c8b2d72936bd3aab, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -334,7 +348,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!114 &8761618300672480467
 MonoBehaviour:
@@ -351,7 +365,8 @@ MonoBehaviour:
   price: 500
   self: {fileID: 8353917518008923929}
   selfRigidbody: {fileID: 5725383771300719301}
-  selfCollider: {fileID: 3977788070089498263}
+  selfColliderX: {fileID: 5883815470191209726}
+  selfColliderZ: {fileID: 3977788070089498263}
   category: {fileID: 11400000, guid: 2920579b1ec68e044af82ef2b244fb99, type: 2}
   mesh: {fileID: 8507323603098431416}
   selfAura: {fileID: 6206642704875170572}

@@ -9,7 +9,8 @@ public class Treasure : MonoBehaviour, ICarriable
 
     public Transform self;
     public Rigidbody selfRigidbody;
-    public Collider selfCollider;
+    public BoxCollider selfColliderX;
+    public BoxCollider selfColliderZ;
     public TreasuresCategory category;
     public MeshFilter mesh;
     public GameObject selfAura;
@@ -19,7 +20,6 @@ public class Treasure : MonoBehaviour, ICarriable
     private List<PlayerController> _playerInteractingWith = new List<PlayerController>();
     public List<PlayerController> playerInteractingWith { get { return _playerInteractingWith; } }
 
-    private List<PlayerController> playerColliding = new List<PlayerController>();
     private List<PlayerController> playerCollisionIgnored = new List<PlayerController>();
 
     private Dictionary<PlayerController, GameObject> associateColliders = new Dictionary<PlayerController, GameObject>();
@@ -31,116 +31,34 @@ public class Treasure : MonoBehaviour, ICarriable
     private int numOfSelected;
     public Outline outlineScript;
 
-    private Vector3 lastPosition;
-
-    private Vector3 startPlayerPosition;
-    private Quaternion startPlayerRotation;
-    private Matrix4x4 playerMatrix;
-    private Vector3 startSelfPosition;
-    private Quaternion startSelfRotation;
-
-    private bool _isColliding = false;
-    public bool isColliding { set { _isColliding = value; } }
-    private Vector3 _collisionDirection;
-    public Vector3 collisionDirection { set { _collisionDirection = value; } }
-    private Rigidbody collidingWith;
-    private bool isMovingWhenColliding;
-
     private bool _isInDeepWater = false;
     public bool isInDeepWater { set { _isInDeepWater = value; } get { return _isInDeepWater; } }
 
     private bool _isCarriedByPiqueSous = false;
     public bool isCarriedByPiqueSous { get { return _isCarriedByPiqueSous; } }
 
-    #region CollisionCallbacks
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && _playerInteractingWith.Count > 0) return;
-        if (collision.collider.CompareTag("Boat")) return;
-        if (collision.collider.CompareTag("Player"))
-        {
-            foreach (PlayerController player in _playerInteractingWith)
-            {
-                if (collision.collider == player.GetComponent<CapsuleCollider>())
-                {
-                    _isColliding = false;
-                    return;
-                }
-            }
-            playerColliding.Add(collision.collider.GetComponent<PlayerController>());
-        }
-        if (_playerInteractingWith.Count > 0)
-        {
-            _collisionDirection = collision.GetContact(0).normal;
-            _isColliding = true;
-            collidingWith = collision.collider.GetComponent<Rigidbody>();
-        }
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collidingWith != null && collidingWith.velocity != Vector3.zero && isMovingWhenColliding)
-        {
-            _collisionDirection = -_collisionDirection;
-            isMovingWhenColliding = false;
-        }
-        else if (!isMovingWhenColliding)
-        {
-            _collisionDirection = -_collisionDirection;
-            isMovingWhenColliding = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            foreach (PlayerController player in _playerInteractingWith)
-            {
-                if (collision.collider == player.GetComponent<CapsuleCollider>())
-                    playerColliding.Remove(player);
-            }
-        }
-        _isColliding = false;
-    }
-    #endregion
-
     private void Start()
     {
-        lastPosition = self.position;
         outlineScript.enabled = false;
+        Physics.IgnoreCollision(selfColliderZ, selfColliderX, true);
     }
 
     public void UpdatePlayerRotation(PlayerController player, Transform playerTransform)
     {
-        if (_playerInteractingWith.Count == 1)
-        {
-            if (!_isColliding)
-            {
-                playerMatrix = Matrix4x4.TRS(playerTransform.position, playerTransform.rotation, playerTransform.lossyScale);
-
-                self.position = playerMatrix.MultiplyPoint3x4(startSelfPosition);
-                self.rotation = (playerTransform.rotation * Quaternion.Inverse(startPlayerRotation)) * startSelfRotation;
-            }
-        }
-        else
-            if (associateColliders[player] != null)
+        if (associateColliders[player] != null)
                 playerTransform.forward = associateColliders[player].transform.forward;
     }
 
     public void UpdatePlayerMovement(PlayerController player)
     {
-        if (_playerInteractingWith.Count == 1)
-        {
-            if (_isColliding)
-                player.selfRigidBody.velocity = Vector3.zero;
-            return;
-        }
-        if (associateColliders[player] != null)
-        {
-            Vector3 newPlayerPos = associateColliders[player].transform.position;
-            newPlayerPos.y = player.self.position.y;
-            player.self.position = newPlayerPos;
+        if (_playerInteractingWith.Count > 1)
+        {    
+            if (associateColliders[player] != null)
+            {
+                Vector3 newPlayerPos = associateColliders[player].transform.position;
+                newPlayerPos.y = player.self.position.y;
+                player.self.position = newPlayerPos;
+            }
         }
     }
 
@@ -171,6 +89,125 @@ public class Treasure : MonoBehaviour, ICarriable
         // Snap the player to the center of the side of the treasure
         interactingWith.GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
         associateColliders.Add(player, interactingWith);
+    }
+
+    private void AdjustCollider(Vector3 localSnapPosition, PlayerController player, bool add)
+    {
+        if (localSnapPosition.x > 0)
+        {
+            float offset = (localSnapPosition.x + player.selfCollider.bounds.size.z) / 2;
+            Vector3 newSize = selfColliderX.size;
+            Vector3 newCenter = selfColliderX.center;
+            if (add)
+            {
+                newSize.x += offset;
+                newCenter.x += offset / 2;
+            }
+            else
+            {
+                newSize.x -= offset;
+                newCenter.x -= offset / 2;
+            }
+            selfColliderX.size = newSize;
+            selfColliderX.center = newCenter;
+            if (_playerInteractingWith.Count == 1)
+            {
+                newSize.y = player.soloCarrierCollider.size.y;
+                newCenter.y = player.soloCarrierCollider.center.y;
+                Vector3 playerColliderSize = newSize;
+                playerColliderSize.x = newSize.z;
+                playerColliderSize.z = newSize.x - 1.0f;
+                Vector3 playerColliderCenter = newCenter;
+                playerColliderCenter.x = newCenter.z;
+                playerColliderCenter.z = newCenter.x;
+                player.soloCarrierCollider.size = playerColliderSize;
+                player.soloCarrierCollider.center = playerColliderCenter;
+            }
+        }
+        else if (localSnapPosition.x < 0)
+        {
+            float offset = (localSnapPosition.x - player.selfCollider.bounds.size.z) / 2;
+            Vector3 newSize = selfColliderX.size;
+            Vector3 newCenter = selfColliderX.center;
+            if (add)
+            {
+                newSize.x -= offset;
+                newCenter.x += offset / 2;
+            }
+            else
+            {
+                newSize.x += offset;
+                newCenter.x -= offset / 2;
+            }
+            selfColliderX.size = newSize;
+            selfColliderX.center = newCenter;
+            if (_playerInteractingWith.Count == 1)
+            {
+                newSize.y = player.soloCarrierCollider.size.y;
+                newCenter.y = player.soloCarrierCollider.center.y;
+                Vector3 playerColliderSize = newSize;
+                playerColliderSize.x = newSize.z;
+                playerColliderSize.z = newSize.x - 1.0f;
+                Vector3 playerColliderCenter = newCenter;
+                playerColliderCenter.x = newCenter.z;
+                playerColliderCenter.z = -newCenter.x;
+                player.soloCarrierCollider.size = playerColliderSize;
+                player.soloCarrierCollider.center = playerColliderCenter;
+            }
+        }
+        else if (localSnapPosition.z > 0)
+        {
+            float offset = (localSnapPosition.z + player.selfCollider.bounds.size.z) / 2;
+            Vector3 newSize = selfColliderZ.size;
+            Vector3 newCenter = selfColliderZ.center;
+            if (add)
+            {
+                newSize.z += offset;
+                newCenter.z += offset / 2;
+            }
+            else
+            {
+                newSize.z -= offset;
+                newCenter.z -= offset / 2;
+            }
+            selfColliderZ.size = newSize;
+            selfColliderZ.center = newCenter;
+            if (_playerInteractingWith.Count == 1)
+            {
+                newSize.y = player.soloCarrierCollider.size.y;
+                newCenter.y = player.soloCarrierCollider.center.y;
+                newSize.z -= 1.0f;
+                player.soloCarrierCollider.size = newSize;
+                player.soloCarrierCollider.center = newCenter;
+            }
+        }
+        else if (localSnapPosition.z < 0)
+        {
+            float offset = (localSnapPosition.z - player.selfCollider.bounds.size.z) / 2;
+            Vector3 newSize = selfColliderZ.size;
+            Vector3 newCenter = selfColliderZ.center;
+            if (add)
+            {
+                newSize.z -= offset;
+                newCenter.z += offset / 2;
+            }
+            else
+            {
+                newSize.z += offset;
+                newCenter.z -= offset / 2;
+            }
+            selfColliderZ.size = newSize;
+            selfColliderZ.center = newCenter;
+            if (_playerInteractingWith.Count == 1)
+            {
+                newSize.y = player.soloCarrierCollider.size.y;
+                newSize.z -= 1.0f;
+                newCenter.y = player.soloCarrierCollider.center.y;
+                player.soloCarrierCollider.size = newSize;
+                newCenter.z = -newCenter.z;
+                player.soloCarrierCollider.center = newCenter;
+            }
+        }
     }
 
     public void UpTreasure(Transform interact)
@@ -205,45 +242,50 @@ public class Treasure : MonoBehaviour, ICarriable
 
         player.carrying = this;
 
-        if (playerColliding.Count > 0)
-        {
-            foreach (PlayerController p in playerColliding)
-            {
-                if (p == player)
-                {
-                    playerColliding.Remove(p);
-                    _isColliding = false;
-                    break;
-                }
-            }
-        }
-
         selfRigidbody.useGravity = false;
 
         // Update speed malus
         ApplySpeedMalus();
 
-        // If the player is alone to carry it just snap the treasure as child of the player
-        if (_playerInteractingWith.Count == 1)
-        {
-            Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, true);
-            UpTreasure(player.self);
-            selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
-            selfRigidbody.useGravity = false;
-
-            startPlayerPosition = player.self.position;
-            startPlayerRotation = player.self.rotation;
-
-            startSelfPosition = self.position;
-            startSelfRotation = self.rotation;
-
-            startSelfPosition = DivideVectors(Quaternion.Inverse(player.self.rotation) * (startSelfPosition - startPlayerPosition), player.self.lossyScale);
-        }
-
+        
         // If there is more than one player to carry it, snap treasures to the players' joint
         if (_playerInteractingWith.Count <= category.maxPlayerCarrying)
         {
+            Physics.IgnoreCollision(selfColliderX, player.selfCollider, true);
+            Physics.IgnoreCollision(selfColliderZ, player.selfCollider, true);
+
             DealWithCollider(player, interactingWith);
+            AdjustCollider(interactingWith.transform.localPosition, player, true);
+
+            // If the player is alone to carry it just snap the treasure as child of the player
+            if (_playerInteractingWith.Count == 1)
+            {
+                Physics.IgnoreCollision(selfColliderX, BoatManager.instance.selfCollider, true);
+                Physics.IgnoreCollision(selfColliderZ, BoatManager.instance.selfCollider, true);
+
+                UpTreasure(player.self);
+                selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
+                selfRigidbody.useGravity = false;
+
+                player.selfRigidBody.velocity = Vector3.zero;
+                player.soloCarrierCollider.enabled = true;
+                selfColliderX.enabled = false;
+                selfColliderZ.enabled = false;
+
+                self.SetParent(player.self);
+
+            }
+            else if (_playerInteractingWith.Count == 2)
+            {
+                _playerInteractingWith[0].soloCarrierCollider.enabled = false;
+                selfColliderX.enabled = true;
+                selfColliderZ.enabled = true;
+
+                selfRigidbody.isKinematic = false;
+                selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+
+                self.SetParent(null);
+            }
 
             selfRigidbody.velocity = Vector3.zero;
 
@@ -281,12 +323,20 @@ public class Treasure : MonoBehaviour, ICarriable
     public void Launch(PlayerController player)
     {
         int nbPlayers = _playerInteractingWith.Count;
+        if (_playerInteractingWith.Count == 1)
+        {
+            _playerInteractingWith[0].soloCarrierCollider.enabled = false;
+            selfColliderX.enabled = true;
+            selfColliderZ.enabled = true;
+            selfRigidbody.isKinematic = false;
+        }
         while (_playerInteractingWith.Count > 0)
         {
             PlayerController p = _playerInteractingWith[0];
 
             // Update lists values
             _playerInteractingWith.Remove(p);
+            AdjustCollider(associateColliders[p].transform.localPosition, p, false);
             associateColliders[p].GetComponent<BoxCollider>().enabled = true;
             associateColliders.Remove(p);
 
@@ -302,27 +352,28 @@ public class Treasure : MonoBehaviour, ICarriable
             p.SweatActivator(false);
             p.sword.SetActive(true);
 
-            Physics.IgnoreCollision(selfCollider, p.selfCollider, true);
+            Physics.IgnoreCollision(selfColliderX, p.selfCollider, true);
+            Physics.IgnoreCollision(selfColliderZ, p.selfCollider, true);
             playerCollisionIgnored.Add(p);
         }
 
         selfAura.SetActive(true);
-
-        // Enable rigidbody
-        selfRigidbody.isKinematic = false;
-        selfRigidbody.useGravity = true;
-        Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
-        selfRigidbody.velocity = Vector3.zero;
-        selfRigidbody.AddForce((playerThrowDir.normalized + (Vector3.up * category.multiplyUpAngle)).normalized * category.forceNbPlayer[nbPlayers - 1], 
-            ForceMode.Impulse);
-        selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-
+        
         if (self.parent != null)
             self.SetParent(null);
+        // Enable rigidbody
+        selfRigidbody.useGravity = true;
+        isGrounded = false;
+        Physics.IgnoreCollision(selfColliderX, BoatManager.instance.selfCollider, false);
+        Physics.IgnoreCollision(selfColliderZ, BoatManager.instance.selfCollider, false);
+        selfRigidbody.velocity = Vector3.zero;
+        selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+        selfRigidbody.AddForce((playerThrowDir.normalized + (Vector3.up * category.multiplyUpAngle)).normalized * category.forceNbPlayer[nbPlayers - 1], 
+            ForceMode.Impulse);
+
         // Play Launch Sound
         AudioManager.AMInstance.playerThrowSFX.Post(gameObject);
 
-        isGrounded = false;
     }
 
     private void StopLaunching()
@@ -351,10 +402,15 @@ public class Treasure : MonoBehaviour, ICarriable
         // Player does not interact with the treasure anymore
         _playerInteractingWith.Remove(player);
 
+        AdjustCollider(associateColliders[player].transform.localPosition, player, false);
+        
         associateColliders[player].GetComponent<BoxCollider>().enabled = true;
         associateColliders.Remove(player);
 
         player.playerGraphics.forward = player.self.forward;
+
+        Physics.IgnoreCollision(selfColliderX, player.selfCollider, false);
+        Physics.IgnoreCollision(selfColliderZ, player.selfCollider, false);
 
         // Update speed malus
         ApplySpeedMalus();
@@ -365,22 +421,27 @@ public class Treasure : MonoBehaviour, ICarriable
 
             player.self.forward = associateColliders[player].transform.forward;
 
-            startPlayerPosition = player.self.position;
-            startPlayerRotation = player.self.rotation;
+            self.SetParent(player.self);
 
-            startSelfPosition = self.position;
-            startSelfRotation = self.rotation;
-
-            startSelfPosition = DivideVectors(Quaternion.Inverse(player.self.rotation) * (startSelfPosition - startPlayerPosition), player.self.lossyScale);
+            _playerInteractingWith[0].soloCarrierCollider.enabled = true;
+            selfColliderX.enabled = false;
+            selfColliderZ.enabled = false;
         }
         if (_playerInteractingWith.Count < 1)
         {
-            Physics.IgnoreCollision(selfCollider, BoatManager.instance.selfCollider, false);
+            Physics.IgnoreCollision(selfColliderX, BoatManager.instance.selfCollider, false);
+            Physics.IgnoreCollision(selfColliderZ, BoatManager.instance.selfCollider, false);
+
+            player.soloCarrierCollider.enabled = false;
+            selfColliderX.enabled = true;
+            selfColliderZ.enabled = true;
 
             // Enable rigidbody
             selfRigidbody.useGravity = true;
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
             isGrounded = false;
+
+            self.SetParent(null);
         }
     }
 
@@ -415,21 +476,25 @@ public class Treasure : MonoBehaviour, ICarriable
             speedMalus = category.speedMalus / (_playerInteractingWith.Count * _playerInteractingWith.Count);
     }
 
-    private void TreasureMovement()
+    public Vector3 GetTreasuresVelocity()
     {
         Vector3 direction = Vector3.zero;
-        if (_playerInteractingWith.Count > 0)
+        foreach (PlayerController player in _playerInteractingWith)
         {
+            Vector3 applyForces = player.movement / _playerInteractingWith.Count;
+            applyForces.y = 0.0f;
+            direction += applyForces;
+        }
+        return direction;
+    }
+
+    private void TreasureMovement()
+    {
+        if (_playerInteractingWith.Count > 0)
             selfRigidbody.velocity = Vector3.zero;
-            foreach(PlayerController player in _playerInteractingWith)
-            {
-                if (player.isColliding && !player.CheckMovementWhenColliding()) return;
-                if (player.isLaunching) continue;
-                Vector3 applyForces = player.movement / _playerInteractingWith.Count;
-                applyForces.y = 0.0f;
-                direction += applyForces;
-            }
-            selfRigidbody.velocity = direction;
+        if (_playerInteractingWith.Count > 1)
+        {
+            selfRigidbody.velocity = GetTreasuresVelocity();
         }
     }
 
@@ -490,33 +555,13 @@ public class Treasure : MonoBehaviour, ICarriable
                 }
                 while(playerCollisionIgnored.Count > 0)
                 {
-                    Physics.IgnoreCollision(selfCollider, playerCollisionIgnored[0].selfCollider, false);
+                    Physics.IgnoreCollision(selfColliderX, playerCollisionIgnored[0].selfCollider, false);
+                    Physics.IgnoreCollision(selfColliderZ, playerCollisionIgnored[0].selfCollider, false);
                     playerCollisionIgnored.RemoveAt(0);
                 }
             }
             
         }
-        if (_isColliding && !isCarriedByPiqueSous)
-        {
-            if (Vector3.Dot(selfRigidbody.velocity, -_collisionDirection) < 0 && selfRigidbody.velocity != Vector3.zero)
-            {
-                _isColliding = false;
-            }
-            else
-            {
-
-                foreach (PlayerController player in _playerInteractingWith)
-                {
-                    if (_playerInteractingWith.Count > 1)
-                    {
-                        associateColliders[player].GetComponent<GetSnappingPosition>().SnapPlayerToPosition(player);
-                    }
-                }
-                self.position = lastPosition;
-            }
-        }
-        else
-            lastPosition = self.position;
 
         PlayerJoystickDetection();
         UpdateWeightNeed();

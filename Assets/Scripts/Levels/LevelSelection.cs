@@ -114,11 +114,11 @@ public class LevelSelection : MonoBehaviour
         }
 
         tokenGroup.SetActive(true);
-        CheckStarsStates();
         if (offset < 0.0f)
             ++currentLevelSelectedIndex;
         else
             --currentLevelSelectedIndex;
+        CheckStarsStates();
         coroutine = null;
         yield return null;
     }
@@ -163,22 +163,16 @@ public class LevelSelection : MonoBehaviour
         {
             case 0:
                 return 0;
-                break;
             case 1:
                 return 1;
-                break;
             case 2:
                 return 4;
-                break;
             case 3:
                 return 5;
-                break;
             case 4:
                 return 7;
-                break;
             default:
                 return 0;
-                break;
         }
     }
 
