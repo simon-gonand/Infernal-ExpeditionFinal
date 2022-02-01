@@ -201,7 +201,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4223509153915057740}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 970fe22a20c8ed24c8b2d72936bd3aab, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -246,7 +246,6 @@ MonoBehaviour:
     m_Bits: 55
   playerThrowDir: {x: 0, y: 0, z: 0}
   _isCarrying: 0
-  isColliding: 0
 --- !u!114 &4223509153915057750
 MonoBehaviour:
   m_ObjectHideFlags: 0

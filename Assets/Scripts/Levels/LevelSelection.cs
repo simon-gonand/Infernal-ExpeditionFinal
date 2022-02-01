@@ -189,7 +189,6 @@ public class LevelSelection : MonoBehaviour
 
     private void CheckStarsStates()
     {
-        Debug.Log(DebugGetLevelIndex());
         LevelProfile level = SaveData.instance.levels[DebugGetLevelIndex()];
         switch (level.starState)
         {
