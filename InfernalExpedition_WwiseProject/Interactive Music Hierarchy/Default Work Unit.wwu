@@ -1698,66 +1698,22 @@
 															</ModifierList>
 														</Property>
 														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-													</PropertyList>
-													<SegmentRef Name="Pillage B" ID="{B40C65F6-298E-4DD8-87BC-F8F08025F345}"/>
-												</MusicPlaylistItem>
-												<MusicPlaylistItem Name="" ID="{38082F2E-1E69-44AD-86B9-480A0108842D}" ShortID="809279116">
-													<PropertyList>
-														<Property Name="LoopCount" Type="int16">
-															<ModifierList>
-																<ModifierInfo>
-																	<Modifier Name="" ID="{65C345D8-8458-41DF-B686-613210098AC3}">
-																		<PropertyList>
-																			<Property Name="Enabled" Type="bool" Value="True"/>
-																			<Property Name="Max" Type="Real64" Value="1"/>
-																		</PropertyList>
-																	</Modifier>
-																</ModifierInfo>
-															</ModifierList>
+														<Property Name="Weight" Type="Real64">
+															<ValueList>
+																<Value>80</Value>
+															</ValueList>
 														</Property>
-														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-													</PropertyList>
-													<SegmentRef Name="Pillage B" ID="{B40C65F6-298E-4DD8-87BC-F8F08025F345}"/>
-												</MusicPlaylistItem>
-												<MusicPlaylistItem Name="" ID="{6FE43A8D-5A67-4E4F-A71B-DD1419DB8823}" ShortID="384725383">
-													<PropertyList>
-														<Property Name="LoopCount" Type="int16">
-															<ModifierList>
-																<ModifierInfo>
-																	<Modifier Name="" ID="{44C0CC93-DE02-4F42-BAD7-719E6AA2D012}">
-																		<PropertyList>
-																			<Property Name="Enabled" Type="bool" Value="True"/>
-																			<Property Name="Max" Type="Real64" Value="1"/>
-																		</PropertyList>
-																	</Modifier>
-																</ModifierInfo>
-															</ModifierList>
-														</Property>
-														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-													</PropertyList>
-													<SegmentRef Name="Pillage B" ID="{B40C65F6-298E-4DD8-87BC-F8F08025F345}"/>
-												</MusicPlaylistItem>
-												<MusicPlaylistItem Name="" ID="{82563C73-B7BF-44D6-A2FB-FF3C5C5A7BF2}" ShortID="220127675">
-													<PropertyList>
-														<Property Name="LoopCount" Type="int16">
-															<ModifierList>
-																<ModifierInfo>
-																	<Modifier Name="" ID="{F91B576C-822B-4F8A-AEE5-24CB380E582A}">
-																		<PropertyList>
-																			<Property Name="Enabled" Type="bool" Value="True"/>
-																			<Property Name="Max" Type="Real64" Value="1"/>
-																		</PropertyList>
-																	</Modifier>
-																</ModifierInfo>
-															</ModifierList>
-														</Property>
-														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 													</PropertyList>
 													<SegmentRef Name="Pillage B" ID="{B40C65F6-298E-4DD8-87BC-F8F08025F345}"/>
 												</MusicPlaylistItem>
 												<MusicPlaylistItem Name="" ID="{6135AD73-1A2C-46AC-A077-91877AAA3644}" ShortID="1041253558">
 													<PropertyList>
 														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+														<Property Name="Weight" Type="Real64">
+															<ValueList>
+																<Value>20</Value>
+															</ValueList>
+														</Property>
 													</PropertyList>
 													<SegmentRef Name="Cool_120Bpm_4-4_L8_P0" ID="{EEA233E9-496F-49DD-BDDE-BF8957C03ECC}"/>
 												</MusicPlaylistItem>
@@ -5397,6 +5353,95 @@
 										</ObjectList>
 									</ObjectLists>
 								</MusicSegment>
+								<MusicSegment Name="Cool_120Bpm_4-4_L8_P0_01" ID="{FAE75F3A-C352-49B3-AC3A-A64048443052}" ShortID="295817680">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="21500"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-2</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E06A4E2D-B8C6-46BC-8FBB-F5D289D4AF92}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Musics Audio Bus" ID="{6FF2873C-417A-43C7-AE7D-EDA382BC9380}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="Cool_120Bpm_4-4_L8_P0" ID="{A743D740-A358-4F65-AACD-6169A3905E5D}" ShortID="303094657">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{160C7F7B-C87F-4FA1-9469-30294B69377C}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Cool_120Bpm_4-4_L8_P0" ID="{B6D59F78-306A-4449-86F8-02C2E133E62E}">
+													<Language>SFX</Language>
+													<AudioFile>Cool_120Bpm_4-4_L8_P0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="306762289"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{DBEF833A-2FF8-433C-AA48-1B3033CD2166}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{58E545CD-CBDC-4759-A248-1E8F8FE3747F}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="Cool_120Bpm_4-4_L8_P0" ID="{3BACA274-5F06-4D74-A0E6-77DC63B06712}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="21338.5487528345"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="Cool_120Bpm_4-4_L8_P0" ID="{B6D59F78-306A-4449-86F8-02C2E133E62E}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{65759E8F-F1DC-4D1F-8EC8-9E72537DB018}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{568A81C7-BE3D-4A55-A524-199FB3697D1E}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="16000"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
 							</ChildrenList>
 							<TransitionList>
 								<MusicTransition Name="Root" ID="{0C135BD3-AF1F-4243-8B87-E1F7AA09FD1A}">
@@ -5458,23 +5503,57 @@
 													</PropertyList>
 													<SegmentRef Name="Pillage A" ID="{46F77410-8370-4F56-9F68-A2EA2260CDE1}"/>
 												</MusicPlaylistItem>
-												<MusicPlaylistItem Name="" ID="{024B7855-F8C9-47B7-BD5F-248A23DB6E3F}" ShortID="650775175">
+												<MusicPlaylistItem Name="" ID="{0DEAA193-BD7C-4246-BE16-A2F38FCABFEE}" ShortID="409830012">
 													<PropertyList>
 														<Property Name="LoopCount" Type="int16">
 															<ModifierList>
 																<ModifierInfo>
-																	<Modifier Name="" ID="{DF40AC1D-DBDD-4FD5-858B-395E0A3C8749}">
+																	<Modifier Name="" ID="{EFB83280-DB7D-43F4-BBE4-01AB39148359}">
 																		<PropertyList>
-																			<Property Name="Enabled" Type="bool" Value="True"/>
 																			<Property Name="Max" Type="Real64" Value="1"/>
 																		</PropertyList>
 																	</Modifier>
 																</ModifierInfo>
 															</ModifierList>
 														</Property>
-														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+														<Property Name="PlayMode" Type="int16" Value="3"/>
 													</PropertyList>
-													<SegmentRef Name="Pillage B" ID="{91F794DD-EAA2-4C5F-B58A-12C9C7B9D1C9}"/>
+													<ChildrenList>
+														<MusicPlaylistItem Name="" ID="{024B7855-F8C9-47B7-BD5F-248A23DB6E3F}" ShortID="650775175">
+															<PropertyList>
+																<Property Name="LoopCount" Type="int16">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{DF40AC1D-DBDD-4FD5-858B-395E0A3C8749}">
+																				<PropertyList>
+																					<Property Name="Enabled" Type="bool" Value="True"/>
+																					<Property Name="Max" Type="Real64" Value="1"/>
+																				</PropertyList>
+																			</Modifier>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+																<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+																<Property Name="Weight" Type="Real64">
+																	<ValueList>
+																		<Value>80</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<SegmentRef Name="Pillage B" ID="{91F794DD-EAA2-4C5F-B58A-12C9C7B9D1C9}"/>
+														</MusicPlaylistItem>
+														<MusicPlaylistItem Name="" ID="{500881CF-5EDE-4E19-A552-9A6394AC953A}" ShortID="807524538">
+															<PropertyList>
+																<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+																<Property Name="Weight" Type="Real64">
+																	<ValueList>
+																		<Value>20</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<SegmentRef Name="Cool_120Bpm_4-4_L8_P0_01" ID="{FAE75F3A-C352-49B3-AC3A-A64048443052}"/>
+														</MusicPlaylistItem>
+													</ChildrenList>
 												</MusicPlaylistItem>
 											</ChildrenList>
 										</MusicPlaylistItem>
@@ -7027,6 +7106,52 @@
 												</PropertyList>
 											</MusicFade>
 										</TransitionFadeOut>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{CD9CD517-11BF-418C-AE50-FDBC7F73854B}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="DestinationPlaylistJumpTo" Type="int16" Value="1"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="EnableTransitionFadeIn" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+										<Property Name="UseTransitionObject" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="VictoryA_120Bpm_4-4_L8_P0" ID="{D7EB11EC-DD3C-44C2-885F-DE07C71229A2}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="Cool_120Bpm_4-4_L8_P0_01" ID="{FAE75F3A-C352-49B3-AC3A-A64048443052}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<TransitionObjectRef Name="TransToVictoryA_120Bpm_4-4_L2_P0" ID="{A4B7D1D1-1589-4033-927B-27EA3EA95D0C}" WorkUnitID="{6A7CB3CE-F98D-4DD9-BDA4-817FC02A13F4}"/>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{2F18B8C4-24E2-43D7-9E55-1C2C84777B6D}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="1.5"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{2CD86C24-CB5A-495A-8643-3D6809DC91FC}">
+												<PropertyList>
+													<Property Name="FadeOffset" Type="Real64" Value="0.5"/>
+													<Property Name="FadeTime" Type="Real64" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+										<TransitionFadeIn>
+											<MusicFade Name="Transition Fade-in" ID="{9B80072D-EF63-44F1-A78A-F8B075051E5C}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+												</PropertyList>
+											</MusicFade>
+										</TransitionFadeIn>
 									</TransitionInfo>
 								</MusicTransition>
 							</ChildrenList>
