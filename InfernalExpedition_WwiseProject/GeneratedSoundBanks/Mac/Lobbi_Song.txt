@@ -1,5 +1,8 @@
 Event	ID	Name			Wwise Object Path	Notes
 	474510645	Lobbi_Theme			\Musics\Musics\Lobbi_Theme	
+	607944962	LobbySwitch_Classic			\Musics\LobbySwitch_Classic	
+	879444183	LobbySwitch_City			\Musics\LobbySwitch_City	
+	2116279594	LobbySwitch_Bay			\Musics\LobbySwitch_Bay	
 
 Switch Group	ID	Name			Wwise Object Path	Notes
 	3153767688	MapSelection_Biome			\Default Work Unit\MapSelection_Biome	
@@ -23,13 +26,13 @@ Custom State	ID	Name	State Group	Owner		Notes
 	1018988405	Headphones	AudioDevice	\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_Bay		
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	67662359	ChillA-Bay_120Bpm_4-4_L8_P0	D:\UnityProject\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillA-Bay_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_Bay\ChillA-Bay_120Bpm_4-4_L8_P0\ChillA-Bay_120Bpm_4-4_L8_P0		4414720
-	172857931	ChillA_120Bpm_4-4_L8_P0	D:\UnityProject\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillA_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_Classic\ChillA_120Bpm_4-4_L8_P0\ChillA_120Bpm_4-4_L8_P0		3072428
-	176843474	ChillC-Ville_120Bpm_4-4_L8_P0	D:\UnityProject\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillC-Ville_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_City\ChillC-Ville_120Bpm_4-4_L8_P0\ChillC-Ville_120Bpm_4-4_L8_P0		3618164
-	331249355	ChillB_120Bpm_4-4_L8_P0	D:\UnityProject\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillB_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_Classic\ChillB_120Bpm_4-4_L8_P0\ChillB_120Bpm_4-4_L8_P0		3044864
-	464518798	ChillC_120Bpm_4-4_L8_P0	D:\UnityProject\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillC_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_Classic\ChillC_120Bpm_4-4_L8_P0\ChillC_120Bpm_4-4_L8_P0		3039352
-	571518169	ChillA-Ville_120Bpm_4-4_L8_P0	D:\UnityProject\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillA-Ville_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_City\ChillA-Ville_120Bpm_4-4_L8_P0\ChillA-Ville_120Bpm_4-4_L8_P0		3835908
-	616743026	ChillC-Bay_120Bpm_4-4_L8_P0	D:\UnityProject\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillC-Bay_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_Bay\ChillC-Bay_120Bpm_4-4_L8_P0\ChillC-Bay_120Bpm_4-4_L8_P0		4647164
-	1072042686	ChillB-Ville_120Bpm_4-4_L8_P0	D:\UnityProject\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillB-Ville_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_City\ChillB-Ville_120Bpm_4-4_L8_P0\ChillB-Ville_120Bpm_4-4_L8_P0		3100908
-	1072483169	ChillB-Bay_120Bpm_4-4_L8_P0	D:\UnityProject\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillB-Bay_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_Bay\ChillB-Bay_120Bpm_4-4_L8_P0\ChillB-Bay_120Bpm_4-4_L8_P0		4397264
+	67662359	ChillA-Bay_120Bpm_4-4_L8_P0	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillA-Bay_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_Bay\ChillA-Bay_120Bpm_4-4_L8_P0\ChillA-Bay_120Bpm_4-4_L8_P0		4414720
+	172857931	ChillA_120Bpm_4-4_L8_P0	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillA_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_Classic\ChillA_120Bpm_4-4_L8_P0\ChillA_120Bpm_4-4_L8_P0		3072428
+	176843474	ChillC-Ville_120Bpm_4-4_L8_P0	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillC-Ville_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_City\ChillC-Ville_120Bpm_4-4_L8_P0\ChillC-Ville_120Bpm_4-4_L8_P0		3618164
+	331249355	ChillB_120Bpm_4-4_L8_P0	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillB_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_Classic\ChillB_120Bpm_4-4_L8_P0\ChillB_120Bpm_4-4_L8_P0		3044864
+	464518798	ChillC_120Bpm_4-4_L8_P0	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillC_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_Classic\ChillC_120Bpm_4-4_L8_P0\ChillC_120Bpm_4-4_L8_P0		3039352
+	571518169	ChillA-Ville_120Bpm_4-4_L8_P0	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillA-Ville_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_City\ChillA-Ville_120Bpm_4-4_L8_P0\ChillA-Ville_120Bpm_4-4_L8_P0		3835908
+	616743026	ChillC-Bay_120Bpm_4-4_L8_P0	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillC-Bay_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_Bay\ChillC-Bay_120Bpm_4-4_L8_P0\ChillC-Bay_120Bpm_4-4_L8_P0		4647164
+	1072042686	ChillB-Ville_120Bpm_4-4_L8_P0	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillB-Ville_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_City\ChillB-Ville_120Bpm_4-4_L8_P0\ChillB-Ville_120Bpm_4-4_L8_P0		3100908
+	1072483169	ChillB-Bay_120Bpm_4-4_L8_P0	D:\Unity Project\Infernal-ExpeditionFinal\InfernalExpedition_WwiseProject\.cache\Mac\SFX\ChillB-Bay_120Bpm_4-4_L8_P0_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Lobby_Theme\Lobbi_Bay\ChillB-Bay_120Bpm_4-4_L8_P0\ChillB-Bay_120Bpm_4-4_L8_P0		4397264
 

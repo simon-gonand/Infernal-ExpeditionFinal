@@ -69,6 +69,7 @@ public class LevelSelection : MonoBehaviour
     private void ResumeGame()
     {
         PlayerManager.instance.onLevelSelectionUI = false;
+        AudioManager.AMInstance.lobbyThemeToClassicSWITCH.Post(gameObject);
     }
 
     private IEnumerator WaitForCameraMovementsToMainCam()
@@ -119,6 +120,9 @@ public class LevelSelection : MonoBehaviour
         else
             --currentLevelSelectedIndex;
         CheckStarsStates();
+
+        
+
         coroutine = null;
         yield return null;
     }
@@ -138,6 +142,8 @@ public class LevelSelection : MonoBehaviour
             {
                 // Move left
                 coroutine = StartCoroutine(LerpTransition(+1288));
+                AudioManager.AMInstance.menuNavigationSFX.Post(gameObject);
+                AudioUpdateForBiome();
             }
 
         }
@@ -152,6 +158,8 @@ public class LevelSelection : MonoBehaviour
             {
                 // Move right
                 coroutine = StartCoroutine(LerpTransition(-1288));
+                AudioManager.AMInstance.menuNavigationSFX.Post(gameObject);
+                AudioUpdateForBiome();
             }
         }
     }
@@ -294,5 +302,37 @@ public class LevelSelection : MonoBehaviour
             player.levelSelectionTable = null;
             outline.enabled = false;
         }
+    }
+
+
+
+    void AudioUpdateForBiome()
+    {
+        Debug.Log("ENTER");
+
+
+        if (currentLevelSelectedIndex <= 1)
+        {
+            AudioManager.AMInstance.lobbyThemeToClassicSWITCH.Post(gameObject);
+            Debug.Log("Post event for the classic biome");
+        }
+        else if (currentLevelSelectedIndex <= 3)
+        {
+            AudioManager.AMInstance.lobbyThemeToCitySWITCH.Post(gameObject);
+            Debug.Log("Post event for the city biome");
+        }
+        else if (currentLevelSelectedIndex <= 4)
+        {
+            AudioManager.AMInstance.lobbyThemeToBaySWITCH.Post(gameObject);
+            Debug.Log("Post event for the bay biome");
+        }
+        else
+        {
+            AudioManager.AMInstance.lobbyThemeToClassicSWITCH.Post(gameObject);
+            Debug.Log("Post event for the undefinited biome");
+        }
+
+
+        Debug.Log("EXIT");
     }
 }
