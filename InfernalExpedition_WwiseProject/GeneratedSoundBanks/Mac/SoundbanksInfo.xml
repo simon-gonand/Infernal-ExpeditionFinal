@@ -481,7 +481,7 @@
 				<Trigger Id="1087296951" Name="Collect_Treasure" ObjectPath="\Triggers\Default Work Unit\Collect_Treasure"/>
 			</Triggers>
 		</SoundBank>
-		<SoundBank Id="1355168291" Language="SFX" Hash="87784229">
+		<SoundBank Id="1355168291" Language="SFX" Hash="865715995">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -919,17 +919,17 @@
 						<ActionSetSwitchEntry Id="269384475" Name="Classic" ObjectPath="\Switches\Default Work Unit\MapSelection_Biome\Classic"/>
 					</ActionSetSwitch>
 				</Event>
-				<Event Id="2116279594" Name="LobbySwitch_Bay" ObjectPath="\Events\Musics\LobbySwitch_Bay" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+				<Event Id="2116279594" Name="LobbySwitch_Bay" ObjectPath="\Events\Musics\Musics\LobbySwitch_Bay" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
 					<ActionSetSwitch>
 						<ActionSetSwitchEntry Id="513390123" Name="Bay" ObjectPath="\Switches\Default Work Unit\MapSelection_Biome\Bay"/>
 					</ActionSetSwitch>
 				</Event>
-				<Event Id="879444183" Name="LobbySwitch_City" ObjectPath="\Events\Musics\LobbySwitch_City" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+				<Event Id="879444183" Name="LobbySwitch_City" ObjectPath="\Events\Musics\Musics\LobbySwitch_City" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
 					<ActionSetSwitch>
 						<ActionSetSwitchEntry Id="3888786832" Name="City" ObjectPath="\Switches\Default Work Unit\MapSelection_Biome\City"/>
 					</ActionSetSwitch>
 				</Event>
-				<Event Id="607944962" Name="LobbySwitch_Classic" ObjectPath="\Events\Musics\LobbySwitch_Classic" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+				<Event Id="607944962" Name="LobbySwitch_Classic" ObjectPath="\Events\Musics\Musics\LobbySwitch_Classic" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
 					<ActionSetSwitch>
 						<ActionSetSwitchEntry Id="269384475" Name="Classic" ObjectPath="\Switches\Default Work Unit\MapSelection_Biome\Classic"/>
 					</ActionSetSwitch>

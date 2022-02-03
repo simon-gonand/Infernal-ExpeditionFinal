@@ -142,50 +142,50 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="LobbySwitch_Bay" ID="{9ACD796A-F50E-4420-919E-5E5CF77C367E}">
+							<ChildrenList>
+								<Action Name="" ID="{60CD0371-8C24-4E37-AE3A-FB9849AEE3EB}" ShortID="1016735670">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="23"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Bay" ID="{34C08821-2EE3-4764-9833-9528F409C4DE}" WorkUnitID="{16D2F823-A02E-494C-BA51-910D0AB18446}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="LobbySwitch_Classic" ID="{E3AAF6A3-503E-4388-AC05-B9551F75CB52}">
+							<ChildrenList>
+								<Action Name="" ID="{39A4C022-1832-4673-88F2-D6F1A76BD2C4}" ShortID="157929509">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="23"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Classic" ID="{94CD29EB-7452-4E35-8716-B3F06458B8C2}" WorkUnitID="{16D2F823-A02E-494C-BA51-910D0AB18446}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="LobbySwitch_City" ID="{46046D00-8E47-4F32-AAF3-4C660A54E5EB}">
+							<ChildrenList>
+								<Action Name="" ID="{076620EC-20D8-4050-86E4-BF2A6F17CA76}" ShortID="164363161">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="23"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="City" ID="{1A0E72E8-FBB3-4E08-8CA8-2DD3DE2EE6B0}" WorkUnitID="{16D2F823-A02E-494C-BA51-910D0AB18446}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
-				<Event Name="LobbySwitch_Classic" ID="{E3AAF6A3-503E-4388-AC05-B9551F75CB52}">
-					<ChildrenList>
-						<Action Name="" ID="{39A4C022-1832-4673-88F2-D6F1A76BD2C4}" ShortID="157929509">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="23"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Classic" ID="{94CD29EB-7452-4E35-8716-B3F06458B8C2}" WorkUnitID="{16D2F823-A02E-494C-BA51-910D0AB18446}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="LobbySwitch_City" ID="{46046D00-8E47-4F32-AAF3-4C660A54E5EB}">
-					<ChildrenList>
-						<Action Name="" ID="{076620EC-20D8-4050-86E4-BF2A6F17CA76}" ShortID="164363161">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="23"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="City" ID="{1A0E72E8-FBB3-4E08-8CA8-2DD3DE2EE6B0}" WorkUnitID="{16D2F823-A02E-494C-BA51-910D0AB18446}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="LobbySwitch_Bay" ID="{9ACD796A-F50E-4420-919E-5E5CF77C367E}">
-					<ChildrenList>
-						<Action Name="" ID="{60CD0371-8C24-4E37-AE3A-FB9849AEE3EB}" ShortID="1016735670">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="23"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Bay" ID="{34C08821-2EE3-4764-9833-9528F409C4DE}" WorkUnitID="{16D2F823-A02E-494C-BA51-910D0AB18446}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

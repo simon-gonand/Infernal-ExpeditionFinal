@@ -28,7 +28,7 @@ public class HoldManager : MonoBehaviour
             Destroy(particule, 5f);
             goldBagAnim.SetTrigger("TreasureAdd");
 
-            AudioManager.AMInstance.boatTreasureCollectSFX.Post(gameObject);
+            AudioManager.AMInstance.boatTreasureCollectSFX.Post(AudioManager.AMInstance.gameObject);
 
             Destroy(other.gameObject);
         }
