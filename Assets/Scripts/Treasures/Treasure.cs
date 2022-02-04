@@ -37,10 +37,13 @@ public class Treasure : MonoBehaviour, ICarriable
     private bool _isCarriedByPiqueSous = false;
     public bool isCarriedByPiqueSous { get { return _isCarriedByPiqueSous; } }
 
+    private Vector3 spawnPos;
+
     private void Start()
     {
         outlineScript.enabled = false;
         Physics.IgnoreCollision(selfColliderZ, selfColliderX, true);
+        spawnPos = self.position;
     }
 
     public void UpdatePlayerRotation(PlayerController player, Transform playerTransform)
@@ -216,11 +219,6 @@ public class Treasure : MonoBehaviour, ICarriable
         Vector3 upTreasure = self.position;
         upTreasure.y = interact.position.y + self.lossyScale.y / 2;
         self.position = upTreasure;
-    }
-
-    private Vector3 DivideVectors(Vector3 num, Vector3 den)
-    {
-        return new Vector3(num.x / den.x, num.y / den.y, num.z / den.z);
     }
 
     #region interaction
@@ -539,7 +537,16 @@ public class Treasure : MonoBehaviour, ICarriable
         {
             float topTreasureY = self.position.y + self.lossyScale.y / 2;
             if (topTreasureY < NotDeepWater.instance.self.position.y)
-                Destroy(gameObject);
+            {
+                if (LevelManager.instance.levelId == 0)
+                {
+                    self.position = spawnPos;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+            }
         }
         if (!isGrounded)
         {
