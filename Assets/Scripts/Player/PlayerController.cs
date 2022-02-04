@@ -377,7 +377,7 @@ public class PlayerController : MonoBehaviour
         anim.SetTrigger("startStun");
         stunFx.SetActive(true);
 
-        selfCollider.material.staticFriction = 1.0f;
+        selfCollider.material.staticFriction = 10.0f;
         selfCollider.material.frictionCombine = PhysicMaterialCombine.Maximum;
 
         //Play Stunt Sound

@@ -103,6 +103,8 @@ public class GameManager : MonoBehaviour
             PlayerManager.instance.player2Spawn = spawn2;
             PlayerManager.instance.player3Spawn = spawn3;
             PlayerManager.instance.player4Spawn = spawn4;
+
+            BoatManager.instance.self.forward = Vector3.forward;
         }
 
         while (treasuresInScene.Count > 0)
