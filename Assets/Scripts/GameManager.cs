@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [Header("All treasures in scene")]
     public List<Treasure> treasuresInScene;
 
+    private bool returnToMainMenu = true;
+
     private void Awake()
     {
         if (instance == null)
@@ -56,8 +58,16 @@ public class GameManager : MonoBehaviour
         boatOnTargetGroup = isBoatInScene;
         if (sceneName.Equals("ÎleAuxPirates"))
         {
-            PlayerManager.instance.onPirateIsland = true;
-            PlayerManager.instance.onMainMenu = true;
+            if (PlayerManager.instance.onPirateIsland)
+            {
+                returnToMainMenu = true;
+                PlayerManager.instance.onMainMenu = true;
+            }
+            else
+            {
+                returnToMainMenu = false;
+                PlayerManager.instance.onPirateIsland = true;
+            }
             foreach (PlayerController p in PlayerManager.instance.players)
             {
                 p.selfPlayerInput.currentActionMap.Disable();
@@ -105,6 +115,9 @@ public class GameManager : MonoBehaviour
             PlayerManager.instance.player4Spawn = spawn4;
 
             BoatManager.instance.self.forward = Vector3.forward;
+
+            if (!returnToMainMenu)
+                FindObjectOfType<MainMenuUI>().Play();
         }
 
         while (treasuresInScene.Count > 0)
