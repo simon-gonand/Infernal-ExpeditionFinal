@@ -75,7 +75,12 @@ public class NPCEvents : MonoBehaviour
     {
         tutoBillboardUI.SetActive(true);
         ClosingTutoUI.Instance.closeTuto = true;      
-        Time.timeScale = 0.0f;
+        Time.timeScale = 0.0f;        foreach (PlayerController p in PlayerManager.instance.players)
+        {
+            p.selfPlayerInput.currentActionMap.Disable();
+            p.selfPlayerInput.SwitchCurrentActionMap("ControlsUI");
+            p.selfPlayerInput.currentActionMap.Enable();
+        }
     }
     //BLACK BANDS
     public void BlackBandsRemove()

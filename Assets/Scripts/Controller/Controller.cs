@@ -325,6 +325,14 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""ValidUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""75dcad06-d410-4eaf-95aa-1cd088c51e9e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -547,6 +555,28 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""action"": ""ValidModifUI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e62bd09-b619-4fc6-bfcf-e90fcfb7e796"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ValidUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""392c18aa-114a-4d99-95d9-06c2b9d0a297"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ValidUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -595,6 +625,7 @@ public class @Controller : IInputActionCollection, IDisposable
         m_ControlsUI_CancelUI = m_ControlsUI.FindAction("CancelUI", throwIfNotFound: true);
         m_ControlsUI_MoveUI = m_ControlsUI.FindAction("MoveUI", throwIfNotFound: true);
         m_ControlsUI_ValidModifUI = m_ControlsUI.FindAction("ValidModifUI", throwIfNotFound: true);
+        m_ControlsUI_ValidUI = m_ControlsUI.FindAction("ValidUI", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -728,6 +759,7 @@ public class @Controller : IInputActionCollection, IDisposable
     private readonly InputAction m_ControlsUI_CancelUI;
     private readonly InputAction m_ControlsUI_MoveUI;
     private readonly InputAction m_ControlsUI_ValidModifUI;
+    private readonly InputAction m_ControlsUI_ValidUI;
     public struct ControlsUIActions
     {
         private @Controller m_Wrapper;
@@ -735,6 +767,7 @@ public class @Controller : IInputActionCollection, IDisposable
         public InputAction @CancelUI => m_Wrapper.m_ControlsUI_CancelUI;
         public InputAction @MoveUI => m_Wrapper.m_ControlsUI_MoveUI;
         public InputAction @ValidModifUI => m_Wrapper.m_ControlsUI_ValidModifUI;
+        public InputAction @ValidUI => m_Wrapper.m_ControlsUI_ValidUI;
         public InputActionMap Get() { return m_Wrapper.m_ControlsUI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -753,6 +786,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @ValidModifUI.started -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnValidModifUI;
                 @ValidModifUI.performed -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnValidModifUI;
                 @ValidModifUI.canceled -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnValidModifUI;
+                @ValidUI.started -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnValidUI;
+                @ValidUI.performed -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnValidUI;
+                @ValidUI.canceled -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnValidUI;
             }
             m_Wrapper.m_ControlsUIActionsCallbackInterface = instance;
             if (instance != null)
@@ -766,6 +802,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @ValidModifUI.started += instance.OnValidModifUI;
                 @ValidModifUI.performed += instance.OnValidModifUI;
                 @ValidModifUI.canceled += instance.OnValidModifUI;
+                @ValidUI.started += instance.OnValidUI;
+                @ValidUI.performed += instance.OnValidUI;
+                @ValidUI.canceled += instance.OnValidUI;
             }
         }
     }
@@ -803,5 +842,6 @@ public class @Controller : IInputActionCollection, IDisposable
         void OnCancelUI(InputAction.CallbackContext context);
         void OnMoveUI(InputAction.CallbackContext context);
         void OnValidModifUI(InputAction.CallbackContext context);
+        void OnValidUI(InputAction.CallbackContext context);
     }
 }
