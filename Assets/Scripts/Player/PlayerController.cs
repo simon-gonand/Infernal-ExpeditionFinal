@@ -377,6 +377,9 @@ public class PlayerController : MonoBehaviour
         anim.SetTrigger("startStun");
         stunFx.SetActive(true);
 
+        selfCollider.material.staticFriction = 1.0f;
+        selfCollider.material.frictionCombine = PhysicMaterialCombine.Maximum;
+
         //Play Stunt Sound
         AudioManager.AMInstance.playerStuntSFX.Post(gameObject);
 
@@ -384,7 +387,11 @@ public class PlayerController : MonoBehaviour
         {
             _carrying.UninteractWith(this);
         }
+
         yield return new WaitForSeconds(playerPreset.stunTime);
+
+        selfCollider.material.staticFriction = 0.0f;
+        selfCollider.material.frictionCombine = PhysicMaterialCombine.Minimum;
 
         _isStun = false;
         anim.SetBool("isStun", false);
