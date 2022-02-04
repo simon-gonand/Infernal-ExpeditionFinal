@@ -37,10 +37,13 @@ public class Treasure : MonoBehaviour, ICarriable
     private bool _isCarriedByPiqueSous = false;
     public bool isCarriedByPiqueSous { get { return _isCarriedByPiqueSous; } }
 
+    private Vector3 spawnPos;
+
     private void Start()
     {
         outlineScript.enabled = false;
         Physics.IgnoreCollision(selfColliderZ, selfColliderX, true);
+        spawnPos = self.position;
     }
 
     public void UpdatePlayerRotation(PlayerController player, Transform playerTransform)
@@ -218,11 +221,6 @@ public class Treasure : MonoBehaviour, ICarriable
         self.position = upTreasure;
     }
 
-    private Vector3 DivideVectors(Vector3 num, Vector3 den)
-    {
-        return new Vector3(num.x / den.x, num.y / den.y, num.z / den.z);
-    }
-
     #region interaction
     // When player is interacting with the treasure
     public bool InteractWith(PlayerController player, GameObject interactingWith)
@@ -234,9 +232,6 @@ public class Treasure : MonoBehaviour, ICarriable
         player.anim.SetBool("isCarrying", true);
         player.anim.SetTrigger("startCarrying");
         player.sword.SetActive(false);
-        
-        // Play Carry Sound
-        AudioManager.AMInstance.playerCarrySFX.Post(gameObject);
 
         selfAura.SetActive(false);
 
@@ -251,6 +246,9 @@ public class Treasure : MonoBehaviour, ICarriable
         // If there is more than one player to carry it, snap treasures to the players' joint
         if (_playerInteractingWith.Count <= category.maxPlayerCarrying)
         {
+            // Play Carry Sound
+            AudioManager.AMInstance.playerCarrySFX.Post(gameObject);
+
             Physics.IgnoreCollision(selfColliderX, player.selfCollider, true);
             Physics.IgnoreCollision(selfColliderZ, player.selfCollider, true);
 
@@ -438,6 +436,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
             // Enable rigidbody
             selfRigidbody.useGravity = true;
+            selfRigidbody.isKinematic = false;
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
             isGrounded = false;
 
@@ -538,7 +537,16 @@ public class Treasure : MonoBehaviour, ICarriable
         {
             float topTreasureY = self.position.y + self.lossyScale.y / 2;
             if (topTreasureY < NotDeepWater.instance.self.position.y)
-                Destroy(gameObject);
+            {
+                if (LevelManager.instance.levelId == 0)
+                {
+                    self.position = spawnPos;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+            }
         }
         if (!isGrounded)
         {
@@ -552,6 +560,7 @@ public class Treasure : MonoBehaviour, ICarriable
                 {
                     selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
                     isGrounded = true;
+                    selfRigidbody.isKinematic = true;
                 }
                 while(playerCollisionIgnored.Count > 0)
                 {

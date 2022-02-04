@@ -365,18 +365,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2155699088311170835}
-        m_TargetAssemblyTypeName: ClosingTutoUI, Assembly-CSharp
-        m_MethodName: ResumeGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: 6b1ea310-ac9a-48c0-89a5-323a3e430353
     m_ActionName: Controls/ValidationUI
   - m_PersistentCalls:
@@ -443,8 +431,24 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8348d3e6-93b9-462f-af8b-d4e4429d3a30
     m_ActionName: ControlsUI/ValidModifUI[/Keyboard/y]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2155699088311170835}
+        m_TargetAssemblyTypeName: ClosingTutoUI, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 75dcad06-d410-4eaf-95aa-1cd088c51e9e
+    m_ActionName: ControlsUI/ValidUI[/XInputControllerWindows/buttonSouth,/Mouse/leftButton]
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Controller
   m_DefaultActionMap: Controls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

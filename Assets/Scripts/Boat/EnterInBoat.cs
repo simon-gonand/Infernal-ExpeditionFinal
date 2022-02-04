@@ -61,6 +61,8 @@ public class EnterInBoat : MonoBehaviour
                 player.UpdateSwimming();
                 player.self.position = playerOnBoatEntryPoint.position;
             }
+            if (player.isDashing)
+                player.StopDash();
         }
     }
 }

@@ -312,6 +312,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "ValidUI",
+                    "type": "Button",
+                    "id": "75dcad06-d410-4eaf-95aa-1cd088c51e9e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -532,6 +540,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "ValidModifUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e62bd09-b619-4fc6-bfcf-e90fcfb7e796",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "ValidUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "392c18aa-114a-4d99-95d9-06c2b9d0a297",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ValidUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

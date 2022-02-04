@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ClosingTutoUI : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class ClosingTutoUI : MonoBehaviour
         else Destroy(this);
     }
 
-    public void ResumeGame()
+    public void ResumeGame(InputAction.CallbackContext context)
     {
         if (closeTuto)
         {
@@ -25,6 +26,12 @@ public class ClosingTutoUI : MonoBehaviour
             closeTuto = false;
 
             billboardUIActivate.SetActive(false);
+            foreach (PlayerController p in PlayerManager.instance.players)
+            {
+                p.selfPlayerInput.currentActionMap.Disable();
+                p.selfPlayerInput.SwitchCurrentActionMap("Controls");
+                p.selfPlayerInput.currentActionMap.Enable();
+            }
         }
     }
 }

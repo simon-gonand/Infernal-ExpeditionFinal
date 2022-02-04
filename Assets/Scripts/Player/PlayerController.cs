@@ -110,6 +110,12 @@ public class PlayerController : MonoBehaviour
     private bool _isDead = false;
     public bool isDead { get { return _isDead; } }
 
+
+    private bool _isDashing = false;
+    public bool isDashing { get { return _isDashing; } }
+    private bool isGrounded = false;
+    private bool interactionButtonPressed = false;
+    
     #region ModifierBooleans
     // Is the No Attack modifier has been triggered
     private bool _canAttack = true;
@@ -120,9 +126,6 @@ public class PlayerController : MonoBehaviour
     public bool canDash { set { _canDash = value; } }
     #endregion
 
-    private bool isDashing = false;
-    private bool isGrounded = false;
-    private bool interactionButtonPressed = false;
     #endregion
 
     #region Reset
@@ -162,7 +165,7 @@ public class PlayerController : MonoBehaviour
         _isSwimming = false;
         _isInWater = false;
         _isStun = false;
-        isDashing = false;
+        _isDashing = false;
         _isDead = false;
         isGrounded = false;
         interactionButtonPressed = false;
@@ -187,7 +190,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (isDashing)
+        if (_isDashing)
         {
             collisionDirection = collision.GetContact(0).normal;
             if (Physics.Raycast(self.position, -collisionDirection, 1.0f, mask))
@@ -253,9 +256,9 @@ public class PlayerController : MonoBehaviour
     // When the player pressed the dash button
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming && !isDashing && !_isCarried && isGrounded && _canDash)
+        if (context.performed && Time.time > nextDash && !_isInteracting && !_isSwimming && !_isDashing && !_isCarried && isGrounded && _canDash)
         {
-            isDashing = true;
+            _isDashing = true;
             Vector3 currentVelocity = selfRigidBody.velocity;
             currentVelocity += self.forward * playerPreset.dashSpeed * Time.deltaTime * 0.1f;
             currentVelocity.y = 0.0f;
@@ -374,6 +377,9 @@ public class PlayerController : MonoBehaviour
         anim.SetTrigger("startStun");
         stunFx.SetActive(true);
 
+        selfCollider.material.staticFriction = 10.0f;
+        selfCollider.material.frictionCombine = PhysicMaterialCombine.Maximum;
+
         //Play Stunt Sound
         AudioManager.AMInstance.playerStuntSFX.Post(gameObject);
 
@@ -381,7 +387,11 @@ public class PlayerController : MonoBehaviour
         {
             _carrying.UninteractWith(this);
         }
+
         yield return new WaitForSeconds(playerPreset.stunTime);
+
+        selfCollider.material.staticFriction = 0.0f;
+        selfCollider.material.frictionCombine = PhysicMaterialCombine.Minimum;
 
         _isStun = false;
         anim.SetBool("isStun", false);
@@ -561,12 +571,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void StopDash()
+    public void StopDash()
     {
         selfRigidBody.velocity = Vector3.zero;
         anim.SetBool("isDashing", false);
         nextDash = Time.time + playerPreset.dashCooldown;
-        isDashing = false;
+        _isDashing = false;
         dashTimer = 0.0f;
     }
 
@@ -622,7 +632,7 @@ public class PlayerController : MonoBehaviour
         if (!_isStun && !_isCarried && !_hasBeenLaunched && !_isDead && 
             ((_isInteracting && _carrying != null) ? true : !_isInteracting))
         {
-            if (isDashing)
+            if (_isDashing)
             {
                 Dash();
                 CheckIfDashCollide();
