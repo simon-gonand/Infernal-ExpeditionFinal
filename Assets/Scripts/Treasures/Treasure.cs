@@ -438,6 +438,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
             // Enable rigidbody
             selfRigidbody.useGravity = true;
+            selfRigidbody.isKinematic = false;
             selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
             isGrounded = false;
 
@@ -552,6 +553,7 @@ public class Treasure : MonoBehaviour, ICarriable
                 {
                     selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
                     isGrounded = true;
+                    selfRigidbody.isKinematic = true;
                 }
                 while(playerCollisionIgnored.Count > 0)
                 {
