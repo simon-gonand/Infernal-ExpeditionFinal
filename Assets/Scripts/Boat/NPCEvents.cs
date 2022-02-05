@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class NPCEvents : MonoBehaviour
 {
+    [Header("Animation")]
+    public Animator anim;
+    public float animationCooldown;
+
     [Header("Pop UP")]
     public Transform spawnPopUp;
     public ParticleSystem popUpSystem;
@@ -23,6 +27,7 @@ public class NPCEvents : MonoBehaviour
     public List<GameObject> endLandingToken;
 
     private int landingCount = 0;
+    private bool canLaunchAnim = true;
 
     private void Start()
     {
@@ -157,5 +162,21 @@ public class NPCEvents : MonoBehaviour
             GameManager.instance.targetGroup.m_Targets[index].weight += i;
             yield return new WaitForSeconds(0.05f);
         }
+    }
+
+    private void Update()
+    {
+        if (canLaunchAnim)
+        {
+            StartCoroutine(LaunchAnim());
+        }
+    }
+
+    private IEnumerator LaunchAnim()
+    {
+        canLaunchAnim = false;
+        anim.SetTrigger("LaunchAnim");
+        yield return new WaitForSeconds(animationCooldown);
+        canLaunchAnim = true;
     }
 }
