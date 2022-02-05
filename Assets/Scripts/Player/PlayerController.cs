@@ -345,37 +345,30 @@ public class PlayerController : MonoBehaviour
     {
         if (add)
         {
-            float offset = 0.0f;
             Vector3 newSize = soloCarrierCollider.size;
             Vector3 newCenter = soloCarrierCollider.center;
             Vector3 treasureColliderSize = treasure.selfColliderX.size;
             if (localSnapPosition.x > 0.0f)
             {
-                treasureColliderSize.y = 0.0f;
-                treasureColliderSize.z = 0.0f;
-                offset = Vector3.Distance(localSnapPosition, treasureColliderSize);
+                newSize.z += treasureColliderSize.x / 2;
+                newCenter.z += treasureColliderSize.x / 2;
             }
             else if (localSnapPosition.x < 0.0f)
             {
-                treasureColliderSize.y = 0.0f;
-                treasureColliderSize.z = 0.0f;
-                offset = Vector3.Distance(localSnapPosition, -treasureColliderSize);
+                newSize.z += treasureColliderSize.x / 2;
+                newCenter.z += treasureColliderSize.x / 2;
             }
             else if (localSnapPosition.z > 0.0f)
             {
-                treasureColliderSize.x = 0.0f;
-                treasureColliderSize.y = 0.0f;
-                offset = Vector3.Distance(localSnapPosition, treasureColliderSize);
+                newSize.z += treasureColliderSize.z / 2;
+                newCenter.z += treasureColliderSize.z / 2;
             }
             else if (localSnapPosition.z < 0.0f)
             {
-                treasureColliderSize.x = 0.0f;
-                treasureColliderSize.y = 0.0f;
-                offset = Vector3.Distance(localSnapPosition, -treasureColliderSize);
+                newSize.z += treasureColliderSize.z / 2;
+                newCenter.z += treasureColliderSize.z / 2;
             }
 
-            newSize.z += offset / 2;
-            newCenter.z += offset / 2;
             soloCarrierCollider.size = newSize;
             soloCarrierCollider.center = newCenter;
         }
@@ -476,13 +469,13 @@ public class PlayerController : MonoBehaviour
 
                 Collider[] hit = Physics.OverlapSphere(attackPoint.position, playerPreset.interactionDistance, layerMask);
                 if (hit.Length == 0) return;
-                Collider nearestCollider = hit[0];
-                float distance = Vector3.Distance(self.position, nearestCollider.transform.position);
+                Collider nearestCollider = null;
+                float distance = 0.0f;
                 foreach(Collider collider in hit)
                 {
-                    if (!collider.isTrigger || !collider.enabled) continue;
+                    if (!collider.isTrigger || !collider.enabled || collider == selfCollider) continue;
                     float tempDistance = Vector3.Distance(self.position, collider.transform.position);
-                    if (distance > tempDistance)
+                    if (nearestCollider == null || distance > tempDistance)
                     {
                         nearestCollider = collider;
                         distance = tempDistance;
