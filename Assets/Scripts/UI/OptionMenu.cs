@@ -43,12 +43,14 @@ public class OptionMenu : MonoBehaviour
             Debug.Log("true");
             AudioManager.AMInstance.headphones = true;
             AudioManager.AMInstance.audioDeviceToHeadphonesSWITCH.Post(gameObject);
+            AudioManager.AMInstance.menuNavigationSFX.Post(gameObject);
         }
         else
         {
             Debug.Log("false");
             AudioManager.AMInstance.headphones = false;
             AudioManager.AMInstance.audioDeviceToSpeakersSWITCH.Post(gameObject);
+            AudioManager.AMInstance.menuNavigationSFX.Post(gameObject);
         }
     }
 
@@ -62,6 +64,7 @@ public class OptionMenu : MonoBehaviour
     {
         sfxVolume = sfxVolumeSlider.value;
         AudioManager.AMInstance.SFXVolumeRTPC.SetGlobalValue(sfxVolume);
+        AudioManager.AMInstance.menuNavigationSFX.Post(gameObject);
     }
 
     public void CloseMenu()
@@ -69,5 +72,7 @@ public class OptionMenu : MonoBehaviour
         previousMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(optionButton);
         gameObject.SetActive(false);
+
+        AudioManager.AMInstance.menuCancelSFX.Post(gameObject);
     }
 }

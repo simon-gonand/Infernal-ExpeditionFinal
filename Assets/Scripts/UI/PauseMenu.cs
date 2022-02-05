@@ -55,6 +55,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
         Time.timeScale = 0.0f;
         isPause = true;
+        AudioManager.AMInstance.menuSelectSFX.Post(gameObject);
     }
 
     private void Resume()
@@ -63,12 +64,15 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = false;
         Time.timeScale = 1.0f;
         isPause = false;
+        AudioManager.AMInstance.menuCancelSFX.Post(gameObject);
     }
 
     public void Option()
     {
         optionMenuUI.OpenMenu(pauseMenuUI, EventSystem.current.currentSelectedGameObject);
         pauseMenuUI.SetActive(false);
+
+        AudioManager.AMInstance.menuSelectSFX.Post(gameObject);
     }
 
     public void Quit()

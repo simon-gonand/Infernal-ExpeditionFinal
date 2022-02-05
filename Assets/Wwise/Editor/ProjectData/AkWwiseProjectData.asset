@@ -80,8 +80,26 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 9dce80c3a7123942813a1007a9fa761f
     GuidInternal: 
+<<<<<<< HEAD
     m_lastTime: -8585576406548139473
+=======
+    m_lastTime: -8585577176158061700
+>>>>>>> SDIntegration
     List:
+    - name: Lobbi_Song
+      guid: bb48fdafcb91e24b91c2043dfec1b964
+      id: 3332742813
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 9dce80c3a7123942813a1007a9fa761f
+      - ElementName: Lobbi_Song
+        ObjectType: 7
+        guid: bb48fdafcb91e24b91c2043dfec1b964
+      Path: SoundBanks\Default Work Unit\Lobbi_Song
     - name: Musics
       guid: 36549465458ece4a996756f69665369a
       id: 1730564753
@@ -851,7 +869,11 @@ MonoBehaviour:
     ParentPath: Events\Musics
     guid: 8b7a9cc2f9341b47876f857ec1bcbfce
     GuidInternal: 
+<<<<<<< HEAD
     m_lastTime: -8585576406565345003
+=======
+    m_lastTime: -8585577175568005927
+>>>>>>> SDIntegration
     List:
     - name: Lobbi_Theme
       guid: 3e042827e008f34f9d86245d6d9a8d53
@@ -873,6 +895,57 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: LobbySwitch_Bay
+      guid: 6a79cd9a0ef52044919e5e5cf77c367e
+      id: 2116279594
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Musics
+        ObjectType: 12
+        guid: 8b7a9cc2f9341b47876f857ec1bcbfce
+      - ElementName: LobbySwitch_Bay
+        ObjectType: 3
+        guid: 6a79cd9a0ef52044919e5e5cf77c367e
+      Path: Events\Musics\LobbySwitch_Bay
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: LobbySwitch_City
+      guid: 006d0446478e324faaf34c660a54e5eb
+      id: 879444183
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Musics
+        ObjectType: 12
+        guid: 8b7a9cc2f9341b47876f857ec1bcbfce
+      - ElementName: LobbySwitch_City
+        ObjectType: 3
+        guid: 006d0446478e324faaf34c660a54e5eb
+      Path: Events\Musics\LobbySwitch_City
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: LobbySwitch_Classic
+      guid: a3f6aae33e508843ac05b9551f75cb52
+      id: 607944962
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Musics
+        ObjectType: 12
+        guid: 8b7a9cc2f9341b47876f857ec1bcbfce
+      - ElementName: LobbySwitch_Classic
+        ObjectType: 3
+        guid: a3f6aae33e508843ac05b9551f75cb52
+      Path: Events\Musics\LobbySwitch_Classic
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Musics
       guid: 535760f856312a4cb03d1b63e91ac86f
       id: 1730564753
@@ -1194,7 +1267,11 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 23f8d2162ea04c49ba51910d0ab18446
     GuidInternal: 
+<<<<<<< HEAD
     m_lastTime: -8585596127525771632
+=======
+    m_lastTime: -8585578569468656114
+>>>>>>> SDIntegration
     List:
     - name: GameplayType
       guid: 582d7cde1074f044a75447d7d5a60a22
@@ -1262,6 +1339,72 @@ MonoBehaviour:
       ValueGuids: []
       ValueIcons: []
       valuesInternal: []
+    - name: MapSelection_Biome
+      guid: 684dc3288d0e8642b5259e943b44b1d1
+      id: 3153767688
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 23f8d2162ea04c49ba51910d0ab18446
+      - ElementName: MapSelection_Biome
+        ObjectType: 11
+        guid: 684dc3288d0e8642b5259e943b44b1d1
+      Path: Switches\Default Work Unit\MapSelection_Biome
+      values:
+      - name: Bay
+        guid: 2188c034e32e644798339528f409c4de
+        id: 513390123
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 23f8d2162ea04c49ba51910d0ab18446
+        - ElementName: MapSelection_Biome
+          ObjectType: 11
+          guid: 684dc3288d0e8642b5259e943b44b1d1
+        - ElementName: Bay
+          ObjectType: 10
+          guid: 2188c034e32e644798339528f409c4de
+      - name: City
+        guid: e8720e1ab3fb084e8ca82dd3de2ee6b0
+        id: 3888786832
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 23f8d2162ea04c49ba51910d0ab18446
+        - ElementName: MapSelection_Biome
+          ObjectType: 11
+          guid: 684dc3288d0e8642b5259e943b44b1d1
+        - ElementName: City
+          ObjectType: 10
+          guid: e8720e1ab3fb084e8ca82dd3de2ee6b0
+      - name: Classic
+        guid: eb29cd945274354e8716b3f06458b8c2
+        id: 269384475
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 23f8d2162ea04c49ba51910d0ab18446
+        - ElementName: MapSelection_Biome
+          ObjectType: 11
+          guid: 684dc3288d0e8642b5259e943b44b1d1
+        - ElementName: Classic
+          ObjectType: 10
+          guid: eb29cd945274354e8716b3f06458b8c2
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     PathAndIcons:
@@ -1290,8 +1433,13 @@ MonoBehaviour:
         ObjectType: 14
         guid: 88eb52da3d6b9743ba24b8c441c80d38
       Path: Triggers\Default Work Unit\Collect_Treasure
+<<<<<<< HEAD
   ExpandedFileSystemItemIds: 
   ExpandedWaapiItemIds: 
+=======
+  ExpandedFileSystemItemIds: 01000000020000000700000011000000290000002a0000002b0000002c0000004600000047000000
+  ExpandedWaapiItemIds: 010000000200000011000000290000002a0000002b0000002c0000004600000047000000
+>>>>>>> SDIntegration
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

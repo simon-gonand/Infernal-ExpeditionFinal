@@ -62,6 +62,22 @@
 							<Position X="3" Y="5"/>
 						</Module>
 						<Module>
+							<ObjectRef Name="Lobbi_Theme" ID="{2728043E-08E0-4FF3-9D86-245D6D9A8D53}" WorkUnitID="{C29C7A8B-34F9-471B-876F-857EC1BCBFCE}"/>
+							<Position X="4" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="LobbySwitch_Bay" ID="{9ACD796A-F50E-4420-919E-5E5CF77C367E}" WorkUnitID="{C29C7A8B-34F9-471B-876F-857EC1BCBFCE}"/>
+							<Position X="4" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="LobbySwitch_City" ID="{46046D00-8E47-4F32-AAF3-4C660A54E5EB}" WorkUnitID="{C29C7A8B-34F9-471B-876F-857EC1BCBFCE}"/>
+							<Position X="4" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="LobbySwitch_Classic" ID="{E3AAF6A3-503E-4388-AC05-B9551F75CB52}" WorkUnitID="{C29C7A8B-34F9-471B-876F-857EC1BCBFCE}"/>
+							<Position X="4" Y="3"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="Menu_Select" ID="{1D9A067A-BC1E-4CAE-BDDC-EF961EF9EBE7}" WorkUnitID="{39BFFE06-F12A-401E-AD2E-9E6E478AA9EB}"/>
 							<Position X="5" Y="0"/>
 						</Module>
@@ -121,6 +137,7 @@
 						<CurrentStateRef Name="Sea" ID="{6CA64AE8-43F4-45B2-84C3-E863CC6A80A8}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Classic" ID="{94CD29EB-7452-4E35-8716-B3F06458B8C2}"/>
 						<CurrentSwitchRef Name="Navigation" ID="{7272B83D-E4E0-483E-95E5-1512F1BF73E7}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>
