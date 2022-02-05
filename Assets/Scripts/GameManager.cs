@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
         boatOnTargetGroup = isBoatInScene;
         if (sceneName.Equals("ÎleAuxPirates"))
         {
+            PlayerManager.instance.respawnOnBoat = false;
             if (PlayerManager.instance.onPirateIsland)
             {
                 returnToMainMenu = true;
