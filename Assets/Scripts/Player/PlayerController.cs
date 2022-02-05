@@ -474,34 +474,45 @@ public class PlayerController : MonoBehaviour
                 raycastsStartPos.Add(startRayPos);
                 raycastsStartPos.Add(self.position);
 
-                for (int i = 0; i < raycastsStartPos.Count; ++i)
+                Collider[] hit = Physics.OverlapSphere(attackPoint.position, playerPreset.interactionDistance, layerMask);
+                if (hit.Length == 0) return;
+                Collider nearestCollider = hit[0];
+                float distance = Vector3.Distance(self.position, nearestCollider.transform.position);
+                foreach(Collider collider in hit)
                 {
-                    RaycastHit hit;
-                    if (Physics.Raycast(raycastsStartPos[i], self.forward, out hit, playerPreset.interactionDistance, layerMask))
+                    if (!collider.isTrigger || !collider.enabled) continue;
+                    float tempDistance = Vector3.Distance(self.position, collider.transform.position);
+                    if (distance > tempDistance)
                     {
-                        if (hit.collider.isTrigger && hit.collider.enabled)
-                        {
-                            // Stop player's movements
-                            _playerMovementInput = Vector2.zero;
-                            // Set with which interactable the player is interacting with
-                            _interactingWith = hit.collider.gameObject.GetComponentInParent<IInteractable>();
-                            _isInteracting = true;
-                            if (!_interactingWith.InteractWith(this, hit.collider.gameObject))
-                            {
-                                _interactingWith = null;
-                                _isInteracting = false;
-                            }
-                            else
-                            {
-                                selfRigidBody.mass = 1000;
-                                selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
-                            }
-                            break;
-                        }
+                        nearestCollider = collider;
+                        distance = tempDistance;
+                    }
+                }
+                if (nearestCollider.isTrigger && nearestCollider.enabled)
+                {
+                    // Stop player's movements
+                    _playerMovementInput = Vector2.zero;
+                    // Set with which interactable the player is interacting with
+                    _interactingWith = nearestCollider.gameObject.GetComponentInParent<IInteractable>();
+                    _isInteracting = true;
+                    if (!_interactingWith.InteractWith(this, nearestCollider.gameObject))
+                    {
+                        _interactingWith = null;
+                        _isInteracting = false;
+                    }
+                    else
+                    {
+                        selfRigidBody.mass = 1000;
+                        selfRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
                     }
                 }
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, playerPreset.interactionDistance);
     }
 
     public void UpdateSwimming()
@@ -713,62 +724,54 @@ public class PlayerController : MonoBehaviour
 
     private void TreasureDetectionForOutline()
     {
-        RaycastHit hit;
 
         Vector3 offSet = new Vector3(0,-0.5f,0);
 
-        // Draw raycast foward the player
-        if (Physics.Raycast(transform.position + offSet, transform.forward, out hit, playerPreset.interactionDistance))
+        Collider[] hit = Physics.OverlapSphere(attackPoint.position, playerPreset.interactionDistance);
+        if (hit.Length == 0) return;
+        bool treasureFound = false;
+        foreach(Collider collider in hit)
         {
-            // Draw ray for debug
-            if (drawIteractLine == true)
+            if (collider.CompareTag("Treasures"))
             {
-                Debug.DrawRay(transform.position + offSet, transform.forward * playerPreset.interactionDistance, Color.green);
-            }
-
-            // Check if raycast hit a Treasures
-            if (hit.collider.gameObject.transform.parent.CompareTag("Treasures"))
-            {
-                // If it's the same treasure detected, cancel everything
-                if (treasureInFront == hit.collider.gameObject.transform.parent.gameObject)
+                Treasure treasure = collider.GetComponent<Treasure>();
+                if (treasure.playerInteractingWith.Count < treasure.category.maxPlayerCarrying)
                 {
-                    treasureInFront.GetComponent<Treasure>().selfAura.SetActive(false);
-                    return;
-                }
-                else
-                {
-                    // Check if there is an old treasure in front
-                    if (treasureInFront != null)
+                    treasureFound = true;
+                    // If it's the same treasure detected, cancel everything
+                    if (treasureInFront == collider.gameObject)
                     {
-                        // Unselecte the old treasure
-                        treasureInFront.GetComponent<Treasure>().SelecteTreasure(false);
-                        if (!isCarrying || (isCarrying && treasureInFront.GetComponent<Treasure>() != (Treasure)carrying))
-                            treasureInFront.GetComponent<Treasure>().selfAura.SetActive(true);
+                        treasureInFront.GetComponent<Treasure>().selfAura.SetActive(false);
+                        return;
                     }
+                    else
+                    {
+                        // Check if there is an old treasure in front
+                        if (treasureInFront != null)
+                        {
+                            // Unselecte the old treasure
+                            treasureInFront.GetComponent<Treasure>().SelecteTreasure(false);
+                            if (!isCarrying || (isCarrying && treasureInFront.GetComponent<Treasure>() != (Treasure)carrying))
+                                treasureInFront.GetComponent<Treasure>().selfAura.SetActive(true);
+                        }
 
-                    // Save and selected the new treasure
-                    treasureInFront = hit.collider.gameObject.transform.parent.gameObject;
-                    treasureInFront.GetComponent<Treasure>().SelecteTreasure(true);
-                    treasureInFront.GetComponent<Treasure>().selfAura.SetActive(false);
+                        // Save and selected the new treasure
+                        treasureInFront = treasure.gameObject;
+                        treasure.SelecteTreasure(true);
+                        treasure.selfAura.SetActive(false);
+                    }
+                    break;
                 }
             }
         }
         // If there is no more treasure detected
-        else if (treasureInFront != null)
+        if (!treasureFound && treasureInFront != null)
         {
             // Reset and unselect the old treasure
             treasureInFront.GetComponent<Treasure>().SelecteTreasure(false);
             if (!isCarrying || (isCarrying && treasureInFront.GetComponent<Treasure>() != (Treasure)carrying))
                 treasureInFront.GetComponent<Treasure>().selfAura.SetActive(true);
             treasureInFront = null;
-        }
-        else
-        {
-            // Draw ray for debug
-            if (drawIteractLine == true)
-            {
-                Debug.DrawRay(transform.position + offSet, transform.forward * playerPreset.interactionDistance, Color.red);
-            }
         }
     }
     void InfoAnim()

@@ -461,7 +461,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
     public void SelecteTreasure(bool select)
     {
-        if (select == true)
+        if (select)
         {
             numOfSelected += 1;
         }
@@ -469,7 +469,6 @@ public class Treasure : MonoBehaviour, ICarriable
         {
             numOfSelected -= 1;
         }
-
         if (numOfSelected < 1)
         {
             outlineScript.enabled = false;
