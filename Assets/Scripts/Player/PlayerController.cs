@@ -631,7 +631,6 @@ public class PlayerController : MonoBehaviour
         nextDash = Time.time + playerPreset.dashCooldown;
         _isDashing = false;
         dashTimer = 0.0f;
-        Debug.Log("dash");
     }
 
     public void Die()
