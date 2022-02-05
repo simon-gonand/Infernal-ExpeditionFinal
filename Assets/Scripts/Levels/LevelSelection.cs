@@ -69,6 +69,7 @@ public class LevelSelection : MonoBehaviour
     private void ResumeGame()
     {
         PlayerManager.instance.onLevelSelectionUI = false;
+        AudioManager.AMInstance.lobbyThemeToClassicSWITCH.Post(AudioManager.AMInstance.gameObject);
     }
 
     private IEnumerator WaitForCameraMovementsToMainCam()
@@ -119,6 +120,9 @@ public class LevelSelection : MonoBehaviour
         else
             --currentLevelSelectedIndex;
         CheckStarsStates();
+
+        AudioUpdateForBiome();
+
         coroutine = null;
         yield return null;
     }
@@ -138,6 +142,8 @@ public class LevelSelection : MonoBehaviour
             {
                 // Move left
                 coroutine = StartCoroutine(LerpTransition(+1288));
+                AudioManager.AMInstance.menuNavigationSFX.Post(gameObject);
+                
             }
 
         }
@@ -152,6 +158,8 @@ public class LevelSelection : MonoBehaviour
             {
                 // Move right
                 coroutine = StartCoroutine(LerpTransition(-1288));
+                AudioManager.AMInstance.menuNavigationSFX.Post(gameObject);
+                
             }
         }
     }
@@ -294,5 +302,30 @@ public class LevelSelection : MonoBehaviour
             player.levelSelectionTable = null;
             outline.enabled = false;
         }
+    }
+
+
+
+    void AudioUpdateForBiome()
+    {
+
+
+        if (currentLevelSelectedIndex <= 1)
+        {
+            AudioManager.AMInstance.lobbyThemeToClassicSWITCH.Post(AudioManager.AMInstance.gameObject);
+        }
+        else if (currentLevelSelectedIndex <= 3)
+        {
+            AudioManager.AMInstance.lobbyThemeToCitySWITCH.Post(AudioManager.AMInstance.gameObject);
+        }
+        else if (currentLevelSelectedIndex <= 4)
+        {
+            AudioManager.AMInstance.lobbyThemeToBaySWITCH.Post(AudioManager.AMInstance.gameObject);
+        }
+        else
+        {
+            AudioManager.AMInstance.lobbyThemeToClassicSWITCH.Post(AudioManager.AMInstance.gameObject);
+        }
+
     }
 }

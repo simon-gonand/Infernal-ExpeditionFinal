@@ -10,6 +10,13 @@
 						<Switch Name="Victory" ID="{82B97427-88B8-48FA-B6C3-EEF601635E90}"/>
 					</ChildrenList>
 				</SwitchGroup>
+				<SwitchGroup Name="MapSelection_Biome" ID="{28C34D68-0E8D-4286-B525-9E943B44B1D1}">
+					<ChildrenList>
+						<Switch Name="Classic" ID="{94CD29EB-7452-4E35-8716-B3F06458B8C2}"/>
+						<Switch Name="City" ID="{1A0E72E8-FBB3-4E08-8CA8-2DD3DE2EE6B0}"/>
+						<Switch Name="Bay" ID="{34C08821-2EE3-4764-9833-9528F409C4DE}"/>
+					</ChildrenList>
+				</SwitchGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</Switches>

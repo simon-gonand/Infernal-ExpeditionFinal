@@ -41,9 +41,25 @@
 					<GameSyncExclusionList/>
 				</SoundBank>
 				<SoundBank Name="Musics" ID="{65945436-8E45-4ACE-9967-56F69665369A}">
+					<PropertyList>
+						<Property Name="Maximum" Type="int32">
+							<ValueList>
+								<Value>100000000</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ObjectInclusionList>
 						<ObjectRef Name="Run_Theme" ID="{9F1ADFAC-E258-43AE-BE23-3A1E28F62293}" WorkUnitID="{C29C7A8B-34F9-471B-876F-857EC1BCBFCE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Naufrage_Theme" ID="{07C376B7-445D-46AC-83E7-38CA6C1B1F5A}" WorkUnitID="{C29C7A8B-34F9-471B-876F-857EC1BCBFCE}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Lobbi_Song" ID="{AFFD48BB-91CB-4BE2-91C2-043DFEC1B964}">
+					<ObjectInclusionList>
+						<ObjectRef Name="LobbySwitch_Classic" ID="{E3AAF6A3-503E-4388-AC05-B9551F75CB52}" WorkUnitID="{C29C7A8B-34F9-471B-876F-857EC1BCBFCE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="LobbySwitch_Bay" ID="{9ACD796A-F50E-4420-919E-5E5CF77C367E}" WorkUnitID="{C29C7A8B-34F9-471B-876F-857EC1BCBFCE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="LobbySwitch_City" ID="{46046D00-8E47-4F32-AAF3-4C660A54E5EB}" WorkUnitID="{C29C7A8B-34F9-471B-876F-857EC1BCBFCE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Lobbi_Theme" ID="{2728043E-08E0-4FF3-9D86-245D6D9A8D53}" WorkUnitID="{C29C7A8B-34F9-471B-876F-857EC1BCBFCE}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

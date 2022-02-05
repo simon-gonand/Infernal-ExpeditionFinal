@@ -29,6 +29,9 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event gameplayNavigationSWITCH;
     public AK.Wwise.Event gameplayPillageSWITCH;
     public AK.Wwise.Event mapCompletedSWITCH;
+    public AK.Wwise.Event lobbyThemeToClassicSWITCH;
+    public AK.Wwise.Event lobbyThemeToCitySWITCH;
+    public AK.Wwise.Event lobbyThemeToBaySWITCH;
     public AK.Wwise.Event audioDeviceToSpeakersSWITCH;
     public AK.Wwise.Event audioDeviceToHeadphonesSWITCH;
 
