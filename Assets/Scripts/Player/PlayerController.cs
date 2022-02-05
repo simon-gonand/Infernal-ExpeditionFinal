@@ -327,7 +327,9 @@ public class PlayerController : MonoBehaviour
     public void OnPause(InputAction.CallbackContext context)
     {
         if (context.performed)
+        {
             PauseMenu.instance.PauseGame();
+        }
     }
 
     public void OnRestart(InputAction.CallbackContext context)

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -29,11 +30,18 @@ public class PauseMenu : MonoBehaviour
     {
         if (isPause)
         {
-            Resume();
+            Resume(new InputAction.CallbackContext());
         }
         else
         {
             Pause();
+            foreach (PlayerController player in PlayerManager.instance.players)
+            {
+                player.selfPlayerInput.currentActionMap.Disable();
+                player.selfPlayerInput.SwitchCurrentActionMap("ControlsUI");
+                player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed += Resume;
+                player.selfPlayerInput.currentActionMap.Enable();
+            }
         }
     }
 
@@ -45,7 +53,7 @@ public class PauseMenu : MonoBehaviour
         {
             player.selfPlayerInput.currentActionMap.Enable();
         }
-        Resume();
+        Resume(new InputAction.CallbackContext());
     }
 
     private void Pause()
@@ -58,13 +66,21 @@ public class PauseMenu : MonoBehaviour
         AudioManager.AMInstance.menuSelectSFX.Post(gameObject);
     }
 
-    private void Resume()
+    private void Resume(InputAction.CallbackContext context)
     {
         pauseMenuUI.SetActive(false);
         Cursor.visible = false;
         Time.timeScale = 1.0f;
         isPause = false;
         AudioManager.AMInstance.menuCancelSFX.Post(gameObject);
+
+        foreach (PlayerController player in PlayerManager.instance.players)
+        {
+            player.selfPlayerInput.currentActionMap.Disable();
+            player.selfPlayerInput.SwitchCurrentActionMap("Controls");
+            player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed -= Resume;
+            player.selfPlayerInput.currentActionMap.Enable();
+        }
     }
 
     public void Option()
@@ -73,12 +89,28 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
 
         AudioManager.AMInstance.menuSelectSFX.Post(gameObject);
+        foreach (PlayerController player in PlayerManager.instance.players)
+        {
+            player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed -= Resume;
+        }
     }
 
     public void Quit()
     {
         GameManager.instance.LoadLevel("ÎleAuxPirates", false);
-        Resume();
+        Resume(new InputAction.CallbackContext());
+    }
+
+    public void IsReturningToPause()
+    {
+        if (gameObject.activeSelf)
+        {
+            Pause();
+            foreach (PlayerController player in PlayerManager.instance.players)
+            {
+                player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed += Resume;
+            }
+        }
     }
 
     private void Update()

@@ -21,6 +21,13 @@ public class MainMenuUI : MonoBehaviour
     {
         firstSelected.Select();
         firstSelected.GetComponent<MainMenuButton>().SetSelectAtStart();
+
+        foreach(PlayerController player in PlayerManager.instance.players)
+        {
+            player.selfPlayerInput.currentActionMap.Disable();
+            player.selfPlayerInput.SwitchCurrentActionMap("ControlsUI");
+            player.selfPlayerInput.currentActionMap.Enable();
+        }
     }
 
     public void Play()
@@ -29,7 +36,11 @@ public class MainMenuUI : MonoBehaviour
         PlayerManager.instance.onMainMenu = false;
         mainMenuCam.Priority = 0;
         foreach (PlayerController player in PlayerManager.instance.players)
-            player.GetComponent<PlayerInput>().currentActionMap.Enable();
+        {
+            player.selfPlayerInput.currentActionMap.Disable();
+            player.selfPlayerInput.SwitchCurrentActionMap("Controls");
+            player.selfPlayerInput.currentActionMap.Enable();
+        }
         Cursor.visible = false;
         gameObject.SetActive(false);
     }

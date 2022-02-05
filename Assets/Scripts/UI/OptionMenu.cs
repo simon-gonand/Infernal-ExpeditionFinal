@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class OptionMenu : MonoBehaviour
 {
@@ -34,20 +35,21 @@ public class OptionMenu : MonoBehaviour
         optionButton = previousButton;
 
         headphonesToggle.Select();
+
+        foreach (PlayerController player in PlayerManager.instance.players)
+            player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed += BackCloseMenu;
     }
 
     public void OnToggleChange()
     {
         if (headphonesToggle.isOn)
         {
-            Debug.Log("true");
             AudioManager.AMInstance.headphones = true;
             AudioManager.AMInstance.audioDeviceToHeadphonesSWITCH.Post(gameObject);
             AudioManager.AMInstance.menuNavigationSFX.Post(gameObject);
         }
         else
         {
-            Debug.Log("false");
             AudioManager.AMInstance.headphones = false;
             AudioManager.AMInstance.audioDeviceToSpeakersSWITCH.Post(gameObject);
             AudioManager.AMInstance.menuNavigationSFX.Post(gameObject);
@@ -67,6 +69,12 @@ public class OptionMenu : MonoBehaviour
         AudioManager.AMInstance.menuNavigationSFX.Post(gameObject);
     }
 
+    public void BackCloseMenu(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            CloseMenu();
+    }
+
     public void CloseMenu()
     {
         previousMenu.SetActive(true);
@@ -74,5 +82,10 @@ public class OptionMenu : MonoBehaviour
         gameObject.SetActive(false);
 
         AudioManager.AMInstance.menuCancelSFX.Post(gameObject);
+
+        foreach (PlayerController player in PlayerManager.instance.players)
+            player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed -= BackCloseMenu;
+
+        PauseMenu.instance.IsReturningToPause();
     }
 }
