@@ -96,6 +96,11 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private void AdjustCollider(Vector3 localSnapPosition, PlayerController player, bool add)
     {
+        if (_playerInteractingWith.Count == 1)
+        {
+            player.AdjustSoloColliderSize(localSnapPosition, this, add);
+            return;
+        }
         if (localSnapPosition.x > 0)
         {
             float offset = (localSnapPosition.x + player.selfCollider.bounds.size.z) / 2;
@@ -113,19 +118,6 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             selfColliderX.size = newSize;
             selfColliderX.center = newCenter;
-            if (_playerInteractingWith.Count == 1)
-            {
-                newSize.y = player.soloCarrierCollider.size.y;
-                newCenter.y = player.soloCarrierCollider.center.y;
-                Vector3 playerColliderSize = newSize;
-                playerColliderSize.x = newSize.z;
-                playerColliderSize.z = newSize.x - 1.0f;
-                Vector3 playerColliderCenter = newCenter;
-                playerColliderCenter.x = newCenter.z;
-                playerColliderCenter.z = newCenter.x;
-                player.soloCarrierCollider.size = playerColliderSize;
-                player.soloCarrierCollider.center = playerColliderCenter;
-            }
         }
         else if (localSnapPosition.x < 0)
         {
@@ -144,19 +136,6 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             selfColliderX.size = newSize;
             selfColliderX.center = newCenter;
-            if (_playerInteractingWith.Count == 1)
-            {
-                newSize.y = player.soloCarrierCollider.size.y;
-                newCenter.y = player.soloCarrierCollider.center.y;
-                Vector3 playerColliderSize = newSize;
-                playerColliderSize.x = newSize.z;
-                playerColliderSize.z = newSize.x - 1.0f;
-                Vector3 playerColliderCenter = newCenter;
-                playerColliderCenter.x = newCenter.z;
-                playerColliderCenter.z = -newCenter.x;
-                player.soloCarrierCollider.size = playerColliderSize;
-                player.soloCarrierCollider.center = playerColliderCenter;
-            }
         }
         else if (localSnapPosition.z > 0)
         {
@@ -175,14 +154,6 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             selfColliderZ.size = newSize;
             selfColliderZ.center = newCenter;
-            if (_playerInteractingWith.Count == 1)
-            {
-                newSize.y = player.soloCarrierCollider.size.y;
-                newCenter.y = player.soloCarrierCollider.center.y;
-                newSize.z -= 1.0f;
-                player.soloCarrierCollider.size = newSize;
-                player.soloCarrierCollider.center = newCenter;
-            }
         }
         else if (localSnapPosition.z < 0)
         {
@@ -201,15 +172,6 @@ public class Treasure : MonoBehaviour, ICarriable
             }
             selfColliderZ.size = newSize;
             selfColliderZ.center = newCenter;
-            if (_playerInteractingWith.Count == 1)
-            {
-                newSize.y = player.soloCarrierCollider.size.y;
-                newSize.z -= 1.0f;
-                newCenter.y = player.soloCarrierCollider.center.y;
-                player.soloCarrierCollider.size = newSize;
-                newCenter.z = -newCenter.z;
-                player.soloCarrierCollider.center = newCenter;
-            }
         }
     }
 
@@ -333,8 +295,8 @@ public class Treasure : MonoBehaviour, ICarriable
             PlayerController p = _playerInteractingWith[0];
 
             // Update lists values
-            _playerInteractingWith.Remove(p);
             AdjustCollider(associateColliders[p].transform.localPosition, p, false);
+            _playerInteractingWith.Remove(p);
             associateColliders[p].GetComponent<BoxCollider>().enabled = true;
             associateColliders.Remove(p);
 
@@ -397,10 +359,10 @@ public class Treasure : MonoBehaviour, ICarriable
 
         player.carrying = null;
 
+        AdjustCollider(associateColliders[player].transform.localPosition, player, false);
         // Player does not interact with the treasure anymore
         _playerInteractingWith.Remove(player);
 
-        AdjustCollider(associateColliders[player].transform.localPosition, player, false);
         
         associateColliders[player].GetComponent<BoxCollider>().enabled = true;
         associateColliders.Remove(player);

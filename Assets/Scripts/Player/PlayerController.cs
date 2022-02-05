@@ -62,7 +62,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 _movement;
     public Vector3 movement { get { return _movement; } }
 
-    private Vector3 collisionDirection;
     private GameObject treasureInFront;
 
     private float playerY;
@@ -71,6 +70,8 @@ public class PlayerController : MonoBehaviour
     public List<EnemiesAI> isAttackedBy = new List<EnemiesAI>();
 
     [HideInInspector]public Vector3 playerThrowDir;
+    private Vector3 soloCarrierColliderOriginalSize;
+    private Vector3 soloCarrierColliderOriginalCenter;
 
 
     #region booleans
@@ -127,6 +128,12 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #endregion
+
+    private void Start()
+    {
+        soloCarrierColliderOriginalSize = soloCarrierCollider.size;
+        soloCarrierColliderOriginalCenter = soloCarrierCollider.center;
+    }
 
     #region Reset
     public void ResetPlayer()
@@ -192,7 +199,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_isDashing)
         {
-            collisionDirection = collision.GetContact(0).normal;
+            Vector3 collisionDirection = collision.GetContact(0).normal;
             if (Physics.Raycast(self.position, -collisionDirection, 1.0f, mask))
                 StopDash();
         }
@@ -332,6 +339,51 @@ public class PlayerController : MonoBehaviour
         }
     }
     #endregion
+
+    public void AdjustSoloColliderSize(Vector3 localSnapPosition, Treasure treasure, bool add)
+    {
+        if (add)
+        {
+            float offset = 0.0f;
+            Vector3 newSize = soloCarrierCollider.size;
+            Vector3 newCenter = soloCarrierCollider.center;
+            Vector3 treasureColliderSize = treasure.selfColliderX.size;
+            if (localSnapPosition.x > 0.0f)
+            {
+                treasureColliderSize.y = 0.0f;
+                treasureColliderSize.z = 0.0f;
+                offset = Vector3.Distance(localSnapPosition, treasureColliderSize);
+            }
+            else if (localSnapPosition.x < 0.0f)
+            {
+                treasureColliderSize.y = 0.0f;
+                treasureColliderSize.z = 0.0f;
+                offset = Vector3.Distance(localSnapPosition, -treasureColliderSize);
+            }
+            else if (localSnapPosition.z > 0.0f)
+            {
+                treasureColliderSize.x = 0.0f;
+                treasureColliderSize.y = 0.0f;
+                offset = Vector3.Distance(localSnapPosition, treasureColliderSize);
+            }
+            else if (localSnapPosition.z < 0.0f)
+            {
+                treasureColliderSize.x = 0.0f;
+                treasureColliderSize.y = 0.0f;
+                offset = Vector3.Distance(localSnapPosition, -treasureColliderSize);
+            }
+
+            newSize.z += offset / 2;
+            newCenter.z += offset / 2;
+            soloCarrierCollider.size = newSize;
+            soloCarrierCollider.center = newCenter;
+        }
+        else
+        {
+            soloCarrierCollider.size = soloCarrierColliderOriginalSize;
+            soloCarrierCollider.center = soloCarrierColliderOriginalCenter;
+        }
+    }
 
     private void Attack()
     {
