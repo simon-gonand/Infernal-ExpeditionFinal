@@ -22,6 +22,7 @@ public class BoatManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Boat");
         if (instance == null)
             instance = this;
         else Destroy(gameObject);

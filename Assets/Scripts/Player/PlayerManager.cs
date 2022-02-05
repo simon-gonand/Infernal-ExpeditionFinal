@@ -76,6 +76,7 @@ public class PlayerManager : MonoBehaviour
     // Update material of player when one is joining to avoid them to have the same color
     public void OnPlayerJoined(PlayerInput playerInput)
     {
+        Debug.Log("saucisse");
         // Update players spawn positions according to which player is spawning
         // Player is spawning on the boat
         Transform playerTransform = playerInput.gameObject.transform;

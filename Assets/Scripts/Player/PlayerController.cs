@@ -271,6 +271,7 @@ public class PlayerController : MonoBehaviour
             currentVelocity.y = 0.0f;
             originalDashPos = self.position;
             targetDashPos = self.position + currentVelocity;
+            CheckIfDashCollide();
         }
     }
 
@@ -630,6 +631,7 @@ public class PlayerController : MonoBehaviour
         nextDash = Time.time + playerPreset.dashCooldown;
         _isDashing = false;
         dashTimer = 0.0f;
+        Debug.Log("dash");
     }
 
     public void Die()
