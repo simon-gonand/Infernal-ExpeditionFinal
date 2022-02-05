@@ -84,7 +84,8 @@ public class PlayerManager : MonoBehaviour
         {
             playerSpawnPosition = playerTransform;
             playerInput.gameObject.GetComponent<PlayerController>().self = playerTransform;
-            playerInput.SwitchCurrentControlScheme(Gamepad.all[0]);
+            if(Gamepad.all.Count > 0)
+                playerInput.SwitchCurrentControlScheme(Gamepad.all[0]);
         }
         else
         {
