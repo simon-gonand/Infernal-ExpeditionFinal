@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 5891595701888884371}
   - component: {fileID: 4582514297288630139}
   - component: {fileID: 6742459266193831570}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: PlayerPrefab_02
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -192,6 +192,7 @@ MonoBehaviour:
   self: {fileID: 4223509153915057737}
   selfRigidBody: {fileID: 2660306658829606644}
   selfCollider: {fileID: 4223509153915057738}
+  selfCarryCollider: {fileID: 8634733396356216812}
   soloCarrierCollider: {fileID: 6742459266193831570}
   selfCarryPlayer: {fileID: 5891595701888884371}
   playerPreset: {fileID: 11400000, guid: 6e8ed946df7976d4e939d4c409344454, type: 2}

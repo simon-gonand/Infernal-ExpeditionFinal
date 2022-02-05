@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Transform self;
     public Rigidbody selfRigidBody;
     public Collider selfCollider;
+    public Collider selfCarryCollider;
     public BoxCollider soloCarrierCollider;
     public CarryPlayer selfCarryPlayer;
     public PlayerPresets playerPreset;
@@ -473,7 +474,7 @@ public class PlayerController : MonoBehaviour
                 float distance = 0.0f;
                 foreach(Collider collider in hit)
                 {
-                    if (!collider.isTrigger || !collider.enabled || collider == selfCollider) continue;
+                    if (!collider.isTrigger || !collider.enabled || collider.Equals(selfCarryCollider)) continue;
                     float tempDistance = Vector3.Distance(self.position, collider.transform.position);
                     if (nearestCollider == null || distance > tempDistance)
                     {
@@ -481,8 +482,10 @@ public class PlayerController : MonoBehaviour
                         distance = tempDistance;
                     }
                 }
+                if (nearestCollider == null) return;
                 if (nearestCollider.isTrigger && nearestCollider.enabled)
                 {
+                    Debug.Log(nearestCollider.name);
                     // Stop player's movements
                     _playerMovementInput = Vector2.zero;
                     // Set with which interactable the player is interacting with
@@ -501,11 +504,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(attackPoint.position, playerPreset.interactionDistance);
     }
 
     public void UpdateSwimming()
