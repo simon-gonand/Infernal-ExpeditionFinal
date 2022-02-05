@@ -241,7 +241,8 @@ public class PlayerManager : MonoBehaviour
                     _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(gamepad);
             }
 
-            if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+            if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame ||
+                Keyboard.current != null && Keyboard.current.enterKey.wasPressedThisFrame)
                 _players[0].GetComponent<PlayerInput>().SwitchCurrentControlScheme(Keyboard.current, Mouse.current);
         }
     }
