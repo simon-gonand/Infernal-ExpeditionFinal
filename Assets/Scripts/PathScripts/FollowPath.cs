@@ -89,8 +89,11 @@ public class FollowPath : MonoBehaviour
 
             Vector3 rotation = self.position - oldPos;
             rotation.y = 0.0f;
-            self.rotation = Quaternion.LookRotation(rotation);
-
+            Quaternion newRotation = Quaternion.LookRotation(rotation);
+            if (Quaternion.Angle(self.rotation, newRotation) < 120.0f)
+                self.rotation = newRotation;
+            else
+                Debug.Log("saucisse");
 
             // Camera position
             if (cam != null)
