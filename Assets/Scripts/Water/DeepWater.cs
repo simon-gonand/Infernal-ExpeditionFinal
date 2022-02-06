@@ -8,7 +8,7 @@ public class DeepWater : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemiesAI>().Die();
+            other.GetComponent<EnemiesAI>().Die(null);
         }
         if (other.CompareTag("Player"))
         {

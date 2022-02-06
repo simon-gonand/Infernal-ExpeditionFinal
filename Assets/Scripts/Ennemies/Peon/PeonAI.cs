@@ -283,18 +283,19 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         lockDeathAnim = true;
 
         selfNavMesh.enabled = false;
-        selfRb.isKinematic = false;
 
-        Vector3 dir = player.self.forward + Vector3.up * 1f;
-
-
-        selfRb.AddForce(dir * 15, ForceMode.Impulse);
+        if (player != null)
+        {
+            selfRb.isKinematic = false;
+            Vector3 dir = player.self.forward + Vector3.up * 1f;
+            selfRb.AddForce(dir * 15, ForceMode.Impulse);
+        }
 
         selfAnimator.SetTrigger("die");
 
+         yield return new WaitForSeconds(2f);
+         selfRb.isKinematic = true;
         selfCollider.enabled = false;
-        yield return new WaitForSeconds(2.5f);
-        selfRb.isKinematic = true;
     }
 
     private IEnumerator ReviveCooldown()

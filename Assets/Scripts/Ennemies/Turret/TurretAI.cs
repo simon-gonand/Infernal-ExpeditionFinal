@@ -33,7 +33,7 @@ public class TurretAI : MonoBehaviour, EnemiesAI
     private bool canFire = false;
     private bool isDead;
 
-    public void Die()
+    public void Die(PlayerController player)
     {
         isDead = true;
 
