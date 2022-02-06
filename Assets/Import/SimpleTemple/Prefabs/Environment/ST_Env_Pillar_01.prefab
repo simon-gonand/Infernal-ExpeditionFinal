@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 472162}
   - component: {fileID: 3388572}
   - component: {fileID: 2368612}
+  - component: {fileID: 4232696486699204324}
   m_Layer: 0
   m_Name: ST_Env_Pillar_01
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4232696486699204324
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174468}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000024, y: 5.000001, z: 1.0000012}
+  m_Center: {x: -0.000012397765, y: 2.4999976, z: 0.000015705824}

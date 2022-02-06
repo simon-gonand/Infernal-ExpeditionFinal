@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 466786}
   - component: {fileID: 3313166}
   - component: {fileID: 2348380}
+  - component: {fileID: 7421814615014339128}
   m_Layer: 0
   m_Name: ST_Prop_Statue_Large_01
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7421814615014339128
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.9556231, y: 6.9652863, z: 3.4735067}
+  m_Center: {x: 0, y: 3.4826431, z: 0}

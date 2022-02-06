@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 400400}
   - component: {fileID: 3373090}
   - component: {fileID: 2313734}
+  - component: {fileID: 4076716526108197092}
   m_Layer: 0
   m_Name: ST_Env_Structure_06
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4076716526108197092
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174716}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.6878924, y: 14.879029, z: 6.258543}
+  m_Center: {x: -0.19536595, y: 7.4395146, z: 0.024111094}
