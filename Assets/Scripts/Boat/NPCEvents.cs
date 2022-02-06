@@ -25,6 +25,7 @@ public class NPCEvents : MonoBehaviour
     [Header("UI")]
     public GameObject tutoBillboardUI;
     public List<GameObject> endLandingToken;
+    public GameObject scoreUI;
 
     private int landingCount = 0;
     private bool canLaunchAnim = true;
@@ -95,6 +96,8 @@ public class NPCEvents : MonoBehaviour
 
         aboveBand.SetBool("aboveBandDisplay", false);
         belowBand.SetBool("belowBandDisplay", false);
+
+        scoreUI.SetActive(true);
     }
 
     public void BlackBandsDisplay()
