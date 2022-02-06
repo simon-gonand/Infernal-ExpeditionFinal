@@ -24,7 +24,7 @@ public class OpenGate : MonoBehaviour, EnemiesAI
 
     private int numOfPlayerClose;
 
-    public void Die()
+    public void Die(PlayerController player)
     {
         if (!_isOpen)
         {

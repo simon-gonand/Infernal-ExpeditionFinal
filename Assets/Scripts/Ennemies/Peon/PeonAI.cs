@@ -10,6 +10,8 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     [SerializeField]
     private NavMeshAgent selfNavMesh;
     [SerializeField]
+    private Rigidbody selfRb;
+    [SerializeField]
     private PeonPresets peonPreset;
     [SerializeField]
     private Transform attackPoint;
@@ -43,9 +45,8 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         _currentFollowedPlayer = null;
     }
 
-    public void Die()
+    public void Die(PlayerController player)
     {
-        // Play die sound
         _currentFollowedPlayer.isAttackedBy.Remove(this);
         if (attackCoroutine != null)
         {
@@ -58,8 +59,10 @@ public class PeonAI : MonoBehaviour, EnemiesAI
             if (isSkeleton)
                 StartCoroutine(ReviveCooldown());
             else
-                StartCoroutine(waitBeforeDestroy());
+                StartCoroutine(waitBeforeDestroy(player));
         }
+
+        
     }
 
     private void Start()
@@ -275,14 +278,23 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         attackCoroutine = null;
     }
 
-    private IEnumerator waitBeforeDestroy()
+    private IEnumerator waitBeforeDestroy(PlayerController player)
     {
         lockDeathAnim = true;
+
+        selfNavMesh.enabled = false;
+        selfRb.isKinematic = false;
+
+        Vector3 dir = player.self.forward + Vector3.up * 1f;
+
+
+        selfRb.AddForce(dir * 15, ForceMode.Impulse);
+
         selfAnimator.SetTrigger("die");
-        yield return new WaitForSeconds(0.2f);
+
         selfCollider.enabled = false;
-        yield return new WaitForSeconds(3f);
-        Destroy(this.gameObject);
+        yield return new WaitForSeconds(2.5f);
+        selfRb.isKinematic = true;
     }
 
     private IEnumerator ReviveCooldown()
