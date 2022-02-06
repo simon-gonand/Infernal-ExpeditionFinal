@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 445380}
   - component: {fileID: 3378910}
   - component: {fileID: 2364666}
-  - component: {fileID: 64265153866817530}
+  - component: {fileID: 7095789612062877616}
+  - component: {fileID: 3415020896403897198}
+  - component: {fileID: 5188845196458413088}
   m_Layer: 0
   m_Name: SM_Bld_Shanty_Preset_02
   m_TagString: Untagged
@@ -82,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64265153866817530
-MeshCollider:
+--- !u!65 &7095789612062877616
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,7 +94,32 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 047fb1a80c0d65240ba62296a2a7338c, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 5.583698, y: 6.6242056, z: 4.9488516}
+  m_Center: {x: -1.2513928, y: 3.2044075, z: -1.5896565}
+--- !u!65 &3415020896403897198
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1235325, y: 4.010396, z: 5.240147}
+  m_Center: {x: 3.1015422, y: 1.8975195, z: -1.5549308}
+--- !u!65 &5188845196458413088
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.4277344, y: 2.5025175, z: 3.3896432}
+  m_Center: {x: -1.1892774, y: 1.1435933, z: 2.6270092}
