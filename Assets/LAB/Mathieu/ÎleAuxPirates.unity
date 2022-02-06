@@ -30619,7 +30619,7 @@ GameObject:
   - component: {fileID: 1615919899}
   - component: {fileID: 1615919898}
   m_Layer: 5
-  m_Name: Level_07 (1)
+  m_Name: Level_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30696,7 +30696,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -31153,6 +31153,12 @@ PrefabInstance:
     - target: {fileID: 977277507, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: LevelSelection, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149299134, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
+      propertyPath: m_text
+      value: 'Return to Main Menu
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 1165919580, guid: 8f5515785fe1ee741bd7ea2447284bc8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

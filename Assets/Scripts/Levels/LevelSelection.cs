@@ -116,9 +116,12 @@ public class LevelSelection : MonoBehaviour
 
         tokenGroup.SetActive(true);
         if (offset < 0.0f)
+        {
             ++currentLevelSelectedIndex;
-        else
+        }
+        else if (offset > 0.0f)
             --currentLevelSelectedIndex;
+        Debug.Log(currentLevelSelectedIndex);
         CheckStarsStates();
 
         AudioUpdateForBiome();
@@ -149,7 +152,7 @@ public class LevelSelection : MonoBehaviour
         }
         else if (value.x > 0.0f)
         {
-            if (currentLevelSelectedIndex == 4)
+            if (currentLevelSelectedIndex == 5)
             {
                 return;
             }
@@ -179,6 +182,8 @@ public class LevelSelection : MonoBehaviour
                 return 5;
             case 4:
                 return 7;
+            case 5:
+                return 8;
             default:
                 return 0;
         }
