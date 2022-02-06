@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 473360}
   - component: {fileID: 3393468}
   - component: {fileID: 2362154}
+  - component: {fileID: 1306618941909381277}
   m_Layer: 0
   m_Name: ST_Env_Doorway_04
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1306618941909381277
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119734}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.308014, y: 7.022702, z: 2.6927917}
+  m_Center: {x: 0.000045776367, y: 3.511351, z: 0.11888659}
