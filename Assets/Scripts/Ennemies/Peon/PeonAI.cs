@@ -47,6 +47,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     {
         // Play die sound
         _currentFollowedPlayer.isAttackedBy.Remove(this);
+        selfNavMesh.speed = 0.0f;
         if (attackCoroutine != null)
         {
             StopCoroutine(attackCoroutine);
