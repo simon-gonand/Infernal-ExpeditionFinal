@@ -10,6 +10,8 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     [SerializeField]
     private NavMeshAgent selfNavMesh;
     [SerializeField]
+    private Rigidbody selfRb;
+    [SerializeField]
     private PeonPresets peonPreset;
     [SerializeField]
     private Transform attackPoint;
@@ -43,9 +45,8 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         _currentFollowedPlayer = null;
     }
 
-    public void Die()
+    public void Die(PlayerController player)
     {
-        // Play die sound
         _currentFollowedPlayer.isAttackedBy.Remove(this);
         selfNavMesh.speed = 0.0f;
         if (attackCoroutine != null)
@@ -57,10 +58,12 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         if (!lockDeathAnim)
         {
             if (isSkeleton)
-                StartCoroutine(ReviveCooldown());
+                StartCoroutine(ReviveCooldown(player));
             else
-                StartCoroutine(waitBeforeDestroy());
+                StartCoroutine(waitBeforeDestroy(player));
         }
+
+        
     }
 
     private void Start()
@@ -276,22 +279,44 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         attackCoroutine = null;
     }
 
-    private IEnumerator waitBeforeDestroy()
+    private IEnumerator waitBeforeDestroy(PlayerController player)
     {
         lockDeathAnim = true;
+
+        selfNavMesh.enabled = false;
+
+        if (player != null)
+        {
+            selfRb.isKinematic = false;
+            Vector3 dir = player.self.forward + Vector3.up * 1f;
+            selfRb.AddForce(dir * 15, ForceMode.Impulse);
+        }
+
         selfAnimator.SetTrigger("die");
-        yield return new WaitForSeconds(0.2f);
+
+         yield return new WaitForSeconds(2f);
+         selfRb.isKinematic = true;
         selfCollider.enabled = false;
-        yield return new WaitForSeconds(3f);
-        Destroy(this.gameObject);
     }
 
-    private IEnumerator ReviveCooldown()
+    private IEnumerator ReviveCooldown(PlayerController player)
     {
         lockDeathAnim = true;
         selfAnimator.SetTrigger("die");
-        yield return new WaitForSeconds(0.2f);
+
+        selfNavMesh.enabled = false;
+
+        if (player != null)
+        {
+            selfRb.isKinematic = false;
+            Vector3 dir = player.self.forward + Vector3.up * 1f;
+            selfRb.AddForce(dir * 10, ForceMode.Impulse);
+        }
+
+        yield return new WaitForSeconds(2f);
+        selfRb.isKinematic = true;
         selfCollider.enabled = false;
+
         yield return new WaitForSeconds(reviveCooldown);
         Revive();
     }
@@ -299,6 +324,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     private void Revive()
     {
         lockDeathAnim = false;
+        selfNavMesh.enabled = true;
         selfAnimator.SetTrigger("revive");
         selfCollider.enabled = true;
         if (isStartingDead)

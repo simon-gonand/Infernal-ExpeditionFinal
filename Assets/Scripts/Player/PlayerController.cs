@@ -396,7 +396,7 @@ public class PlayerController : MonoBehaviour
             {
                 // Play sword impact sound
                 EnemiesAI enemy = hitted.GetComponent<EnemiesAI>();
-                enemy.Die();
+                enemy.Die(this);
                 return;
             }
             if (hitted.CompareTag("Player"))
