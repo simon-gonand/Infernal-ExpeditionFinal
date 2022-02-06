@@ -43,8 +43,7 @@ public class PlayerManager : MonoBehaviour
     private float cameraOriginalOffset;
     Coroutine coroutine;
 
-    private bool _respawnOnBoat;
-    public bool respawnOnBoat { set { _respawnOnBoat = value; } get { return _respawnOnBoat; } }
+    public bool respawnOnBoat;
     [HideInInspector] public Transform respawnPoint;
 
     private bool _onLevelSelectionUI = false;
@@ -59,7 +58,7 @@ public class PlayerManager : MonoBehaviour
             instance = this;
             if (onPirateIsland)
             {
-                _respawnOnBoat = false;
+                respawnOnBoat = false;
                 firstPlayer.SetActive(true);
             }
         }
@@ -185,7 +184,7 @@ public class PlayerManager : MonoBehaviour
             default:
                 break;
         }
-        if (_respawnOnBoat || (onPirateIsland && onJoin))
+        if (respawnOnBoat || (onPirateIsland && onJoin))
             return playerSpawnPosition;
         else
             return FindClosestPlayer();
