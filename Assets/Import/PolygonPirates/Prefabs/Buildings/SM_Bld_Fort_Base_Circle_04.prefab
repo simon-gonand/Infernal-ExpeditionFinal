@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 463080}
   - component: {fileID: 3312310}
   - component: {fileID: 2378198}
-  - component: {fileID: 3275348904856456981}
+  - component: {fileID: 7973979682407464496}
   m_Layer: 0
   m_Name: SM_Bld_Fort_Base_Circle_04
   m_TagString: Untagged
@@ -82,8 +82,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3275348904856456981
-BoxCollider:
+--- !u!64 &7973979682407464496
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,6 +92,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 19.414902, y: 10.54149, z: 19.41491}
-  m_Center: {x: 0, y: 5.270745, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 4b2d0fb8654cc88478b04e948e4ed52e, type: 3}
