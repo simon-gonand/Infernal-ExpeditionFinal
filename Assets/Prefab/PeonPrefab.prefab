@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 2797384064787410787}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 23.94, y: 1.33, z: -138.28285}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5609828846115917645}
   - {fileID: 629537408948504091}
@@ -171,6 +171,7 @@ MonoBehaviour:
   attackPoint: {fileID: 629537408948504091}
   selfCollider: {fileID: 2960266963732856096}
   isSkeleton: 0
+  isStartingDead: 0
   reviveCooldown: 0
   selfAnimator: {fileID: 4606053275162610571}
   sword: {fileID: 7414307669315984941}

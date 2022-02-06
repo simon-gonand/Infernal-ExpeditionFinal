@@ -103,7 +103,7 @@ public class PauseMenu : MonoBehaviour
 
     public void IsReturningToPause()
     {
-        if (gameObject.activeSelf)
+        if (pauseMenuUI.activeSelf)
         {
             Pause();
             foreach (PlayerController player in PlayerManager.instance.players)
