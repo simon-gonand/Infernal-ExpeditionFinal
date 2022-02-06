@@ -19,7 +19,7 @@ public class SetupPathLinerenderer : MonoBehaviour
 
         for (int i = 0; i < selfPath.waypoints.Count; i++)
         {
-            boatPath.SetPosition(i, selfPath.waypoints[i].self.position);
+            boatPath.SetPosition(i, selfPath.waypoints[i].self.position + new Vector3(0,0.1f,0));
         }
     }
 }

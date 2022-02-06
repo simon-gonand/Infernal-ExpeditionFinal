@@ -14,6 +14,9 @@ public class OpenGate : MonoBehaviour, EnemiesAI
     [SerializeField]
     private float timeToOpen;
 
+    [SerializeField]
+    private Animator switchAnimator;
+
     private Vector3 openGatePosition;
     private Vector3 initialPos;
     private bool _isOpen = false;
@@ -29,6 +32,7 @@ public class OpenGate : MonoBehaviour, EnemiesAI
             selfOutline.enabled = false;
 
             AudioManager.AMInstance.ropeCutSFX.Post(gameObject);
+            switchAnimator.SetTrigger("Fall");
 
             StartCoroutine(Open());
             _isOpen = true;
