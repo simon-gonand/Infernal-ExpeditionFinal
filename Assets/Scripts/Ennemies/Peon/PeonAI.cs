@@ -57,7 +57,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         if (!lockDeathAnim)
         {
             if (isSkeleton)
-                StartCoroutine(ReviveCooldown());
+                StartCoroutine(ReviveCooldown(player));
             else
                 StartCoroutine(waitBeforeDestroy(player));
         }
@@ -298,12 +298,24 @@ public class PeonAI : MonoBehaviour, EnemiesAI
         selfCollider.enabled = false;
     }
 
-    private IEnumerator ReviveCooldown()
+    private IEnumerator ReviveCooldown(PlayerController player)
     {
         lockDeathAnim = true;
         selfAnimator.SetTrigger("die");
-        yield return new WaitForSeconds(0.2f);
+
+        selfNavMesh.enabled = false;
+
+        if (player != null)
+        {
+            selfRb.isKinematic = false;
+            Vector3 dir = player.self.forward + Vector3.up * 1f;
+            selfRb.AddForce(dir * 10, ForceMode.Impulse);
+        }
+
+        yield return new WaitForSeconds(2f);
+        selfRb.isKinematic = true;
         selfCollider.enabled = false;
+
         yield return new WaitForSeconds(reviveCooldown);
         Revive();
     }
@@ -311,6 +323,7 @@ public class PeonAI : MonoBehaviour, EnemiesAI
     private void Revive()
     {
         lockDeathAnim = false;
+        selfNavMesh.enabled = true;
         selfAnimator.SetTrigger("revive");
         selfCollider.enabled = true;
         if (isStartingDead)

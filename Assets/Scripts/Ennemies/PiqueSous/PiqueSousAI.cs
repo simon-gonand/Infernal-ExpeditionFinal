@@ -112,20 +112,23 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
         isDead = true;
         selfNavMesh.speed = 0f;
 
-        // Die sound
         if (targetTreasure != null && targetTreasure.isCarriedByPiqueSous)
             targetTreasure.UnInteractWithPiqueSous(this);
 
         selfNavMesh.enabled = false;
         selfRb.isKinematic = false;
-        Vector3 dir = player.transform.forward + Vector3.up;
-        selfRb.AddForce(dir * 15, ForceMode.Impulse);
+
+        if (player != null)
+        {
+            Vector3 dir = player.transform.forward + Vector3.up;
+            selfRb.AddForce(dir * 15, ForceMode.Impulse);
+        }
+
         StartCoroutine(DeathPhysics());
 
         selfAnim.SetTrigger("die");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isDead == false)
@@ -166,5 +169,4 @@ public class PiqueSousAI : MonoBehaviour, EnemiesAI
         selfCollider.enabled = false;
         selfRb.isKinematic = true;
     }
-
 }
