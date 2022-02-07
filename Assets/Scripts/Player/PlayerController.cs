@@ -487,7 +487,6 @@ public class PlayerController : MonoBehaviour
                 if (nearestCollider == null) return;
                 if (nearestCollider.isTrigger && nearestCollider.enabled)
                 {
-                    Debug.Log(nearestCollider.name);
                     // Stop player's movements
                     _playerMovementInput = Vector2.zero;
                     // Set with which interactable the player is interacting with
