@@ -40,6 +40,7 @@ public class PauseMenu : MonoBehaviour
                 player.selfPlayerInput.currentActionMap.Disable();
                 player.selfPlayerInput.SwitchCurrentActionMap("ControlsUI");
                 player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed += Resume;
+                player.selfPlayerInput.currentActionMap.FindAction("Pause").performed += Resume;
                 player.selfPlayerInput.currentActionMap.Enable();
             }
         }
@@ -74,11 +75,13 @@ public class PauseMenu : MonoBehaviour
         isPause = false;
         AudioManager.AMInstance.menuCancelSFX.Post(gameObject);
 
+        Debug.Log("saucisse");
         foreach (PlayerController player in PlayerManager.instance.players)
         {
             player.selfPlayerInput.currentActionMap.Disable();
-            player.selfPlayerInput.SwitchCurrentActionMap("Controls");
             player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed -= Resume;
+            player.selfPlayerInput.currentActionMap.FindAction("Pause").performed -= Resume;
+            player.selfPlayerInput.SwitchCurrentActionMap("Controls");
             player.selfPlayerInput.currentActionMap.Enable();
         }
     }

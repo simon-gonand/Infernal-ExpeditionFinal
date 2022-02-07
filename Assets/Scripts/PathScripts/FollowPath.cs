@@ -65,6 +65,13 @@ public class FollowPath : MonoBehaviour
             initialOffset = cam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
             initialFOV = cam.m_Lens.FieldOfView;
         }
+
+        if (linkIndex < path.waypoints.Count - 1)
+        {
+            Vector3 rotation = path.waypoints[linkIndex + 1].self.position - path.waypoints[linkIndex].self.position;
+            rotation.y = 0.0f;
+            self.rotation = Quaternion.LookRotation(rotation);
+        }
     }
 
     private bool CoordiantesComparison(Vector3 a, Vector3 b)
@@ -90,7 +97,7 @@ public class FollowPath : MonoBehaviour
             Vector3 rotation = self.position - oldPos;
             rotation.y = 0.0f;
             Quaternion newRotation = Quaternion.LookRotation(rotation);
-            if (Quaternion.Angle(self.rotation, newRotation) < 120.0f)
+            if (Quaternion.Angle(self.rotation, newRotation) < 100.0f)
                 self.rotation = newRotation;
             else
                 Debug.Log("saucisse");

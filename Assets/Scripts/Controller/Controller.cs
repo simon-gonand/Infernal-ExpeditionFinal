@@ -333,6 +333,14 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""b226cb24-9dc9-4dc5-8135-a8bdc33b91b9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -577,6 +585,28 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""action"": ""ValidUI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95e019fa-bc14-4f30-b06b-6aba607e4145"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3179ea38-ed5a-4687-b722-de0166326cf8"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -626,6 +656,7 @@ public class @Controller : IInputActionCollection, IDisposable
         m_ControlsUI_MoveUI = m_ControlsUI.FindAction("MoveUI", throwIfNotFound: true);
         m_ControlsUI_ValidModifUI = m_ControlsUI.FindAction("ValidModifUI", throwIfNotFound: true);
         m_ControlsUI_ValidUI = m_ControlsUI.FindAction("ValidUI", throwIfNotFound: true);
+        m_ControlsUI_Pause = m_ControlsUI.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -760,6 +791,7 @@ public class @Controller : IInputActionCollection, IDisposable
     private readonly InputAction m_ControlsUI_MoveUI;
     private readonly InputAction m_ControlsUI_ValidModifUI;
     private readonly InputAction m_ControlsUI_ValidUI;
+    private readonly InputAction m_ControlsUI_Pause;
     public struct ControlsUIActions
     {
         private @Controller m_Wrapper;
@@ -768,6 +800,7 @@ public class @Controller : IInputActionCollection, IDisposable
         public InputAction @MoveUI => m_Wrapper.m_ControlsUI_MoveUI;
         public InputAction @ValidModifUI => m_Wrapper.m_ControlsUI_ValidModifUI;
         public InputAction @ValidUI => m_Wrapper.m_ControlsUI_ValidUI;
+        public InputAction @Pause => m_Wrapper.m_ControlsUI_Pause;
         public InputActionMap Get() { return m_Wrapper.m_ControlsUI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -789,6 +822,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @ValidUI.started -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnValidUI;
                 @ValidUI.performed -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnValidUI;
                 @ValidUI.canceled -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnValidUI;
+                @Pause.started -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_ControlsUIActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_ControlsUIActionsCallbackInterface = instance;
             if (instance != null)
@@ -805,6 +841,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @ValidUI.started += instance.OnValidUI;
                 @ValidUI.performed += instance.OnValidUI;
                 @ValidUI.canceled += instance.OnValidUI;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -843,5 +882,6 @@ public class @Controller : IInputActionCollection, IDisposable
         void OnMoveUI(InputAction.CallbackContext context);
         void OnValidModifUI(InputAction.CallbackContext context);
         void OnValidUI(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
