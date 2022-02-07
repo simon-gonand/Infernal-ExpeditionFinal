@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (isPause)
         {
-            Resume(new InputAction.CallbackContext());
+            Resume();
         }
         else
         {
@@ -39,8 +39,8 @@ public class PauseMenu : MonoBehaviour
             {
                 player.selfPlayerInput.currentActionMap.Disable();
                 player.selfPlayerInput.SwitchCurrentActionMap("ControlsUI");
-                player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed += Resume;
-                player.selfPlayerInput.currentActionMap.FindAction("Pause").performed += Resume;
+                player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed += ResumeContext;
+                player.selfPlayerInput.currentActionMap.FindAction("Pause").performed += ResumeContext;
                 player.selfPlayerInput.currentActionMap.Enable();
             }
         }
@@ -50,11 +50,7 @@ public class PauseMenu : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         GameManager.instance.LoadLevel(scene.name, GameManager.instance.boatOnTargetGroup);
-        foreach(PlayerController player in PlayerManager.instance.players)
-        {
-            player.selfPlayerInput.currentActionMap.Enable();
-        }
-        Resume(new InputAction.CallbackContext());
+        Resume();
     }
 
     private void Pause()
@@ -67,7 +63,17 @@ public class PauseMenu : MonoBehaviour
         AudioManager.AMInstance.menuSelectSFX.Post(gameObject);
     }
 
-    private void Resume(InputAction.CallbackContext context)
+    private void ResumeContext(InputAction.CallbackContext context)
+    {
+        foreach (PlayerController player in PlayerManager.instance.players)
+        {
+            player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed -= ResumeContext;
+            player.selfPlayerInput.currentActionMap.FindAction("Pause").performed -= ResumeContext;
+        }
+        Resume();
+    }
+
+    private void Resume()
     {
         pauseMenuUI.SetActive(false);
         Cursor.visible = false;
@@ -75,12 +81,9 @@ public class PauseMenu : MonoBehaviour
         isPause = false;
         AudioManager.AMInstance.menuCancelSFX.Post(gameObject);
 
-        Debug.Log("saucisse");
         foreach (PlayerController player in PlayerManager.instance.players)
         {
             player.selfPlayerInput.currentActionMap.Disable();
-            player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed -= Resume;
-            player.selfPlayerInput.currentActionMap.FindAction("Pause").performed -= Resume;
             player.selfPlayerInput.SwitchCurrentActionMap("Controls");
             player.selfPlayerInput.currentActionMap.Enable();
         }
@@ -94,14 +97,14 @@ public class PauseMenu : MonoBehaviour
         AudioManager.AMInstance.menuSelectSFX.Post(gameObject);
         foreach (PlayerController player in PlayerManager.instance.players)
         {
-            player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed -= Resume;
+            player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed -= ResumeContext;
         }
     }
 
     public void Quit()
     {
         GameManager.instance.LoadLevel("ÎleAuxPirates", false);
-        Resume(new InputAction.CallbackContext());
+        Resume();
     }
 
     public void IsReturningToPause()
@@ -111,7 +114,7 @@ public class PauseMenu : MonoBehaviour
             Pause();
             foreach (PlayerController player in PlayerManager.instance.players)
             {
-                player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed += Resume;
+                player.selfPlayerInput.currentActionMap.FindAction("CancelUI").performed += ResumeContext;
             }
         }
     }

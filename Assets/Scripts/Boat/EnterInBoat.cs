@@ -20,12 +20,13 @@ public class EnterInBoat : MonoBehaviour
         if (other.CompareTag("Treasures"))
         {
             Treasure treasure = other.GetComponent<Treasure>();
-            if (treasure.playerInteractingWith.Count == 1)
+            HoldManager.instance.AddTreasureToHold(treasure);
+            /*if (treasure.playerInteractingWith.Count == 1)
             {
                 GetPlayerOnBoat(treasure.playerInteractingWith[0]);
             }
             if (treasure.playerInteractingWith.Count > 1)
-                treasure.GetOnBoat(playerOnBoatEntryPoint);
+                treasure.GetOnBoat(playerOnBoatEntryPoint);*/
         }
     }
     private void GetPlayerOnBoat(PlayerController player)
@@ -42,6 +43,7 @@ public class EnterInBoat : MonoBehaviour
                     {
                         player.self.position = playerOnBoatEntryPoint.position;
                         player.selfRigidBody.velocity += Vector3.up;
+                        HoldManager.instance.AddTreasureToHold(transportedTreasure);
                     }
                         transportedTreasure.GetOnBoat(playerOnBoatEntryPoint);
                 }

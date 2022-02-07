@@ -361,7 +361,9 @@ public class Treasure : MonoBehaviour, ICarriable
 
         AdjustCollider(associateColliders[player].transform.localPosition, player, false);
         // Player does not interact with the treasure anymore
+        Debug.Log(_playerInteractingWith.Count);
         _playerInteractingWith.Remove(player);
+        Debug.Log(_playerInteractingWith.Count);
 
         
         associateColliders[player].GetComponent<BoxCollider>().enabled = true;
