@@ -38,6 +38,7 @@ public class Treasure : MonoBehaviour, ICarriable
     public bool isCarriedByPiqueSous { get { return _isCarriedByPiqueSous; } }
 
     private Vector3 spawnPos;
+    private Vector3 carriedPosition;
 
     private void Start()
     {
@@ -181,6 +182,7 @@ public class Treasure : MonoBehaviour, ICarriable
         Vector3 upTreasure = self.position;
         upTreasure.y = interact.position.y + self.lossyScale.y / 2;
         self.position = upTreasure;
+        carriedPosition = self.localPosition;
     }
 
     #region interaction
@@ -454,7 +456,10 @@ public class Treasure : MonoBehaviour, ICarriable
     private void TreasureMovement()
     {
         if (_playerInteractingWith.Count > 0)
+        {
             selfRigidbody.velocity = Vector3.zero;
+            self.localPosition = carriedPosition;
+        }
         if (_playerInteractingWith.Count > 1)
         {
             selfRigidbody.velocity = GetTreasuresVelocity();
