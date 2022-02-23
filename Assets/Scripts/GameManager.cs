@@ -43,18 +43,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(string sceneName, bool isBoatInScene)
     {
-        string levelIdStr = sceneName.Substring(sceneName.Length - 1);
-        try
-        {
-            LevelManager.instance.levelId = Convert.ToInt32(levelIdStr);
-        }
-        catch
-        {
-            if (sceneName.Equals("LandScape_Tuto"))
-                LevelManager.instance.levelId = 0;
-            else
-                LevelManager.instance.levelId = -1;
-        }
         boatOnTargetGroup = isBoatInScene;
         if (sceneName.Equals("ÎleAuxPirates"))
         {
@@ -86,6 +74,22 @@ public class GameManager : MonoBehaviour
                 p.selfPlayerInput.SwitchCurrentActionMap("Controls");
                 p.selfPlayerInput.currentActionMap.Enable();
             }
+        }
+
+        string levelIdStr = sceneName.Substring(sceneName.Length - 1);
+        try
+        {
+            LevelManager.instance.levelId = Convert.ToInt32(levelIdStr);
+        }
+        catch
+        {
+            if (sceneName.Equals("LandScape_Tuto"))
+            {
+                LevelManager.instance.levelId = 0;
+                PlayerManager.instance.respawnOnBoat = false;
+            }
+            else
+                LevelManager.instance.levelId = -1;
         }
         SceneManager.LoadScene(sceneName);
     }
