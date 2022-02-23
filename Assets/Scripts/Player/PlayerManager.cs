@@ -226,7 +226,8 @@ public class PlayerManager : MonoBehaviour
             {
                 player.self.SetParent(BoatManager.instance.self);
             }
-            GameManager.instance.targetGroup.AddMember(player.self, weight, 180);
+            if (GameManager.instance.targetGroup.FindMember(player.self) == -1)
+                GameManager.instance.targetGroup.AddMember(player.self, weight, 180);
         }
     }
 
@@ -250,7 +251,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (add)
         {
-            GameManager.instance.targetGroup.AddMember(player, weight, 180);
+            if (GameManager.instance.targetGroup.FindMember(player) == -1)
+                GameManager.instance.targetGroup.AddMember(player, weight, 180);
         }
         else
         {
