@@ -27,7 +27,7 @@ public class CameraManager : CinemachineExtension
     public bool isUnzooming { set { _isUnzooming = value; } }
 
     private bool _isUnzoomMax = false;
-    public bool isUnzoomMax { get { return _isUnzoomMax; } }
+    public bool isUnzoomMax { get { return _isUnzoomMax; } set { _isUnzoomMax = value; } }
 
     protected override void Awake()
     {

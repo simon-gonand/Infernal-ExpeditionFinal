@@ -226,7 +226,7 @@ public class PlayerManager : MonoBehaviour
             {
                 player.self.SetParent(BoatManager.instance.self);
             }
-            GameManager.instance.targetGroup.AddMember(player.self, weight, 20);
+            GameManager.instance.targetGroup.AddMember(player.self, weight, 180);
         }
     }
 
@@ -263,6 +263,7 @@ public class PlayerManager : MonoBehaviour
         bool playerIsOutCam = false;
         foreach (PlayerController player in _players)
         {
+            if (!player.selfRenderer.isVisible) continue;
             Vector2 posScreen = Camera.main.WorldToScreenPoint(player.self.position);
             if (posScreen.y > Camera.main.pixelHeight || posScreen.x > Camera.main.pixelWidth || posScreen.y < 0 || posScreen.x < 0)
             {

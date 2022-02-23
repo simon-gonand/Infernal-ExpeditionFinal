@@ -160,6 +160,8 @@ public class PlayerController : MonoBehaviour
         UpdateSwimming();
         selfRigidBody.velocity -= Vector3.up;
         selfRigidBody.mass = 1;
+
+        StopAllCoroutines();
     }
 
     private void ResetStates()
@@ -646,13 +648,12 @@ public class PlayerController : MonoBehaviour
             {
                 interactingWith.UninteractWith(this);
             }
-
             StartCoroutine(Respawn());
             RespawnUiManager.instance.SpawnPicto(_id);
         }
     }
 
-    private IEnumerator Respawn()
+    public IEnumerator Respawn()
     {
         PlayerManager.instance.AddRemovePlayerFromTargetGroup(self, false);
         selfRenderer.enabled = false;

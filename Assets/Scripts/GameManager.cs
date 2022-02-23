@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         GameObject virtualCam = GameObject.FindGameObjectWithTag("VirtualCamera");
         playerManager.cam = virtualCam.GetComponent<CinemachineVirtualCamera>();
         playerManager.camManager = virtualCam.GetComponent<CameraManager>();
+        playerManager.camManager.isUnzoomMax = false;
 
         GameObject boatPath = GameObject.FindGameObjectWithTag("BoatPath");
         if (boatPath != null)
