@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     public bool boatOnTargetGroup;
     public bool debugMode;
+    [Range(1, 3)]
+    public int nbOfJoin;
     private bool _controlAll;
     public bool controlAll { get { return _controlAll; } set { _controlAll = value; } }
 
@@ -50,9 +52,8 @@ public class GameManager : MonoBehaviour
         if (debugMode)
         {
             Debug.LogWarning("YOUR ARE IN DEBUG MODE");
-            playerManager.GetComponent<PlayerInputManager>().JoinPlayer(1);
-            playerManager.GetComponent<PlayerInputManager>().JoinPlayer(2);
-            playerManager.GetComponent<PlayerInputManager>().JoinPlayer(3);
+            for (int i = 1; i <= nbOfJoin; ++i)
+                playerManager.GetComponent<PlayerInputManager>().JoinPlayer(i);
         }
     }
 

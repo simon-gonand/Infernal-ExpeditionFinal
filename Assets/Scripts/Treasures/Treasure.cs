@@ -189,7 +189,6 @@ public class Treasure : MonoBehaviour, ICarriable
     // When player is interacting with the treasure
     public bool InteractWith(PlayerController player, GameObject interactingWith)
     {
-        Debug.Log(_playerInteractingWith.Count);
         if (_isCarriedByPiqueSous) return false;
         // Update player values
         _playerInteractingWith.Add(player);
@@ -454,12 +453,10 @@ public class Treasure : MonoBehaviour, ICarriable
 
     private void TreasureMovement()
     {
-        if (_playerInteractingWith.Count > 0)
+        if (_playerInteractingWith.Count == 1)
         {
             selfRigidbody.velocity = Vector3.zero;
-            Debug.Log(self.position);
             self.localPosition = carriedPosition;
-            Debug.Log(self.position);
         }
         if (_playerInteractingWith.Count > 1)
         {
