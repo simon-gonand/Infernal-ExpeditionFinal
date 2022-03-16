@@ -95,12 +95,16 @@ public class Treasure : MonoBehaviour, ICarriable
         associateColliders.Add(player, interactingWith);
     }
 
-    private void AdjustCollider(Vector3 localSnapPosition, PlayerController player, bool add)
+    private void AdjustCollider(Vector3 localSnapPosition, PlayerController player, bool add, bool isRecursiveCall = false)
     {
         if (_playerInteractingWith.Count == 1)
         {
             player.AdjustSoloColliderSize(localSnapPosition, this, add);
-            return;
+            if (add) return;
+        }
+        if (_playerInteractingWith.Count == 2 && add && !isRecursiveCall)
+        {
+            AdjustCollider(associateColliders[_playerInteractingWith[0]].transform.localPosition, _playerInteractingWith[0], add, true);
         }
         if (localSnapPosition.x > 0)
         {
