@@ -351,9 +351,9 @@ public class PlayerController : MonoBehaviour
         {
             PlayerManager.instance.players[_id].selfPlayerInput.SwitchCurrentControlScheme(Keyboard.current);
             if (_id == 3)
-                PlayerManager.instance.players[0].selfPlayerInput.SwitchCurrentControlScheme(Gamepad.all[0]);
+                PlayerManager.instance.players[0].selfPlayerInput.SwitchCurrentControlScheme(Gamepad.current);
             else
-                PlayerManager.instance.players[_id + 1].selfPlayerInput.SwitchCurrentControlScheme(Gamepad.all[0]);
+                PlayerManager.instance.players[_id + 1].selfPlayerInput.SwitchCurrentControlScheme(Gamepad.current);
             GameManager.instance.controlAll = false;
         }
     }
@@ -366,12 +366,12 @@ public class PlayerController : MonoBehaviour
             {
                 foreach (PlayerController player in PlayerManager.instance.players)
                 {
-                    player.selfPlayerInput.SwitchCurrentControlScheme(Gamepad.all[0]);
+                    player.selfPlayerInput.SwitchCurrentControlScheme(Gamepad.current);
                 }
             }
             else
             {
-                PlayerManager.instance.players[0].selfPlayerInput.SwitchCurrentControlScheme(Gamepad.all[0]);
+                PlayerManager.instance.players[0].selfPlayerInput.SwitchCurrentControlScheme(Gamepad.current);
                 for (int i = 1; i < PlayerManager.instance.players.Count; ++i)
                 {
                     PlayerManager.instance.players[i].selfPlayerInput.SwitchCurrentControlScheme(Keyboard.current);
