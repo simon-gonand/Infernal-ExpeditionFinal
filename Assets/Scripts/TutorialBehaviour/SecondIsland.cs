@@ -15,9 +15,36 @@ public class SecondIsland : MonoBehaviour
     [SerializeField]
     private List<Treasure> treasures;
 
+    private bool boatStarted;
+    private float tAccel;
+    private float tDecel;
+    private float boatSpeed = 0.1f;
 
     void Update()
     {
+        if (boatStarted)
+        {
+            if (tDecel > 1.0f)
+            {
+                this.enabled = false;
+                return;
+            }
+            if (tAccel > 1.0f)
+            {
+                if (BoatManager.instance.GetComponent<FollowPath>().tParam >= 0.85f)
+                {
+                    tDecel += Time.deltaTime * 0.5f;
+                    path.links[1].speed = Mathf.Lerp(boatSpeed, 0.01f, tDecel);
+                    return;
+                }
+            }
+            else
+            {
+                tAccel += Time.deltaTime * 0.5f;
+                path.links[1].speed = Mathf.Lerp(0.0f, boatSpeed, tAccel);
+                return;
+            }
+        }
         if (treasures.Count == 0)
         {
             globalUi.SetActive(false);
@@ -29,8 +56,7 @@ public class SecondIsland : MonoBehaviour
             }
             if (nbPlayerOnBoat == PlayerManager.instance.players.Count)
             {
-                path.links[1].speed = 0.1f;
-                this.enabled = false;
+                boatStarted = true;
             }
         }
         else

@@ -12,9 +12,36 @@ public class FourthIsland : MonoBehaviour
     [SerializeField]
     private OpenGate gate;
 
+    private bool boatStarted;
+    private float tAccel;
+    private float tDecel;
+    private float boatSpeed = 0.1f;
 
     void Update()
     {
+        if (boatStarted)
+        {
+            if (tDecel > 1.0f)
+            {
+                this.enabled = false;
+                return;
+            }
+            if (tAccel > 1.0f)
+            {
+                if (BoatManager.instance.GetComponent<FollowPath>().tParam >= 0.85f)
+                {
+                    tDecel += Time.deltaTime * 0.5f;
+                    path.links[3].speed = Mathf.Lerp(boatSpeed, 0.01f, tDecel);
+                    return;
+                }
+            }
+            else
+            {
+                tAccel += Time.deltaTime * 0.5f;
+                path.links[3].speed = Mathf.Lerp(0.0f, boatSpeed, tAccel);
+                return;
+            }
+        }
         if (gate.isOpen)
         {
             globalUi.SetActive(false);
@@ -27,8 +54,7 @@ public class FourthIsland : MonoBehaviour
             }
             if (nbPlayerOnBoat == PlayerManager.instance.players.Count)
             {
-                path.links[3].speed = 0.1f;
-                this.enabled = false;
+                boatStarted = true;
             }
         }
     }

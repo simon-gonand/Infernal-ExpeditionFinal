@@ -12,8 +12,26 @@ public class FifthIsland : MonoBehaviour
     [SerializeField]
     private OpenGate gate;
 
+    private bool boatStarted;
+    private float tAccel;
+    private float boatSpeed = 0.1f;
+
     void Update()
     {
+        if (boatStarted)
+        {
+            if (tAccel > 1.0f)
+            {
+                this.enabled = false;
+                return;
+            }
+            else
+            {
+                tAccel += Time.deltaTime * 0.5f;
+                path.links[4].speed = Mathf.Lerp(0.0f, boatSpeed, tAccel);
+                return;
+            }
+        }
         if (gate.isOpen)
         {
             globalUi.SetActive(false);
@@ -26,8 +44,7 @@ public class FifthIsland : MonoBehaviour
             }
             if (nbPlayerOnBoat == PlayerManager.instance.players.Count)
             {
-                path.links[4].speed = 0.1f;
-                this.enabled = false;
+                boatStarted = true;
             }
         }
     }

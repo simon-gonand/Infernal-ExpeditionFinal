@@ -17,7 +17,8 @@ public class FollowPath : MonoBehaviour
     public int linkIndex { get { return _linkIndex; } }
     private float lastTValue;
 
-    private float tParam;
+    private float _tParam;
+    public float tParam { get { return _tParam; } }
     private bool coroutineAllowed;
     int allPointIndex;
     private bool pathEnd;
@@ -55,7 +56,7 @@ public class FollowPath : MonoBehaviour
             allPointIndex += path.links[i].pathPoints.Count - 1;
         }
         lastTValue = 0.0f;
-        tParam = 0.0f;
+        _tParam = 0.0f;
 
         coroutineAllowed = true;
 
@@ -82,14 +83,14 @@ public class FollowPath : MonoBehaviour
     private IEnumerator FollowCurve()
     {
         coroutineAllowed = false;
-        while (tParam < 1)
+        while (_tParam < 1)
         {
             // Object position
-            tParam += Time.deltaTime * path.links[linkIndex].speed;
-            Vector3 posOnCurve = Mathf.Pow(1 - tParam, 3) * path.allPoints[allPointIndex] +
-                3 * Mathf.Pow(1 - tParam, 2) * tParam * path.allAnchors[allPointIndex * 2] +
-                3 * (1 - tParam) * Mathf.Pow(tParam, 2) * path.allAnchors[allPointIndex * 2 + 1] +
-                Mathf.Pow(tParam, 3) * path.allPoints[allPointIndex + 1];
+            _tParam += Time.deltaTime * path.links[linkIndex].speed;
+            Vector3 posOnCurve = Mathf.Pow(1 - _tParam, 3) * path.allPoints[allPointIndex] +
+                3 * Mathf.Pow(1 - _tParam, 2) * _tParam * path.allAnchors[allPointIndex * 2] +
+                3 * (1 - _tParam) * Mathf.Pow(_tParam, 2) * path.allAnchors[allPointIndex * 2 + 1] +
+                Mathf.Pow(_tParam, 3) * path.allPoints[allPointIndex + 1];
             posOnCurve.y = initialPosY;
             Vector3 oldPos = self.position;
             self.position = posOnCurve;
@@ -103,7 +104,7 @@ public class FollowPath : MonoBehaviour
             // Camera position
             if (cam != null)
             {
-                float t = tParam / (path.links[linkIndex].pathPoints.Count - 1);
+                float t = _tParam / (path.links[linkIndex].pathPoints.Count - 1);
                 float xOffset = path.links[linkIndex].XCameraOffset.Evaluate(t + lastTValue);
                 float zOffset = path.links[linkIndex].YCameraOffset.Evaluate(t + lastTValue);
                 cam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = initialOffset + new Vector3(xOffset, 0.0f, zOffset);
@@ -114,8 +115,8 @@ public class FollowPath : MonoBehaviour
         }
 
         if (path.links[linkIndex].pathPoints.Count > 1)
-            lastTValue = tParam / (path.links[linkIndex].pathPoints.Count - 1);
-        tParam = 0.0f;
+            lastTValue = _tParam / (path.links[linkIndex].pathPoints.Count - 1);
+        _tParam = 0.0f;
         ++allPointIndex;
         if (allPointIndex == path.allPoints.Count - 1)
         {
