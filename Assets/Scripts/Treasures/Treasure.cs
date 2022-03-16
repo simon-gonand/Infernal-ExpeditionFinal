@@ -189,6 +189,7 @@ public class Treasure : MonoBehaviour, ICarriable
     // When player is interacting with the treasure
     public bool InteractWith(PlayerController player, GameObject interactingWith)
     {
+        Debug.Log(_playerInteractingWith.Count);
         if (_isCarriedByPiqueSous) return false;
         // Update player values
         _playerInteractingWith.Add(player);
@@ -225,6 +226,7 @@ public class Treasure : MonoBehaviour, ICarriable
                 Physics.IgnoreCollision(selfColliderX, BoatManager.instance.selfCollider, true);
                 Physics.IgnoreCollision(selfColliderZ, BoatManager.instance.selfCollider, true);
 
+                self.SetParent(player.self);
                 UpTreasure(player.self);
                 selfRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
                 selfRigidbody.useGravity = false;
@@ -234,7 +236,6 @@ public class Treasure : MonoBehaviour, ICarriable
                 selfColliderX.enabled = false;
                 selfColliderZ.enabled = false;
 
-                self.SetParent(player.self);
 
             }
             else if (_playerInteractingWith.Count == 2)
@@ -363,9 +364,7 @@ public class Treasure : MonoBehaviour, ICarriable
 
         AdjustCollider(associateColliders[player].transform.localPosition, player, false);
         // Player does not interact with the treasure anymore
-        Debug.Log(_playerInteractingWith.Count);
         _playerInteractingWith.Remove(player);
-        Debug.Log(_playerInteractingWith.Count);
 
         
         associateColliders[player].GetComponent<BoxCollider>().enabled = true;
@@ -458,7 +457,9 @@ public class Treasure : MonoBehaviour, ICarriable
         if (_playerInteractingWith.Count > 0)
         {
             selfRigidbody.velocity = Vector3.zero;
+            Debug.Log(self.position);
             self.localPosition = carriedPosition;
+            Debug.Log(self.position);
         }
         if (_playerInteractingWith.Count > 1)
         {
