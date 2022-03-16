@@ -344,6 +344,42 @@ public class PlayerController : MonoBehaviour
             Die();
         }
     }
+
+    public void OnSwitchPlayer(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            PlayerManager.instance.players[_id].selfPlayerInput.SwitchCurrentControlScheme(Keyboard.current);
+            if (_id == 3)
+                PlayerManager.instance.players[0].selfPlayerInput.SwitchCurrentControlScheme(Gamepad.all[0]);
+            else
+                PlayerManager.instance.players[_id + 1].selfPlayerInput.SwitchCurrentControlScheme(Gamepad.all[0]);
+            GameManager.instance.controlAll = false;
+        }
+    }
+
+    public void OnControlAllPlayers(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (!GameManager.instance.controlAll)
+            {
+                foreach (PlayerController player in PlayerManager.instance.players)
+                {
+                    player.selfPlayerInput.SwitchCurrentControlScheme(Gamepad.all[0]);
+                }
+            }
+            else
+            {
+                PlayerManager.instance.players[0].selfPlayerInput.SwitchCurrentControlScheme(Gamepad.all[0]);
+                for (int i = 1; i < PlayerManager.instance.players.Count; ++i)
+                {
+                    PlayerManager.instance.players[i].selfPlayerInput.SwitchCurrentControlScheme(Keyboard.current);
+                }
+            }
+            GameManager.instance.controlAll = !GameManager.instance.controlAll;
+        }
+    }
     #endregion
 
     public void AdjustSoloColliderSize(Vector3 localSnapPosition, Treasure treasure, bool add)

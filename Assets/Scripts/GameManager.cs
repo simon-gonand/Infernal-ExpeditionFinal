@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 
@@ -15,6 +16,9 @@ public class GameManager : MonoBehaviour
     public CinemachineTargetGroup targetGroup;
 
     public bool boatOnTargetGroup;
+    public bool debugMode;
+    private bool _controlAll;
+    public bool controlAll { get { return _controlAll; } set { _controlAll = value; } }
 
     [Header("Number Stars Needed to Unlock")]
     public List<int> neededStarsToUnlock;
@@ -39,6 +43,17 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(transform.parent.gameObject);
         SceneManager.sceneLoaded += GetObjects;
+    }
+
+    private void Start()
+    {
+        if (debugMode)
+        {
+            Debug.LogWarning("YOUR ARE IN DEBUG MODE");
+            playerManager.GetComponent<PlayerInputManager>().JoinPlayer(1);
+            playerManager.GetComponent<PlayerInputManager>().JoinPlayer(2);
+            playerManager.GetComponent<PlayerInputManager>().JoinPlayer(3);
+        }
     }
 
     public void LoadLevel(string sceneName, bool isBoatInScene)

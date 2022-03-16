@@ -609,6 +609,328 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""DebugControls"",
+            ""id"": ""c8b7f802-e083-4a44-80be-4c98ce7f04b0"",
+            ""actions"": [
+                {
+                    ""name"": ""ResetPlayer"",
+                    ""type"": ""Button"",
+                    ""id"": ""54bb8e01-43d6-477f-a02c-30bd755d4fb0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""ValidationUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""e6ff55eb-a4ff-4079-9cb4-1f2f1b4be031"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""8d61a3ac-cb30-4366-ad17-02ae684ebcb8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""PlayerDash"",
+                    ""type"": ""Button"",
+                    ""id"": ""e1baa49c-cb0f-490a-9ad9-be7d9474c2ff"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""PlayerAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""a54e2138-eee1-4f29-9d8f-fce5f69dd971"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""PlayerInteraction"",
+                    ""type"": ""Button"",
+                    ""id"": ""394138dc-7f5c-42eb-9ad0-7bcdef7cc42c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""PlayerMovements"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""bfa2b9a8-3d5c-4107-940b-f90e9ebe3b99"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SwitchPlayer"",
+                    ""type"": ""Button"",
+                    ""id"": ""9fcf9d33-9b18-4e2f-b3dd-24c45fce6b68"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ControllAllPlayers"",
+                    ""type"": ""Button"",
+                    ""id"": ""99e5d163-d071-40a8-9b1d-fe8a7038bd62"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""ZQSD"",
+                    ""id"": ""bab0fb6e-ec24-4f49-b4b7-e9a91fcddfb7"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMovements"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""70ccfc84-0802-4baa-b9b4-ca070a9dd2da"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""PlayerMovements"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""09e93ac2-8f5c-456b-9d43-bfebdb123bd5"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""PlayerMovements"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""17b422f1-35ce-4b64-9e79-f26ccaeecc41"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""PlayerMovements"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""0e127533-2c3d-45dc-9b91-50f37e479081"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""PlayerMovements"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""558a96cd-bde3-4d45-830f-92c41c8c9eb8"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""PlayerMovements"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f59b2f13-9cd7-4c51-977d-771b89081a4f"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""PlayerInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8fb957c4-e663-4bb4-9511-991a6ab33da9"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""PlayerInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""78ca5295-de46-412d-8f08-b6c9f6d0d698"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""PlayerInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""692bd33b-a086-442d-a909-aec903f669b5"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""PlayerAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d38f8cd-c165-4c1f-90c4-7844e517a392"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""PlayerAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f4924e9-3c1f-4857-a145-b95b247e1cf7"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""PlayerDash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0e9ed6d-5773-45df-86fc-ae0654755f08"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""PlayerDash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35d6a958-e7bf-4fc0-b886-fa0e67339b49"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""PlayerDash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18a2fa7a-46ff-43eb-99fe-b99cae649c9d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ee4c8cb-9c4f-48d9-8419-057e738b0095"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b82376c1-d4ab-4541-b4b9-750ba77829d4"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ValidationUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e57ef944-1b68-4e65-b6d2-486f9d07491f"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ValidationUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ddae9b1-bb1a-421b-95d2-e6fbdd266089"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ResetPlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d51a389-2d93-4dc2-adb9-4bece2a05b7e"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ResetPlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5ab9ce6-8bf6-4d6f-b279-a4d9eb0b9837"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""SwitchPlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""88c0d028-e0e3-4d40-aa6b-6a8f3c9eb5c6"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ControllAllPlayers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -657,6 +979,17 @@ public class @Controller : IInputActionCollection, IDisposable
         m_ControlsUI_ValidModifUI = m_ControlsUI.FindAction("ValidModifUI", throwIfNotFound: true);
         m_ControlsUI_ValidUI = m_ControlsUI.FindAction("ValidUI", throwIfNotFound: true);
         m_ControlsUI_Pause = m_ControlsUI.FindAction("Pause", throwIfNotFound: true);
+        // DebugControls
+        m_DebugControls = asset.FindActionMap("DebugControls", throwIfNotFound: true);
+        m_DebugControls_ResetPlayer = m_DebugControls.FindAction("ResetPlayer", throwIfNotFound: true);
+        m_DebugControls_ValidationUI = m_DebugControls.FindAction("ValidationUI", throwIfNotFound: true);
+        m_DebugControls_Pause = m_DebugControls.FindAction("Pause", throwIfNotFound: true);
+        m_DebugControls_PlayerDash = m_DebugControls.FindAction("PlayerDash", throwIfNotFound: true);
+        m_DebugControls_PlayerAction = m_DebugControls.FindAction("PlayerAction", throwIfNotFound: true);
+        m_DebugControls_PlayerInteraction = m_DebugControls.FindAction("PlayerInteraction", throwIfNotFound: true);
+        m_DebugControls_PlayerMovements = m_DebugControls.FindAction("PlayerMovements", throwIfNotFound: true);
+        m_DebugControls_SwitchPlayer = m_DebugControls.FindAction("SwitchPlayer", throwIfNotFound: true);
+        m_DebugControls_ControllAllPlayers = m_DebugControls.FindAction("ControllAllPlayers", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -848,6 +1181,103 @@ public class @Controller : IInputActionCollection, IDisposable
         }
     }
     public ControlsUIActions @ControlsUI => new ControlsUIActions(this);
+
+    // DebugControls
+    private readonly InputActionMap m_DebugControls;
+    private IDebugControlsActions m_DebugControlsActionsCallbackInterface;
+    private readonly InputAction m_DebugControls_ResetPlayer;
+    private readonly InputAction m_DebugControls_ValidationUI;
+    private readonly InputAction m_DebugControls_Pause;
+    private readonly InputAction m_DebugControls_PlayerDash;
+    private readonly InputAction m_DebugControls_PlayerAction;
+    private readonly InputAction m_DebugControls_PlayerInteraction;
+    private readonly InputAction m_DebugControls_PlayerMovements;
+    private readonly InputAction m_DebugControls_SwitchPlayer;
+    private readonly InputAction m_DebugControls_ControllAllPlayers;
+    public struct DebugControlsActions
+    {
+        private @Controller m_Wrapper;
+        public DebugControlsActions(@Controller wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ResetPlayer => m_Wrapper.m_DebugControls_ResetPlayer;
+        public InputAction @ValidationUI => m_Wrapper.m_DebugControls_ValidationUI;
+        public InputAction @Pause => m_Wrapper.m_DebugControls_Pause;
+        public InputAction @PlayerDash => m_Wrapper.m_DebugControls_PlayerDash;
+        public InputAction @PlayerAction => m_Wrapper.m_DebugControls_PlayerAction;
+        public InputAction @PlayerInteraction => m_Wrapper.m_DebugControls_PlayerInteraction;
+        public InputAction @PlayerMovements => m_Wrapper.m_DebugControls_PlayerMovements;
+        public InputAction @SwitchPlayer => m_Wrapper.m_DebugControls_SwitchPlayer;
+        public InputAction @ControllAllPlayers => m_Wrapper.m_DebugControls_ControllAllPlayers;
+        public InputActionMap Get() { return m_Wrapper.m_DebugControls; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugControlsActions set) { return set.Get(); }
+        public void SetCallbacks(IDebugControlsActions instance)
+        {
+            if (m_Wrapper.m_DebugControlsActionsCallbackInterface != null)
+            {
+                @ResetPlayer.started -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnResetPlayer;
+                @ResetPlayer.performed -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnResetPlayer;
+                @ResetPlayer.canceled -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnResetPlayer;
+                @ValidationUI.started -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnValidationUI;
+                @ValidationUI.performed -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnValidationUI;
+                @ValidationUI.canceled -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnValidationUI;
+                @Pause.started -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPause;
+                @PlayerDash.started -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPlayerDash;
+                @PlayerDash.performed -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPlayerDash;
+                @PlayerDash.canceled -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPlayerDash;
+                @PlayerAction.started -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPlayerAction;
+                @PlayerAction.performed -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPlayerAction;
+                @PlayerAction.canceled -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPlayerAction;
+                @PlayerInteraction.started -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPlayerInteraction;
+                @PlayerInteraction.performed -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPlayerInteraction;
+                @PlayerInteraction.canceled -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPlayerInteraction;
+                @PlayerMovements.started -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPlayerMovements;
+                @PlayerMovements.performed -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPlayerMovements;
+                @PlayerMovements.canceled -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnPlayerMovements;
+                @SwitchPlayer.started -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnSwitchPlayer;
+                @SwitchPlayer.performed -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnSwitchPlayer;
+                @SwitchPlayer.canceled -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnSwitchPlayer;
+                @ControllAllPlayers.started -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnControllAllPlayers;
+                @ControllAllPlayers.performed -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnControllAllPlayers;
+                @ControllAllPlayers.canceled -= m_Wrapper.m_DebugControlsActionsCallbackInterface.OnControllAllPlayers;
+            }
+            m_Wrapper.m_DebugControlsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @ResetPlayer.started += instance.OnResetPlayer;
+                @ResetPlayer.performed += instance.OnResetPlayer;
+                @ResetPlayer.canceled += instance.OnResetPlayer;
+                @ValidationUI.started += instance.OnValidationUI;
+                @ValidationUI.performed += instance.OnValidationUI;
+                @ValidationUI.canceled += instance.OnValidationUI;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+                @PlayerDash.started += instance.OnPlayerDash;
+                @PlayerDash.performed += instance.OnPlayerDash;
+                @PlayerDash.canceled += instance.OnPlayerDash;
+                @PlayerAction.started += instance.OnPlayerAction;
+                @PlayerAction.performed += instance.OnPlayerAction;
+                @PlayerAction.canceled += instance.OnPlayerAction;
+                @PlayerInteraction.started += instance.OnPlayerInteraction;
+                @PlayerInteraction.performed += instance.OnPlayerInteraction;
+                @PlayerInteraction.canceled += instance.OnPlayerInteraction;
+                @PlayerMovements.started += instance.OnPlayerMovements;
+                @PlayerMovements.performed += instance.OnPlayerMovements;
+                @PlayerMovements.canceled += instance.OnPlayerMovements;
+                @SwitchPlayer.started += instance.OnSwitchPlayer;
+                @SwitchPlayer.performed += instance.OnSwitchPlayer;
+                @SwitchPlayer.canceled += instance.OnSwitchPlayer;
+                @ControllAllPlayers.started += instance.OnControllAllPlayers;
+                @ControllAllPlayers.performed += instance.OnControllAllPlayers;
+                @ControllAllPlayers.canceled += instance.OnControllAllPlayers;
+            }
+        }
+    }
+    public DebugControlsActions @DebugControls => new DebugControlsActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -883,5 +1313,17 @@ public class @Controller : IInputActionCollection, IDisposable
         void OnValidModifUI(InputAction.CallbackContext context);
         void OnValidUI(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IDebugControlsActions
+    {
+        void OnResetPlayer(InputAction.CallbackContext context);
+        void OnValidationUI(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+        void OnPlayerDash(InputAction.CallbackContext context);
+        void OnPlayerAction(InputAction.CallbackContext context);
+        void OnPlayerInteraction(InputAction.CallbackContext context);
+        void OnPlayerMovements(InputAction.CallbackContext context);
+        void OnSwitchPlayer(InputAction.CallbackContext context);
+        void OnControllAllPlayers(InputAction.CallbackContext context);
     }
 }

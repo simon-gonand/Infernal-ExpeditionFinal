@@ -38,7 +38,11 @@ public class MainMenuUI : MonoBehaviour
         foreach (PlayerController player in PlayerManager.instance.players)
         {
             player.selfPlayerInput.currentActionMap.Disable();
-            player.selfPlayerInput.SwitchCurrentActionMap("Controls");
+            if (GameManager.instance.debugMode)
+                player.selfPlayerInput.SwitchCurrentActionMap("DebugControls");
+            else
+                player.selfPlayerInput.SwitchCurrentActionMap("Controls");
+
             player.selfPlayerInput.currentActionMap.Enable();
         }
         Cursor.visible = false;
